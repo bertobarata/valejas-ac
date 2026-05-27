@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-PT"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>O Nosso Emblema | Valejas Atlético Clube</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#d9e2ff",
+              "on-tertiary-fixed": "#410000",
+              "inverse-on-surface": "#eef0ff",
+              "on-tertiary-fixed-variant": "#930000",
+              "inverse-surface": "#002c6f",
+              "secondary": "#1e59c0",
+              "inverse-primary": "#e2c600",
+              "on-primary-fixed-variant": "#524700",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed": "#001945",
+              "outline": "#737784",
+              "primary-fixed-dim": "#e2c600",
+              "error-container": "#ffdad6",
+              "surface-bright": "#faf8ff",
+              "primary-container": "#675900",
+              "tertiary-fixed": "#ffdad4",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-tint": "#6d5e00",
+              "primary-fixed": "#ffe241",
+              "on-tertiary-container": "#ffc3b9",
+              "tertiary-container": "#b70001",
+              "on-background": "#001945",
+              "secondary-container": "#6695ff",
+              "surface-dim": "#cdd9ff",
+              "secondary-fixed-dim": "#b0c6ff",
+              "surface": "#faf8ff",
+              "on-secondary-fixed-variant": "#00419c",
+              "outline-variant": "#c3c6d5",
+              "on-surface-variant": "#434653",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "secondary-fixed": "#d9e2ff",
+              "on-secondary-container": "#002d70",
+              "surface-container-low": "#f2f3ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#d9e2ff",
+              "error": "#ba1a1a",
+              "on-primary": "#ffffff",
+              "primary": "#4d4200",
+              "on-primary-container": "#eed100",
+              "surface-container": "#eaedff",
+              "on-primary-fixed": "#211b00",
+              "on-surface": "#001945",
+              "tertiary": "#8a0000",
+              "background": "#faf8ff",
+              "surface-container-high": "#e1e7ff"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Manrope"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-bg {
+            background-image: linear-gradient(45deg, transparent 48%, #D4150C 49%, #D4150C 51%, transparent 52%);
+            background-size: 100px 100px;
+            opacity: 0.05;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(0deg); }
+            100% { transform: translateY(0px) rotate(-2deg); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .hover-expansion {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-expansion:hover {
+            transform: scale(1.02);
+        }
+        /* Custom UI Sound Trigger Area */
+        .sound-trigger { cursor: pointer; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<audio id="hoverSound" preload="auto">
+<source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg"/>
+</audio>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-blue-950/80 backdrop-blur-xl shadow-[0_20px_50px_rgba(21,84,187,0.1)] transition-transform duration-300 ease-out">
+<div class="flex justify-between items-center px-6 lg:px-12 py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black italic text-blue-700 dark:text-yellow-400 flex items-center gap-2 font-['Epilogue'] uppercase tracking-tighter">
+<span>Valejas Atlético Clube</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all font-['Manrope'] text-sm tracking-wide" href="#">Início</a>
+<a class="text-blue-800 dark:text-yellow-400 border-b-4 border-red-600 pb-1 font-bold font-['Manrope'] text-sm tracking-wide" href="#">O Emblema</a>
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all font-['Manrope'] text-sm tracking-wide" href="#">Futsal</a>
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all font-['Manrope'] text-sm tracking-wide" href="#">Resultados</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-primary text-on-primary px-6 py-2 font-bold rounded-md hover:scale-105 transition-all uppercase tracking-widest text-xs" onmouseenter="playHover()">Bilhetes</button>
+<div class="flex items-center gap-4 text-blue-700">
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" data-icon="person">person</span>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-32 min-h-screen relative overflow-hidden">
+<!-- Background Kinetic Element -->
+<div class="absolute inset-0 kinetic-bg pointer-events-none"></div>
+<!-- Hero Section: A Alma do Clube -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center mb-32 relative z-10">
+<div class="relative group">
+<div class="absolute -inset-4 bg-secondary-container/20 rounded-full blur-3xl group-hover:bg-secondary-container/30 transition-all duration-700"></div>
+<div class="relative bg-surface-container-lowest p-12 rounded-xl shadow-[0_40px_100px_rgba(0,44,111,0.12)] float-animation hover:rotate-0 transition-transform duration-500 sound-trigger" onmouseenter="playHover()">
+<img alt="Emblema Oficial Valejas Atlético Clube" class="w-full h-auto drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASaP_asItZvf0PQkP_vzbbwN3J8XAbzRH0eY_WIA83AdNiwWiwG0wWcrWKEra324UpekMbf4rpW4iJzI12adEB8iUo4j2o1cl5iGHcvJ5MIe0F8VHfmyO4eihFE0lflDhqM7oeXd6pNkJfPq86HtINArTxFjSrzesBxlQ1EcHiNA2AKl0k-a-wr5ncnw7SNOvlJSs7XC5d7oeuQZXhEZDJUp7jhcCKD03FPZsE979q3Ski8aNHC1nsIxWDbF9WcX_s2N2r1Xh8Kg"/>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<span class="text-tertiary font-headline font-black uppercase tracking-[0.2em] text-sm flex items-center gap-2">
+<span class="w-2 h-2 bg-tertiary rounded-full animate-pulse"></span>
+    A Identidade
+</span>
+<h1 class="text-6xl md:text-8xl font-headline font-black text-on-background leading-none tracking-tighter italic">
+                    O NOSSO <br/> <span class="text-secondary">EMBLEMA</span>
+</h1>
+<p class="text-xl text-on-surface-variant leading-relaxed max-w-xl">
+                    Mais do que um logotipo, o nosso emblema é um testemunho vivo da história, da geografia e do espírito inabalável do Valejas. Cada linha e cor carrega o peso do nosso legado no Futsal nacional.
+                </p>
+<div class="flex gap-4 mt-4">
+<div class="h-1 w-24 bg-tertiary"></div>
+<div class="h-1 w-12 bg-secondary"></div>
+<div class="h-1 w-6 bg-primary"></div>
+</div>
+</div>
+</section>
+<!-- Symbolism Breakdown: Bento Grid -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 mb-40 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- A Águia: Autoridade -->
+<div class="md:col-span-8 bg-surface-container-high rounded-xl p-10 flex flex-col justify-end min-h-[400px] relative overflow-hidden group hover-expansion sound-trigger" onmouseenter="playHover()">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 group-hover:rotate-12 transition-all duration-700">
+<span class="material-symbols-outlined text-[12rem]" data-icon="flight">flight</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-4xl font-headline font-black uppercase mb-4 text-on-surface italic">A Águia de Ouro</h3>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">
+                            Elevando-se sobre o escudo, a águia representa a visão, a força e a ambição crescente do nosso clube. Olha para a frente, refletindo o nosso compromisso com o crescimento e o domínio regional no pavilhão.
+                        </p>
+</div>
+</div>
+<!-- A Faixa: O Pulso -->
+<div class="md:col-span-4 bg-tertiary text-on-tertiary rounded-xl p-10 flex flex-col justify-between overflow-hidden relative hover-expansion sound-trigger" onmouseenter="playHover()">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rotate-45 transition-transform group-hover:scale-110"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl mb-6" data-icon="bolt">bolt</span>
+<h3 class="text-3xl font-headline font-black uppercase mb-4 leading-tight">A Diagonal <br/>Vermelha</h3>
+<p class="opacity-90 leading-relaxed font-medium">
+                            A "faixa" que corta o centro simboliza a energia cinética do jogo — a trajetória da bola no futsal, o sprint do jogador e a paixão que flui através de Valejas.
+                        </p>
+</div>
+</div>
+<!-- As Iniciais: Herança -->
+<div class="md:col-span-4 bg-white border border-outline-variant/30 rounded-xl p-10 shadow-xl shadow-secondary/5 hover-expansion sound-trigger" onmouseenter="playHover()">
+<h3 class="text-2xl font-headline font-black text-secondary uppercase mb-4">V. A. C.</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                        A tipografia entrelaçada de <span class="font-bold text-on-surface">Valejas Atlético Clube</span> ergue-se como um pilar da comunidade. É a assinatura de uma vila unida pelo desporto e pelo pavilhão.
+                    </p>
+<div class="mt-8 pt-8 border-t border-outline-variant/20 flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Fundado em 1944</span>
+</div>
+</div>
+<!-- Cores: A Tríade -->
+<div class="md:col-span-8 bg-inverse-surface text-white rounded-xl p-10 grid md:grid-cols-3 gap-8 hover-expansion">
+<div class="flex flex-col gap-3 group/color" onmouseenter="playHover()">
+<div class="w-12 h-12 bg-[#FADB09] rounded-lg group-hover/color:scale-110 transition-transform"></div>
+<h4 class="font-headline font-bold uppercase text-primary-fixed">Amarelo</h4>
+<p class="text-sm opacity-70">A excelência e a luz dourada do vale do Tejo que ilumina as nossas vitórias.</p>
+</div>
+<div class="flex flex-col gap-3 group/color" onmouseenter="playHover()">
+<div class="w-12 h-12 bg-[#1554BB] rounded-lg group-hover/color:scale-110 transition-transform"></div>
+<h4 class="font-headline font-bold uppercase text-secondary-container">Azul Real</h4>
+<p class="text-sm opacity-70">Estabilidade, confiança e as nossas raízes profundas na história da região.</p>
+</div>
+<div class="flex flex-col gap-3 group/color" onmouseenter="playHover()">
+<div class="w-12 h-12 bg-[#D4150C] rounded-lg group-hover/color:scale-110 transition-transform"></div>
+<h4 class="font-headline font-bold uppercase text-tertiary-fixed-dim">Vermelho</h4>
+<p class="text-sm opacity-70">O sangue, o suor e o fogo absoluto dos nossos adeptos nas bancadas.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Kinetic Call to Action -->
+<section class="bg-secondary relative py-24 overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+<div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="text-white max-w-2xl">
+<h2 class="text-5xl font-headline font-black uppercase mb-6 italic leading-none">Veste o emblema com orgulho</h2>
+<p class="text-blue-100 text-lg">Os nossos equipamentos oficiais de Futsal 2024/25 apresentam uma versão do emblema em silicone 3D de alto relevo. Experimente a vanguarda do vestuário desportivo.</p>
+</div>
+<button class="bg-primary-fixed text-on-primary-fixed px-12 py-5 font-black uppercase tracking-tighter text-xl rounded-md hover:translate-y-[-4px] transition-all shadow-2xl hover:shadow-primary-fixed/30 active:scale-95" onmouseenter="playHover()">
+                    Visitar Loja Oficial
+                </button>
+</div>
+</section>
+<!-- Secondary Detail: A Evolução -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-32 grid lg:grid-cols-3 gap-12 relative z-10">
+<div class="lg:col-span-1">
+<h3 class="text-4xl font-headline font-black text-on-background uppercase italic mb-6">Evolução <br/>Histórica</h3>
+<p class="text-on-surface-variant">Traçando as linhas do nosso emblema desde o esboço original de 1944 até à vanguarda cinética refinada de hoje.</p>
+</div>
+<div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-square bg-surface-container-low rounded-xl flex items-center justify-center p-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all cursor-crosshair group" onmouseenter="playHover()">
+<div class="text-center">
+<span class="block font-black text-2xl text-on-surface group-hover:text-secondary">1944</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">A Origem</span>
+</div>
+</div>
+<div class="aspect-square bg-surface-container-low rounded-xl flex items-center justify-center p-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all cursor-crosshair group" onmouseenter="playHover()">
+<div class="text-center">
+<span class="block font-black text-2xl text-on-surface group-hover:text-secondary">1972</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">Escudo Refinado</span>
+</div>
+</div>
+<div class="aspect-square bg-surface-container-low rounded-xl flex items-center justify-center p-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 hover:scale-105 transition-all cursor-crosshair group" onmouseenter="playHover()">
+<div class="text-center">
+<span class="block font-black text-2xl text-on-surface group-hover:text-secondary">1998</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">Era Moderna</span>
+</div>
+</div>
+<div class="aspect-square bg-primary-fixed/20 border-2 border-primary rounded-xl flex items-center justify-center p-6 hover:scale-110 transition-all cursor-crosshair shadow-lg" onmouseenter="playHover()">
+<div class="text-center">
+<span class="block font-black text-2xl text-primary">Hoje</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-primary">A Vanguarda</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-blue-900 dark:bg-blue-950 w-full pt-20 pb-10 border-t-8 border-red-600">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto font-['Manrope'] text-sm tracking-wide">
+<div class="flex flex-col gap-6">
+<span class="text-3xl font-black text-yellow-400 italic">VAC</span>
+<p class="text-blue-100/70">O orgulho do vale, formando campeões desde 1944. Um clube do povo, para o povo.</p>
+</div>
+<div>
+<h4 class="text-yellow-400 font-bold uppercase mb-6 tracking-widest">Navegação</h4>
+<ul class="flex flex-col gap-4">
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors" href="#">Resultados Futsal</a></li>
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors" href="#">Academia de Formação</a></li>
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors" href="#">Bilheteira</a></li>
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors" href="#">Loja do Clube</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-yellow-400 font-bold uppercase mb-6 tracking-widest">Legal</h4>
+<ul class="flex flex-col gap-4">
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors" href="#">Privacidade</a></li>
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors" href="#">Termos de Serviço</a></li>
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors" href="#">Contactos</a></li>
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors" href="#">Patrocínios</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-yellow-400 font-bold uppercase mb-6 tracking-widest">Redes Sociais</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-white cursor-pointer hover:text-yellow-400 transition-all" data-icon="facebook">social_leaderboard</span>
+<span class="material-symbols-outlined text-white cursor-pointer hover:text-yellow-400 transition-all" data-icon="instagram">retweet</span>
+<span class="material-symbols-outlined text-white cursor-pointer hover:text-yellow-400 transition-all" data-icon="youtube">video_youtube</span>
+</div>
+</div>
+</div>
+<div class="mt-20 px-12 max-w-7xl mx-auto border-t border-white/10 pt-8 flex justify-between items-center text-blue-100/40 text-xs">
+<span>© 2024 Valejas Atlético Clube. A Vanguarda do Futsal.</span>
+<div class="flex gap-8">
+<span>Desenhado para a Excelência</span>
+<span>Porto, Portugal</span>
+</div>
+</div>
+</footer>
+<script>
+    function playHover() {
+        const sound = document.getElementById('hoverSound');
+        sound.currentTime = 0;
+        sound.volume = 0.1;
+        // Check if user has interacted to allow audio
+        sound.play().catch(() => { /* Silent fail if browser blocks */ });
+    }
+</script>
+</body></html>

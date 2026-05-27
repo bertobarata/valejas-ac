@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,900;1,900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#333948",
+              "primary": "#fff7e3",
+              "outline-variant": "#4c4732",
+              "inverse-on-surface": "#2a303f",
+              "tertiary-fixed": "#ffdad4",
+              "surface-variant": "#2e3543",
+              "tertiary": "#fff6f5",
+              "on-primary-fixed": "#211b00",
+              "inverse-primary": "#6d5e00",
+              "secondary-fixed-dim": "#b0c6ff",
+              "secondary-container": "#014cb3",
+              "on-secondary-fixed": "#001945",
+              "on-secondary": "#002c6f",
+              "error-container": "#93000a",
+              "surface-container-high": "#232a38",
+              "inverse-surface": "#dce2f5",
+              "on-secondary-container": "#b0c5ff",
+              "tertiary-container": "#ffd1ca",
+              "surface": "#0d1321",
+              "on-surface-variant": "#cec6ab",
+              "on-primary": "#393000",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-secondary-fixed-variant": "#00419c",
+              "surface-dim": "#0d1321",
+              "surface-container": "#19202d",
+              "background": "#0d1321",
+              "on-tertiary-fixed": "#410000",
+              "on-tertiary": "#690000",
+              "on-primary-container": "#6e6000",
+              "surface-container-highest": "#2e3543",
+              "surface-container-lowest": "#070e1b",
+              "on-background": "#dce2f5",
+              "outline": "#979178",
+              "secondary-fixed": "#d9e2ff",
+              "primary-container": "#fadb09",
+              "surface-container-low": "#151c29",
+              "primary-fixed-dim": "#e2c600",
+              "on-tertiary-container": "#c30001",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "primary-fixed": "#ffe241",
+              "on-tertiary-fixed-variant": "#930000",
+              "on-surface": "#dce2f5",
+              "surface-tint": "#e2c600",
+              "on-primary-fixed-variant": "#524700",
+              "secondary": "#b0c6ff",
+              "error": "#ffb4ab"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .bg-glitch {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .neon-glow-yellow { filter: drop-shadow(0 0 15px rgba(250, 219, 9, 0.3)); }
+        .neon-glow-red { filter: drop-shadow(0 0 15px rgba(195, 0, 1, 0.4)); }
+        .diagonal-strip { clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary">
+<!-- Top Navigation Anchor -->
+<nav class="fixed top-0 w-full z-50 bg-[#0d1321]/90 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-black">
+<div class="flex flex-col w-full px-6 py-4 max-w-none md:flex-row md:items-center md:justify-between">
+<div class="text-2xl font-black italic text-[#fadb09] drop-shadow-[0_0_10px_rgba(250,219,9,0.3)] font-headline uppercase tracking-tighter">
+                Valejas Atlético Clube
+            </div>
+<div class="hidden md:flex items-center gap-8 font-headline font-black uppercase tracking-tighter text-sm">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Home</a>
+<a class="text-[#fadb09] border-b-2 border-[#fadb09] pb-1" href="#">Our Crest</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Teams</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Match Center</a>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<button class="px-6 py-2 bg-primary-container text-on-primary font-bold rounded-full text-xs uppercase tracking-widest hover:scale-105 transition-all neon-glow-yellow">
+                    Tickets
+                </button>
+<button class="px-6 py-2 bg-secondary-container text-on-secondary font-bold text-xs uppercase tracking-widest hover:bg-white/5 transition-all">
+                    Member Area
+                </button>
+</div>
+</div>
+</nav>
+<main class="relative pt-24 overflow-x-hidden">
+<!-- Hero: The Crest Reveal -->
+<section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+<div class="absolute inset-0 bg-glitch opacity-[0.03] pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary-container/10 rounded-full blur-[120px]"></div>
+<div class="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<div class="lg:col-span-7">
+<h1 class="font-headline text-[12vw] lg:text-[8rem] leading-[0.8] font-black italic uppercase tracking-tighter mb-8 text-white">
+                        O Nosso <br/> <span class="text-primary-container neon-glow-yellow">Emblema</span>
+</h1>
+<p class="max-w-xl text-lg md:text-xl text-on-surface-variant leading-relaxed mb-10">
+                        Mais do que um símbolo, uma declaração de guerra. O emblema do Valejas Atlético Clube é a síntese visual da nossa resistência, herança e a energia elétrica que corre nas nossas bancadas.
+                    </p>
+<div class="flex gap-4">
+<div class="w-12 h-1px bg-primary-container mt-4"></div>
+<span class="font-headline font-bold uppercase tracking-widest text-primary-container">Explora a Vanguarda</span>
+</div>
+</div>
+<div class="lg:col-span-5 relative group">
+<div class="absolute -inset-4 bg-primary-container/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<img alt="Crest Image" class="w-full h-auto relative z-10 transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-3 drop-shadow-[0_0_50px_rgba(250,219,9,0.2)]" data-alt="Modern high-contrast football crest of Valejas Atletico Clube featuring an eagle and shield in electric yellow and royal blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ5nu8PK8a_e3uWsKTG0mWo03Y1r1D3uBFiquC69DL1byobYbz_S_EISQEslBwR9x4gQ8NUoy89_qlh557yRmQiNC4A4rSaDDZKXnnfOg_8N80ZytM32H-uSRrOgu7p5HzCv5Djjl741UdZkoUob6zmDsl2PDvmrOIgqugu_cK_dyjRdYv9ZdDgkNtuCJGF5j9r-wdK-0HJ5QVKo44Pi7Bc0bzwKHSm8WeS72c816qxpN5FdHYNinxjoAZ-EBbiBbXFD2FoNBSng"/>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+<span class="font-label text-[10px] uppercase tracking-[0.4em] text-on-surface-variant">Scroll para Desconstruir</span>
+<div class="w-[1px] h-24 bg-gradient-to-b from-primary-container to-transparent"></div>
+</div>
+</section>
+<!-- Section Eagle: Strength -->
+<section class="min-h-screen bg-surface-container-low flex flex-col justify-center py-24 relative overflow-hidden">
+<div class="absolute right-0 top-0 text-[30rem] font-headline font-black italic text-surface-container-highest opacity-20 pointer-events-none select-none translate-x-1/3 -translate-y-1/4">
+                FORCE
+            </div>
+<div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="order-2 lg:order-1">
+<div class="relative w-full aspect-square bg-surface-container rounded-none flex items-center justify-center p-12">
+<div class="absolute top-0 left-0 w-24 h-24 border-t-4 border-l-4 border-primary-container"></div>
+<span class="material-symbols-outlined text-[12rem] text-primary-container" style="font-variation-settings: 'FILL' 1;">owl</span>
+<div class="absolute bottom-0 right-0 w-24 h-24 border-b-4 border-r-4 border-primary-container"></div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<span class="text-on-tertiary-container font-headline font-black uppercase tracking-widest text-sm mb-4 block">Capítulo I</span>
+<h2 class="font-headline text-6xl md:text-8xl font-black italic uppercase tracking-tighter mb-8">
+                        A Águia <br/>da <span class="text-primary-container">Vanguarda</span>
+</h2>
+<p class="text-xl text-on-surface-variant leading-relaxed mb-8">
+                        O nosso predador de topo. A águia não apenas observa; ela domina o espaço aéreo de Valejas. Simboliza a visão estratégica do clube e a ferocidade com que atacamos cada jogo. É a nossa ligação com o céu e a nossa ambição sem limites.
+                    </p>
+<div class="p-8 border-l-2 border-primary-container bg-surface-container">
+<p class="font-label italic text-white">"O som do bater de asas é o aviso. O Valejas não recua."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section Sacred Strip: The Diagonal -->
+<section class="relative py-32 bg-surface overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-0 left-1/4 w-[200%] h-full bg-on-tertiary-container opacity-5 diagonal-strip -rotate-12 translate-x-1/2"></div>
+</div>
+<div class="container mx-auto px-6 relative z-10">
+<div class="max-w-4xl mx-auto text-center mb-20">
+<h2 class="font-headline text-6xl md:text-9xl font-black italic uppercase tracking-tighter mb-4">
+                        Faixa <span class="text-on-tertiary-container neon-glow-red">Sagrada</span>
+</h2>
+<p class="text-2xl font-body text-on-surface-variant font-light">A diagonal que corta o peito é a nossa linhagem de sangue.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+<div class="bg-surface-container-highest p-12 flex flex-col items-center group hover:bg-on-tertiary-container transition-colors duration-500">
+<div class="text-4xl font-headline font-black mb-6 group-hover:text-white">MOVIMENTO</div>
+<p class="text-center text-on-surface-variant group-hover:text-white/80">Inspirada na dinâmica do futebol total, a nossa diagonal nunca está estática.</p>
+</div>
+<div class="bg-surface-container p-12 flex flex-col items-center group hover:bg-on-tertiary-container transition-colors duration-500">
+<div class="text-4xl font-headline font-black mb-6 group-hover:text-white">IDENTIDADE</div>
+<p class="text-center text-on-surface-variant group-hover:text-white/80">Corta o azul e o amarelo para lembrar que a paixão (vermelho) une tudo.</p>
+</div>
+<div class="bg-surface-container-highest p-12 flex flex-col items-center group hover:bg-on-tertiary-container transition-colors duration-500">
+<div class="text-4xl font-headline font-black mb-6 group-hover:text-white">RESILIÊNCIA</div>
+<p class="text-center text-on-surface-variant group-hover:text-white/80">Uma marca indelével que resiste ao tempo e às adversidades.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Colors Grid: Bento Style -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
+<!-- Yellow Block -->
+<div class="md:col-span-8 bg-primary-container p-12 flex flex-col justify-end relative overflow-hidden group">
+<div class="absolute top-8 right-8 text-on-primary-container opacity-20">
+<span class="material-symbols-outlined text-[10rem]">bolt</span>
+</div>
+<h3 class="font-headline text-7xl font-black uppercase tracking-tighter text-on-primary-container mb-4">Electric Yellow</h3>
+<p class="text-on-primary-container/80 text-xl max-w-lg font-medium">A energia das luzes do estádio. O amarelo neon representa o futuro, a inovação tecnológica e o choque que causamos nos adversários.</p>
+</div>
+<!-- Red Block -->
+<div class="md:col-span-4 bg-on-tertiary-container p-12 flex flex-col justify-between group">
+<div class="flex justify-between items-start">
+<div class="w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<span class="text-white/40 font-headline font-bold">03.</span>
+</div>
+<div>
+<h3 class="font-headline text-4xl font-black uppercase text-white mb-4">Kinetic Red</h3>
+<p class="text-white/80">O sangue dos sócios. A batida do coração de Valejas em cada lance decisivo.</p>
+</div>
+</div>
+<!-- Blue Block -->
+<div class="md:col-span-5 bg-secondary-container p-12 flex flex-col justify-between group">
+<span class="text-white/40 font-headline font-bold">02.</span>
+<div>
+<h3 class="font-headline text-4xl font-black uppercase text-white mb-4">Royal Blue</h3>
+<p class="text-white/80">A nobreza do nosso passado e a profundidade do nosso compromisso com a comunidade.</p>
+</div>
+</div>
+<!-- History / Text Block -->
+<div class="md:col-span-7 bg-surface-container-highest p-12 flex items-center">
+<div class="max-w-md">
+<h4 class="font-headline text-2xl font-black uppercase text-primary-container mb-6">Mural da Vanguarda</h4>
+<p class="text-on-surface-variant leading-relaxed">Cada tom foi calibrado para brilhar sob as luzes noturnas. Não usamos cores tradicionais; usamos frequências de energia. O Valejas Atlético Clube é o primeiro clube digitalmente nativo na sua expressão cromática.</p>
+<button class="mt-8 px-0 text-white font-headline font-bold uppercase tracking-widest border-b border-primary-container hover:text-primary-container transition-all">
+                                Ver Guia de Marca
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA: Heritage -->
+<section class="relative py-40 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-glitch opacity-[0.05]"></div>
+<div class="container mx-auto px-6 text-center relative z-10">
+<h2 class="font-headline text-5xl md:text-8xl font-black italic uppercase tracking-tighter mb-12">
+                    Veste o <br/><span class="text-primary-container">Orgulho.</span>
+</h2>
+<div class="flex flex-col md:flex-row gap-6 justify-center">
+<button class="bg-primary-container text-on-primary px-12 py-6 rounded-full font-headline font-black uppercase tracking-widest hover:scale-110 transition-transform neon-glow-yellow">
+                        Loja Oficial
+                    </button>
+<button class="bg-surface-container-highest text-white px-12 py-6 rounded-none font-headline font-black uppercase tracking-widest hover:bg-white/10 transition-colors">
+                        Tornar-se Sócio
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Anchor -->
+<footer class="bg-[#0d1321] w-full pt-20 pb-10">
+<div class="bg-gradient-to-r from-transparent via-[#014cb3]/30 to-transparent h-[1px] mb-10"></div>
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 font-['Inter'] text-sm tracking-wide">
+<div>
+<div class="text-xl font-black text-[#fadb09] mb-6 uppercase tracking-tighter font-headline">Valejas Atléltico Clube</div>
+<p class="text-slate-500 leading-relaxed">O futuro do futebol é elétrico. Bem-vindo à nova era da Vanguarda Desportiva.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-3">
+<a class="text-slate-500 hover:text-[#fadb09] transition-colors" href="#">Sponsorships</a>
+<a class="text-slate-500 hover:text-[#fadb09] transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-slate-500 hover:text-[#fadb09] transition-colors" href="#">Contact Us</a>
+<a class="text-slate-500 hover:text-[#fadb09] transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="flex flex-col md:items-end justify-between">
+<div class="flex gap-6 mb-8 md:mb-0">
+<span class="material-symbols-outlined text-slate-500 hover:text-[#fadb09] cursor-pointer">share</span>
+<span class="material-symbols-outlined text-slate-500 hover:text-[#fadb09] cursor-pointer">public</span>
+<span class="material-symbols-outlined text-slate-500 hover:text-[#fadb09] cursor-pointer">podcasts</span>
+</div>
+<div class="text-slate-500 mt-auto">© 2024 Valejas Atlético Clube. Mural da Vanguarda.</div>
+</div>
+</div>
+</footer>
+<!-- FAB for Quick Actions -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary-container text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 neon-glow-yellow">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+</button>
+</body></html>

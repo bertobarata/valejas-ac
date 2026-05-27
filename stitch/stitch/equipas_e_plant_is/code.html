@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#d9e2ff",
+              "on-tertiary-fixed": "#410000",
+              "inverse-on-surface": "#eef0ff",
+              "on-tertiary-fixed-variant": "#930000",
+              "inverse-surface": "#002c6f",
+              "secondary": "#1e59c0",
+              "inverse-primary": "#e2c600",
+              "on-primary-fixed-variant": "#524700",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed": "#001945",
+              "outline": "#737784",
+              "primary-fixed-dim": "#e2c600",
+              "error-container": "#ffdad6",
+              "surface-bright": "#faf8ff",
+              "primary-container": "#675900",
+              "tertiary-fixed": "#ffdad4",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-tint": "#6d5e00",
+              "primary-fixed": "#ffe241",
+              "on-tertiary-container": "#ffc3b9",
+              "tertiary-container": "#b70001",
+              "on-background": "#001945",
+              "secondary-container": "#6695ff",
+              "surface-dim": "#cdd9ff",
+              "secondary-fixed-dim": "#b0c6ff",
+              "surface": "#faf8ff",
+              "on-secondary-fixed-variant": "#00419c",
+              "outline-variant": "#c3c6d5",
+              "on-surface-variant": "#434653",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "secondary-fixed": "#d9e2ff",
+              "on-secondary-container": "#002d70",
+              "surface-container-low": "#f2f3ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#d9e2ff",
+              "error": "#ba1a1a",
+              "on-primary": "#ffffff",
+              "primary": "#4d4200",
+              "on-primary-container": "#eed100",
+              "surface-container": "#eaedff",
+              "on-primary-fixed": "#211b00",
+              "on-surface": "#001945",
+              "tertiary": "#8a0000",
+              "background": "#faf8ff",
+              "surface-container-high": "#e1e7ff"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Manrope"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-sash {
+            clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-blue-950/80 backdrop-blur-xl shadow-[0_20px_50px_rgba(21,84,187,0.1)]">
+<div class="flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black italic text-blue-700 dark:text-yellow-400 flex items-center gap-2 font-['Epilogue'] uppercase tracking-tighter">
+<img alt="Logótipo do Valejas Atlético Clube" class="h-10 w-10 object-contain" data-alt="Official crest of Valejas Atletico Clube featuring a red sash and an eagle on a blue and yellow shield" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtAbWm92PImqH1SvD5dpxtR5Mdd0wcS89yv2WYK9h2sBSv2JBbYw59uw00BzY_3PNloE2rurElPIj3G0VdJ2XsyW3hFKiEzOPRlBuIzqs1kLeu5hcY-e-6h4ybvSzsfz_QNYzwX_aYT3zB-fLRPHbV92g6FNjbG7wNwU1wO6sZaHkDp_rTE54KgqpM7vOo5noHXtXBfWXPHUhCU131h_jZd2rHImxq4gSP0HcX6hJR0lbjnKkJostDikT2-IssdhPgIWvGE1NE2w"/>
+                Valejas Atlético Clube
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all uppercase tracking-tighter font-['Epilogue']" href="#">Início</a>
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all uppercase tracking-tighter font-['Epilogue']" href="#">Nosso Emblema</a>
+<a class="text-blue-800 dark:text-yellow-400 border-b-4 border-red-600 pb-1 uppercase tracking-tighter font-['Epilogue']" href="#">Equipas</a>
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all uppercase tracking-tighter font-['Epilogue']" href="#">Resultados</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-md font-bold uppercase tracking-widest hover:scale-105 transition-transform duration-300">
+                    Bilhetes
+                </button>
+<span class="material-symbols-outlined text-blue-700 text-3xl cursor-pointer hover:scale-110 transition-transform" data-icon="person">person</span>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24">
+<!-- Hero Section -->
+<section class="relative px-12 mb-20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+<div class="lg:col-span-8">
+<h1 class="font-headline font-black text-7xl md:text-9xl uppercase tracking-tighter text-secondary leading-none">
+                        Nossos <br/><span class="text-primary italic">Guerreiros</span>
+</h1>
+<p class="mt-8 text-xl max-w-2xl text-on-surface-variant font-medium">
+                        Explore o plantel de elite do Valejas Atlético Clube. Da precisão táctica do Futsal à força expansiva do Futebol, conheça os atletas que carregam o nosso legado.
+                    </p>
+</div>
+<div class="lg:col-span-4 flex justify-end">
+<div class="flex flex-col gap-4 w-full">
+<div class="bg-surface-container-high p-6 flex justify-between items-center rounded-lg border-l-8 border-tertiary">
+<span class="font-headline font-bold uppercase">Atletas Ativos</span>
+<span class="text-4xl font-black text-secondary">42</span>
+</div>
+<div class="bg-surface-container-high p-6 flex justify-between items-center rounded-lg border-l-8 border-primary">
+<span class="font-headline font-bold uppercase">Divisões</span>
+<span class="text-4xl font-black text-secondary">04</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Division Filter Chips -->
+<section class="px-12 mb-16 max-w-7xl mx-auto">
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary text-white px-8 py-3 rounded-md font-headline font-bold uppercase tracking-widest shadow-lg">Todas as Equipas</button>
+<button class="bg-secondary-fixed text-on-secondary-container px-8 py-3 rounded-md font-headline font-bold uppercase tracking-widest hover:bg-secondary-container transition-colors">Futsal Principal</button>
+<button class="bg-secondary-fixed text-on-secondary-container px-8 py-3 rounded-md font-headline font-bold uppercase tracking-widest hover:bg-secondary-container transition-colors">Futebol Sénior</button>
+<button class="bg-secondary-fixed text-on-secondary-container px-8 py-3 rounded-md font-headline font-bold uppercase tracking-widest hover:bg-secondary-container transition-colors">Sub-21 Desenvolvimento</button>
+</div>
+</section>
+<!-- Futsal Section with Asymmetric Layout (Now First) -->
+<section class="relative bg-surface-container-low py-32 overflow-hidden mb-32">
+<!-- Background Texture -->
+<div class="absolute inset-0 opacity-5 pointer-events-none">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-tertiary skew-x-12 transform translate-x-24"></div>
+</div>
+<div class="px-12 max-w-7xl mx-auto relative z-10">
+<div class="flex flex-col lg:flex-row gap-16 items-start">
+<div class="lg:w-1/3">
+<h2 class="font-headline font-black text-6xl uppercase tracking-tighter text-on-surface leading-none mb-6">
+                            Elite do <br/><span class="text-tertiary">Futsal</span> <br/>Principal
+                        </h2>
+<p class="text-on-surface-variant mb-12 text-lg">
+                            Velocidade, precisão e energia implacável. A nossa divisão de Futsal representa o auge da excelência técnica indoor na região.
+                        </p>
+<button class="flex items-center gap-4 group">
+<span class="bg-secondary text-white w-12 h-12 flex items-center justify-center rounded-full group-hover:w-56 transition-all duration-500 overflow-hidden whitespace-nowrap px-4 font-bold uppercase">Ver Todos os Jogadores</span>
+<span class="material-symbols-outlined text-secondary font-bold" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Futsal Featured Card 1 -->
+<div class="bg-surface-container-lowest p-8 flex gap-6 items-center shadow-xl border-r-4 border-primary">
+<div class="w-32 h-32 rounded-full overflow-hidden shrink-0 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional futsal player with intense expression and beads of sweat with blue studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfFBZpBhZuQANCElci7bHA6ka6TnFt033nd0RanOI2uVKQkeNI9Cdzk383cL2UypFYbypJm_SWSgTE3WUuVD6I5XqhTilbTtyskTp5aD698HRZK0BzmEc_KsGaSgya0-GbTvdAsHq55iWbFYzPSa_8sHQmNRE4UVeFWYbpsrCMuMHYrrJCPfgIU-LlLp0RmaPPj2n-sSv1_VO6KKNkHS3g5T5f3bcBpwvDcrEBQXRQrWcm1Kk__EeI4ECBNyRLLStt1ckSy51reA"/>
+</div>
+<div>
+<span class="text-tertiary font-headline font-black text-3xl">#08</span>
+<h4 class="font-headline font-bold text-xl uppercase">João Paulo</h4>
+<p class="text-secondary font-bold text-sm tracking-widest uppercase mt-1">Ala / Extremo</p>
+</div>
+</div>
+<!-- Futsal Featured Card 2 -->
+<div class="bg-surface-container-lowest p-8 flex gap-6 items-center shadow-xl border-r-4 border-primary">
+<div class="w-32 h-32 rounded-full overflow-hidden shrink-0 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="professional athlete training on indoor futsal court with dynamic movement and blurred background of spectators" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-AOkBHx2YLpDx5sBR48Qhzq9YyFviXhtmYkDwp-cNibg-ZA3TmABcyEcRGAZZZQ07Nptws1vnyrgi4dbp4v2rF8a6_OXkHMDSwLMle9FkyDM3hY-xnqrFovszOmF7YAGRgLVImfpWhvwMgDDz_aUZrDifuG3FgO09svkg01kbLZ47oemgVafH0syqMSr-LWaGXucv0fn9lhV5FbdXLptm4fTr8s9Fh8rmXijssmJlWlfWjgJNz2NIOEc1LVf-IaISodTjrLb6aw"/>
+</div>
+<div>
+<span class="text-tertiary font-headline font-black text-3xl">#14</span>
+<h4 class="font-headline font-bold text-xl uppercase">Miguel Costa</h4>
+<p class="text-secondary font-bold text-sm tracking-widest uppercase mt-1">Fixo / Defesa</p>
+</div>
+</div>
+<!-- Futsal Featured Card 3 -->
+<div class="bg-surface-container-lowest p-8 flex gap-6 items-center shadow-xl border-r-4 border-primary">
+<div class="w-32 h-32 rounded-full overflow-hidden shrink-0 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="action shot of a futsal pivot controlling the ball on a polished indoor court with reflections and intense focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx8rjN2MbZeMeX1PSMCSA0PMXflnQulnnbrG2hMo6F-T3qG6-9m5w0gBQU09v-GvwuHKzFeeWB4pFdwgPzSZQI9x6ncrPmgfUsyBOT5DrivKoIQAHHOqRTx5a2RWDUsXnSGQd-1LecgK1lwJHVp16aalZBSagrVtOok3usgV2JJSj8eyB_W1dfu6BvZudraz4yGGisknLraC8K2SFwVbx1H5rpN6Nyx_ndbE4HeO597h8mnYeVwTCOlnMtDaLFXNZ2OzgciMc6tg"/>
+</div>
+<div>
+<span class="text-tertiary font-headline font-black text-3xl">#21</span>
+<h4 class="font-headline font-bold text-xl uppercase">Fábio G.</h4>
+<p class="text-secondary font-bold text-sm tracking-widest uppercase mt-1">Pivot / Avançado</p>
+</div>
+</div>
+<!-- Futsal Featured Card 4 -->
+<div class="bg-surface-container-lowest p-8 flex gap-6 items-center shadow-xl border-r-4 border-primary">
+<div class="w-32 h-32 rounded-full overflow-hidden shrink-0 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="goalkeeper in protective gear ready on a futsal court with high contrast shadows and vibrant court colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6vm0pfJmeFCittgSoA-7lsGFJvfN2Kg9N0ml5NjPl04em5JwZFnBa_VSrKuKqzGKx_szBPvftxvqPSaePmm0L3kphvmnTOYyF-Icu6Oiq-ES7IDapTNbioIqwzJLIukd-wQ-RCyxItvtQMwXWTun8HUQ7kL3V7kL9krzkA9E6YO-5vOntX2XKxhUyPKInWFOlk2IxOlEGdrXiaxgPCqP678d2RL5GFJMs2b60E2x4CX4rT0YwOyiwzA2JLh6CYG_fOnH3Z5xpAw"/>
+</div>
+<div>
+<span class="text-tertiary font-headline font-black text-3xl">#01</span>
+<h4 class="font-headline font-bold text-xl uppercase">Nuno Santos</h4>
+<p class="text-secondary font-bold text-sm tracking-widest uppercase mt-1">Guarda-Redes</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Football Team Directory -->
+<section class="px-12 mb-32 max-w-7xl mx-auto">
+<div class="flex items-center gap-6 mb-12">
+<h2 class="font-headline font-black text-5xl uppercase italic text-on-surface">Futebol <span class="text-tertiary">Equipa Principal</span></h2>
+<div class="h-1 flex-grow bg-outline-variant opacity-30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Player Card 1 -->
+<div class="group relative bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-4">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="professional football player in a blue and yellow jersey standing confidently against a stadium background with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFvZrF5oipOMGNL6voEvBOJyfUROzPLhlT_0ISl_z00PLs8-d_WI7KwsgnGPpHyui2SH2NPupD5Kqqin4XIusf15Y2rzhz9dM2152OXzM5HDYCnsmG90oYR4fiKVj48YK9A4qcdbTUrxEz6HL2iXNZ67qN2R1plztvMwsALObg7bszQfXqZb98_xK_g2CRIJYOnGRKdvH66mDEiZp9wL_Es1LS-8NWE1jARkkBuzHs16cQDwlzGSNhPnHKs_0MSrkmpeK4kLoJvw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute top-4 left-4 font-headline font-black text-6xl text-white/20">07</div>
+</div>
+<div class="p-6 relative">
+<div class="absolute -top-12 left-6 bg-primary text-on-primary px-4 py-1 font-headline font-black italic skew-x-[-12deg]">AVAN</div>
+<h3 class="font-headline font-extrabold text-2xl uppercase text-on-surface mb-1">Ricardo Silva</h3>
+<p class="font-body text-on-surface-variant font-semibold tracking-wider uppercase text-sm">Capitão de Equipa</p>
+</div>
+</div>
+<!-- Player Card 2 -->
+<div class="group relative bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-4">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="athletic male football player intensely focusing before a match wearing a blue sports kit in a modern training facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8qbZPA1zX9mXPAEy5G8SAP0XJVuiTJe2KHki30OmZFvJ5M6dcp3M5V9Z9MOQGEJGaUg9w_FOPyl13zHwdvaVhSC2rTZVgyFc0rbFKbPGmo0k0xGcqz5NXHZQ0cMBGh-eUQSYvMXvivbvCyaxXiVDb9hB-cnoMxIwS6AsZmLXT1fIUgApMvnpnoxIb0xTCfdBSkPkXWLs6W-eCnYJbrFjwDJeHS2lYgsikCVBdAe1pzo9PMT22dejCw6l1u0luEn7XLKpF0EWrxA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute top-4 left-4 font-headline font-black text-6xl text-white/20">10</div>
+</div>
+<div class="p-6 relative">
+<div class="absolute -top-12 left-6 bg-primary text-on-primary px-4 py-1 font-headline font-black italic skew-x-[-12deg]">MÉD</div>
+<h3 class="font-headline font-extrabold text-2xl uppercase text-on-surface mb-1">André Mendes</h3>
+<p class="font-body text-on-surface-variant font-semibold tracking-wider uppercase text-sm">Criativo</p>
+</div>
+</div>
+<!-- Player Card 3 -->
+<div class="group relative bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-4">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="focused football goalkeeper in a vibrant yellow kit diving for a ball with dynamic action blur and stadium lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhzEyQn2EqFbLw2QSbxv_G0kAo_7uTrPcEerx9cv3vYlIc7Bif0g4ScdgWqsAjkCe63nElnEQvzdf34QuyFgPX_TIE2l-80vv4gJXAWST1euq6C5q_VrVBnxjwA5ffxdmCdBWIxbvEITvNr6qZQNfgq_pcdskGge1rmuaQHtIcfmfGuY_MXW265dFqfyVCQTDf4hhK80f4nqXm37F7iX2kiIVjcfnzIHHMqUzThZQoYH5106DgdtrvYCEe-iXQKj6wxWscA6OS4w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute top-4 left-4 font-headline font-black text-6xl text-white/20">01</div>
+</div>
+<div class="p-6 relative">
+<div class="absolute -top-12 left-6 bg-primary text-on-primary px-4 py-1 font-headline font-black italic skew-x-[-12deg]">GR</div>
+<h3 class="font-headline font-extrabold text-2xl uppercase text-on-surface mb-1">Tiago Rocha</h3>
+<p class="font-body text-on-surface-variant font-semibold tracking-wider uppercase text-sm">Última Barreira</p>
+</div>
+</div>
+<!-- Player Card 4 -->
+<div class="group relative bg-surface-container-lowest overflow-hidden transition-all duration-500 hover:-translate-y-4">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="strong defender in a professional soccer kit marking an opponent during a high-stakes night match under bright floodlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB35sYbINvpt9fFy3r7sqnOsT4oj13wLuaERVedtqEvuWwEsoaNCX_0qm3xNOzI1waIxYJKWDTzatii7W4y5Pw8C0GUljKkZQBKp-CGAZ6Pp_2CddaS9QCEFqJX-BleeZP7mdRakmynO-fdFoSKfzMwdH4GH_lHQURnpd5WhwY7mGnaATqbzU1ylxAc82zkMtZh7XPZXIyO1UOOOSUjWQvThQi8CGOkTpI6JlqNl2JeGN0kzLb2sq_Lcc1tAAd9NG7ImX7dwQ-PBg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute top-4 left-4 font-headline font-black text-6xl text-white/20">04</div>
+</div>
+<div class="p-6 relative">
+<div class="absolute -top-12 left-6 bg-primary text-on-primary px-4 py-1 font-headline font-black italic skew-x-[-12deg]">DEF</div>
+<h3 class="font-headline font-extrabold text-2xl uppercase text-on-surface mb-1">Bruno Alves</h3>
+<p class="font-body text-on-surface-variant font-semibold tracking-wider uppercase text-sm">A Muralha</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Staff CTA -->
+<section class="px-12 py-24 max-w-7xl mx-auto">
+<div class="bg-inverse-surface rounded-2xl p-12 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-20">
+<img class="w-full h-full object-cover grayscale" data-alt="professional sports coach with a whistle and tactical board overlooking a green training pitch at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZBKkMQisZy7hVZd2hVamQBLV06rm1qEiy5QgkWsq6nmvcMGp4t50pHVBQ3UAnqr6RFHm9IibNoKr7x8uymBBMkjLzqWT4SH36KHCjypepl-tq_7vEsU3lJnlU9FmDXdqHU2V-dIOeynsPMiSOBXkKA_4GNRAnhEbtJXtdAhaduniuKkBp4FyN9rhE618H1s0_EgHo24Mb4tMfH-ZtQQp-bLbU5_kAkdZYoSoFOULCAWtAy9lgOF_VsCfAXbxpWByfBUCqgcno3w"/>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+<div>
+<h2 class="font-headline font-black text-4xl text-white uppercase tracking-tighter mb-2">As Mentes por Trás da Magia</h2>
+<p class="text-blue-200 text-lg max-w-xl">Conheça os estrategas, equipa médica e analistas de performance que levam o Valejas à vitória todos os fins-de-semana.</p>
+</div>
+<button class="bg-primary text-on-primary px-10 py-4 rounded-md font-headline font-bold uppercase tracking-widest hover:translate-y-[-4px] transition-all shadow-xl whitespace-nowrap">
+                        Equipa Técnica
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-blue-900 dark:bg-blue-950 w-full pt-20 pb-10 border-t-8 border-red-600">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-3xl font-black text-yellow-400 italic font-['Epilogue']">Valejas AC</div>
+<p class="text-blue-100/70 font-['Manrope'] text-sm tracking-wide">Representando o espírito e a tenacidade de Valejas em cada jogo, golo e vitória. A Vanguarda do Estádio.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-yellow-400 cursor-pointer hover:scale-110 transition-transform" data-icon="share">share</span>
+<span class="material-symbols-outlined text-yellow-400 cursor-pointer hover:scale-110 transition-transform" data-icon="mail">mail</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-yellow-400 font-bold font-['Manrope'] uppercase tracking-widest text-sm">Navegação</h4>
+<a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide hover:translate-x-1" href="#">Início</a>
+<a class="text-yellow-400 font-bold font-['Manrope'] text-sm tracking-wide hover:translate-x-1" href="#">Equipas</a>
+<a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide hover:translate-x-1" href="#">Resultados</a>
+<a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide hover:translate-x-1" href="#">Bilhetes</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-yellow-400 font-bold font-['Manrope'] uppercase tracking-widest text-sm">Legal</h4>
+<a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide hover:translate-x-1" href="#">Política de Privacidade</a>
+<a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide hover:translate-x-1" href="#">Termos de Serviço</a>
+<a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide hover:translate-x-1" href="#">Contacte-nos</a>
+<a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide hover:translate-x-1" href="#">Patrocínios</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-yellow-400 font-bold font-['Manrope'] uppercase tracking-widest text-sm">Newsletter</h4>
+<div class="flex items-center bg-blue-800/50 rounded-md p-2">
+<input class="bg-transparent border-none text-white focus:ring-0 w-full placeholder:text-blue-300/50" placeholder="Endereço de Email" type="email"/>
+<button class="bg-yellow-400 text-blue-900 p-2 rounded">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-20 px-12 max-w-7xl mx-auto border-t border-blue-800 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-100/50 text-xs font-['Manrope'] uppercase tracking-widest">
+<p>© 2024 Valejas Atlético Clube. A Vanguarda do Estádio.</p>
+<p>Concebido para a Elite</p>
+</div>
+</footer>
+</body></html>

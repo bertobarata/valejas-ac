@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-PT"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Centro de Jogos | Valejas Atlético Clube</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#d9e2ff",
+              "on-tertiary-fixed": "#410000",
+              "inverse-on-surface": "#eef0ff",
+              "on-tertiary-fixed-variant": "#930000",
+              "inverse-surface": "#002c6f",
+              "secondary": "#1e59c0",
+              "inverse-primary": "#e2c600",
+              "on-primary-fixed-variant": "#524700",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed": "#001945",
+              "outline": "#737784",
+              "primary-fixed-dim": "#e2c600",
+              "error-container": "#ffdad6",
+              "surface-bright": "#faf8ff",
+              "primary-container": "#675900",
+              "tertiary-fixed": "#ffdad4",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-tint": "#6d5e00",
+              "primary-fixed": "#ffe241",
+              "on-tertiary-container": "#ffc3b9",
+              "tertiary-container": "#b70001",
+              "on-background": "#001945",
+              "secondary-container": "#6695ff",
+              "surface-dim": "#cdd9ff",
+              "secondary-fixed-dim": "#b0c6ff",
+              "surface": "#faf8ff",
+              "on-secondary-fixed-variant": "#00419c",
+              "outline-variant": "#c3c6d5",
+              "on-surface-variant": "#434653",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "secondary-fixed": "#d9e2ff",
+              "on-secondary-container": "#002d70",
+              "surface-container-low": "#f2f3ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#d9e2ff",
+              "error": "#ba1a1a",
+              "on-primary": "#ffffff",
+              "primary": "#4d4200",
+              "on-primary-container": "#eed100",
+              "surface-container": "#eaedff",
+              "on-primary-fixed": "#211b00",
+              "on-surface": "#001945",
+              "tertiary": "#8a0000",
+              "background": "#faf8ff",
+              "surface-container-high": "#e1e7ff"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Manrope"],
+              "label": ["Epilogue"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-bg {
+            background-image: linear-gradient(135deg, transparent 45%, rgba(212, 21, 12, 0.05) 45%, rgba(212, 21, 12, 0.05) 55%, transparent 55%);
+            background-size: 100px 100px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-blue-950/80 backdrop-blur-xl shadow-[0_20px_50px_rgba(21,84,187,0.1)] transition-transform duration-300 ease-out">
+<div class="flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black italic text-blue-700 dark:text-yellow-400 flex items-center gap-2 font-['Epilogue'] uppercase tracking-tighter">
+<img alt="Valejas Atlético Clube Logo" class="h-10 w-auto" data-alt="Logótipo oficial do Valejas Atlético Clube com uma águia e uma faixa diagonal vermelha" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8zCdrIbAzzBEgdPFU65ZvFC_sdVeBndymfNeIfgZoT3YbezWAg9PI_G8I21Dn5cXNTAKpXfiQgADO-3lECJMD6U3npFGCVq8z_EsaTU0zHJxFvWJg50o7sBq1qrnX9pYXscUlvYRbfUWyAENxoxINt75rx0NBGuBWbt95n-RA3-DIktI8jVuc4o5VrbEHBWNEamVZTP1T2-M2u8JC9t7MVyoN2RZSviEDwn3k--93u9fKl24O8PAORhBeO3VzVyo9dh1fiPU0Gg"/>
+<span>Valejas Atlético Clube</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all font-['Manrope'] text-sm tracking-wide" href="#">Início</a>
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all font-['Manrope'] text-sm tracking-wide" href="#">O Nosso Emblema</a>
+<a class="text-blue-900/60 dark:text-white/60 font-bold hover:text-blue-700 dark:hover:text-yellow-400 transition-all font-['Manrope'] text-sm tracking-wide" href="#">Equipas</a>
+<a class="text-blue-800 dark:text-yellow-400 border-b-4 border-red-600 pb-1 font-['Manrope'] text-sm tracking-wide" href="#">Centro de Jogos</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-md font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform">Bilhetes</button>
+<span class="material-symbols-outlined text-on-background cursor-pointer hover:scale-105 transition-transform" data-icon="person">person</span>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 kinetic-bg">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+<!-- Hero Header Section -->
+<header class="relative mb-16 overflow-hidden">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-l-8 border-tertiary pl-8">
+<div>
+<p class="font-headline font-black uppercase text-secondary text-sm tracking-[0.3em] mb-2">A Vanguarda do Futsal</p>
+<h1 class="font-headline font-black text-6xl lg:text-8xl text-on-background leading-none tracking-tighter italic">CENTRO DE<br/>JOGOS</h1>
+</div>
+<div class="bg-inverse-surface p-8 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 bg-tertiary text-white font-headline text-[10px] tracking-widest uppercase animate-pulse">Em Direto</div>
+<p class="font-headline text-white/60 text-xs tracking-widest uppercase">Próximo Jogo Começa Em</p>
+<div class="flex gap-4">
+<div class="text-center">
+<span class="block font-headline text-4xl text-on-primary-container font-black">02</span>
+<span class="text-[10px] text-white/40 uppercase">Dias</span>
+</div>
+<div class="text-center">
+<span class="block font-headline text-4xl text-on-primary-container font-black">14</span>
+<span class="text-[10px] text-white/40 uppercase">Horas</span>
+</div>
+<div class="text-center">
+<span class="block font-headline text-4xl text-on-primary-container font-black">36</span>
+<span class="text-[10px] text-white/40 uppercase">Min</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Recent Results & Calendar -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Featured Result (Last Match) -->
+<section class="bg-surface-container-low rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary to-transparent opacity-5"></div>
+<div class="p-8 relative">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline font-black text-lg uppercase tracking-widest text-secondary">Resultados Recentes</h2>
+<span class="font-body text-sm text-on-surface-variant">Sábado, 22 de Junho 2024 • Pavilhão Gimnodesportivo de Valejas</span>
+</div>
+<div class="flex items-center justify-around gap-4 py-8">
+<div class="text-center flex-1">
+<img alt="Valejas Crest" class="w-24 h-24 mx-auto mb-4 drop-shadow-2xl" data-alt="Logótipo do Valejas Atlético Clube" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_Og60vwWybzIA___drL9bMTJ6GgjOYapCLChgEy4B0rYt8qz7ask52lz0_WEYmay9rTBG5KbaDO9TKkPv9J3RopEu4gtoRJKL0qJUjm0cp9KIedrtduFG007K7Eo8meHP47RFa3tYz_OIOKdQYZlwW4N3WY4GgnDEHG616Qy0BKQX6Kq-c-ZiJI4GqatVjIGxkP8kn6T4VSzMQyNKN5fceas5m5nb3avPGzFtzXrl_TCual0IYc24837bqs6v0Le1vjYPOtYJ-Q"/>
+<h3 class="font-headline font-extrabold text-xl lg:text-2xl uppercase tracking-tighter">VALEJAS AC</h3>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="font-headline text-7xl lg:text-9xl font-black italic tracking-tighter text-on-background flex gap-4">
+<span>5</span>
+<span class="text-tertiary">-</span>
+<span>2</span>
+</div>
+<span class="font-headline text-xs tracking-widest text-on-surface-variant font-bold uppercase">Liga Placard (Futsal)</span>
+</div>
+<div class="text-center flex-1">
+<div class="w-24 h-24 mx-auto mb-4 bg-surface-container-highest flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined text-5xl text-outline" data-icon="sports_soccer">sports_soccer</span>
+</div>
+<h3 class="font-headline font-extrabold text-xl lg:text-2xl uppercase tracking-tighter text-outline">CF ESTRELA</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Fixture Calendar -->
+<section>
+<div class="flex items-center justify-between mb-8 border-b-2 border-surface-container-high pb-4">
+<h2 class="font-headline font-black text-3xl italic uppercase tracking-tighter">Calendário de Jogos</h2>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded transition-colors"><span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded transition-colors"><span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Fixture Item -->
+<div class="bg-surface-container-lowest p-6 flex flex-wrap md:flex-nowrap items-center justify-between hover:bg-surface-container transition-all group">
+<div class="flex items-center gap-6 w-full md:w-auto">
+<div class="text-center min-w-[60px]">
+<span class="block font-headline font-black text-2xl leading-none">28</span>
+<span class="text-[10px] uppercase font-bold text-tertiary">Junho</span>
+</div>
+<div class="h-12 w-[1px] bg-outline-variant"></div>
+<div>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-1">Taça de Portugal Futsal • Quartos de Final</p>
+<h4 class="font-headline font-extrabold text-lg uppercase tracking-tight">Valejas AC vs FC Porto</h4>
+</div>
+</div>
+<div class="flex items-center gap-8 mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-end">
+<div class="text-right">
+<p class="text-xs font-bold uppercase text-on-surface-variant">20:45 GMT</p>
+<p class="text-[10px] text-outline">Dragão Arena</p>
+</div>
+<button class="bg-secondary text-white px-6 py-3 rounded-md font-bold text-xs uppercase tracking-widest hover:translate-y-[-2px] transition-transform">Comprar Bilhetes</button>
+</div>
+</div>
+<!-- Fixture Item -->
+<div class="bg-surface-container-lowest p-6 flex flex-wrap md:flex-nowrap items-center justify-between hover:bg-surface-container transition-all group">
+<div class="flex items-center gap-6 w-full md:w-auto">
+<div class="text-center min-w-[60px]">
+<span class="block font-headline font-black text-2xl leading-none">05</span>
+<span class="text-[10px] uppercase font-bold text-tertiary">Julho</span>
+</div>
+<div class="h-12 w-[1px] bg-outline-variant"></div>
+<div>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest mb-1">Liga Placard • Jornada 32</p>
+<h4 class="font-headline font-extrabold text-lg uppercase tracking-tight">Sporting CP vs Valejas AC</h4>
+</div>
+</div>
+<div class="flex items-center gap-8 mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-end">
+<div class="text-right">
+<p class="text-xs font-bold uppercase text-on-surface-variant">19:00 GMT</p>
+<p class="text-[10px] text-outline">Pavilhão João Rocha</p>
+</div>
+<button class="bg-secondary text-white px-6 py-3 rounded-md font-bold text-xs uppercase tracking-widest hover:translate-y-[-2px] transition-transform">Notificar-me</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Standings -->
+<aside class="lg:col-span-4 space-y-8">
+<div class="bg-inverse-surface text-white rounded-xl p-8 shadow-2xl relative overflow-hidden">
+<div class="absolute -right-20 -bottom-20 opacity-5">
+<img alt="Background Crest" class="w-80 h-80" data-alt="Faded oversized club logo acting as a texture background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYhQ19iDPMKUfhBwiA_jeiPiZHvz14UzgCSHzAFPx8JQC0WUIGBunLHA1-9UGw1-KZhHd3BL9F6WPvGLECnclLowdvnxz5Qy9_okM1VsHJXNSed13_0FFGfiHr3hq9tTDAbiBUJdu-DRYZSxkb8SL3MF52DVvK2NHY8hEH2rVvU5jlWRWJiIWzpEwDqd-WFrJqz7NtEOeh0QTsgjecyQpL_-2eMGUgkHt4xsxv68shNTq2Rv-B87wCo8a0M6YDf_VoRLF3Ptqz5A"/>
+</div>
+<h2 class="font-headline font-black text-2xl italic uppercase mb-8 border-b border-white/10 pb-4">Classificações</h2>
+<div class="space-y-1">
+<!-- Table Header -->
+<div class="grid grid-cols-12 text-[10px] font-bold text-white/40 uppercase tracking-widest mb-4 px-2">
+<div class="col-span-1">#</div>
+<div class="col-span-6">Equipa</div>
+<div class="col-span-1 text-center">J</div>
+<div class="col-span-1 text-center">V</div>
+<div class="col-span-1 text-center">E</div>
+<div class="col-span-1 text-center">D</div>
+<div class="col-span-1 text-center">Pts</div>
+</div>
+<!-- Table Row (Active Team) -->
+<div class="grid grid-cols-12 items-center py-4 px-2 bg-secondary/20 border-l-4 border-primary rounded-r">
+<div class="col-span-1 font-headline font-bold text-primary-fixed">1</div>
+<div class="col-span-6 font-headline font-extrabold uppercase text-sm tracking-tight">Valejas AC</div>
+<div class="col-span-1 text-center text-xs">30</div>
+<div class="col-span-1 text-center text-xs">24</div>
+<div class="col-span-1 text-center text-xs">4</div>
+<div class="col-span-1 text-center text-xs">2</div>
+<div class="col-span-1 text-center font-black text-primary-fixed">76</div>
+</div>
+<!-- Regular Rows -->
+<div class="grid grid-cols-12 items-center py-4 px-2 hover:bg-white/5 transition-colors">
+<div class="col-span-1 font-headline font-bold text-white/40">2</div>
+<div class="col-span-6 font-headline font-bold uppercase text-sm text-white/80">Benfica</div>
+<div class="col-span-1 text-center text-xs text-white/60">30</div>
+<div class="col-span-1 text-center text-xs text-white/60">22</div>
+<div class="col-span-1 text-center text-xs text-white/60">5</div>
+<div class="col-span-1 text-center text-xs text-white/60">3</div>
+<div class="col-span-1 text-center font-bold text-white/80">71</div>
+</div>
+<div class="grid grid-cols-12 items-center py-4 px-2 hover:bg-white/5 transition-colors">
+<div class="col-span-1 font-headline font-bold text-white/40">3</div>
+<div class="col-span-6 font-headline font-bold uppercase text-sm text-white/80">Porto</div>
+<div class="col-span-1 text-center text-xs text-white/60">30</div>
+<div class="col-span-1 text-center text-xs text-white/60">20</div>
+<div class="col-span-1 text-center text-xs text-white/60">6</div>
+<div class="col-span-1 text-center text-xs text-white/60">4</div>
+<div class="col-span-1 text-center font-bold text-white/80">66</div>
+</div>
+<div class="grid grid-cols-12 items-center py-4 px-2 hover:bg-white/5 transition-colors">
+<div class="col-span-1 font-headline font-bold text-white/40">4</div>
+<div class="col-span-6 font-headline font-bold uppercase text-sm text-white/80">Sporting</div>
+<div class="col-span-1 text-center text-xs text-white/60">30</div>
+<div class="col-span-1 text-center text-xs text-white/60">19</div>
+<div class="col-span-1 text-center text-xs text-white/60">7</div>
+<div class="col-span-1 text-center text-xs text-white/60">4</div>
+<div class="col-span-1 text-center font-bold text-white/80">64</div>
+</div>
+</div>
+<div class="mt-8">
+<a class="text-[10px] font-bold uppercase tracking-widest text-primary hover:text-white transition-colors flex items-center gap-2" href="#">
+                                Ver Classificações Completas <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Statistics Card -->
+<div class="bg-surface-container-high rounded-xl p-8">
+<h3 class="font-headline font-black text-lg uppercase tracking-widest mb-6">Melhor Marcador</h3>
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-full overflow-hidden bg-surface-container-lowest">
+<img alt="Jogador" class="object-cover w-full h-full" data-alt="Retrato de um jogador profissional de futsal com o equipamento do Valejas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZn2XXVFocRIFqspeCLnD_7SOBzZxQa59zqNyn5UauZ-zT2Hp6-3Vv-XGMjJNWCKpceW2CykMOakjWubRb7JU4FNemwtZ9J8vZ-LgEvunZkE9zjY_Lz_e1X9xA8Dh3-a_1jyR01l9hWuUN_racziFQm10IbqdG1A1DQJdsZegXCwWjIdbYOoB_ZMEEWmpxYox8_-uqEdp3-00EjExFpSrEbGkB0NPjbAfoMYUVlsyB9Sl-8wNN-cGwCBUvk0WGLh1DblIY9Rhdcg"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-tertiary text-white text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-full">10</div>
+</div>
+<div>
+<h4 class="font-headline font-extrabold uppercase leading-tight">Gonçalo Ramos</h4>
+<p class="text-xs text-on-surface-variant">24 Golos • 30 Jogos</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-blue-900 dark:bg-blue-950 w-full pt-20 pb-10 border-t-8 border-red-600">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-3xl font-black text-yellow-400 italic font-['Epilogue']">Valejas AC</div>
+<p class="font-['Manrope'] text-sm tracking-wide text-blue-100/70">Construindo o futuro do futsal português com paixão, garra e o Pulso Cinético da nossa comunidade.</p>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-yellow-400 uppercase text-xs tracking-[0.2em]">Links Rápidos</h4>
+<ul class="space-y-4">
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide" href="#">Política de Privacidade</a></li>
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide" href="#">Termos de Serviço</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-yellow-400 uppercase text-xs tracking-[0.2em]">Suporte</h4>
+<ul class="space-y-4">
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide" href="#">Contacte-nos</a></li>
+<li><a class="text-blue-100/70 hover:text-yellow-400 transition-colors font-['Manrope'] text-sm tracking-wide" href="#">Patrocínios</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-yellow-400 uppercase text-xs tracking-[0.2em]">Newsletter</h4>
+<form class="flex flex-col gap-4">
+<input class="bg-blue-950/50 border-none text-white text-sm focus:ring-2 focus:ring-yellow-400 p-3" placeholder="Endereço de Email" type="email"/>
+<button class="bg-yellow-400 text-blue-900 font-bold py-3 uppercase text-xs tracking-widest hover:bg-white transition-colors">Subscrever</button>
+</form>
+</div>
+</div>
+<div class="mt-20 border-t border-white/5 pt-10 text-center">
+<p class="font-['Manrope'] text-sm tracking-wide text-blue-100/50">© 2024 Valejas Atlético Clube. A Vanguarda do Estádio.</p>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,900;1,900&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#e2c600",
+              "on-tertiary": "#690000",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "secondary-fixed": "#d9e2ff",
+              "error-container": "#93000a",
+              "on-surface": "#dce2f5",
+              "surface-container-lowest": "#070e1b",
+              "inverse-primary": "#6d5e00",
+              "on-secondary-fixed-variant": "#00419c",
+              "secondary": "#b0c6ff",
+              "on-background": "#dce2f5",
+              "on-tertiary-container": "#c30001",
+              "surface-variant": "#2e3543",
+              "on-primary-fixed": "#211b00",
+              "primary": "#fff7e3",
+              "on-secondary-fixed": "#001945",
+              "on-error-container": "#ffdad6",
+              "surface-container": "#19202d",
+              "inverse-on-surface": "#2a303f",
+              "surface": "#0d1321",
+              "on-secondary-container": "#b0c5ff",
+              "tertiary-fixed": "#ffdad4",
+              "outline": "#979178",
+              "surface-tint": "#e2c600",
+              "inverse-surface": "#dce2f5",
+              "tertiary-container": "#ffd1ca",
+              "surface-container-high": "#232a38",
+              "on-primary": "#393000",
+              "surface-container-low": "#151c29",
+              "surface-dim": "#0d1321",
+              "on-tertiary-fixed": "#410000",
+              "on-surface-variant": "#cec6ab",
+              "on-primary-container": "#6e6000",
+              "on-tertiary-fixed-variant": "#930000",
+              "tertiary": "#fff6f5",
+              "primary-fixed": "#ffe241",
+              "secondary-container": "#014cb3",
+              "on-error": "#690005",
+              "outline-variant": "#4c4732",
+              "surface-container-highest": "#2e3543",
+              "on-primary-fixed-variant": "#524700",
+              "on-secondary": "#002c6f",
+              "primary-container": "#fadb09",
+              "error": "#ffb4ab",
+              "background": "#0d1321",
+              "surface-bright": "#333948",
+              "secondary-fixed-dim": "#b0c6ff"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .electric-glow {
+            text-shadow: 0 0 15px rgba(250, 219, 9, 0.4);
+        }
+        .asymmetric-clip {
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+        }
+        .glitch-overlay::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface/40 backdrop-blur-xl dark:bg-[#0d1321]/40 fixed top-0 w-full z-50 border-b border-[#fadb09]/20 shadow-[0_0_20px_rgba(250,219,9,0.1)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-none">
+<div class="flex items-center gap-4">
+<img alt="VALEJAS AC" class="h-10 w-auto brightness-125 drop-shadow-[0_0_8px_rgba(250,219,9,0.5)]" data-alt="high contrast logo of Valejas Atletico Clube with a bright yellow glow effect on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZXw4qAw7pzwGhypP5m_z-3slaAZsvDEk1oGJVFQocixsCTdxFaOJbUBcRofziJQYnHqhF-42PCdLp53FCIv_qWxAXLkgHce17rV72rmH0fhqDhMbZutaYDrZTtu7SGUxGXRU-zQa2R-8guiBpOfqPbALRni4NE0l14JR41epy_oUydQGfwhIPmN8YVRk9lD-E7UEhMHoTZOyzE3uS5VCV8M4ZQbedffEA1Y_UmjzGlE5OG8TNkw9oXJbfu2xd1xlJl8c2Qw3UlQ"/>
+<span class="font-['Epilogue'] font-black italic uppercase tracking-tighter text-display-sm text-[#fadb09] drop-shadow-[0_0_10px_rgba(250,219,9,0.3)]">VALEJAS AC</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-['Epilogue'] font-bold uppercase tracking-widest text-xs text-[#fadb09] border-b-2 border-[#fadb09] pb-1" href="#">MATCHES</a>
+<a class="font-['Epilogue'] font-bold uppercase tracking-widest text-xs text-slate-400 hover:text-white transition-colors" href="#">SQUAD</a>
+<a class="font-['Epilogue'] font-bold uppercase tracking-widest text-xs text-slate-400 hover:text-white transition-colors" href="#">STANDINGS</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 px-4 py-2 bg-transparent text-slate-400 hover:text-[#fadb09] transition-all font-['Epilogue'] font-bold text-xs uppercase tracking-widest group">
+<span class="material-symbols-outlined text-lg" data-icon="volume_up">volume_up</span>
+<span>SOM AMBIENTE</span>
+</button>
+<button class="px-6 py-2 bg-primary-container text-on-primary-container font-['Epilogue'] font-black italic uppercase tracking-wider text-sm rounded-full hover:bg-[#fadb09] hover:shadow-[0_0_15px_rgba(250,219,9,0.5)] transition-all active:scale-95">
+                    BILHETES
+                </button>
+</div>
+</div>
+</header>
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden glitch-overlay">
+<div class="absolute inset-0 z-0">
+<img alt="Hero Player" class="w-full h-full object-cover opacity-40 grayscale contrast-125" data-alt="dynamic action shot of a futsal player dribbling a ball under intense stadium spotlights with neon yellow light trails and deep blue shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWQ5BQkf8fDVgDQM3TdNvn1UDFqIgzb5Wc8tGLZ7MNOCmbD8dHQIGDAk3SMV2tsE4QsrbGlKoY3vMKf8p4vpUPmm06QlnUFnO2NS9Twj00dAc9bkG2WnPFm7qO0gom4aQ_V6KCkXer5QLfrHxzgzl4d9UNeRGxAyojzzoIBdR34qVB9P7OVyT8nXiVCQoynQKkYIFM0tE120uxnzggvdzStzrZGdanPPRk0cDIDDATNFWynmwwSikAcJU5LzIIytHKI-RzMwMOBA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface/80 via-transparent to-surface/80"></div>
+</div>
+<div class="container mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-8 flex flex-col items-start">
+<span class="inline-block px-4 py-1 bg-on-tertiary-container text-white font-headline font-black italic uppercase text-xs tracking-[0.3em] mb-6 animate-pulse">LIVE VANGUARDA</span>
+<h1 class="font-headline font-black italic uppercase text-7xl md:text-9xl tracking-tighter leading-[0.8] mb-8 text-white">
+                        O PULSO DA <br/>
+<span class="text-primary-container electric-glow">VANGUARDA</span>
+</h1>
+<p class="max-w-xl text-on-surface-variant text-lg md:text-xl font-medium mb-10 leading-relaxed">
+                        No coração da quadra, o ritmo é ditado pela eletricidade. O Valejas Atlético Clube redefine o futsal com precisão cirúrgica e energia imparável.
+                    </p>
+<div class="flex flex-wrap gap-6">
+<button class="px-10 py-5 bg-primary-container text-on-primary-container font-headline font-black italic uppercase tracking-wider text-lg rounded-full shadow-[0_0_30px_rgba(250,219,9,0.2)] hover:shadow-[0_0_45px_rgba(250,219,9,0.4)] transition-all active:scale-95">
+                            VER PLANTEL
+                        </button>
+<button class="px-10 py-5 bg-secondary-container text-white font-headline font-black italic uppercase tracking-wider text-lg rounded-none hover:bg-blue-600 transition-all active:scale-95">
+                            CALENDÁRIO
+                        </button>
+</div>
+</div>
+<!-- Match Card Floating -->
+<div class="md:col-span-4 mt-12 md:mt-0">
+<div class="bg-surface-container-highest/40 backdrop-blur-2xl p-8 rounded-none border-l-4 border-primary-container shadow-2xl relative group overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl" data-icon="sports_soccer">sports_soccer</span>
+</div>
+<h3 class="font-headline font-black italic uppercase text-2xl mb-6 text-white">PRÓXIMO JOGO</h3>
+<div class="flex justify-between items-center mb-8">
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-low flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-3xl text-primary-container" data-icon="shield">shield</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">VALEJAS</span>
+</div>
+<div class="text-primary-container font-headline font-black italic text-4xl">VS</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-surface-container-low flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-3xl text-slate-500" data-icon="shield">shield</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">PORTO AC</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 mb-8">
+<div class="text-center mb-2">
+<span class="text-[10px] font-black uppercase tracking-[0.2em] text-primary-container">CONTAGEM REGRESSIVA</span>
+</div>
+<div class="flex justify-around text-white">
+<div class="flex flex-col items-center">
+<span class="text-2xl font-black italic">02</span>
+<span class="text-[8px] font-bold text-on-surface-variant">DIAS</span>
+</div>
+<div class="text-2xl font-black italic text-primary-container">:</div>
+<div class="flex flex-col items-center">
+<span class="text-2xl font-black italic">14</span>
+<span class="text-[8px] font-bold text-on-surface-variant">HORAS</span>
+</div>
+<div class="text-2xl font-black italic text-primary-container">:</div>
+<div class="flex flex-col items-center">
+<span class="text-2xl font-black italic">35</span>
+<span class="text-[8px] font-bold text-on-surface-variant">MINS</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-on-tertiary-container text-white font-headline font-black italic uppercase tracking-widest text-sm hover:brightness-125 transition-all">
+                            ADQUIRIR BILHETES
+                        </button>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+<span class="text-[10px] font-black uppercase tracking-[0.4em] text-primary-container/60">EXPLORAR</span>
+<div class="w-[1px] h-16 bg-gradient-to-b from-primary-container to-transparent"></div>
+</div>
+</section>
+<!-- News Section (Bento Grid) -->
+<section class="py-24 bg-surface-container-low relative overflow-hidden">
+<div class="container mx-auto px-6">
+<div class="flex justify-between items-end mb-16">
+<h2 class="font-headline font-black italic uppercase text-5xl md:text-7xl tracking-tighter text-white">
+                        MURAL DA <span class="text-primary-container">VANGUARDA</span>
+</h2>
+<a class="hidden md:block font-headline font-black italic text-primary-container hover:text-white transition-colors border-b border-primary-container pb-1 text-sm tracking-widest" href="#">VER TODAS AS NOTÍCIAS</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Big News Item -->
+<div class="md:col-span-8 bg-surface-container-highest relative group overflow-hidden">
+<div class="aspect-video relative">
+<img alt="Match Recap" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="dramatic wide shot of a futuristic futsal stadium interior with vibrant yellow and blue lighting and motion blurred players" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjJOESgbu6HhAVny62Zb4R125DQLeuQ3Hw9YbZ0Q1A3-LOXL1nVRch0ADHsaYdvyh_xCjvm3hlJaz2xkcG3qSCxjwFyDUFOKx7GnlRa4p4Jokp8ysDiFGn0t3YlEmBhky0rgh5_IaOM5Cb6lsyvJQrxib0z7LKPcaSBlY9nW3IMB5-NZq7J7ySqP4W6iTDM0giRk4ssLRMZ4C9H7f4Ur6eqpJFH34hCxSkSWjM9oWSyfw0DanRLnzr6PB0ipJE6wCT70-9ZSzXuQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-highest via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-4 mb-4">
+<span class="text-primary-container font-black uppercase text-[10px] tracking-widest">NOTÍCIAS</span>
+<span class="text-on-surface-variant font-medium text-[10px] uppercase tracking-widest">24 DE JUNHO, 2024</span>
+</div>
+<h3 class="font-headline font-black italic uppercase text-4xl mb-6 text-white group-hover:text-primary-container transition-colors leading-none">DOMÍNIO TOTAL NO DERBY: VALEJAS VENCE POR 5-1</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+                                Numa exibição de gala, a nossa equipa de futsal não deu hipóteses ao adversário, consolidando a liderança isolada do campeonato com um hat-trick de Ricardo Neves.
+                            </p>
+</div>
+</div>
+<!-- Small News List -->
+<div class="md:col-span-4 flex flex-col gap-8">
+<div class="group cursor-pointer">
+<div class="h-[2px] w-full bg-primary-container/20 mb-6 group-hover:bg-primary-container transition-all duration-500"></div>
+<div class="flex items-center gap-4 mb-2">
+<span class="text-on-tertiary-container font-black uppercase text-[10px] tracking-widest">REPORTAGEM</span>
+<span class="text-on-surface-variant font-medium text-[10px] uppercase tracking-widest">ONTEM</span>
+</div>
+<h4 class="font-headline font-black italic uppercase text-xl text-white group-hover:text-primary-container transition-colors">A NOVA GERAÇÃO: ACADEMIA EM DESTAQUE</h4>
+</div>
+<div class="group cursor-pointer">
+<div class="h-[2px] w-full bg-primary-container/20 mb-6 group-hover:bg-primary-container transition-all duration-500"></div>
+<div class="flex items-center gap-4 mb-2">
+<span class="text-secondary-container font-black uppercase text-[10px] tracking-widest">ENTREVISTA</span>
+<span class="text-on-surface-variant font-medium text-[10px] uppercase tracking-widest">22 JUN</span>
+</div>
+<h4 class="font-headline font-black italic uppercase text-xl text-white group-hover:text-primary-container transition-colors">"ESTAMOS A CONSTRUIR ALGO ÚNICO" - MISTER RODRIGUES</h4>
+</div>
+<div class="group cursor-pointer">
+<div class="h-[2px] w-full bg-primary-container/20 mb-6 group-hover:bg-primary-container transition-all duration-500"></div>
+<div class="flex items-center gap-4 mb-2">
+<span class="text-primary-container font-black uppercase text-[10px] tracking-widest">MERCADO</span>
+<span class="text-on-surface-variant font-medium text-[10px] uppercase tracking-widest">21 JUN</span>
+</div>
+<h4 class="font-headline font-black italic uppercase text-xl text-white group-hover:text-primary-container transition-colors">NOVO REFORÇO BRASILEIRO APRESENTADO AMANHÃ</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Counter Section -->
+<section class="py-16 bg-surface border-y border-primary-container/10">
+<div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+<div class="text-center">
+<div class="font-headline font-black italic text-5xl text-primary-container electric-glow mb-2">12</div>
+<div class="font-bold uppercase tracking-[0.3em] text-[10px] text-on-surface-variant">TÍTULOS NACIONAIS</div>
+</div>
+<div class="text-center">
+<div class="font-headline font-black italic text-5xl text-primary-container electric-glow mb-2">850</div>
+<div class="font-bold uppercase tracking-[0.3em] text-[10px] text-on-surface-variant">SÓCIOS ATIVOS</div>
+</div>
+<div class="text-center">
+<div class="font-headline font-black italic text-5xl text-primary-container electric-glow mb-2">04</div>
+<div class="font-bold uppercase tracking-[0.3em] text-[10px] text-on-surface-variant">MODALIDADES</div>
+</div>
+<div class="text-center">
+<div class="font-headline font-black italic text-5xl text-primary-container electric-glow mb-2">100%</div>
+<div class="font-bold uppercase tracking-[0.3em] text-[10px] text-on-surface-variant">PAIXÃO</div>
+</div>
+</div>
+</section>
+<!-- Social CTA Section -->
+<section class="relative py-32 overflow-hidden bg-[#050B18]">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(1,76,179,0.15),transparent_70%)]"></div>
+</div>
+<div class="container mx-auto px-6 relative z-10 text-center">
+<h2 class="font-headline font-black italic uppercase text-6xl md:text-8xl tracking-tighter text-white mb-12 max-w-4xl mx-auto">JUNTA-TE À <span class="text-primary-container">REVOLUÇÃO</span></h2>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 transition-all group" href="#">
+<span class="font-headline font-black italic uppercase text-sm tracking-widest text-white group-hover:text-primary-container">INSTAGRAM</span>
+</a>
+<a class="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 transition-all group" href="#">
+<span class="font-headline font-black italic uppercase text-sm tracking-widest text-white group-hover:text-primary-container">DISCORD</span>
+</a>
+<a class="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 transition-all group" href="#">
+<span class="font-headline font-black italic uppercase text-sm tracking-widest text-white group-hover:text-primary-container">YOUTUBE</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0d1321] relative overflow-hidden w-full min-h-[200px] border-t-0 before:absolute before:inset-0 before:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxsaW5lIHgxPSIwIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwIiBzdHJva2U9IiNjMzAwMDEiIHN0cm9rZS13aWR0aD0iMjAiIHN0cm9rZS1vcGFjaXR5PSIwLjE1Ii8+PC9zdmc+')] before:pointer-events-none">
+<div class="bg-gradient-to-r from-transparent via-[#c30001] to-transparent h-[4px] w-full absolute top-0"></div>
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 w-full relative z-10">
+<div class="flex flex-col items-center md:items-start gap-4 mb-8 md:mb-0">
+<span class="text-lg font-black italic text-white">VALEJAS ATLÉTICO CLUBE</span>
+<span class="font-['Inter'] font-bold uppercase tracking-widest text-[10px] text-slate-500">© 2024 VALEJAS ATLÉTICO CLUBE | MURAL DA VANGUARDA</span>
+</div>
+<div class="flex gap-8">
+<a class="font-['Epilogue'] font-bold uppercase tracking-widest text-xs text-slate-500 hover:text-[#fadb09] hover:skew-x-[-12deg] transition-all duration-200" href="#">INSTAGRAM</a>
+<a class="font-['Epilogue'] font-bold uppercase tracking-widest text-xs text-slate-500 hover:text-[#fadb09] hover:skew-x-[-12deg] transition-all duration-200" href="#">TIKTOK</a>
+<a class="font-['Epilogue'] font-bold uppercase tracking-widest text-xs text-slate-500 hover:text-[#fadb09] hover:skew-x-[-12deg] transition-all duration-200" href="#">YOUTUBE</a>
+<a class="font-['Epilogue'] font-bold uppercase tracking-widest text-xs text-slate-500 hover:text-[#fadb09] hover:skew-x-[-12deg] transition-all duration-200" href="#">DISCORD</a>
+</div>
+</div>
+</footer>
+</body></html>

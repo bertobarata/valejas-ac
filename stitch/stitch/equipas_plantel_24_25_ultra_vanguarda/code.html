@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,900;1,900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#333948",
+              "primary": "#fff7e3",
+              "outline-variant": "#4c4732",
+              "inverse-on-surface": "#2a303f",
+              "tertiary-fixed": "#ffdad4",
+              "surface-variant": "#2e3543",
+              "tertiary": "#fff6f5",
+              "on-primary-fixed": "#211b00",
+              "inverse-primary": "#6d5e00",
+              "secondary-fixed-dim": "#b0c6ff",
+              "secondary-container": "#014cb3",
+              "on-secondary-fixed": "#001945",
+              "on-secondary": "#002c6f",
+              "error-container": "#93000a",
+              "surface-container-high": "#232a38",
+              "inverse-surface": "#dce2f5",
+              "on-secondary-container": "#b0c5ff",
+              "tertiary-container": "#ffd1ca",
+              "surface": "#0d1321",
+              "on-surface-variant": "#cec6ab",
+              "on-primary": "#393000",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-secondary-fixed-variant": "#00419c",
+              "surface-dim": "#0d1321",
+              "surface-container": "#19202d",
+              "background": "#0d1321",
+              "on-tertiary-fixed": "#410000",
+              "on-tertiary": "#690000",
+              "on-primary-container": "#6e6000",
+              "surface-container-highest": "#2e3543",
+              "surface-container-lowest": "#070e1b",
+              "on-background": "#dce2f5",
+              "outline": "#979178",
+              "secondary-fixed": "#d9e2ff",
+              "primary-container": "#fadb09",
+              "surface-container-low": "#151c29",
+              "primary-fixed-dim": "#e2c600",
+              "on-tertiary-container": "#c30001",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "primary-fixed": "#ffe241",
+              "on-tertiary-fixed-variant": "#930000",
+              "on-surface": "#dce2f5",
+              "surface-tint": "#e2c600",
+              "on-primary-fixed-variant": "#524700",
+              "secondary": "#b0c6ff",
+              "error": "#ffb4ab"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        background: rgba(46, 53, 67, 0.4);
+        backdrop-filter: blur(20px);
+      }
+      .electric-glow {
+        box-shadow: 0px 0px 15px rgba(250, 219, 9, 0.3);
+      }
+      .noise-overlay {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.05;
+        pointer-events: none;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#0d1321]/90 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-black">
+<div class="flex flex-col w-full px-6 py-4 max-w-none">
+<div class="flex items-center justify-between">
+<div class="text-2xl font-black italic text-[#fadb09] drop-shadow-[0_0_10px_rgba(250,219,9,0.3)] font-headline uppercase tracking-tighter">
+                    Valejas Atlético Clube
+                </div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-400 hover:text-white transition-colors font-headline uppercase tracking-tighter text-sm" href="#">Home</a>
+<a class="text-slate-400 hover:text-white transition-colors font-headline uppercase tracking-tighter text-sm" href="#">Our Crest</a>
+<a class="text-[#fadb09] border-b-2 border-[#fadb09] pb-1 font-headline uppercase tracking-tighter text-sm" href="#">Teams</a>
+<a class="text-slate-400 hover:text-white transition-colors font-headline uppercase tracking-tighter text-sm" href="#">Match Center</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:block text-slate-400 hover:text-[#fadb09] transition-colors font-headline uppercase tracking-tighter text-sm px-4">Member Area</button>
+<button class="bg-primary-container text-on-primary px-6 py-2 rounded-full font-headline font-black uppercase tracking-tighter text-sm electric-glow active:scale-95 duration-150">
+                        Tickets
+                    </button>
+</div>
+</div>
+</div>
+</nav>
+<main class="relative pt-24 min-h-screen">
+<div class="noise-overlay absolute inset-0 z-0"></div>
+<!-- Hero Section: Futsal Focus -->
+<section class="relative px-6 py-12 lg:py-20 overflow-hidden">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+<div class="lg:col-span-7 z-10">
+<div class="inline-flex items-center gap-2 bg-on-tertiary-container px-3 py-1 mb-6 animate-pulse">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+<span class="text-[10px] font-black uppercase tracking-widest text-white">Equipa Principal</span>
+</div>
+<h1 class="text-6xl md:text-8xl lg:text-[10rem] font-headline font-black italic uppercase leading-[0.85] tracking-tighter text-white">
+                        Futsal <br/>
+<span class="text-primary-container drop-shadow-[0_0_30px_rgba(250,219,9,0.2)]">Elite</span>
+</h1>
+<p class="mt-8 text-on-surface-variant max-w-lg text-lg leading-relaxed">
+                        A força imparável de Valejas. No coração da quadra, a nossa equipa principal de futsal redefine os limites da intensidade atlética.
+                    </p>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-[4/5] bg-surface-container-high relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125 mix-blend-screen" data-alt="Dynamic shot of a professional futsal player in a high-intensity action pose on a dark arena background with dramatic yellow stadium lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtDIjg3YcFbtOotGnkKYQ0hxXRR72JQXtATkPrI-bHfkWy8SuvZ2uReB8biVX9lpMglHDrEqFRV8k-HCfWEYAV5TB5bdDKJ-AemfGqpE1t02C5mRaf5YMGRy701l4rqTIJd86684tm3w-dTlWEV82pBqEo76YyIPEVgoQ0BDAUMGkFTC05wmbuU62VzGO2bOH-A_6c54GvVUbrW-tr0SyxMwYYcpUSFvwJD1ySuoFJ798HUkgszk3F-lsrIgc6fqnCeAbDzbhd_g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-secondary-container p-8 hidden md:block">
+<div class="text-4xl font-black font-headline italic text-white uppercase tracking-tighter">Vanguarda</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Filter Section -->
+<section class="px-6 py-10 bg-surface-container-low sticky top-[72px] z-40">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-6">
+<div class="flex items-center gap-1 bg-surface p-1 rounded-full border border-white/5">
+<button class="px-8 py-2 rounded-full bg-primary-container text-on-primary font-headline font-black uppercase tracking-tighter text-sm">Masculino</button>
+<button class="px-8 py-2 rounded-full text-on-surface-variant hover:text-white font-headline font-black uppercase tracking-tighter text-sm transition-all">Feminino</button>
+<button class="px-8 py-2 rounded-full text-on-surface-variant hover:text-white font-headline font-black uppercase tracking-tighter text-sm transition-all">Formação</button>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Filtrar por Escalão:</span>
+<select class="bg-surface-container-highest border-none text-white font-headline uppercase tracking-tighter text-sm py-2 pl-4 pr-10 focus:ring-2 focus:ring-primary-container">
+<option>Séniores A</option>
+<option>Sub-23</option>
+<option>Juniores</option>
+<option>Juvenis</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Player Cards Grid -->
+<section class="px-6 py-20 max-w-7xl mx-auto">
+<h2 class="text-4xl font-headline font-black uppercase italic tracking-tighter mb-12 border-l-8 border-primary-container pl-6">Plantel Principal</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+<!-- Player Card 1 -->
+<div class="group relative">
+<div class="aspect-[3/4] bg-surface-container overflow-hidden relative transition-transform duration-500 group-hover:-translate-y-4">
+<img class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" data-alt="Close up portrait of a serious professional athlete with dark athletic wear against a moody dark blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7rYmBNSA9f3fbFdH3DWsVOy2N72qrebGpTy1I7T2OIAwuRCSScLDJ1HwbyVsZtMlAu7X3Rgz8xHU88YE6j5NOuyKOCXLMTSkNZb4bQGBNMa-Zg02KqVYSWkTNmciOa0Eb_sDgdsgwTn4dwNV3mSK_IZ19MLqAL8s9-rVSMy3qPurZ5cXj35gjUzbxFhtfVAbpb3tLnPtP-DDbsZNAs14AAG1ep5JJPIwwNkdMLTjed6ZDYb-r9UkW8MYKxheGiULXFFT_IR6tOw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+<div class="absolute top-4 left-4">
+<span class="text-7xl font-headline font-black italic text-white/10 group-hover:text-primary-container/20 transition-colors leading-none">10</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<div class="text-xs font-black uppercase tracking-widest text-primary-container mb-1">Ala / Capitão</div>
+<h3 class="text-3xl font-headline font-black uppercase italic leading-none text-white">Ricardo<br/>Fontes</h3>
+</div>
+</div>
+<!-- Stats Floating Card -->
+<div class="mt-4 flex gap-4 text-center">
+<div class="flex-1 bg-surface-container-highest py-3">
+<div class="text-xl font-headline font-black text-white italic">24</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Golos</div>
+</div>
+<div class="flex-1 bg-surface-container-highest py-3">
+<div class="text-xl font-headline font-black text-white italic">12</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Assist.</div>
+</div>
+<div class="flex-1 bg-secondary-container py-3">
+<div class="text-xl font-headline font-black text-white italic">8.5</div>
+<div class="text-[10px] uppercase font-bold text-white tracking-widest">Rating</div>
+</div>
+</div>
+</div>
+<!-- Player Card 2 -->
+<div class="group relative">
+<div class="aspect-[3/4] bg-surface-container overflow-hidden relative transition-transform duration-500 group-hover:-translate-y-4">
+<img class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" data-alt="Dynamic portrait of a male athlete looking ahead with focus, atmospheric smoke and blue neon rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxSYf8fSds57FSCTJw0nfEBmRiBXQTSb6QMJVezk3uFovNdD0JvOKDlRrLRGfQ7l4LckCDw5d4am7pB82U611YCx2yeQgysmn7HGebJ0acKShiwqrSkPXrjBmX7fgGzeuUfWEtCE3oggkSy0BLlq6HECwQ6dCXWty_2F8qa0PevhjKTEsa25ueL9TuJqvAO-G9_GpIevt-FE16mdtUkiPF6HmxrmIRzvtPhPzm2gftoFqVXNtvEJXtzLmQ6bRsFcNmc-Qcg9eK9A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+<div class="absolute top-4 left-4">
+<span class="text-7xl font-headline font-black italic text-white/10 group-hover:text-primary-container/20 transition-colors leading-none">01</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<div class="text-xs font-black uppercase tracking-widest text-primary-container mb-1">Guarda-Redes</div>
+<h3 class="text-3xl font-headline font-black uppercase italic leading-none text-white">Tiago<br/>Santos</h3>
+</div>
+</div>
+<div class="mt-4 flex gap-4 text-center">
+<div class="flex-1 bg-surface-container-highest py-3">
+<div class="text-xl font-headline font-black text-white italic">15</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Defesas</div>
+</div>
+<div class="flex-1 bg-surface-container-highest py-3">
+<div class="text-xl font-headline font-black text-white italic">03</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Clean Sheet</div>
+</div>
+<div class="flex-1 bg-secondary-container py-3">
+<div class="text-xl font-headline font-black text-white italic">9.1</div>
+<div class="text-[10px] uppercase font-bold text-white tracking-widest">Rating</div>
+</div>
+</div>
+</div>
+<!-- Player Card 3 -->
+<div class="group relative">
+<div class="aspect-[3/4] bg-surface-container overflow-hidden relative transition-transform duration-500 group-hover:-translate-y-4">
+<img class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" data-alt="Professional sports player portrait looking intense, lighting focused on face with high contrast and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYKZcoCUVMd5Z7LCdaesUBRIUxSkOUeombcip5VbeXU9b53yX6KMh5yqAkS5RBDTNhgQEg0Bpj9cgdexyt8VOUJz43ATaZM-cuYwSybDpqGr_9F4kO80s2jfiUdS5zKjy-qBb3Z9qIqApB1QcN55iAaH32kjxgTs-Jlo0AF9rwUqms_eBWnArv6GL9UUtmiLKRAY9c5-S29Qv28PKIDX4929z4l8pJp6xtsFPUg4_Ad4bulpeKyoZwVLfwLpg-c0qLSjPznA9phw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+<div class="absolute top-4 left-4">
+<span class="text-7xl font-headline font-black italic text-white/10 group-hover:text-primary-container/20 transition-colors leading-none">07</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<div class="text-xs font-black uppercase tracking-widest text-primary-container mb-1">Fixo</div>
+<h3 class="text-3xl font-headline font-black uppercase italic leading-none text-white">Bruno<br/>Mendes</h3>
+</div>
+</div>
+<div class="mt-4 flex gap-4 text-center">
+<div class="flex-1 bg-surface-container-highest py-3">
+<div class="text-xl font-headline font-black text-white italic">45</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Desarmes</div>
+</div>
+<div class="flex-1 bg-surface-container-highest py-3">
+<div class="text-xl font-headline font-black text-white italic">05</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Golos</div>
+</div>
+<div class="flex-1 bg-secondary-container py-3">
+<div class="text-xl font-headline font-black text-white italic">7.8</div>
+<div class="text-[10px] uppercase font-bold text-white tracking-widest">Rating</div>
+</div>
+</div>
+</div>
+<!-- Player Card 4 -->
+<div class="group relative">
+<div class="aspect-[3/4] bg-surface-container overflow-hidden relative transition-transform duration-500 group-hover:-translate-y-4">
+<img class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" data-alt="Sports athlete portrait in profile, sharp focus on silhouette with golden backlight highlight on the edge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_UGbNKo4iiBWB6WlfUhUVJqBN2oV_jepT9ZFZmCSu5gbDRM4Fsn_jlweGuRxjJ-RZHomjVklB0W8nuJJo__ET1mnzE8ETOxI2E_Giwn3CnheKvoNFF3CX5JkW6Gn_tnVYseyBnq5MJQmR9yskN_GRD5M_ftf_Mi_zFd83Gk1MwOMrDccA2kiAf8XKvqHxdNdR6JScVYjAm4DNSWDmLEoScFeU34tURkRBe65NSbK9unEbjzzUkcszBK4MYfhTGKZay0h26Mm5-A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+<div class="absolute top-4 left-4">
+<span class="text-7xl font-headline font-black italic text-white/10 group-hover:text-primary-container/20 transition-colors leading-none">19</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6">
+<div class="text-xs font-black uppercase tracking-widest text-primary-container mb-1">Pivot</div>
+<h3 class="text-3xl font-headline font-black uppercase italic leading-none text-white">Alex<br/>Silva</h3>
+</div>
+</div>
+<div class="mt-4 flex gap-4 text-center">
+<div class="flex-1 bg-surface-container-highest py-3">
+<div class="text-xl font-headline font-black text-white italic">31</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Golos</div>
+</div>
+<div class="flex-1 bg-surface-container-highest py-3">
+<div class="text-xl font-headline font-black text-white italic">04</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Assist.</div>
+</div>
+<div class="flex-1 bg-secondary-container py-3">
+<div class="text-xl font-headline font-black text-white italic">9.5</div>
+<div class="text-[10px] uppercase font-bold text-white tracking-widest">Rating</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Staff Section: Editorial Layout -->
+<section class="bg-surface-container-low py-32 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row gap-20">
+<div class="lg:w-1/3">
+<h4 class="text-xs font-black uppercase tracking-[0.3em] text-secondary-fixed mb-4">O Estratégio</h4>
+<h2 class="text-7xl font-headline font-black italic uppercase leading-tight tracking-tighter text-white">Corpo <br/><span class="text-primary-container">Técnico</span></h2>
+<p class="mt-10 text-on-surface-variant text-lg leading-relaxed">A mente por trás da tática. Liderança, disciplina e a visão necessária para levar Valejas ao topo do Futsal nacional.</p>
+<div class="mt-12 space-y-6">
+<div class="flex justify-between items-end border-b border-white/10 pb-4">
+<span class="text-xs font-black uppercase text-on-surface-variant tracking-widest">Treinador Adjunto</span>
+<span class="text-xl font-headline font-black uppercase italic text-white">Carlos Raposo</span>
+</div>
+<div class="flex justify-between items-end border-b border-white/10 pb-4">
+<span class="text-xs font-black uppercase text-on-surface-variant tracking-widest">Prep. Físico</span>
+<span class="text-xl font-headline font-black uppercase italic text-white">Hugo Mendes</span>
+</div>
+<div class="flex justify-between items-end border-b border-white/10 pb-4">
+<span class="text-xs font-black uppercase text-on-surface-variant tracking-widest">Fisioterapeuta</span>
+<span class="text-xl font-headline font-black uppercase italic text-white">Ana Pereira</span>
+</div>
+</div>
+</div>
+<div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+<div class="relative group">
+<div class="aspect-[4/5] overflow-hidden">
+<img class="w-full h-full object-cover contrast-110 grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Professional coach in a formal suit standing with arms crossed, high-end editorial lighting, dark office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6A7h-cmKiab1y_3-0c4dtNL1XuG4mzfr9h7H4dWRpfAS7nWtnB5heFmrpVo7eBxkkZd04kSoT4YuQIJfNLwctYKun3zRihGRtKcOht2Y-Cn1PtUuk1iLW4dZbA0cHdmQnT_eDoeoHJvQcW4EYRWEqoS0l3XVFS4F0e1RkyndMJoESSKhaaVFT4DrHW5RXQ1KH7hRjWcBPBECS9qlESIts2B32NFsOiys6gutx841E6c90FOs1ZlboGL1y1bGsMqHLyLRMsZU4Gw"/>
+</div>
+<div class="absolute -bottom-10 -right-6 bg-primary-container p-8 electric-glow">
+<div class="text-[10px] font-black uppercase tracking-widest text-on-primary mb-1">Treinador Principal</div>
+<div class="text-3xl font-headline font-black uppercase italic text-on-primary leading-none">Marco Reus</div>
+</div>
+</div>
+<div class="mt-20 glass-panel p-10 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<span class="material-symbols-outlined text-primary-container text-4xl mb-6">format_quote</span>
+<blockquote class="text-2xl font-headline font-black italic uppercase text-white leading-tight">
+                                "Não jogamos apenas para ganhar, jogamos para honrar a história desta vila. Cada segundo na quadra é uma batalha pela vanguarda."
+                            </blockquote>
+<p class="mt-6 text-sm font-black uppercase tracking-widest text-on-surface-variant">Temporada 2024/25</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Youth Academy Teaser -->
+<section class="px-6 py-24 max-w-7xl mx-auto">
+<div class="bg-surface-container-highest flex flex-col md:flex-row items-center gap-12 p-4">
+<div class="md:w-1/2 aspect-video bg-surface overflow-hidden">
+<img class="w-full h-full object-cover opacity-60" data-alt="Energetic shot of young futsal players training on a colorful court, bright lighting and dynamic motion blur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc4pDMDnFtklLfIgt_J3Uccx0Blaw-9ZRKIexY73uTa5nJop55L1yUR96BjnRtIX-Yy6tRfh2L1UAK0YO_3Pa62SkoYitp3X4hssbdiMcSznjmfXxoJMSQMQgsSxRrscyCczTGEykNqO-5rsoaMwXsWLypQcHf-siWYnm6Sk478RcqAsXPCEu-M8KMCUnEKj8oByLJHQBElFXMuevV8OjoXiceP5DoJCDy_ZcZbCUbXS4BLWtfy4OS0ycoESy3AspU4YjDRpJiZg"/>
+</div>
+<div class="md:w-1/2 md:pr-12 py-10">
+<h3 class="text-5xl font-headline font-black uppercase italic tracking-tighter text-white mb-6">Academia <span class="text-secondary-fixed">Vanguarda</span></h3>
+<p class="text-on-surface-variant text-lg mb-8">O futuro do Valejas Atlético Clube começa aqui. Conheça as nossas camadas jovens e o processo de formação de elite.</p>
+<button class="bg-white text-surface px-10 py-4 font-headline font-black uppercase tracking-tighter text-sm flex items-center gap-3 active:scale-95 transition-all">
+                        Ver Plantéis Formação
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0d1321] w-full pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-8">
+<div class="bg-gradient-to-r from-transparent via-[#014cb3]/30 to-transparent h-[1px] mb-10"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col">
+<div class="text-xl font-black text-[#fadb09] font-headline uppercase tracking-tighter mb-6">Valejas Atl. Clube</div>
+<p class="text-slate-500 font-body text-sm leading-relaxed max-w-xs">
+                        Elevando o desporto local ao patamar da vanguarda. Tradição, Garra e o Futuro do Futsal Nacional.
+                    </p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-3">
+<span class="text-xs font-black uppercase tracking-[0.2em] text-[#fadb09] mb-2">Clube</span>
+<a class="text-slate-500 hover:text-[#fadb09] transition-colors font-body text-sm" href="#">Sponsorships</a>
+<a class="text-slate-500 hover:text-[#fadb09] transition-colors font-body text-sm" href="#">Contact Us</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-xs font-black uppercase tracking-[0.2em] text-[#fadb09] mb-2">Legal</span>
+<a class="text-slate-500 hover:text-[#fadb09] transition-colors font-body text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-[#fadb09] transition-colors font-body text-sm" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="flex flex-col items-start md:items-end">
+<span class="text-xs font-black uppercase tracking-[0.2em] text-[#fadb09] mb-6">Newsletter</span>
+<div class="flex w-full max-w-sm">
+<input class="bg-surface-container-highest border-none text-white text-sm py-3 px-4 w-full focus:ring-1 focus:ring-primary-container" placeholder="Email" type="email"/>
+<button class="bg-primary-container text-on-primary p-3">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="flex gap-4 mt-8">
+<a class="text-slate-500 hover:text-[#fadb09] transition-all" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-500 hover:text-[#fadb09] transition-all" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-slate-500 hover:text-[#fadb09] transition-all" href="#"><span class="material-symbols-outlined">hub</span></a>
+</div>
+</div>
+</div>
+<div class="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="text-slate-500 text-[10px] font-black uppercase tracking-widest">© 2024 Valejas Atlético Clube. Mural da Vanguarda.</span>
+<span class="text-slate-700 text-[10px] font-black uppercase tracking-widest">Designed by The Electric Court</span>
+</div>
+</div>
+</footer>
+</body></html>

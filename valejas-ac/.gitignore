@@ -1,0 +1,29 @@
+# Next.js
+.next/
+out/
+build/
+
+# Node
+node_modules/
+
+# Ambiente — NUNCA commitares estes ficheiros
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Sanity (gerado pelo studio)
+.sanity/
