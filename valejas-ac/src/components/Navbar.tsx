@@ -13,10 +13,15 @@ import clsx from "clsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Loja oficial de merchandising — alojada na plataforma CTT (Zemig Sportswear).
+export const STORE_URL =
+  "https://zemigsportswear.lojasonlinectt.pt/category/2-comprar-on-line-230-valejas-ac";
+
 const NAV_ITEMS = [
   { label: "Início",      href: "/" },
   { label: "Comunicados", href: "/comunicados" },
   { label: "Modalidades", href: "/modalidades" },
+  { label: "Loja",        href: STORE_URL, external: true },
   { label: "Sócios",      href: "/socios-contacto" },
 ];
 
@@ -157,15 +162,26 @@ export default function Navbar() {
           <ul className="hidden lg:flex items-center gap-6">
             {NAV_ITEMS.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={clsx(
-                    "nav-link",
-                    pathname === item.href && "active"
-                  )}
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nav-link"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={clsx(
+                      "nav-link",
+                      pathname === item.href && "active"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -225,25 +241,43 @@ export default function Navbar() {
             ref={linksRef}
             className="flex-1 flex flex-col items-start justify-center px-8 sm:px-12 gap-1"
           >
-            {NAV_ITEMS.map((item, i) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={closeMenu}
-                className={clsx(
-                  "mobile-nav-item block py-2 font-headline font-black italic uppercase leading-[0.9] tracking-tighter transition-colors duration-200",
-                  "text-5xl sm:text-6xl md:text-7xl",
-                  pathname === item.href
-                    ? "text-yellow"
-                    : "text-on-surface hover:text-yellow"
-                )}
-              >
+            {NAV_ITEMS.map((item, i) => {
+              const itemClass = clsx(
+                "mobile-nav-item block py-2 font-headline font-black italic uppercase leading-[0.9] tracking-tighter transition-colors duration-200",
+                "text-5xl sm:text-6xl md:text-7xl",
+                !item.external && pathname === item.href
+                  ? "text-yellow"
+                  : "text-on-surface hover:text-yellow"
+              );
+              const numberLabel = (
                 <span className="font-body text-xs font-semibold tracking-[0.3em] text-on-surface-muted block mb-0.5 not-italic normal-case">
                   0{i + 1}
                 </span>
-                {item.label}
-              </Link>
-            ))}
+              );
+              return item.external ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenu}
+                  className={itemClass}
+                >
+                  {numberLabel}
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMenu}
+                  className={itemClass}
+                >
+                  {numberLabel}
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Bottom bar — social + CTA */}

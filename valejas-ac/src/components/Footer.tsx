@@ -1,5 +1,6 @@
 import Link from "next/link";
 import NewsletterForm from "@/components/NewsletterForm";
+import { STORE_URL } from "@/components/Navbar";
 
 const LINKS = {
   navegação: [
@@ -7,6 +8,7 @@ const LINKS = {
     { label: "Comunicados",  href: "/comunicados" },
     { label: "Jogos",        href: "/jogos" },
     { label: "O Clube",      href: "/clube" },
+    { label: "Loja Oficial", href: STORE_URL, external: true },
     { label: "Sócios",       href: "/socios-contacto" },
   ],
   modalidades: [
@@ -77,12 +79,23 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {items.map((item) => (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
-                    >
-                      {item.label}
-                    </Link>
+                    {"external" in item && item.external ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

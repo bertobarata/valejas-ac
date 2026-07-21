@@ -27,3 +27,4 @@ Thumbs.db
 
 # Sanity (gerado pelo studio)
 .sanity/
+.vercel
