@@ -81,11 +81,11 @@ export default function ColorsBento() {
             </div>
           </div>
 
-          {/* Mural da Vanguarda — text block */}
+          {/* As nossas cores — text block */}
           <div className="bento-block md:col-span-7 bg-surface-highest p-10 md:p-12 flex items-center">
             <div className="max-w-lg">
               <h4 className="font-headline font-black text-2xl uppercase text-yellow mb-5">
-                Mural da Vanguarda
+                As nossas cores
               </h4>
               <p className="font-body text-on-surface-muted leading-relaxed mb-6">
                 Cada tom foi calibrado para brilhar sob as luzes noturnas. Não usamos

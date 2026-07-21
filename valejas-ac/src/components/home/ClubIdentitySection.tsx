@@ -95,7 +95,7 @@ export default function ClubIdentitySection() {
             </ul>
             <div className="identity-text flex flex-wrap gap-4">
               <Link href="/clube" className="btn-primary text-sm">
-                Explorar a Vanguarda
+                Conhecer o clube
               </Link>
               <Link href="/clube#historia" className="btn-ghost text-sm">
                 A Nossa História
@@ -117,11 +117,11 @@ export default function ClubIdentitySection() {
                 </div>
               </div>
               {/* Stats floating */}
-              <div className="absolute -bottom-4 -left-4 bg-surface-high px-4 py-3 border-l-4 border-yellow">
+              <div className="absolute -bottom-4 -left-4 bg-surface-high px-4 py-3 border border-yellow/40">
                 <span className="font-headline font-black text-3xl text-yellow">12</span>
                 <p className="font-body text-xs text-on-surface-muted uppercase tracking-widest">Títulos nacionais</p>
               </div>
-              <div className="absolute -top-4 -right-4 bg-surface-high px-4 py-3 border-l-4 border-red">
+              <div className="absolute -top-4 -right-4 bg-surface-high px-4 py-3 border border-red/40">
                 <span className="font-headline font-black text-3xl text-red">1945</span>
                 <p className="font-body text-xs text-on-surface-muted uppercase tracking-widest">Fundação</p>
               </div>

@@ -1,33 +1,31 @@
 import Link from "next/link";
+import NewsletterForm from "@/components/NewsletterForm";
 
 const LINKS = {
   navegação: [
-    { label: "Início",          href: "/" },
-    { label: "O Nosso Emblema", href: "/clube" },
-    { label: "Futsal",          href: "/modalidades/futsal" },
-    { label: "Resultados",      href: "/jogos" },
-    { label: "Bilhetes",        href: "/jogos" },
+    { label: "Início",       href: "/" },
+    { label: "Comunicados",  href: "/comunicados" },
+    { label: "Jogos",        href: "/jogos" },
+    { label: "O Clube",      href: "/clube" },
+    { label: "Sócios",       href: "/socios-contacto" },
   ],
   modalidades: [
-    { label: "Ciclismo",      href: "/modalidades/ciclismo" },
-    { label: "Cicloturismo",  href: "/modalidades/cicloturismo" },
-    { label: "Kung Fu",       href: "/modalidades/kung-fu" },
-    { label: "Dança",         href: "/modalidades/danca" },
-    { label: "Yoga",          href: "/modalidades/yoga" },
+    { label: "Futebol",       href: "/modalidades#futebol" },
+    { label: "Futsal",        href: "/modalidades#futsal" },
+    { label: "Kung Fu",       href: "/modalidades#kung-fu" },
+    { label: "Dança",         href: "/modalidades#danca" },
+    { label: "Yoga",          href: "/modalidades#yoga" },
   ],
   legal: [
     { label: "Política de Privacidade", href: "/privacidade" },
-    { label: "Termos de Serviço",       href: "/termos" },
     { label: "Contactos",               href: "/socios-contacto" },
-    { label: "Patrocínios",             href: "/socios-contacto#patrocinios" },
   ],
 };
 
 const SOCIALS = [
-  { label: "Instagram", href: "https://instagram.com", icon: "IG" },
-  { label: "YouTube",   href: "https://youtube.com",   icon: "YT" },
-  { label: "TikTok",    href: "https://tiktok.com",    icon: "TK" },
-  { label: "Discord",   href: "https://discord.com",   icon: "DC" },
+  { label: "Instagram", href: "https://instagram.com/valejasa.c.desporto", icon: "IG" },
+  { label: "Facebook",  href: "https://facebook.com/valejasacdesporto",    icon: "FB" },
+  { label: "YouTube",   href: "https://youtube.com/@valejastv",            icon: "YT" },
 ];
 
 export default function Footer() {
@@ -49,8 +47,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="font-body text-sm text-on-surface-muted leading-relaxed max-w-xs">
-              Elevando o desporto nacional com atitude, inovação e a força
-              imparável da Vanguarda. Vive aqui, no coração de Valejas.
+              O clube da nossa terra desde 1966. Futebol, futsal e comunidade,
+              no coração de Valejas.
             </p>
 
             {/* Social links */}
@@ -97,22 +95,13 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <h4 className="font-headline font-black text-lg uppercase text-on-surface">
-                Junta-te à <span className="text-yellow">Vanguarda</span>
+                Junta-te ao <span className="text-yellow">clube</span>
               </h4>
               <p className="font-body text-sm text-on-surface-muted mt-1">
                 Notícias exclusivas, bilhetes antecipados e bastidores direto para ti.
               </p>
             </div>
-            <form className="flex gap-0 w-full md:w-auto">
-              <input
-                type="email"
-                placeholder="O teu email"
-                className="input-field flex-1 md:w-72 px-4 bg-surface-high border border-on-surface/20 border-r-0 focus:border-yellow"
-              />
-              <button type="submit" className="btn-primary rounded-none px-5 py-3 text-xs">
-                Subscrever
-              </button>
-            </form>
+            <NewsletterForm variant="default" cta="Subscrever" />
           </div>
         </div>
       </div>
@@ -121,10 +110,10 @@ export default function Footer() {
       <div className="border-t border-on-surface/10">
         <div className="section-container py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="font-body text-xs text-on-surface-muted">
-            © {new Date().getFullYear()} Valejas Atlético Clube. A Vanguarda do Estádio.
+            © {new Date().getFullYear()} Valejas Atlético Clube. O clube da nossa terra.
           </p>
           <p className="font-body text-xs text-on-surface-muted">
-            Fundado em 1944 · Valejas, Portugal
+            Fundado em 1966 · AF Lisboa · Barcarena, Oeiras
           </p>
         </div>
       </div>

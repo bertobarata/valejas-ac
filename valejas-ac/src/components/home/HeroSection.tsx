@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
@@ -97,13 +98,20 @@ function initThreeParticles(canvas: HTMLCanvasElement) {
 /* ──────────────────────────────────────────────────────────────────
    Hero Section Component
    ────────────────────────────────────────────────────────────────── */
-export default function HeroSection() {
+export type HeroDestaque = { tipo: string; titulo: string; href: string };
+
+export default function HeroSection({
+  destaques = [],
+}: {
+  destaques?: HeroDestaque[];
+}) {
   const sectionRef  = useRef<HTMLElement>(null);
   const canvasRef   = useRef<HTMLCanvasElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef      = useRef<HTMLParagraphElement>(null);
   const ctaRef      = useRef<HTMLDivElement>(null);
   const scrollRef   = useRef<HTMLDivElement>(null);
+  const crestRef    = useRef<HTMLDivElement>(null);
 
   // Three.js
   useEffect(() => {
@@ -150,6 +158,22 @@ export default function HeroSection() {
           scrub: true,
         },
       });
+
+      // Emblema encolhe e sobe (rumo à navbar) ao fazer scroll — o logo
+      // pequeno da navbar aparece em simultâneo, como se tivesse aterrado lá.
+      gsap.to(crestRef.current, {
+        scale: 0.14,
+        yPercent: -60,
+        opacity: 0,
+        ease: "none",
+        transformOrigin: "top center",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "55% top",
+          scrub: true,
+        },
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -158,7 +182,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-surface"
+      className="section-dark relative min-h-screen flex items-center overflow-hidden bg-blue-deep"
     >
       {/* Three.js canvas — particle field */}
       <canvas
@@ -188,39 +212,77 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="section-container relative z-10 pt-32 pb-20 w-full">
+        <div className="grid lg:grid-cols-[1.25fr_0.85fr] gap-10 lg:gap-8 items-center">
         <div className="max-w-3xl">
 
           {/* Eyebrow */}
           <p className="font-body font-semibold text-xs uppercase tracking-[0.35em] text-yellow mb-6">
-            Fundado em 1944 · Valejas, Portugal
+            Fundado em 1966 · Valejas, Oeiras
           </p>
 
           {/* Main headline — overlapping editorial style */}
           <h1
             ref={headlineRef}
-            className="font-headline font-black text-6xl md:text-8xl lg:text-[9rem] uppercase leading-none tracking-tighter text-on-surface mb-6"
+            className="font-headline font-black text-6xl md:text-8xl lg:text-[9rem] uppercase leading-none tracking-tighter text-white mb-6"
           >
-            O Pulso da{" "}
-            <span className="text-yellow block md:inline">Vanguarda</span>
+            Somos Todos{" "}
+            <span className="text-yellow block md:inline on-dark">Valejas</span>
           </h1>
 
           {/* Sub */}
           <p
             ref={subRef}
-            className="font-body text-lg text-on-surface-muted max-w-md leading-relaxed mb-10"
+            className="font-body text-lg text-white/80 max-w-md leading-relaxed mb-10"
           >
-            Sinta o espírito inabalável da vanguarda do pavilhão. Do emblema
-            histórico ao futuro do jogo, nós somos Valejas.
+            Desde 1966, o clube da nossa terra. Do futebol ao futsal, dos mais
+            novos aos veteranos.
           </p>
 
           {/* CTAs */}
           <div ref={ctaRef} className="flex flex-wrap gap-4">
             <Link href="/clube" className="btn-primary text-sm">
-              Descobrir Herança
+              Conhecer o clube
             </Link>
             <Link href="/jogos" className="btn-ghost text-sm text-white border-white/30 hover:border-yellow hover:text-yellow">
               Últimos Jogos
             </Link>
+          </div>
+
+          {/* Destaques — comunicado + notícia mais recentes, já no hero */}
+          {destaques.length > 0 && (
+            <div className="mt-12 flex flex-col gap-px bg-white/10 max-w-2xl">
+              {destaques.map((d) => (
+                <Link
+                  key={d.href + d.titulo}
+                  href={d.href}
+                  className="group flex items-center gap-4 bg-black/40 hover:bg-black/60 px-5 py-4 transition-colors"
+                >
+                  <span className="font-body text-[10px] font-bold uppercase tracking-widest text-yellow shrink-0 w-24">
+                    {d.tipo}
+                  </span>
+                  <span className="font-body text-sm text-white/90 group-hover:text-white truncate flex-1">
+                    {d.titulo}
+                  </span>
+                  <span className="text-yellow shrink-0 transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+          {/* Emblema gigante — preponderância do crest; encolhe p/ a navbar no scroll */}
+          <div
+            ref={crestRef}
+            className="order-first lg:order-none flex justify-center items-center"
+          >
+            <Image
+              src="/brand/crest.png"
+              alt="Emblema do Valejas Atlético Clube"
+              width={520}
+              height={620}
+              priority
+              className="w-56 sm:w-72 lg:w-full lg:max-w-[400px] h-auto drop-shadow-[0_12px_45px_rgba(0,0,0,0.5)]"
+            />
           </div>
         </div>
       </div>
@@ -228,11 +290,11 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <div
         ref={scrollRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-on-surface-muted"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70"
         aria-hidden
       >
         <span className="font-body text-xs uppercase tracking-widest">Explorar</span>
-        <ChevronDown size={18} className="animate-bounce" />
+        <ChevronDown size={18} className="motion-safe:animate-[nudge_2s_ease-in-out_infinite] motion-reduce:animate-none" />
       </div>
     </section>
   );

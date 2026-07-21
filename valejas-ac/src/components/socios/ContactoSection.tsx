@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from "lucide-react";
 import { CONTACTO } from "@/lib/data/socios";
+import { submitToFormspree } from "@/lib/formspree";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,7 @@ export default function ContactoSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [enviado, setEnviado] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -29,10 +31,18 @@ export default function ContactoSection() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setErro(null);
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setEnviado(true);
+    try {
+      const fd = new FormData(e.currentTarget);
+      fd.append("_subject", "Contacto — Valejas AC");
+      await submitToFormspree(Object.fromEntries(fd));
+      setEnviado(true);
+    } catch (err) {
+      setErro(err instanceof Error ? err.message : "Erro ao enviar.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -55,7 +65,7 @@ export default function ContactoSection() {
           <div className="lg:col-span-4 space-y-4">
 
             {/* Email */}
-            <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border-l-4 border-yellow">
+            <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
               <Mail size={18} className="text-yellow flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-1">Email</p>
@@ -69,7 +79,7 @@ export default function ContactoSection() {
             </div>
 
             {/* Telefone */}
-            <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border-l-4 border-blue">
+            <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
               <Phone size={18} className="text-blue flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-1">Telefone</p>
@@ -83,7 +93,7 @@ export default function ContactoSection() {
             </div>
 
             {/* Morada */}
-            <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border-l-4 border-red">
+            <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
               <MapPin size={18} className="text-red flex-shrink-0 mt-0.5" />
               <div>
                 <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-1">Morada</p>
@@ -140,6 +150,7 @@ export default function ContactoSection() {
                       </label>
                       <input
                         type="text"
+                        name="nome"
                         required
                         placeholder="O teu nome"
                         className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
@@ -151,6 +162,7 @@ export default function ContactoSection() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
                         placeholder="email@exemplo.pt"
                         className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
@@ -163,6 +175,7 @@ export default function ContactoSection() {
                       Assunto *
                     </label>
                     <select
+                      name="assunto"
                       required
                       className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full bg-surface-high text-on-surface"
                     >
@@ -181,12 +194,19 @@ export default function ContactoSection() {
                       Mensagem *
                     </label>
                     <textarea
+                      name="mensagem"
                       required
                       rows={5}
                       placeholder="A tua mensagem…"
                       className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full resize-none"
                     />
                   </div>
+
+                  {erro && (
+                    <p className="font-body text-sm text-red-500" role="alert">
+                      {erro}
+                    </p>
+                  )}
 
                   <button
                     type="submit"

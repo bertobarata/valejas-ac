@@ -300,7 +300,7 @@ export default function PlantelFilter() {
       {/* Grid */}
       <section ref={sectionRef} className="bg-surface py-16 md:py-24">
         <div className="section-container">
-          <h2 className="font-headline font-black italic text-4xl uppercase tracking-tighter text-on-surface mb-10 border-l-8 border-yellow pl-5">
+          <h2 className="font-headline font-black italic text-4xl uppercase tracking-tighter text-on-surface mb-10">
             Plantel Principal
           </h2>
 

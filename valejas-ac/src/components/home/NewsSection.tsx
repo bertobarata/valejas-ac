@@ -90,17 +90,17 @@ export default function NewsSection() {
   const secondary = NEWS.filter((n) => !n.featured);
 
   return (
-    <section ref={sectionRef} className="bg-surface py-20 md:py-28">
+    <section ref={sectionRef} className="bg-surface py-28 md:py-40">
       <div className="section-container">
 
         {/* Header — editorial bar */}
         <div className="flex items-end justify-between mb-8 pb-4 border-b border-on-surface/10">
           <div>
             <p className="font-body text-xs font-black uppercase tracking-[0.35em] text-red mb-2">
-              Mural da Vanguarda
+              Últimas do clube
             </p>
             <h2 className="news-title section-title">
-              Notas da <span>Vanguarda</span>
+              Notícias do <span>Clube</span>
             </h2>
           </div>
           <Link

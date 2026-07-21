@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 const NEXT_MATCH = {
   label:    "Próximo Grande Duelo",
   title:    ["Derby de", "Futsal"],
-  subtitle: "A rivalidade máxima regressa ao Pavilhão Municipal. Prepara-te para a intensidade pura da vanguarda.",
+  subtitle: "O próximo desafio no nosso pavilhão. Vem apoiar o Valejas.",
   home:     { name: "Valejas AC",  abbr: "VAC" },
   away:     { name: "Lions FC",    abbr: "LFC" },
   date:     "Sábado, 24 de Agosto • 21:00",
@@ -96,7 +96,7 @@ export default function JogosHero() {
           {/* Right — match card */}
           <div className="lg:col-span-5 jogos-match-card">
             <div
-              className="glass border-l-4 border-blue p-8 flex flex-col gap-8"
+              className="border border-on-surface/12 p-8 flex flex-col gap-8"
               style={{ background: "rgba(46,53,67,0.4)", backdropFilter: "blur(20px)" }}
             >
               {/* Teams vs */}

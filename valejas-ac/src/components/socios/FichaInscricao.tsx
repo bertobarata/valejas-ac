@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Send, CheckCircle } from "lucide-react";
 import { PLANOS } from "@/lib/data/socios";
+import { submitToFormspree } from "@/lib/formspree";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +14,7 @@ export default function FichaInscricao() {
   const sectionRef = useRef<HTMLElement>(null);
   const [enviado, setEnviado] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -29,11 +32,18 @@ export default function FichaInscricao() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setErro(null);
     setLoading(true);
-    // Simulated submission — replace with real API call / email service
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setEnviado(true);
+    try {
+      const fd = new FormData(e.currentTarget);
+      fd.append("_subject", "Nova inscrição sócio — Valejas AC");
+      await submitToFormspree(Object.fromEntries(fd));
+      setEnviado(true);
+    } catch (err) {
+      setErro(err instanceof Error ? err.message : "Erro ao enviar.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -84,7 +94,7 @@ export default function FichaInscricao() {
                   Inscrição recebida!
                 </h3>
                 <p className="font-body text-base text-on-surface-muted max-w-xs">
-                  Entraremos em contacto contigo em breve. Bem-vindo à Vanguarda.
+                  Entraremos em contacto contigo em breve. Bem-vindo ao clube.
                 </p>
               </div>
             ) : (
@@ -96,6 +106,7 @@ export default function FichaInscricao() {
                   </label>
                   <input
                     type="text"
+                    name="nome"
                     required
                     placeholder="O teu nome"
                     className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
@@ -110,6 +121,7 @@ export default function FichaInscricao() {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       required
                       placeholder="email@exemplo.pt"
                       className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
@@ -121,6 +133,7 @@ export default function FichaInscricao() {
                     </label>
                     <input
                       type="tel"
+                      name="telefone"
                       placeholder="+351 9xx xxx xxx"
                       className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
                     />
@@ -134,6 +147,7 @@ export default function FichaInscricao() {
                   </label>
                   <input
                     type="text"
+                    name="nif"
                     placeholder="000 000 000"
                     maxLength={9}
                     className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
@@ -146,6 +160,7 @@ export default function FichaInscricao() {
                     Plano *
                   </label>
                   <select
+                    name="plano"
                     required
                     className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full bg-surface-high text-on-surface"
                   >
@@ -164,6 +179,7 @@ export default function FichaInscricao() {
                     Mensagem (opcional)
                   </label>
                   <textarea
+                    name="mensagem"
                     rows={3}
                     placeholder="Alguma questão ou informação adicional?"
                     className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full resize-none"
@@ -174,18 +190,25 @@ export default function FichaInscricao() {
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"
+                    name="rgpd"
                     required
                     className="mt-0.5 w-4 h-4 accent-yellow flex-shrink-0"
                   />
                   <span className="font-body text-xs text-on-surface-muted leading-relaxed">
                     Autorizo o tratamento dos meus dados para efeitos de inscrição
                     como sócio, conforme a{" "}
-                    <a href="/privacidade" className="text-yellow underline">
+                    <Link href="/privacidade" className="text-yellow underline">
                       Política de Privacidade
-                    </a>
+                    </Link>
                     .
                   </span>
                 </label>
+
+                {erro && (
+                  <p className="font-body text-sm text-red-500" role="alert">
+                    {erro}
+                  </p>
+                )}
 
                 {/* Submit */}
                 <button

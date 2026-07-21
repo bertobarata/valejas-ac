@@ -172,6 +172,26 @@ export async function fetchResultadosRecentes(limit = 5): Promise<SanityJogo[] |
 }
 
 // ────────────────────────────────────────────────────────────────────────────
+// COMUNICADOS OFICIAIS
+// ────────────────────────────────────────────────────────────────────────────
+
+/** Comunicados publicados, mais recentes primeiro. Null se Sanity ausente. */
+export async function fetchComunicados(): Promise<unknown[] | null> {
+  if (!isSanityConfigured()) return null;
+  try {
+    return await sanityClient.fetch(
+      `*[_type == "comunicado" && publicado == true] | order(data desc) {
+        "slug": slug.current, titulo, data, autor, resumoRedes, canais,
+        "corpo": corpo[].children[].text,
+        "imagemUrl": imagem.asset->url
+      }`
+    );
+  } catch {
+    return null;
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
 // CONFIGURAÇÃO DO CLUBE
 // ────────────────────────────────────────────────────────────────────────────
 

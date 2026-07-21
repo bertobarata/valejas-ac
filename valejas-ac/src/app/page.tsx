@@ -1,33 +1,41 @@
-import HeroSection from "@/components/home/HeroSection";
-import LiveMatchBanner from "@/components/home/LiveMatchBanner";
+import HeroSection, { type HeroDestaque } from "@/components/home/HeroSection";
 import NewsSection from "@/components/home/NewsSection";
 import ModalidadesGrid from "@/components/home/ModalidadesGrid";
-import ClubIdentitySection from "@/components/home/ClubIdentitySection";
-import StatsCounter from "@/components/home/StatsCounter";
 import SociosCTA from "@/components/home/SociosCTA";
+import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
+import { fetchComunicados, fetchArtigoDestaque } from "@/sanity/queries";
+import { ARTIGOS, getArtigoDestaque, type Artigo } from "@/lib/data/noticias";
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Destaques mostrados já no hero: último comunicado + notícia em destaque.
+  const [comunicadosSanity, artigoSanity] = await Promise.all([
+    fetchComunicados() as Promise<Comunicado[] | null>,
+    fetchArtigoDestaque(),
+  ]);
+
+  const comunicado = (comunicadosSanity ?? getComunicados())[0];
+  const artigo = (artigoSanity as Artigo | null) ?? getArtigoDestaque() ?? ARTIGOS[0];
+
+  const destaques: HeroDestaque[] = [];
+  if (comunicado) {
+    destaques.push({ tipo: "Comunicado", titulo: comunicado.titulo, href: "/comunicados" });
+  }
+  if (artigo) {
+    destaques.push({ tipo: "Notícia", titulo: artigo.titulo, href: "/noticias" });
+  }
+
   return (
     <>
-      {/* 1. Full-width hero with Three.js particle field */}
-      <HeroSection />
+      {/* Hero + destaques (comunicado/notícia) já visíveis sem scroll */}
+      <HeroSection destaques={destaques} />
 
-      {/* 2. Live match / next game banner */}
-      <LiveMatchBanner />
-
-      {/* 3. Stats counter bar */}
-      <StatsCounter />
-
-      {/* 4. Latest news grid */}
+      {/* Notícias */}
       <NewsSection />
 
-      {/* 5. Modalidades grid */}
+      {/* Modalidades */}
       <ModalidadesGrid />
 
-      {/* 6. Club identity – crest story teaser */}
-      <ClubIdentitySection />
-
-      {/* 7. Sócios CTA */}
+      {/* Sócios CTA */}
       <SociosCTA />
     </>
   );

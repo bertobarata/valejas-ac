@@ -7,12 +7,12 @@ import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   title: {
-    default: "Valejas Atlético Clube | A Vanguarda do Futsal",
+    default: "Valejas Atlético Clube | O clube da nossa terra desde 1966",
     template: "%s | Valejas AC",
   },
   description:
-    "Clube desportivo de Valejas. Futsal, ciclismo, kung fu, dança e yoga. A vanguarda do pavilhão.",
-  keywords: ["futsal", "Valejas", "clube desportivo", "futebol de salão"],
+    "Clube desportivo de Valejas, Oeiras. Futebol e futsal federados, forte na formação, mais aulas de comunidade. A casa do clube desde 1966.",
+  keywords: ["Valejas", "futebol", "futsal", "clube desportivo", "Oeiras", "AF Lisboa"],
   openGraph: {
     siteName: "Valejas Atlético Clube",
     locale: "pt_PT",

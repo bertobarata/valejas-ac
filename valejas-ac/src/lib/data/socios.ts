@@ -30,8 +30,8 @@ export const PLANOS: PlanoSocio[] = [
     ],
   },
   {
-    id:       "vanguarda",
-    nome:     "Vanguarda",
+    id:       "aguia",
+    nome:     "Águia",
     preco:    12,
     periodo:  "mês",
     destaque: true,
@@ -50,7 +50,7 @@ export const PLANOS: PlanoSocio[] = [
     periodo:  "mês",
     destaque: false,
     beneficios: [
-      "Tudo do plano Vanguarda",
+      "Tudo do plano Águia",
       "Bilhete para todos os jogos em casa",
       "Lugar reservado no Pavilhão",
       "Camisola oficial da temporada",
@@ -61,21 +61,20 @@ export const PLANOS: PlanoSocio[] = [
 ];
 
 export const CONTACTO = {
-  email:      "geral@valejasac.pt",
-  telefone:   "+351 219 000 000",
-  morada:     "Rua da Vanguarda, 14",
-  codigoPostal: "2635-000 Valejas",
-  concelho:   "Mafra",
+  email:      "valejas.a.c@gmail.com",
+  telefone:   "+351 214 365 104",
+  morada:     "Estrada das Palmeiras, 1A",
+  codigoPostal: "2730-132 Valejas",
+  concelho:   "Oeiras",
   pais:       "Portugal",
   horario: [
-    { dias: "Segunda a Sexta", horas: "09:00 – 18:00" },
-    { dias: "Sábado",          horas: "09:00 – 13:00" },
-    { dias: "Domingo",         horas: "Fechado" },
+    { dias: "Segunda a Sexta", horas: "09:30 – 17:00" },
+    { dias: "Sábado",          horas: "Dias de jogo" },
+    { dias: "Domingo",         horas: "Dias de jogo" },
   ],
   redesSociais: {
-    instagram: "https://instagram.com/valejasac",
-    youtube:   "https://youtube.com/@valejasac",
-    tiktok:    "https://tiktok.com/@valejasac",
-    discord:   "https://discord.gg/valejasac",
+    instagram: "https://instagram.com/valejasa.c.desporto",
+    facebook:  "https://facebook.com/valejasacdesporto",
+    youtube:   "https://youtube.com/@valejastv",
   },
 };

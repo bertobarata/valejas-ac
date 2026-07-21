@@ -20,7 +20,7 @@ export default function SociosHero() {
   return (
     <section
       ref={ref}
-      className="relative bg-blue overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28"
+      className="section-dark relative bg-blue overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28"
     >
       {/* Watermark */}
       <div
@@ -28,7 +28,7 @@ export default function SociosHero() {
         aria-hidden
       >
         <span className="font-headline font-black text-[22vw] uppercase text-white/5 leading-none whitespace-nowrap select-none">
-          VANGUARDA
+          VALEJAS
         </span>
       </div>
 
@@ -44,12 +44,12 @@ export default function SociosHero() {
           Faz parte da família
         </p>
         <h1 className="font-headline font-black italic text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
-          Junta-te à<br />
-          <span className="text-yellow">Vanguarda</span>
+          Junta-te ao<br />
+          <span className="text-yellow">clube</span>
         </h1>
         <p className="font-body text-lg text-white/70 max-w-xl leading-relaxed">
-          Mais de <strong className="text-white">850 sócios</strong> já fazem parte desta família.
-          Escolhe o teu plano, preenche a ficha e passa a viver o clube por dentro.
+          Faz parte da família Valejas. Escolhe o teu plano, preenche a ficha e
+          passa a viver o clube por dentro.
         </p>
       </div>
     </section>

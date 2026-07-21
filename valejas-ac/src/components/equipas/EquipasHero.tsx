@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -44,7 +45,11 @@ export default function EquipasHero() {
 
           {/* Left — text */}
           <div className="lg:col-span-7 equipa-hero-content space-y-6 z-10">
-            <div className="badge-live w-fit">Equipa Principal</div>
+            <nav aria-label="Navegação" className="font-body text-xs uppercase tracking-widest text-on-surface-muted">
+              <Link href="/modalidades" className="hover:text-yellow transition-colors">Modalidades</Link>
+              <span className="mx-2 text-on-surface/40">/</span>
+              <span className="text-yellow">Futsal</span>
+            </nav>
 
             <h1 className="font-headline font-black italic text-8xl md:text-[10rem] uppercase leading-[0.85] tracking-tighter">
               Futsal{" "}
@@ -73,10 +78,10 @@ export default function EquipasHero() {
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
             </div>
-            {/* Vanguarda badge */}
+            {/* Badge do clube */}
             <div className="absolute -bottom-6 -left-6 bg-blue p-6 hidden md:block">
               <div className="font-headline font-black text-3xl text-white uppercase tracking-tighter italic">
-                Vanguarda
+                Valejas
               </div>
             </div>
           </div>

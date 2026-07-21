@@ -97,7 +97,7 @@ export default function EmblemHero() {
             <div className="flex items-center gap-3 pt-2">
               <div className="h-px w-10 bg-yellow" />
               <span className="font-headline font-bold uppercase tracking-widest text-yellow text-sm">
-                Explora a Vanguarda
+                Explora o emblema
               </span>
             </div>
           </div>

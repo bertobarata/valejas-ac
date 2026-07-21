@@ -4,14 +4,14 @@ import NoticiasGrid from "@/components/noticias/NoticiasGrid";
 import { fetchArtigos, fetchArtigoDestaque } from "@/sanity/queries";
 import { ARTIGOS, getArtigoDestaque } from "@/lib/data/noticias";
 
+// ISR: notícias frescas sem rebuild manual (Vercel)
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Notícias & Comunicados",
   description:
     "Resultados, transferências, comunicados e histórias do Valejas Atlético Clube.",
 };
-
-// Revalidar a cada 60 segundos — notícias frescas sem rebuild
-export const revalidate = 60;
 
 export default async function NoticiasPage() {
   // Tenta Sanity — se não estiver configurado, usa dados mock

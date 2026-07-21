@@ -98,7 +98,7 @@ export default function CorpoTecnico() {
               <div className="text-5xl text-yellow font-headline leading-none mb-4">"</div>
               <blockquote className="font-headline font-black italic text-xl md:text-2xl uppercase leading-tight text-on-surface mb-6">
                 Não jogamos apenas para ganhar. Jogamos para honrar a história
-                desta vila. Cada segundo na quadra é uma batalha pela Vanguarda.
+                desta terra. Cada segundo em campo é pelo clube e pela nossa gente.
               </blockquote>
               <p className="font-body text-xs text-on-surface-muted uppercase tracking-widest">
                 Marco Reus — Temporada 2024/25

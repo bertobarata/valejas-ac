@@ -2,9 +2,11 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon, Ticket, Instagram, Youtube } from "lucide-react";
+import { Menu, X, Sun, Moon, Ticket, Instagram, Facebook, Youtube } from "lucide-react";
+import { CONTACTO } from "@/lib/data/socios";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clsx from "clsx";
@@ -12,12 +14,10 @@ import clsx from "clsx";
 gsap.registerPlugin(ScrollTrigger);
 
 const NAV_ITEMS = [
-  { label: "Início",          href: "/" },
-  { label: "O Nosso Emblema", href: "/clube" },
-  { label: "Equipas",         href: "/equipas" },
-  { label: "Centro de Jogos", href: "/jogos" },
-  { label: "Notícias",        href: "/noticias" },
-  { label: "Sócios",          href: "/socios-contacto" },
+  { label: "Início",      href: "/" },
+  { label: "Comunicados", href: "/comunicados" },
+  { label: "Modalidades", href: "/modalidades" },
+  { label: "Sócios",      href: "/socios-contacto" },
 ];
 
 export default function Navbar() {
@@ -117,42 +117,41 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const isDark = resolvedTheme === "dark";
+  const isHome = pathname === "/";
+  // Sólida quando scrollada, com menu aberto, ou fora da home.
+  // Transparente só na home ao topo (sobre o hero azul) → texto claro (dark).
+  const solid = scrolled || menuOpen || !isHome;
 
   return (
     <header
       ref={navRef}
       className={clsx(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled || menuOpen
+        solid
           ? "bg-surface/95 backdrop-blur-xl shadow-ambient"
-          : "bg-transparent"
+          : "bg-transparent dark section-dark"
       )}
     >
       {/* Live match ticker — vermelho = urgência */}
       <div className="bg-red text-white text-xs font-body font-semibold uppercase tracking-widest py-1.5 text-center hidden md:block">
         <span className="inline-flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse-live inline-block" />
-          Liga Placard • Jornada 32 — Valejas AC vs FC Porto — Sábado 5 Jul, 19:00
+          Valejas Atlético Clube • O clube da nossa terra desde 1966
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse-live inline-block" />
         </span>
       </div>
 
       <nav className="section-container">
-        <div className="flex items-center justify-between h-16 md:h-18">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group z-50">
-            <div className="w-9 h-9 bg-yellow rounded-none flex items-center justify-center font-headline font-black text-black text-base leading-none group-hover:glow-yellow transition-all duration-300">
-              V
-            </div>
-            <div className="hidden sm:block">
-              <p className="font-headline font-black text-sm uppercase leading-none text-on-surface">
-                Valejas
-              </p>
-              <p className="font-body text-xs text-on-surface-muted uppercase tracking-widest leading-none">
-                Atlético Clube
-              </p>
-            </div>
-          </Link>
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo — escondido no topo; aparece (encolhido) ao fazer scroll,
+             como se o emblema gigante do hero tivesse aterrado aqui. */}
+          <div className={clsx(
+            // Maior que a barra: transborda ligeiramente para baixo (emblema pendurado).
+            "transition-all duration-300 z-50 -mb-6",
+            scrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none"
+          )}>
+            <Logo size={96} />
+          </div>
 
           {/* Desktop nav */}
           <ul className="hidden lg:flex items-center gap-6">
@@ -262,15 +261,18 @@ export default function Navbar() {
             {/* Social + theme */}
             <div className="mobile-bottom flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <a href="#" className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="Instagram">
+                <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="Instagram">
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="YouTube">
+                <a href={CONTACTO.redesSociais.facebook} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="Facebook">
+                  <Facebook size={20} />
+                </a>
+                <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="YouTube">
                   <Youtube size={20} />
                 </a>
               </div>
               <span className="font-body text-[10px] text-on-surface-muted uppercase tracking-widest">
-                A Vanguarda de Valejas
+                A casa do clube
               </span>
             </div>
           </div>

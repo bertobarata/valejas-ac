@@ -44,7 +44,7 @@ export const ARTIGOS: Artigo[] = [
     destaque:  false,
   },
   {
-    slug:      "academia-vanguarda-construcao",
+    slug:      "academia-formacao-construcao",
     categoria: "Clube",
     titulo:    "O Projeto da Academia: Moldando as Águias de Amanhã",
     excerto:   "O novo centro de treinos começa a ser construído no próximo mês no coração de Valejas.",
@@ -67,7 +67,7 @@ export const ARTIGOS: Artigo[] = [
     slug:      "equipamento-24-25-revelado",
     categoria: "Clube",
     titulo:    "Equipamento Principal 2024/25 Revelado",
-    excerto:   "A nova camisola mantém a identidade cromática da Vanguarda com um redesign moderno das faixas.",
+    excerto:   "A nova camisola mantém o azul e o amarelo do clube com um redesign moderno das faixas.",
     data:      "2024-06-15",
     autor:     "Redação Valejas AC",
     imagemUrl: "/images/news/kit.jpg",
@@ -86,7 +86,7 @@ export const ARTIGOS: Artigo[] = [
   {
     slug:      "lendas-50-anos-silva",
     categoria: "Clube",
-    titulo:    "Lendas: 50 Anos de Silva na Vanguarda",
+    titulo:    "Lendas: 50 Anos de Silva no Valejas",
     excerto:   "Uma homenagem ao histórico guarda-redes que defendeu as cores do clube durante cinco décadas.",
     data:      "2024-06-10",
     autor:     "Redação Valejas AC",

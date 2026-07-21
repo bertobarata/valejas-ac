@@ -50,9 +50,13 @@ export default function EmblemCTA() {
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-5 justify-center">
-          <Link href="/loja" className="btn-primary text-base px-10 py-5">
-            Loja Oficial
-          </Link>
+          <span
+            className="btn-primary text-base px-10 py-5 opacity-50 cursor-not-allowed select-none"
+            aria-disabled="true"
+            title="Loja em breve"
+          >
+            Loja em breve
+          </span>
           <Link href="/socios-contacto" className="btn-ghost text-base px-10 py-5">
             Tornar-se Sócio
           </Link>

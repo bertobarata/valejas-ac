@@ -21,14 +21,14 @@ export default function AcademiaCTA() {
               O Futuro Começa Aqui
             </p>
             <h2 className="font-headline font-black italic text-5xl md:text-6xl uppercase leading-none tracking-tighter text-on-surface mb-6">
-              Academia <span className="text-yellow">Vanguarda</span>
+              Formação <span className="text-yellow">Valejas</span>
             </h2>
             <p className="font-body text-base text-on-surface-muted leading-relaxed mb-8">
               O futuro do Valejas Atlético Clube começa aqui. Conheça as
               nossas camadas jovens e o processo de formação de elite.
             </p>
             <Link
-              href="/modalidades/futsal#formacao"
+              href="/modalidades"
               className="inline-flex items-center gap-2 font-headline font-black text-sm uppercase tracking-widest text-on-surface border-b border-yellow pb-1 hover:text-yellow transition-colors duration-200 w-fit"
             >
               Ver Plantel de Formação <ArrowRight size={14} />

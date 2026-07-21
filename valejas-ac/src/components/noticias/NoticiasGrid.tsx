@@ -57,7 +57,7 @@ function ArtigoCard({ a }: { a: Artigo }) {
         </div>
       ) : (
         /* Comunicado — sem imagem, estilo diferente */
-        <div className="h-12 bg-red/10 flex items-center px-5 gap-2 flex-shrink-0 border-l-4 border-red">
+        <div className="h-12 bg-red/10 flex items-center px-5 gap-2 flex-shrink-0">
           <FileText size={14} className="text-red flex-shrink-0" />
           <span className="font-body text-[10px] font-black uppercase tracking-widest text-red">
             Comunicado Oficial

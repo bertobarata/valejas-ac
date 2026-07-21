@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════
    VALEJAS ATLÉTICO CLUBE — Global Styles
-   Design System: Kinetic Pulse × Vanguarda Neon
+   Design System: Valejas — azul & amarelo, casa quente
    ═══════════════════════════════════════════════════════════════════ */
 
 @import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,700;0,900;1,900&family=Manrope:wght@400;500;600;700&display=swap");
@@ -15,15 +15,15 @@
    All other colours (yellow, blue, red) stay fixed.
    ────────────────────────────────────────────────────────────────── */
 :root {
-  /* Light mode surfaces — Kinetic Pulse */
-  --surface:           250 248 255;   /* #FAF8FF — off-white */
-  --surface-dim:       242 243 255;   /* #F2F3FF */
-  --surface-low:       237 238 252;   /* #EDEEFB */
-  --surface-mid:       225 227 248;   /* #E1E3F8 */
-  --surface-high:      213 217 243;   /* #D5D9F3 */
-  --surface-highest:   204 208 237;   /* #CCD0ED */
-  --on-surface:         0  25  69;   /* #001945 — near-black navy */
-  --on-surface-muted:  90 100 130;   /* #5A6482 */
+  /* Light mode surfaces — Casa Quente (cream + azul do emblema) */
+  --surface:           253 251 245;   /* #FDFBF5 — cream quente */
+  --surface-dim:       249 245 235;   /* #F9F5EB */
+  --surface-low:       245 240 228;   /* #F5F0E4 */
+  --surface-mid:       238 232 217;   /* #EEE8D9 */
+  --surface-high:      230 223 204;   /* #E6DFCC */
+  --surface-highest:   221 213 191;   /* #DDD5BF */
+  --on-surface:         11  40  92;   /* #0B285C — azul-navy do clube */
+  --on-surface-muted:  74  86 120;   /* #4A5678 — slate azulado */
 
   /* Scrollbar */
   color-scheme: light;
@@ -41,6 +41,23 @@
   --on-surface-muted:  206 198 171;   /* #CEC6AB — warm grey */
 
   color-scheme: dark;
+}
+
+/* ── Contraste do acento em light ───────────────────────────────────
+   O site foi desenhado amarelo-sobre-preto. Em tema claro (cream), o
+   amarelo-texto falha contraste → recolori para o azul do clube.
+   Exceções: elementos sobre fundo escuro/foto marcam `.on-dark` e
+   mantêm o amarelo. (Em dark mode nada muda.) */
+:root:not(.dark) .text-yellow:not(.on-dark) {
+  color: #1554BB; /* azul do emblema — AA sobre cream */
+}
+:root:not(.dark) .hover\:text-yellow:not(.on-dark):hover {
+  color: #1554BB;
+}
+/* Secções de fundo escuro/foto: o amarelo-texto mantém-se (contraste ok). */
+:root:not(.dark) .section-dark .text-yellow,
+:root:not(.dark) .section-dark .hover\:text-yellow:hover {
+  color: #FADB09;
 }
 
 /* ── 2. BASE RESETS ─────────────────────────────────────────────────*/
@@ -252,4 +269,9 @@
   /* Hide scrollbar but keep functionality */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
 }

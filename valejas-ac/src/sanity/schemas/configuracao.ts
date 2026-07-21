@@ -8,8 +8,7 @@ export const configuracao = defineType({
   name: "configuracao",
   title: "Configurações do Clube",
   type: "document",
-  // Prevenir múltiplos documentos deste tipo na structure
-  __experimental_actions: ["update", "publish"],
+  // Singleton: restrição de documento único gerida na structure do Studio (não no schema)
   groups: [
     { name: "contacto",  title: "Contacto" },
     { name: "social",    title: "Redes Sociais" },
@@ -86,7 +85,7 @@ export const configuracao = defineType({
       title: "Slogan / subtítulo do Hero",
       type: "string",
       group: "conteudo",
-      initialValue: "A Vanguarda de Valejas",
+      initialValue: "O clube da nossa terra desde 1966",
     }),
     defineField({
       name: "proximoJogo",

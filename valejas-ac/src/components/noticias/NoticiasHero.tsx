@@ -33,7 +33,7 @@ export default function NoticiasHero({ artigo }: Props) {
         {/* Page header */}
         <div className="pt-8 pb-10 border-b border-on-surface/10">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow mb-3">
-            Mural da Vanguarda
+            Notícias do Clube
           </p>
           <h1 className="font-headline font-black italic text-6xl md:text-8xl uppercase leading-none tracking-tighter text-on-surface">
             Notícias &{" "}

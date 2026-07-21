@@ -77,8 +77,8 @@ export default function EagleSection() {
               Capítulo I
             </span>
             <h2 className="font-headline font-black italic text-6xl md:text-8xl uppercase leading-none tracking-tighter text-on-surface">
-              A Águia<br />da{" "}
-              <span className="text-yellow">Vanguarda</span>
+              A Águia<br />de{" "}
+              <span className="text-yellow">Valejas</span>
             </h2>
             <p className="font-body text-xl text-on-surface-muted leading-relaxed">
               O nosso predador de topo. A águia não apenas observa — ela domina o
@@ -87,7 +87,7 @@ export default function EagleSection() {
               a nossa ambição sem limites.
             </p>
             {/* Pull quote */}
-            <div className="border-l-2 border-yellow bg-surface-mid p-6">
+            <div className="border border-yellow/30 bg-surface-mid p-6">
               <p className="font-body italic text-on-surface">
                 "O som do bater de asas é o aviso. O Valejas não recua."
               </p>

@@ -7,7 +7,7 @@ import AcademiaCTA from "@/components/equipas/AcademiaCTA";
 export const metadata: Metadata = {
   title: "Equipas & Plantel",
   description:
-    "Conheça o plantel do Valejas AC — Futsal Elite, corpo técnico e Academia Vanguarda.",
+    "Conheça o plantel de futsal do Valejas AC — jogadores, corpo técnico e formação.",
 };
 
 export default function EquipasPage() {
