@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -58,16 +59,18 @@ export default function EagleSection() {
 
           {/* Visual — eagle icon with corner brackets */}
           <div className="order-2 lg:order-1 eagle-visual">
-            <div className="relative w-full max-w-sm mx-auto aspect-square bg-surface-mid flex items-center justify-center p-12">
+            <div className="relative w-full max-w-sm mx-auto aspect-square bg-surface-mid overflow-hidden">
+              {/* Águia oficial do emblema */}
+              <Image
+                src="/brand/eagle.png"
+                alt="A águia do emblema do Valejas Atlético Clube"
+                fill
+                sizes="(max-width: 1024px) 100vw, 400px"
+                className="object-cover"
+              />
               {/* Corner brackets */}
-              <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-yellow" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-yellow" />
-              {/* Eagle icon placeholder */}
-              <div className="text-center">
-                <span className="font-headline font-black text-[9rem] text-yellow leading-none" aria-hidden>
-                  🦅
-                </span>
-              </div>
+              <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-yellow z-10" />
+              <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-yellow z-10" />
             </div>
           </div>
 
