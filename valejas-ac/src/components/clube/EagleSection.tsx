@@ -59,7 +59,7 @@ export default function EagleSection() {
 
           {/* Visual — eagle icon with corner brackets */}
           <div className="order-2 lg:order-1 eagle-visual">
-            <div className="relative w-full max-w-sm mx-auto aspect-square bg-surface-mid overflow-hidden">
+            <div className="relative w-full max-w-sm mx-auto aspect-[4/3] bg-surface-mid overflow-hidden">
               {/* Águia oficial do emblema */}
               <Image
                 src="/brand/eagle.png"
@@ -67,6 +67,7 @@ export default function EagleSection() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 400px"
                 className="object-cover"
+                style={{ objectPosition: "center 32%" }}
               />
               {/* Corner brackets */}
               <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-yellow z-10" />

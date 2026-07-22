@@ -6,7 +6,7 @@ import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon, Ticket } from "lucide-react";
-import { WhatsAppIcon, InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
+import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { CONTACTO } from "@/lib/data/socios";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -297,9 +297,6 @@ export default function Navbar() {
             {/* Social + theme */}
             <div className="mobile-bottom flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <a href={`https://wa.me/${CONTACTO.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#25D366] transition-colors" aria-label="WhatsApp">
-                  <WhatsAppIcon size={20} />
-                </a>
                 <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#E4405F] transition-colors" aria-label="Instagram">
                   <InstagramIcon size={20} />
                 </a>

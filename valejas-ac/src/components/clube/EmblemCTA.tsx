@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { STORE_URL } from "@/components/Navbar";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -50,13 +51,14 @@ export default function EmblemCTA() {
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-5 justify-center">
-          <span
-            className="btn-primary text-base px-10 py-5 opacity-50 cursor-not-allowed select-none"
-            aria-disabled="true"
-            title="Loja em breve"
+          <a
+            href={STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary text-base px-10 py-5"
           >
-            Loja em breve
-          </span>
+            Visitar a Loja
+          </a>
           <Link href="/socios-contacto" className="btn-ghost text-base px-10 py-5">
             Tornar-se Sócio
           </Link>

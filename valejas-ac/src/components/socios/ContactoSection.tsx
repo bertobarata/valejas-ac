@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from "lucide-react";
 import { CONTACTO } from "@/lib/data/socios";
 import { submitToFormspree } from "@/lib/formspree";
-import { WhatsAppIcon, InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
+import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,10 +60,13 @@ export default function ContactoSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="space-y-8">
+
+          {/* Info + formulário */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
           {/* Left — info blocks */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="space-y-4">
 
             {/* Email */}
             <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
@@ -92,22 +95,6 @@ export default function ContactoSection() {
                 </a>
               </div>
             </div>
-
-            {/* WhatsApp */}
-            <a
-              href={`https://wa.me/${CONTACTO.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10 hover:border-[#25D366]/50 transition-colors group"
-            >
-              <WhatsAppIcon size={18} className="text-[#25D366] flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-1">WhatsApp</p>
-                <span className="font-body text-sm text-on-surface group-hover:text-[#25D366] transition-colors duration-200">
-                  Enviar mensagem
-                </span>
-              </div>
-            </a>
 
             {/* Morada */}
             <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
@@ -144,10 +131,6 @@ export default function ContactoSection() {
             <div className="contacto-block bg-surface-high p-6 border border-on-surface/10">
               <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-4">Segue-nos</p>
               <div className="flex items-center gap-3">
-                <a href={`https://wa.me/${CONTACTO.whatsapp}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
-                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#25D366] hover:text-white transition-all duration-200">
-                  <WhatsAppIcon size={18} />
-                </a>
                 <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                    className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#E4405F] hover:text-white transition-all duration-200">
                   <InstagramIcon size={18} />
@@ -165,7 +148,7 @@ export default function ContactoSection() {
           </div>
 
           {/* Right — contact form */}
-          <div className="lg:col-span-5 contacto-block">
+          <div className="contacto-block">
             <div className="bg-surface-high p-8">
               <h3 className="font-headline font-black italic text-2xl uppercase tracking-tighter text-on-surface mb-6">
                 Envia-nos uma Mensagem
@@ -260,16 +243,18 @@ export default function ContactoSection() {
             </div>
           </div>
 
-          {/* Map placeholder */}
-          <div className="lg:col-span-3 contacto-block">
-            <div className="h-full min-h-[300px] bg-surface-high relative overflow-hidden flex flex-col">
+          </div>
+
+          {/* Mapa — largura total */}
+          <div className="contacto-block">
+            <div className="min-h-[440px] bg-surface-high relative overflow-hidden flex flex-col">
               {/* Google Maps embed — morada real do clube */}
               <iframe
                 title="Localização Valejas AC"
                 src={`https://maps.google.com/maps?q=${encodeURIComponent(
                   `${CONTACTO.morada}, ${CONTACTO.codigoPostal}, ${CONTACTO.concelho}`
                 )}&z=16&output=embed`}
-                className="flex-1 w-full border-0 min-h-[300px]"
+                className="flex-1 w-full border-0 min-h-[440px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen

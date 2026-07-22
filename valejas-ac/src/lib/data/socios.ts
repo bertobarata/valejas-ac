@@ -72,9 +72,6 @@ export const CONTACTO = {
     { dias: "Sábado",          horas: "Dias de jogo" },
     { dias: "Domingo",         horas: "Dias de jogo" },
   ],
-  // ⚠️ WhatsApp requer nº MÓVEL (formato internacional, só dígitos).
-  //    O nº abaixo é o fixo do clube — substituir pelo telemóvel real quando disponível.
-  whatsapp:   "351214365104",
   redesSociais: {
     instagram: "https://instagram.com/valejasa.c.desporto",
     facebook:  "https://facebook.com/valejasacdesporto",

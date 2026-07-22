@@ -3,7 +3,7 @@ import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 import { STORE_URL } from "@/components/Navbar";
 import { CONTACTO } from "@/lib/data/socios";
-import { WhatsAppIcon, InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
+import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
 const LINKS = {
   navegação: [
@@ -28,7 +28,6 @@ const LINKS = {
 };
 
 const SOCIALS = [
-  { label: "WhatsApp",  href: `https://wa.me/${CONTACTO.whatsapp}`,        Icon: WhatsAppIcon,  hover: "hover:bg-[#25D366]" },
   { label: "Instagram", href: CONTACTO.redesSociais.instagram,            Icon: InstagramIcon, hover: "hover:bg-[#E4405F]" },
   { label: "Facebook",  href: CONTACTO.redesSociais.facebook,             Icon: FacebookIcon,  hover: "hover:bg-[#1877F2]" },
   { label: "YouTube",   href: CONTACTO.redesSociais.youtube,              Icon: YouTubeIcon,   hover: "hover:bg-[#FF0000]" },
