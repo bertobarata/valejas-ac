@@ -7,7 +7,7 @@ import EmblemCTA from "@/components/clube/EmblemCTA";
 export const metadata: Metadata = {
   title: "O Nosso Emblema",
   description:
-    "O emblema do Valejas AC — a águia, a faixa sagrada, as cores e a história de uma identidade única.",
+    "O emblema do Valejas AC — a águia, as cores amarelo e azul e a história de uma identidade única desde 1966.",
 };
 
 export default function ClubePage() {
