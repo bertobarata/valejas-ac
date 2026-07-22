@@ -1,6 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 import { STORE_URL } from "@/components/Navbar";
+import { CONTACTO } from "@/lib/data/socios";
+import { WhatsAppIcon, InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
 const LINKS = {
   navegação: [
@@ -20,14 +23,15 @@ const LINKS = {
   ],
   legal: [
     { label: "Política de Privacidade", href: "/privacidade" },
-    { label: "Contactos",               href: "/socios-contacto" },
+    { label: "Contactos",               href: "/contactos" },
   ],
 };
 
 const SOCIALS = [
-  { label: "Instagram", href: "https://instagram.com/valejasa.c.desporto", icon: "IG" },
-  { label: "Facebook",  href: "https://facebook.com/valejasacdesporto",    icon: "FB" },
-  { label: "YouTube",   href: "https://youtube.com/@valejastv",            icon: "YT" },
+  { label: "WhatsApp",  href: `https://wa.me/${CONTACTO.whatsapp}`,        Icon: WhatsAppIcon,  hover: "hover:bg-[#25D366]" },
+  { label: "Instagram", href: CONTACTO.redesSociais.instagram,            Icon: InstagramIcon, hover: "hover:bg-[#E4405F]" },
+  { label: "Facebook",  href: CONTACTO.redesSociais.facebook,             Icon: FacebookIcon,  hover: "hover:bg-[#1877F2]" },
+  { label: "YouTube",   href: CONTACTO.redesSociais.youtube,              Icon: YouTubeIcon,   hover: "hover:bg-[#FF0000]" },
 ];
 
 export default function Footer() {
@@ -40,9 +44,13 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-yellow flex items-center justify-center font-headline font-black text-black text-lg">
-                V
-              </div>
+              <Image
+                src="/brand/crest.png"
+                alt="Emblema do Valejas Atlético Clube"
+                width={44}
+                height={44}
+                className="w-11 h-11 object-contain"
+              />
               <div>
                 <p className="font-headline font-black text-base uppercase text-on-surface leading-none">Valejas</p>
                 <p className="font-body text-xs text-on-surface-muted uppercase tracking-widest">Atlético Clube</p>
@@ -62,9 +70,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 bg-surface-high flex items-center justify-center font-headline font-black text-xs text-on-surface hover:bg-yellow hover:text-black transition-all duration-200"
+                  className={`w-9 h-9 bg-surface-high flex items-center justify-center text-on-surface hover:text-white transition-all duration-200 ${s.hover}`}
                 >
-                  {s.icon}
+                  <s.Icon size={16} />
                 </a>
               ))}
             </div>

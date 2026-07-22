@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -109,12 +110,15 @@ export default function ClubIdentitySection() {
               {/* Glow rings */}
               <div className="absolute inset-0 rounded-full bg-yellow/5 animate-pulse" style={{ animationDuration: "3s" }} />
               <div className="absolute inset-4 rounded-full bg-yellow/5 animate-pulse" style={{ animationDuration: "3s", animationDelay: "0.5s" }} />
-              {/* Crest placeholder */}
-              <div className="absolute inset-8 rounded-full bg-surface-high flex items-center justify-center border-4 border-yellow/30">
-                <div className="text-center">
-                  <p className="font-headline font-black text-6xl text-yellow leading-none">V</p>
-                  <p className="font-body text-xs uppercase tracking-widest text-on-surface-muted mt-1">AC</p>
-                </div>
+              {/* Emblema oficial */}
+              <div className="absolute inset-8 flex items-center justify-center">
+                <Image
+                  src="/brand/crest.png"
+                  alt="Emblema do Valejas Atlético Clube"
+                  width={280}
+                  height={280}
+                  className="w-full h-full object-contain drop-shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+                />
               </div>
               {/* Stats floating */}
               <div className="absolute -bottom-4 -left-4 bg-surface-high px-4 py-3 border border-yellow/40">

@@ -4,13 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Calendar, User, ArrowRight, FileText } from "lucide-react";
-import {
-  CATEGORIAS, formatData,
-  type Artigo, type Categoria,
-} from "@/lib/data/noticias";
+import { Calendar, User, ArrowRight, FileText, LayoutGrid, List } from "lucide-react";
+import { formatData, type Artigo } from "@/lib/data/noticias";
 
 gsap.registerPlugin(ScrollTrigger);
+
+type View = "grid" | "list";
 
 // ── Categoria badge colours ──────────────────────────────────────
 const CAT_COLOUR: Record<string, string> = {
@@ -22,17 +21,24 @@ const CAT_COLOUR: Record<string, string> = {
 };
 
 // ── Single article card ──────────────────────────────────────────
-function ArtigoCard({ a }: { a: Artigo }) {
+function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
   const isComunicado = a.categoria === "Comunicado";
+  const isList = view === "list";
 
   return (
     <Link
       href={`/noticias/${a.slug}`}
-      className="article-card group bg-surface-high hover:bg-surface-highest transition-all duration-300 flex flex-col overflow-hidden"
+      className={`article-card group bg-surface-high hover:bg-surface-highest transition-all duration-300 overflow-hidden ${
+        isList ? "flex flex-col sm:flex-row" : "flex flex-col"
+      }`}
     >
       {/* Image / placeholder */}
       {!isComunicado ? (
-        <div className="relative h-48 bg-surface-mid overflow-hidden flex-shrink-0">
+        <div
+          className={`relative bg-surface-mid overflow-hidden flex-shrink-0 ${
+            isList ? "h-48 sm:h-auto sm:w-64" : "h-48"
+          }`}
+        >
           {a.imagemUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -57,7 +63,11 @@ function ArtigoCard({ a }: { a: Artigo }) {
         </div>
       ) : (
         /* Comunicado — sem imagem, estilo diferente */
-        <div className="h-12 bg-red/10 flex items-center px-5 gap-2 flex-shrink-0">
+        <div
+          className={`bg-red/10 flex items-center gap-2 flex-shrink-0 ${
+            isList ? "h-10 sm:h-auto sm:w-64 px-5 sm:flex-col sm:justify-center sm:items-start" : "h-12 px-5"
+          }`}
+        >
           <FileText size={14} className="text-red flex-shrink-0" />
           <span className="font-body text-[10px] font-black uppercase tracking-widest text-red">
             Comunicado Oficial
@@ -67,10 +77,14 @@ function ArtigoCard({ a }: { a: Artigo }) {
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-5 gap-3">
-        <h3 className="font-headline font-black italic text-lg uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300 line-clamp-2">
+        <h3 className={`font-headline font-black italic uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300 line-clamp-2 ${
+          isList ? "text-xl md:text-2xl" : "text-lg"
+        }`}>
           {a.titulo}
         </h3>
-        <p className="font-body text-sm text-on-surface-muted leading-relaxed line-clamp-2 flex-1">
+        <p className={`font-body text-sm text-on-surface-muted leading-relaxed flex-1 ${
+          isList ? "line-clamp-3" : "line-clamp-2"
+        }`}>
           {a.excerto}
         </p>
         <div className="flex items-center justify-between pt-2 border-t border-on-surface/10">
@@ -97,19 +111,18 @@ interface Props {
   artigos: Artigo[];
 }
 
+const PAGE = 9; // grid 3×3
+
 export default function NoticiasGrid({ artigos }: Props) {
-  const [activeCategoria, setActiveCategoria] = useState<Categoria | "Tudo">("Tudo");
-  const [visibleCount, setVisibleCount]       = useState(6);
+  const [view, setView]                 = useState<View>("grid");
+  const [visibleCount, setVisibleCount] = useState(PAGE);
   const gridRef    = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const filtered = activeCategoria === "Tudo"
-    ? artigos
-    : artigos.filter((a) => a.categoria === activeCategoria);
-  const visible  = filtered.slice(0, visibleCount);
-  const hasMore  = visibleCount < filtered.length;
+  const visible = artigos.slice(0, visibleCount);
+  const hasMore = visibleCount < artigos.length;
 
-  // Re-animate on filter change
+  // Re-animate on view change
   useEffect(() => {
     if (!gridRef.current) return;
     gsap.fromTo(
@@ -117,7 +130,7 @@ export default function NoticiasGrid({ artigos }: Props) {
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.45, stagger: 0.06, ease: "power2.out" }
     );
-  }, [activeCategoria]);
+  }, [view]);
 
   // Scroll entrance
   useEffect(() => {
@@ -135,35 +148,50 @@ export default function NoticiasGrid({ artigos }: Props) {
     <section ref={sectionRef} className="bg-surface py-12 md:py-16">
       <div className="section-container">
 
-        {/* Filter bar */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 pb-6 border-b border-on-surface/10">
-          {CATEGORIAS.map((cat) => (
+        {/* View toggle */}
+        <div className="flex items-center justify-between mb-10 pb-6 border-b border-on-surface/10">
+          <span className="font-body text-xs text-on-surface-muted">
+            {artigos.length} artigo{artigos.length !== 1 ? "s" : ""}
+          </span>
+          <div className="flex items-center gap-px bg-on-surface/10">
             <button
-              key={cat}
-              onClick={() => { setActiveCategoria(cat); setVisibleCount(6); }}
-              className={`font-body font-semibold text-xs uppercase tracking-wider px-4 py-2 transition-all duration-200 ${
-                activeCategoria === cat
-                  ? "bg-yellow text-black"
-                  : "bg-surface-high text-on-surface-muted hover:text-on-surface hover:bg-surface-highest"
+              onClick={() => setView("grid")}
+              aria-label="Ver em grelha"
+              aria-pressed={view === "grid"}
+              className={`flex items-center gap-2 font-body font-semibold text-xs uppercase tracking-wider px-4 py-2 transition-all duration-200 ${
+                view === "grid" ? "bg-yellow text-black" : "bg-surface-high text-on-surface-muted hover:text-on-surface"
               }`}
             >
-              {cat}
+              <LayoutGrid size={14} />
+              <span className="hidden sm:inline">Grelha</span>
             </button>
-          ))}
-          <span className="ml-auto font-body text-xs text-on-surface-muted hidden sm:inline">
-            {filtered.length} artigo{filtered.length !== 1 ? "s" : ""}
-          </span>
+            <button
+              onClick={() => setView("list")}
+              aria-label="Ver em lista"
+              aria-pressed={view === "list"}
+              className={`flex items-center gap-2 font-body font-semibold text-xs uppercase tracking-wider px-4 py-2 transition-all duration-200 ${
+                view === "list" ? "bg-yellow text-black" : "bg-surface-high text-on-surface-muted hover:text-on-surface"
+              }`}
+            >
+              <List size={14} />
+              <span className="hidden sm:inline">Lista</span>
+            </button>
+          </div>
         </div>
 
-        {/* Grid */}
+        {/* Articles */}
         {visible.length > 0 ? (
           <>
             <div
               ref={gridRef}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-on-surface/10"
+              className={
+                view === "grid"
+                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-on-surface/10"
+                  : "flex flex-col gap-px bg-on-surface/10"
+              }
             >
               {visible.map((a) => (
-                <ArtigoCard key={a.slug} a={a} />
+                <ArtigoCard key={a.slug} a={a} view={view} />
               ))}
             </div>
 
@@ -171,7 +199,7 @@ export default function NoticiasGrid({ artigos }: Props) {
             {hasMore && (
               <div className="text-center mt-12">
                 <button
-                  onClick={() => setVisibleCount((c) => c + 6)}
+                  onClick={() => setVisibleCount((c) => c + PAGE)}
                   className="btn-ghost text-sm"
                 >
                   Carregar mais notícias
@@ -181,7 +209,7 @@ export default function NoticiasGrid({ artigos }: Props) {
           </>
         ) : (
           <div className="py-24 text-center text-on-surface-muted font-body">
-            Não existem artigos nesta categoria.
+            Ainda não existem notícias.
           </div>
         )}
       </div>

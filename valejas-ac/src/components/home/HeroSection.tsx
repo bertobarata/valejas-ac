@@ -98,13 +98,7 @@ function initThreeParticles(canvas: HTMLCanvasElement) {
 /* ──────────────────────────────────────────────────────────────────
    Hero Section Component
    ────────────────────────────────────────────────────────────────── */
-export type HeroDestaque = { tipo: string; titulo: string; href: string };
-
-export default function HeroSection({
-  destaques = [],
-}: {
-  destaques?: HeroDestaque[];
-}) {
+export default function HeroSection() {
   const sectionRef  = useRef<HTMLElement>(null);
   const canvasRef   = useRef<HTMLCanvasElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -247,27 +241,6 @@ export default function HeroSection({
               Últimos Jogos
             </Link>
           </div>
-
-          {/* Destaques — comunicado + notícia mais recentes, já no hero */}
-          {destaques.length > 0 && (
-            <div className="mt-12 flex flex-col gap-px bg-white/10 max-w-2xl">
-              {destaques.map((d) => (
-                <Link
-                  key={d.href + d.titulo}
-                  href={d.href}
-                  className="group flex items-center gap-4 bg-black/40 hover:bg-black/60 px-5 py-4 transition-colors"
-                >
-                  <span className="font-body text-[10px] font-bold uppercase tracking-widest text-yellow shrink-0 w-24">
-                    {d.tipo}
-                  </span>
-                  <span className="font-body text-sm text-white/90 group-hover:text-white truncate flex-1">
-                    {d.titulo}
-                  </span>
-                  <span className="text-yellow shrink-0 transition-transform group-hover:translate-x-1" aria-hidden>→</span>
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
 
           {/* Emblema gigante — preponderância do crest; encolhe p/ a navbar no scroll */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronDown } from "lucide-react";
@@ -110,19 +111,17 @@ export default function EmblemHero() {
             {/* Glow on hover */}
             <div className="absolute -inset-4 bg-yellow/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-            {/* Crest placeholder — replace with <Image> when real crest is ready */}
+            {/* Emblema oficial */}
             <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 flex items-center justify-center transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-3">
-              <div
-                className="w-full h-full rounded-none border-4 border-yellow/20 flex items-center justify-center bg-surface-mid relative overflow-hidden"
+              <Image
+                src="/brand/crest.png"
+                alt="Emblema do Valejas Atlético Clube"
+                width={384}
+                height={384}
+                priority
+                className="w-full h-full object-contain"
                 style={{ filter: "drop-shadow(0 0 50px rgba(250,219,9,0.15))" }}
-              >
-                <div className="absolute inset-0 bg-diagonal-stripe opacity-50" />
-                <div className="text-center relative z-10">
-                  <p className="font-headline font-black text-8xl text-yellow leading-none">V</p>
-                  <p className="font-body text-xs uppercase tracking-[0.4em] text-on-surface-muted mt-2">Atlético Clube</p>
-                  <p className="font-body text-[9px] uppercase tracking-widest text-on-surface-muted/60 mt-1">Est. 1944</p>
-                </div>
-              </div>
+              />
             </div>
           </div>
 

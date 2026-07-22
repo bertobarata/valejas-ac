@@ -2,21 +2,19 @@ import type { Metadata } from "next";
 import SociosHero from "@/components/socios/SociosHero";
 import PlanosSocios from "@/components/socios/PlanosSocios";
 import FichaInscricao from "@/components/socios/FichaInscricao";
-import ContactoSection from "@/components/socios/ContactoSection";
 
 export const metadata: Metadata = {
-  title: "Sócios & Contacto",
+  title: "Sócios",
   description:
-    "Torna-te sócio do Valejas AC. Planos, benefícios, ficha de inscrição e contactos do clube.",
+    "Torna-te sócio do Valejas AC. Planos, benefícios e ficha de inscrição. Faz parte da família do clube.",
 };
 
-export default function SociosContactoPage() {
+export default function SociosPage() {
   return (
     <>
       <SociosHero />
       <PlanosSocios />
       <FichaInscricao />
-      <ContactoSection />
     </>
   );
 }

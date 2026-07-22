@@ -5,7 +5,8 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon, Ticket, Instagram, Facebook, Youtube } from "lucide-react";
+import { Menu, X, Sun, Moon, Ticket } from "lucide-react";
+import { WhatsAppIcon, InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { CONTACTO } from "@/lib/data/socios";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -23,6 +24,7 @@ const NAV_ITEMS = [
   { label: "Modalidades", href: "/modalidades" },
   { label: "Loja",        href: STORE_URL, external: true },
   { label: "Sócios",      href: "/socios-contacto" },
+  { label: "Contactos",   href: "/contactos" },
 ];
 
 export default function Navbar() {
@@ -295,14 +297,17 @@ export default function Navbar() {
             {/* Social + theme */}
             <div className="mobile-bottom flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="Instagram">
-                  <Instagram size={20} />
+                <a href={`https://wa.me/${CONTACTO.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#25D366] transition-colors" aria-label="WhatsApp">
+                  <WhatsAppIcon size={20} />
                 </a>
-                <a href={CONTACTO.redesSociais.facebook} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="Facebook">
-                  <Facebook size={20} />
+                <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#E4405F] transition-colors" aria-label="Instagram">
+                  <InstagramIcon size={20} />
                 </a>
-                <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="YouTube">
-                  <Youtube size={20} />
+                <a href={CONTACTO.redesSociais.facebook} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#1877F2] transition-colors" aria-label="Facebook">
+                  <FacebookIcon size={20} />
+                </a>
+                <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#FF0000] transition-colors" aria-label="YouTube">
+                  <YouTubeIcon size={20} />
                 </a>
               </div>
               <span className="font-body text-[10px] text-on-surface-muted uppercase tracking-widest">

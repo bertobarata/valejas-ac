@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from "lucide-react";
 import { CONTACTO } from "@/lib/data/socios";
 import { submitToFormspree } from "@/lib/formspree";
+import { WhatsAppIcon, InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,6 +93,22 @@ export default function ContactoSection() {
               </div>
             </div>
 
+            {/* WhatsApp */}
+            <a
+              href={`https://wa.me/${CONTACTO.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10 hover:border-[#25D366]/50 transition-colors group"
+            >
+              <WhatsAppIcon size={18} className="text-[#25D366] flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-1">WhatsApp</p>
+                <span className="font-body text-sm text-on-surface group-hover:text-[#25D366] transition-colors duration-200">
+                  Enviar mensagem
+                </span>
+              </div>
+            </a>
+
             {/* Morada */}
             <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
               <MapPin size={18} className="text-red flex-shrink-0 mt-0.5" />
@@ -120,6 +137,29 @@ export default function ContactoSection() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+
+            {/* Redes sociais */}
+            <div className="contacto-block bg-surface-high p-6 border border-on-surface/10">
+              <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-4">Segue-nos</p>
+              <div className="flex items-center gap-3">
+                <a href={`https://wa.me/${CONTACTO.whatsapp}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#25D366] hover:text-white transition-all duration-200">
+                  <WhatsAppIcon size={18} />
+                </a>
+                <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#E4405F] hover:text-white transition-all duration-200">
+                  <InstagramIcon size={18} />
+                </a>
+                <a href={CONTACTO.redesSociais.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#1877F2] hover:text-white transition-all duration-200">
+                  <FacebookIcon size={18} />
+                </a>
+                <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#FF0000] hover:text-white transition-all duration-200">
+                  <YouTubeIcon size={18} />
+                </a>
               </div>
             </div>
           </div>
@@ -223,13 +263,16 @@ export default function ContactoSection() {
           {/* Map placeholder */}
           <div className="lg:col-span-3 contacto-block">
             <div className="h-full min-h-[300px] bg-surface-high relative overflow-hidden flex flex-col">
-              {/* OpenStreetMap embed — replace src with real coordinates */}
+              {/* Google Maps embed — morada real do clube */}
               <iframe
                 title="Localização Valejas AC"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-9.3200%2C38.8700%2C-9.2800%2C38.9000&layer=mapnik&marker=38.8850%2C-9.3000"
-                className="flex-1 w-full border-0 grayscale contrast-125 dark:invert dark:hue-rotate-180 min-h-[300px]"
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                  `${CONTACTO.morada}, ${CONTACTO.codigoPostal}, ${CONTACTO.concelho}`
+                )}&z=16&output=embed`}
+                className="flex-1 w-full border-0 min-h-[300px]"
                 loading="lazy"
-                referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
               />
               {/* Address overlay */}
               <div className="bg-surface-highest px-5 py-4 border-t border-on-surface/10">
