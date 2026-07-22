@@ -57,7 +57,7 @@ export default function ClubIdentitySection() {
         aria-hidden
         style={{
           background:
-            "linear-gradient(135deg, transparent 45%, rgba(212,21,12,0.08) 45%, rgba(212,21,12,0.08) 55%, transparent 55%)",
+            "linear-gradient(135deg, transparent 45%, rgba(250,219,9,0.08) 45%, rgba(250,219,9,0.08) 55%, transparent 55%)",
         }}
       />
 
@@ -70,19 +70,17 @@ export default function ClubIdentitySection() {
               O Nosso Emblema
             </p>
             <h2 className="identity-text font-headline font-black text-5xl md:text-6xl uppercase leading-none tracking-tighter text-on-surface mb-6">
-              A Faixa{" "}
-              <span className="text-red">Sagrada</span>
+              A Nossa{" "}
+              <span className="text-yellow">Águia</span>
             </h2>
             <p className="identity-text font-body text-base text-on-surface-muted leading-relaxed mb-4">
-              A faixa diagonal vermelha é mais do que uma escolha de design
-              — é a velocidade da nossa história. Inspirada no voo da águia
-              que guarda o nosso pavilhão, cada risca no nosso equipamento
-              carrega o peso de oito décadas de garra, glória e comunidade
-              no futsal e no futebol.
+              A águia do emblema guarda o nosso pavilhão e representa quem somos:
+              amarelo e azul, as cores do Valejas desde 1966. Quase seis décadas
+              de garra, formação e comunidade — no futsal e no futebol.
             </p>
             <ul className="identity-text space-y-3 mb-8">
               {[
-                { title: "Identidade Inabalável", desc: "Nunca mudámos as nossas cores. Mudámos o jogo." },
+                { title: "Identidade Inabalável", desc: "As nossas cores, amarelo e azul, desde o primeiro dia." },
                 { title: "Clube dos Sócios",       desc: "Construído pelas gentes de Valejas, para as gentes de Valejas." },
               ].map((item) => (
                 <li key={item.title} className="flex gap-3">

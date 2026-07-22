@@ -73,7 +73,7 @@ export default function EagleSection() {
 
           {/* Text */}
           <div className="order-1 lg:order-2 eagle-content space-y-6">
-            <span className="font-body font-black uppercase tracking-[0.3em] text-red text-xs">
+            <span className="font-body font-black uppercase tracking-[0.3em] text-yellow text-xs">
               Capítulo I
             </span>
             <h2 className="font-headline font-black italic text-6xl md:text-8xl uppercase leading-none tracking-tighter text-on-surface">

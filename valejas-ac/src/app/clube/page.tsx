@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import EmblemHero from "@/components/clube/EmblemHero";
 import EagleSection from "@/components/clube/EagleSection";
-import FaixaSagrada from "@/components/clube/FaixaSagrada";
 import ColorsBento from "@/components/clube/ColorsBento";
 import EmblemCTA from "@/components/clube/EmblemCTA";
 
@@ -16,7 +15,6 @@ export default function ClubePage() {
     <>
       <EmblemHero />
       <EagleSection />
-      <FaixaSagrada />
       <ColorsBento />
       <EmblemCTA />
     </>
