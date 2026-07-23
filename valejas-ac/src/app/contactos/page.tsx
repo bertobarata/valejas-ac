@@ -4,7 +4,7 @@ import ContactoSection from "@/components/socios/ContactoSection";
 export const metadata: Metadata = {
   title: "Contactos",
   description:
-    "Fala com o Valejas Atlético Clube — email, telefone, WhatsApp, morada e localização. Estamos em Valejas, Oeiras.",
+    "Fala com o Valejas Atlético Clube — email, telefone, morada e localização. Estamos em Valejas, Oeiras.",
 };
 
 export default function ContactosPage() {
@@ -30,7 +30,7 @@ export default function ContactosPage() {
           </h1>
           <p className="font-body text-lg text-white/80 max-w-xl leading-relaxed mt-6">
             Dúvidas, parcerias, imprensa ou inscrições — fala connosco por email,
-            telefone, WhatsApp ou passa pela sede do clube.
+            telefone ou passa pela sede do clube.
           </p>
         </div>
       </section>
