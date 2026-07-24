@@ -39,3 +39,8 @@ yarn-error.log*
 
 # Large media (decidir caso-a-caso — por agora trackeados)
 # valejas-ac/public/videos/
+
+# Imagens/downloads soltos na raiz (nao fazem parte da app)
+/*.jpg
+/*.jpeg
+/*.png
