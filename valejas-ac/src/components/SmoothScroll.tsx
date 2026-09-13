@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { registarScrollSuave } from "@/lib/scroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,6 +38,7 @@ export default function SmoothScroll({
       touchMultiplier: 1.5,
     });
     lenisRef.current = lenis;
+    registarScrollSuave(lenis);
 
     // Connect Lenis to GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
@@ -49,6 +51,7 @@ export default function SmoothScroll({
 
     return () => {
       gsap.ticker.remove(aoTick);
+      registarScrollSuave(null);
       lenis.destroy();
     };
   }, []);

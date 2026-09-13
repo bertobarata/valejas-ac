@@ -4,16 +4,17 @@ import { cookies } from "next/headers";
 import { ArrowLeft } from "lucide-react";
 import { sessaoValida, authConfigurada, COOKIE_SESSAO } from "@/lib/auth-direcao";
 import EntrarDirecao from "@/components/direcao/EntrarDirecao";
-import GestorJogos from "@/components/direcao/GestorJogos";
+import GestorEncomendas from "@/components/direcao/GestorEncomendas";
+import { PRAZO_ENCOMENDA_SEMANAS } from "@/lib/data/loja";
 
 export const metadata: Metadata = {
-  title: "Jogos — Área da Direção",
+  title: "Encomendas — Área da Direção",
   robots: { index: false, follow: false },
 };
 
 export const dynamic = "force-dynamic";
 
-export default function DirecaoJogosPage() {
+export default function DirecaoEncomendasPage() {
   const autenticado = sessaoValida(cookies().get(COOKIE_SESSAO)?.value);
 
   return (
@@ -28,13 +29,15 @@ export default function DirecaoJogosPage() {
 
         <header className="mb-12">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow">
-            Departamento de Comunicação
+            Loja do clube
           </p>
           <h1 className="font-headline font-black text-4xl md:text-6xl uppercase leading-none tracking-tighter text-on-surface mt-3">
-            Jogos e <span className="text-yellow">classificação</span>
+            <span className="text-yellow">Encomendas</span>
           </h1>
           <p className="font-body text-base text-on-surface-muted mt-4 max-w-2xl leading-relaxed">
-            O que guardares aqui aparece na página de jogos do site.
+            Percurso de cada encomenda: entra pelo site, pede-se ao fornecedor
+            o que falta, chega à sede, e alguém a vem buscar. O prazo prometido
+            a quem encomenda é de {PRAZO_ENCOMENDA_SEMANAS} semanas.
           </p>
         </header>
 
@@ -43,7 +46,7 @@ export default function DirecaoJogosPage() {
             Esta área ainda não está configurada no servidor.
           </p>
         ) : autenticado ? (
-          <GestorJogos />
+          <GestorEncomendas />
         ) : (
           <EntrarDirecao />
         )}

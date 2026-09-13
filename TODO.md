@@ -169,7 +169,8 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 - [x] **1** — Ênfase em ser sócio; ficha de inscrição; pagamento
 - [x] **2** — Presidente publica comunicados no site e nas redes com o emblema
 - [x] **3** — Modalidades reais, ênfase no futsal e na Academia Sénior
-- [ ] **4** — Refazer a loja (ver secção 7) — adiado
+- [~] **4** — Refazer a loja (ver secção 7) — construída com catálogo de exemplo;
+      falta a lista real de produtos e o pagamento ligado
 - [x] **5** — Página de órgãos sociais (Direção, Conselho Fiscal, MAG)
 - [x] **6** — Página da história (fundação, origens, localização com mapa)
 - [x] **7** — Mote, patrocinadores e instalações
@@ -181,7 +182,35 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 
 ## 7. Ponto 4 da reunião — Refazer a loja
 
-> Adiado por decisão do Berto (13/09/2026). Registado agora para não se perder.
+> Construída a 13/09/2026. O que segue descreve o que ficou feito, o que
+> está por decidir, e o que ainda falta ligar.
+
+### O que já está no site
+
+| Página | O que faz |
+|---|---|
+| `/loja` | Catálogo por categorias, kit de formação em destaque, escolha de tamanho, stock por tamanho, personalização com nome e número |
+| `/loja/carrinho` | Revisão da encomenda, identificação de quem encomenda, escolha entre sinal e pagamento total, envio |
+| `/api/loja/encomenda` | Revalida tudo no servidor (os preços vêm do catálogo, nunca do browser), envia email ao clube e recibo a quem encomendou, cria o registo no Sanity |
+| `/direcao/encomendas` | Lista das encomendas, resumo do que há a pedir ao fornecedor, estados *recebida → encomendada → pronta → levantada*, marcação de pagamento e notas internas |
+
+O carrinho vive no `localStorage` do browser. A encomenda em si não
+depende do CMS: se o Sanity estiver em baixo, o email continua a sair e a
+encomenda existe na caixa de correio do clube.
+
+### O que falta para isto ir para o ar
+
+- [ ] **Catálogo real.** O que lá está é exemplo — ver
+      `CATALOGO_DE_EXEMPLO = true` em `src/lib/data/loja.ts`. Falta a lista
+      da ZEMIG com nomes, preços, tamanhos e stock da sede
+- [ ] **Percentagem do sinal.** Está em 30% (`SINAL_PERCENTAGEM`), número
+      inventado por falta de decisão. Num kit de 85 € dá 25,50 €
+- [ ] **Pagamento ligado.** O site regista a encomenda e diz o valor; os
+      dados de pagamento seguem no email. Falta decidir se o MB WAY e a
+      referência das quotas passam também a servir a loja
+- [ ] **Fotografias dos produtos.** O catálogo aceita imagem, não há nenhuma
+- [ ] **Sanity configurado no servidor**, senão `/direcao/encomendas` só
+      mostra o aviso de CMS em falta
 
 ### Objetivo
 
@@ -205,13 +234,14 @@ Consequências, todas a favor:
 
 ### Categorias pedidas
 
-- [ ] Material de jogo
-- [ ] Material de treino
-- [ ] **Kit obrigatório de formação** — com destaque próprio.
-      Três variantes: principal, alternativo e treino
-- [ ] Produtos personalizados (nome, número)
-- [ ] Material sazonal
-- [ ] (a Direção deve fechar a lista)
+Todas construídas em `src/lib/data/loja.ts`, à espera dos produtos reais.
+
+- [x] Material de jogo
+- [x] Material de treino
+- [x] **Kit obrigatório de formação** — com destaque próprio, a preço fechado
+- [x] Produtos personalizados (nome, número)
+- [x] Material sazonal
+- [ ] (a Direção deve fechar a lista de produtos dentro de cada categoria)
 
 ### Pagamento
 
@@ -244,14 +274,16 @@ levantamento. Se a Direção insistir, o mais simples é o comprovativo ser
 carregado no próprio site em vez de enviado por email — pelo menos fica
 agarrado à encomenda em vez de perdido na caixa de correio.
 
-### Por decidir antes de construir
+### Decisões já tomadas (13/09/2026)
 
-- [ ] Catálogo real: que produtos, que tamanhos, que preços
-- [ ] O kit obrigatório de formação é **um pacote a preço fechado** ou
-      peças soltas que o sócio junta?
-- [ ] O sinal de reserva é percentagem ou valor fixo?
-- [ ] Há stock a controlar, ou encomenda-se sempre ao fornecedor?
-      Isto muda completamente o que é preciso construir
-- [ ] Quem trata das encomendas no clube, e onde as vê
+- Kit de formação: **pacote a preço fechado**
+- Stock: há stock na sede e prazo máximo de **2 semanas** para o que falta
+- Levantamento **sempre na sede**, nunca envio para casa
+- Pagamento: o sócio escolhe entre **sinal online** e **pagamento total**
+- Quem trata das encomendas: a Direção, em `/direcao/encomendas`
+
+### Ainda por decidir
+
+- [ ] Percentagem do sinal (está em 30% por omissão)
 - [ ] Preços diferentes para sócios?
 - [ ] Fotografias dos produtos — existem, ou é preciso produzi-las?

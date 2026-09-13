@@ -26,6 +26,7 @@ import {
   validarTelefoneFixo, validarEmail, validarDataNascimento,
   validarValidadeCC, validarNomeCompleto, eMenor, calcularIdade,
 } from "@/lib/validacao";
+import { irParaOTopo } from "@/lib/scroll";
 
 type Campos = Record<keyof PropostaSocio, string>;
 
@@ -210,13 +211,13 @@ export default function PropostaSocioForm() {
 
     if (passoValido(passo)) {
       setPasso((p) => Math.min(p + 1, PASSOS.length - 1));
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      irParaOTopo();
     }
   }
 
   function recuar() {
     setPasso((p) => Math.max(p - 1, 0));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    irParaOTopo();
   }
 
   /** Envia a ficha para o clube. Só corre depois de resolvido o pagamento. */
@@ -239,7 +240,7 @@ export default function PropostaSocioForm() {
         return;
       }
       setEnviado(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      irParaOTopo();
     } catch {
       setErros(["Falha de ligação. Verifica a internet e tenta novamente."]);
     } finally {
