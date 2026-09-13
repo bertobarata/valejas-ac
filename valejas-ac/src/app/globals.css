@@ -3,7 +3,6 @@
    Design System: Valejas — azul & amarelo, casa quente
    ═══════════════════════════════════════════════════════════════════ */
 
-@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,700;0,900;1,900&family=Manrope:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -95,6 +94,14 @@
 }
 
 /* ── 3. DESIGN SYSTEM COMPONENTS ────────────────────────────────────*/
+@layer utilities {
+  /* Eixo de largura da Archivo. Títulos grandes ganham em apertar;
+     texto pequeno e etiquetas ficam melhor na largura normal. */
+  .wdth-condensed { font-stretch: 87.5%; }
+  .wdth-normal    { font-stretch: 100%; }
+  .wdth-wide      { font-stretch: 112.5%; }
+}
+
 @layer components {
 
   /* ── Buttons ── */
@@ -115,7 +122,7 @@
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 px-6 py-3 border border-on-surface/20 text-on-surface font-headline font-bold text-sm uppercase tracking-wider rounded-none transition-all duration-200;
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-on-surface/20 text-on-surface font-headline font-black text-sm uppercase tracking-wider rounded-none transition-all duration-200;
   }
   .btn-ghost:hover {
     @apply border-yellow text-yellow bg-yellow/5;
@@ -159,7 +166,7 @@
 
   /* ── Section headings ── */
   .section-title {
-    @apply font-headline font-black text-4xl md:text-5xl uppercase leading-none tracking-tighter;
+    @apply font-headline font-black text-4xl md:text-5xl uppercase leading-none tracking-tighter wdth-condensed;
   }
   .section-title span {
     @apply text-yellow;
@@ -236,20 +243,6 @@
   /* Red glow for urgency states */
   .glow-red {
     box-shadow: 0 0 20px rgba(195,0,1,0.35), 0 0 40px rgba(195,0,1,0.15);
-  }
-
-  /* 3D flip card utilities */
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-  .preserve-3d {
-    transform-style: preserve-3d;
-  }
-  .backface-hidden {
-    backface-visibility: hidden;
-  }
-  .rotate-y-180 {
-    transform: rotateY(180deg);
   }
 
   /* Text stroke for editorial headings */

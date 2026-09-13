@@ -12,7 +12,7 @@ const STANDINGS = [
 export default function TabelaClassificativa() {
   return (
     <div className="bg-surface-mid p-6">
-      <h3 className="font-headline font-black italic text-2xl uppercase tracking-tighter text-on-surface mb-6">
+      <h3 className="font-headline font-black text-2xl uppercase tracking-tighter text-on-surface mb-6">
         Tabela Classificativa
       </h3>
 

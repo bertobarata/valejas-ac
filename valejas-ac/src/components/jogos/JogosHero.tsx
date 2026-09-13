@@ -71,7 +71,7 @@ export default function JogosHero() {
             </div>
 
             {/* Title */}
-            <h1 className="font-headline font-black italic text-7xl md:text-9xl uppercase leading-none tracking-tighter text-yellow glow-yellow">
+            <h1 className="font-headline font-black text-7xl md:text-9xl uppercase leading-none tracking-tighter text-yellow glow-yellow">
               {NEXT_MATCH.title[0]}<br />
               {NEXT_MATCH.title[1]}
             </h1>
@@ -111,7 +111,7 @@ export default function JogosHero() {
                   </span>
                 </div>
 
-                <div className="font-headline font-black text-5xl italic text-on-surface-muted">VS</div>
+                <div className="font-headline font-black text-5xl text-on-surface-muted">VS</div>
 
                 {/* Away */}
                 <div className="text-center">

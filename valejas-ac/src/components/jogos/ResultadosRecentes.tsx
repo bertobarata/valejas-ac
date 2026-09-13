@@ -66,7 +66,7 @@ export default function ResultadosRecentes() {
     <div ref={sectionRef}>
       {/* Header */}
       <div className="flex items-center gap-4 mb-8">
-        <h2 className="font-headline font-black italic text-4xl uppercase tracking-tighter text-on-surface">
+        <h2 className="font-headline font-black text-4xl uppercase tracking-tighter text-on-surface">
           Resultados Recentes
         </h2>
         <div className="h-px flex-1 bg-gradient-to-r from-blue to-transparent" />
@@ -98,12 +98,12 @@ export default function ResultadosRecentes() {
 
               {/* Score */}
               <div className="flex flex-col items-center gap-1">
-                <div className="font-headline font-black italic text-3xl text-on-surface">
+                <div className="font-headline font-black text-3xl text-on-surface">
                   {r.homeGoals}
                   <span className="text-yellow mx-1">–</span>
                   {r.awayGoals}
                 </div>
-                <span className={`font-body font-black text-[9px] uppercase tracking-tight px-2 py-0.5 ${OUTCOME_STYLES[r.outcome]}`}>
+                <span className={`font-body font-bold text-[9px] uppercase tracking-tight px-2 py-0.5 ${OUTCOME_STYLES[r.outcome]}`}>
                   {OUTCOME_LABEL[r.outcome]}
                 </span>
               </div>

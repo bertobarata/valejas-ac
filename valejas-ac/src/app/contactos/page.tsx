@@ -25,7 +25,7 @@ export default function ContactosPage() {
           <p className="font-body font-semibold text-xs uppercase tracking-[0.35em] text-yellow mb-4">
             Estamos aqui para ti
           </p>
-          <h1 className="font-headline font-black italic text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
+          <h1 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
             Contactos
           </h1>
           <p className="font-body text-lg text-white/80 max-w-xl leading-relaxed mt-6">

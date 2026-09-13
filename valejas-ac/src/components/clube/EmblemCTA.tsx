@@ -40,7 +40,7 @@ export default function EmblemCTA() {
       />
 
       <div className="section-container relative z-10 text-center emblem-cta-content">
-        <h2 className="font-headline font-black italic text-6xl md:text-8xl uppercase tracking-tighter leading-none mb-12 text-on-surface">
+        <h2 className="font-headline font-black text-6xl md:text-8xl uppercase tracking-tighter leading-none mb-12 text-on-surface">
           Veste o{" "}
           <span
             className="text-yellow block"
@@ -59,7 +59,7 @@ export default function EmblemCTA() {
           >
             Visitar a Loja
           </a>
-          <Link href="/socios-contacto" className="btn-ghost text-base px-10 py-5">
+          <Link href="/socios/inscricao" className="btn-ghost text-base px-10 py-5">
             Tornar-se Sócio
           </Link>
         </div>

@@ -217,7 +217,7 @@ export default function HeroSection() {
           {/* Main headline — overlapping editorial style */}
           <h1
             ref={headlineRef}
-            className="font-headline font-black text-6xl md:text-8xl lg:text-[9rem] uppercase leading-none tracking-tighter text-white mb-6"
+            className="font-headline font-black wdth-condensed text-6xl md:text-8xl lg:text-[9rem] uppercase leading-none tracking-tighter text-white mb-6"
           >
             Somos Todos{" "}
             <span className="text-yellow block md:inline on-dark">Valejas</span>
@@ -228,7 +228,7 @@ export default function HeroSection() {
             ref={subRef}
             className="font-body text-lg text-white/80 max-w-md leading-relaxed mb-10"
           >
-            Desde 1966, o clube da nossa terra. Do futebol ao futsal, dos mais
+            Desde 1966, o clube da nossa terra. Do futsal ao atletismo, dos mais
             novos aos veteranos.
           </p>
 

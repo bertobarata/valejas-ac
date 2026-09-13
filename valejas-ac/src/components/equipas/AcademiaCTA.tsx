@@ -11,7 +11,7 @@ export default function AcademiaCTA() {
           <div className="relative min-h-[300px] bg-surface-highest overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-surface-mid to-surface" />
             <div className="absolute inset-0 flex items-center justify-center opacity-10">
-              <span className="font-headline font-black text-[12rem] text-yellow italic leading-none">V</span>
+              <span className="font-headline font-black text-[12rem] text-yellow leading-none">V</span>
             </div>
           </div>
 
@@ -20,7 +20,7 @@ export default function AcademiaCTA() {
             <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-yellow mb-4">
               O Futuro Começa Aqui
             </p>
-            <h2 className="font-headline font-black italic text-5xl md:text-6xl uppercase leading-none tracking-tighter text-on-surface mb-6">
+            <h2 className="font-headline font-black text-5xl md:text-6xl uppercase leading-none tracking-tighter text-on-surface mb-6">
               Formação <span className="text-yellow">Valejas</span>
             </h2>
             <p className="font-body text-base text-on-surface-muted leading-relaxed mb-8">

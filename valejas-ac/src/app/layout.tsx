@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { archivo, generalSans } from "./fonts";
 import { Providers } from "@/components/Providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
     template: "%s | Valejas AC",
   },
   description:
-    "Clube desportivo de Valejas, Oeiras. Futebol e futsal federados, forte na formação, mais aulas de comunidade. A casa do clube desde 1966.",
-  keywords: ["Valejas", "futebol", "futsal", "clube desportivo", "Oeiras", "AF Lisboa"],
+    "Clube desportivo de Valejas, Oeiras. Futsal e atletismo federados, forte na formação, mais judo, karate, dança, teatro e Academia Sénior. A casa do clube desde 1966.",
+  keywords: ["Valejas", "futsal", "atletismo", "clube desportivo", "Oeiras", "AF Lisboa", "academia sénior"],
   openGraph: {
     siteName: "Valejas Atlético Clube",
     locale: "pt_PT",
@@ -26,7 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt" suppressHydrationWarning>
+    <html
+      lang="pt"
+      suppressHydrationWarning
+      className={`${archivo.variable} ${generalSans.variable}`}
+    >
       <body>
         <Providers>
           <SmoothScroll>

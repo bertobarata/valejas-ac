@@ -5,18 +5,19 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
-import { MODALIDADES } from "@/lib/data/modalidades";
+import { MODALIDADES, type Grupo } from "@/lib/data/modalidades";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const GRUPO_LABEL: Record<string, string> = {
-  competicao: "Competição",
-  comunidade: "Comunidade",
+const GRUPO_LABEL: Record<Grupo, string> = {
+  desporto: "Desporto",
+  cultura:  "Cultura",
 };
-// Barra de acento por grupo: competição = amarelo, comunidade = azul.
-const GRUPO_ACCENT: Record<string, string> = {
-  competicao: "bg-yellow",
-  comunidade: "bg-blue",
+// Barra de acento por grupo. Tipado a Grupo de propósito: se algum dia
+// nascer outro grupo, isto deixa de compilar em vez de sair sem cor.
+const GRUPO_ACCENT: Record<Grupo, string> = {
+  desporto: "bg-yellow",
+  cultura:  "bg-blue",
 };
 
 export default function ModalidadesGrid() {
@@ -71,8 +72,26 @@ export default function ModalidadesGrid() {
                 {featured.nome}
               </h3>
               <p className="font-body text-sm text-on-surface-muted mt-3 leading-relaxed">
-                {featured.tagline}. {featured.publico}.
+                {featured.descricao}
               </p>
+
+              {(featured.equipas || featured.escaloes) && (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {featured.equipas?.map((e) => (
+                    <span
+                      key={e.nome}
+                      className="font-body text-xs uppercase tracking-widest text-on-surface border border-on-surface/20 px-3 py-1"
+                    >
+                      {e.nome}
+                    </span>
+                  ))}
+                  {featured.escaloes && (
+                    <span className="font-body text-xs uppercase tracking-widest text-blue-deep bg-yellow px-3 py-1">
+                      {featured.escaloes.length} escalões
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="flex items-end justify-between">

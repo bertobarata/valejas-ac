@@ -5,7 +5,7 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon, Ticket } from "lucide-react";
+import { Menu, X, Sun, Moon, UserPlus } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { CONTACTO } from "@/lib/data/socios";
 import gsap from "gsap";
@@ -22,6 +22,7 @@ const NAV_ITEMS = [
   { label: "Início",      href: "/" },
   { label: "Comunicados", href: "/comunicados" },
   { label: "Modalidades", href: "/modalidades" },
+  { label: "Academia",    href: "/academia-senior" },
   { label: "Loja",        href: STORE_URL, external: true },
   { label: "Sócios",      href: "/socios-contacto" },
   { label: "Contactos",   href: "/contactos" },
@@ -201,10 +202,10 @@ export default function Navbar() {
               </button>
             )}
 
-            {/* Bilhetes CTA — vermelho = urgência */}
-            <Link href="/jogos" className="btn-danger hidden sm:inline-flex text-xs py-2 px-4">
-              <Ticket size={14} />
-              Bilhetes
+            {/* Sócios CTA — ação principal do site */}
+            <Link href="/socios/inscricao" className="btn-primary hidden sm:inline-flex text-xs py-2 px-4">
+              <UserPlus size={14} />
+              Fazer Sócio
             </Link>
 
             {/* Mobile hamburger */}
@@ -230,7 +231,7 @@ export default function Navbar() {
         >
           {/* Crest watermark */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span className="font-headline font-black italic text-[22rem] text-on-surface/[0.02] leading-none select-none">
+            <span className="font-headline font-black text-[22rem] text-on-surface/[0.02] leading-none select-none">
               V
             </span>
           </div>
@@ -245,7 +246,7 @@ export default function Navbar() {
           >
             {NAV_ITEMS.map((item, i) => {
               const itemClass = clsx(
-                "mobile-nav-item block py-2 font-headline font-black italic uppercase leading-[0.9] tracking-tighter transition-colors duration-200",
+                "mobile-nav-item block py-2 font-headline font-black uppercase leading-[0.9] tracking-tighter transition-colors duration-200",
                 "text-5xl sm:text-6xl md:text-7xl",
                 !item.external && pathname === item.href
                   ? "text-yellow"
@@ -284,14 +285,14 @@ export default function Navbar() {
 
           {/* Bottom bar — social + CTA */}
           <div className="px-8 sm:px-12 pb-10 flex flex-col gap-5">
-            {/* Ticket CTA */}
+            {/* Sócios CTA */}
             <Link
-              href="/jogos"
+              href="/socios/inscricao"
               onClick={closeMenu}
-              className="mobile-bottom btn-danger w-full justify-center text-base py-4"
+              className="mobile-bottom btn-primary w-full justify-center text-base py-4"
             >
-              <Ticket size={18} />
-              Comprar Bilhetes
+              <UserPlus size={18} />
+              Fazer Sócio
             </Link>
 
             {/* Social + theme */}

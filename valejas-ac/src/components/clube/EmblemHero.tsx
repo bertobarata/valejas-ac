@@ -78,7 +78,7 @@ export default function EmblemHero() {
           {/* Left — text */}
           <div className="lg:col-span-7 emblem-hero-text space-y-6">
             <h1
-              className="font-headline font-black italic text-[13vw] lg:text-[8rem] uppercase leading-[0.8] tracking-tighter text-on-surface"
+              className="font-headline font-black text-[13vw] lg:text-[8rem] uppercase leading-[0.8] tracking-tighter text-on-surface"
             >
               O Nosso{" "}
               <span
@@ -97,7 +97,7 @@ export default function EmblemHero() {
 
             <div className="flex items-center gap-3 pt-2">
               <div className="h-px w-10 bg-yellow" />
-              <span className="font-headline font-bold uppercase tracking-widest text-yellow text-sm">
+              <span className="font-headline font-black uppercase tracking-widest text-yellow text-sm">
                 Explora o emblema
               </span>
             </div>

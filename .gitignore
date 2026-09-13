@@ -44,3 +44,6 @@ yarn-error.log*
 /*.jpg
 /*.jpeg
 /*.png
+
+# Kit de fontes descarregado — o que é preciso está em valejas-ac/public/fonts/
+FontshareKit-*/

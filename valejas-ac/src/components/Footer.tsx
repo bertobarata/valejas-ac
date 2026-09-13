@@ -3,6 +3,7 @@ import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 import { STORE_URL } from "@/components/Navbar";
 import { CONTACTO } from "@/lib/data/socios";
+import { MODALIDADES } from "@/lib/data/modalidades";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
 const LINKS = {
@@ -11,16 +12,16 @@ const LINKS = {
     { label: "Comunicados",  href: "/comunicados" },
     { label: "Jogos",        href: "/jogos" },
     { label: "O Clube",      href: "/clube" },
+    { label: "Academia Sénior", href: "/academia-senior" },
+    { label: "Órgãos Sociais", href: "/orgaos-sociais" },
     { label: "Loja Oficial", href: STORE_URL, external: true },
     { label: "Sócios",       href: "/socios-contacto" },
+    { label: "Fazer Sócio",  href: "/socios/inscricao" },
   ],
-  modalidades: [
-    { label: "Futebol",       href: "/modalidades#futebol" },
-    { label: "Futsal",        href: "/modalidades#futsal" },
-    { label: "Kung Fu",       href: "/modalidades#kung-fu" },
-    { label: "Dança",         href: "/modalidades#danca" },
-    { label: "Yoga",          href: "/modalidades#yoga" },
-  ],
+  modalidades: MODALIDADES.map((m) => ({
+    label: m.nome,
+    href:  `/modalidades#${m.slug}`,
+  })),
   legal: [
     { label: "Política de Privacidade", href: "/privacidade" },
     { label: "Contactos",               href: "/contactos" },
@@ -56,7 +57,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="font-body text-sm text-on-surface-muted leading-relaxed max-w-xs">
-              O clube da nossa terra desde 1966. Futebol, futsal e comunidade,
+              O clube da nossa terra desde 1966. Futsal, atletismo e comunidade,
               no coração de Valejas.
             </p>
 

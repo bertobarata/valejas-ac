@@ -45,7 +45,7 @@ export default function ColorsBento() {
 
           {/* Azul */}
           <div className="bento-block md:col-span-5 bg-blue p-10 md:p-12 flex flex-col justify-between min-h-[320px] md:min-h-[420px] cursor-default">
-            <span className="font-headline font-bold text-white/30 text-2xl">02.</span>
+            <span className="font-headline font-black text-white/30 text-2xl">02.</span>
             <div>
               <h3 className="font-headline font-black text-4xl md:text-5xl uppercase tracking-tighter text-white mb-3">
                 Azul

@@ -2,7 +2,7 @@ export default function LiveTracker() {
   return (
     <div className="bg-blue p-6 relative overflow-hidden">
       {/* Background watermark */}
-      <div className="absolute -right-6 -bottom-6 font-headline font-black text-[8rem] text-white/5 leading-none select-none pointer-events-none uppercase italic">
+      <div className="absolute -right-6 -bottom-6 font-headline font-black text-[8rem] text-white/5 leading-none select-none pointer-events-none uppercase">
         Live
       </div>
 

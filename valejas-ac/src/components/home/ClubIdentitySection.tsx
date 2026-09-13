@@ -76,7 +76,7 @@ export default function ClubIdentitySection() {
             <p className="identity-text font-body text-base text-on-surface-muted leading-relaxed mb-4">
               A águia do emblema guarda o nosso pavilhão e representa quem somos:
               amarelo e azul, as cores do Valejas desde 1966. Quase seis décadas
-              de garra, formação e comunidade — no futsal e no futebol.
+              de garra, formação e comunidade — dos petizes à Academia Sénior.
             </p>
             <ul className="identity-text space-y-3 mb-8">
               {[

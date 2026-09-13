@@ -47,7 +47,7 @@ export default function CorpoTecnico() {
             <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-blue">
               O Estratego
             </p>
-            <h2 className="font-headline font-black italic text-6xl md:text-7xl uppercase leading-none tracking-tighter text-on-surface">
+            <h2 className="font-headline font-black text-6xl md:text-7xl uppercase leading-none tracking-tighter text-on-surface">
               Corpo{" "}
               <span className="text-yellow block">Técnico</span>
             </h2>
@@ -66,7 +66,7 @@ export default function CorpoTecnico() {
                   <span className="font-body text-xs font-bold uppercase text-on-surface-muted tracking-widest">
                     {s.role}
                   </span>
-                  <span className="font-headline font-black italic text-lg uppercase text-on-surface">
+                  <span className="font-headline font-black text-lg uppercase text-on-surface">
                     {s.name}
                   </span>
                 </div>
@@ -81,7 +81,7 @@ export default function CorpoTecnico() {
               <div className="aspect-[3/4] bg-surface-high flex items-end justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-surface-highest to-surface-mid" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                  <span className="font-headline font-black text-[8rem] text-on-surface italic">MR</span>
+                  <span className="font-headline font-black text-[8rem] text-on-surface">MR</span>
                 </div>
               </div>
               {/* Name badge */}
@@ -96,7 +96,7 @@ export default function CorpoTecnico() {
           <div className="lg:w-1/3 flex items-center corpo-tecnico-content">
             <div>
               <div className="text-5xl text-yellow font-headline leading-none mb-4">"</div>
-              <blockquote className="font-headline font-black italic text-xl md:text-2xl uppercase leading-tight text-on-surface mb-6">
+              <blockquote className="font-headline font-black text-xl md:text-2xl uppercase leading-tight text-on-surface mb-6">
                 Não jogamos apenas para ganhar. Jogamos para honrar a história
                 desta terra. Cada segundo em campo é pelo clube e pela nossa gente.
               </blockquote>

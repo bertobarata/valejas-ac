@@ -51,10 +51,14 @@ const config: Config = {
 
       // ── TYPOGRAPHY ───────────────────────────────────────────────────
       fontFamily: {
-        // Headline font: bold, editorial, kinetic
-        headline: ["Epilogue", "sans-serif"],
-        // Body font: clean, legible, functional
-        body:     ["Manrope", "sans-serif"],
+        // Títulos: Archivo variável — peso até 900, itálico e eixo de
+        // largura. Ver src/app/fonts.ts e as utilidades .wdth-* em globals.css.
+        headline: ["var(--font-headline)", "system-ui", "sans-serif"],
+        // Texto corrido: General Sans — limpa, moderna, legível.
+        body:     ["var(--font-body)", "system-ui", "sans-serif"],
+        // `font-display` é usado nas páginas mais editoriais e partilha
+        // a fonte dos títulos.
+        display:  ["var(--font-headline)", "system-ui", "sans-serif"],
       },
 
       // ── BORDER RADIUS ────────────────────────────────────────────────

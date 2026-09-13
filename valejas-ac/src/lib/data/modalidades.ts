@@ -1,13 +1,37 @@
 /**
  * CAMADA DE DADOS — MODALIDADES
  * ─────────────────────────────────────────────────────────────────
- * Dois mundos (confirmado com Berto 2026-07-20):
- *  - COMPETIÇÃO: futebol + futsal federados, forte na formação (escalões).
- *  - COMUNIDADE: aulas recreativas pagas, abertas à comunidade.
+ * Lista confirmada em reunião com a Direção (13/09/2026).
+ *
+ * Saíram da lista anterior, por não existirem: futebol de 11,
+ * futebol de 7, ciclismo, kung fu e yoga. Entraram: judo, karate
+ * e teatro. O ciclismo dá lugar ao cicloturismo.
+ *
+ * A Academia Sénior não é uma modalidade — é um programa
+ * comunitário e vive em @/lib/data/academiaSenior.ts.
  * ─────────────────────────────────────────────────────────────────
  */
 
-export type Grupo = "competicao" | "comunidade";
+/**
+ * Agrupar por "competição" e "comunidade" deixou de funcionar quando o
+ * karate e o cicloturismo passaram a competir: a fronteira ficou falsa.
+ * O eixo passa a ser a natureza da atividade — desporto ou cultura — e
+ * quem compete diz-se numa etiqueta, que é onde essa informação pertence.
+ */
+export type Grupo = "desporto" | "cultura";
+
+export type Genero = "masculino" | "feminino" | "misto";
+
+export interface Equipa {
+  nome:      string;
+  descricao: string;
+}
+
+export interface Parceria {
+  nome:      string;
+  descricao: string;
+  valores?:  string[];
+}
 
 export interface Modalidade {
   slug:      string;
@@ -16,102 +40,176 @@ export interface Modalidade {
   tagline:   string;
   descricao: string;
   publico:   string;
-  ancora?:   boolean;   // leva ao plantel (/equipas)
+  genero:    Genero;
+  /** Equipas seniores, quando existem. */
+  equipas?:  Equipa[];
+  /** Escalões de formação, pela ordem real de progressão. */
+  escaloes?: string[];
+  /** Modalidade entregue com outra entidade. */
+  parceria?: Parceria;
+  /** Há competição federada nesta modalidade. */
+  compete:   boolean;
+  /** Só existe para os mais novos — não há vertente sénior. */
+  apenasFormacao?: boolean;
+  /** Leva ao plantel em /equipas. */
+  ancora?:   boolean;
+  /** Modalidade âncora do clube — tratamento visual próprio. */
+  destaque?: boolean;
 }
 
 export const MODALIDADES: Modalidade[] = [
-  // ── Competição ────────────────────────────────────────────────
-  {
-    slug: "futebol",
-    nome: "Futebol",
-    grupo: "competicao",
-    tagline: "Do bairro para o campo",
-    descricao:
-      "Futebol de 11 na AF Lisboa, da equipa principal à formação. Juniores A (Sub-19), B (Sub-17), C (Sub-15) e Veteranos.",
-    publico: "Equipa principal, Juniores A/B/C e Veteranos",
-    ancora: true,
-  },
+  // ── Desportos ─────────────────────────────────────────────────
   {
     slug: "futsal",
     nome: "Futsal",
-    grupo: "competicao",
-    tagline: "Intensidade no pavilhão",
+    grupo: "desporto",
+    compete: true,
+    tagline: "A modalidade do clube",
     descricao:
-      "O maior projeto do clube. Equipa principal e B, formação dos Sub-9 aos Sub-19 (masculino e feminino) e Veteranos. Acompanha os jogos de todos os escalões.",
-    publico: "Sénior, formação Sub-9 a Sub-19, feminino e Veteranos",
+      "O maior projeto do Valejas. Equipa profissional no distrital da AF Lisboa, equipa B logo atrás, e um percurso de formação completo dos petizes aos juniores — um miúdo pode entrar no clube em criança e chegar a sénior sem nunca mudar de camisola.",
+    publico: "Seniores masculinos e formação masculina",
+    genero: "masculino",
+    equipas: [
+      {
+        nome: "Equipa A",
+        descricao: "Equipa profissional, a competir no distrital da AF Lisboa.",
+      },
+      {
+        nome: "Equipa B",
+        descricao: "Degrau entre a formação e a equipa principal.",
+      },
+    ],
+    escaloes: [
+      "Petizes",
+      "Traquinas",
+      "Benjamins",
+      "Infantis",
+      "Iniciados",
+      "Juvenis",
+      "Juniores",
+    ],
     ancora: true,
+    destaque: true,
   },
   {
-    slug: "futebol-7",
-    nome: "Futebol de 7",
-    grupo: "competicao",
-    tagline: "Os primeiros passos",
+    slug: "atletismo",
+    nome: "Atletismo",
+    grupo: "desporto",
+    compete: true,
+    tagline: "Correr é de toda a gente",
     descricao:
-      "O ponto de entrada dos mais novos no jogo. Campo mais curto, mais toques na bola, mais alegria.",
-    publico: "Camadas jovens (Sub-11)",
+      "Provas e treino regular, masculino e feminino, em todos os escalões — dos mais novos aos seniores.",
+    publico: "Masculino e feminino, todos os escalões",
+    genero: "misto",
   },
 
-  // ── Comunidade ────────────────────────────────────────────────
   {
-    slug: "ciclismo",
-    nome: "Ciclismo",
-    grupo: "comunidade",
-    tagline: "Estrada e grupo",
+    slug: "karate",
+    nome: "Karate",
+    grupo: "desporto",
+    compete: true,
+    tagline: "Técnica e cabeça fria",
     descricao:
-      "Treino e pedalada em grupo para quem leva a bicicleta a sério. Atividade paga, aberta à comunidade.",
-    publico: "Adultos",
+      "Arte marcial com treino regular e competição. Foco, postura e condição física — para quem começa do zero e para quem já compete.",
+    publico: "Jovens e adultos",
+    genero: "misto",
   },
   {
     slug: "cicloturismo",
     nome: "Cicloturismo",
-    grupo: "comunidade",
-    tagline: "Pedalar sem cronómetro",
+    grupo: "desporto",
+    compete: true,
+    tagline: "Estrada e grupo",
     descricao:
-      "Passeios pela região, ao ritmo de todos. Conhecer estradas e fazer companhia, sem pressão de competição.",
+      "Passeios pela região e provas em grupo. Há lugar para quem quer competir e para quem só quer pedalar acompanhado.",
     publico: "Todas as idades",
+    genero: "misto",
   },
+
+
   {
-    slug: "kung-fu",
-    nome: "Kung Fu",
-    grupo: "comunidade",
-    tagline: "Disciplina e corpo",
+    slug: "judo",
+    nome: "Judo",
+    grupo: "desporto",
+    compete: false,
+    apenasFormacao: true,
+    tagline: "Cair e levantar",
     descricao:
-      "Arte marcial para foco, técnica e condição física. Aulas para quem começa do zero e para quem quer evoluir.",
-    publico: "Jovens e adultos",
+      "Só formação, para os mais novos, nas instalações do clube. Uma parceria que traz a Valejas uma escola de judo infantil com anos de casa.",
+    publico: "Crianças e jovens",
+    genero: "misto",
+    parceria: {
+      nome: "Judokinhas Kobayashi",
+      descricao:
+        "Uma das maiores escolas de judo infantil do país, dirigida por Renato Kobayashi e com o nome ligado ao mestre Kiyoshi Kobayashi. As aulas acontecem nas instalações do Valejas.",
+      valores: [
+        "Disciplina e respeito",
+        "Autoconfiança",
+        "Cooperação e amizade",
+        "Autocontrolo",
+        "Espírito desportivo",
+      ],
+    },
   },
+
+  // ── Cultura e Comunidade ──────────────────────────────────────
+
   {
     slug: "danca",
     nome: "Dança",
-    grupo: "comunidade",
+    grupo: "cultura",
+    compete: false,
     tagline: "Movimento e expressão",
     descricao:
-      "Do ritmo à coreografia, para libertar, conviver e ganhar confiança. Turmas por idades.",
+      "Do ritmo à coreografia, para libertar, conviver e ganhar confiança.",
     publico: "Crianças, jovens e adultos",
+    genero: "misto",
   },
   {
-    slug: "yoga",
-    nome: "Yoga",
-    grupo: "comunidade",
-    tagline: "Respirar e equilibrar",
+    slug: "teatro",
+    nome: "Teatro",
+    grupo: "cultura",
+    compete: false,
+    tagline: "Subir ao palco",
     descricao:
-      "Aulas para força, flexibilidade e uma cabeça mais tranquila. Um espaço calmo dentro do clube.",
+      "Representar, ensaiar e mostrar. Trabalho de grupo, voz e presença — e público para ver o resultado.",
     publico: "Todas as idades",
+    genero: "misto",
   },
 ];
 
+/**
+ * Todas as modalidades têm vagas limitadas — ninguém se inscreve
+ * diretamente, fala-se com o clube primeiro. Vive aqui para o texto
+ * ser um só em todo o site.
+ */
+export const VAGAS = {
+  titulo: "Fala connosco primeiro",
+  texto:
+    "Cada modalidade tem poucos lugares. Diz-nos o que te interessa e " +
+    "respondemos logo se há vaga — antes de contares com ela.",
+  curto: "Vagas limitadas — fala com o clube antes de te inscreveres",
+};
+
 export const GRUPOS: { id: Grupo; titulo: string; intro: string }[] = [
   {
-    id: "competicao",
-    titulo: "Competição",
-    intro: "Futebol e futsal federados, com o clube a formar dos mais novos aos veteranos.",
+    id: "desporto",
+    titulo: "Desportos",
+    intro:
+      "Do pavilhão à pista e à estrada. Umas competem federadas, outras existem só para formar — está dito em cada uma.",
   },
   {
-    id: "comunidade",
-    titulo: "Comunidade",
-    intro: "Aulas recreativas abertas a todos, para mexer, respirar e conviver.",
+    id: "cultura",
+    titulo: "Cultura e Comunidade",
+    intro:
+      "Atividades para criar, mostrar e conviver, sem competição à mistura.",
   },
 ];
 
 export function getModalidadesPorGrupo(grupo: Grupo): Modalidade[] {
   return MODALIDADES.filter((m) => m.grupo === grupo);
+}
+
+export function getModalidade(slug: string): Modalidade | undefined {
+  return MODALIDADES.find((m) => m.slug === slug);
 }

@@ -54,7 +54,7 @@ export default function ContactoSection() {
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow mb-3">
             Fala Connosco
           </p>
-          <h2 className="font-headline font-black italic text-5xl md:text-6xl uppercase leading-none tracking-tighter text-on-surface">
+          <h2 className="font-headline font-black text-5xl md:text-6xl uppercase leading-none tracking-tighter text-on-surface">
             Contacto &{" "}
             <span className="text-yellow">Localização</span>
           </h2>
@@ -150,14 +150,14 @@ export default function ContactoSection() {
           {/* Right — contact form */}
           <div className="contacto-block">
             <div className="bg-surface-high p-8">
-              <h3 className="font-headline font-black italic text-2xl uppercase tracking-tighter text-on-surface mb-6">
+              <h3 className="font-headline font-black text-2xl uppercase tracking-tighter text-on-surface mb-6">
                 Envia-nos uma Mensagem
               </h3>
 
               {enviado ? (
                 <div className="flex flex-col items-center justify-center py-14 text-center gap-4">
                   <CheckCircle size={40} className="text-yellow" />
-                  <h4 className="font-headline font-black italic text-2xl uppercase text-on-surface">
+                  <h4 className="font-headline font-black text-2xl uppercase text-on-surface">
                     Mensagem enviada!
                   </h4>
                   <p className="font-body text-sm text-on-surface-muted">

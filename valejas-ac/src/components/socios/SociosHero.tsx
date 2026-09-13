@@ -43,13 +43,13 @@ export default function SociosHero() {
         <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow/80">
           Faz parte da família
         </p>
-        <h1 className="font-headline font-black italic text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
+        <h1 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
           Junta-te ao<br />
           <span className="text-yellow">clube</span>
         </h1>
         <p className="font-body text-lg text-white/70 max-w-xl leading-relaxed">
-          Faz parte da família Valejas. Escolhe o teu plano, preenche a ficha e
-          passa a viver o clube por dentro.
+          Faz parte da casa do Valejas. Um euro por mês, uma proposta preenchida,
+          e passas a viver o clube por dentro.
         </p>
       </div>
     </section>

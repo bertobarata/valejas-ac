@@ -1,327 +1,203 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+/**
+ * PLANTEL DE FUTSAL
+ * ─────────────────────────────────────────────────────────────────
+ * Decisão da Direção (13/09/2026):
+ *  - Não há equipa feminina de futsal → o filtro de género saiu.
+ *  - Não queremos estatísticas → saíram golos, assistências, defesas,
+ *    rating e jogos. A versão anterior tinha cartões que rodavam para
+ *    mostrar números; sem números, a rotação deixou de ter função.
+ *  - Não se mostra o plantel todo de uma vez. Escolhe-se uma equipa,
+ *    e as equipas aparecem dos mais velhos para os mais novos.
+ *
+ * O que fica é o que um plantel precisa de ter: quem é, que número
+ * veste e onde joga, arrumado por posição.
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+import { useEffect, useMemo, useRef, useState } from "react";
+import clsx from "clsx";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Trophy, Target, Shield, Star } from "lucide-react";
+import { getModalidade } from "@/lib/data/modalidades";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Types ──────────────────────────────────────────────────────────
-type StatKey = "golos" | "assist" | "defesas" | "cleanSheet" | "desarmes";
+// ── Tipos ──────────────────────────────────────────────────────────
+/** Identificador de equipa: seniores ou escalão de formação. */
+type Equipa = string;
 
-type Player = {
-  number:   number;
-  name:     string;
-  position: string;
-  team:     "futsal" | "futebol" | "formacao";
-  gender:   "masculino" | "feminino";
-  stat1:    { label: string; value: number; key: StatKey };
-  stat2:    { label: string; value: number; key: StatKey };
-  rating:   number;
-  nacionalidade?: string;
-  jogos?:   number;
+type Posicao = "Guarda-Redes" | "Fixo" | "Ala" | "Pivot" | "Universal";
+
+type Jogador = {
+  numero:   number;
+  nome:     string;
+  posicao:  Posicao;
+  equipa:   Equipa;
+  capitao?: boolean;
 };
 
-// ── Mock data — replace with CMS/API ──────────────────────────────
-const PLAYERS: Player[] = [
-  { number: 10, name: "Ricardo Fontes", position: "Ala / Capitão", team: "futsal", gender: "masculino",
-    stat1: { label: "Golos",  value: 24, key: "golos"  }, stat2: { label: "Assist.", value: 12, key: "assist"   }, rating: 8.5, nacionalidade: "PT", jogos: 28 },
-  { number: 1,  name: "Tiago Santos",   position: "Guarda-Redes",  team: "futsal", gender: "masculino",
-    stat1: { label: "Defesas", value: 15, key: "defesas" }, stat2: { label: "Clean Sheet", value: 3, key: "cleanSheet" }, rating: 9.1, nacionalidade: "PT", jogos: 30 },
-  { number: 7,  name: "Bruno Mendes",   position: "Fixo",          team: "futsal", gender: "masculino",
-    stat1: { label: "Desarmes", value: 45, key: "desarmes" }, stat2: { label: "Golos", value: 5, key: "golos" }, rating: 7.8, nacionalidade: "PT", jogos: 25 },
-  { number: 19, name: "Alex Silva",     position: "Pivot",         team: "futsal", gender: "masculino",
-    stat1: { label: "Golos",  value: 31, key: "golos"  }, stat2: { label: "Assist.", value: 4,  key: "assist"   }, rating: 9.5, nacionalidade: "BR", jogos: 27 },
-  { number: 8,  name: "Dani Ferreira",  position: "Ala",           team: "futsal", gender: "masculino",
-    stat1: { label: "Golos",  value: 18, key: "golos"  }, stat2: { label: "Assist.", value: 9,  key: "assist"   }, rating: 8.0, nacionalidade: "PT", jogos: 26 },
-  { number: 3,  name: "Pedro Nunes",    position: "Fixo",          team: "futsal", gender: "masculino",
-    stat1: { label: "Desarmes", value: 38, key: "desarmes" }, stat2: { label: "Golos", value: 2, key: "golos" }, rating: 7.5, nacionalidade: "PT", jogos: 24 },
-  { number: 11, name: "André Costa",    position: "Ala / Pivot",   team: "futsal", gender: "masculino",
-    stat1: { label: "Golos",  value: 22, key: "golos"  }, stat2: { label: "Assist.", value: 14, key: "assist"   }, rating: 8.3, nacionalidade: "PT", jogos: 29 },
-  { number: 13, name: "Fábio Lima",     position: "Guarda-Redes",  team: "futsal", gender: "masculino",
-    stat1: { label: "Defesas", value: 9,  key: "defesas" }, stat2: { label: "Clean Sheet", value: 1, key: "cleanSheet" }, rating: 7.2, nacionalidade: "PT", jogos: 8 },
+/**
+ * Equipas por ordem descendente de idade — seniores primeiro, petizes
+ * no fim. Os escalões vêm da mesma fonte que a página de modalidades,
+ * invertidos, para não haver duas listas a divergir com o tempo.
+ */
+const ESCALOES_FUTSAL = getModalidade("futsal")?.escaloes ?? [];
+
+const EQUIPAS: { id: Equipa; label: string }[] = [
+  { id: "a", label: "Equipa A" },
+  { id: "b", label: "Equipa B" },
+  ...[...ESCALOES_FUTSAL].reverse().map((e) => ({
+    id: e.toLowerCase(),
+    label: e,
+  })),
 ];
 
-const TEAMS  = ["Todas as Equipas", "Futsal Principal", "Formação"] as const;
-const GENDER = ["Masculino", "Feminino"] as const;
+// ── Dados de exemplo — substituir pelo plantel real ────────────────
+// ⚠️ Nomes inventados. A Direção tem de fornecer o plantel verdadeiro,
+//    separado por Equipa A e Equipa B. Registado no TODO.md.
+const JOGADORES: Jogador[] = [
+  { numero: 1,  nome: "Tiago Santos",   posicao: "Guarda-Redes", equipa: "a" },
+  { numero: 13, nome: "Fábio Lima",     posicao: "Guarda-Redes", equipa: "a" },
+  { numero: 3,  nome: "Pedro Nunes",    posicao: "Fixo",         equipa: "a" },
+  { numero: 7,  nome: "Bruno Mendes",   posicao: "Fixo",         equipa: "a" },
+  { numero: 10, nome: "Ricardo Fontes", posicao: "Ala",          equipa: "a", capitao: true },
+  { numero: 8,  nome: "Dani Ferreira",  posicao: "Ala",          equipa: "a" },
+  { numero: 11, nome: "André Costa",    posicao: "Ala",          equipa: "a" },
+  { numero: 19, nome: "Alex Silva",     posicao: "Pivot",        equipa: "a" },
+];
 
-// ── Stat icon mapping ──
-const STAT_ICON: Record<StatKey, typeof Trophy> = {
-  golos:      Target,
-  assist:     Trophy,
-  defesas:    Shield,
-  cleanSheet: Shield,
-  desarmes:   Shield,
+/** Ordem de apresentação — a mesma que se usa numa ficha de jogo. */
+const ORDEM_POSICOES: Posicao[] = ["Guarda-Redes", "Fixo", "Ala", "Pivot", "Universal"];
+
+const PLURAL: Record<Posicao, string> = {
+  "Guarda-Redes": "Guarda-Redes",
+  Fixo:           "Fixos",
+  Ala:            "Alas",
+  Pivot:          "Pivots",
+  Universal:      "Universais",
 };
 
-// ── Rating colour ──
-function ratingColour(r: number): string {
-  if (r >= 9) return "text-yellow";
-  if (r >= 8) return "text-green-400";
-  return "text-on-surface";
-}
-
-// ── FLIP 3D PLAYER CARD ─────────────────────────────────────────
-function PlayerCard({ p }: { p: Player }) {
-  const Stat1Icon = STAT_ICON[p.stat1.key];
-  const Stat2Icon = STAT_ICON[p.stat2.key];
-
-  return (
-    <div className="perspective-1000 group">
-      <div className="relative w-full aspect-[3/4] preserve-3d transition-transform duration-700 ease-out group-hover:rotate-y-180">
-
-        {/* ═══ FRONT FACE ═══ */}
-        <div className="absolute inset-0 backface-hidden">
-          {/* Photo area */}
-          <div className="w-full h-full bg-surface-mid overflow-hidden relative">
-            {/* Placeholder gradient */}
-            <div className="w-full h-full bg-gradient-to-b from-surface-highest to-surface-mid flex items-center justify-center">
-              <span className="font-headline font-black text-8xl text-on-surface/5 italic">
-                {p.number}
-              </span>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80" />
-
-            {/* Jersey number watermark */}
-            <div className="absolute top-3 left-4">
-              <span className="font-headline font-black italic text-7xl text-white/10 leading-none">
-                {p.number}
-              </span>
-            </div>
-
-            {/* Rating badge — top right */}
-            <div className="absolute top-3 right-3 bg-blue px-2.5 py-1.5">
-              <span className={`font-headline font-black italic text-lg leading-none ${ratingColour(p.rating)}`}>
-                {p.rating}
-              </span>
-            </div>
-
-            {/* Name + position */}
-            <div className="absolute bottom-0 left-0 w-full p-5">
-              <div className="font-body text-[10px] font-black uppercase tracking-widest text-yellow mb-1">
-                {p.position}
-              </div>
-              <h3 className="font-headline font-black italic text-2xl uppercase leading-none text-white">
-                {p.name.split(" ")[0]}<br />{p.name.split(" ").slice(1).join(" ")}
-              </h3>
-            </div>
-
-            {/* "Flip for stats" hint */}
-            <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="font-body text-[8px] uppercase tracking-widest text-white/40">
-                ↻ Stats
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* ═══ BACK FACE — Stats detalhados ═══ */}
-        <div className="absolute inset-0 backface-hidden rotate-y-180">
-          <div className="w-full h-full bg-gradient-to-b from-blue-deep to-surface-mid flex flex-col overflow-hidden relative">
-
-            {/* Number watermark — giant, background */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <span className="font-headline font-black italic text-[14rem] text-white/[0.03] leading-none select-none">
-                {p.number}
-              </span>
-            </div>
-
-            {/* Header — name + number */}
-            <div className="relative p-5 pb-3 border-b border-white/10">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="font-body text-[9px] font-black uppercase tracking-widest text-yellow">
-                    #{p.number} · {p.position}
-                  </span>
-                  <h3 className="font-headline font-black italic text-xl uppercase leading-tight text-white mt-1">
-                    {p.name}
-                  </h3>
-                </div>
-                <div className="bg-yellow px-2.5 py-1.5">
-                  <span className="font-headline font-black italic text-xl text-black leading-none">
-                    {p.rating}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Stats grid */}
-            <div className="relative flex-1 p-5 flex flex-col justify-center gap-4">
-
-              {/* Primary stats */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-white/5 p-3 flex flex-col items-center">
-                  <Stat1Icon size={16} className="text-yellow mb-1.5" />
-                  <span className="font-headline font-black italic text-3xl text-white leading-none">
-                    {p.stat1.value}
-                  </span>
-                  <span className="font-body text-[8px] font-bold uppercase tracking-widest text-white/50 mt-1">
-                    {p.stat1.label}
-                  </span>
-                </div>
-                <div className="bg-white/5 p-3 flex flex-col items-center">
-                  <Stat2Icon size={16} className="text-yellow mb-1.5" />
-                  <span className="font-headline font-black italic text-3xl text-white leading-none">
-                    {p.stat2.value}
-                  </span>
-                  <span className="font-body text-[8px] font-bold uppercase tracking-widest text-white/50 mt-1">
-                    {p.stat2.label}
-                  </span>
-                </div>
-              </div>
-
-              {/* Secondary stats row */}
-              <div className="flex gap-2">
-                <div className="flex-1 bg-white/5 py-2.5 text-center">
-                  <div className="font-headline font-black italic text-lg text-white">{p.jogos ?? "—"}</div>
-                  <div className="font-body text-[8px] font-bold uppercase tracking-widest text-white/50">Jogos</div>
-                </div>
-                <div className="flex-1 bg-white/5 py-2.5 text-center">
-                  <div className="font-headline font-black italic text-lg text-white">{p.nacionalidade ?? "—"}</div>
-                  <div className="font-body text-[8px] font-bold uppercase tracking-widest text-white/50">Nac.</div>
-                </div>
-                <div className="flex-1 bg-white/5 py-2.5 text-center flex flex-col items-center justify-center">
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        size={10}
-                        className={i < Math.round(p.rating / 2) ? "text-yellow fill-yellow" : "text-white/20"}
-                      />
-                    ))}
-                  </div>
-                  <div className="font-body text-[8px] font-bold uppercase tracking-widest text-white/50 mt-0.5">Nível</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom bar — club branding */}
-            <div className="relative border-t border-white/10 px-5 py-3 flex items-center justify-between">
-              <span className="font-headline font-black text-[10px] uppercase tracking-widest text-white/30">
-                Valejas AC
-              </span>
-              <span className="font-body text-[9px] text-white/30">
-                2024/25
-              </span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
-}
-
-// ── Main component ─────────────────────────────────────────────────
 export default function PlantelFilter() {
-  const [activeTeam, setActiveTeam]     = useState<string>("Todas as Equipas");
-  const [activeGender, setActiveGender] = useState<string>("Masculino");
-  const gridRef = useRef<HTMLDivElement>(null);
+  const [equipa, setEquipa] = useState<Equipa>("a");
   const sectionRef = useRef<HTMLElement>(null);
 
-  const filtered = PLAYERS.filter((p) => {
-    const genderOk = activeGender.toLowerCase() === p.gender;
-    const teamOk =
-      activeTeam === "Todas as Equipas" ||
-      (activeTeam === "Futsal Principal" && p.team === "futsal") ||
-      (activeTeam === "Formação"         && p.team === "formacao");
-    return genderOk && teamOk;
-  });
+  const visiveis = useMemo(
+    () => JOGADORES.filter((j) => j.equipa === equipa),
+    [equipa]
+  );
 
-  // Re-animate on filter change
-  useEffect(() => {
-    if (!gridRef.current) return;
-    gsap.fromTo(
-      gridRef.current.querySelectorAll(".player-card-anim"),
-      { y: 20, opacity: 0, scale: 0.95 },
-      { y: 0, opacity: 1, scale: 1, duration: 0.5, stagger: 0.06, ease: "back.out(1.4)" }
-    );
-  }, [activeTeam, activeGender]);
+  const nomeEquipa = EQUIPAS.find((e) => e.id === equipa)?.label ?? "";
 
-  // Scroll entrance
+  const porPosicao = useMemo(
+    () =>
+      ORDEM_POSICOES.map((p) => ({
+        posicao: p,
+        jogadores: visiveis.filter((j) => j.posicao === p),
+      })).filter((g) => g.jogadores.length > 0),
+    [visiveis]
+  );
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        sectionRef.current,
-        { opacity: 0 },
+        ".jogador-card",
+        { opacity: 0, y: 20 },
         {
-          opacity: 1, duration: 0.5,
+          opacity: 1, y: 0, duration: 0.5, stagger: 0.04, ease: "power2.out",
           scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
         }
       );
     }, sectionRef);
     return () => ctx.revert();
-  }, []);
+  }, [equipa]);
 
   return (
-    <>
-      {/* Sticky filter bar */}
-      <div className="sticky top-16 z-40 bg-surface-low/95 backdrop-blur-xl border-b border-on-surface/10">
-        <div className="section-container py-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            {/* Team tabs */}
-            <div className="flex items-center gap-1 bg-surface p-1 rounded-full border border-on-surface/10">
-              {TEAMS.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setActiveTeam(t)}
-                  className={`px-5 py-1.5 rounded-full font-headline font-black uppercase tracking-tight text-xs transition-all duration-200 ${
-                    activeTeam === t
-                      ? "bg-yellow text-black"
-                      : "text-on-surface-muted hover:text-on-surface"
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
-            </div>
-
-            {/* Gender tabs */}
-            <div className="flex items-center gap-2">
-              {GENDER.map((g) => (
-                <button
-                  key={g}
-                  onClick={() => setActiveGender(g)}
-                  className={`font-headline font-black uppercase tracking-tight text-xs px-4 py-1.5 transition-all duration-200 ${
-                    activeGender === g
-                      ? "bg-blue text-white"
-                      : "text-on-surface-muted hover:text-on-surface border border-on-surface/10"
-                  }`}
-                >
-                  {g}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Grid */}
-      <section ref={sectionRef} className="bg-surface py-16 md:py-24">
-        <div className="section-container">
-          <h2 className="font-headline font-black italic text-4xl uppercase tracking-tighter text-on-surface mb-10">
-            Plantel Principal
+    <section ref={sectionRef} className="bg-surface py-20 md:py-28">
+      <div className="section-container">
+        <div className="mb-10">
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-yellow mb-3">
+            Futsal masculino
+          </p>
+          <h2 className="section-title">
+            O <span>plantel</span>
           </h2>
-
-          <div
-            ref={gridRef}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10"
-          >
-            {filtered.length > 0 ? (
-              filtered.map((p) => (
-                <div key={p.number} className="player-card-anim">
-                  <PlayerCard p={p} />
-                </div>
-              ))
-            ) : (
-              <div className="col-span-full py-20 text-center text-on-surface-muted font-body">
-                Nenhum jogador encontrado com estes filtros.
-              </div>
-            )}
-          </div>
         </div>
-      </section>
-    </>
+
+        {/* Filtro por equipa */}
+        <div role="group" aria-label="Filtrar por equipa" className="flex flex-wrap gap-2 mb-12">
+          {EQUIPAS.map((e) => {
+            const ativo = equipa === e.id;
+            return (
+              <button
+                key={e.id}
+                type="button"
+                onClick={() => setEquipa(e.id)}
+                aria-pressed={ativo}
+                className={clsx(
+                  "font-headline font-black text-xs uppercase tracking-widest px-5 py-3 transition-colors duration-200",
+                  ativo
+                    ? "bg-yellow text-blue-deep"
+                    : "border border-on-surface/20 text-on-surface-muted hover:border-on-surface/50 hover:text-on-surface"
+                )}
+              >
+                {e.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Plantel, por posição */}
+        {porPosicao.length === 0 ? (
+          <p className="font-body text-on-surface-muted py-12">
+            O plantel de {nomeEquipa} ainda não está publicado.
+          </p>
+        ) : (
+          <div className="space-y-14">
+            {porPosicao.map((grupo) => (
+              <div key={grupo.posicao}>
+                <h3 className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-on-surface-muted border-b border-on-surface/10 pb-3 mb-6">
+                  {PLURAL[grupo.posicao]}
+                </h3>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-on-surface/10">
+                  {grupo.jogadores.map((j) => (
+                    <article
+                      key={`${j.equipa}-${j.numero}`}
+                      className="jogador-card group bg-surface-high hover:bg-surface-highest transition-colors duration-300"
+                    >
+                      {/* Retrato — placeholder até haver fotografias reais */}
+                      <div className="relative aspect-[3/4] bg-gradient-to-b from-blue-deep to-surface-low overflow-hidden">
+                        <span
+                          aria-hidden
+                          className="absolute inset-0 flex items-center justify-center font-headline font-black text-[7rem] leading-none text-white/10 group-hover:text-yellow/20 transition-colors duration-300"
+                        >
+                          {j.numero}
+                        </span>
+                        {j.capitao && (
+                          <span className="absolute top-3 left-3 font-body text-[0.65rem] font-bold uppercase tracking-widest bg-yellow text-blue-deep px-2 py-1">
+                            Capitão
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="p-4">
+                        <p className="font-headline font-black uppercase text-base text-on-surface leading-tight">
+                          {j.nome}
+                        </p>
+                        <p className="font-body text-sm text-on-surface-muted mt-0.5">
+                          {j.posicao}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

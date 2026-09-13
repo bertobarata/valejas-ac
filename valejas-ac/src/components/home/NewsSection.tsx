@@ -96,7 +96,7 @@ export default function NewsSection() {
         {/* Header — editorial bar */}
         <div className="flex items-end justify-between mb-8 pb-4 border-b border-on-surface/10">
           <div>
-            <p className="font-body text-xs font-black uppercase tracking-[0.35em] text-red mb-2">
+            <p className="font-body text-xs font-bold uppercase tracking-[0.35em] text-red mb-2">
               Últimas do clube
             </p>
             <h2 className="news-title section-title">
@@ -127,17 +127,17 @@ export default function NewsSection() {
 
             {/* Watermark "V" */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-              <span className="font-headline font-black text-[30rem] text-white italic leading-none">V</span>
+              <span className="font-headline font-black text-[30rem] text-white leading-none">V</span>
             </div>
 
             {/* Content overlay */}
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
               {/* Category badge */}
-              <span className={`inline-block font-body text-[10px] font-black uppercase tracking-widest px-3 py-1 mb-4 ${CAT_COLOUR[featured.category] ?? "bg-surface-high text-on-surface"}`}>
+              <span className={`inline-block font-body text-[10px] font-bold uppercase tracking-widest px-3 py-1 mb-4 ${CAT_COLOUR[featured.category] ?? "bg-surface-high text-on-surface"}`}>
                 {featured.category}
               </span>
 
-              <h3 className="font-headline font-black italic text-3xl md:text-5xl text-white leading-[0.95] tracking-tighter mb-4 group-hover:text-yellow transition-colors duration-300 max-w-2xl uppercase">
+              <h3 className="font-headline font-black text-3xl md:text-5xl text-white leading-[0.95] tracking-tighter mb-4 group-hover:text-yellow transition-colors duration-300 max-w-2xl uppercase">
                 {featured.title}
               </h3>
               <p className="font-body text-base text-white/70 leading-relaxed max-w-xl hidden md:block">
@@ -166,7 +166,7 @@ export default function NewsSection() {
               >
                 {/* Category + date row */}
                 <div className="flex items-center gap-3 mb-3">
-                  <span className={`font-body text-[9px] font-black uppercase tracking-widest px-2 py-0.5 ${CAT_COLOUR[article.category] ?? "bg-surface-highest text-on-surface"}`}>
+                  <span className={`font-body text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 ${CAT_COLOUR[article.category] ?? "bg-surface-highest text-on-surface"}`}>
                     {article.category}
                   </span>
                   <span className="font-body text-[10px] text-on-surface-muted">
@@ -175,7 +175,7 @@ export default function NewsSection() {
                 </div>
 
                 {/* Title — bigger, editorial */}
-                <h3 className="font-headline font-black italic text-lg lg:text-xl uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300">
+                <h3 className="font-headline font-black text-lg lg:text-xl uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300">
                   {article.title}
                 </h3>
 

@@ -71,7 +71,7 @@ export default function SociosCTA() {
 
           {/* Secondary CTAs */}
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/socios-contacto" className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow">
+            <Link href="/socios/inscricao" className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow">
               Tornar-se Sócio
             </Link>
             <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow">

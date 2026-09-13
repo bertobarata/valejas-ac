@@ -62,7 +62,7 @@ export default function CalendarioDinamico() {
   return (
     <div ref={ref} id="calendario">
       <div className="flex items-center gap-4 mb-8">
-        <h2 className="font-headline font-black italic text-4xl uppercase tracking-tighter text-on-surface">
+        <h2 className="font-headline font-black text-4xl uppercase tracking-tighter text-on-surface">
           Calendário Dinâmico
         </h2>
         <div className="h-px flex-1 bg-gradient-to-r from-yellow to-transparent" />

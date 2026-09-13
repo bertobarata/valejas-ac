@@ -35,7 +35,7 @@ export default function NoticiasHero({ artigo }: Props) {
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow mb-3">
             Notícias do Clube
           </p>
-          <h1 className="font-headline font-black italic text-6xl md:text-8xl uppercase leading-none tracking-tighter text-on-surface">
+          <h1 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-on-surface">
             Notícias &{" "}
             <span className="text-yellow">Comunicados</span>
           </h1>
@@ -60,13 +60,13 @@ export default function NoticiasHero({ artigo }: Props) {
                 <>
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-deep/60 to-surface" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                    <span className="font-headline font-black text-[10rem] text-yellow italic leading-none">V</span>
+                    <span className="font-headline font-black text-[10rem] text-yellow leading-none">V</span>
                   </div>
                 </>
               )}
               {/* Categoria badge */}
               <div className="absolute top-5 left-5">
-                <span className="font-body text-[10px] font-black uppercase tracking-widest bg-red text-white px-3 py-1">
+                <span className="font-body text-[10px] font-bold uppercase tracking-widest bg-red text-white px-3 py-1">
                   {artigo.categoria}
                 </span>
               </div>
@@ -75,10 +75,10 @@ export default function NoticiasHero({ artigo }: Props) {
             {/* Text */}
             <div className="lg:col-span-5 p-8 md:p-10 flex flex-col justify-between noticias-hero-content">
               <div className="space-y-4">
-                <span className="font-body text-[10px] font-black uppercase tracking-widest text-yellow">
+                <span className="font-body text-[10px] font-bold uppercase tracking-widest text-yellow">
                   Em Destaque
                 </span>
-                <h2 className="font-headline font-black italic text-3xl md:text-4xl uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300">
+                <h2 className="font-headline font-black text-3xl md:text-4xl uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300">
                   {artigo.titulo}
                 </h2>
                 <p className="font-body text-base text-on-surface-muted leading-relaxed">

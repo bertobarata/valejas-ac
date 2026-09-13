@@ -48,7 +48,7 @@ export default function EagleSection() {
     <section ref={sectionRef} className="relative min-h-screen bg-surface-low flex flex-col justify-center py-24 overflow-hidden">
       {/* Watermark "FORCE" */}
       <div
-        className="eagle-watermark absolute right-0 top-0 font-headline font-black italic text-[28rem] text-surface-highest/20 pointer-events-none select-none leading-none translate-x-1/3 -translate-y-1/4 whitespace-nowrap"
+        className="eagle-watermark absolute right-0 top-0 font-headline font-black text-[28rem] text-surface-highest/20 pointer-events-none select-none leading-none translate-x-1/3 -translate-y-1/4 whitespace-nowrap"
         aria-hidden
       >
         FORCE
@@ -77,10 +77,10 @@ export default function EagleSection() {
 
           {/* Text */}
           <div className="order-1 lg:order-2 eagle-content space-y-6">
-            <span className="font-body font-black uppercase tracking-[0.3em] text-yellow text-xs">
+            <span className="font-body font-bold uppercase tracking-[0.3em] text-yellow text-xs">
               Capítulo I
             </span>
-            <h2 className="font-headline font-black italic text-6xl md:text-8xl uppercase leading-none tracking-tighter text-on-surface">
+            <h2 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-on-surface">
               A Águia<br />de{" "}
               <span className="text-yellow">Valejas</span>
             </h2>

@@ -50,13 +50,13 @@ function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
             <>
               <div className="absolute inset-0 bg-gradient-to-br from-surface-highest to-surface-mid group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 flex items-center justify-center opacity-5">
-                <span className="font-headline font-black text-[6rem] text-on-surface italic leading-none">V</span>
+                <span className="font-headline font-black text-[6rem] text-on-surface leading-none">V</span>
               </div>
             </>
           )}
           {/* Categoria */}
           <div className="absolute top-3 left-3">
-            <span className={`font-body text-[9px] font-black uppercase tracking-widest px-2.5 py-1 ${CAT_COLOUR[a.categoria] ?? "bg-surface-high text-on-surface"}`}>
+            <span className={`font-body text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 ${CAT_COLOUR[a.categoria] ?? "bg-surface-high text-on-surface"}`}>
               {a.categoria}
             </span>
           </div>
@@ -69,7 +69,7 @@ function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
           }`}
         >
           <FileText size={14} className="text-red flex-shrink-0" />
-          <span className="font-body text-[10px] font-black uppercase tracking-widest text-red">
+          <span className="font-body text-[10px] font-bold uppercase tracking-widest text-red">
             Comunicado Oficial
           </span>
         </div>
@@ -77,7 +77,7 @@ function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-5 gap-3">
-        <h3 className={`font-headline font-black italic uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300 line-clamp-2 ${
+        <h3 className={`font-headline font-black uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300 line-clamp-2 ${
           isList ? "text-xl md:text-2xl" : "text-lg"
         }`}>
           {a.titulo}

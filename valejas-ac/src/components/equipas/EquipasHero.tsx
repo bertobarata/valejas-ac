@@ -51,19 +51,20 @@ export default function EquipasHero() {
               <span className="text-yellow">Futsal</span>
             </nav>
 
-            <h1 className="font-headline font-black italic text-8xl md:text-[10rem] uppercase leading-[0.85] tracking-tighter">
+            <h1 className="font-headline font-black wdth-condensed text-8xl md:text-[10rem] uppercase leading-[0.85] tracking-tighter">
               Futsal{" "}
               <span
                 className="text-yellow block"
                 style={{ textShadow: "0 0 30px rgba(250,219,9,0.2)" }}
               >
-                Elite
+                de Valejas
               </span>
             </h1>
 
             <p className="font-body text-lg text-on-surface-muted max-w-lg leading-relaxed">
-              A força imparável de Valejas. No coração da quadra, a nossa equipa
-              principal de futsal redefine os limites da intensidade atlética.
+              Equipa profissional no distrital da AF Lisboa, equipa B logo atrás e
+              formação dos petizes aos juniores. Quem entra em criança pode chegar
+              a sénior sem mudar de camisola.
             </p>
           </div>
 
@@ -80,7 +81,7 @@ export default function EquipasHero() {
             </div>
             {/* Badge do clube */}
             <div className="absolute -bottom-6 -left-6 bg-blue p-6 hidden md:block">
-              <div className="font-headline font-black text-3xl text-white uppercase tracking-tighter italic">
+              <div className="font-headline font-black text-3xl text-white uppercase tracking-tighter">
                 Valejas
               </div>
             </div>
