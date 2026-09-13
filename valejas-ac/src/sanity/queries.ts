@@ -211,3 +211,36 @@ export async function fetchConfiguracao() {
     return null;
   }
 }
+
+/* ── Jogos e classificação ──────────────────────────────────────── */
+
+import type { JogoSanity, LinhaClassificacao } from "@/lib/data/jogos";
+
+/** Jogos guardados pelo departamento de comunicação. */
+export async function fetchJogos(): Promise<JogoSanity[] | null> {
+  if (!isSanityConfigured()) return null;
+  try {
+    return await sanityClient.fetch(
+      `*[_type == "jogo"] | order(data desc){
+        _id, adversario, data, local, competicao, ehEmCasa,
+        jogado, golosNossos, golosAdversario
+      }`
+    );
+  } catch {
+    return null;
+  }
+}
+
+/** Classificação guardada. Documento único. */
+export async function fetchClassificacao(): Promise<LinhaClassificacao[] | null> {
+  if (!isSanityConfigured()) return null;
+  try {
+    const doc = await sanityClient.fetch(
+      `*[_id == "classificacao"][0]{ linhas }`
+    );
+    const linhas = doc?.linhas;
+    return Array.isArray(linhas) && linhas.length > 0 ? linhas : null;
+  } catch {
+    return null;
+  }
+}

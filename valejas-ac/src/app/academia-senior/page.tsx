@@ -96,7 +96,7 @@ export default function AcademiaSeniorPage() {
       </section>
 
       {/* Porquê */}
-      <section className="bg-blue text-white">
+      <section className="section-dark bg-blue text-white">
         <div className="section-container py-16 md:py-20">
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl md:text-4xl">

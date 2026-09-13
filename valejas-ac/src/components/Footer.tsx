@@ -3,6 +3,7 @@ import Image from "next/image";
 import NewsletterForm from "@/components/NewsletterForm";
 import { STORE_URL } from "@/components/Navbar";
 import { CONTACTO } from "@/lib/data/socios";
+import { MOTE } from "@/lib/data/clube";
 import { MODALIDADES } from "@/lib/data/modalidades";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
@@ -12,6 +13,9 @@ const LINKS = {
     { label: "Comunicados",  href: "/comunicados" },
     { label: "Jogos",        href: "/jogos" },
     { label: "O Clube",      href: "/clube" },
+    { label: "História",     href: "/historia" },
+    { label: "Instalações",  href: "/instalacoes" },
+    { label: "Patrocinadores", href: "/patrocinadores" },
     { label: "Academia Sénior", href: "/academia-senior" },
     { label: "Órgãos Sociais", href: "/orgaos-sociais" },
     { label: "Loja Oficial", href: STORE_URL, external: true },
@@ -56,7 +60,10 @@ export default function Footer() {
                 <p className="font-body text-xs text-on-surface-muted uppercase tracking-widest">Atlético Clube</p>
               </div>
             </div>
-            <p className="font-body text-sm text-on-surface-muted leading-relaxed max-w-xs">
+            <p className="font-headline font-black uppercase text-lg text-yellow tracking-tight mt-1">
+              {MOTE.texto}
+            </p>
+            <p className="font-body text-sm text-on-surface-muted leading-relaxed max-w-xs mt-3">
               O clube da nossa terra desde 1966. Futsal, atletismo e comunidade,
               no coração de Valejas.
             </p>

@@ -76,8 +76,11 @@ degradado — cada uma tem um comportamento de recurso que não rebenta.
 
 ## 3. Dados reais em falta
 
-- [ ] **Código postal do clube** — `socios.ts` diz `2730-132 Valejas`, a
-      pesquisa de julho diz `2745-663`. Qual é o certo?
+- [x] ~~Código postal~~ — resolvido: `2730-132 Queluz de Baixo`. A
+      pesquisa de julho (`2745-663`) estava errada
+- [ ] **História** — não há registo público dos fundadores nem ata da
+      fundação. A página assume isso e convida quem souber a contar.
+      Vale a pena a Direção procurar no arquivo do clube
 - [ ] **Quota** — confirmar com a Direção: 1€/mês, sem jóia, sem categorias
 - [ ] **Atletismo** — grupo (competição ou comunidade?), vertentes reais
       (pista, estrada, corta-mato, marcha?), escalões, federação. O texto
@@ -96,6 +99,13 @@ degradado — cada uma tem um comportamento de recurso que não rebenta.
       cartões mostram as iniciais
 - [ ] **Órgãos sociais** — no cartaz, Mário Sérgio Barata e Teresa Santos
       têm ambos o Sócio N.º 167. Um dos dois está errado
+- [ ] **Jogos** — os adversários chamam-se "Equipa Adversária N" de
+      propósito, para não repetir o erro dos nomes inventados. Assim que
+      o Sanity estiver ligado, o departamento de comunicação preenche em
+      `/direcao/jogos` e o site passa a usar esses dados
+- [ ] **Patrocinadores** — faltam logótipos e links. Descrições de QB,
+      Ninho da Rola e Muchacho são genéricas por falta de informação
+- [ ] **Instalações** — faltam fotografias da sede e do pavilhão
 - [ ] **Academia Sénior** — confirmar se a lista de atividades está completa
       e se o horário se mantém
 
@@ -130,7 +140,11 @@ degradado — cada uma tem um comportamento de recurso que não rebenta.
 - [x] **3** — Modalidades reais, ênfase no futsal e na Academia Sénior
 - [ ] **4** — Refazer a loja (ver secção 7) — adiado
 - [x] **5** — Página de órgãos sociais (Direção, Conselho Fiscal, MAG)
-- [ ] **6** — (por definir)
+- [x] **6** — Página da história (fundação, origens, localização com mapa)
+- [x] **7** — Mote, patrocinadores e instalações
+- [x] **8** — Página de jogos + área do departamento de comunicação
+- [x] **9** — Ecrã de carregamento com o logo do clube
+- [ ] **10** — Páginas legais (termos, cookies, privacidade) — **último passo**
 
 ---
 

@@ -1,40 +1,64 @@
 import type { Metadata } from "next";
-import JogosHero from "@/components/jogos/JogosHero";
+import ProximoJogo from "@/components/jogos/ProximoJogo";
 import ResultadosRecentes from "@/components/jogos/ResultadosRecentes";
-import CalendarioDinamico from "@/components/jogos/CalendarioDinamico";
 import TabelaClassificativa from "@/components/jogos/TabelaClassificativa";
-import LiveTracker from "@/components/jogos/LiveTracker";
+import { fetchJogos, fetchClassificacao } from "@/sanity/queries";
+import {
+  PROXIMO_JOGO, RESULTADOS, CLASSIFICACAO,
+  doSanity, proximoDe, resultadosDe,
+} from "@/lib/data/jogos";
 
 export const metadata: Metadata = {
-  title: "Centro de Jogos",
+  title: "Jogos",
   description:
-    "Resultados, calendário, classificação e o próximo jogo do Valejas AC.",
+    "Próximo jogo, resultados recentes e classificação do Valejas AC no distrital da AF Lisboa.",
 };
 
-export default function JogosPage() {
+// Os jogos mudam ao fim de semana; não vale a pena reconstruir o site
+// inteiro por isso, mas também não pode ficar preso a um build antigo.
+export const revalidate = 300;
+
+export default async function JogosPage() {
+  // O que o departamento de comunicação guardou manda. Sem CMS ligado,
+  // o site mostra os dados de exemplo em vez de páginas vazias.
+  const [doCms, classificacaoCms] = await Promise.all([
+    fetchJogos(),
+    fetchClassificacao(),
+  ]);
+
+  const jogos = doCms?.length ? doCms.map(doSanity) : null;
+
+  const proximo    = jogos ? proximoDe(jogos)    : PROXIMO_JOGO;
+  const resultados = jogos ? resultadosDe(jogos) : RESULTADOS;
+  const classificacao = classificacaoCms ?? CLASSIFICACAO;
+
   return (
-    <>
-      {/* 1. Hero: Derby + Countdown + Next match card */}
-      <JogosHero />
-
-      {/* 2. Main two-column grid */}
-      <section className="section-container py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-
-          {/* Left — results + calendar */}
-          <div className="lg:col-span-8 space-y-20">
-            <ResultadosRecentes />
-            <CalendarioDinamico />
-          </div>
-
-          {/* Right sidebar — standings + tracker */}
-          <aside className="lg:col-span-4 space-y-8">
-            <TabelaClassificativa />
-            <LiveTracker />
-          </aside>
-
+    <div className="bg-surface">
+      {/* Cabeçalho */}
+      <section className="bg-surface-low bg-texture border-b border-on-surface/10">
+        <div className="section-container py-16 md:py-20">
+          <p className="font-body text-xs font-bold uppercase tracking-[0.35em] text-yellow mb-3">
+            Futsal · Equipa A
+          </p>
+          <h1 className="section-title text-4xl md:text-6xl">
+            Jogos e <span>classificação</span>
+          </h1>
         </div>
       </section>
-    </>
+
+      {/* Duas colunas: jogos à esquerda, classificação à direita */}
+      <section className="section-container py-14 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="lg:col-span-7 space-y-14">
+            <ProximoJogo jogo={proximo} />
+            <ResultadosRecentes jogos={resultados} />
+          </div>
+
+          <aside className="lg:col-span-5">
+            <TabelaClassificativa linhas={classificacao} />
+          </aside>
+        </div>
+      </section>
+    </div>
   );
 }

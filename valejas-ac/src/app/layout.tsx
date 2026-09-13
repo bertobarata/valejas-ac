@@ -5,6 +5,7 @@ import { Providers } from "@/components/Providers";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import EcraCarregamento from "@/components/EcraCarregamento";
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +34,7 @@ export default function RootLayout({
       className={`${archivo.variable} ${generalSans.variable}`}
     >
       <body>
+        <EcraCarregamento />
         <Providers>
           <SmoothScroll>
             <Navbar />

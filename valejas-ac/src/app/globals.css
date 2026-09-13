@@ -172,6 +172,47 @@
     @apply text-yellow;
   }
 
+  /* ── Ecrã de carregamento ── */
+  .splash-emblema {
+    animation: splash-pulsar 1.6s ease-in-out infinite;
+  }
+  .splash-barra {
+    animation: splash-correr 1.2s ease-in-out infinite;
+  }
+  /* Rede de segurança: se o JavaScript falhar, o splash desaparece na
+     mesma ao fim de 3 segundos em vez de tapar o site para sempre. */
+  [data-splash] {
+    animation: splash-desistir 0s linear 3s forwards;
+  }
+
+  @keyframes splash-pulsar {
+    0%, 100% { transform: scale(1);    opacity: 1;   }
+    50%      { transform: scale(1.06); opacity: 0.85; }
+  }
+  @keyframes splash-correr {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(300%);  }
+  }
+  @keyframes splash-desistir {
+    to { opacity: 0; visibility: hidden; pointer-events: none; }
+  }
+
+  /* Quem pede menos movimento vê o emblema parado — mas vê-o. */
+  @media (prefers-reduced-motion: reduce) {
+    .splash-emblema,
+    .splash-barra {
+      animation: none;
+    }
+  }
+
+  /* ── Tabela de classificação ── */
+  .th-tabela {
+    @apply font-body text-[0.65rem] font-bold uppercase tracking-widest text-on-surface-muted py-3 px-2;
+  }
+  .td-tabela {
+    @apply font-body text-sm py-3 px-2;
+  }
+
   /* ── Diagonal stripe background texture (crest sash motif) ── */
   .bg-texture {
     background-image: repeating-linear-gradient(
