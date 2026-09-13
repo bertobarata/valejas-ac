@@ -39,7 +39,7 @@ export default function ProximoJogo({ jogo }: { jogo: Jogo | null }) {
         <p className="flex items-center gap-3 font-body text-sm md:text-base text-white/85">
           <CalendarDays size={18} className="text-yellow flex-shrink-0" />
           <span className="first-letter:uppercase">{formatarData(j.data)}</span>
-          <span className="text-white/50">·</span>
+          <span className="text-white/60" aria-hidden>·</span>
           <span>{formatarHora(j.data)}</span>
         </p>
         <p className="flex items-center gap-3 font-body text-sm md:text-base text-white/85">
@@ -49,7 +49,7 @@ export default function ProximoJogo({ jogo }: { jogo: Jogo | null }) {
       </div>
 
       {j.competicao && (
-        <p className="font-body text-xs uppercase tracking-widest text-white/50 mt-6">
+        <p className="font-body text-xs uppercase tracking-widest text-white/85 mt-6">
           {j.competicao}
         </p>
       )}

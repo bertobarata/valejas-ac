@@ -44,7 +44,7 @@ export default function NoticiasHero({ artigo }: Props) {
         {/* Featured article */}
         {artigo && (
           <Link
-            href={`/noticias/${artigo.slug}`}
+            href="/noticias"
             className="group block mt-10 grid grid-cols-1 lg:grid-cols-12 gap-0 bg-surface-high overflow-hidden hover:bg-surface-highest transition-colors duration-300"
           >
             {/* Image */}

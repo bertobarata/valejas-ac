@@ -61,7 +61,7 @@ export default function SociosCTA() {
             Junta-te ao{" "}
             <span className="text-yellow">clube</span>
           </h2>
-          <p className="font-body text-base text-white/70 leading-relaxed mb-10">
+          <p className="font-body text-base text-white/85 leading-relaxed mb-10">
             Acompanha os jogos de todos os escalões, recebe as novidades do
             clube em primeira mão e faz parte das famílias que fazem o Valejas.
           </p>

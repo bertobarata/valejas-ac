@@ -47,7 +47,7 @@ export default function SociosHero() {
           Junta-te ao<br />
           <span className="text-yellow">clube</span>
         </h1>
-        <p className="font-body text-lg text-white/70 max-w-xl leading-relaxed">
+        <p className="font-body text-lg text-white/85 max-w-xl leading-relaxed">
           Faz parte da casa do Valejas. Um euro por mês, uma proposta preenchida,
           e passas a viver o clube por dentro.
         </p>

@@ -68,7 +68,7 @@ export default function EmblemHero() {
 
       {/* Blue ambient glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue/10 rounded-full blur-[120px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(700px,90vw)] h-[min(700px,90vw)] bg-blue/10 rounded-full blur-[120px] pointer-events-none"
         aria-hidden
       />
 

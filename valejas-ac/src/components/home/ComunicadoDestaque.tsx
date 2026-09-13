@@ -38,10 +38,10 @@ export default async function ComunicadoDestaque() {
           </div>
 
           <Link
-            href="/comunicados"
+            href={`/comunicados/${ultimo.slug}`}
             className="btn-ghost shrink-0 self-start md:self-center whitespace-nowrap"
           >
-            Ver comunicados
+            Ler comunicado
           </Link>
         </div>
       </div>

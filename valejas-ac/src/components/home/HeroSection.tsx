@@ -263,7 +263,7 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <div
         ref={scrollRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/85"
         aria-hidden
       >
         <span className="font-body text-xs uppercase tracking-widest">Explorar</span>

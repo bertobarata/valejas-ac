@@ -70,8 +70,7 @@ export default function EagleSection() {
                 style={{ objectPosition: "center 32%" }}
               />
               {/* Corner brackets */}
-              <div className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-yellow z-10" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 border-b-4 border-r-4 border-yellow z-10" />
+              <div className="absolute inset-0 border border-yellow/50 z-10 pointer-events-none" />
             </div>
           </div>
 

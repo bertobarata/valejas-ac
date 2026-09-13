@@ -65,7 +65,7 @@ export default function CookiesPage() {
         </tbody>
       </table>
       <p>
-        O cookie da área da Direção é <strong>httpOnly</strong> — não pode ser
+        O cookie da área da Direção é <strong>httpOnly</strong>: não pode ser
         lido por código a correr no navegador — e assinado, para não poder ser
         forjado. Nenhum destes três identifica visitantes nem é partilhado com
         quem quer que seja.

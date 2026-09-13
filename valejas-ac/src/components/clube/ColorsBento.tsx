@@ -50,7 +50,7 @@ export default function ColorsBento() {
               <h3 className="font-headline font-black text-4xl md:text-5xl uppercase tracking-tighter text-white mb-3">
                 Azul
               </h3>
-              <p className="font-body text-white/70 leading-relaxed">
+              <p className="font-body text-white/85 leading-relaxed">
                 A lealdade e a serenidade de quem representa Valejas dentro e fora das
                 quatro linhas. A profundidade do nosso compromisso com a comunidade.
               </p>

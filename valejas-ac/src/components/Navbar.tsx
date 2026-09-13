@@ -21,6 +21,7 @@ export const STORE_URL =
 const NAV_ITEMS = [
   { label: "Início",      href: "/" },
   { label: "Comunicados", href: "/comunicados" },
+  { label: "Jogos",       href: "/jogos" },
   { label: "Modalidades", href: "/modalidades" },
   { label: "Academia",    href: "/academia-senior" },
   { label: "Loja",        href: STORE_URL, external: true },
@@ -196,14 +197,14 @@ export default function Navbar() {
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
                 aria-label="Toggle theme"
-                className="w-9 h-9 flex items-center justify-center text-on-surface-muted hover:text-yellow transition-colors duration-200"
+                className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-yellow transition-colors duration-200"
               >
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
               </button>
             )}
 
             {/* Sócios CTA — ação principal do site */}
-            <Link href="/socios/inscricao" className="btn-primary hidden sm:inline-flex text-xs py-2 px-4">
+            <Link href="/socios/inscricao" className="btn-primary hidden sm:inline-flex text-xs min-h-11 py-2.5 px-5">
               <UserPlus size={14} />
               Fazer Sócio
             </Link>
@@ -212,9 +213,9 @@ export default function Navbar() {
             <button
               onClick={() => (menuOpen ? closeMenu() : openMenu())}
               aria-label="Toggle menu"
-              className="lg:hidden w-9 h-9 flex items-center justify-center text-on-surface"
+              className="lg:hidden w-11 h-11 flex items-center justify-center text-on-surface"
             >
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>

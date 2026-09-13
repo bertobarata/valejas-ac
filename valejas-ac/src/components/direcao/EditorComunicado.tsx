@@ -8,7 +8,7 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, Check, Eye, Loader2, LogOut, Send } from "lucide-react";
 import clsx from "clsx";
 
@@ -37,12 +37,27 @@ export default function EditorComunicado() {
   const [erro, setErro]           = useState<string | null>(null);
   const [resposta, setResposta]   = useState<Resposta | null>(null);
 
+  /**
+   * O título só chega à pré-visualização meio segundo depois de se
+   * parar de escrever. Sem isto, cada tecla pedia uma imagem nova ao
+   * servidor, e cada imagem obriga a ir buscar dois ficheiros de
+   * tipografia — um título de trinta letras dava trinta renders.
+   */
+  const [tituloEstavel, setTituloEstavel] = useState("");
+  useEffect(() => {
+    const t = window.setTimeout(() => setTituloEstavel(titulo), 500);
+    return () => window.clearTimeout(t);
+  }, [titulo]);
+
   /** Cartão que vai sair nas redes — leva só o título. */
   const previewUrl = useMemo(() => {
-    const t = titulo.trim() || "Comunicado Oficial";
+    const t = tituloEstavel.trim() || "Comunicado Oficial";
+    // A data fica com o dia, não com o instante: o URL deixa de mudar
+    // a cada render e o browser pode aproveitar a imagem em cache.
+    const hoje = new Date().toISOString().slice(0, 10);
     return `/api/comunicado-imagem?titulo=${encodeURIComponent(t)}` +
-           `&data=${encodeURIComponent(new Date().toISOString())}`;
-  }, [titulo]);
+           `&data=${encodeURIComponent(hoje)}`;
+  }, [tituloEstavel]);
 
   const podePublicar = titulo.trim().length >= 5 && texto.trim().length >= 20;
 
@@ -100,8 +115,8 @@ export default function EditorComunicado() {
           </div>
 
           {resposta.dryRun && (
-            <div className="flex items-start gap-3 border-l-2 border-yellow pl-4">
-              <AlertTriangle size={18} className="text-yellow flex-shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 bg-yellow/15 p-4">
+              <AlertTriangle size={18} className="text-on-surface flex-shrink-0 mt-0.5" />
               <p className="font-body text-sm text-on-surface-muted leading-relaxed">
                 Modo de demonstração: o Facebook e o Instagram ainda não estão
                 ligados, por isso nada saiu nas redes. No site ficou guardado.
@@ -225,7 +240,10 @@ export default function EditorComunicado() {
         <img
           src={previewUrl}
           alt="Pré-visualização da imagem do comunicado"
-          className="w-full max-w-md mx-auto border border-on-surface/10"
+          className={clsx(
+            "w-full max-w-md mx-auto border border-on-surface/10 transition-opacity duration-200",
+            tituloEstavel !== titulo && "opacity-50"
+          )}
           width={1080}
           height={1080}
         />

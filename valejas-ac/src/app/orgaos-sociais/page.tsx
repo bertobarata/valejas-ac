@@ -132,7 +132,7 @@ function CartaoMembro({ membro }: { membro: Membro }) {
         </p>
         <p className="font-body text-xs text-on-surface-muted mt-1.5">
           Sócio desde {membro.desde}
-          <span className="text-on-surface-muted/70">
+          <span className="text-on-surface-muted">
             {" "}· {anos} {anos === 1 ? "ano" : "anos"}
           </span>
           {MOSTRAR_NUMERO_SOCIO && <> · N.º {membro.numero}</>}

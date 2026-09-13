@@ -53,13 +53,44 @@
 :root:not(.dark) .hover\:text-yellow:not(.on-dark):hover {
   color: #1554BB;
 }
-/* Secções de fundo escuro/foto: o amarelo-texto mantém-se (contraste ok). */
+/* Secções de fundo escuro: o amarelo-texto mantém-se (contraste ok).
+   A regra deriva do PRÓPRIO fundo, não de uma marca que alguém se tem
+   de lembrar de pôr. Antes só `.section-dark` a anulava, e bastou uma
+   secção azul sem essa marca para o amarelo ficar exatamente da cor do
+   fundo e o texto desaparecer. Agora o azul do clube basta-se. */
 :root:not(.dark) .section-dark .text-yellow,
-:root:not(.dark) .section-dark .hover\:text-yellow:hover {
+:root:not(.dark) .section-dark .hover\:text-yellow:hover,
+:root:not(.dark) .bg-blue .text-yellow,
+:root:not(.dark) .bg-blue .hover\:text-yellow:hover,
+:root:not(.dark) .bg-blue-deep .text-yellow,
+:root:not(.dark) .bg-blue-deep .hover\:text-yellow:hover {
   color: #FADB09;
 }
 
 /* ── 2. BASE RESETS ─────────────────────────────────────────────────*/
+/* ── Anel de foco ────────────────────────────────────────────────────
+   O amarelo sobre creme dá 1,34:1 — muito abaixo dos 3:1 que a WCAG
+   1.4.11 exige a um indicador de foco. Em tema claro usa-se o azul do
+   emblema (6,7:1); em escuro, o amarelo (que aí contrasta bem). */
+:root {
+  --anel-foco: #1554BB;
+}
+.dark {
+  --anel-foco: #FADB09;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--anel-foco);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  /* O rato não precisa de anel; o teclado precisa. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -70,6 +101,23 @@
   html {
     scroll-behavior: smooth;
     font-size: 16px;
+  }
+
+  /* Quem pede menos movimento recebe o conteúdo no estado final, sem
+     percurso. O PRODUCT.md exige isto: o site tem muito GSAP e o
+     movimento nunca pode ser condição para ver o que lá está. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   body {
@@ -170,6 +218,18 @@
   }
   .section-title span {
     @apply text-yellow;
+  }
+
+  /* ── Entrada de página ──
+     A opacidade inicial é responsabilidade do CSS, não do JavaScript.
+     Se o script falhar, a animação repõe o conteúdo ao fim de 0,45s em
+     vez de deixar o site em branco para sempre. */
+  .entrada-pagina {
+    animation: entrada-pagina 0.45s ease-out both;
+  }
+  @keyframes entrada-pagina {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 
   /* ── Ecrã de carregamento ── */
@@ -306,7 +366,7 @@
 
   /* ── Input field ── */
   .input-field {
-    @apply w-full bg-surface-high border-0 border-b-2 border-on-surface/20 px-0 py-3 text-on-surface placeholder-on-surface-muted focus:outline-none focus:border-yellow transition-colors duration-200;
+    @apply w-full bg-surface-high border-0 border-b-2 border-on-surface/20 px-0 py-3 text-on-surface placeholder-on-surface-muted focus:border-yellow transition-colors duration-200;
   }
 }
 

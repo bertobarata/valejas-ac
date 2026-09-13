@@ -53,7 +53,7 @@ export default function HistoriaPage() {
               isso que o clube continua a ser.
             </p>
 
-            <div className="border-l-2 border-yellow pl-5 py-1">
+            <div className="bg-surface-high p-6 md:p-7">
               <p className="font-headline font-black uppercase text-sm text-on-surface">
                 O que ainda não sabemos
               </p>

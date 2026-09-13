@@ -15,6 +15,21 @@ export default function SmoothScroll({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    /**
+     * Movimento reduzido: o CSS já anula animações e transições, mas o
+     * GSAP corre em JavaScript e escapa-lhe. Acelerar a linha temporal
+     * global faz cada tween chegar ao estado final de imediato — o
+     * conteúdo aparece, sem percurso. E o scroll suave do Lenis nem
+     * chega a arrancar.
+     */
+    const reduzido =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduzido) {
+      gsap.globalTimeline.timeScale(400);
+      return;
+    }
+
     // Initialise Lenis smooth scroll
     const lenis = new Lenis({
       duration: 1.2,

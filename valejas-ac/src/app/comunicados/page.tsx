@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
 import { fetchComunicados } from "@/sanity/queries";
 import CTASocio from "@/components/CTASocio";
@@ -59,19 +60,30 @@ export default async function ComunicadosPage() {
                   ))}
               </div>
 
-              <h2 className="font-display text-2xl md:text-3xl text-on-surface mb-3">
-                {c.titulo}
+              <h2 className="font-headline font-black uppercase text-2xl md:text-3xl tracking-tight text-on-surface mb-3">
+                <Link
+                  href={`/comunicados/${c.slug}`}
+                  className="hover:text-yellow transition-colors duration-200"
+                >
+                  {c.titulo}
+                </Link>
               </h2>
 
-              <div className="space-y-3 font-body text-on-surface-muted leading-relaxed">
-                {c.corpo?.map((par, i) => (
-                  <p key={i}>{par}</p>
-                ))}
-              </div>
-
-              <p className="font-body text-sm text-on-surface mt-4 italic">
-                — {c.autor}
+              <p className="font-body text-on-surface-muted leading-relaxed">
+                {c.corpo?.[0]}
               </p>
+
+              <div className="flex flex-wrap items-center gap-4 mt-4">
+                <Link
+                  href={`/comunicados/${c.slug}`}
+                  className="btn-ghost text-sm"
+                >
+                  Ler comunicado
+                </Link>
+                <span className="font-body text-sm text-on-surface-muted">
+                  {c.autor}
+                </span>
+              </div>
             </article>
           ))}
 

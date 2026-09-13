@@ -69,7 +69,7 @@ export default function TermosPage() {
       <ul>
         {PERIODICIDADES.map((p) => (
           <li key={p.id}>
-            <strong>{p.nome}</strong> — {formatEuros(valorPorCobranca(p.id))}{" "}
+            <strong>{p.nome}</strong>: {formatEuros(valorPorCobranca(p.id))}{" "}
             de cada vez
           </li>
         ))}

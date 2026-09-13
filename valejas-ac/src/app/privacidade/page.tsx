@@ -74,17 +74,17 @@ export default function PrivacidadePage() {
       <h2>3. Para que usamos os dados</h2>
       <ul>
         <li>
-          <strong>Inscrição de sócio</strong> — preencher a ficha de sócio no
+          <strong>Inscrição de sócio</strong>: preencher a ficha de sócio no
           sistema do clube, atribuir o número de sócio, emitir o cartão e
           contactar-te sobre a tua inscrição e quotas
         </li>
         <li>
-          <strong>Cartão de Cidadão e contribuinte</strong> — identificação do
+          <strong>Cartão de Cidadão e contribuinte</strong>: identificação do
           sócio e obrigações contabilísticas do clube, tal como na ficha de papel
         </li>
-        <li><strong>Fotografia</strong> — imprimir o cartão de sócio</li>
-        <li><strong>IBAN</strong> — processar o débito direto que autorizaste</li>
-        <li><strong>Newsletter</strong> — enviar notícias do clube</li>
+        <li><strong>Fotografia</strong>: imprimir o cartão de sócio</li>
+        <li><strong>IBAN</strong>: processar o débito direto que autorizaste</li>
+        <li><strong>Newsletter</strong>: enviar notícias do clube</li>
       </ul>
       <p>
         <strong>Não vendemos dados a ninguém</strong> e não os usamos para
@@ -94,15 +94,15 @@ export default function PrivacidadePage() {
       <h2>4. Com que fundamento</h2>
       <ul>
         <li>
-          <strong>Consentimento</strong> — que dás ao submeter a ficha, e que
+          <strong>Consentimento</strong>: que dás ao submeter a ficha, e que
           podes retirar a qualquer momento
         </li>
         <li>
-          <strong>Execução da relação de sócio</strong> — gerir a tua inscrição e
+          <strong>Execução da relação de sócio</strong>: gerir a tua inscrição e
           as quotas
         </li>
         <li>
-          <strong>Obrigação legal</strong> — conservar registos contabilísticos
+          <strong>Obrigação legal</strong>: conservar registos contabilísticos
           pelo prazo que a lei exige
         </li>
       </ul>
@@ -171,15 +171,15 @@ export default function PrivacidadePage() {
       <h2>7. Durante quanto tempo</h2>
       <ul>
         <li>
-          <strong>Sócios</strong> — enquanto durar a relação com o clube, e depois
+          <strong>Sócios</strong>: enquanto durar a relação com o clube, e depois
           o tempo que a lei exigir para efeitos contabilísticos
         </li>
         <li>
-          <strong>Inscrições não concretizadas</strong> — eliminadas quando deixam
+          <strong>Inscrições não concretizadas</strong>: eliminadas quando deixam
           de ser necessárias
         </li>
         <li>
-          <strong>Newsletter</strong> — até cancelares a subscrição
+          <strong>Newsletter</strong>: até cancelares a subscrição
         </li>
       </ul>
 

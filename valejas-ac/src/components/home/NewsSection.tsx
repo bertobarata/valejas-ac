@@ -5,50 +5,28 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Calendar } from "lucide-react";
+import { ARTIGOS, formatData } from "@/lib/data/noticias";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Mock news — replace with Sanity CMS ──
-const NEWS = [
-  {
-    id:       "1",
-    category: "Resultados",
-    title:    "Domínio total no Derby: Valejas vence por 5–1",
-    excerpt:  "Em exibição de gala, a nossa equipa de futsal não deu hipóteses ao adversário, consolidando a liderança isolada do campeonato com um hat-trick de Ricardo Neves.",
-    date:     "24 Jun 2024",
-    href:     "/noticias/derby-5-1",
-    featured: true,
-  },
-  {
-    id:       "2",
-    category: "Mercado",
-    title:    "Novo reforço brasileiro apresentado amanhã",
-    excerpt:  "Guarda-redes de 23 anos chega por cedência do São Paulo FC e reforça o plantel para a segunda metade da temporada.",
-    date:     "22 Jun 2024",
-    href:     "/noticias/reforco",
-    featured: false,
-  },
-  {
-    id:       "3",
-    category: "Clube",
-    title:    "O Projeto da Academia: Moldando as Águias de Amanhã",
-    excerpt:  "O novo centro de treinos começa a ser construído no próximo mês no coração de Valejas.",
-    date:     "20 Jun 2024",
-    href:     "/noticias/academia",
-    featured: false,
-  },
-  {
-    id:       "4",
-    category: "Entrevista",
-    title:    '"Estamos a construir algo único" — Mister Rodrigues',
-    excerpt:  "Conversa exclusiva com o treinador principal sobre a ambição da temporada e o projeto de formação.",
-    date:     "18 Jun 2024",
-    href:     "/noticias/entrevista-rodrigues",
-    featured: false,
-  },
-];
+/**
+ * As notícias vêm de @/lib/data/noticias — antes havia aqui uma segunda
+ * lista, escrita à mão, que duplicava a primeira e nem sequer usava os
+ * mesmos slugs. Duas fontes para a mesma coisa acabam sempre a divergir.
+ *
+ * Sem notícias, esta secção não aparece de todo. Uma homepage sem a
+ * banda de notícias é melhor do que uma banda de notícias vazia.
+ */
+const NEWS = ARTIGOS.map((a) => ({
+  id:       a.slug,
+  category: a.categoria,
+  title:    a.titulo,
+  excerpt:  a.excerto,
+  date:     formatData(a.data),
+  href:     "/noticias",
+  featured: a.destaque,
+}));
 
-// ── Category colour mapping ──
 const CAT_COLOUR: Record<string, string> = {
   Resultados: "bg-yellow text-black",
   Mercado:    "bg-blue text-white",
@@ -60,6 +38,7 @@ const CAT_COLOUR: Record<string, string> = {
 export default function NewsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef   = useRef<HTMLDivElement>(null);
+  const temNoticias = NEWS.length > 0;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -86,8 +65,10 @@ export default function NewsSection() {
     return () => ctx.revert();
   }, []);
 
-  const featured = NEWS.find((n) => n.featured)!;
+  const featured = NEWS.find((n) => n.featured) ?? NEWS[0];
   const secondary = NEWS.filter((n) => !n.featured);
+
+  if (!temNoticias || !featured) return null;
 
   return (
     <section ref={sectionRef} className="bg-surface py-28 md:py-40">
@@ -140,12 +121,12 @@ export default function NewsSection() {
               <h3 className="font-headline font-black text-3xl md:text-5xl text-white leading-[0.95] tracking-tighter mb-4 group-hover:text-yellow transition-colors duration-300 max-w-2xl uppercase">
                 {featured.title}
               </h3>
-              <p className="font-body text-base text-white/70 leading-relaxed max-w-xl hidden md:block">
+              <p className="font-body text-base text-white/85 leading-relaxed max-w-xl hidden md:block">
                 {featured.excerpt}
               </p>
 
               <div className="flex items-center gap-4 mt-6">
-                <span className="flex items-center gap-1.5 font-body text-xs text-white/50">
+                <span className="flex items-center gap-1.5 font-body text-xs text-white/85">
                   <Calendar size={12} />
                   {featured.date}
                 </span>

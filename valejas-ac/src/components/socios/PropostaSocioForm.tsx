@@ -521,7 +521,7 @@ export default function PropostaSocioForm() {
               </span>
             </label>
 
-            <p className="font-body text-xs text-on-surface-muted leading-relaxed border-l-2 border-yellow/40 pl-3">
+            <p className="font-body text-xs text-on-surface-muted leading-relaxed bg-surface p-4">
               Esta é uma <strong>proposta</strong>, não uma admissão. A Direção analisa-a em reunião
               e entra em contacto contigo. Só depois disso é que há pagamento a fazer.
             </p>

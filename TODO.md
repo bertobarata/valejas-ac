@@ -129,6 +129,30 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 
 ## 5. Dívida técnica conhecida
 
+- [ ] **Conteúdo de notícias é inventado** — `noticias.ts` tem um reforço
+      vindo do "São Paulo FC" para um clube de futsal de Barcarena, uma
+      academia em construção, uma entrevista e um derby 5-1, todos datados
+      de 2024. Os cartões já não levam a páginas mortas, mas o texto
+      continua lá e é o que ocupa a maior secção da homepage
+- [ ] **Navegação cresceu para 8 itens** — `/jogos` entrou por ser
+      essencial, mas a barra está no limite. A crítica já apontava
+      sobrecarga com 7. Rever a arquitetura de navegação, não só a lista
+- [ ] **Sem fotografias em todo o site** — `public/` tem quatro ficheiros
+      do emblema e seis de tipografia. Zero pessoas. A crítica identifica
+      isto como a razão de o site ler frio apesar do sistema visual
+- [ ] **Publicar comunicado não tem confirmação** — um clique envia para
+      Facebook e Instagram, sem rascunho guardado e sem forma de corrigir
+
+- [ ] **Grelhas de cartões idênticos** — órgãos sociais são 20 cartões
+      iguais, Academia Sénior 11, e patrocinadores e instalações seguem o
+      mesmo molde. Apanhado na auditoria de design e **não corrigido**:
+      precisa de decisão de layout, não de uma limpeza mecânica
+- [ ] **Vermelho fora da paleta** — faixa do topo e `btn-danger` continuam
+      vermelhos depois de a paleta ter sido fixada em amarelo + azul
+- [ ] **Acessibilidade por testar a sério** — as correções foram feitas
+      contra a norma e verificadas no código, mas o site nunca foi
+      percorrido com leitor de ecrã
+
 - [ ] `/api/comunicado-publish` — bearer simples. Substituir por
       verificação HMAC do webhook do Sanity, ou apagar a rota se o fluxo
       passar todo por `/direcao`

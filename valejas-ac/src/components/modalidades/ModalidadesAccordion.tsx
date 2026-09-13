@@ -127,9 +127,12 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
               )}
 
               {m.parceria && (
-                <div className="mt-6 border-l-2 border-yellow pl-4">
-                  <p className="font-headline font-black uppercase text-sm text-on-surface">
-                    Em parceria com {m.parceria.nome}
+                <div className="mt-6 pt-5 border-t border-on-surface/15">
+                  <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-1">
+                    Em parceria com
+                  </p>
+                  <p className="font-headline font-black uppercase text-base text-on-surface">
+                    {m.parceria.nome}
                   </p>
                   <p className="font-body text-sm text-on-surface-muted leading-relaxed mt-1">
                     {m.parceria.descricao}

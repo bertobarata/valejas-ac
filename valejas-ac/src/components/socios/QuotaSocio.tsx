@@ -65,7 +65,7 @@ export default function QuotaSocio() {
             >
               <span
                 className={`font-body text-xs font-semibold uppercase tracking-widest ${
-                  p.destaque ? "text-white/70" : "text-on-surface-muted"
+                  p.destaque ? "text-white/85" : "text-on-surface-muted"
                 }`}
               >
                 {p.nome}
@@ -75,7 +75,7 @@ export default function QuotaSocio() {
               </span>
               <span
                 className={`font-body text-xs mt-3 ${
-                  p.destaque ? "text-white/60" : "text-on-surface-muted"
+                  p.destaque ? "text-white/85" : "text-on-surface-muted"
                 }`}
               >
                 {p.nota}

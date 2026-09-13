@@ -222,8 +222,8 @@ export default function GestorJogos() {
         </p>
       )}
       {aviso && !erro && (
-        <p className="flex items-center gap-2 font-body text-base text-on-surface border-l-2 border-yellow pl-4 py-2">
-          <Check size={16} className="text-yellow" /> {aviso}
+        <p className="flex items-center gap-3 font-body text-base text-on-surface bg-yellow/15 px-4 py-3">
+          <Check size={18} className="text-on-surface flex-shrink-0" /> {aviso}
         </p>
       )}
 

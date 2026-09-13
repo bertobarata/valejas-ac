@@ -27,7 +27,7 @@ function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
 
   return (
     <Link
-      href={`/noticias/${a.slug}`}
+      href="/noticias"
       className={`article-card group bg-surface-high hover:bg-surface-highest transition-all duration-300 overflow-hidden ${
         isList ? "flex flex-col sm:flex-row" : "flex flex-col"
       }`}

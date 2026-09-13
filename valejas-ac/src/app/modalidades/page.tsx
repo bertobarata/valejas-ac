@@ -26,7 +26,7 @@ export default function ModalidadesPage() {
           para os mais novos e atividades abertas à comunidade.
         </p>
 
-        <div className="mt-8 border-l-2 border-yellow pl-5 max-w-2xl">
+        <div className="mt-8 max-w-2xl bg-surface-high p-6">
           <p className="font-headline font-black uppercase text-sm text-on-surface">
             {VAGAS.titulo}
           </p>
@@ -89,7 +89,7 @@ export default function ModalidadesPage() {
             <p className="font-display text-xl md:text-2xl">
               Queres experimentar? Fala connosco e trazemos-te para dentro.
             </p>
-            <p className="font-body text-sm text-white/70 mt-2">
+            <p className="font-body text-sm text-white/85 mt-2">
               {VAGAS.curto}.
             </p>
           </div>
