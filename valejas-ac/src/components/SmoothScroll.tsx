@@ -41,13 +41,14 @@ export default function SmoothScroll({
     // Connect Lenis to GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    const ticker = gsap.ticker.add((time) => {
+    const aoTick = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+    gsap.ticker.add(aoTick);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
-      gsap.ticker.remove(ticker);
+      gsap.ticker.remove(aoTick);
       lenis.destroy();
     };
   }, []);

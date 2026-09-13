@@ -137,12 +137,6 @@
     overflow-wrap: break-word;
   }
 
-  h1, h2, h3, h4,
-  .font-headline,
-  .font-display {
-    hyphens: auto;
-  }
-
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline tracking-tight;
   }
@@ -250,6 +244,18 @@
   }
   .link-salto:focus {
     @apply translate-y-0;
+  }
+
+  /* ── Entrada da barra de navegação ──
+     Em CSS e não em GSAP: a navegação principal não pode depender de
+     um tween terminar. Antes dependia, e com o requestAnimationFrame
+     travado a barra ficava invisível com a página já carregada. */
+  .entrada-barra {
+    animation: entrada-barra 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes entrada-barra {
+    from { opacity: 0; transform: translateY(-80px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   /* ── Entrada de página ──

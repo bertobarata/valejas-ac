@@ -23,11 +23,11 @@ export default function ProximoJogo({ jogo }: { jogo: Jogo | null }) {
       </p>
 
       {/* Equipas */}
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 md:gap-6 mt-7">
+      <div className="mt-7 flex flex-col gap-2 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-4 md:gap-6">
         <Equipa nome={j.casa} nosso={ehValejas(j.casa)} alinhamento="direita" />
         <span
           aria-hidden
-          className="font-headline font-black text-2xl md:text-3xl text-white/40"
+          className="font-headline font-black text-xl sm:text-2xl md:text-3xl text-white/60 sm:text-white/40"
         >
           VS
         </span>
@@ -68,7 +68,7 @@ function Equipa({
     <p
       className={`font-headline font-black uppercase leading-none tracking-tighter text-xl md:text-3xl ${
         nosso ? "text-yellow" : "text-white"
-      } ${alinhamento === "direita" ? "text-right" : "text-left"}`}
+      } ${alinhamento === "direita" ? "sm:text-right" : "text-left"}`}
     >
       {nome}
     </p>

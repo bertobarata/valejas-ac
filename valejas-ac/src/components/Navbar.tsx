@@ -31,6 +31,9 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const pathname = usePathname();
+
+  /** Páginas que abrem com o emblema em grande; só nelas o logo da barra espera. */
+  const temEmblemaNoTopo = pathname === "/" || pathname === "/clube";
   const { setTheme, resolvedTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -47,12 +50,6 @@ export default function Navbar() {
       onEnter:     () => setScrolled(true),
       onLeaveBack: () => setScrolled(false),
     });
-
-    gsap.fromTo(
-      navRef.current,
-      { y: -80, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
-    );
 
     return () => trigger.kill();
   }, []);
@@ -135,7 +132,8 @@ export default function Navbar() {
     <header
       ref={navRef}
       className={clsx(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 entrada-barra",
+        "transition-[background-color,box-shadow,backdrop-filter] duration-500",
         solid
           ? "bg-surface/95 backdrop-blur-xl shadow-ambient"
           : "bg-transparent dark section-dark"
@@ -152,12 +150,23 @@ export default function Navbar() {
 
       <nav className="section-container">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo — escondido no topo; aparece (encolhido) ao fazer scroll,
-             como se o emblema gigante do hero tivesse aterrado aqui. */}
+          {/*
+            Logo na barra.
+
+            Só se esconde no topo das páginas que já mostram o emblema em
+            grande logo a abrir — a home e a página do emblema. Aí o efeito
+            é intencional: o emblema do hero "aterra" na barra ao rolar.
+
+            Nas restantes não há emblema nenhum à vista no topo, e escondê-lo
+            deixava a barra sem marca durante o primeiro ecrã inteiro. Nessas,
+            aparece de imediato.
+          */}
           <div className={clsx(
             // Maior que a barra: transborda ligeiramente para baixo (emblema pendurado).
             "transition-all duration-300 z-50 -mb-6",
-            scrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none"
+            (scrolled || !temEmblemaNoTopo)
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-1 pointer-events-none"
           )}>
             <Logo size={96} />
           </div>

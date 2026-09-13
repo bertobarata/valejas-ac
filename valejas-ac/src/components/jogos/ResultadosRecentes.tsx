@@ -44,9 +44,9 @@ export default function ResultadosRecentes({ jogos }: { jogos: Jogo[] }) {
 
                 <div className="flex-1 min-w-0">
                   {/* Equipas e resultado */}
-                  <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+                  <div className="flex flex-col gap-1 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-3">
                     <p
-                      className={`font-headline font-black uppercase text-base md:text-lg leading-tight text-right ${
+                      className={`font-headline font-black uppercase text-base md:text-lg leading-tight sm:text-right ${
                         ehValejas(j.casa) ? "text-on-surface" : "text-on-surface-muted"
                       }`}
                     >
