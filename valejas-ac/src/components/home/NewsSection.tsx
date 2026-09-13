@@ -114,7 +114,7 @@ export default function NewsSection() {
             {/* Content overlay */}
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
               {/* Category badge */}
-              <span className={`inline-block font-body text-[10px] font-bold uppercase tracking-widest px-3 py-1 mb-4 ${CAT_COLOUR[featured.category] ?? "bg-surface-high text-on-surface"}`}>
+              <span className={`inline-block font-body text-xs font-bold uppercase tracking-widest px-3 py-1 mb-4 ${CAT_COLOUR[featured.category] ?? "bg-surface-high text-on-surface"}`}>
                 {featured.category}
               </span>
 
@@ -147,10 +147,10 @@ export default function NewsSection() {
               >
                 {/* Category + date row */}
                 <div className="flex items-center gap-3 mb-3">
-                  <span className={`font-body text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 ${CAT_COLOUR[article.category] ?? "bg-surface-highest text-on-surface"}`}>
+                  <span className={`font-body text-xs font-bold uppercase tracking-widest px-2 py-0.5 ${CAT_COLOUR[article.category] ?? "bg-surface-highest text-on-surface"}`}>
                     {article.category}
                   </span>
-                  <span className="font-body text-[10px] text-on-surface-muted">
+                  <span className="font-body text-xs text-on-surface-muted">
                     {article.date}
                   </span>
                 </div>
@@ -171,7 +171,7 @@ export default function NewsSection() {
                     size={12}
                     className="text-on-surface-muted group-hover:text-red group-hover:translate-x-1 transition-all duration-300"
                   />
-                  <span className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted group-hover:text-red transition-colors duration-300">
+                  <span className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted group-hover:text-red transition-colors duration-300">
                     Ler mais
                   </span>
                 </div>

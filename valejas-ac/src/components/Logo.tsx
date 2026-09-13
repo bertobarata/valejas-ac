@@ -31,7 +31,7 @@ export default function Logo({
           <span className="block font-headline font-black text-base md:text-lg uppercase text-on-surface tracking-tight">
             Valejas
           </span>
-          <span className="block font-body text-[11px] md:text-xs text-on-surface-muted uppercase tracking-widest">
+          <span className="block font-body text-xs md:text-xs text-on-surface-muted uppercase tracking-widest">
             Atlético Clube
           </span>
         </span>

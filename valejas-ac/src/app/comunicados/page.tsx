@@ -53,7 +53,7 @@ export default async function ComunicadosPage() {
                   .map((canal) => (
                     <span
                       key={canal}
-                      className="font-body text-[10px] font-bold uppercase tracking-widest text-yellow border border-yellow/40 px-2 py-0.5"
+                      className="font-body text-xs font-bold uppercase tracking-widest text-yellow border border-yellow/40 px-2 py-0.5"
                     >
                       {CANAL_LABEL[canal] ?? canal}
                     </span>

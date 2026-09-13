@@ -3,7 +3,7 @@ import Link from "next/link";
 import CTASocio from "@/components/CTASocio";
 import { ExternalLink } from "lucide-react";
 import {
-  TIPOS, apoiosPorTipo, iniciaisApoio, type Apoio,
+  TIPOS, apoiosPorTipo, type Apoio,
 } from "@/lib/data/patrocinadores";
 import { MOTE } from "@/lib/data/clube";
 
@@ -52,17 +52,19 @@ export default function PatrocinadoresPage() {
               <p className="font-body text-on-surface-muted mt-2">{tipo.intro}</p>
             </div>
 
-            <div
-              className={`grid gap-px bg-on-surface/10 ${
-                tipo.id === "principal"
-                  ? "grid-cols-1"
-                  : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-              }`}
-            >
-              {itens.map((a) => (
-                <CartaoApoio key={a.nome} apoio={a} destaque={tipo.id === "principal"} />
-              ))}
-            </div>
+            {tipo.id === "principal" ? (
+              <div>
+                {itens.map((a) => (
+                  <ApoioPrincipal key={a.nome} apoio={a} />
+                ))}
+              </div>
+            ) : (
+              <ul className="border-t border-on-surface/15">
+                {itens.map((a) => (
+                  <ApoioLinha key={a.nome} apoio={a} />
+                ))}
+              </ul>
+            )}
           </section>
         );
       })}
@@ -93,53 +95,65 @@ export default function PatrocinadoresPage() {
   );
 }
 
-function CartaoApoio({ apoio, destaque }: { apoio: Apoio; destaque: boolean }) {
+/** O patrocinador principal é o único que ganha tratamento próprio. */
+function ApoioPrincipal({ apoio }: { apoio: Apoio }) {
   const conteudo = (
     <>
-      {/* Logótipo — iniciais enquanto não houver ficheiros */}
-      <div
-        className={`flex items-center justify-center bg-gradient-to-b from-blue-deep to-surface-low ${
-          destaque ? "h-48 md:h-56" : "aspect-[16/9]"
-        }`}
-      >
-        <span
-          aria-hidden
-          className={`font-headline font-black text-white/25 group-hover:text-yellow/40 transition-colors duration-300 ${
-            destaque ? "text-7xl md:text-8xl" : "text-5xl"
-          }`}
-        >
-          {iniciaisApoio(apoio.nome)}
+      <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-yellow">
+        Veste o clube
+      </p>
+      <h3 className="font-headline font-black uppercase text-4xl md:text-6xl tracking-tighter wdth-condensed text-on-surface mt-2 leading-none">
+        {apoio.nome}
+      </h3>
+      <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-4 max-w-xl">
+        {apoio.descricao}
+      </p>
+      {apoio.url && (
+        <span className="inline-flex items-center gap-1.5 font-body text-sm text-yellow mt-5">
+          Visitar a loja oficial <ExternalLink size={14} />
         </span>
-      </div>
-
-      <div className={destaque ? "p-7 md:p-9" : "p-6"}>
-        <h3
-          className={`font-headline font-black uppercase text-on-surface leading-tight ${
-            destaque ? "text-2xl md:text-3xl" : "text-lg"
-          }`}
-        >
-          {apoio.nome}
-        </h3>
-        <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-          {apoio.descricao}
-        </p>
-        {apoio.url && (
-          <span className="inline-flex items-center gap-1.5 font-body text-sm text-yellow mt-4">
-            Visitar <ExternalLink size={14} />
-          </span>
-        )}
-      </div>
+      )}
     </>
   );
 
-  const classes =
-    "bg-surface-high hover:bg-surface-highest transition-colors duration-300 group block";
-
   return apoio.url ? (
-    <a href={apoio.url} target="_blank" rel="noopener noreferrer" className={classes}>
+    <a href={apoio.url} target="_blank" rel="noopener noreferrer" className="block group">
       {conteudo}
     </a>
   ) : (
-    <article className={classes}>{conteudo}</article>
+    <div>{conteudo}</div>
   );
 }
+
+/**
+ * Os restantes apoios são uma lista.
+ * ─────────────────────────────────────────────────────────────────
+ * Eram cartões com um retângulo em gradiente e as iniciais do nome lá
+ * dentro. Sem logótipos, um cartão de apoio não tem nada para mostrar:
+ * a moldura só sublinhava a ausência. Quando houver ficheiros reais,
+ * é aqui que entram.
+ * ─────────────────────────────────────────────────────────────────
+ */
+function ApoioLinha({ apoio }: { apoio: Apoio }) {
+  const conteudo = (
+    <div className="grid grid-cols-1 sm:grid-cols-[16rem_1fr] sm:items-baseline gap-x-8 gap-y-1 py-5">
+      <span className="font-headline font-black uppercase text-lg md:text-xl text-on-surface leading-tight">
+        {apoio.nome}
+      </span>
+      <span className="font-body text-on-surface-muted leading-relaxed">
+        {apoio.descricao}
+      </span>
+    </div>
+  );
+
+  return (
+    <li className="border-b border-on-surface/10">
+      {apoio.url ? (
+        <a href={apoio.url} target="_blank" rel="noopener noreferrer" className="block hover:text-yellow transition-colors duration-200">
+          {conteudo}
+        </a>
+      ) : conteudo}
+    </li>
+  );
+}
+

@@ -35,10 +35,17 @@ export default function RootLayout({
     >
       <body>
         <EcraCarregamento />
+
+        {/* Link de salto: com cabeçalho fixo e oito itens de navegação,
+            quem usa teclado percorria a barra inteira em cada página.
+            Fica escondido até receber foco. */}
+        <a href="#conteudo" className="link-salto">
+          Saltar para o conteúdo
+        </a>
         <Providers>
           <SmoothScroll>
             <Navbar />
-            <main>{children}</main>
+            <main id="conteudo">{children}</main>
             <Footer />
           </SmoothScroll>
         </Providers>

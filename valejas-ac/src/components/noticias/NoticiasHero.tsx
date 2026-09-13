@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ArrowRight, Calendar, User } from "lucide-react";
 import { formatData, type Artigo } from "@/lib/data/noticias";
@@ -50,11 +51,13 @@ export default function NoticiasHero({ artigo }: Props) {
             {/* Image */}
             <div className="lg:col-span-7 relative overflow-hidden min-h-[300px] lg:min-h-[420px] bg-surface-mid">
               {artigo.imagemUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <Image
                   src={artigo.imagemUrl}
                   alt={artigo.titulo}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               ) : (
                 <>
@@ -66,7 +69,7 @@ export default function NoticiasHero({ artigo }: Props) {
               )}
               {/* Categoria badge */}
               <div className="absolute top-5 left-5">
-                <span className="font-body text-[10px] font-bold uppercase tracking-widest bg-red text-white px-3 py-1">
+                <span className="font-body text-xs font-bold uppercase tracking-widest bg-red text-white px-3 py-1">
                   {artigo.categoria}
                 </span>
               </div>
@@ -75,7 +78,7 @@ export default function NoticiasHero({ artigo }: Props) {
             {/* Text */}
             <div className="lg:col-span-5 p-8 md:p-10 flex flex-col justify-between noticias-hero-content">
               <div className="space-y-4">
-                <span className="font-body text-[10px] font-bold uppercase tracking-widest text-yellow">
+                <span className="font-body text-xs font-bold uppercase tracking-widest text-yellow">
                   Em Destaque
                 </span>
                 <h2 className="font-headline font-black text-3xl md:text-4xl uppercase leading-tight tracking-tighter text-on-surface group-hover:text-yellow transition-colors duration-300">

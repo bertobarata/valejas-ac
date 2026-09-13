@@ -72,7 +72,7 @@ export default function ContactoSection() {
             <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
               <Mail size={18} className="text-yellow flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-1">Email</p>
+                <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-1">Email</p>
                 <a
                   href={`mailto:${CONTACTO.email}`}
                   className="font-body text-sm text-on-surface hover:text-yellow transition-colors duration-200"
@@ -86,7 +86,7 @@ export default function ContactoSection() {
             <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
               <Phone size={18} className="text-blue flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-1">Telefone</p>
+                <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-1">Telefone</p>
                 <a
                   href={`tel:${CONTACTO.telefone}`}
                   className="font-body text-sm text-on-surface hover:text-yellow transition-colors duration-200"
@@ -100,7 +100,7 @@ export default function ContactoSection() {
             <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
               <MapPin size={18} className="text-red flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-1">Morada</p>
+                <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-1">Morada</p>
                 <p className="font-body text-sm text-on-surface leading-relaxed">
                   {CONTACTO.morada}<br />
                   {CONTACTO.codigoPostal}<br />
@@ -113,7 +113,7 @@ export default function ContactoSection() {
             <div className="contacto-block bg-surface-high p-6 flex items-start gap-4">
               <Clock size={18} className="text-on-surface-muted flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-3">Horário</p>
+                <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-3">Horário</p>
                 <div className="space-y-2">
                   {CONTACTO.horario.map((h) => (
                     <div key={h.dias} className="flex justify-between gap-6">
@@ -129,7 +129,7 @@ export default function ContactoSection() {
 
             {/* Redes sociais */}
             <div className="contacto-block bg-surface-high p-6 border border-on-surface/10">
-              <p className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted mb-4">Segue-nos</p>
+              <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-4">Segue-nos</p>
               <div className="flex items-center gap-3">
                 <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                    className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#E4405F] hover:text-white transition-all duration-200">
@@ -168,24 +168,26 @@ export default function ContactoSection() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted block mb-1.5">
+                      <label htmlFor="contacto-nome" className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted block mb-1.5">
                         Nome *
                       </label>
                       <input
                         type="text"
                         name="nome"
+                        id="contacto-nome"
                         required
                         placeholder="O teu nome"
                         className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
                       />
                     </div>
                     <div>
-                      <label className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted block mb-1.5">
+                      <label htmlFor="contacto-email" className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted block mb-1.5">
                         Email *
                       </label>
                       <input
                         type="email"
                         name="email"
+                        id="contacto-email"
                         required
                         placeholder="email@exemplo.pt"
                         className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
@@ -194,11 +196,12 @@ export default function ContactoSection() {
                   </div>
 
                   <div>
-                    <label className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted block mb-1.5">
+                    <label htmlFor="contacto-assunto" className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted block mb-1.5">
                       Assunto *
                     </label>
                     <select
                       name="assunto"
+                      id="contacto-assunto"
                       required
                       className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full bg-surface-high text-on-surface"
                     >
@@ -213,11 +216,12 @@ export default function ContactoSection() {
                   </div>
 
                   <div>
-                    <label className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted block mb-1.5">
+                    <label htmlFor="contacto-mensagem" className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted block mb-1.5">
                       Mensagem *
                     </label>
                     <textarea
                       name="mensagem"
+                      id="contacto-mensagem"
                       required
                       rows={5}
                       placeholder="A tua mensagem…"

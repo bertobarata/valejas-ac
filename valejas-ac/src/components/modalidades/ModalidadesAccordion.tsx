@@ -64,17 +64,17 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
                     </span>
 
                     {m.compete && (
-                      <span className="inline-flex items-center gap-1.5 font-body text-[0.7rem] font-semibold uppercase tracking-widest text-blue-deep bg-yellow px-2.5 py-1">
+                      <span className="inline-flex items-center gap-1.5 font-body text-xs font-semibold uppercase tracking-widest text-blue-deep bg-yellow px-2.5 py-1">
                         <Trophy size={12} /> Compete
                       </span>
                     )}
                     {m.apenasFormacao && (
-                      <span className="inline-flex items-center gap-1.5 font-body text-[0.7rem] font-semibold uppercase tracking-widest text-on-surface border border-on-surface/25 px-2.5 py-1">
+                      <span className="inline-flex items-center gap-1.5 font-body text-xs font-semibold uppercase tracking-widest text-on-surface border border-on-surface/25 px-2.5 py-1">
                         <Users size={12} /> Só formação
                       </span>
                     )}
                     {m.parceria && (
-                      <span className="font-body text-[0.7rem] font-semibold uppercase tracking-widest text-on-surface-muted border border-on-surface/25 px-2.5 py-1">
+                      <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted border border-on-surface/25 px-2.5 py-1">
                         Parceria
                       </span>
                     )}

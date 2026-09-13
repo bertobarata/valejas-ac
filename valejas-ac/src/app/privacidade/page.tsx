@@ -60,8 +60,10 @@ export default function PrivacidadePage() {
         pode dar esse consentimento sozinho.
       </p>
 
-      <h3>Newsletter</h3>
-      <p>O endereço de email que indicares.</p>
+      <h3>Formulário de contacto</h3>
+      <p>
+        Nome, email, assunto e a mensagem que escreveres. Nada mais.
+      </p>
 
       <h3>Navegação</h3>
       <p>
@@ -84,7 +86,7 @@ export default function PrivacidadePage() {
         </li>
         <li><strong>Fotografia</strong>: imprimir o cartão de sócio</li>
         <li><strong>IBAN</strong>: processar o débito direto que autorizaste</li>
-        <li><strong>Newsletter</strong>: enviar notícias do clube</li>
+        <li><strong>Formulário de contacto</strong>: responder ao que nos perguntas</li>
       </ul>
       <p>
         <strong>Não vendemos dados a ninguém</strong> e não os usamos para
@@ -112,7 +114,8 @@ export default function PrivacidadePage() {
         O clube recorre a serviços externos para funcionar. Cada um vê apenas o
         que precisa:
       </p>
-      <table>
+      <div className="overflow-x-auto">
+        <table>
         <thead>
           <tr>
             <th>Serviço</th>
@@ -148,11 +151,12 @@ export default function PrivacidadePage() {
           </tr>
           <tr>
             <td>Formspree</td>
-            <td>Formulário de newsletter</td>
-            <td>Email indicado</td>
+            <td>Formulário de contacto</td>
+            <td>Nome, email e mensagem</td>
           </tr>
         </tbody>
-      </table>
+        </table>
+      </div>
       <p>
         O mapa do Google na página da história{" "}
         <strong>só é carregado depois de carregares no botão</strong>. Até lá, o
@@ -179,7 +183,8 @@ export default function PrivacidadePage() {
           de ser necessárias
         </li>
         <li>
-          <strong>Newsletter</strong>: até cancelares a subscrição
+          <strong>Mensagens de contacto</strong>: o tempo necessário para
+          responder e resolver o assunto
         </li>
       </ul>
 

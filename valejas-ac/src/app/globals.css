@@ -53,6 +53,17 @@
 :root:not(.dark) .hover\:text-yellow:not(.on-dark):hover {
   color: #1554BB;
 }
+/* O vermelho do clube (#D4150C) dá 3,46:1 sobre o fundo escuro — abaixo
+   do mínimo para texto. Em tema escuro clareia-se o suficiente para
+   passar, mantendo-se reconhecível como o vermelho do emblema. */
+.dark .text-red {
+  color: #FF6B5E;
+}
+.dark .hover\:text-red:hover,
+.dark .group:hover .group-hover\:text-red {
+  color: #FF6B5E;
+}
+
 /* Secções de fundo escuro: o amarelo-texto mantém-se (contraste ok).
    A regra deriva do PRÓPRIO fundo, não de uma marca que alguém se tem
    de lembrar de pôr. Antes só `.section-dark` a anulava, e bastou uma
@@ -123,6 +134,13 @@
   body {
     @apply bg-surface text-on-surface font-body antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-wrap: break-word;
+  }
+
+  h1, h2, h3, h4,
+  .font-headline,
+  .font-display {
+    hyphens: auto;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -218,6 +236,20 @@
   }
   .section-title span {
     @apply text-yellow;
+  }
+
+  /* ── Link de salto ──
+     Invisível até receber foco por teclado. Quem usa rato nunca o vê;
+     quem navega por teclado deixa de percorrer oito itens de navegação
+     em todas as páginas. */
+  .link-salto {
+    @apply fixed left-4 z-[200] -translate-y-24 bg-yellow text-blue-deep
+           font-headline font-black text-sm uppercase tracking-wider
+           px-5 py-3 transition-transform duration-200;
+    top: 1rem;
+  }
+  .link-salto:focus {
+    @apply translate-y-0;
   }
 
   /* ── Entrada de página ──
@@ -320,10 +352,6 @@
     );
   }
 
-  /* ── Glass panel ── */
-  .glass {
-    @apply backdrop-blur-xl bg-surface-highest/40 border border-on-surface/10;
-  }
 
   /* ── Stats counter ── */
   .stat-number {
@@ -372,29 +400,7 @@
 
 /* ── 4. UTILITIES ───────────────────────────────────────────────────*/
 @layer utilities {
-  /* Yellow glow for neon effect */
-  .glow-yellow {
-    box-shadow: 0 0 20px rgba(250,219,9,0.35), 0 0 40px rgba(250,219,9,0.15);
-  }
 
-  /* Red glow for urgency states */
-  .glow-red {
-    box-shadow: 0 0 20px rgba(195,0,1,0.35), 0 0 40px rgba(195,0,1,0.15);
-  }
-
-  /* Text stroke for editorial headings */
-  .text-stroke {
-    -webkit-text-stroke: 2px currentColor;
-    color: transparent;
-  }
-
-  /* Kinetic diagonal clip */
-  .clip-diagonal {
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-  }
-  .clip-diagonal-reverse {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 88%);
-  }
 
   /* Hide scrollbar but keep functionality */
   .no-scrollbar::-webkit-scrollbar { display: none; }

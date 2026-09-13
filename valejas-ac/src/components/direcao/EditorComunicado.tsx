@@ -9,7 +9,7 @@
  */
 
 import { useEffect, useMemo, useState } from "react";
-import { AlertTriangle, Check, Eye, Loader2, LogOut, Send } from "lucide-react";
+import { AlertTriangle, Check, Eye, Loader2, LogOut, Send, X } from "lucide-react";
 import clsx from "clsx";
 
 interface Resultado {
@@ -125,17 +125,22 @@ export default function EditorComunicado() {
           )}
 
           <ul className="space-y-2">
-            <li className="font-body text-base text-on-surface">
-              <span className="text-yellow">✓</span> Site — {" "}
+            <li className="flex items-center gap-2 font-body text-base text-on-surface">
+              <Check size={16} className="text-on-surface shrink-0" aria-hidden />
+              <span>Site:{" "}
               <a href={resposta.urlSite} className="underline text-on-surface-muted hover:text-yellow">
                 ver comunicado
-              </a>
+              </a></span>
             </li>
             {resposta.resultados.map((r) => (
-              <li key={r.canal} className="font-body text-base text-on-surface">
-                <span className={r.ok ? "text-yellow" : "text-red-500"}>{r.ok ? "✓" : "✕"}</span>{" "}
-                <span className="capitalize">{r.canal}</span> — {" "}
-                <span className="text-on-surface-muted">{r.detalhe}</span>
+              <li key={r.canal} className="flex items-start gap-2 font-body text-base text-on-surface">
+                {r.ok
+                  ? <Check size={16} className="text-on-surface shrink-0 mt-1" aria-hidden />
+                  : <X size={16} className="text-red-500 shrink-0 mt-1" aria-hidden />}
+                <span>
+                  <span className="capitalize">{r.canal}</span>:{" "}
+                  <span className="text-on-surface-muted">{r.detalhe}</span>
+                </span>
               </li>
             ))}
           </ul>

@@ -86,7 +86,7 @@ export default function CorpoTecnico() {
               </div>
               {/* Name badge */}
               <div className="absolute bottom-4 left-4 right-4 bg-yellow p-4">
-                <p className="font-body text-[9px] uppercase tracking-widest text-black/60">Treinador Principal</p>
+                <p className="font-body text-xs uppercase tracking-widest text-black/60">Treinador Principal</p>
                 <p className="font-headline font-black text-xl uppercase text-black">Marco Reus</p>
               </div>
             </div>

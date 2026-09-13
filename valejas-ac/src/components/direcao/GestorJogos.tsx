@@ -302,12 +302,17 @@ export default function GestorJogos() {
         <h2 className="font-headline font-black uppercase text-2xl tracking-tight text-on-surface mb-2">
           Classificação
         </h2>
-        <p className="font-body text-on-surface-muted leading-relaxed mb-6 max-w-2xl">
+        <p id="ajuda-colagem" className="font-body text-on-surface-muted leading-relaxed mb-6 max-w-2xl">
           Copia a tabela do site da AF Lisboa e cola aqui. Cada equipa numa linha,
           com a posição à frente e os números a seguir ao nome. O site lê o resto.
         </p>
 
+        <label htmlFor="colagem-classificacao" className="sr-only">
+          Tabela de classificação copiada do site da AF Lisboa
+        </label>
         <textarea
+          id="colagem-classificacao"
+          aria-describedby="ajuda-colagem"
           value={colagem}
           onChange={(e) => setColagem(e.target.value)}
           rows={6}

@@ -31,7 +31,7 @@ export default function ColorsBento() {
           {/* Amarelo — bloco principal */}
           <div className="bento-block md:col-span-7 bg-yellow p-10 md:p-14 flex flex-col justify-end relative overflow-hidden min-h-[320px] md:min-h-[420px] cursor-default">
             <div>
-              <p className="font-body text-[9px] font-bold uppercase tracking-[0.4em] text-black/40 mb-3">01. Cor principal</p>
+              <p className="font-body text-xs font-bold uppercase tracking-[0.4em] text-black/40 mb-3">01. Cor principal</p>
               <h3 className="font-headline font-black text-6xl md:text-7xl uppercase tracking-tighter text-black mb-4">
                 Amarelo
               </h3>

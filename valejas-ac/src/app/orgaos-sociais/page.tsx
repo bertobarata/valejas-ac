@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTASocio from "@/components/CTASocio";
 import {
-  ORGAOS, MANDATO, MOSTRAR_NUMERO_SOCIO, anosDeSocio, iniciais,
+  ORGAOS, MANDATO, MOSTRAR_NUMERO_SOCIO, anosDeSocio,
   type Membro,
 } from "@/lib/data/orgaosSociais";
 
@@ -58,22 +58,22 @@ export default function OrgaosSociaisPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-on-surface/10">
-              {efetivos.map((m) => (
-                <CartaoMembro key={`${orgao.id}-${m.cargo}`} membro={m} />
+            <ol className="border-t border-on-surface/15">
+              {efetivos.map((m, i) => (
+                <Membro key={`${orgao.id}-${m.cargo}`} membro={m} principal={i === 0} />
               ))}
-            </div>
+            </ol>
 
             {suplentes.length > 0 && (
               <div className="mt-10">
-                <h3 className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-on-surface-muted border-b border-on-surface/10 pb-3 mb-6">
+                <h3 className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-on-surface-muted mb-1">
                   Suplentes
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-on-surface/10">
+                <ol className="border-t border-on-surface/15">
                   {suplentes.map((m) => (
-                    <CartaoMembro key={`${orgao.id}-${m.cargo}`} membro={m} />
+                    <Membro key={`${orgao.id}-${m.cargo}`} membro={m} compacto />
                   ))}
-                </div>
+                </ol>
               </div>
             )}
           </section>
@@ -108,36 +108,55 @@ export default function OrgaosSociaisPage() {
   );
 }
 
-function CartaoMembro({ membro }: { membro: Membro }) {
+/**
+ * Uma linha por pessoa.
+ * ─────────────────────────────────────────────────────────────────
+ * Isto eram vinte cartões iguais, cada um com um retângulo em
+ * gradiente e as iniciais lá dentro. Três problemas: o Presidente e o
+ * segundo suplente recebiam o mesmo peso, as iniciais não identificam
+ * ninguém (a Dina Faustino e a Diana Figueira davam ambas "DF"), e
+ * sem fotografia o cartão não tinha nada para mostrar.
+ *
+ * Uma lista resolve os três: o cargo manda, o nome é o que se lê, e a
+ * hierarquia vive na escala em vez de na moldura.
+ * ─────────────────────────────────────────────────────────────────
+ */
+function Membro({
+  membro, principal, compacto,
+}: {
+  membro: Membro;
+  principal?: boolean;
+  compacto?: boolean;
+}) {
   const anos = anosDeSocio(membro.desde);
 
   return (
-    <article className="bg-surface-high hover:bg-surface-highest transition-colors duration-300 group">
-      {/* Retrato — iniciais enquanto não houver fotografias */}
-      <div className="relative aspect-square bg-gradient-to-b from-blue-deep to-surface-low flex items-center justify-center">
-        <span
-          aria-hidden
-          className="font-headline font-black text-5xl text-white/20 group-hover:text-yellow/30 transition-colors duration-300"
-        >
-          {iniciais(membro.nome)}
-        </span>
-      </div>
+    <li
+      className={`grid grid-cols-1 sm:grid-cols-[13rem_1fr_auto] sm:items-baseline gap-x-6 gap-y-1 border-b border-on-surface/10 ${
+        compacto ? "py-3" : "py-5"
+      }`}
+    >
+      <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted">
+        {membro.cargo}
+      </span>
 
-      <div className="p-4">
-        <p className="font-body text-[0.7rem] font-semibold uppercase tracking-widest text-yellow">
-          {membro.cargo}
-        </p>
-        <p className="font-headline font-black uppercase text-base text-on-surface leading-tight mt-1">
-          {membro.nome}
-        </p>
-        <p className="font-body text-xs text-on-surface-muted mt-1.5">
-          Sócio desde {membro.desde}
-          <span className="text-on-surface-muted">
+      <span
+        className={`font-headline font-black uppercase text-on-surface leading-tight ${
+          principal ? "text-2xl md:text-3xl tracking-tighter" : compacto ? "text-base" : "text-lg md:text-xl"
+        }`}
+      >
+        {membro.nome}
+      </span>
+
+      <span className="font-body text-sm text-on-surface-muted whitespace-nowrap">
+        Sócio desde {membro.desde}
+        {!compacto && (
+          <>
             {" "}· {anos} {anos === 1 ? "ano" : "anos"}
-          </span>
-          {MOSTRAR_NUMERO_SOCIO && <> · N.º {membro.numero}</>}
-        </p>
-      </div>
-    </article>
+          </>
+        )}
+        {MOSTRAR_NUMERO_SOCIO && <> · N.º {membro.numero}</>}
+      </span>
+    </li>
   );
 }

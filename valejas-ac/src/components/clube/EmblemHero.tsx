@@ -130,7 +130,7 @@ export default function EmblemHero() {
 
       {/* Scroll indicator */}
       <div className="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-on-surface-muted">
-        <span className="font-body text-[9px] uppercase tracking-[0.4em]">Scroll para Desconstruir</span>
+        <span className="font-body text-xs uppercase tracking-[0.4em]">Scroll para Desconstruir</span>
         <div className="w-px h-16 bg-gradient-to-b from-yellow to-transparent" />
       </div>
     </section>

@@ -29,7 +29,8 @@ export default function CookiesPage() {
       </p>
 
       <h2>2. O que é realmente guardado</h2>
-      <table>
+      <div className="overflow-x-auto">
+        <table>
         <thead>
           <tr>
             <th>Nome</th>
@@ -63,7 +64,8 @@ export default function CookiesPage() {
             <td>Até fechares o separador</td>
           </tr>
         </tbody>
-      </table>
+        </table>
+      </div>
       <p>
         O cookie da área da Direção é <strong>httpOnly</strong>: não pode ser
         lido por código a correr no navegador — e assinado, para não poder ser
@@ -83,8 +85,8 @@ export default function CookiesPage() {
           não recebe qualquer pedido vindo daqui
         </li>
         <li>
-          <strong>Formulário de newsletter</strong>, tratado pela Formspree. Só
-          comunica com eles quando submetes o teu email
+          <strong>Formulário de contacto</strong>, tratado pela Formspree. Só
+          comunica com eles quando carregas em enviar
         </li>
       </ul>
       <p>

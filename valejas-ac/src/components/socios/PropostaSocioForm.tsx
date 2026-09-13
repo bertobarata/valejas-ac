@@ -575,26 +575,40 @@ export default function PropostaSocioForm() {
 
 function Passos({ atual }: { atual: number }) {
   return (
-    <ol className="flex items-center gap-2" aria-label="Progresso">
-      {PASSOS.map((nome, i) => (
-        <li key={nome} className="flex-1">
-          <div
-            className={clsx(
-              "h-1 transition-colors duration-300",
-              i <= atual ? "bg-yellow" : "bg-on-surface/15"
-            )}
-          />
-          <span
-            className={clsx(
-              "block mt-2 font-body text-[0.7rem] uppercase tracking-widest",
-              i === atual ? "text-yellow font-semibold" : "text-on-surface-muted"
-            )}
-          >
-            {nome}
-          </span>
-        </li>
-      ))}
-    </ol>
+    <div>
+      {/* As barras cabem sempre: cinco divisões de largura igual. */}
+      <ol className="flex items-center gap-2" aria-label="Progresso">
+        {PASSOS.map((nome, i) => (
+          <li key={nome} className="flex-1 min-w-0">
+            <div
+              className={clsx(
+                "h-1 transition-colors duration-300",
+                i <= atual ? "bg-yellow" : "bg-on-surface/15"
+              )}
+            />
+            {/*
+              Os rótulos é que não cabem. A 375px, cinco palavras com
+              `tracking-widest` empurravam a página 105px para fora e
+              davam scroll horizontal na página mais importante do site.
+              Em ecrã estreito só se mostra o passo atual, por baixo.
+            */}
+            <span
+              className={clsx(
+                "hidden sm:block mt-2 font-body text-xs uppercase tracking-widest truncate",
+                i === atual ? "text-yellow font-semibold" : "text-on-surface-muted"
+              )}
+            >
+              {nome}
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <p className="sm:hidden mt-3 font-body text-xs uppercase tracking-widest text-on-surface-muted">
+        Passo {atual + 1} de {PASSOS.length}
+        <span className="text-yellow font-semibold"> · {PASSOS[atual]}</span>
+      </p>
+    </div>
   );
 }
 

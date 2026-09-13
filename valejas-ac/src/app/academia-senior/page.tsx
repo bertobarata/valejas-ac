@@ -77,18 +77,21 @@ export default function AcademiaSeniorPage() {
                 <h3 className="font-headline font-black text-2xl uppercase tracking-tighter text-yellow border-b border-on-surface/10 pb-3">
                   {f.titulo}
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-on-surface/10 mt-6">
+                <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-14">
                   {itens.map((a) => (
-                    <div key={a.nome} className="bg-surface-high p-6">
-                      <h4 className="font-headline font-black uppercase text-lg text-on-surface">
+                    <li
+                      key={a.nome}
+                      className="py-4 border-b border-on-surface/10 flex flex-col sm:flex-row sm:items-baseline gap-x-5 gap-y-1"
+                    >
+                      <span className="font-headline font-black uppercase text-lg text-on-surface sm:w-44 shrink-0">
                         {a.nome}
-                      </h4>
-                      <p className="font-body text-sm text-on-surface-muted leading-relaxed mt-2">
+                      </span>
+                      <span className="font-body text-on-surface-muted leading-relaxed">
                         {a.descricao}
-                      </p>
-                    </div>
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             );
           })}

@@ -114,7 +114,7 @@ export default function ModalidadesGrid() {
               <div className={`absolute top-0 left-0 right-0 h-0.5 ${GRUPO_ACCENT[m.grupo]}`} />
 
               <div>
-                <span className="font-body text-[10px] font-bold uppercase tracking-widest text-on-surface-muted">
+                <span className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted">
                   {GRUPO_LABEL[m.grupo]}
                 </span>
                 <h3 className="font-headline font-black text-xl text-on-surface mt-1 leading-none uppercase group-hover:text-yellow transition-colors duration-300">

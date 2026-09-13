@@ -96,8 +96,3 @@ export function anosDeSocio(desde: number): number {
   return new Date().getFullYear() - desde;
 }
 
-/** Iniciais para o retrato, enquanto não houver fotografias. */
-export function iniciais(nome: string): string {
-  const partes = nome.trim().split(/\s+/);
-  return ((partes[0]?.[0] ?? "") + (partes[partes.length - 1]?.[0] ?? "")).toUpperCase();
-}

@@ -176,7 +176,7 @@ export default function PlantelFilter() {
                           {j.numero}
                         </span>
                         {j.capitao && (
-                          <span className="absolute top-3 left-3 font-body text-[0.65rem] font-bold uppercase tracking-widest bg-yellow text-blue-deep px-2 py-1">
+                          <span className="absolute top-3 left-3 font-body text-xs font-bold uppercase tracking-widest bg-yellow text-blue-deep px-2 py-1">
                             Capitão
                           </span>
                         )}

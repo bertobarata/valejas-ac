@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import NewsletterForm from "@/components/NewsletterForm";
 import { CONTACTO } from "@/lib/data/socios";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -62,12 +61,9 @@ export default function SociosCTA() {
             <span className="text-yellow">clube</span>
           </h2>
           <p className="font-body text-base text-white/85 leading-relaxed mb-10">
-            Acompanha os jogos de todos os escalões, recebe as novidades do
-            clube em primeira mão e faz parte das famílias que fazem o Valejas.
+            Acompanha os jogos de todos os escalões e faz parte das famílias
+            que fazem o Valejas.
           </p>
-
-          {/* Email form */}
-          <NewsletterForm variant="dark" cta="Inscrever Agora" />
 
           {/* Secondary CTAs */}
           <div className="flex flex-wrap justify-center gap-4">

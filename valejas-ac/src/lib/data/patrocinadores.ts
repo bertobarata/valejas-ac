@@ -81,11 +81,3 @@ export function apoiosPorTipo(tipo: TipoApoio): Apoio[] {
   return APOIOS.filter((a) => a.tipo === tipo);
 }
 
-/** Iniciais, enquanto não houver logótipos. */
-export function iniciaisApoio(nome: string): string {
-  const limpo = nome.replace(/^(Restaurante|Junta de Freguesia de)\s+/i, "").trim();
-  const partes = limpo.split(/\s+/);
-  return partes.length === 1
-    ? limpo.slice(0, 2).toUpperCase()
-    : ((partes[0][0] ?? "") + (partes[partes.length - 1][0] ?? "")).toUpperCase();
-}

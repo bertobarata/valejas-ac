@@ -5,95 +5,134 @@ import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import * as THREE from "three";
 import { ChevronDown } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 /* ──────────────────────────────────────────────────────────────────
-   Three.js particle field — stadium lights / goal net effect
+   Campo de partículas — canvas 2D
+   ──────────────────────────────────────────────────────────────────
+   Isto era three.js: um WebGLRenderer completo, 23 MB de dependência
+   e ~60 kB de JavaScript enviados a cada visita, para desenhar pontos
+   a flutuar. Num público que o PRODUCT.md descreve como
+   "maioritariamente em telemóvel, dos 10 aos 60+", não se justifica.
+
+   A projeção em perspetiva é feita à mão: cada ponto vive em 3D, roda
+   em torno do eixo Y e do X, e divide-se pela profundidade. São seis
+   linhas de matemática em vez de uma biblioteca inteira.
+
+   Respeita `prefers-reduced-motion`: nesse caso desenha o campo uma
+   vez, parado. O emblema e o fundo continuam lá; só o movimento sai.
    ────────────────────────────────────────────────────────────────── */
-function initThreeParticles(canvas: HTMLCanvasElement) {
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+function initParticulas(canvas: HTMLCanvasElement) {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return () => {};
 
-  const scene  = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, canvas.offsetWidth / canvas.offsetHeight, 0.1, 100);
-  camera.position.z = 4;
+  const CORES = ["#FADB09", "#1554BB", "#DCE2F5"] as const;
+  const TOTAL = 1800;
 
-  // Particle system
-  const count    = 1800;
-  const positions = new Float32Array(count * 3);
-  const colors    = new Float32Array(count * 3);
+  type Ponto = { x: number; y: number; z: number; cor: string };
+  const pontos: Ponto[] = Array.from({ length: TOTAL }, () => ({
+    x: (Math.random() - 0.5) * 12,
+    y: (Math.random() - 0.5) * 8,
+    z: (Math.random() - 0.5) * 6,
+    // Mesma mistura de sempre: maioria clara, alguns amarelos e azuis.
+    cor: Math.random() < 0.15 ? CORES[0] : Math.random() < 0.30 ? CORES[1] : CORES[2],
+  }));
 
-  const yellow = new THREE.Color("#FADB09");
-  const blue   = new THREE.Color("#1554BB");
-  const white  = new THREE.Color("#DCE2F5");
+  let largura = 0;
+  let altura = 0;
+  let dpr = 1;
 
-  for (let i = 0; i < count; i++) {
-    positions[i * 3]     = (Math.random() - 0.5) * 12;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 6;
+  const dimensionar = () => {
+    dpr = Math.min(window.devicePixelRatio, 2);
+    largura = canvas.offsetWidth;
+    altura = canvas.offsetHeight;
+    canvas.width = Math.round(largura * dpr);
+    canvas.height = Math.round(altura * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  };
+  dimensionar();
 
-    // Mix of yellow, blue and white particles
-    const c = Math.random() < 0.15 ? yellow : Math.random() < 0.30 ? blue : white;
-    colors[i * 3]     = c.r;
-    colors[i * 3 + 1] = c.g;
-    colors[i * 3 + 2] = c.b;
+  let ratoX = 0;
+  let ratoY = 0;
+  const aoMover = (e: MouseEvent) => {
+    ratoX = (e.clientX / window.innerWidth - 0.5) * 2;
+    ratoY = (e.clientY / window.innerHeight - 0.5) * 2;
+  };
+
+  /** Distância focal equivalente a uma câmara de 60°, a 4 unidades. */
+  const distanciaCamara = 4;
+  const focal = () => altura / (2 * Math.tan((60 * Math.PI) / 180 / 2));
+
+  const desenhar = (tempo: number) => {
+    ctx.clearRect(0, 0, largura, altura);
+
+    const rotY = tempo * 0.00006 + ratoX * 0.08;
+    const rotX = tempo * 0.00003 - ratoY * 0.04;
+    const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+    const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+    const f = focal();
+
+    for (const p of pontos) {
+      // Rodar em Y, depois em X.
+      const x1 = p.x * cosY - p.z * sinY;
+      const z1 = p.x * sinY + p.z * cosY;
+      const y2 = p.y * cosX - z1 * sinX;
+      const z2 = p.y * sinX + z1 * cosX;
+
+      const profundidade = z2 + distanciaCamara;
+      if (profundidade <= 0.1) continue; // atrás da câmara
+
+      const escala = f / profundidade;
+      const ecraX = largura / 2 + x1 * escala;
+      const ecraY = altura / 2 - y2 * escala;
+      if (ecraX < -8 || ecraX > largura + 8 || ecraY < -8 || ecraY > altura + 8) continue;
+
+      // O tamanho diminui com a distância, como no sizeAttenuation.
+      // O fator é menor que o do three.js porque um círculo preenchido
+      // ocupa mais peso visual que o quadrado que o PointsMaterial desenha.
+      const raio = Math.min(1.6, Math.max(0.35, 0.035 * escala * 0.3));
+
+      ctx.globalAlpha = 0.55;
+      ctx.fillStyle = p.cor;
+      ctx.beginPath();
+      ctx.arc(ecraX, ecraY, raio, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  };
+
+  const reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const aoRedimensionar = () => {
+    dimensionar();
+    if (reduzido) desenhar(0);
+  };
+  window.addEventListener("resize", aoRedimensionar);
+
+  if (reduzido) {
+    // Campo parado: vê-se, não se mexe.
+    desenhar(0);
+    return () => window.removeEventListener("resize", aoRedimensionar);
   }
 
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute("color",    new THREE.BufferAttribute(colors, 3));
+  window.addEventListener("mousemove", aoMover);
 
-  const material = new THREE.PointsMaterial({
-    size:         0.035,
-    vertexColors: true,
-    transparent:  true,
-    opacity:      0.7,
-    sizeAttenuation: true,
-  });
-
-  const particles = new THREE.Points(geometry, material);
-  scene.add(particles);
-
-  // Mouse parallax
-  let mouseX = 0, mouseY = 0;
-  const handleMouse = (e: MouseEvent) => {
-    mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-  };
-  window.addEventListener("mousemove", handleMouse);
-
-  // Resize
-  const handleResize = () => {
-    camera.aspect = canvas.offsetWidth / canvas.offsetHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
-  };
-  window.addEventListener("resize", handleResize);
-
-  // Animate
-  let frame: number;
-  const tick = (time: number) => {
+  let frame = 0;
+  const tick = (tempo: number) => {
     frame = requestAnimationFrame(tick);
-    particles.rotation.y  = time * 0.00006 + mouseX * 0.08;
-    particles.rotation.x  = time * 0.00003 - mouseY * 0.04;
-    renderer.render(scene, camera);
+    desenhar(tempo);
   };
   frame = requestAnimationFrame(tick);
 
-  // Return cleanup
   return () => {
     cancelAnimationFrame(frame);
-    window.removeEventListener("mousemove", handleMouse);
-    window.removeEventListener("resize", handleResize);
-    renderer.dispose();
-    geometry.dispose();
-    material.dispose();
+    window.removeEventListener("mousemove", aoMover);
+    window.removeEventListener("resize", aoRedimensionar);
   };
 }
+
 
 /* ──────────────────────────────────────────────────────────────────
    Hero Section Component
@@ -110,7 +149,7 @@ export default function HeroSection() {
   // Three.js
   useEffect(() => {
     if (!canvasRef.current) return;
-    const cleanup = initThreeParticles(canvasRef.current);
+    const cleanup = initParticulas(canvasRef.current);
     return cleanup;
   }, []);
 

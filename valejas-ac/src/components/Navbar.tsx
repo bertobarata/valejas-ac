@@ -309,7 +309,7 @@ export default function Navbar() {
                   <YouTubeIcon size={20} />
                 </a>
               </div>
-              <span className="font-body text-[10px] text-on-surface-muted uppercase tracking-widest">
+              <span className="font-body text-xs text-on-surface-muted uppercase tracking-widest">
                 A casa do clube
               </span>
             </div>

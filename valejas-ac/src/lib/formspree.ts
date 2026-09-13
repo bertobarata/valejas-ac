@@ -1,4 +1,9 @@
-// Envio de formulários via Formspree (funciona em hosting estático / GitHub Pages).
+// Envio do FORMULÁRIO DE CONTACTO via Formspree.
+//
+// É o único formulário que passa por aqui. A ficha de sócio tem rota
+// própria (/api/inscricao) porque leva dados sensíveis e não pode passar
+// por terceiros. A newsletter foi removida a pedido da Direção.
+//
 // Cria um form em https://formspree.io → copia o endpoint → define em .env.local:
 //   NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxxxxx
 // Como é NEXT_PUBLIC_*, o valor é embutido no build (rebuild após mudar).

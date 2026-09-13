@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Calendar, User, ArrowRight, FileText, LayoutGrid, List } from "lucide-react";
@@ -40,11 +41,12 @@ function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
           }`}
         >
           {a.imagemUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={a.imagemUrl}
               alt={a.titulo}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              fill
+              sizes={isList ? "(max-width: 640px) 100vw, 16rem" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
             <>
@@ -56,7 +58,7 @@ function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
           )}
           {/* Categoria */}
           <div className="absolute top-3 left-3">
-            <span className={`font-body text-[9px] font-bold uppercase tracking-widest px-2.5 py-1 ${CAT_COLOUR[a.categoria] ?? "bg-surface-high text-on-surface"}`}>
+            <span className={`font-body text-xs font-bold uppercase tracking-widest px-2.5 py-1 ${CAT_COLOUR[a.categoria] ?? "bg-surface-high text-on-surface"}`}>
               {a.categoria}
             </span>
           </div>
@@ -69,7 +71,7 @@ function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
           }`}
         >
           <FileText size={14} className="text-red flex-shrink-0" />
-          <span className="font-body text-[10px] font-bold uppercase tracking-widest text-red">
+          <span className="font-body text-xs font-bold uppercase tracking-widest text-red">
             Comunicado Oficial
           </span>
         </div>
@@ -89,10 +91,10 @@ function ArtigoCard({ a, view }: { a: Artigo; view: View }) {
         </p>
         <div className="flex items-center justify-between pt-2 border-t border-on-surface/10">
           <div className="flex flex-wrap gap-3 text-on-surface-muted">
-            <span className="flex items-center gap-1 font-body text-[10px]">
+            <span className="flex items-center gap-1 font-body text-xs">
               <Calendar size={10} />{formatData(a.data)}
             </span>
-            <span className="flex items-center gap-1 font-body text-[10px]">
+            <span className="flex items-center gap-1 font-body text-xs">
               <User size={10} />{a.autor}
             </span>
           </div>

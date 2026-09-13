@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import NewsletterForm from "@/components/NewsletterForm";
 import { STORE_URL } from "@/components/Navbar";
 import { CONTACTO } from "@/lib/data/socios";
 import { MOTE } from "@/lib/data/clube";
@@ -118,21 +117,6 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-        </div>
-
-        {/* Newsletter */}
-        <div className="mt-12 pt-10 border-t border-on-surface/10">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div>
-              <h4 className="font-headline font-black text-lg uppercase text-on-surface">
-                Junta-te ao <span className="text-yellow">clube</span>
-              </h4>
-              <p className="font-body text-sm text-on-surface-muted mt-1">
-                Notícias exclusivas, bilhetes antecipados e bastidores direto para ti.
-              </p>
-            </div>
-            <NewsletterForm variant="default" cta="Subscrever" />
-          </div>
         </div>
       </div>
 
