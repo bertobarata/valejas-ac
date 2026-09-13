@@ -169,8 +169,8 @@ function construirTexto(
 
   linhas.push("", "─────────────────────────────────────────────", "");
   if (pagamento.estado === "pago") {
-    linhas.push("Quota paga. Falta atribuir o número de sócio no Softgab e");
-    linhas.push("emitir o cartão.");
+    linhas.push("Quota paga. Falta atribuir o número de sócio no Softgab,");
+    linhas.push("emitir o cartão e avisar o sócio para o levantar na sede.");
   } else {
     linhas.push("Inscrição feita pelo site. Falta confirmar a entrada do pagamento");
     linhas.push("e atribuir o número de sócio no Softgab.");

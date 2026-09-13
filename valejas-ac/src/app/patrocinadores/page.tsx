@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CTASocio from "@/components/CTASocio";
 import { ExternalLink } from "lucide-react";
 import {
   TIPOS, apoiosPorTipo, iniciaisApoio, type Apoio,
@@ -86,6 +87,8 @@ export default function PatrocinadoresPage() {
           </Link>
         </div>
       </section>
+
+      <CTASocio variante="discreto" />
     </div>
   );
 }

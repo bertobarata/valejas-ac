@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CTASocio from "@/components/CTASocio";
 import {
   ORGAOS, MANDATO, MOSTRAR_NUMERO_SOCIO, anosDeSocio, iniciais,
   type Membro,
@@ -101,6 +102,8 @@ export default function OrgaosSociaisPage() {
           </div>
         </div>
       </section>
+
+      <CTASocio variante="discreto" />
     </div>
   );
 }

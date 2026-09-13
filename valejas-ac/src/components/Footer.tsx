@@ -27,8 +27,10 @@ const LINKS = {
     href:  `/modalidades#${m.slug}`,
   })),
   legal: [
-    { label: "Política de Privacidade", href: "/privacidade" },
-    { label: "Contactos",               href: "/contactos" },
+    { label: "Privacidade",        href: "/privacidade" },
+    { label: "Termos e Condições", href: "/termos" },
+    { label: "Cookies",            href: "/cookies" },
+    { label: "Contactos",          href: "/contactos" },
   ],
 };
 

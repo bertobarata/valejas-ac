@@ -205,6 +205,42 @@
     }
   }
 
+  /* ── Texto legal ── */
+  .texto-legal h2 {
+    @apply font-headline font-black uppercase text-xl md:text-2xl tracking-tight text-on-surface mt-12 mb-4 first:mt-0;
+  }
+  .texto-legal h3 {
+    @apply font-headline font-black uppercase text-base text-on-surface mt-8 mb-3;
+  }
+  .texto-legal p {
+    @apply font-body text-base text-on-surface-muted leading-relaxed mb-4;
+  }
+  .texto-legal ul {
+    @apply mb-5 space-y-2;
+  }
+  .texto-legal li {
+    @apply font-body text-base text-on-surface-muted leading-relaxed pl-5 relative;
+  }
+  .texto-legal li::before {
+    content: "";
+    @apply absolute left-0 top-[0.6em] w-1.5 h-1.5 rounded-full bg-yellow;
+  }
+  .texto-legal a {
+    @apply text-yellow underline underline-offset-2;
+  }
+  .texto-legal strong {
+    @apply text-on-surface font-semibold;
+  }
+  .texto-legal table {
+    @apply w-full border-collapse mb-6 text-left;
+  }
+  .texto-legal th {
+    @apply font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted border-b border-on-surface/20 py-3 pr-4 align-top;
+  }
+  .texto-legal td {
+    @apply font-body text-sm text-on-surface-muted border-b border-on-surface/10 py-3 pr-4 align-top;
+  }
+
   /* ── Tabela de classificação ── */
   .th-tabela {
     @apply font-body text-[0.65rem] font-bold uppercase tracking-widest text-on-surface-muted py-3 px-2;

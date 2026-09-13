@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactoSection from "@/components/socios/ContactoSection";
+import CTASocio from "@/components/CTASocio";
 
 export const metadata: Metadata = {
   title: "Contactos",
@@ -36,6 +37,11 @@ export default function ContactosPage() {
       </section>
 
       <ContactoSection />
+
+      <CTASocio
+        titulo="Junta-te ao clube"
+        texto="Se vieste cá para saber como te inscreves, é por aqui. Quota de 1 € por mês, cartão levantado na sede."
+      />
     </>
   );
 }

@@ -17,10 +17,17 @@ degradado — cada uma tem um comportamento de recurso que não rebenta.
 - **Sem isto:** site vive no `.vercel.app`. A Meta precisa de um endereço
   público para ir buscar a imagem dos comunicados.
 
-### Email institucional
-- [ ] Decidir: Gmail novo (`geral.valejasac@gmail.com`) ou email no domínio
-      próprio (`geral@valejasac.pt`)
-- [ ] Criar a conta
+### Email institucional — cinco caixas em domínio próprio
+Decisão da Direção: emails no domínio do clube, não Gmail.
+- [ ] `presidente@`
+- [ ] `direcao@`
+- [ ] `comunicacao@`
+- [ ] `coordenacao@`
+- [ ] `geral@` (ou `info@`)
+- [ ] Escolher onde alojar o correio (Google Workspace, Zoho, ou o que vier
+      com o domínio da Amen) — muda o custo mensal
+- [ ] Decidir qual recebe as inscrições de sócio (`EMAIL_CLUBE`) e qual
+      assina os envios (`EMAIL_REMETENTE`)
 - [ ] Conta em **resend.com** (grátis até 3000 emails/mês)
 - [ ] Verificar o domínio no Resend, se houver domínio próprio
 - [ ] `EMAIL_PROVIDER=resend`, `RESEND_API_KEY`, `EMAIL_REMETENTE`, `EMAIL_CLUBE`
@@ -144,7 +151,7 @@ degradado — cada uma tem um comportamento de recurso que não rebenta.
 - [x] **7** — Mote, patrocinadores e instalações
 - [x] **8** — Página de jogos + área do departamento de comunicação
 - [x] **9** — Ecrã de carregamento com o logo do clube
-- [ ] **10** — Páginas legais (termos, cookies, privacidade) — **último passo**
+- [x] **10** — Páginas legais (privacidade reescrita, termos e cookies novos)
 
 ---
 

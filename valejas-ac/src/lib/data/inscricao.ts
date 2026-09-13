@@ -6,7 +6,8 @@
  * Diferenças deliberadas face ao papel:
  *  - Removidos (obsoletos): "B.I. Emitido em", "B.I. Emitido por".
  *  - Acrescentados: Email e Código Postal — o papel não os tem, mas
- *    sem eles o clube não confirma a proposta nem envia o cartão.
+ *    sem eles o clube não tem como confirmar a inscrição. O cartão
+ *    de sócio é levantado na sede, não é enviado.
  *  - Preenchidos só pela Direção, logo fora deste formulário:
  *    Nº de Sócio, Data de Admissão, Deliberação, Reunião em.
  *

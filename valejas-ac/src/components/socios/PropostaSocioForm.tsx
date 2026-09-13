@@ -849,8 +849,9 @@ function InscricaoConcluida({
       <div className="text-center space-y-4">
         <p className="font-body text-sm text-on-surface-muted max-w-md mx-auto leading-relaxed">
           Depois de confirmado o pagamento, o Presidente emite o teu número de
-          sócio e o cartão. Se te queres inscrever numa modalidade, passa pela
-          sede com o cartão — a inscrição desportiva é tratada lá.
+          sócio e o cartão, que levantas na sede do clube. Se te queres
+          inscrever numa modalidade, aproveita a ida — a inscrição desportiva
+          é tratada lá.
         </p>
         <Link href="/" className="btn-ghost text-sm">Voltar ao início</Link>
       </div>
