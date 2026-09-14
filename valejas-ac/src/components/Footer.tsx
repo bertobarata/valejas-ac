@@ -17,7 +17,7 @@ const LINKS = {
     { label: "Patrocinadores", href: "/patrocinadores" },
     { label: "Academia Sénior", href: "/academia-senior" },
     { label: "Órgãos Sociais", href: "/orgaos-sociais" },
-    { label: "Loja Oficial", href: STORE_URL, external: true },
+    { label: "Loja Oficial", href: STORE_URL },
     { label: "Sócios",       href: "/socios-contacto" },
     { label: "Fazer Sócio",  href: "/socios/inscricao" },
   ],

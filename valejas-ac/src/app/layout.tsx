@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import EcraCarregamento from "@/components/EcraCarregamento";
+import ConteudoPrincipal from "@/components/ConteudoPrincipal";
 
 export const metadata: Metadata = {
   title: {
@@ -45,7 +46,7 @@ export default function RootLayout({
         <Providers>
           <SmoothScroll>
             <Navbar />
-            <main id="conteudo">{children}</main>
+            <ConteudoPrincipal>{children}</ConteudoPrincipal>
             <Footer />
           </SmoothScroll>
         </Providers>

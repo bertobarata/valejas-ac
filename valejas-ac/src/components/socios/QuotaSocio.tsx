@@ -15,15 +15,18 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
 import {
-  PERIODICIDADES, QUOTA_MENSAL, METODOS_PAGAMENTO, valorPorCobranca,
+  PERIODICIDADES, QUOTA_MENSAL, METODOS_PAGAMENTO, metodosAtivos, valorPorCobranca,
   temTaxa, formatEuros,
 } from "@/lib/data/quota";
+import LogoMetodo from "@/components/pagamento/LogoMetodo";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function QuotaSocio() {
   const ref = useRef<HTMLElement>(null);
   const haTaxa = METODOS_PAGAMENTO.some((m) => temTaxa(m.id));
+  // Só os meios com marca própria — e só os que o clube tem ligados.
+  const marcas = metodosAtivos().filter((m) => m.logo);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -98,6 +101,20 @@ export default function QuotaSocio() {
               Aos pagamentos online acresce uma taxa de processamento, mostrada
               antes de pagares.
             </p>
+          )}
+
+          {/* Marcas aceites: quem reconhece o logótipo percebe antes de ler. */}
+          {marcas.length > 0 && (
+            <div className="mt-8">
+              <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-3">
+                Podes pagar com
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                {marcas.map((m) => (
+                  <LogoMetodo key={m.id} logo={m.logo!} altura={22} />
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </div>

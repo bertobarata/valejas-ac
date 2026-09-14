@@ -14,6 +14,15 @@
    All other colours (yellow, blue, red) stay fixed.
    ────────────────────────────────────────────────────────────────── */
 :root {
+  /*
+   * Altura da barra fixa: faixa do mote + nav (h-16, h-20 a partir de md).
+   * Vive aqui porque duas coisas precisam dela — a barra desenha-se com
+   * ela e o conteúdo tem de começar abaixo dela. Escrita à mão nos dois
+   * sítios, mais cedo ou mais tarde uma delas ficava para trás e os
+   * títulos das páginas voltavam a desaparecer atrás da barra.
+   */
+  --barra-altura: 6rem;
+
   /* Light mode surfaces — Casa Quente (cream + azul do emblema) */
   --surface:           253 251 245;   /* #FDFBF5 — cream quente */
   --surface-dim:       249 245 235;   /* #F9F5EB */
@@ -88,6 +97,19 @@
 }
 .dark {
   --anel-foco: #FADB09;
+}
+
+/*
+ * O conteúdo começa abaixo da barra em todas as páginas menos as que
+ * abrem com o emblema em ecrã inteiro — aí o hero passa por baixo da
+ * barra de propósito.
+ */
+.abaixo-da-barra {
+  padding-top: var(--barra-altura);
+}
+
+@media (min-width: 768px) {
+  :root { --barra-altura: 7rem; }
 }
 
 @layer base {
@@ -270,12 +292,21 @@
     to   { opacity: 1; }
   }
 
-  /* ── Ecrã de carregamento ── */
-  .splash-emblema {
-    animation: splash-pulsar 1.6s ease-in-out infinite;
+  /*
+   * ── Ecrã de carregamento ──
+   * Azul do clube a abrir ao centro, emblema com brilho amarelo, um
+   * único gesto de entrada e sai. Sem barra de progresso: uma barra
+   * promete tempo de espera e aqui não há espera nenhuma a reportar —
+   * o que há é o emblema a apresentar-se antes do site.
+   */
+  .splash-fundo {
+    background: radial-gradient(circle at 50% 45%, #123C86 0%, #04102B 72%);
   }
-  .splash-barra {
-    animation: splash-correr 1.2s ease-in-out infinite;
+  .splash-emblema {
+    filter: drop-shadow(0 0 18px rgba(250, 219, 9, 0.35))
+            drop-shadow(0 12px 55px rgba(250, 219, 9, 0.28));
+    transform-origin: center;
+    animation: splash-entrada 1.5s ease-in-out both;
   }
   /* Rede de segurança: se o JavaScript falhar, o splash desaparece na
      mesma ao fim de 3 segundos em vez de tapar o site para sempre. */
@@ -283,13 +314,13 @@
     animation: splash-desistir 0s linear 3s forwards;
   }
 
-  @keyframes splash-pulsar {
-    0%, 100% { transform: scale(1);    opacity: 1;   }
-    50%      { transform: scale(1.06); opacity: 0.85; }
-  }
-  @keyframes splash-correr {
-    0%   { transform: translateX(-100%); }
-    100% { transform: translateX(300%);  }
+  /* Uma entrada só, não um ciclo: cresce, passa do ponto, assenta. */
+  @keyframes splash-entrada {
+    0%   { transform: scale(0.7);  opacity: 0; }
+    25%  { transform: scale(1);    opacity: 1; }
+    55%  { transform: scale(1.12); opacity: 1; }
+    85%  { transform: scale(0.96); opacity: 1; }
+    100% { transform: scale(1);    opacity: 1; }
   }
   @keyframes splash-desistir {
     to { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -297,8 +328,7 @@
 
   /* Quem pede menos movimento vê o emblema parado — mas vê-o. */
   @media (prefers-reduced-motion: reduce) {
-    .splash-emblema,
-    .splash-barra {
+    .splash-emblema {
       animation: none;
     }
   }

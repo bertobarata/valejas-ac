@@ -14,9 +14,7 @@ export default function CarrinhoPage() {
   return (
     <div className="bg-surface pb-20">
       <section className="bg-surface-low bg-texture border-b border-on-surface/10">
-        {/* pt generoso: a barra fixa do topo tem 109px e este é o único
-              cabeçalho que começa com uma ligação, não com o título. */}
-          <div className="section-container pt-32 pb-12 md:pb-16">
+        <div className="section-container py-12 md:py-16">
           <Link
             href="/loja"
             className="inline-flex items-center gap-2 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors mb-4"

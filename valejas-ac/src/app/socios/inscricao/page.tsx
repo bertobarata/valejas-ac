@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function InscricaoPage() {
   return (
-    <main className="bg-surface min-h-screen">
+    <div className="bg-surface min-h-screen">
       {/* Cabeçalho */}
       <header className="bg-surface-low border-b border-on-surface/10 bg-texture">
         <div className="section-container py-14 md:py-20">
@@ -44,6 +44,6 @@ export default function InscricaoPage() {
           <PropostaSocioForm />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

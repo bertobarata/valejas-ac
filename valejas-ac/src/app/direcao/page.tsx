@@ -16,7 +16,7 @@ export default function DirecaoPage() {
   const autenticado = sessaoValida(cookies().get(COOKIE_SESSAO)?.value);
 
   return (
-    <main className="bg-surface min-h-screen py-16 md:py-24">
+    <div className="bg-surface min-h-screen py-16 md:py-24">
       <div className="section-container max-w-3xl">
         <header className="mb-12">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow">
@@ -52,6 +52,6 @@ export default function DirecaoPage() {
           <EntrarDirecao />
         )}
       </div>
-    </main>
+    </div>
   );
 }

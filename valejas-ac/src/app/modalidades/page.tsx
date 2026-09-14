@@ -14,7 +14,7 @@ export default function ModalidadesPage() {
   return (
     <div className="bg-surface">
       {/* Cabeçalho */}
-      <section className="section-container pt-24 md:pt-32 pb-6">
+      <section className="section-container pt-14 md:pt-16 pb-6">
         <p className="font-body text-xs font-bold uppercase tracking-widest text-blue mb-3">
           Um clube, muitas idades
         </p>

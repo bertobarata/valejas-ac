@@ -27,6 +27,7 @@ import {
   validarValidadeCC, validarNomeCompleto, eMenor, calcularIdade,
 } from "@/lib/validacao";
 import { irParaOTopo } from "@/lib/scroll";
+import LogoMetodo from "@/components/pagamento/LogoMetodo";
 
 type Campos = Record<keyof PropostaSocio, string>;
 
@@ -465,9 +466,12 @@ export default function PropostaSocioForm() {
                       onChange={() => { set("metodoPagamento", m.id); marcar("metodoPagamento"); }}
                       className="mt-1 w-4 h-4 accent-yellow flex-shrink-0"
                     />
-                    <span>
-                      <span className="block font-headline font-black uppercase text-sm text-on-surface">
-                        {m.nome}
+                    <span className="flex-1">
+                      <span className="flex items-center justify-between gap-3">
+                        <span className="font-headline font-black uppercase text-sm text-on-surface">
+                          {m.nome}
+                        </span>
+                        {m.logo && <LogoMetodo logo={m.logo} altura={20} />}
                       </span>
                       <span className="block font-body text-sm text-on-surface-muted mt-0.5">
                         {m.descricao}
@@ -919,9 +923,12 @@ function PassoPagamento({
         <h2 className="font-headline font-black text-2xl md:text-3xl uppercase tracking-tighter text-on-surface">
           Pagamento
         </h2>
-        <p className="font-body text-sm text-on-surface-muted mt-2">
-          {opcao?.nome} — a tua ficha só segue para o clube depois deste passo.
-        </p>
+        <div className="flex items-center gap-3 mt-2">
+          {opcao?.logo && <LogoMetodo logo={opcao.logo} altura={24} />}
+          <p className="font-body text-sm text-on-surface-muted">
+            {opcao?.nome} — a tua ficha só segue para o clube depois deste passo.
+          </p>
+        </div>
       </div>
 
       <div className="bg-surface-high p-8 space-y-6">

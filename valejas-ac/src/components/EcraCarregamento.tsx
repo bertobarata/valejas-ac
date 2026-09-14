@@ -3,8 +3,9 @@
 /**
  * ECRÃ DE CARREGAMENTO
  * ─────────────────────────────────────────────────────────────────
- * O emblema enquanto o site prepara. Aparece no primeiro carregamento
- * de cada sessão — não em cada navegação, que seria irritante.
+ * O emblema sobre o azul do clube, com um brilho amarelo à volta.
+ * Aparece no primeiro carregamento de cada sessão — não em cada
+ * navegação, que seria irritante.
  *
  * Três cuidados:
  *  - Sai assim que a página está pronta, com um mínimo de meio segundo
@@ -85,7 +86,7 @@ export default function EcraCarregamento() {
       data-splash
       role="status"
       aria-live="polite"
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-surface transition-opacity duration-[450ms] ${
+      className={`splash-fundo fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-[450ms] ${
         aSair ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
@@ -93,20 +94,12 @@ export default function EcraCarregamento() {
       <img
         src="/brand/crest.png"
         alt=""
-        width={120}
-        height={120}
-        className="splash-emblema w-24 h-24 md:w-32 md:h-32 object-contain"
+        width={280}
+        height={280}
+        className="splash-emblema w-36 h-36 md:w-52 md:h-52 object-contain"
       />
 
       <span className="sr-only">A carregar o site do Valejas Atlético Clube</span>
-
-      {/* Barra de progresso indeterminada */}
-      <div
-        aria-hidden
-        className="mt-8 h-0.5 w-32 overflow-hidden bg-on-surface/15"
-      >
-        <span className="splash-barra block h-full w-1/3 bg-yellow" />
-      </div>
     </div>
   );
 }

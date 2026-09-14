@@ -11,20 +11,24 @@ import { CONTACTO } from "@/lib/data/socios";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clsx from "clsx";
+import { PAGINAS_COM_HERO } from "@/lib/paginas";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Loja oficial de merchandising — alojada na plataforma CTT (Zemig Sportswear).
-export const STORE_URL =
-  "https://zemigsportswear.lojasonlinectt.pt/category/2-comprar-on-line-230-valejas-ac";
+/**
+ * A loja passou a ser do clube: vive em /loja, com levantamento na sede.
+ * O link externo para a plataforma CTT (Zemig Sportswear) deixou de ser o
+ * destino — a Zemig continua a ser o fornecedor e está nos patrocinadores.
+ */
+export const STORE_URL = "/loja";
 
-const NAV_ITEMS = [
+const NAV_ITEMS: { label: string; href: string; external?: boolean }[] = [
   { label: "Início",      href: "/" },
   { label: "Comunicados", href: "/comunicados" },
   { label: "Jogos",       href: "/jogos" },
   { label: "Modalidades", href: "/modalidades" },
   { label: "Academia",    href: "/academia-senior" },
-  { label: "Loja",        href: STORE_URL, external: true },
+  { label: "Loja",        href: STORE_URL },
   { label: "Sócios",      href: "/socios-contacto" },
   { label: "Contactos",   href: "/contactos" },
 ];
@@ -33,7 +37,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   /** Páginas que abrem com o emblema em grande; só nelas o logo da barra espera. */
-  const temEmblemaNoTopo = pathname === "/" || pathname === "/clube";
+  const temEmblemaNoTopo = PAGINAS_COM_HERO.includes(pathname);
   const { setTheme, resolvedTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

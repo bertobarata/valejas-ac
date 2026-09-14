@@ -130,6 +130,15 @@ export interface OpcaoPagamento {
   pedeIban:    boolean;
   /** Requisito que o clube tem de cumprir para isto funcionar. */
   requisito:   string;
+  /**
+   * Marca oficial do método, para quem reconhece o logótipo antes de ler
+   * o nome. Só existe onde há marca: uma transferência bancária não tem
+   * logótipo nenhum, e inventar um seria pior que não ter.
+   * Ficheiros em /public/pagamentos, tal como vêm de mbway.pt e
+   * multibanco.pt — marcas registadas da SIBS, usadas só para indicar
+   * que o clube aceita estes meios de pagamento.
+   */
+  logo?: { src: string; alt: string; largura: number; altura: number };
 }
 
 export const METODOS_PAGAMENTO: OpcaoPagamento[] = [
@@ -139,6 +148,7 @@ export const METODOS_PAGAMENTO: OpcaoPagamento[] = [
     descricao: "Envias o valor para o número do clube pela app MB WAY.",
     pedeIban:  false,
     requisito: "Nenhum — o clube confirma na app",
+    logo: { src: "/pagamentos/mbway.png", alt: "MB WAY", largura: 292, altura: 143 },
   },
   {
     id:        "referencia",
@@ -146,6 +156,7 @@ export const METODOS_PAGAMENTO: OpcaoPagamento[] = [
     descricao: "Recebes entidade e referência para pagar no Multibanco ou no homebanking. Válida 24 horas.",
     pedeIban:  false,
     requisito: "Contrato com gateway (Ifthenpay ou Easypay)",
+    logo: { src: "/pagamentos/multibanco.svg", alt: "Multibanco", largura: 742, altura: 189 },
   },
   {
     id:        "debito-direto",

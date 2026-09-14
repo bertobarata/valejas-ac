@@ -17,7 +17,7 @@ export default function DirecaoJogosPage() {
   const autenticado = sessaoValida(cookies().get(COOKIE_SESSAO)?.value);
 
   return (
-    <main className="bg-surface min-h-screen pt-32 pb-16 md:pb-24">
+    <div className="bg-surface min-h-screen py-16 md:py-24">
       <div className="section-container max-w-4xl">
         <Link
           href="/direcao"
@@ -48,6 +48,6 @@ export default function DirecaoJogosPage() {
           <EntrarDirecao />
         )}
       </div>
-    </main>
+    </div>
   );
 }
