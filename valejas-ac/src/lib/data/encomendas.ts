@@ -22,6 +22,16 @@ export const ESTADOS: { id: EstadoEncomenda; nome: string; descricao: string }[]
   { id: "cancelada",   nome: "Cancelada",   descricao: "Não avança." },
 ];
 
+/**
+ * Quanto tempo a encomenda fica guardada, em dias.
+ *
+ * Um ano: o clube tem de saber quem encomendou o quê e quando — para
+ * uma troca, uma reclamação, ou só para responder a quem liga. Passado
+ * isso deixa de servir para alguma coisa, e o RGPD não deixa guardar
+ * dados pessoais por guardar. A limpeza é automática.
+ */
+export const PRAZO_CONSERVACAO_DIAS = 365;
+
 export type MomentoPagamento = "sinal" | "total";
 
 export const MOMENTOS_PAGAMENTO: {

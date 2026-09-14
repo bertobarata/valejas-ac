@@ -127,8 +127,10 @@ export default function CondicoesLojaPage() {
 
         <h2>Dados pessoais</h2>
         <p>
-          Os dados da encomenda servem só para a preparar e para te avisar. Como
-          tratamos os dados está na{" "}
+          Os dados da encomenda servem só para a preparar e para te avisar. Ficam
+          guardados <strong>um ano</strong> — o tempo de tratar uma troca ou uma
+          reclamação — e depois são apagados automaticamente. Como tratamos os
+          dados está na{" "}
           <Link href="/privacidade">política de privacidade</Link>.
         </p>
       </div>
