@@ -4,10 +4,27 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Mail, ShoppingBag, UserPlus } from "lucide-react";
 import { CONTACTO } from "@/lib/data/socios";
+import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
+import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
+
+const REDES = [
+  { nome: "Instagram", href: CONTACTO.redesSociais.instagram, Icon: InstagramIcon },
+  { nome: "Facebook",  href: CONTACTO.redesSociais.facebook,  Icon: FacebookIcon },
+  { nome: "YouTube",   href: CONTACTO.redesSociais.youtube,   Icon: YouTubeIcon },
+];
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * FECHO DE TODAS AS PÁGINAS
+ * ─────────────────────────────────────────────────────────────────
+ * Quem chega ao fim de uma página leu o que lá estava e é aí que
+ * decide. O fecho diz de quem é o clube e abre as quatro portas:
+ * sócio, loja, contactos e redes.
+ * ─────────────────────────────────────────────────────────────────
+ */
 export default function SociosCTA() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef    = useRef<HTMLDivElement>(null);
@@ -52,30 +69,52 @@ export default function SociosCTA() {
       />
 
       <div className="section-container relative z-10">
-        <div ref={textRef} className="text-center max-w-2xl mx-auto">
+        <div ref={textRef} className="text-center max-w-3xl mx-auto">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow/80 mb-4">
             Faz parte
           </p>
-          <h2 className="font-headline font-black text-5xl md:text-7xl uppercase leading-none tracking-tighter text-white mb-4">
-            Junta-te ao{" "}
-            <span className="text-yellow">clube</span>
+          <h2 className="font-headline font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] uppercase leading-[0.95] tracking-tighter text-white mb-5 text-balance">
+            O Valejas é de nós todos
+            <span className="block text-yellow">e agora também é teu</span>
           </h2>
-          <p className="font-body text-base text-white/85 leading-relaxed mb-10">
-            Acompanha os jogos de todos os escalões e faz parte das famílias
-            que fazem o Valejas.
+          <p className="font-body text-base md:text-lg text-white/85 leading-relaxed mb-10">
+            Faz-te sócio por {formatEuros(QUOTA_MENSAL)} por mês, veste as cores,
+            vem ao pavilhão. O clube é de quem cá está.
           </p>
 
-          {/* Secondary CTAs */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/socios/inscricao" className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow">
-              Tornar-se Sócio
+          {/* Os quatro sítios para onde se sai daqui */}
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+            <Link href="/socios/inscricao" className="btn-primary text-sm">
+              <UserPlus size={16} /> Fazer-me sócio
             </Link>
-            <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow">
-              Instagram
-            </a>
-            <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow">
-              YouTube
-            </a>
+            <Link
+              href="/loja"
+              className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow"
+            >
+              <ShoppingBag size={16} /> Loja do clube
+            </Link>
+            <Link
+              href="/contactos"
+              className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow"
+            >
+              <Mail size={16} /> Contactos
+            </Link>
+          </div>
+
+          {/* Redes sociais: ícone só, que os nomes já se reconhecem */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            {REDES.map(({ nome, href, Icon }) => (
+              <a
+                key={nome}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={nome}
+                className="w-11 h-11 flex items-center justify-center border border-white/25 text-white/85 hover:border-yellow hover:text-yellow transition-colors duration-200"
+              >
+                <Icon size={18} />
+              </a>
+            ))}
           </div>
         </div>
       </div>
