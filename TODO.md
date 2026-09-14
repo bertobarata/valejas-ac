@@ -133,12 +133,12 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
       quer dizer que qualquer pessoa com o id do projeto — que está no
       JavaScript do site — lia tudo sem token, incluindo os nomes,
       emails e telemóveis das encomendas da loja
-- [ ] ⚠️ Como o dataset é privado, **sem `SANITY_API_TOKEN` no servidor
+- [x] ⚠️ Como o dataset é privado, **sem `SANITY_API_TOKEN` no servidor
       o site não lê nada** e volta aos dados de exemplo. A variável tem
       de estar na Vercel antes de o site ir para o ar
 - [x] Ciclo completo testado contra o Sanity real: escrever um jogador,
       lê-lo na API, vê-lo na página pública e apagá-lo
-- [ ] Repetir as três variáveis na Vercel quando o projeto lá existir
+- [x] Repetir as três variáveis na Vercel — feito a 14/09/2026
 - [ ] Escrever o conteúdo verdadeiro: plantel, resultados, classificação
 
 #### ✅ Decisão tomada a 15/09/2026 — as encomendas saíram do CMS
