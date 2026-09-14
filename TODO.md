@@ -308,17 +308,12 @@ agarrado à encomenda em vez de perdido na caixa de correio.
 
 Pedido do Berto (14/09/2026). O site está todo escrito em português de
 Portugal; a ideia é chegar a quem vive em Valejas e não tem o português
-europeu como primeira língua.
+como primeira língua. Cinco línguas, fechadas a 14/09/2026.
 
 ### Línguas a fazer
 
 - [ ] **Português (Portugal)** — a que existe hoje, passa a ser uma
       escolha explícita em vez do único texto do site
-- [ ] **Português (Brasil)** — não é a mesma coisa que traduzir: muda
-      vocabulário (equipa/time, autocarro/ônibus, casa de banho/banheiro,
-      sócio/sócio mas quota/mensalidade), a colocação dos pronomes e o
-      tratamento. Uma tradução automática do pt-PT lê-se como pt-PT mal
-      escrito
 - [ ] **Inglês**
 - [ ] **Espanhol**
 - [ ] **Francês**
@@ -339,9 +334,9 @@ europeu como primeira língua.
       chega de fora: início, modalidades, sócios e inscrição, contactos,
       loja. Comunicados e notícias são conteúdo do CMS e ficam na língua
       em que forem escritos
-- [ ] **Quem traduz.** Tradução automática dá para inglês e espanhol a
-      um nível aceitável, e não dá para crioulo. Para o crioulo e para o
-      pt-BR é preciso alguém da comunidade a rever — e há gente no clube
+- [ ] **Quem traduz.** Tradução automática dá para inglês, espanhol e
+      francês a um nível aceitável, desde que revista. Para o crioulo não
+      dá: é preciso alguém da comunidade a escrever — e há gente no clube
       para isso
 - [ ] **Onde se escolhe a língua.** Um seletor na barra do topo, e
       lembrar a escolha. Nunca escolher pela pessoa a partir do país do
@@ -353,8 +348,7 @@ europeu como primeira língua.
 
 ### Aviso de esforço
 
-Isto não é um acrescento pequeno. São seis línguas sobre um site com
+Isto não é um acrescento pequeno. São cinco línguas sobre um site com
 texto denso e escrito com cuidado — a parte técnica é um dia ou dois, a
-tradução é o trabalho todo. Vale a pena decidir primeiro **quais as
-línguas que a Direção quer mesmo** e **que páginas**, em vez de começar
-pelas seis e ficar com quatro por acabar.
+tradução é o trabalho todo. Vale a pena decidir primeiro **que páginas**
+se traduzem, em vez de começar pelas cinco e ficar com três por acabar.
