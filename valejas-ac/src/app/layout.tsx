@@ -17,10 +17,19 @@ export const metadata: Metadata = {
   description:
     "Clube desportivo de Valejas, Oeiras. Futsal e atletismo federados, forte na formação, mais judo, karate, dança, teatro e Academia Sénior. A casa do clube desde 1966.",
   keywords: ["Valejas", "futsal", "atletismo", "clube desportivo", "Oeiras", "AF Lisboa", "academia sénior"],
+  /*
+   * Endereço de base para tudo o que precisa de ser absoluto: imagens
+   * de partilha, hreflang, canónicos. Em desenvolvimento fica o
+   * localhost; em produção vem da variável, que é o domínio do clube.
+   */
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  ),
   openGraph: {
     siteName: "Valejas Atlético Clube",
     locale: "pt_PT",
     type: "website",
+    url: "/",
   },
 };
 

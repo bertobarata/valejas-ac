@@ -11,29 +11,30 @@ Nenhuma destas existe ainda. Sem elas o site funciona, mas em modo
 degradado — cada uma tem um comportamento de recurso que não rebenta.
 
 ### Domínio (Amen)
-- [x] Comprar domínio do clube — comprado a 14/09/2026, à espera da
-      confirmação do registo
+- [x] Comprar domínio do clube — **valejasac.pt**, comprado a
+      14/09/2026, à espera da confirmação do registo
 - [ ] Apontar DNS para a Vercel (A `76.76.21.21` para o domínio raiz,
       CNAME `cname.vercel-dns.com` para o `www`)
 - [ ] Acrescentar o domínio ao projeto na Vercel e esperar pelo
       certificado, que é automático
-- [ ] `NEXT_PUBLIC_SITE_URL` com o endereço final
+- [ ] `NEXT_PUBLIC_SITE_URL="https://www.valejasac.pt"` na Vercel
 - **Sem isto:** site vive no `.vercel.app`. A Meta precisa de um endereço
   público para ir buscar a imagem dos comunicados.
 
 ### Email institucional — cinco caixas em domínio próprio
 Decisão da Direção: emails no domínio do clube, não Gmail.
-- [ ] `presidente@`
-- [ ] `direcao@`
-- [ ] `comunicacao@`
-- [ ] `coordenacao@`
-- [ ] `geral@` (ou `info@`)
+- [ ] `presidente@valejasac.pt`
+- [ ] `direcao@valejasac.pt`
+- [ ] `comunicacao@valejasac.pt`
+- [ ] `coordenacao@valejasac.pt`
+- [ ] `geral@valejasac.pt` (ou `info@`)
 - [ ] Escolher onde alojar o correio (Google Workspace, Zoho, ou o que vier
       com o domínio da Amen) — muda o custo mensal
 - [ ] Decidir qual recebe as inscrições de sócio (`EMAIL_CLUBE`) e qual
       assina os envios (`EMAIL_REMETENTE`)
 - [ ] Conta em **resend.com** (grátis até 3000 emails/mês)
-- [ ] Verificar o domínio no Resend, se houver domínio próprio
+- [ ] Verificar `valejasac.pt` no Resend — são mais dois registos DNS,
+      SPF e DKIM, sem os quais os emails de inscrição caem no spam
 - [ ] `EMAIL_PROVIDER=resend`, `RESEND_API_KEY`, `EMAIL_REMETENTE`, `EMAIL_CLUBE`
 - **Sem isto:** as inscrições de sócio não chegam a ninguém
   (`EMAIL_PROVIDER=log` escreve no terminal e não envia).
