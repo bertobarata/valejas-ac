@@ -301,3 +301,60 @@ agarrado à encomenda em vez de perdido na caixa de correio.
 - [ ] Percentagem do sinal (está em 30% por omissão)
 - [ ] Preços diferentes para sócios?
 - [ ] Fotografias dos produtos — existem, ou é preciso produzi-las?
+
+---
+
+## 8. Línguas do site
+
+Pedido do Berto (14/09/2026). O site está todo escrito em português de
+Portugal; a ideia é chegar a quem vive em Valejas e não tem o português
+europeu como primeira língua.
+
+### Línguas a fazer
+
+- [ ] **Português (Portugal)** — a que existe hoje, passa a ser uma
+      escolha explícita em vez do único texto do site
+- [ ] **Português (Brasil)** — não é a mesma coisa que traduzir: muda
+      vocabulário (equipa/time, autocarro/ônibus, casa de banho/banheiro,
+      sócio/sócio mas quota/mensalidade), a colocação dos pronomes e o
+      tratamento. Uma tradução automática do pt-PT lê-se como pt-PT mal
+      escrito
+- [ ] **Inglês**
+- [ ] **Espanhol**
+- [ ] **Francês**
+- [ ] **Crioulo de Cabo Verde** — a variante tem de ser decidida antes de
+      se começar: o crioulo de Santiago (badiu) e o de São Vicente
+      (sampadjudu) escrevem-se de maneira diferente, e há duas ortografias
+      em circulação (ALUPEC/AK e a de base etimológica). Isto decide-se
+      com quem fala, não num dicionário
+
+### O que é preciso para isto acontecer
+
+- [ ] **Tirar o texto do código.** Hoje as frases estão escritas dentro
+      dos componentes. Têm de passar para ficheiros de tradução — o
+      caminho normal em Next.js App Router é o `next-intl`, com as
+      páginas debaixo de `/[lingua]/`
+- [ ] **Decidir o que se traduz.** O site inteiro são ~30 páginas e muito
+      texto escrito à mão. Vale a pena começar pelas que servem quem
+      chega de fora: início, modalidades, sócios e inscrição, contactos,
+      loja. Comunicados e notícias são conteúdo do CMS e ficam na língua
+      em que forem escritos
+- [ ] **Quem traduz.** Tradução automática dá para inglês e espanhol a
+      um nível aceitável, e não dá para crioulo. Para o crioulo e para o
+      pt-BR é preciso alguém da comunidade a rever — e há gente no clube
+      para isso
+- [ ] **Onde se escolhe a língua.** Um seletor na barra do topo, e
+      lembrar a escolha. Nunca escolher pela pessoa a partir do país do
+      IP: quem vive cá e fala crioulo tem IP português
+- [ ] **Datas, horas e valores** já saem do `Intl` com locale fixo em
+      `pt-PT` — passam a seguir a língua escolhida
+- [ ] **SEO**: `hreflang` entre as versões e `lang` correto no `<html>`,
+      senão o Google serve a versão errada
+
+### Aviso de esforço
+
+Isto não é um acrescento pequeno. São seis línguas sobre um site com
+texto denso e escrito com cuidado — a parte técnica é um dia ou dois, a
+tradução é o trabalho todo. Vale a pena decidir primeiro **quais as
+línguas que a Direção quer mesmo** e **que páginas**, em vez de começar
+pelas seis e ficar com quatro por acabar.
