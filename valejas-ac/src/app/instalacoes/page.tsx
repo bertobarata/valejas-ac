@@ -7,7 +7,7 @@ import { INSTALACOES, type Instalacao } from "@/lib/data/instalacoes";
 export const metadata: Metadata = {
   title: "As Nossas Instalações",
   description:
-    "A sede do Valejas Atlético Clube e o Pavilhão Multiusos — onde o clube trabalha, treina, joga e convive.",
+    "A sede do Valejas Atlético Clube e o pavilhão — onde o clube trabalha, treina, joga e convive.",
 };
 
 export default function InstalacoesPage() {

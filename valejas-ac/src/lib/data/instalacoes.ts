@@ -45,15 +45,19 @@ export const INSTALACOES: Instalacao[] = [
       "Sueca, bilhar e convívio",
       "Eventos e festas do clube",
     ],
-    morada: "Estrada das Palmeiras, 1A — 2730-132 Queluz de Baixo",
+    // Como consta no papel timbrado do clube.
+    morada: "Estrada das Palmeiras, Edifício V.A.C. — Valejas, 2730-132 Barcarena",
     fotos: [],
   },
   {
     slug: "pavilhao",
-    nome: "Pavilhão Multiusos",
-    tipo: "Polidesportivo coberto",
+    // É assim que se chama no programa de jogos da AF Lisboa. Chamava-se
+    // aqui "Pavilhão Multiusos", que não é o nome por que a federação o
+    // conhece nem o que aparece nas convocatórias.
+    nome: "Pavilhão do Valejas Atlético Clube",
+    tipo: "Piso flutuante, 40 × 20 m",
     descricao:
-      "O recinto onde o futsal joga e treina, dos petizes à equipa principal. Tem sido alvo de investimento municipal, incluindo novos balneários e melhorias na cobertura.",
+      "O recinto onde o futsal joga e treina, dos petizes à equipa principal. É aqui que se disputam os quinze jogos em casa do campeonato distrital.",
     usos: [
       "Jogos de futsal, todos os escalões",
       "Treinos da Equipa A, Equipa B e formação",

@@ -197,6 +197,19 @@ Três saídas:
       cartões mostram as iniciais
 - [ ] **Órgãos sociais** — no cartaz, Mário Sérgio Barata e Teresa Santos
       têm ambos o Sócio N.º 167. Um dos dois está errado
+- [ ] ⚠️ **Contactos do site não batem certo com os documentos do clube.**
+      Apanhado a 14/09/2026, ao comparar com a ficha de atleta e o termo
+      de direitos de imagem:
+
+      | | No site | Nos documentos do clube |
+      |---|---|---|
+      | Telefone | +351 214 365 104 | 216 023 289 |
+      | Email | valejas.a.c@gmail.com | valejas.a.c@hotmail.com (rodapé) e secretaria.valejasac@gmail.com (dados) |
+      | Localidade | 2730-132 Valejas | Valejas — 2730-132 Barcarena |
+
+      **Não mudei nada**: os documentos são de 2022 e 2026 e podem estar
+      desatualizados tal como o site. É preciso alguém do clube dizer qual
+      é o número que atende e qual é a caixa que alguém lê
 - [x] ~~**Jogos** — adversários de exemplo~~ — resolvido a 14/09/2026: o
       calendário oficial das 30 jornadas veio do PDF da AF Lisboa. Falta
       preencher resultados e classificação em `/direcao/jogos` à medida

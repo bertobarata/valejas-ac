@@ -124,11 +124,11 @@ export default function AcademiaSeniorPage() {
         <div className="bg-surface-high p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-6 justify-between">
           <div className="max-w-xl">
             <h2 className="font-headline font-black uppercase tracking-tight leading-none text-2xl md:text-3xl text-on-surface">
-              Quer participar?
+              Queres participar?
             </h2>
             <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-              Passe pela sede no horário da Academia, ou fale connosco. Para
-              participar basta ser sócio — a quota é de 1€ por mês.
+              Passa pela sede no horário da Academia, ou fala connosco. Para
+              participar basta ser sócio — a quota é de 1 € por mês.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 shrink-0">

@@ -9,7 +9,7 @@ import { doSanity } from "@/lib/data/plantel";
 export const metadata: Metadata = {
   title: "Equipas & Plantel",
   description:
-    "Conheça o plantel de futsal do Valejas AC — jogadores, corpo técnico e formação.",
+    "O plantel de futsal do Valejas AC, equipa a equipa: da equipa A aos petizes.",
 };
 
 export default async function EquipasPage() {

@@ -16,6 +16,7 @@
 import { useCallback, useEffect, useState } from "react";
 import clsx from "clsx";
 import { Check, Loader2, Pencil, Plus, Save, Trash2, X } from "lucide-react";
+import { PAVILHAO_CASA } from "@/lib/data/jogos";
 
 interface Jogo {
   _id?:             string;
@@ -51,7 +52,7 @@ const COMPETICOES = [
 const JOGO_VAZIO: Jogo = {
   adversario: "",
   data: "",
-  local: "Pavilhão Multiusos de Valejas",
+  local: PAVILHAO_CASA,
   competicao: "Campeonato Distrital",
   ehEmCasa: true,
   jogado: false,
