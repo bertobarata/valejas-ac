@@ -2,7 +2,7 @@
 
 import { NextResponse } from "next/server";
 import {
-  palavraPasseCorreta, criarSessao, authConfigurada,
+  autenticar, criarSessao, authConfigurada,
   COOKIE_SESSAO, DURACAO_COOKIE_SEGUNDOS,
 } from "@/lib/auth-direcao";
 
@@ -18,14 +18,15 @@ export async function POST(req: Request) {
 
   const { password } = await req.json().catch(() => ({ password: "" }));
 
-  if (!palavraPasseCorreta(String(password ?? ""))) {
+  const nome = autenticar(String(password ?? ""));
+  if (!nome) {
     // Atraso curto para tornar tentativas em massa pouco práticas.
     await new Promise((r) => setTimeout(r, 600));
     return NextResponse.json({ ok: false, erro: "Palavra-passe errada." }, { status: 401 });
   }
 
-  const res = NextResponse.json({ ok: true });
-  res.cookies.set(COOKIE_SESSAO, criarSessao(), {
+  const res = NextResponse.json({ ok: true, nome });
+  res.cookies.set(COOKIE_SESSAO, criarSessao(nome), {
     httpOnly: true,
     sameSite: "lax",
     secure:   process.env.NODE_ENV === "production",

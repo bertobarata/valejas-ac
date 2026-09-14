@@ -59,7 +59,7 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                    <span className="font-display text-2xl md:text-3xl text-on-surface group-hover:text-yellow transition-colors duration-200">
+                    <span className="font-headline font-black uppercase tracking-tight leading-none text-2xl md:text-3xl text-on-surface group-hover:text-yellow transition-colors duration-200">
                       {m.nome}
                     </span>
 
@@ -80,7 +80,7 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
                     )}
                   </div>
 
-                  <p className="font-display text-base text-blue mt-1">{m.tagline}</p>
+                  <p className="font-body text-base text-blue mt-1">{m.tagline}</p>
                 </div>
 
                 <ChevronDown

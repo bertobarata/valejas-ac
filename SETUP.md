@@ -39,7 +39,7 @@ O que acontece sem cada uma:
 | Em falta | O site |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Funciona, mas as imagens de partilha saem relativas e a Meta não as vai buscar |
-| `DIRECAO_PASSWORD` + `DIRECAO_SECRET` | A área da Direção diz que não está configurada |
+| `DIRECAO_UTILIZADORES` + `DIRECAO_SECRET` | A área da Direção diz que não está configurada |
 | `RESEND_API_KEY` + `EMAIL_CLUBE` | **Inscrições e encomendas não chegam a ninguém** (modo `log` escreve no terminal) |
 | Sanity | Mostra os dados de exemplo; as áreas da Direção avisam que o CMS não está ligado |
 | Ifthenpay | MB WAY e referência dão 503 e o formulário cai para transferência |
@@ -107,13 +107,29 @@ os emails de inscrição caem no spam.
 ⚠️ **Impasse conhecido:** existe um projeto Vercel antigo a ocupar o subdomínio
 `valejas-ac.vercel.app`, provavelmente noutra conta. Impede criar o novo.
 
-## 5. Antes de ir para o ar
+## 5. Testes
 
-- [ ] Trocar `DIRECAO_PASSWORD` — está `valejas1966`, valor de desenvolvimento
+```bash
+npm test           # uma passagem
+npm run test:watch # enquanto se mexe no código
+```
+
+São 25 testes sobre **as regras que custam dinheiro ou dados**: os preços vêm
+do catálogo e não do browser, o sinal é a percentagem combinada, o NIF e o
+Cartão de Cidadão têm dígito de controlo, quem nasceu há menos de 18 anos é
+menor, as modalidades são sete e o calendário tem 30 jornadas sem repetições.
+
+Não há testes de interface. O que interessa proteger é o que acontece no
+servidor quando alguém manipula o pedido.
+
+## 6. Antes de ir para o ar
+
+- [ ] Criar as contas em `DIRECAO_UTILIZADORES`, uma por pessoa, e apagar a
+      `DIRECAO_PASSWORD` — está `valejas1966`, valor de desenvolvimento
 - [ ] Gerar `DIRECAO_SECRET`, `MAKE_WEBHOOK_SEGREDO`, `IFTHENPAY_CALLBACK_CHAVE`
 - [ ] Confirmar que `SANITY_API_TOKEN` está na Vercel — sem ele o site mostra
       dados de exemplo
-- [ ] Correr `npm run build` e ver que passa
+- [ ] Correr `npm test` e `npm run build`, e ver que passam
 - [ ] Ler o `TODO.md` §1 e §2
 
 ## Estrutura

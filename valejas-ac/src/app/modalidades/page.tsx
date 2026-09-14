@@ -18,7 +18,7 @@ export default function ModalidadesPage() {
         <p className="font-body text-xs font-bold uppercase tracking-widest text-blue mb-3">
           Um clube, muitas idades
         </p>
-        <h1 className="font-display text-4xl md:text-6xl text-on-surface max-w-3xl">
+        <h1 className="font-headline font-black uppercase wdth-condensed tracking-tighter leading-none text-4xl md:text-6xl text-on-surface max-w-3xl">
           Há um lugar para ti no Valejas
         </h1>
         <p className="font-body text-lg text-on-surface-muted mt-4 max-w-2xl">
@@ -45,7 +45,7 @@ export default function ModalidadesPage() {
             className="section-container py-14 md:py-16 scroll-mt-24"
           >
             <div className="border-t border-on-surface/15 pt-8 mb-10">
-              <h2 className="font-display text-3xl md:text-4xl text-on-surface">
+              <h2 className="font-headline font-black uppercase tracking-tighter leading-none text-3xl md:text-4xl text-on-surface">
                 {grupo.titulo}
               </h2>
               <p className="font-body text-on-surface-muted mt-2 max-w-2xl">
@@ -67,7 +67,7 @@ export default function ModalidadesPage() {
               <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow mb-2">
                 Maiores de 50
               </p>
-              <h2 className="font-display text-2xl md:text-3xl text-on-surface">
+              <h2 className="font-headline font-black uppercase tracking-tight leading-none text-2xl md:text-3xl text-on-surface">
                 Academia Sénior
               </h2>
               <p className="font-body text-on-surface-muted leading-relaxed mt-2">
@@ -86,7 +86,7 @@ export default function ModalidadesPage() {
       <section className="section-container pb-24 md:pb-32">
         <div className="bg-blue text-white p-8 md:p-10 flex flex-col sm:flex-row sm:items-center gap-5 justify-between">
           <div className="max-w-lg">
-            <p className="font-display text-xl md:text-2xl">
+            <p className="font-headline font-black uppercase tracking-tight leading-tight text-xl md:text-2xl">
               Queres experimentar? Fala connosco e trazemos-te para dentro.
             </p>
             <p className="font-body text-sm text-white/85 mt-2">

@@ -56,9 +56,10 @@ const config: Config = {
         headline: ["var(--font-headline)", "system-ui", "sans-serif"],
         // Texto corrido: General Sans — limpa, moderna, legível.
         body:     ["var(--font-body)", "system-ui", "sans-serif"],
-        // `font-display` é usado nas páginas mais editoriais e partilha
-        // a fonte dos títulos.
-        display:  ["var(--font-headline)", "system-ui", "sans-serif"],
+        /* Havia aqui `font-display`, com a mesma fonte dos títulos mas sem
+           as regras deles. Deu dois estilos de título no mesmo site:
+           umas páginas em maiúsculas pretas, outras em minúsculas leves.
+           Foi removida a 14/09/2026 — há um só estilo de título. */
       },
 
       // ── BORDER RADIUS ────────────────────────────────────────────────

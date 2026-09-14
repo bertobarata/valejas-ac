@@ -19,6 +19,13 @@ const nextConfig = {
   async redirects() {
     return [
       { source: "/historia", destination: "/clube", permanent: true },
+      /*
+       * As notícias e os comunicados eram dois sítios para escrever a
+       * mesma coisa, e um deles estava vazio — as quatro notícias que lá
+       * estavam eram inventadas e foram apagadas. O clube publica
+       * comunicados; é para lá que se vai.
+       */
+      { source: "/noticias", destination: "/comunicados", permanent: true },
     ];
   },
 };

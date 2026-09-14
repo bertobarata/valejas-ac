@@ -1,7 +1,6 @@
 import HeroSection from "@/components/home/HeroSection";
 import ComunicadoDestaque from "@/components/home/ComunicadoDestaque";
 import ProximoJogoHome from "@/components/home/ProximoJogoHome";
-import NewsSection from "@/components/home/NewsSection";
 import ModalidadesGrid from "@/components/home/ModalidadesGrid";
 import MoteBanner from "@/components/home/MoteBanner";
 
@@ -15,9 +14,6 @@ export default function HomePage() {
           próximo jogo em segundos. É por isso que vêm antes de tudo. */}
       <ComunicadoDestaque />
       <ProximoJogoHome />
-
-      {/* Notícias */}
-      <NewsSection />
 
       {/* Modalidades */}
       <ModalidadesGrid />

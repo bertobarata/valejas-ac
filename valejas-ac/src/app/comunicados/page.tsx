@@ -30,7 +30,7 @@ export default async function ComunicadosPage() {
           <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow mb-3">
             Direção
           </p>
-          <h1 className="font-display text-4xl md:text-6xl text-on-surface">
+          <h1 className="font-headline font-black uppercase wdth-condensed tracking-tighter leading-none text-4xl md:text-6xl text-on-surface">
             Comunicados Oficiais
           </h1>
         </header>

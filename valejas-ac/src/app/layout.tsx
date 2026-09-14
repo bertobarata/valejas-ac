@@ -30,7 +30,16 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     type: "website",
     url: "/",
+    title: "Valejas Atlético Clube | O clube da nossa terra desde 1966",
+    description:
+      "Futsal, atletismo, karate, cicloturismo, judo, dança e teatro. Mais a Academia Sénior. A casa do clube desde 1966.",
+    images: [{ url: "/imagem-partilha", width: 1200, height: 630, alt: "Valejas Atlético Clube" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/imagem-partilha"],
+  },
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({

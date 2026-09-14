@@ -24,7 +24,7 @@ export default function AcademiaSeniorPage() {
           <h1 className="font-headline font-black text-5xl md:text-7xl uppercase leading-none tracking-tighter text-on-surface">
             Academia <span className="text-yellow">Sénior</span>
           </h1>
-          <p className="font-display text-xl md:text-2xl text-blue mt-5">
+          <p className="font-body text-xl md:text-2xl text-blue mt-5 leading-relaxed">
             {ACADEMIA.tagline}
           </p>
           <p className="font-body text-lg text-on-surface-muted mt-4 max-w-2xl leading-relaxed">
@@ -61,7 +61,7 @@ export default function AcademiaSeniorPage() {
 
       {/* Atividades, por família */}
       <section className="section-container py-16 md:py-24">
-        <h2 className="font-display text-3xl md:text-4xl text-on-surface">
+        <h2 className="font-headline font-black uppercase tracking-tighter leading-none text-3xl md:text-4xl text-on-surface">
           O que se faz
         </h2>
         <p className="font-body text-on-surface-muted mt-2 max-w-2xl">
@@ -102,7 +102,7 @@ export default function AcademiaSeniorPage() {
       <section className="section-dark bg-blue text-white">
         <div className="section-container py-16 md:py-20">
           <div className="max-w-2xl">
-            <h2 className="font-display text-3xl md:text-4xl">
+            <h2 className="font-headline font-black uppercase tracking-tighter leading-none text-3xl md:text-4xl">
               Porque é que isto existe
             </h2>
             <p className="font-body text-lg text-white/80 leading-relaxed mt-4">
@@ -123,7 +123,7 @@ export default function AcademiaSeniorPage() {
       <section className="section-container py-16 md:py-24">
         <div className="bg-surface-high p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-6 justify-between">
           <div className="max-w-xl">
-            <h2 className="font-display text-2xl md:text-3xl text-on-surface">
+            <h2 className="font-headline font-black uppercase tracking-tight leading-none text-2xl md:text-3xl text-on-surface">
               Quer participar?
             </h2>
             <p className="font-body text-on-surface-muted leading-relaxed mt-2">

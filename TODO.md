@@ -14,10 +14,10 @@ Por ordem de quem desbloqueia mais coisas de uma vez:
 |---|---|---|
 | 1 | **Resolver o impasse da Vercel** — projeto antigo ocupa o subdomínio | Não há deploy nenhum |
 | 2 | **Email** — 5 caixas em `valejasac.pt` + conta Resend | As inscrições e as encomendas não chegam a ninguém |
-| 3 | **Segredos** — `DIRECAO_PASSWORD` ainda é `valejas1966` | Quem adivinhar publica no Instagram do clube |
+| 3 | **Contas e segredos** — criar `DIRECAO_UTILIZADORES` (uma por pessoa) e apagar a palavra-passe de desenvolvimento | Quem adivinhar `valejas1966` publica no Instagram do clube |
 | 4 | **DNS do domínio** quando o registo confirmar | O site vive no `.vercel.app` |
 | 5 | **`SANITY_API_TOKEN` na Vercel** | O site mostra dados de exemplo em vez do CMS |
-| 6 | **Confirmação antes de publicar nas redes** | Um clique do Presidente é irreversível |
+| 6 | ~~Confirmação antes de publicar nas redes~~ | ✅ feito a 14/09/2026 |
 
 ## Decisões com prazo
 
@@ -222,8 +222,10 @@ Três saídas:
       maquetas de equipamento da loja, mas nem uma fotografia de gente:
       jogadores, treinos, pavilhão, bancada. É a razão de o site ler frio
       apesar do sistema visual
-- [ ] **Publicar comunicado não tem confirmação** — um clique envia para
-      Facebook e Instagram, sem rascunho guardado e sem forma de corrigir
+- [x] ~~**Publicar comunicado não tem confirmação**~~ — resolvido a
+      14/09/2026: há um passo de confirmação com o texto, a imagem e a lista
+      de onde vai sair. Continua sem rascunho guardado, e corrigir depois de
+      publicado obriga a ir às redes
 
 - [ ] **Grelhas de cartões idênticos** — órgãos sociais são 20 cartões
       iguais, Academia Sénior 11, e patrocinadores e instalações seguem o
@@ -234,11 +236,19 @@ Três saídas:
 - [ ] **Acessibilidade por testar a sério** — as correções foram feitas
       contra a norma e verificadas no código, mas o site nunca foi
       percorrido com leitor de ecrã
+- [x] ~~**Zero testes automatizados**~~ — 25 testes sobre as regras que custam
+      dinheiro ou dados, a correr com `npm test`
+- [x] ~~**Sem SEO básico**~~ — `sitemap.xml`, `robots.txt` e cartão de partilha
+      gerado em `/imagem-partilha`
+- [x] ~~**Dois estilos de título**~~ — `font-display` foi removida; há um só
+      estilo de título em todo o site
+- [x] ~~**Notícias e comunicados eram dois sítios para o mesmo**~~ —
+      `/noticias` redireciona para `/comunicados`
 
-- [ ] **Palavra-passe partilhada na área da Direção** — uma só para toda
-      a gente. Não se sabe quem fez o quê, e tirar o acesso a uma pessoa
-      obriga a mudar a de todas. Passa a ser bloqueante se algum dia se
-      guardarem dados clínicos (ver secção 8)
+- [x] ~~**Palavra-passe partilhada na área da Direção**~~ — resolvido a
+      14/09/2026: `DIRECAO_UTILIZADORES` leva pares nome:palavra-passe, a
+      sessão guarda quem é, e tirar o acesso a uma pessoa já não obriga a
+      mudar a de todas. **Falta criar as contas reais**
 - [ ] `/api/comunicado-publish` — bearer simples. Substituir por
       verificação HMAC do webhook do Sanity, ou apagar a rota se o fluxo
       passar todo por `/direcao`

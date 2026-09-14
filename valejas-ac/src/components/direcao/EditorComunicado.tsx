@@ -62,6 +62,16 @@ export default function EditorComunicado() {
 
   const podePublicar = titulo.trim().length >= 5 && texto.trim().length >= 20;
 
+  /*
+   * Confirmação antes de publicar.
+   *
+   * O que sai daqui vai para o Facebook e para o Instagram e não se
+   * corrige a partir do site — corrige-se indo às redes apagar à mão.
+   * Um clique não pode ser suficiente para isso, ainda por cima feito
+   * por quem não é de informática.
+   */
+  const [aConfirmar, setAConfirmar] = useState(false);
+
   async function publicar() {
     setErro(null);
     setAPublicar(true);
@@ -78,8 +88,10 @@ export default function EditorComunicado() {
       const json = await res.json();
       if (!res.ok || !json.ok) {
         setErro(json.erro ?? "Não foi possível publicar.");
+        setAConfirmar(false);
         return;
       }
+      setAConfirmar(false);
       setResposta(json);
       irParaOTopo();
     } catch {
@@ -263,17 +275,81 @@ export default function EditorComunicado() {
         <p className="font-body text-base text-red-500" role="alert">{erro}</p>
       )}
 
+      {aConfirmar && (
+        <div
+          role="alertdialog"
+          aria-labelledby="titulo-confirmacao"
+          className="border-2 border-yellow bg-yellow/10 p-6 md:p-8 space-y-6"
+        >
+          <div>
+            <h3
+              id="titulo-confirmacao"
+              className="font-headline font-black uppercase text-xl md:text-2xl text-on-surface"
+            >
+              Confirma que quer publicar?
+            </h3>
+            <p className="font-body text-base text-on-surface-muted mt-2 leading-relaxed">
+              Depois de publicado, o texto <strong className="text-on-surface">não
+              se corrige a partir daqui</strong>. Para o mudar nas redes, é
+              preciso ir ao Facebook e ao Instagram apagar a publicação.
+            </p>
+          </div>
+
+          <div className="bg-surface p-5 space-y-3">
+            <p className="font-headline font-black uppercase text-lg text-on-surface leading-tight">
+              {titulo}
+            </p>
+            <p className="font-body text-on-surface-muted leading-relaxed whitespace-pre-wrap">
+              {texto.length > 320 ? `${texto.slice(0, 320)}…` : texto}
+            </p>
+          </div>
+
+          <div>
+            <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-2">
+              Vai sair em
+            </p>
+            <ul className="space-y-1">
+              <li className="font-body text-on-surface">· No site do clube</li>
+              {facebook  && <li className="font-body text-on-surface">· Na página de Facebook</li>}
+              {instagram && <li className="font-body text-on-surface">· No Instagram</li>}
+              {!facebook && !instagram && (
+                <li className="font-body text-on-surface-muted">
+                  · Só no site — não escolheu nenhuma rede social
+                </li>
+              )}
+            </ul>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={publicar}
+              disabled={aPublicar}
+              className="btn-primary text-base py-4 px-8 disabled:opacity-50"
+            >
+              {aPublicar ? (
+                <><Loader2 size={18} className="animate-spin" /> A publicar…</>
+              ) : (
+                <><Send size={18} /> Sim, publicar</>
+              )}
+            </button>
+            <button
+              onClick={() => setAConfirmar(false)}
+              disabled={aPublicar}
+              className="btn-ghost text-base py-4 px-8"
+            >
+              <X size={16} /> Voltar atrás
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-wrap items-center gap-4">
         <button
-          onClick={publicar}
+          onClick={() => setAConfirmar(true)}
           disabled={!podePublicar || aPublicar}
           className="btn-primary text-lg py-5 px-10 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {aPublicar ? (
-            <><Loader2 size={18} className="animate-spin" /> A publicar…</>
-          ) : (
-            <><Send size={18} /> Publicar</>
-          )}
+          <Send size={18} /> Publicar
         </button>
         <button onClick={sair} className="btn-ghost text-base py-4 px-8">
           <LogOut size={16} /> Sair

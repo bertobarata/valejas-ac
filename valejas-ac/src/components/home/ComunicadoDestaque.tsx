@@ -27,7 +27,7 @@ export default async function ComunicadoDestaque() {
           </div>
 
           <div className="flex-1 min-w-0">
-            <h2 className="font-display text-2xl md:text-3xl text-on-surface leading-tight">
+            <h2 className="font-headline font-black uppercase tracking-tight text-2xl md:text-3xl text-on-surface leading-tight">
               {ultimo.titulo}
             </h2>
             {ultimo.corpo?.[0] && (

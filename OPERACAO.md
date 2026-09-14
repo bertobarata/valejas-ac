@@ -86,6 +86,47 @@ encomendou. É a via que não depende do CMS estar de pé.
 
 ---
 
+## Fotografias que faltam
+
+O site não tem **uma única fotografia de pessoas**. Nem jogadores, nem treinos,
+nem bancada, nem a sede. É a razão por que lê frio apesar do sistema visual
+estar resolvido, e nenhuma decisão de design compensa isso.
+
+Ficheiros em `public/images/`, JPG, minúsculas e sem acentos no nome, cada um
+abaixo de 500 KB. Descarregar do Instagram e do Facebook do clube serve —
+não é preciso sessão fotográfica para arrancar.
+
+### Primeiro, porque desbloqueiam páginas inteiras
+
+| Ficheiro | O quê | Formato | Onde entra |
+|---|---|---|---|
+| `equipa-principal.jpg` | Foto de grupo da equipa sénior de futsal | Retrato 4:5, 1200×1500 | `/equipas` |
+| `pavilhao.jpg` | O pavilhão, de dentro, com gente se possível | Horizontal 16:10, 1600×1000 | `/instalacoes` |
+| `sede.jpg` | A sede, de fora | Horizontal 16:10, 1600×1000 | `/instalacoes`, `/clube` |
+
+### Depois
+
+| Ficheiro | O quê | Formato |
+|---|---|---|
+| `plantel/<numero>-<nome>.jpg` | Um retrato por jogador. Ex.: `plantel/10-ricardo-fontes.jpg` | Quadrado 1:1, 600×600 |
+| `orgaos/<nome>.jpg` | Os 20 membros dos órgãos sociais. O cartaz da Lista A tem-nas | Quadrado 1:1, 600×600 |
+| `treinos/*.jpg` | Treinos das várias modalidades, para partir as grelhas de cartões iguais | Horizontal 3:2 |
+| `patrocinadores/<nome>.png` | Logótipos, de preferência com fundo transparente | PNG |
+
+### O que já não é preciso
+
+- **`hero-futsal.jpg`** — a entrada tinha uma fotografia esbatida por trás do
+  mote, com um véu escuro e uma faixa vermelha por cima. Saiu a 14/09/2026:
+  eram três coisas a disputar o mesmo espaço e nenhuma se via bem. O hero é
+  agora o azul do clube em gradiente
+- **`og.jpg`** — o cartão de partilha é gerado pelo site em `/imagem-partilha`,
+  com o emblema sobre o azul. Quando houver uma fotografia boa da equipa,
+  vale a pena trocar
+- **Fotografias para notícias** — `/noticias` foi fundido com `/comunicados`
+- **Fotografias de produto** — as 23 maquetas da ZEMIG já lá estão
+
+---
+
 ## Ligar o site às redes sociais
 
 Faz-se uma vez. Depois o Presidente só escreve e carrega em publicar.
