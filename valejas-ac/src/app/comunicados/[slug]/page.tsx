@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
 import { fetchComunicados } from "@/sanity/queries";
-import CTASocio from "@/components/CTASocio";
 
 /**
  * PÁGINA DE UM COMUNICADO
@@ -95,9 +94,6 @@ export default async function ComunicadoPage({
         <p className="font-headline font-black uppercase text-base text-on-surface mt-10 pt-8 border-t border-on-surface/15">
           {c.autor}
         </p>
-      </article>
-
-      <CTASocio variante="discreto" />
-    </div>
+      </article></div>
   );
 }

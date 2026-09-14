@@ -4,7 +4,6 @@ import ResultadosRecentes from "@/components/jogos/ResultadosRecentes";
 import TabelaClassificativa from "@/components/jogos/TabelaClassificativa";
 import Calendario from "@/components/jogos/Calendario";
 import { fetchJogos, fetchClassificacao } from "@/sanity/queries";
-import CTASocio from "@/components/CTASocio";
 import {
   PROXIMO_JOGO, RESULTADOS, CLASSIFICACAO,
   doSanity, proximoDe, resultadosDe,
@@ -61,12 +60,6 @@ export default async function JogosPage() {
             <TabelaClassificativa linhas={classificacao} />
           </aside>
         </div>
-      </section>
-
-      <CTASocio
-        titulo="Vai ao pavilhão"
-        texto="Os sócios vivem o clube por dentro. 1 € por mês, cartão levantado na sede."
-      />
-    </div>
+      </section></div>
   );
 }

@@ -4,7 +4,6 @@ import ProximoJogoHome from "@/components/home/ProximoJogoHome";
 import NewsSection from "@/components/home/NewsSection";
 import ModalidadesGrid from "@/components/home/ModalidadesGrid";
 import MoteBanner from "@/components/home/MoteBanner";
-import SociosCTA from "@/components/home/SociosCTA";
 
 export default function HomePage() {
   return (
@@ -26,8 +25,6 @@ export default function HomePage() {
       {/* Mote do clube */}
       <MoteBanner />
 
-      {/* Sócios CTA */}
-      <SociosCTA />
     </>
   );
 }

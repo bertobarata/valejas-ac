@@ -4,7 +4,6 @@ import NoticiasHero from "@/components/noticias/NoticiasHero";
 import NoticiasGrid from "@/components/noticias/NoticiasGrid";
 import { fetchArtigos, fetchArtigoDestaque } from "@/sanity/queries";
 import { ARTIGOS, getArtigoDestaque } from "@/lib/data/noticias";
-import CTASocio from "@/components/CTASocio";
 
 // ISR: notícias frescas sem rebuild manual (Vercel)
 export const revalidate = 60;
@@ -50,22 +49,13 @@ export default async function NoticiasPage() {
               </Link>
             </div>
           </div>
-        </section>
-
-        <CTASocio variante="discreto" />
-      </>
+        </section></>
     );
   }
 
   return (
     <>
       <NoticiasHero artigo={destaque} />
-      <NoticiasGrid  artigos={artigos.filter((a) => !a.destaque)} />
-
-      <CTASocio
-        titulo="Faz parte da notícia"
-        texto="O clube é de quem cá está. Sócio por 1 € por mês, cartão levantado na sede."
-      />
-    </>
+      <NoticiasGrid  artigos={artigos.filter((a) => !a.destaque)} /></>
   );
 }

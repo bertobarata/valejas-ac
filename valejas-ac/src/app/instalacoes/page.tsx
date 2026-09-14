@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import CTASocio from "@/components/CTASocio";
 import Image from "next/image";
 import { Camera, MapPin } from "lucide-react";
 import { INSTALACOES, type Instalacao } from "@/lib/data/instalacoes";
@@ -55,10 +54,7 @@ export default function InstalacoesPage() {
             </Link>
           </div>
         </div>
-      </section>
-
-      <CTASocio variante="discreto" />
-    </div>
+      </section></div>
   );
 }
 

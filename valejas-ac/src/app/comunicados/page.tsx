@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
 import { fetchComunicados } from "@/sanity/queries";
-import CTASocio from "@/components/CTASocio";
 
 // ISR: comunicados frescos sem rebuild (quando ligado ao Sanity)
 export const revalidate = 60;
@@ -93,12 +92,6 @@ export default async function ComunicadosPage() {
             </p>
           )}
         </div>
-      </div>
-
-      <CTASocio
-        titulo="Não percas nada"
-        texto="Os comunicados saem primeiro aqui. Sócio por 1 € por mês — e o clube ganha mais uma voz."
-      />
-    </section>
+      </div></section>
   );
 }
