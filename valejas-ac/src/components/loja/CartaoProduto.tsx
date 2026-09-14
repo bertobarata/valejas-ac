@@ -79,9 +79,10 @@ export default function CartaoProduto({
         <div
           className={clsx(
             "relative bg-white",
-            // A imagem do kit é três maquetas lado a lado: numa moldura
-            // quadrada ficaria minúscula ao centro.
-            produto.kit ? "aspect-[16/4]" : destaque ? "aspect-[2/1]" : "aspect-[3/2]"
+            // As maquetas vêm cortadas às bandas do fornecedor e ficaram
+            // largas e baixas; a moldura acompanha, senão a peça nada em
+            // branco. A do kit são três lado a lado, ainda mais larga.
+            produto.kit ? "aspect-[32/5]" : destaque ? "aspect-[5/2]" : "aspect-[2/1]"
           )}
         >
           <Image

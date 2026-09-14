@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ProximoJogo from "@/components/jogos/ProximoJogo";
 import ResultadosRecentes from "@/components/jogos/ResultadosRecentes";
 import TabelaClassificativa from "@/components/jogos/TabelaClassificativa";
+import Calendario from "@/components/jogos/Calendario";
 import { fetchJogos, fetchClassificacao } from "@/sanity/queries";
 import CTASocio from "@/components/CTASocio";
 import {
@@ -53,6 +54,7 @@ export default async function JogosPage() {
           <div className="lg:col-span-7 space-y-14">
             <ProximoJogo jogo={proximo} />
             <ResultadosRecentes jogos={resultados} />
+            <Calendario />
           </div>
 
           <aside className="lg:col-span-5">

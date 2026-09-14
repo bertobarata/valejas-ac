@@ -175,6 +175,8 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 - [x] **6** — Página da história (fundação, origens, localização com mapa)
 - [x] **7** — Mote, patrocinadores e instalações
 - [x] **8** — Página de jogos + área do departamento de comunicação
+      (calendário oficial das 30 jornadas importado do PDF da AF Lisboa
+      a 14/09/2026; resultados e classificação atualizam-se em /direcao/jogos)
 - [x] **9** — Ecrã de carregamento com o logo do clube
 - [x] **10** — Páginas legais (privacidade reescrita, termos e cookies novos)
 

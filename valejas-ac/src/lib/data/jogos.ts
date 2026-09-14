@@ -1,22 +1,33 @@
 /**
  * CAMADA DE DADOS — JOGOS E CLASSIFICAÇÃO
  * ─────────────────────────────────────────────────────────────────
- * Futsal, Equipa A — distrital da AF Lisboa.
+ * Futsal, Equipa A — TRUECLINIC | Campeonato Distrital da I Divisão
+ * da AF Lisboa, época 2026/27.
  *
- * ⚠️ DADOS DE EXEMPLO. Os adversários chamam-se "Equipa Adversária"
- * de propósito: é preferível um marcador óbvio a nomes de clubes
- * inventados, que já enganaram uma vez neste site.
+ * O calendário é o oficial, tirado do programa de jogos da AF Lisboa
+ * (PDF TRUECLINIC-CD-I-DIVISÃO-FUTSAL): trinta jornadas, datas, horas
+ * e pavilhões. Nada aqui é inventado.
  *
- * Substituir pelo calendário e classificação reais da AF Lisboa.
- * Quando houver CMS, isto passa a vir do Sanity.
+ * Os RESULTADOS ficam vazios até se jogar. A CLASSIFICAÇÃO tem os
+ * dezasseis clubes reais com tudo a zero — é o que é verdade antes da
+ * primeira jornada. Um e outro atualizam-se em /direcao/jogos.
  * ─────────────────────────────────────────────────────────────────
  */
 
-export const DADOS_DE_EXEMPLO = true;
+export const DADOS_DE_EXEMPLO = false;
 
 export const CLUBE = "Valejas AC";
 
+export const COMPETICAO = "TRUECLINIC | Campeonato Distrital I Divisão";
+
+export const EPOCA = "2026/27";
+
+/** Onde o Valejas joga em casa. */
+export const PAVILHAO_CASA = "Pavilhão do Valejas Atlético Clube, Barcarena";
+
 export interface Jogo {
+  /** Número da jornada no campeonato, 1 a 30. */
+  jornada?:  number;
   /** ISO 8601. */
   data:      string;
   casa:      string;
@@ -28,37 +39,133 @@ export interface Jogo {
   competicao?: string;
 }
 
-export const PROXIMO_JOGO: Jogo | null = {
-  data:  "2026-09-20T18:00:00+01:00",
-  casa:  CLUBE,
-  fora:  "Equipa Adversária",
-  local: "Pavilhão Multiusos de Valejas",
-  competicao: "Distrital AF Lisboa",
-};
+/**
+ * O calendário todo, por ordem. Trinta jornadas, de setembro a maio.
+ */
+export const CALENDARIO: Jogo[] = [
+  { jornada:  1, data: "2026-09-19T21:00:00+01:00",
+    casa: "Pregança", fora: CLUBE,
+    local: "Pavilhão Desportivo Pregança do Mar, Pregança do Mar, Lourinhã" },
+  { jornada:  2, data: "2026-09-26T19:00:00+01:00",
+    casa: CLUBE, fora: "Jardim Amoreira",
+    local: PAVILHAO_CASA },
+  { jornada:  3, data: "2026-10-03T18:00:00+01:00",
+    casa: "Novos Talentos", fora: CLUBE,
+    local: "Pavilhão Escola Secundária Matias Aires, Mira Sintra, Agualva" },
+  { jornada:  4, data: "2026-10-10T19:00:00+01:00",
+    casa: CLUBE, fora: "Fonsecas Calçada",
+    local: PAVILHAO_CASA },
+  { jornada:  5, data: "2026-10-18T19:00:00+01:00",
+    casa: "Futsal Oeiras", fora: CLUBE,
+    local: "Pavilhão S. Julião da Barra, Oeiras" },
+  { jornada:  6, data: "2026-10-24T19:00:00+01:00",
+    casa: CLUBE, fora: "GROB",
+    local: PAVILHAO_CASA },
+  { jornada:  7, data: "2026-10-31T19:30:00+00:00",
+    casa: "Académico Desportos", fora: CLUBE,
+    local: "Recinto Coberto do Académico de Desportos, Póvoa de Santa Iria" },
+  { jornada:  8, data: "2026-11-07T19:00:00+00:00",
+    casa: CLUBE, fora: "União Alfornelos",
+    local: PAVILHAO_CASA },
+  { jornada:  9, data: "2026-11-21T21:00:00+00:00",
+    casa: "Infantado A", fora: CLUBE,
+    local: "Pavilhão João Villaret, Loures" },
+  { jornada: 10, data: "2026-11-28T19:00:00+00:00",
+    casa: CLUBE, fora: "Forte Casa",
+    local: PAVILHAO_CASA },
+  { jornada: 11, data: "2026-12-05T18:00:00+00:00",
+    casa: "Carregado", fora: CLUBE,
+    local: "Pavilhão Associação Desportiva Carregado, Carregado" },
+  { jornada: 12, data: "2026-12-12T19:00:00+00:00",
+    casa: CLUBE, fora: "Oriental RC",
+    local: PAVILHAO_CASA },
+  { jornada: 13, data: "2026-12-19T19:00:00+00:00",
+    casa: CLUBE, fora: "Tojeira",
+    local: PAVILHAO_CASA },
+  { jornada: 14, data: "2027-01-10T18:00:00+00:00",
+    casa: "Varejense", fora: CLUBE,
+    local: "Recinto Coberto Varejense, Alto de São João, Lisboa" },
+  { jornada: 15, data: "2027-01-16T19:00:00+00:00",
+    casa: CLUBE, fora: "SM 3 Agosto",
+    local: PAVILHAO_CASA },
+  { jornada: 16, data: "2027-01-23T19:00:00+00:00",
+    casa: CLUBE, fora: "Pregança",
+    local: PAVILHAO_CASA },
+  { jornada: 17, data: "2027-01-30T21:00:00+00:00",
+    casa: "Jardim Amoreira", fora: CLUBE,
+    local: "Pavilhão Escola Secundária Ramada, Odivelas" },
+  { jornada: 18, data: "2027-02-13T19:00:00+00:00",
+    casa: CLUBE, fora: "Novos Talentos",
+    local: PAVILHAO_CASA },
+  { jornada: 19, data: "2027-02-27T18:30:00+00:00",
+    casa: "Fonsecas Calçada", fora: CLUBE,
+    local: "Pavilhão Municipal de Alvalade, Alvalade" },
+  { jornada: 20, data: "2027-03-06T19:00:00+00:00",
+    casa: CLUBE, fora: "Futsal Oeiras",
+    local: PAVILHAO_CASA },
+  { jornada: 21, data: "2027-03-13T21:30:00+00:00",
+    casa: "GROB", fora: CLUBE,
+    local: "Pavilhão Escola Secundária Pedro Alexandrino, Póvoa de Santo Adrião" },
+  { jornada: 22, data: "2027-03-20T19:00:00+00:00",
+    casa: CLUBE, fora: "Académico Desportos",
+    local: PAVILHAO_CASA },
+  { jornada: 23, data: "2027-04-11T18:30:00+01:00",
+    casa: "União Alfornelos", fora: CLUBE,
+    local: "Pavilhão Escola Secundária Fernando Namora, Brandoa" },
+  { jornada: 24, data: "2027-04-17T19:00:00+01:00",
+    casa: CLUBE, fora: "Infantado A",
+    local: PAVILHAO_CASA },
+  { jornada: 25, data: "2027-04-24T20:00:00+01:00",
+    casa: "Forte Casa", fora: CLUBE,
+    local: "Pavilhão Municipal Forte da Casa, Forte da Casa" },
+  { jornada: 26, data: "2027-05-01T19:00:00+01:00",
+    casa: CLUBE, fora: "Carregado",
+    local: PAVILHAO_CASA },
+  { jornada: 27, data: "2027-05-08T19:00:00+01:00",
+    casa: "Oriental RC", fora: CLUBE,
+    local: "Pavilhão Desportivo de Marvila, Marvila" },
+  { jornada: 28, data: "2027-05-15T19:00:00+01:00",
+    casa: "Tojeira", fora: CLUBE,
+    local: "Pavilhão Joaquim Aranha | Tojeira, Bairro Novo da Conceição, Abóboda" },
+  { jornada: 29, data: "2027-05-22T19:00:00+01:00",
+    casa: CLUBE, fora: "Varejense",
+    local: PAVILHAO_CASA },
+  { jornada: 30, data: "2027-05-29T21:00:00+01:00",
+    casa: "SM 3 Agosto", fora: CLUBE,
+    local: "Pavilhão dos Lóios, Marvila" },
+].map((j) => ({ ...j, competicao: COMPETICAO }));
 
-/** Mais recente primeiro. */
-export const RESULTADOS: Jogo[] = [
-  {
-    data: "2026-09-06T18:00:00+01:00",
-    casa: CLUBE, fora: "Equipa Adversária B",
-    golosCasa: 4, golosFora: 2,
-    local: "Pavilhão Multiusos de Valejas",
-    competicao: "Distrital AF Lisboa",
-  },
-  {
-    data: "2026-08-30T17:00:00+01:00",
-    casa: "Equipa Adversária C", fora: CLUBE,
-    golosCasa: 1, golosFora: 1,
-    local: "Pavilhão da Equipa Adversária C",
-    competicao: "Distrital AF Lisboa",
-  },
-  {
-    data: "2026-08-23T18:00:00+01:00",
-    casa: CLUBE, fora: "Equipa Adversária D",
-    golosCasa: 2, golosFora: 3,
-    local: "Pavilhão Multiusos de Valejas",
-    competicao: "Distrital AF Lisboa",
-  },
+/** O próximo jogo por disputar, calculado a partir do calendário. */
+export function proximoJogo(agora: Date = new Date()): Jogo | null {
+  return CALENDARIO.find((j) => new Date(j.data) >= agora) ?? null;
+}
+
+export const PROXIMO_JOGO: Jogo | null = proximoJogo();
+
+/**
+ * Resultados. Vazio até se jogar — o departamento de comunicação
+ * preenche-os em /direcao/jogos, e daí vêm pelo Sanity.
+ */
+export const RESULTADOS: Jogo[] = [];
+
+/** Os dezasseis clubes da prova, por ordem alfabética. */
+export const CLUBES_DA_PROVA = [
+  "Académico Desportos",
+  "Carregado",
+  "Fonsecas Calçada",
+  "Forte Casa",
+  "Futsal Oeiras",
+  "GROB",
+  "Infantado A",
+  "Jardim Amoreira",
+  "Novos Talentos",
+  "Oriental RC",
+  "Pregança",
+  "SM 3 Agosto",
+  "Tojeira",
+  "União Alfornelos",
+  CLUBE,
+  "Varejense",
 ];
 
 export interface LinhaClassificacao {
@@ -73,30 +180,23 @@ export interface LinhaClassificacao {
   pontos:  number;
 }
 
-/** 20 classificados, como pedido pela Direção. */
-export const CLASSIFICACAO: LinhaClassificacao[] = Array.from({ length: 20 }, (_, i) => {
-  const posicao = i + 1;
-  const jogos   = 10;
-  // Pontos descem com a posição, e vitórias/empates/derrotas são
-  // derivados deles — assim a tabela de exemplo é internamente coerente
-  // em vez de números soltos que não fecham.
-  const pontos   = 24 - i;
-  const empates  = pontos % 3;
-  const vitorias = (pontos - empates) / 3;
-  const derrotas = jogos - vitorias - empates;
-
-  return {
-    posicao,
-    equipa: posicao === 4 ? CLUBE : `Equipa Adversária ${posicao}`,
-    jogos,
-    vitorias,
-    empates,
-    derrotas,
-    golosMarcados: 42 - i,
-    golosSofridos: 14 + i,
-    pontos,
-  };
-});
+/**
+ * Classificação. Antes da primeira jornada está tudo a zero, e é
+ * assim que tem de aparecer: uma tabela inventada num site de clube
+ * passa por verdadeira. Atualiza-se em /direcao/jogos.
+ */
+export const CLASSIFICACAO: LinhaClassificacao[] = CLUBES_DA_PROVA
+  .map((equipa, i) => ({
+    posicao: i + 1,
+    equipa,
+    jogos: 0,
+    vitorias: 0,
+    empates: 0,
+    derrotas: 0,
+    golosMarcados: 0,
+    golosSofridos: 0,
+    pontos: 0,
+  }));
 
 /* ── Ajudas de apresentação ─────────────────────────────────────── */
 
