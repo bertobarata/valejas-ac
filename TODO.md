@@ -75,6 +75,13 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 - [x] `SANITY_API_TOKEN` — token `site-valejas`, papel *editor*, sem
       prazo. Está no `.env.local`, que não vai para o repositório
 - [x] Origens CORS: `localhost:3000`, `valejasac.pt` e `www.valejasac.pt`
+- [x] Dataset passado a **privado**. Vinha público, e público no Sanity
+      quer dizer que qualquer pessoa com o id do projeto — que está no
+      JavaScript do site — lia tudo sem token, incluindo os nomes,
+      emails e telemóveis das encomendas da loja
+- [ ] ⚠️ Como o dataset é privado, **sem `SANITY_API_TOKEN` no servidor
+      o site não lê nada** e volta aos dados de exemplo. A variável tem
+      de estar na Vercel antes de o site ir para o ar
 - [x] Ciclo completo testado contra o Sanity real: escrever um jogador,
       lê-lo na API, vê-lo na página pública e apagá-lo
 - [ ] Repetir as três variáveis na Vercel quando o projeto lá existir
