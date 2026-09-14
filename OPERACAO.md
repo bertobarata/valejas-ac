@@ -86,6 +86,28 @@ encomendou. É a via que não depende do CMS estar de pé.
 
 ---
 
+## Documentos para descarregar
+
+Papéis que a pessoa imprime, trata fora do site e entrega na sede.
+Ficheiros em `valejas-ac/public/documentos/`, listados em
+`src/lib/data/documentos.ts`.
+
+| Ficheiro | O quê |
+|---|---|
+| `exame-medico-desportivo.pdf` | Formulário oficial do IPDJ. Obrigatório para treinar e competir |
+
+Aparecem em dois sítios: na secção **«O que levar à sede»** da página de
+inscrições, e no ecrã que se vê logo depois de enviar a inscrição — que é o
+momento em que a pessoa está mais disponível para tratar do assunto.
+
+**Não se recebe o exame médico preenchido pelo site**, e não é por descuido: é
+assinado por um médico e leva dados de saúde. Entrega-se o original na sede.
+
+Para acrescentar outro documento: pôr o PDF na pasta e uma entrada em
+`documentos.ts`. A página apanha-o sozinha.
+
+---
+
 ## Fotografias que faltam
 
 O site não tem **uma única fotografia de pessoas**. Nem jogadores, nem treinos,

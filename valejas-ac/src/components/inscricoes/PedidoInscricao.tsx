@@ -17,9 +17,10 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
-import { Check, ExternalLink, Loader2, Send } from "lucide-react";
+import { Check, Download, ExternalLink, Loader2, Send } from "lucide-react";
 import { MODALIDADES, VAGAS } from "@/lib/data/modalidades";
 import { declaracao } from "@/lib/data/direitosImagem";
+import { EXAME_MEDICO } from "@/lib/data/documentos";
 import { calcularIdade, eMenor } from "@/lib/validacao";
 
 export default function PedidoInscricao() {
@@ -90,6 +91,21 @@ export default function PedidoInscricao() {
           pela sede para fechar a ficha da federação e entregar o exame
           médico.
         </p>
+        {/*
+          O momento em que a pessoa está mais disponível para tratar do
+          papel é este: acabou de se inscrever e está à espera de saber o
+          que falta. É aqui que o exame médico tem de aparecer.
+        */}
+        <div className="border-l-2 border-yellow pl-5">
+          <p className="font-body text-on-surface leading-relaxed">
+            <strong>Falta o exame médico.</strong> É obrigatório para treinar e
+            competir. Imprime, leva ao médico, e entrega o original na sede.
+          </p>
+          <a href={EXAME_MEDICO.ficheiro} download className="btn-ghost text-sm mt-4">
+            <Download size={16} /> Descarregar o exame médico
+          </a>
+        </div>
+
         {!feito.jaSocio && (
           <div className="border-l-2 border-yellow pl-5">
             <p className="font-body text-on-surface leading-relaxed">

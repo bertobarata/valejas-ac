@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ClipboardCheck, MessageSquare, UserPlus } from "lucide-react";
+import { ArrowRight, ClipboardCheck, Download, FileText, MessageSquare, UserPlus } from "lucide-react";
 import { MODALIDADES, VAGAS } from "@/lib/data/modalidades";
 import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
+import { DOCUMENTOS } from "@/lib/data/documentos";
 import PedidoInscricao from "@/components/inscricoes/PedidoInscricao";
 
 export const metadata: Metadata = {
@@ -42,9 +43,9 @@ export default function InscricoesPage() {
       Icon: ClipboardCheck,
       titulo: "Por fim, na sede",
       texto:
-        "Havendo vaga, a inscrição desportiva fecha-se na sede: assina-se a " +
-        "ficha da federação e entrega-se o exame médico. É também aí que se " +
-        "escolhe o horário e se trata do equipamento.",
+        "Havendo vaga, a inscrição fecha-se na sede: assina-se a ficha da " +
+        "federação e entrega-se o exame médico, que se descarrega aqui em " +
+        "baixo. É também aí que se escolhe o horário e se trata do equipamento.",
     },
   ];
 
@@ -122,6 +123,73 @@ export default function InscricoesPage() {
           </div>
 
           <PedidoInscricao />
+        </div>
+      </section>
+
+      {/* O que é preciso levar à sede */}
+      <section className="section-container py-14 md:py-20 border-t border-on-surface/10">
+        <div className="max-w-2xl mb-8">
+          <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
+            O que levar à sede
+          </h2>
+          <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-3">
+            A inscrição só fica fechada com estes papéis entregues. Descarrega,
+            trata deles, e traz-nos.
+          </p>
+        </div>
+
+        <div className="grid gap-px bg-on-surface/10 sm:grid-cols-2">
+          {DOCUMENTOS.map((doc) => (
+            <article key={doc.ficheiro} className="bg-surface-high p-7 md:p-8 flex flex-col">
+              <FileText size={22} className="text-yellow" aria-hidden />
+              <h3 className="font-headline font-black uppercase text-xl text-on-surface mt-4">
+                {doc.nome}
+              </h3>
+              <p className="font-body text-on-surface-muted leading-relaxed mt-2">
+                {doc.descricao}
+              </p>
+              <p className="font-body text-sm text-on-surface-muted leading-relaxed mt-3">
+                {doc.comoUsar}
+              </p>
+              {doc.origem && (
+                <p className="font-body text-xs text-on-surface-muted mt-3">
+                  Formulário oficial do {doc.origem}.
+                </p>
+              )}
+              <a
+                href={doc.ficheiro}
+                download
+                className="btn-primary text-sm mt-6 self-start"
+              >
+                <Download size={16} /> Descarregar PDF
+              </a>
+            </article>
+          ))}
+
+          {/* Os outros papéis não são ficheiros: são coisas para trazer. */}
+          <article className="bg-surface-high p-7 md:p-8 flex flex-col">
+            <ClipboardCheck size={22} className="text-yellow" aria-hidden />
+            <h3 className="font-headline font-black uppercase text-xl text-on-surface mt-4">
+              E mais isto
+            </h3>
+            <ul className="mt-3 space-y-2">
+              {[
+                "Cartão de Cidadão do atleta",
+                "Cartão de Cidadão do encarregado de educação, se o atleta for menor",
+                "Uma fotografia tipo passe",
+                "A ficha da federação, que se assina lá",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-yellow shrink-0 mt-2.5" />
+                  <span className="font-body text-on-surface-muted leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="font-body text-sm text-on-surface-muted leading-relaxed mt-5">
+              A sede está aberta de segunda a sexta, das 09h30 às 17h00, e nos
+              dias de jogo.
+            </p>
+          </article>
         </div>
       </section>
     </div>
