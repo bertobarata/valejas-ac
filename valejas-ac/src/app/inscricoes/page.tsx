@@ -32,11 +32,11 @@ export default function InscricoesPage() {
     },
     {
       Icon: MessageSquare,
-      titulo: "Depois, pedir vaga",
+      titulo: "Depois, a inscrição",
       texto:
-        "Cada modalidade tem poucos lugares. Dizes-nos o que te interessa " +
-        "no formulário aqui em baixo e respondemos se há vaga — antes de " +
-        "contares com ela.",
+        "Preenche o formulário aqui em baixo, com a autorização de direitos " +
+        "de imagem que o clube pede a todos os atletas. Cada modalidade tem " +
+        "poucos lugares — confirmamos a vaga e respondemos.",
     },
     {
       Icon: ClipboardCheck,
@@ -96,21 +96,28 @@ export default function InscricoesPage() {
 
       {/* Formulário */}
       <section
-        id="pedir-vaga"
+        id="enviar"
         className="section-container py-14 md:py-20 border-t border-on-surface/10 scroll-mt-32"
       >
         <div className="grid lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-10 lg:gap-16">
           <div>
             <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-              Pedir vaga
+              Enviar inscrição
             </h2>
             <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-4">
               {VAGAS.texto}
             </p>
             <p className="font-body text-on-surface-muted leading-relaxed mt-4">
-              Isto não é a inscrição — é o primeiro contacto. Nada fica
-              guardado neste site: o pedido segue por email para o clube e
-              desaparece daqui.
+              A inscrição fecha-se na sede, com a ficha da federação e o
+              exame médico — isto é o que se adianta daqui. Nada fica
+              guardado neste site: segue por email para o clube e desaparece.
+            </p>
+            <p className="font-body text-on-surface-muted leading-relaxed mt-4">
+              Inclui a autorização de{" "}
+              <Link href="/inscricoes/direitos-de-imagem" className="text-yellow underline">
+                direitos de imagem
+              </Link>
+              , obrigatória para todos os atletas.
             </p>
           </div>
 

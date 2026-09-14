@@ -345,7 +345,37 @@ agarrado à encomenda em vez de perdido na caixa de correio.
 
 ---
 
-## 8. Línguas do site
+## 8. Ficha oficial de atleta — o que o site ainda não pede
+
+O clube tem uma **Ficha Individual de Atleta** em papel (época 2026/2027,
+fotografada a 14/09/2026) bem mais completa do que o formulário de
+`/inscricoes`. O site pede o que serve para responder depressa; o resto
+preenche-se na sede. Se um dia se quiser a ficha inteira online, falta:
+
+- [ ] Morada, código postal, naturalidade, CC/TR com validade
+- [ ] Agregado familiar: pai e mãe, com telemóvel, email e profissão
+- [ ] Ocupação: escola e ano, passou ou reprovou, ou empresa e profissão
+- [ ] Dados clínicos: médico e telefone, grupo sanguíneo, lesões graves,
+      operações, uso de óculos
+- [ ] Currículo desportivo: pratica futsal desde, 1.º clube, clubes que
+      representou, escalão, no VAC desde que época
+- [ ] Licença FPF e número de sócio-atleta
+- [ ] A declaração de autorização para inscrição como sócio-atleta
+
+⚠️ Metade disto são **dados de saúde** — categoria especial no RGPD.
+Recolhê-los pelo site obriga a mais do que um formulário: consentimento
+próprio, e um sítio seguro para os guardar. Hoje o site não guarda nada,
+e é isso que o mantém simples. A ficha em papel resolve o assunto sem
+essa complicação.
+
+- [x] **Direitos de imagem** — o termo de consentimento RGPD do clube foi
+      transcrito para `src/lib/data/direitosImagem.ts`, vive em
+      `/inscricoes/direitos-de-imagem` e é obrigatório no formulário. Fica
+      registado no email com a data, o texto aceite e quem o aceitou
+
+---
+
+## 9. Línguas do site
 
 Pedido do Berto (14/09/2026). O site está todo escrito em português de
 Portugal; a ideia é chegar a quem vive em Valejas e não tem o português

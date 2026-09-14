@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * PEDIDO DE VAGA NUMA MODALIDADE
+ * INSCRIÇÃO NUMA MODALIDADE
  * ─────────────────────────────────────────────────────────────────
  * O formulário mais curto que consegue ser útil: modalidade, quem é,
  * que idade tem e por onde se responde. Tudo o resto — ficha da
@@ -17,8 +17,9 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
-import { Check, Loader2, Send } from "lucide-react";
+import { Check, ExternalLink, Loader2, Send } from "lucide-react";
 import { MODALIDADES, VAGAS } from "@/lib/data/modalidades";
+import { declaracao } from "@/lib/data/direitosImagem";
 import { calcularIdade, eMenor } from "@/lib/validacao";
 
 export default function PedidoInscricao() {
@@ -31,6 +32,7 @@ export default function PedidoInscricao() {
   const [jaSocio, setJaSocio]               = useState(false);
   const [numeroSocio, setNumeroSocio]       = useState("");
   const [notas, setNotas]                   = useState("");
+  const [consentimento, setConsentimento]   = useState(false);
 
   const [aEnviar, setAEnviar] = useState(false);
   const [erros, setErros]     = useState<string[]>([]);
@@ -57,7 +59,7 @@ export default function PedidoInscricao() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           modalidade, nome, dataNascimento, telemovel, email,
-          eeNome, jaSocio, numeroSocio, notas,
+          eeNome, jaSocio, numeroSocio, notas, consentimento,
         }),
       });
       const json = await res.json();
@@ -80,12 +82,13 @@ export default function PedidoInscricao() {
           <Check size={28} className="text-yellow" />
         </div>
         <h2 className="font-headline font-black uppercase text-2xl md:text-3xl tracking-tighter text-on-surface">
-          Pedido enviado
+          Inscrição enviada
         </h2>
         <p className="font-body text-on-surface-muted leading-relaxed max-w-xl">
-          O clube vai ver se há vaga em {feito.modalidade} e responde ao
-          contacto que deixaste. Se houver, a inscrição fecha-se na sede —
-          é aí que se assina a ficha e se entrega o exame médico.
+          A inscrição em {feito.modalidade} chegou ao clube. Vamos confirmar
+          que há vaga e responder ao contacto que deixaste. Depois é passar
+          pela sede para fechar a ficha da federação e entregar o exame
+          médico.
         </p>
         {!feito.jaSocio && (
           <div className="border-l-2 border-yellow pl-5">
@@ -214,18 +217,22 @@ export default function PedidoInscricao() {
         {jaSocio ? (
           <div className="max-w-xs">
             <label htmlFor="num-socio" className="rotulo">
-              Número de sócio <span className="normal-case tracking-normal opacity-60">(se souberes)</span>
+              Número de sócio *
             </label>
             <input
               id="num-socio" value={numeroSocio}
               onChange={(e) => setNumeroSocio(e.target.value)}
+              required
               className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
             />
+            <p className="font-body text-sm text-on-surface-muted mt-1.5">
+              Está no cartão. Se não o tiveres à mão, a sede confirma-o.
+            </p>
           </div>
         ) : (
           <p className="font-body text-sm text-on-surface-muted leading-relaxed">
-            Ainda não és? Podes pedir a vaga à mesma — mas a inscrição só se
-            fecha depois de te fazeres sócio, e isso são 1 € por mês.
+            Ainda não és? Podes enviar a inscrição à mesma — mas só se fecha
+            depois de te fazeres sócio, e isso são 1 € por mês.
           </p>
         )}
       </div>
@@ -257,6 +264,45 @@ export default function PedidoInscricao() {
         </div>
       )}
 
+      {/*
+        Direitos de imagem. O clube pede isto a todos os atletas, e o
+        RGPD exige que seja livre, informado e explícito — por isso a
+        caixa nasce vazia, o texto está a um clique e a declaração muda
+        conforme quem consente.
+      */}
+      <div className="border border-on-surface/15 p-5 md:p-6 space-y-4">
+        <h3 className="font-headline font-black uppercase text-base text-on-surface">
+          Direitos de imagem
+        </h3>
+        <p className="font-body text-sm text-on-surface-muted leading-relaxed">
+          O clube fotografa e filma treinos, jogos e convívios, e publica-os
+          no site e nas redes. Para isso precisa da tua autorização — é
+          obrigatória para todos os atletas e pode ser retirada a qualquer
+          momento, por escrito.
+        </p>
+
+        <label className="flex items-start gap-3 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={consentimento}
+            onChange={(e) => setConsentimento(e.target.checked)}
+            required
+            className="w-5 h-5 accent-yellow mt-0.5 shrink-0"
+          />
+          <span className="font-body text-on-surface leading-relaxed">
+            {declaracao(menor)}
+          </span>
+        </label>
+
+        <Link
+          href="/inscricoes/direitos-de-imagem"
+          target="_blank"
+          className="inline-flex items-center gap-2 font-body text-sm text-yellow underline underline-offset-4"
+        >
+          Ler o termo completo <ExternalLink size={13} aria-hidden />
+        </Link>
+      </div>
+
       <div className="flex flex-wrap items-center gap-5">
         <button
           type="submit" disabled={aEnviar}
@@ -265,7 +311,7 @@ export default function PedidoInscricao() {
           {aEnviar ? (
             <><Loader2 size={16} className="animate-spin" /> A enviar…</>
           ) : (
-            <><Send size={16} /> Pedir vaga</>
+            <><Send size={16} /> Enviar inscrição</>
           )}
         </button>
         <p className="font-body text-sm text-on-surface-muted">

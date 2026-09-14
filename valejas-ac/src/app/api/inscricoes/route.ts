@@ -1,8 +1,10 @@
 /**
- * API — PEDIDO DE INSCRIÇÃO NUMA MODALIDADE
+ * API — INSCRIÇÃO NUMA MODALIDADE
  * ─────────────────────────────────────────────────────────────────
- * Não é uma inscrição: é um pedido de vaga. A inscrição desportiva
- * fecha-se na sede, com a ficha da federação e o exame médico.
+ * A inscrição entra por aqui e fecha-se na sede, com a ficha da
+ * federação e o exame médico. O consentimento de direitos de imagem é
+ * aceite aqui e fica registado no email — é esse email que prova
+ * quando, por quem e com que texto foi dado.
  *
  * Como a ficha de sócio, NÃO GUARDA NADA. O pedido segue por email
  * para o clube e desaparece daqui — não há base de dados, não fica em
@@ -17,6 +19,7 @@ import {
   validarDataNascimento, calcularIdade, eMenor, formatar,
 } from "@/lib/validacao";
 import { enviarEmail, emailDoClube, emailConfigurado } from "@/lib/email";
+import { declaracao } from "@/lib/data/direitosImagem";
 
 export const runtime = "nodejs";
 
@@ -40,6 +43,7 @@ export async function POST(req: Request) {
   const notas          = String(b.notas ?? "").trim().slice(0, 500);
   const jaSocio        = Boolean(b.jaSocio);
   const numeroSocio    = String(b.numeroSocio ?? "").trim().slice(0, 20);
+  const consentimento  = Boolean(b.consentimento);
 
   const m = MODALIDADES.find((x) => x.slug === modalidade);
 
@@ -53,6 +57,17 @@ export async function POST(req: Request) {
   const menor = dataNascimento ? eMenor(dataNascimento) : false;
   if (menor && !validarNomeCompleto(eeNome)) {
     erros.push("O atleta é menor de idade — falta o nome do encarregado de educação.");
+  }
+  if (jaSocio && !numeroSocio) {
+    erros.push("Já sendo sócio, falta o número de sócio.");
+  }
+  /*
+   * Sem consentimento não há inscrição. É o clube que o exige a todos
+   * os atletas, e o RGPD obriga a que seja explícito — uma caixa por
+   * marcar não vale como aceitação tácita.
+   */
+  if (!consentimento) {
+    erros.push("Falta autorizar a captação e utilização de imagem.");
   }
 
   if (erros.length) {
@@ -76,9 +91,21 @@ export async function POST(req: Request) {
   }
 
   linhas.push(
-    `Já é sócio?     : ${jaSocio ? `Sim${numeroSocio ? ` — nº ${numeroSocio}` : ""}` : "Não"}`
+    `Já é sócio?     : ${jaSocio ? `Sim — nº ${numeroSocio}` : "Não"}`
   );
   if (notas) linhas.push(`Notas           : ${notas}`);
+
+  linhas.push("", "─────────────────────────────────────────────", "");
+  linhas.push("DIREITOS DE IMAGEM");
+  linhas.push("Aceite no site, com a declaração:");
+  linhas.push(`  «${declaracao(menor)}»`);
+  linhas.push(`Por        : ${menor ? `${eeNome} (encarregado de educação)` : nome}`);
+  linhas.push(
+    `Em         : ${new Intl.DateTimeFormat("pt-PT", {
+      dateStyle: "full", timeStyle: "short", timeZone: "Europe/Lisbon",
+    }).format(new Date())}`
+  );
+  linhas.push("Guardar este email — é o registo do consentimento.");
 
   linhas.push("", "─────────────────────────────────────────────", "");
   if (m!.apenasFormacao) {
