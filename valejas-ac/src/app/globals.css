@@ -349,6 +349,11 @@
     }
   }
 
+  /* Rótulo de campo de formulário — o mesmo em todos os formulários. */
+  .rotulo {
+    @apply font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2;
+  }
+
   /* ── Texto legal ── */
   .texto-legal h2 {
     @apply font-headline font-black uppercase text-xl md:text-2xl tracking-tight text-on-surface mt-12 mb-4 first:mt-0;

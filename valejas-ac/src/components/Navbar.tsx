@@ -56,6 +56,7 @@ const NAV_ITEMS: ItemNav[] = [
       { label: "Patrocinadores",  href: "/patrocinadores" },
     ],
   },
+  { label: "Inscrições",  href: "/inscricoes" },
   { label: "Contactos",   href: "/contactos" },
 ];
 
@@ -210,11 +211,19 @@ export default function Navbar() {
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-1 pointer-events-none"
           )}>
-            <Logo size={96} wordmarkClass="hidden xl:block" />
+            {/*
+              Só o emblema, sem o nome ao lado.
+
+              Com sete destinos e dois botões, a barra não tem largura para
+              o nome: partia-se em três linhas por cima dos links. E não faz
+              falta — o nome do clube está na faixa vermelha logo por cima,
+              no título da página e no rodapé.
+            */}
+            <Logo size={96} withWordmark={false} />
           </div>
 
           {/* Desktop nav */}
-          <ul className="hidden lg:flex items-center gap-5 xl:gap-7 whitespace-nowrap">
+          <ul className="hidden lg:flex items-center gap-4 xl:gap-6 whitespace-nowrap">
             {NAV_ITEMS.map((item) => (
               <li
                 key={item.href}
@@ -317,14 +326,14 @@ export default function Navbar() {
             {/* Loja e cartão de sócio: as duas coisas que se fazem aqui */}
             <Link
               href={STORE_URL}
-              className="btn-ghost hidden sm:inline-flex text-xs min-h-11 py-2.5 px-5 whitespace-nowrap"
+              className="btn-ghost hidden sm:inline-flex text-xs min-h-11 py-2.5 px-4 whitespace-nowrap"
             >
               <ShoppingBag size={14} />
               Loja
             </Link>
             <Link
               href="/socios/inscricao"
-              className="btn-primary hidden sm:inline-flex text-xs min-h-11 py-2.5 px-5 whitespace-nowrap"
+              className="btn-primary hidden sm:inline-flex text-xs min-h-11 py-2.5 px-4 whitespace-nowrap"
             >
               <UserPlus size={14} />
               Fazer Sócio

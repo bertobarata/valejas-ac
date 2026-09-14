@@ -18,6 +18,7 @@ const LINKS = {
     { label: "Academia Sénior", href: "/academia-senior" },
     { label: "Órgãos Sociais", href: "/orgaos-sociais" },
     { label: "Loja Oficial", href: STORE_URL },
+    { label: "Inscrições",   href: "/inscricoes" },
     { label: "Sócios",       href: "/socios-contacto" },
     { label: "Fazer Sócio",  href: "/socios/inscricao" },
   ],

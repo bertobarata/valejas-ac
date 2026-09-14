@@ -94,7 +94,7 @@ export default function ModalidadesPage() {
             </p>
           </div>
           <Link
-            href="/socios/inscricao"
+            href="/inscricoes"
             className="btn-primary shrink-0 bg-yellow text-blue-deep hover:bg-yellow-dim"
           >
             Inscrever ou saber mais
