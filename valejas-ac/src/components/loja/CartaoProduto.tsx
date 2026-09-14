@@ -76,12 +76,15 @@ export default function CartaoProduto({
           por isso vive dentro de uma moldura própria, sem se fingir de
           fotografia de estúdio do clube. */}
       {produto.imagem && (
+        /*
+         * A maqueta traz um fundo de estúdio cinzento que não há maneira
+         * honesta de recortar — as camisolas brancas confundem-se com ele.
+         * Em vez de tentar apagá-lo, a imagem passa a ocupar a moldura
+         * toda: lida como fotografia, não como ilha cinzenta sobre branco.
+         */
         <div
           className={clsx(
-            "relative bg-white",
-            // As maquetas vêm cortadas às bandas do fornecedor e ficaram
-            // largas e baixas; a moldura acompanha, senão a peça nada em
-            // branco. A do kit são três lado a lado, ainda mais larga.
+            "relative overflow-hidden bg-surface-mid",
             produto.kit ? "aspect-[32/5]" : destaque ? "aspect-[5/2]" : "aspect-[2/1]"
           )}
         >
@@ -90,7 +93,7 @@ export default function CartaoProduto({
             alt={produto.nome}
             fill
             sizes={destaque ? "(max-width: 1024px) 100vw, 60vw" : "(max-width: 640px) 100vw, 33vw"}
-            className="object-contain"
+            className="object-cover"
           />
         </div>
       )}

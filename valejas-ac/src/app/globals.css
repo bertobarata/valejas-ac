@@ -23,13 +23,21 @@
    */
   --barra-altura: 6rem;
 
-  /* Light mode surfaces — Casa Quente (cream + azul do emblema) */
-  --surface:           253 251 245;   /* #FDFBF5 — cream quente */
-  --surface-dim:       249 245 235;   /* #F9F5EB */
-  --surface-low:       245 240 228;   /* #F5F0E4 */
-  --surface-mid:       238 232 217;   /* #EEE8D9 */
-  --surface-high:      230 223 204;   /* #E6DFCC */
-  --surface-highest:   221 213 191;   /* #DDD5BF */
+  /*
+   * Superfícies em modo claro.
+   * Eram cremes quentes, com bege a puxar ao papel velho. Ficavam bem
+   * num site de arquivo e mal num clube que joga de amarelo e azul: o
+   * bege e o amarelo do emblema disputavam a mesma zona do olho.
+   * Passam a cinzentos frios com uma ponta de azul — o mesmo azul do
+   * emblema, muito diluído. O amarelo volta a ser a única cor quente
+   * da página, que é como se destaca.
+   */
+  --surface:           252 253 255;   /* #FCFDFF — branco com um sopro de azul */
+  --surface-dim:       247 249 252;   /* #F7F9FC */
+  --surface-low:       241 244 249;   /* #F1F4F9 */
+  --surface-mid:       233 237 244;   /* #E9EDF4 */
+  --surface-high:      224 230 240;   /* #E0E6F0 */
+  --surface-highest:   211 219 233;   /* #D3DBE9 */
   --on-surface:         11  40  92;   /* #0B285C — azul-navy do clube */
   --on-surface-muted:  74  86 120;   /* #4A5678 — slate azulado */
 
@@ -46,7 +54,7 @@
   --surface-high:       35  42  56;   /* #232A38 */
   --surface-highest:    46  53  67;   /* #2E3543 */
   --on-surface:        220 226 245;   /* #DCE2F5 — ice white */
-  --on-surface-muted:  206 198 171;   /* #CEC6AB — warm grey */
+  --on-surface-muted:  160 172 198;   /* #A0ACC6 — slate claro */
 
   color-scheme: dark;
 }

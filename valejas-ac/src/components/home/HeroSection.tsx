@@ -224,22 +224,30 @@ export default function HeroSection() {
         aria-hidden
       />
 
-      {/* Background photo with dark overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero-futsal.jpg')" }}
-        aria-hidden
-      >
-        {/* Dark mode: darker overlay; light mode: lighter overlay */}
-        <div className="absolute inset-0 bg-hero-dark dark:bg-hero-dark" />
-        {/* Red diagonal accent — crest sash */}
+      {/*
+        Fundo.
+
+        Havia aqui três coisas a disputar o mesmo espaço: uma fotografia
+        de futsal esbatida, um véu escuro por cima dela e uma faixa
+        vermelha na diagonal. Nenhuma se via bem e o conjunto lia-se como
+        ruído por trás do mote.
+
+        Fica o azul do clube, do fundo do emblema até quase preto, com um
+        halo mais claro atrás do sítio onde o emblema está. O campo de
+        partículas continua lá — é ele que dá vida ao fundo.
+      */}
+      <div className="absolute inset-0" aria-hidden>
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, transparent 40%, #D4150C 40%, #D4150C 45%, transparent 45%)",
+              "radial-gradient(120% 90% at 78% 42%, #1B4FA8 0%, #10306B 38%, #081A3D 72%, #050E22 100%)",
           }}
-          aria-hidden
+        />
+        {/* Sombra em baixo, para o indicador de scroll e os botões assentarem. */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-1/3"
+          style={{ background: "linear-gradient(to top, rgba(5,14,34,0.75), transparent)" }}
         />
       </div>
 
