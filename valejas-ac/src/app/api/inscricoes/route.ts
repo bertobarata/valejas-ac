@@ -124,7 +124,7 @@ export async function POST(req: Request) {
 
   try {
     await enviarEmail({
-      para: emailConfigurado() ? emailPara("inscricoes") : "log@localhost",
+      para: emailPara("inscricoes") || "log@localhost",
       assunto: `Pedido de inscrição — ${m!.nome} — ${nome}`,
       texto: linhas.join("\n"),
       responder: email,

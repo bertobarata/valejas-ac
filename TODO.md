@@ -14,7 +14,7 @@ Por ordem de quem desbloqueia mais coisas de uma vez:
 | # | O quê | Sem isto |
 |---|---|---|
 | 1 | **Resolver o impasse da Vercel** — projeto antigo ocupa o subdomínio | Não há deploy nenhum |
-| 2 | **Email** — 5 caixas em `valejasac.pt` + conta Resend | As inscrições e as encomendas não chegam a ninguém |
+| 2 | **Conta Resend + verificar o domínio** — as 5 caixas já existem | As inscrições e as encomendas não chegam a ninguém: o site está em modo `log` |
 | 3 | **Contas e segredos** — criar `DIRECAO_UTILIZADORES` (uma por pessoa) e apagar a palavra-passe de desenvolvimento | Quem adivinhar `valejas1966` publica no Instagram do clube |
 | 4 | **DNS do domínio** quando o registo confirmar | O site vive no `.vercel.app` |
 | 5 | **`SANITY_API_TOKEN` na Vercel** | O site mostra dados de exemplo em vez do CMS |
@@ -68,15 +68,18 @@ degradado — cada uma tem um comportamento de recurso que não rebenta.
 
 ### Email institucional — cinco caixas em domínio próprio
 Decisão da Direção: emails no domínio do clube, não Gmail.
-- [ ] `presidente@valejasac.pt`
-- [ ] `direcao@valejasac.pt`
-- [ ] `comunicacao@valejasac.pt`
-- [ ] `coordenacao@valejasac.pt`
-- [ ] `geral@valejasac.pt` (ou `info@`)
-- [ ] Escolher onde alojar o correio (Google Workspace, Zoho, ou o que vier
-      com o domínio da Amen) — muda o custo mensal
-- [ ] Decidir qual recebe as inscrições de sócio (`EMAIL_CLUBE`) e qual
-      assina os envios (`EMAIL_REMETENTE`)
+- [x] `presidente@valejasac.pt` ✅ criada a 14/09/2026
+- [x] `direcao@valejasac.pt` ✅
+- [x] `comunicacao@valejasac.pt` ✅
+- [x] `coordenacao@valejasac.pt` ✅
+- [x] `geral@valejasac.pt` ✅
+- [x] ~~Escolher onde alojar o correio~~ — Amen, cinco contas de 2 GB,
+      válidas até 28/04/2027. Limite de 500 envios por caixa, que não
+      afeta o site: quem envia é a Resend, não estas caixas
+- [x] ~~Decidir qual recebe o quê~~ — escrito no `.env.local`:
+      geral@ é a caixa por omissão e assina os envios, direcao@ recebe as
+      fichas de sócio e os pagamentos, coordenacao@ os pedidos de
+      inscrição. Confirmado a funcionar em modo log
 - [ ] Conta em **resend.com** (grátis até 3000 emails/mês)
 - [ ] Verificar `valejasac.pt` no Resend — são mais dois registos DNS,
       SPF e DKIM, sem os quais os emails de inscrição caem no spam

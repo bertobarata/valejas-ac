@@ -257,7 +257,7 @@ export async function POST(req: Request) {
   //    encomenda não existe para ninguém.
   try {
     await enviarEmail({
-      para: emailConfigurado() ? emailPara("loja") : "log@localhost",
+      para: emailPara("loja") || "log@localhost",
       assunto: `Encomenda ${encomenda.numero} — ${nome}`,
       texto: corpoParaOClube(encomenda),
       responder: email,

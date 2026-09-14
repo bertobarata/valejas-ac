@@ -75,7 +75,9 @@ export async function enviarEmail(msg: Mensagem): Promise<void> {
   const provider = process.env.EMAIL_PROVIDER ?? (process.env.RESEND_API_KEY ? "resend" : "log");
 
   if (provider === "log") {
-    // Modo desenvolvimento — nada sai da máquina.
+    // Modo desenvolvimento — nada sai da máquina. O destino verdadeiro
+    // é impresso na mesma: é assim que se confirma o encaminhamento
+    // antes de haver conta de envio.
     console.log("─── EMAIL (modo log, não enviado) ───");
     console.log("Para:", msg.para);
     console.log("Assunto:", msg.assunto);
