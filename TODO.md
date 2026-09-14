@@ -87,6 +87,29 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 - [ ] Repetir as três variáveis na Vercel quando o projeto lá existir
 - [ ] Escrever o conteúdo verdadeiro: plantel, resultados, classificação
 
+#### ⚠️ Decisão a tomar antes de 14/10/2026 — fim do teste
+
+O projeto está no **Growth Trial**, 30 dias. Ao fim disso desce para o
+plano **Free**, e o Free só permite **datasets públicos**. Público quer
+dizer que qualquer pessoa com o id do projeto lê tudo sem token.
+
+Conteúdo editorial — comunicados, notícias, jogos, plantel — é para ser
+público de qualquer maneira: sai no site. **O problema são as
+encomendas da loja**, que levam nome, email e telemóvel.
+
+Três saídas:
+
+- [ ] **Pagar o Growth** — 15 $/lugar/mês, ou seja ~14 €. Um lugar
+      chega se só o Berto entrar no Studio; a Direção usa `/direcao`,
+      que não precisa de conta Sanity. É a saída que não muda nada
+- [ ] **Tirar os dados pessoais do CMS** — a encomenda fica no Sanity
+      só com número, peças e estado; o nome, email e telemóvel vivem
+      apenas no email que chega ao clube. Custa zero, mas a Direção
+      deixa de poder ligar a alguém a partir da página
+- [ ] **Mudar as encomendas para uma base de dados** (Neon, Supabase,
+      Vercel Postgres — todas com plano grátis suficiente para isto).
+      Mais trabalho de uma vez, e resolve de vez
+
 ---
 
 ## 2. Segredos a gerar antes de ir para o ar
