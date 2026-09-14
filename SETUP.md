@@ -43,6 +43,7 @@ O que acontece sem cada uma:
 | `RESEND_API_KEY` + `EMAIL_CLUBE` | **Inscrições e encomendas não chegam a ninguém** (modo `log` escreve no terminal) |
 | `EMAIL_SOCIOS`, `EMAIL_INSCRICOES`, `EMAIL_LOJA`, `EMAIL_PAGAMENTOS` | Nada: cada assunto cai na caixa geral |
 | Sanity | Mostra os dados de exemplo; as áreas da Direção avisam que o CMS não está ligado |
+| `DATABASE_URL` | A loja continua a vender e a encomenda chega por email, mas `/direcao/encomendas` não tem o que mostrar |
 | Ifthenpay | MB WAY e referência dão 503 e o formulário cai para transferência |
 | Make.com | O comunicado sai no site e as redes ficam em demonstração |
 
@@ -79,6 +80,32 @@ npx sanity@latest tokens rotate <id> -p q1z6dv1y
 Growth Trial até 14/10/2026. Decisão pendente em `TODO.md` §7.
 
 O Studio está em **/studio**, e só entra quem for membro do projeto.
+
+## 3b. Base de dados (encomendas da loja)
+
+Postgres. Qualquer um serve — só precisa de `DATABASE_URL`.
+
+O que está montado: **Neon**, plano grátis, região `fra1` (Frankfurt),
+criado pelo Marketplace da Vercel. A integração escreve a `DATABASE_URL`
+nos três ambientes sozinha e renova-a se a base for recriada.
+
+```bash
+vercel integration add neon -m region=fra1
+vercel env pull .env.local      # cuidado: substitui o ficheiro todo
+```
+
+Porque não no CMS: uma encomenda leva nome, email e telemóvel. O plano
+Free do Sanity só permite datasets públicos, e público quer dizer legível
+por quem souber o id do projeto — que está escrito no JavaScript do site.
+
+Porque em Frankfurt: são dados pessoais de sócios e atletas, muitos deles
+menores. Ficam na União Europeia.
+
+A tabela `encomendas` **cria-se sozinha** à primeira utilização
+(`create table if not exists`). Não há migrações para correr à mão — um
+clube não tem quem o faça.
+
+---
 
 ## 4. Deploy (Vercel)
 
@@ -125,11 +152,13 @@ servidor quando alguém manipula o pedido.
 
 ## 6. Antes de ir para o ar
 
-- [ ] Criar as contas em `DIRECAO_UTILIZADORES`, uma por pessoa, e apagar a
-      `DIRECAO_PASSWORD` — está `valejas1966`, valor de desenvolvimento
-- [ ] Gerar `DIRECAO_SECRET`, `MAKE_WEBHOOK_SEGREDO`, `IFTHENPAY_CALLBACK_CHAVE`
-- [ ] Confirmar que `SANITY_API_TOKEN` está na Vercel — sem ele o site mostra
-      dados de exemplo
+- [x] Criar as contas em `DIRECAO_UTILIZADORES`, uma por pessoa, e apagar a
+      `DIRECAO_PASSWORD` — feito a 14/09/2026
+- [x] Gerar `DIRECAO_SECRET` — feito. Faltam `MAKE_WEBHOOK_SEGREDO` e
+      `IFTHENPAY_CALLBACK_CHAVE`, quando essas contas existirem
+- [x] Confirmar que `SANITY_API_TOKEN` está na Vercel — feito a 14/09/2026
+- [x] `DATABASE_URL` na Vercel — feito a 15/09/2026 pela integração Neon,
+      que a escreve sozinha nos três ambientes
 - [ ] Correr `npm test` e `npm run build`, e ver que passam
 - [ ] Ler o `TODO.md` §1 e §2
 

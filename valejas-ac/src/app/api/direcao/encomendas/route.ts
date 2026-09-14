@@ -7,13 +7,19 @@
  * Só se altera o que o clube decide: estado, pago, notasInternas. As
  * peças, os preços e quem encomendou ficam como chegaram — se estiver
  * errado, cancela-se e faz-se outra, não se reescreve a história.
+ *
+ * Os dados vêm da base de dados do clube, não do CMS: uma encomenda
+ * leva nome, email e telemóvel, e isso não pode viver num sítio que
+ * qualquer pessoa leia.
  * ─────────────────────────────────────────────────────────────────
  */
 
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { sessaoValida, COOKIE_SESSAO } from "@/lib/auth-direcao";
-import { sanityClientLive, isSanityConfigured } from "@/sanity/client";
+import {
+  atualizarEncomenda, bdConfigurada, listarEncomendas, type Alteracoes,
+} from "@/lib/db/encomendas";
 import { ESTADOS, type EstadoEncomenda } from "@/lib/data/encomendas";
 
 export const runtime = "nodejs";
@@ -23,17 +29,14 @@ function autorizado(): boolean {
   return sessaoValida(cookies().get(COOKIE_SESSAO)?.value);
 }
 
-function podeEscrever(): boolean {
-  return isSanityConfigured() && Boolean(process.env.SANITY_API_TOKEN);
-}
-
-function semCMS() {
+function semBaseDeDados() {
   return NextResponse.json(
     {
       ok: false,
       erro:
-        "O CMS ainda não está ligado. As encomendas continuam a chegar por " +
-        "email, mas só com o Sanity configurado é que se acompanham aqui.",
+        "A base de dados ainda não está ligada. As encomendas continuam a " +
+        "chegar por email, mas só com a `DATABASE_URL` configurada é que " +
+        "se acompanham aqui.",
     },
     { status: 503 }
   );
@@ -43,17 +46,10 @@ export async function GET() {
   if (!autorizado()) {
     return NextResponse.json({ ok: false, erro: "Sessão expirada." }, { status: 401 });
   }
-  if (!podeEscrever()) return semCMS();
+  if (!bdConfigurada()) return semBaseDeDados();
 
   try {
-    const encomendas = await sanityClientLive.fetch(
-      `*[_type == "encomenda"] | order(data desc)[0...200]{
-        _id, numero, data, nome, email, telemovel, socio, atleta, notas,
-        notasInternas, total, aPagarAgora, momento, estado, pago,
-        linhas[]{ slug, nome, tamanho, quantidade, preco, emStock, personalizacao }
-      }`
-    );
-    return NextResponse.json({ ok: true, encomendas });
+    return NextResponse.json({ ok: true, encomendas: await listarEncomendas() });
   } catch (err) {
     console.error("Erro a ler encomendas:", err instanceof Error ? err.message : err);
     return NextResponse.json(
@@ -67,13 +63,15 @@ export async function PATCH(req: Request) {
   if (!autorizado()) {
     return NextResponse.json({ ok: false, erro: "Sessão expirada." }, { status: 401 });
   }
-  if (!podeEscrever()) return semCMS();
+  if (!bdConfigurada()) return semBaseDeDados();
 
   const b = await req.json().catch(() => null);
-  const id = String(b?._id ?? "").trim();
-  if (!id) return NextResponse.json({ ok: false, erro: "Falta a encomenda." }, { status: 400 });
+  const id = String(b?.id ?? "").trim();
+  if (!/^\d+$/.test(id)) {
+    return NextResponse.json({ ok: false, erro: "Falta a encomenda." }, { status: 400 });
+  }
 
-  const alteracoes: Record<string, unknown> = {};
+  const alteracoes: Alteracoes = {};
 
   if (b.estado !== undefined) {
     const estado = String(b.estado) as EstadoEncomenda;
@@ -90,7 +88,10 @@ export async function PATCH(req: Request) {
   }
 
   try {
-    await sanityClientLive.patch(id).set(alteracoes).commit();
+    const encontrada = await atualizarEncomenda(id, alteracoes);
+    if (!encontrada) {
+      return NextResponse.json({ ok: false, erro: "Encomenda não encontrada." }, { status: 404 });
+    }
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Erro a guardar encomenda:", err instanceof Error ? err.message : err);

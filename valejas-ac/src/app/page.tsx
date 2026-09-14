@@ -3,6 +3,7 @@ import ComunicadoDestaque from "@/components/home/ComunicadoDestaque";
 import ProximoJogoHome from "@/components/home/ProximoJogoHome";
 import ModalidadesGrid from "@/components/home/ModalidadesGrid";
 import MoteBanner from "@/components/home/MoteBanner";
+import ConhecerClube from "@/components/home/ConhecerClube";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,9 @@ export default function HomePage() {
 
       {/* Mote do clube */}
       <MoteBanner />
+
+      {/* Onde ir a seguir, para quem quer conhecer o clube por dentro */}
+      <ConhecerClube />
 
     </>
   );

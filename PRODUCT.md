@@ -112,8 +112,9 @@ Todas têm **vagas limitadas** — fala-se com o clube antes de contar com ela.
   vindo do "São Paulo FC" para um clube de futsal de Barcarena — e foi apagado.
   Onde não há dados reais, mostra-se estado vazio
 - **Não guarda dados pessoais** das inscrições nem dos pedidos: seguem por
-  email e desaparecem. As encomendas são a exceção, e é por isso que o dataset
-  do Sanity está privado
+  email e desaparecem. As encomendas são a exceção — o clube tem de saber
+  quem vem buscar o quê — e por isso vivem numa base de dados própria,
+  em Frankfurt, e não no CMS
 - **Não recolhe dados clínicos.** A ficha de atleta em papel pede-os; o site
   não, porque são categoria especial no RGPD (ver `TODO.md` §8)
 - **Não publica nas redes sem a Direção carregar em publicar**

@@ -31,7 +31,7 @@ interface LinhaAPI {
 }
 
 interface EncomendaAPI {
-  _id: string;
+  id: string;
   numero: string;
   data: string;
   nome: string;
@@ -92,13 +92,13 @@ export default function GestorEncomendas() {
     setAGuardar(id);
     // Otimista: a Direção clica e vê logo. Se falhar, recarregamos.
     setEncomendas((atuais) =>
-      atuais.map((e) => (e._id === id ? { ...e, ...alteracoes } : e))
+      atuais.map((e) => (e.id === id ? { ...e, ...alteracoes } : e))
     );
     try {
       const res = await fetch("/api/direcao/encomendas", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ _id: id, ...alteracoes }),
+        body: JSON.stringify({ id: id, ...alteracoes }),
       });
       const json = await res.json();
       if (!res.ok || !json.ok) {
@@ -226,14 +226,14 @@ export default function GestorEncomendas() {
       ) : (
         <ul className="space-y-4">
           {visiveis.map((e) => {
-            const expandida = aberta === e._id;
+            const expandida = aberta === e.id;
             const faltam = (e.linhas ?? []).filter((l) => !l.emStock).length;
 
             return (
-              <li key={e._id} className="bg-surface-high">
+              <li key={e.id} className="bg-surface-high">
                 <button
                   type="button"
-                  onClick={() => setAberta(expandida ? null : e._id)}
+                  onClick={() => setAberta(expandida ? null : e.id)}
                   aria-expanded={expandida}
                   className="w-full text-left p-5 flex flex-wrap items-center gap-x-5 gap-y-3"
                 >
@@ -355,7 +355,7 @@ export default function GestorEncomendas() {
                           <button
                             key={estado.id}
                             type="button"
-                            onClick={() => alterar(e._id, { estado: estado.id })}
+                            onClick={() => alterar(e.id, { estado: estado.id })}
                             aria-pressed={e.estado === estado.id}
                             title={estado.descricao}
                             className={clsx(
@@ -373,7 +373,7 @@ export default function GestorEncomendas() {
 
                     <button
                       type="button"
-                      onClick={() => alterar(e._id, { pago: !e.pago })}
+                      onClick={() => alterar(e.id, { pago: !e.pago })}
                       className={clsx(
                         "inline-flex items-center gap-2 px-4 py-2.5 font-body text-sm transition-colors duration-200",
                         e.pago
@@ -395,7 +395,7 @@ export default function GestorEncomendas() {
                         onBlur={(ev) => {
                           const valor = ev.target.value;
                           if (valor !== (e.notasInternas ?? "")) {
-                            alterar(e._id, { notasInternas: valor });
+                            alterar(e.id, { notasInternas: valor });
                           }
                         }}
                         className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full resize-y"
@@ -405,7 +405,7 @@ export default function GestorEncomendas() {
                       </span>
                     </label>
 
-                    {aGuardar === e._id && (
+                    {aGuardar === e.id && (
                       <p className="flex items-center gap-2 font-body text-xs text-on-surface-muted" role="status">
                         <Loader2 size={12} className="animate-spin" /> A guardar…
                       </p>
