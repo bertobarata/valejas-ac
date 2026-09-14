@@ -8,8 +8,9 @@ colors:
   azul-fundo: "#014CB3"
   vermelho-faixa: "#D4150C"
   vermelho-claro: "#FF6B5E"
-  creme-claro: "#FDFBF5"
-  creme-baixo: "#F5F0E4"
+  claro-fundo: "#FCFDFF"
+  claro-seccao: "#F1F4F9"
+  claro-cartao: "#E0E6F0"
   creme-alto: "#E6DFCC"
   creme-altissimo: "#DDD5BF"
   navy-texto: "#0B285C"
@@ -95,6 +96,9 @@ components:
 
 # Design — Valejas Atlético Clube
 
+> Atualizado a 14/09/2026: paleta nova, contrastes recalculados, e a
+> tipografia absorvida do antigo `FONTES.md`.
+
 ## Overview
 
 **O Clube da Nossa Terra.** A frase está na faixa do topo e no rodapé, e é
@@ -105,7 +109,7 @@ O tom é caloroso, orgulhoso e comunitário. Um clube de bairro com 60 anos e
 garra, mas acolhedor dos 10 aos 60+ e de sete modalidades. Orgulho sem
 espetáculo: a intensidade do jogo cabe, o calor humano manda.
 
-O material antigo (`PAVILION_VOLTAGE_PHILOSOPHY.md`) era escuro, elétrico e
+O material antigo (`arquivo/PAVILION_VOLTAGE_PHILOSOPHY.md`) era escuro, elétrico e
 clínico. Foi suavizado por decisão: servia o futsal isolado, não o
 clube-família. O amarelo ficou; a voltagem saiu.
 
@@ -125,7 +129,7 @@ margens vêm de `.section-container`.
 ## Colors
 
 Estratégia **committed**: o amarelo e o azul do emblema carregam a identidade,
-o creme é o chão. Não é uma paleta restrita com um acento tímido, nem está
+e o chão é neutro. Não é uma paleta restrita com um acento tímido, nem está
 afogada em cor.
 
 ### Marca
@@ -141,15 +145,22 @@ afogada em cor.
 
 ### Superfícies
 
-Creme quente em tema claro, midnight em escuro. **Nenhum neutro é cinzento
-puro** — todos puxam para o navy do clube.
+Cinzentos frios com uma ponta do azul do emblema em tema claro, midnight em
+escuro. **Nenhum neutro é cinzento puro** — todos puxam para o navy do clube.
 
 | Papel | Claro | Escuro |
 |---|---|---|
-| Fundo | `#FDFBF5` | `#0D1321` |
-| Elevado | `#E6DFCC` | `#232A38` |
+| Fundo | `#FCFDFF` | `#0D1321` |
+| Secção | `#F1F4F9` | `#151C29` |
+| Elevado | `#E0E6F0` | `#232A38` |
 | Texto | `#0B285C` | `#DCE2F5` |
-| Texto secundário | `#4A5678` | `#CEC6AB` |
+| Texto secundário | `#4A5678` | `#A0ACC6` |
+
+**Porque deixou de ser creme (14/09/2026).** As superfícies claras eram cremes
+quentes, com bege a puxar ao papel velho. Ficavam bem num site de arquivo e mal
+num clube que joga de amarelo: o bege e o amarelo do emblema disputavam a mesma
+zona do olho. Com o chão frio, o amarelo volta a ser a única cor quente da
+página — que é como se destaca.
 
 ### A regra do amarelo — ler antes de mexer
 
@@ -166,23 +177,30 @@ em tema escuro clareia para `#FF6B5E` (6,64:1).
 
 ### Contrastes verificados
 
+Recalculados a 14/09/2026, contra as superfícies novas.
+
 ```
-navy sobre creme            13,78:1   ✓
-preto sobre botão amarelo   15,20:1   ✓
-muted sobre creme            7,01:1   ✓
-branco sobre azul            6,96:1   ✓
-azul recolorido sobre creme  6,73:1   ✓
-vermelho claro sobre escuro  6,64:1   ✓
-amarelo sobre azul           5,04:1   ✓
-white/85 sobre azul          5,49:1   ✓  ← mínimo usado sobre azul
-white/70 sobre azul          4,27:1   ✗  não usar em texto normal
-amarelo sobre creme          1,34:1   ✗  nunca em texto
+ice sobre escuro             14,34:1   ✓
+navy sobre fundo claro       14,01:1   ✓
+preto sobre botão amarelo    15,20:1   ✓
+navy sobre cartão claro      11,37:1   ✓
+azul-deep sobre amarelo      10,32:1   ✓
+muted escuro sobre escuro     8,14:1   ✓
+muted sobre fundo claro       7,13:1   ✓
+branco sobre azul             6,96:1   ✓
+azul recolorido sobre claro   6,84:1   ✓
+vermelho claro sobre escuro   6,64:1   ✓
+muted sobre cartão claro      5,79:1   ✓
+white/85 sobre azul           5,49:1   ✓  ← mínimo usado sobre azul
+amarelo sobre azul            5,04:1   ✓
+white/70 sobre azul           4,27:1   ✗  não usar em texto normal
+amarelo sobre fundo claro     1,36:1   ✗  nunca em texto
 ```
 
 ## Typography
 
 **Archivo** nos títulos, **General Sans** no texto. Ambas variáveis, ambas
-servidas do próprio site.
+servidas do próprio site a partir de `public/fonts/`.
 
 A Archivo tem **eixo de largura de 62 a 125**, e é isso que resolve títulos
 longos em maiúsculas. Utilidades: `.wdth-condensed` (87,5%), `.wdth-normal`,
@@ -196,6 +214,33 @@ Regras:
   falso-itálico ficou registado como erro a não repetir
 - Nada abaixo de **12px**. O público vai dos 10 aos 60+ e está quase todo em
   telemóvel
+- `tabular-nums` em resultados, datas, preços e números de camisola
+
+### O que uma fonte tem de ter para entrar aqui
+
+Escrito depois de a **Trench Slab** não ter resultado, para não se repetir o
+erro. Não era uma fonte má — era a fonte errada para este layout:
+
+| O layout foi feito para | A Trench Slab era |
+|---|---|
+| Sans **estreita** | Slab **larga** |
+| Peso **900** | Máximo **700** |
+| Letras apertadas (`tracking-tighter`, `leading-[0.85]`) | Serifas grossas que precisam de ar |
+
+Requisitos para uma fonte de títulos:
+
+- Pesos até **800 ou 900** — o desenho precisa de dois degraus fortes
+- **Estreita ou normal**, nunca larga
+- Funciona **toda em maiúsculas**, que é como é usada em quase todo o lado
+- **Acentuação portuguesa completa**: Á À Â Ã É Ê Í Ó Ô Õ Ú Ç. Testar com
+  "ATLÉTICO", "DIREÇÃO", "ORDINÁRIA" — muitas fontes de display têm acentos
+  colados à letra
+- **woff2** para o site, e **TTF ou OTF** também: o gerador da imagem dos
+  comunicados (satori) não lê woff2 nem interpreta eixos variáveis, e por isso
+  usa instâncias fixas em `public/fonts/Archivo-SemiCondensed-*.ttf`
+
+Para texto corrido: pesos 400 a 700, itálico verdadeiro, legível a 14–16px,
+acentuação completa e algarismos tabulares.
 
 ## Elevation
 

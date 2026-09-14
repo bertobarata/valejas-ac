@@ -1,7 +1,48 @@
 # TODO — Website Valejas AC
 
-Estado em 14/09/2026, fim da segunda sessão. O código está feito e testado; o que falta abaixo
-é sobretudo **contas externas e dados reais do clube**.
+Estado a 14/09/2026, fim da segunda sessão de trabalho.
+
+O código está feito e testado. **O que falta é quase tudo fora do código:**
+contas por criar, dados que só o clube tem, e três decisões que custam
+dinheiro ou tempo.
+
+## O que bloqueia ir para o ar
+
+Por ordem de quem desbloqueia mais coisas de uma vez:
+
+| # | O quê | Sem isto |
+|---|---|---|
+| 1 | **Resolver o impasse da Vercel** — projeto antigo ocupa o subdomínio | Não há deploy nenhum |
+| 2 | **Email** — 5 caixas em `valejasac.pt` + conta Resend | As inscrições e as encomendas não chegam a ninguém |
+| 3 | **Segredos** — `DIRECAO_PASSWORD` ainda é `valejas1966` | Quem adivinhar publica no Instagram do clube |
+| 4 | **DNS do domínio** quando o registo confirmar | O site vive no `.vercel.app` |
+| 5 | **`SANITY_API_TOKEN` na Vercel** | O site mostra dados de exemplo em vez do CMS |
+| 6 | **Confirmação antes de publicar nas redes** | Um clique do Presidente é irreversível |
+
+## Decisões com prazo
+
+| Até quando | O quê |
+|---|---|
+| **14/10/2026** | Plano do Sanity — o Free não permite datasets privados, e as encomendas levam nome, email e telemóvel (§1) |
+| Antes da loja abrir | Percentagem do sinal (está 30%, inventado por mim) e preços dos 11 artigos sob consulta (§7) |
+| Quando houver tempo | Se se recolhem dados clínicos online, e como (§8) |
+| Sem prazo | Línguas do site — cinco escolhidas (§9) |
+
+## Índice
+
+1. [Contas externas a criar](#1-contas-externas-a-criar) — domínio, email, pagamentos, redes, CMS
+2. [Segredos a gerar](#2-segredos-a-gerar-antes-de-ir-para-o-ar)
+3. [Dados reais em falta](#3-dados-reais-em-falta) — plantel, fotografias, stock
+4. [Por verificar quando houver CMS](#4-por-verificar-quando-houver-cms)
+5. [Dívida técnica conhecida](#5-dívida-técnica-conhecida)
+6. [Pontos da reunião](#6-pontos-da-reunião) — o que ficou feito
+7. [A loja](#7-ponto-4-da-reunião--refazer-a-loja)
+8. [Ficha oficial de atleta e dados clínicos](#8-ficha-oficial-de-atleta--o-que-o-site-ainda-não-pede)
+9. [Línguas do site](#9-línguas-do-site)
+
+Documentos irmãos: `PRODUCT.md` (o que é e para quem), `DESIGN.md` (o sistema
+visual), `OPERACAO.md` (como o clube o trabalha), `SETUP.md` (instalar e pôr
+no ar).
 
 ---
 
@@ -57,7 +98,7 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 
 ### Make.com — publicar nas redes
 - [ ] Conta grátis em make.com
-- [ ] Seguir o `GUIA_REDES_SOCIAIS.md` (sete passos)
+- [ ] Seguir os sete passos em `OPERACAO.md` → «Ligar o site às redes sociais»
 - [ ] `MAKE_WEBHOOK_URL`, `MAKE_WEBHOOK_SEGREDO`
 - **Sem isto:** o Presidente publica no site, e as redes ficam em modo
   demonstração (mostra o que iria publicar, não publica).
