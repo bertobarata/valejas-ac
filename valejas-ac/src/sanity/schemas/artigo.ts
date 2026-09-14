@@ -59,10 +59,11 @@ export const artigo = defineType({
     }),
     defineField({
       name: "autor",
-      title: "Autor",
+      title: "Assinado por",
+      description: "Quem assina. Por omissão, a Direção — que é quem escreve.",
       type: "string",
       group: "meta",
-      initialValue: "Redação Valejas AC",
+      initialValue: "A Direção",
     }),
     defineField({
       name: "imagem",
