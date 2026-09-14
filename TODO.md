@@ -69,12 +69,16 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 - **Sem isto:** o Instagram não aceita publicações de lado nenhum, nem
   pelo Make nem diretamente.
 
-### Sanity — guardar comunicados
-- [ ] Projeto no Sanity
-- [ ] `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`
-- [ ] `SANITY_API_TOKEN` com permissão de escrita
-- **Sem isto:** o comunicado sai nas redes mas não fica guardado no site,
-  e o site continua a mostrar os comunicados de exemplo.
+### Sanity — o CMS ✅ feito a 14/09/2026
+- [x] Projeto **Valejas Website** (`q1z6dv1y`), dataset `production`
+- [x] `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`
+- [x] `SANITY_API_TOKEN` — token `site-valejas`, papel *editor*, sem
+      prazo. Está no `.env.local`, que não vai para o repositório
+- [x] Origens CORS: `localhost:3000`, `valejasac.pt` e `www.valejasac.pt`
+- [x] Ciclo completo testado contra o Sanity real: escrever um jogador,
+      lê-lo na API, vê-lo na página pública e apagá-lo
+- [ ] Repetir as três variáveis na Vercel quando o projeto lá existir
+- [ ] Escrever o conteúdo verdadeiro: plantel, resultados, classificação
 
 ---
 
