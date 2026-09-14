@@ -80,6 +80,9 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
       geral@ é a caixa por omissão e assina os envios, direcao@ recebe as
       fichas de sócio e os pagamentos, coordenacao@ os pedidos de
       inscrição. Confirmado a funcionar em modo log
+- [x] ~~Formspree~~ — deixou de ser preciso. O formulário de contacto
+      passou a enviar pelo próprio clube a 14/09/2026, e o assunto
+      escolhido decide a caixa que recebe
 - [ ] Conta em **resend.com** (grátis até 3000 emails/mês)
 - [ ] Verificar `valejasac.pt` no Resend — são mais dois registos DNS,
       SPF e DKIM, sem os quais os emails de inscrição caem no spam

@@ -8,8 +8,24 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
+/**
+ * Quem recebe o quê, decidido com a Direção a 14/09/2026:
+ *
+ *   geral@        porta de entrada. Contactos, encomendas, fichas de
+ *                 sócio e tudo o que não tenha caixa própria
+ *   coordenacao@  as modalidades todas — inscrições e treinos
+ *   comunicacao@  comunicados, imprensa e propostas de parceria
+ *   presidente@   e direcao@ não recebem nada do site: são caixas de
+ *                 trabalho das pessoas, não endereços de atendimento
+ */
+export const EMAILS = {
+  geral:       "geral@valejasac.pt",
+  coordenacao: "coordenacao@valejasac.pt",
+  comunicacao: "comunicacao@valejasac.pt",
+};
+
 export const CONTACTO = {
-  email:      "valejas.a.c@gmail.com",
+  email:      EMAILS.geral,
   telefone:   "+351 214 365 104",
   morada:     "Estrada das Palmeiras, 1A",
   codigoPostal: "2730-132 Valejas",

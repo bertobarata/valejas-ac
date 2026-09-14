@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from "lucide-react";
-import { CONTACTO } from "@/lib/data/socios";
-import { submitToFormspree } from "@/lib/formspree";
+import { CONTACTO, EMAILS } from "@/lib/data/socios";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,11 +35,19 @@ export default function ContactoSection() {
     setLoading(true);
     try {
       const fd = new FormData(e.currentTarget);
-      fd.append("_subject", "Contacto — Valejas AC");
-      await submitToFormspree(Object.fromEntries(fd));
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(fd)),
+      });
+      const json = await res.json();
+      if (!res.ok || !json.ok) {
+        setErro((json.erros ?? ["Não foi possível enviar."]).join(" "));
+        return;
+      }
       setEnviado(true);
-    } catch (err) {
-      setErro(err instanceof Error ? err.message : "Erro ao enviar.");
+    } catch {
+      setErro("Falha de ligação. Tenta outra vez.");
     } finally {
       setLoading(false);
     }
@@ -68,17 +75,32 @@ export default function ContactoSection() {
           {/* Left — info blocks */}
           <div className="space-y-4">
 
-            {/* Email */}
-            <div className="contacto-block bg-surface-high p-6 flex items-start gap-4 border border-on-surface/10">
-              <Mail size={18} className="text-yellow flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-1">Email</p>
-                <a
-                  href={`mailto:${CONTACTO.email}`}
-                  className="font-body text-sm text-on-surface hover:text-yellow transition-colors duration-200"
-                >
-                  {CONTACTO.email}
-                </a>
+            {/* Emails — cada caixa com a sua função */}
+            <div className="contacto-block bg-surface-high p-6 border border-on-surface/10">
+              <div className="flex items-start gap-4">
+                <Mail size={18} className="text-yellow flex-shrink-0 mt-0.5" />
+                <div className="min-w-0">
+                  <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-3">
+                    Email
+                  </p>
+                  <ul className="space-y-3">
+                    {[
+                      { endereco: EMAILS.geral,       para: "Para tudo. Se tiveres dúvidas, é este" },
+                      { endereco: EMAILS.coordenacao, para: "Modalidades, inscrições e treinos" },
+                      { endereco: EMAILS.comunicacao, para: "Imprensa e propostas de parceria" },
+                    ].map(({ endereco, para }) => (
+                      <li key={endereco}>
+                        <a
+                          href={`mailto:${endereco}`}
+                          className="font-body text-sm text-on-surface hover:text-yellow transition-colors duration-200 break-all"
+                        >
+                          {endereco}
+                        </a>
+                        <p className="font-body text-xs text-on-surface-muted mt-0.5">{para}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -131,6 +153,10 @@ export default function ContactoSection() {
             <div className="contacto-block bg-surface-high p-6 border border-on-surface/10">
               <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-4">Segue-nos</p>
               <div className="flex items-center gap-3">
+                <a href={`mailto:${EMAILS.geral}`} aria-label="Enviar email ao clube"
+                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-yellow hover:text-blue-deep transition-all duration-200">
+                  <Mail size={18} />
+                </a>
                 <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                    className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#E4405F] hover:text-white transition-all duration-200">
                   <InstagramIcon size={18} />
@@ -206,13 +232,16 @@ export default function ContactoSection() {
                       className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full bg-surface-high text-on-surface"
                     >
                       <option value="">Seleciona o assunto</option>
-                      <option>Questão sobre sócios</option>
-                      <option>Patrocínios e parcerias</option>
-                      <option>Imprensa e media</option>
-                      <option>Inscrições nas modalidades</option>
-                      <option>Instalações e infraestrutura</option>
-                      <option>Outro</option>
+                      <option value="geral">Sócios, loja ou assunto geral</option>
+                      <option value="modalidades">Inscrições, treinos e modalidades</option>
+                      <option value="parceria">Proposta de parceria ou patrocínio</option>
+                      <option value="imprensa">Imprensa e comunicação</option>
                     </select>
+                    <p className="font-body text-xs text-on-surface-muted mt-1.5">
+                      O assunto decide quem recebe: as modalidades vão para a
+                      coordenação, as parcerias para a comunicação, o resto para
+                      a caixa geral.
+                    </p>
                   </div>
 
                   <div>

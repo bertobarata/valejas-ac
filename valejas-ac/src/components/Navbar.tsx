@@ -5,7 +5,7 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon, UserPlus, ShoppingBag, ChevronDown } from "lucide-react";
+import { Menu, X, Sun, Moon, UserPlus, ShoppingBag, ChevronDown, Mail } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { CONTACTO } from "@/lib/data/socios";
 import gsap from "gsap";
@@ -462,6 +462,9 @@ export default function Navbar() {
                 </a>
                 <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#FF0000] transition-colors" aria-label="YouTube">
                   <YouTubeIcon size={20} />
+                </a>
+                <a href={`mailto:${CONTACTO.email}`} className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="Escrever ao clube">
+                  <Mail size={20} />
                 </a>
               </div>
               <span className="font-body text-xs text-on-surface-muted uppercase tracking-widest">

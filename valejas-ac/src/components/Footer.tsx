@@ -5,6 +5,7 @@ import { CONTACTO } from "@/lib/data/socios";
 import { MOTE } from "@/lib/data/clube";
 import { MODALIDADES } from "@/lib/data/modalidades";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
+import { Mail as MailIcon } from "lucide-react";
 
 const LINKS = {
   navegação: [
@@ -35,6 +36,7 @@ const LINKS = {
 };
 
 const SOCIALS = [
+  { label: "Email", href: `mailto:${CONTACTO.email}`, Icon: MailIcon, hover: "hover:bg-yellow hover:text-blue-deep" },
   { label: "Instagram", href: CONTACTO.redesSociais.instagram,            Icon: InstagramIcon, hover: "hover:bg-[#E4405F]" },
   { label: "Facebook",  href: CONTACTO.redesSociais.facebook,             Icon: FacebookIcon,  hover: "hover:bg-[#1877F2]" },
   { label: "YouTube",   href: CONTACTO.redesSociais.youtube,              Icon: YouTubeIcon,   hover: "hover:bg-[#FF0000]" },

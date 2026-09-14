@@ -13,7 +13,9 @@
 
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { sessaoValida, COOKIE_SESSAO } from "@/lib/auth-direcao";
+import { quemEsta, COOKIE_SESSAO } from "@/lib/auth-direcao";
+import { enviarEmail } from "@/lib/email";
+import { EMAILS } from "@/lib/data/socios";
 import { sanityClient, isSanityConfigured } from "@/sanity/client";
 import {
   postToFacebook, postToInstagram, isDryRun, type CanalResultado,
@@ -60,7 +62,9 @@ async function slugUnico(base: string): Promise<string> {
 }
 
 export async function POST(req: Request) {
-  if (!sessaoValida(cookies().get(COOKIE_SESSAO)?.value)) {
+  // Quem publicou fica no registo que vai para a comunicação.
+  const quem = quemEsta(cookies().get(COOKIE_SESSAO)?.value);
+  if (!quem) {
     return NextResponse.json({ ok: false, erro: "Sessão expirada. Entra outra vez." }, { status: 401 });
   }
 
@@ -141,6 +145,42 @@ export async function POST(req: Request) {
   } else {
     if (canais.includes("facebook"))  resultados.push(await postToFacebook(comunicado));
     if (canais.includes("instagram")) resultados.push(await postToInstagram(comunicado));
+  }
+
+  /*
+   * Cópia para a comunicação.
+   *
+   * O departamento fica com o registo do que saiu, quando saiu e por
+   * onde — sem depender de alguém se lembrar de o dizer. Falhar aqui
+   * não invalida a publicação: o comunicado já está no site e nas
+   * redes quando isto corre.
+   */
+  try {
+    const canalLegivel = canais.length
+      ? canais.map((c) => (c === "facebook" ? "Facebook" : "Instagram")).join(" e ")
+      : "só no site";
+    await enviarEmail({
+      para: EMAILS.comunicacao,
+      assunto: `Comunicado publicado — ${titulo}`,
+      texto: [
+        "COMUNICADO PUBLICADO",
+        "",
+        `Título : ${titulo}`,
+        `Saiu em: site${canais.length ? `, ${canalLegivel}` : ""}`,
+        `Por    : ${quem ?? "Direção"}`,
+        `Quando : ${new Intl.DateTimeFormat("pt-PT", {
+          dateStyle: "full", timeStyle: "short", timeZone: "Europe/Lisbon",
+        }).format(new Date())}`,
+        "",
+        urlSite ? `No site: ${urlSite}` : "",
+        "",
+        "─────────────────────────────────────────────",
+        "",
+        paragrafos.join("\n\n"),
+      ].filter(Boolean).join("\n"),
+    });
+  } catch (err) {
+    console.error("Cópia para a comunicação falhou:", err instanceof Error ? err.message : err);
   }
 
   return NextResponse.json({

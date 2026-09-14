@@ -5,7 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, ShoppingBag, UserPlus } from "lucide-react";
-import { CONTACTO } from "@/lib/data/socios";
+import { CONTACTO, EMAILS } from "@/lib/data/socios";
 import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
@@ -13,6 +13,9 @@ const REDES = [
   { nome: "Instagram", href: CONTACTO.redesSociais.instagram, Icon: InstagramIcon },
   { nome: "Facebook",  href: CONTACTO.redesSociais.facebook,  Icon: FacebookIcon },
   { nome: "YouTube",   href: CONTACTO.redesSociais.youtube,   Icon: YouTubeIcon },
+  // Nem toda a gente quer falar com o clube numa rede social. O email
+  // fica ao lado, e vai para a caixa geral.
+  { nome: "Escrever ao clube", href: `mailto:${EMAILS.geral}`, Icon: Mail },
 ];
 
 gsap.registerPlugin(ScrollTrigger);
