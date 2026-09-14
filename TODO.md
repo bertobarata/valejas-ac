@@ -14,7 +14,7 @@ Por ordem de quem desbloqueia mais coisas de uma vez:
 | # | O quê | Sem isto |
 |---|---|---|
 | 1 | **Resolver o impasse da Vercel** — projeto antigo ocupa o subdomínio | Não há deploy nenhum |
-| 2 | **Conta Resend + verificar o domínio** — as 5 caixas já existem | As inscrições e as encomendas não chegam a ninguém: o site está em modo `log` |
+| 2 | ~~Email~~ | ✅ feito a 14/09/2026 — cinco caixas, Resend verificada, três envios reais a chegar à entrada |
 | 3 | **Contas e segredos** — criar `DIRECAO_UTILIZADORES` (uma por pessoa) e apagar a palavra-passe de desenvolvimento | Quem adivinhar `valejas1966` publica no Instagram do clube |
 | 4 | **DNS do domínio** quando o registo confirmar | O site vive no `.vercel.app` |
 | 5 | **`SANITY_API_TOKEN` na Vercel** | O site mostra dados de exemplo em vez do CMS |
@@ -83,12 +83,18 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 - [x] ~~Formspree~~ — deixou de ser preciso. O formulário de contacto
       passou a enviar pelo próprio clube a 14/09/2026, e o assunto
       escolhido decide a caixa que recebe
-- [ ] Conta em **resend.com** (grátis até 3000 emails/mês)
-- [ ] Verificar `valejasac.pt` no Resend — são mais dois registos DNS,
-      SPF e DKIM, sem os quais os emails de inscrição caem no spam
-- [ ] `EMAIL_PROVIDER=resend`, `RESEND_API_KEY`, `EMAIL_REMETENTE`, `EMAIL_CLUBE`
-- **Sem isto:** as inscrições de sócio não chegam a ninguém
-  (`EMAIL_PROVIDER=log` escreve no terminal e não envia).
+- [x] ~~Conta em **resend.com**~~ ✅ criada a 14/09/2026, região Irlanda
+- [x] ~~Verificar `valejasac.pt` no Resend~~ ✅ verificado em 19 minutos.
+      DKIM em `resend._domainkey`, SPF pelos CNAME `send` e `rsend`,
+      DMARC em `p=none`. Os MX das caixas não foram tocados
+- [x] ~~Envio real testado~~ — três emails a 14/09/2026, um por caixa.
+      Chegaram todos **à entrada, nenhum ao spam**
+- [x] ~~`EMAIL_PROVIDER=resend`, `RESEND_API_KEY`, `EMAIL_REMETENTE`,
+      `EMAIL_CLUBE`~~ — no `.env.local`. **Falta repetir na Vercel**
+- [ ] DMARC: daqui a umas semanas, com o domínio a enviar só pela Resend
+      e pela Amen, passar de `p=none` para `p=quarantine`
+- [ ] A chave de API atual foi colada numa conversa. Antes de produção,
+      criar outra na Resend e apagar esta
 
 ### Ifthenpay — pagamentos automáticos
 - [ ] Contrato do clube com a Ifthenpay (precisa de NIF e IBAN do clube)
