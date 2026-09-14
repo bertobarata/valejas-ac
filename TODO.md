@@ -1,6 +1,6 @@
 # TODO — Website Valejas AC
 
-Estado em 14/09/2026. O código está feito e testado; o que falta abaixo
+Estado em 14/09/2026, fim da segunda sessão. O código está feito e testado; o que falta abaixo
 é sobretudo **contas externas e dados reais do clube**.
 
 ---
@@ -194,6 +194,10 @@ Três saídas:
       contra a norma e verificadas no código, mas o site nunca foi
       percorrido com leitor de ecrã
 
+- [ ] **Palavra-passe partilhada na área da Direção** — uma só para toda
+      a gente. Não se sabe quem fez o quê, e tirar o acesso a uma pessoa
+      obriga a mudar a de todas. Passa a ser bloqueante se algum dia se
+      guardarem dados clínicos (ver secção 8)
 - [ ] `/api/comunicado-publish` — bearer simples. Substituir por
       verificação HMAC do webhook do Sanity, ou apagar a rota se o fluxo
       passar todo por `/direcao`
@@ -362,11 +366,47 @@ preenche-se na sede. Se um dia se quiser a ficha inteira online, falta:
 - [ ] Licença FPF e número de sócio-atleta
 - [ ] A declaração de autorização para inscrição como sócio-atleta
 
-⚠️ Metade disto são **dados de saúde** — categoria especial no RGPD.
-Recolhê-los pelo site obriga a mais do que um formulário: consentimento
-próprio, e um sítio seguro para os guardar. Hoje o site não guarda nada,
-e é isso que o mantém simples. A ficha em papel resolve o assunto sem
-essa complicação.
+### Como recolher isto, se se quiser mesmo (14/09/2026)
+
+Metade dos campos acima são **dados de saúde** — categoria especial no
+artigo 9.º do RGPD. «O site é seguro» não é uma propriedade do site: é
+uma propriedade de onde os dados ficam. Hoje o site é seguro porque não
+guarda nada.
+
+**Aviso primeiro:** pôr os campos clínicos no formulário atual fá-los-ia
+sair **por email**. É a pior das hipóteses — ficam na caixa de correio
+para sempre, nos registos do fornecedor de email, e reencaminháveis com
+um clique. Email não é sítio para dados de saúde.
+
+Três caminhos:
+
+- [ ] **1. Não recolher online** — a ficha clínica preenche-se na sede,
+      em papel, com o exame médico. É o que está hoje. Risco zero
+- [ ] **2. Recolher online tudo menos o clínico** — identificação,
+      agregado familiar, ocupação e currículo desportivo não são
+      categoria especial. Dá 80% da ficha digital sem entrar no regime
+      do artigo 9.º. **É o que eu recomendo**
+- [ ] **3. Recolher tudo, com o clínico cifrado** — possível, mas são
+      quatro peças e não uma:
+      - Base de dados em região europeia (Neon ou Supabase), nunca email
+        nem Sanity
+      - Cifra de chave pública nos campos clínicos: o site cifra, só a
+        chave privada do clube abre. Um dump da base de dados sai
+        ilegível, e nem o servidor consegue ler o que guardou
+      - **Contas por pessoa na área da Direção.** A palavra-passe
+        partilhada de hoje não serve para dados de saúde: é preciso saber
+        quem viu o quê e poder cortar o acesso a uma pessoa sem mudar a
+        de todas
+      - Prazo de conservação com apagamento automático, registo de
+        tratamento (artigo 30.º) e política de privacidade reescrita
+
+**A favor do caminho 2, um argumento que não é técnico:** o clube não
+precisa da maior parte destes dados. O exame médico é um atestado de
+aptidão — diz apto ou não apto, e o diagnóstico não é do clube. Guardar
+«que operações fez» é recolher mais do que se usa, e isso é excesso mesmo
+com consentimento. O que serve mesmo ao treinador em campo — grupo
+sanguíneo, alergias, contacto do médico — está melhor numa ficha de papel
+no saco do equipamento: num acidente ninguém abre o site.
 
 - [x] **Direitos de imagem** — o termo de consentimento RGPD do clube foi
       transcrito para `src/lib/data/direitosImagem.ts`, vive em
