@@ -47,3 +47,5 @@ yarn-error.log*
 
 # Kit de fontes descarregado — o que é preciso está em valejas-ac/public/fonts/
 FontshareKit-*/
+.vercel
+.env*
