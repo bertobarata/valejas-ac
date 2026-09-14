@@ -20,6 +20,15 @@ export const sanityClient = createClient({
   useCdn: process.env.NODE_ENV === "production",
   // Apenas para mutações server-side (ex: formulários de sócios)
   token: process.env.SANITY_API_TOKEN,
+  /*
+   * Só o que está publicado.
+   *
+   * Sem isto, um pedido feito com token traz também os rascunhos — e
+   * desde que o dataset passou a privado, TODOS os pedidos levam token.
+   * Resultado: um comunicado a meio de ser escrito aparecia no site,
+   * publicado sem ninguém ter carregado em publicar.
+   */
+  perspective: "published",
 });
 
 /**
@@ -31,4 +40,6 @@ export const sanityClientLive = createClient({
   apiVersion,
   useCdn: false,
   token: process.env.SANITY_API_TOKEN,
+  // Pelo mesmo motivo do cliente de cima: rascunhos não são conteúdo.
+  perspective: "published",
 });
