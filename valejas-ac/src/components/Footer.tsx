@@ -12,7 +12,7 @@ const LINKS = {
     { label: "Comunicados",  href: "/comunicados" },
     { label: "Jogos",        href: "/jogos" },
     { label: "O Clube",      href: "/clube" },
-    { label: "História",     href: "/historia" },
+    { label: "O Emblema",    href: "/clube/emblema" },
     { label: "Instalações",  href: "/instalacoes" },
     { label: "Patrocinadores", href: "/patrocinadores" },
     { label: "Academia Sénior", href: "/academia-senior" },

@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import {
-  CATEGORIAS, PRAZO_ENCOMENDA_SEMANAS, produtosPorCategoria,
+  CATEGORIAS, FORNECEDOR, PRAZO_ENCOMENDA_SEMANAS, getProduto, produtosPorCategoria,
 } from "@/lib/data/loja";
 import CartaoProduto from "@/components/loja/CartaoProduto";
 import BarraCarrinho from "@/components/loja/BarraCarrinho";
+import RodapeLoja from "@/components/loja/RodapeLoja";
 
 export const metadata: Metadata = {
   title: "Loja",
@@ -14,8 +15,8 @@ export const metadata: Metadata = {
 };
 
 export default function LojaPage() {
-  const kit = produtosPorCategoria("kit-formacao");
-  const restantes = CATEGORIAS.filter((c) => c.id !== "kit-formacao");
+  // O equipamento principal abre a loja: é o que mais gente vem procurar.
+  const destaque = getProduto("equipamento-principal");
 
   return (
     <div className="bg-surface pb-28">
@@ -43,28 +44,23 @@ export default function LojaPage() {
         </div>
       </section>
 
-      {/* Kit de formação — obrigatório, logo primeiro */}
-      {kit.length > 0 && (
+      {/* Equipamento principal em destaque */}
+      {destaque && (
         <section className="section-container py-14 md:py-20">
           <div className="max-w-2xl mb-8">
             <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow mb-2">
-              Obrigatório na formação
+              As cores do clube
             </p>
             <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-              {CATEGORIAS[0].nome}
+              {destaque.nome}
             </h2>
-            <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-              {CATEGORIAS[0].intro}
-            </p>
           </div>
-          {kit.map((p) => (
-            <CartaoProduto key={p.slug} produto={p} destaque />
-          ))}
+          <CartaoProduto produto={destaque} destaque />
         </section>
       )}
 
-      {/* Restantes categorias */}
-      {restantes.map((cat) => {
+      {/* Categorias */}
+      {CATEGORIAS.map((cat) => {
         const itens = produtosPorCategoria(cat.id);
         if (itens.length === 0) return null;
 
@@ -81,7 +77,7 @@ export default function LojaPage() {
               <p className="font-body text-on-surface-muted mt-2">{cat.intro}</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-on-surface/10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-on-surface/10">
               {itens.map((p) => (
                 <CartaoProduto key={p.slug} produto={p} />
               ))}
@@ -96,7 +92,13 @@ export default function LojaPage() {
           Dúvidas de tamanhos? Passa pela sede e experimenta antes de encomendar,
           ou <Link href="/contactos" className="text-yellow underline">fala connosco</Link>.
         </p>
+        <p className="font-body text-sm text-on-surface-muted mt-3">
+          Equipamento produzido pela {FORNECEDOR.nome}. Catálogo e preços
+          atualizados a {FORNECEDOR.atualizado}.
+        </p>
       </section>
+
+      <RodapeLoja />
 
       <BarraCarrinho />
     </div>

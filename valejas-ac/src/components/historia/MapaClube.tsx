@@ -1,49 +1,33 @@
-"use client";
-
 /**
  * MAPA DO CLUBE
  * ─────────────────────────────────────────────────────────────────
- * O mapa do Google só é carregado depois de a pessoa carregar no
- * botão. Enquanto ninguém pede, não há pedido ao Google nem cookies
- * de terceiros — o que poupa ao clube um problema de RGPD que um
- * iframe embebido de raiz criaria.
+ * O mapa aparece de imediato. Havia aqui um botão «Ver mapa» a servir
+ * de portão — nada era pedido ao Google enquanto ninguém carregasse —
+ * mas quem chega à página quer ver onde fica a sede, não carregar num
+ * botão para ver onde fica a sede.
+ *
+ * A contrapartida é real e está dita nas páginas de privacidade e de
+ * cookies: ao abrir esta página, o Google recebe um pedido e pode
+ * guardar cookies próprias. `loading="lazy"` adia esse pedido até o
+ * mapa estar quase à vista, e `referrerpolicy` não lhe diz de que
+ * página vieste.
  * ─────────────────────────────────────────────────────────────────
  */
 
-import { useState } from "react";
-import { ExternalLink, MapPin } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { LOCALIZACAO, urlMapa, urlMapaEmbed } from "@/lib/data/historia";
 
 export default function MapaClube() {
-  const [carregado, setCarregado] = useState(false);
-
   return (
     <div className="border border-on-surface/15">
       <div className="relative aspect-[16/10] bg-surface-high">
-        {carregado ? (
-          <iframe
-            src={urlMapaEmbed()}
-            title="Mapa com a localização do Valejas Atlético Clube"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 w-full h-full border-0"
-          />
-        ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center">
-            <MapPin size={32} className="text-yellow" />
-            <p className="font-body text-sm text-on-surface-muted max-w-xs leading-relaxed">
-              O mapa é carregado do Google. Carrega no botão para o ver — assim
-              nada é pedido ao Google sem tu quereres.
-            </p>
-            <button
-              type="button"
-              onClick={() => setCarregado(true)}
-              className="btn-primary text-sm"
-            >
-              Ver mapa
-            </button>
-          </div>
-        )}
+        <iframe
+          src={urlMapaEmbed()}
+          title="Mapa com a localização do Valejas Atlético Clube"
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          className="absolute inset-0 w-full h-full border-0"
+        />
       </div>
 
       <div className="p-5 border-t border-on-surface/10 flex flex-wrap items-center justify-between gap-4">

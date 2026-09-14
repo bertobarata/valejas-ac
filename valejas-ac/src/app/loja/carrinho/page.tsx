@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Carrinho from "@/components/loja/Carrinho";
+import RodapeLoja from "@/components/loja/RodapeLoja";
 
 export const metadata: Metadata = {
   title: "Carrinho",
@@ -31,6 +32,8 @@ export default function CarrinhoPage() {
       <div className="section-container">
         <Carrinho />
       </div>
+
+      <RodapeLoja />
     </div>
   );
 }

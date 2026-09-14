@@ -10,8 +10,10 @@
  */
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import clsx from "clsx";
-import { Check, Plus } from "lucide-react";
+import { Check, Mail, Plus } from "lucide-react";
 import {
   PRAZO_ENCOMENDA_SEMANAS, formatEuros, stockDe, type Produto,
 } from "@/lib/data/loja";
@@ -57,12 +59,23 @@ export default function CartaoProduto({
   }
 
   return (
-    <article
-      className={clsx(
-        "bg-surface-high flex flex-col",
-        destaque ? "p-7 md:p-10" : "p-6"
+    <article className="bg-surface-high flex flex-col">
+      {/* A fotografia do fornecedor é uma maqueta sobre fundo cinzento —
+          por isso vive dentro de uma moldura própria, sem se fingir de
+          fotografia de estúdio do clube. */}
+      {produto.imagem && (
+        <div className={clsx("relative bg-white", destaque ? "aspect-[2/1]" : "aspect-[3/2]")}>
+          <Image
+            src={produto.imagem}
+            alt={produto.nome}
+            fill
+            sizes={destaque ? "(max-width: 1024px) 100vw, 60vw" : "(max-width: 640px) 100vw, 33vw"}
+            className="object-contain"
+          />
+        </div>
       )}
-    >
+
+      <div className={clsx("flex flex-col flex-1", destaque ? "p-7 md:p-10" : "p-6")}>
       <div className="flex-1">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <h3
@@ -76,15 +89,21 @@ export default function CartaoProduto({
           <p
             className={clsx(
               "font-headline font-black text-yellow leading-none",
-              destaque ? "text-4xl" : "text-2xl"
+              produto.sobConsulta
+                ? "text-sm uppercase tracking-widest"
+                : destaque ? "text-4xl" : "text-2xl"
             )}
           >
-            {formatEuros(produto.preco)}
+            {produto.sobConsulta ? "Sob consulta" : formatEuros(produto.preco)}
           </p>
         </div>
 
         <p className="font-body text-on-surface-muted leading-relaxed mt-3">
           {produto.descricao}
+        </p>
+
+        <p className="font-body text-xs text-on-surface-muted mt-2">
+          Referência {produto.referencia}
         </p>
 
         {produto.inclui && (
@@ -101,6 +120,22 @@ export default function CartaoProduto({
         )}
       </div>
 
+      {/*
+        Sem preço fechado não há botão de encomendar: cobrar um valor que
+        ninguém sabe qual é seria pior do que mandar falar com o clube.
+      */}
+      {produto.sobConsulta ? (
+        <div className="mt-6">
+          <p className="font-body text-sm text-on-surface-muted leading-relaxed">
+            Este artigo não tem preço fechado — depende do que se
+            personalizar e da quantidade. Fala com o clube e dizemos quanto é.
+          </p>
+          <Link href="/contactos" className="btn-ghost text-sm mt-4">
+            <Mail size={16} /> Pedir orçamento
+          </Link>
+        </div>
+      ) : (
+      <>
       {/* Tamanhos */}
       <fieldset className="mt-6">
         <legend className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-3">
@@ -192,6 +227,9 @@ export default function CartaoProduto({
           <><Plus size={16} /> Juntar ao carrinho</>
         )}
       </button>
+      </>
+      )}
+      </div>
     </article>
   );
 }

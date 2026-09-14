@@ -6,4 +6,4 @@
  * Uma lista só, lida pela barra e pelo conteúdo: separadas, bastava
  * acrescentar uma página a uma delas para o efeito partir.
  */
-export const PAGINAS_COM_HERO = ["/", "/clube"];
+export const PAGINAS_COM_HERO = ["/", "/clube/emblema"];

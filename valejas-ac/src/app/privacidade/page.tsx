@@ -158,9 +158,10 @@ export default function PrivacidadePage() {
         </table>
       </div>
       <p>
-        O mapa do Google na página da história{" "}
-        <strong>só é carregado depois de carregares no botão</strong>. Até lá, o
-        Google não recebe nada.
+        A página do clube mostra um <strong>mapa do Google</strong> com a
+        morada da sede. Ao abrires essa página, o Google recebe um pedido e pode
+        guardar cookies próprias — não lhe dizemos de que página vieste, e o
+        mapa só é pedido quando está quase à vista.
       </p>
 
       <h2>6. Onde ficam guardados</h2>

@@ -50,7 +50,7 @@ export default function InstalacoesPage() {
             <Link href="/contactos" className="btn-primary text-sm">
               Horários e contactos
             </Link>
-            <Link href="/historia" className="btn-ghost text-sm">
+            <Link href="/clube" className="btn-ghost text-sm">
               Onde fica
             </Link>
           </div>

@@ -10,10 +10,18 @@ export default function Logo({
   size = 40,
   withWordmark = true,
   className = "",
+  /**
+   * A partir de que largura aparece o nome ao lado do emblema. Na barra
+   * do topo só há espaço para ele nos ecrãs largos — com a navegação
+   * toda, mais estreito que isto o nome partia-se em três linhas por
+   * cima dos links.
+   */
+  wordmarkClass = "hidden sm:block",
 }: {
   size?: number;
   withWordmark?: boolean;
   className?: string;
+  wordmarkClass?: string;
 }) {
   return (
     <Link href="/" className={`flex items-center gap-3 group ${className}`}>
@@ -27,7 +35,7 @@ export default function Logo({
         style={{ height: size, width: "auto" }}
       />
       {withWordmark && (
-        <span className="hidden sm:block leading-none">
+        <span className={`${wordmarkClass} leading-none`}>
           <span className="block font-headline font-black text-base md:text-lg uppercase text-on-surface tracking-tight">
             Valejas
           </span>

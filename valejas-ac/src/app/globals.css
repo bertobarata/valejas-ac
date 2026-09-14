@@ -102,10 +102,11 @@
 /*
  * O conteúdo começa abaixo da barra em todas as páginas menos as que
  * abrem com o emblema em ecrã inteiro — aí o hero passa por baixo da
- * barra de propósito.
+ * barra de propósito. A folga extra é de propósito: encostado à barra,
+ * o título lê-se como parte dela.
  */
 .abaixo-da-barra {
-  padding-top: var(--barra-altura);
+  padding-top: calc(var(--barra-altura) + 2rem);
 }
 
 @media (min-width: 768px) {
@@ -272,8 +273,14 @@
      Em CSS e não em GSAP: a navegação principal não pode depender de
      um tween terminar. Antes dependia, e com o requestAnimationFrame
      travado a barra ficava invisível com a página já carregada. */
+  /*
+   * `forwards`, nunca `both`. Com `both`, o estado inicial fica colado
+   * antes de a animação arrancar — e numa página aberta em separador de
+   * fundo o relógio das animações está parado, por isso nunca arranca:
+   * a barra ficava invisível, sem logótipo, até a pessoa ir lá ver.
+   */
   .entrada-barra {
-    animation: entrada-barra 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: entrada-barra 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   @keyframes entrada-barra {
     from { opacity: 0; transform: translateY(-80px); }
@@ -285,7 +292,7 @@
      Se o script falhar, a animação repõe o conteúdo ao fim de 0,45s em
      vez de deixar o site em branco para sempre. */
   .entrada-pagina {
-    animation: entrada-pagina 0.45s ease-out both;
+    animation: entrada-pagina 0.45s ease-out forwards;
   }
   @keyframes entrada-pagina {
     from { opacity: 0; }

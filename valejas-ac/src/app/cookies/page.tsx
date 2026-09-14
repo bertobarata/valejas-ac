@@ -75,14 +75,13 @@ export default function CookiesPage() {
 
       <h2>3. Conteúdo de terceiros</h2>
       <p>
-        Há dois sítios onde outro serviço pode guardar algo no teu navegador — e
-        em ambos tu decides primeiro:
+        Há dois sítios onde outro serviço pode guardar algo no teu navegador:
       </p>
       <ul>
         <li>
-          <strong>Mapa do Google</strong>, na página da história. Só carrega
-          depois de carregares no botão &ldquo;Ver mapa&rdquo;. Até lá, o Google
-          não recebe qualquer pedido vindo daqui
+          <strong>Mapa do Google</strong>, na página do clube, a mostrar onde
+          fica a sede. Carrega com a página, e o Google pode guardar cookies
+          próprias — não lhe dizemos de que página vieste
         </li>
         <li>
           <strong>Formulário de contacto</strong>, tratado pela Formspree. Só

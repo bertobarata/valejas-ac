@@ -13,6 +13,14 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["sanity"],
   },
+  // A história passou a ser a abertura de /clube, e o emblema desceu
+  // para /clube/emblema. Os endereços antigos continuam a funcionar —
+  // podem estar partilhados algures.
+  async redirects() {
+    return [
+      { source: "/historia", destination: "/clube", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

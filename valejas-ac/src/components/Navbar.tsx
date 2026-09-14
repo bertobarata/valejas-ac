@@ -5,7 +5,7 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon, UserPlus } from "lucide-react";
+import { Menu, X, Sun, Moon, UserPlus, ShoppingBag, ChevronDown } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { CONTACTO } from "@/lib/data/socios";
 import gsap from "gsap";
@@ -22,15 +22,47 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export const STORE_URL = "/loja";
 
-const NAV_ITEMS: { label: string; href: string; external?: boolean }[] = [
+/**
+ * Cinco destinos na barra, e duas ações à direita. Eram nove links a
+ * competir uns com os outros — a partir de certa largura já nem cabiam
+ * numa linha. A loja e o cartão de sócio saem da lista e passam a
+ * botões, porque não são sítios para visitar: são coisas para fazer.
+ *
+ * O que saiu daqui não desapareceu do site — os jogos e o clube estão
+ * na página inicial e no rodapé.
+ */
+interface ItemNav {
+  label:     string;
+  href:      string;
+  external?: boolean;
+  /** Quando existe, o item abre um submenu em vez de ser só um destino. */
+  submenu?:  { label: string; href: string }[];
+}
+
+const NAV_ITEMS: ItemNav[] = [
   { label: "Início",      href: "/" },
   { label: "Comunicados", href: "/comunicados" },
-  { label: "Jogos",       href: "/jogos" },
   { label: "Modalidades", href: "/modalidades" },
-  { label: "Academia",    href: "/academia-senior" },
-  { label: "Loja",        href: STORE_URL },
-  { label: "Sócios",      href: "/socios-contacto" },
+  { label: "Sénior",      href: "/academia-senior" },
+  {
+    label: "Clube",
+    href:  "/clube",
+    // Cinco páginas sobre o clube que não cabem na barra uma a uma.
+    submenu: [
+      { label: "História",        href: "/clube" },
+      { label: "O Emblema",       href: "/clube/emblema" },
+      { label: "Instalações",     href: "/instalacoes" },
+      { label: "Órgãos Sociais",  href: "/orgaos-sociais" },
+      { label: "Patrocinadores",  href: "/patrocinadores" },
+    ],
+  },
   { label: "Contactos",   href: "/contactos" },
+];
+
+/** As duas ações da barra. No telemóvel aparecem no fim do menu. */
+const ACOES = [
+  { label: "Loja",        href: STORE_URL, Icon: ShoppingBag },
+  { label: "Fazer Sócio", href: "/socios/inscricao", Icon: UserPlus },
 ];
 
 export default function Navbar() {
@@ -42,6 +74,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted]   = useState(false);
+  /** href do item cujo submenu está aberto. Um de cada vez. */
+  const [submenuAberto, setSubmenuAberto] = useState<string | null>(null);
   const navRef  = useRef<HTMLElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const linksRef   = useRef<HTMLDivElement>(null);
@@ -136,7 +170,11 @@ export default function Navbar() {
     <header
       ref={navRef}
       className={clsx(
-        "fixed top-0 left-0 right-0 z-50 entrada-barra",
+        "fixed top-0 left-0 right-0 z-50",
+        /* A barra só desliza para dentro nas páginas que abrem com o
+           emblema em grande. Nas outras tem de estar lá desde o primeiro
+           pixel — é o único sítio onde o clube se identifica. */
+        temEmblemaNoTopo && "entrada-barra",
         "transition-[background-color,box-shadow,backdrop-filter] duration-500",
         solid
           ? "bg-surface/95 backdrop-blur-xl shadow-ambient"
@@ -172,14 +210,74 @@ export default function Navbar() {
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-1 pointer-events-none"
           )}>
-            <Logo size={96} />
+            <Logo size={96} wordmarkClass="hidden xl:block" />
           </div>
 
           {/* Desktop nav */}
-          <ul className="hidden lg:flex items-center gap-6">
+          <ul className="hidden lg:flex items-center gap-5 xl:gap-7 whitespace-nowrap">
             {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                {item.external ? (
+              <li
+                key={item.href}
+                className={item.submenu ? "relative" : undefined}
+                onMouseEnter={item.submenu ? () => setSubmenuAberto(item.href) : undefined}
+                onMouseLeave={item.submenu ? () => setSubmenuAberto(null) : undefined}
+              >
+                {item.submenu ? (
+                  <>
+                    {/*
+                      O pai é um destino e um menu ao mesmo tempo: carregar
+                      leva à história do clube, passar por cima (ou dar foco
+                      pelo teclado) abre as cinco páginas.
+                    */}
+                    <Link
+                      href={item.href}
+                      aria-expanded={submenuAberto === item.href}
+                      onFocus={() => setSubmenuAberto(item.href)}
+                      className={clsx(
+                        "nav-link inline-flex items-center gap-1.5",
+                        pathname.startsWith(item.href) && "active"
+                      )}
+                    >
+                      {item.label}
+                      <ChevronDown
+                        size={14}
+                        aria-hidden
+                        className={clsx(
+                          "transition-transform duration-200",
+                          submenuAberto === item.href && "rotate-180"
+                        )}
+                      />
+                    </Link>
+
+                    <ul
+                      className={clsx(
+                        "absolute left-1/2 -translate-x-1/2 top-full pt-3 min-w-[13rem] transition-all duration-200",
+                        submenuAberto === item.href
+                          ? "opacity-100 visible translate-y-0"
+                          : "opacity-0 invisible -translate-y-1 pointer-events-none"
+                      )}
+                    >
+                      <div className="bg-surface border border-on-surface/10 shadow-ambient py-2">
+                        {item.submenu.map((sub) => (
+                          <li key={sub.href + sub.label}>
+                            <Link
+                              href={sub.href}
+                              onClick={() => setSubmenuAberto(null)}
+                              className={clsx(
+                                "block px-5 py-2.5 font-body text-sm transition-colors duration-200",
+                                pathname === sub.href
+                                  ? "text-yellow"
+                                  : "text-on-surface hover:text-yellow"
+                              )}
+                            >
+                              {sub.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </div>
+                    </ul>
+                  </>
+                ) : item.external ? (
                   <a
                     href={item.href}
                     target="_blank"
@@ -216,8 +314,18 @@ export default function Navbar() {
               </button>
             )}
 
-            {/* Sócios CTA — ação principal do site */}
-            <Link href="/socios/inscricao" className="btn-primary hidden sm:inline-flex text-xs min-h-11 py-2.5 px-5">
+            {/* Loja e cartão de sócio: as duas coisas que se fazem aqui */}
+            <Link
+              href={STORE_URL}
+              className="btn-ghost hidden sm:inline-flex text-xs min-h-11 py-2.5 px-5 whitespace-nowrap"
+            >
+              <ShoppingBag size={14} />
+              Loja
+            </Link>
+            <Link
+              href="/socios/inscricao"
+              className="btn-primary hidden sm:inline-flex text-xs min-h-11 py-2.5 px-5 whitespace-nowrap"
+            >
               <UserPlus size={14} />
               Fazer Sócio
             </Link>
@@ -260,7 +368,7 @@ export default function Navbar() {
           >
             {NAV_ITEMS.map((item, i) => {
               const itemClass = clsx(
-                "mobile-nav-item block py-2 font-headline font-black uppercase leading-[0.9] tracking-tighter transition-colors duration-200",
+                "block py-2 font-headline font-black uppercase leading-[0.9] tracking-tighter transition-colors duration-200",
                 "text-5xl sm:text-6xl md:text-7xl",
                 !item.external && pathname === item.href
                   ? "text-yellow"
@@ -271,43 +379,68 @@ export default function Navbar() {
                   0{i + 1}
                 </span>
               );
-              return item.external ? (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={closeMenu}
-                  className={itemClass}
-                >
-                  {numberLabel}
-                  {item.label}
-                </a>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={itemClass}
-                >
-                  {numberLabel}
-                  {item.label}
-                </Link>
+              if (item.external) {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                    className={itemClass}
+                  >
+                    {numberLabel}
+                    {item.label}
+                  </a>
+                );
+              }
+
+              return (
+                <div key={item.href} className="mobile-nav-item">
+                  <Link href={item.href} onClick={closeMenu} className={itemClass}>
+                    {numberLabel}
+                    {item.label}
+                  </Link>
+
+                  {/* No telemóvel não há sítio para submenus a abrir: as
+                      páginas do clube ficam listadas, mais pequenas, por baixo. */}
+                  {item.submenu && (
+                    <div className="flex flex-wrap gap-x-5 gap-y-1 pl-0.5 pb-2">
+                      {item.submenu.map((sub) => (
+                        <Link
+                          key={sub.href + sub.label}
+                          href={sub.href}
+                          onClick={closeMenu}
+                          className="font-body text-sm text-on-surface-muted hover:text-yellow transition-colors duration-200"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
 
-          {/* Bottom bar — social + CTA */}
+          {/* Bottom bar — as duas ações, social e tema */}
           <div className="px-8 sm:px-12 pb-10 flex flex-col gap-5">
-            {/* Sócios CTA */}
-            <Link
-              href="/socios/inscricao"
-              onClick={closeMenu}
-              className="mobile-bottom btn-primary w-full justify-center text-base py-4"
-            >
-              <UserPlus size={18} />
-              Fazer Sócio
-            </Link>
+            <div className="mobile-bottom flex flex-col sm:flex-row gap-3">
+              {ACOES.map(({ label, href, Icon }, i) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={closeMenu}
+                  className={clsx(
+                    "w-full justify-center text-base py-4",
+                    i === ACOES.length - 1 ? "btn-primary" : "btn-ghost"
+                  )}
+                >
+                  <Icon size={18} />
+                  {label}
+                </Link>
+              ))}
+            </div>
 
             {/* Social + theme */}
             <div className="mobile-bottom flex items-center justify-between">

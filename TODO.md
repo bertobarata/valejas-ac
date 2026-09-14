@@ -200,9 +200,18 @@ encomenda existe na caixa de correio do clube.
 
 ### O que falta para isto ir para o ar
 
-- [ ] **Catálogo real.** O que lá está é exemplo — ver
-      `CATALOGO_DE_EXEMPLO = true` em `src/lib/data/loja.ts`. Falta a lista
-      da ZEMIG com nomes, preços, tamanhos e stock da sede
+- [x] **Catálogo real.** Os 23 artigos da ZEMIG (referências, preços,
+      tamanhos e fotografias) foram importados a 14/09/2026 da loja CTT
+- [ ] **Stock da sede.** Está tudo a zero, ou seja, tudo «por encomenda».
+      Alguém tem de contar o que há na sede e pôr os números em
+      `src/lib/data/loja.ts`
+- [ ] **Preços sob consulta.** Treze artigos não têm preço fechado no
+      fornecedor e por isso não se encomendam pelo site — só por contacto.
+      Se a Direção fechar preços, entram no carrinho
+- [ ] **Condições da loja** (`/loja/condicoes`): escritas a partir do
+      regime geral de vendas à distância. Falta a Direção confirmar o
+      prazo de troca (14 dias), se aceita trocas de peças não
+      personalizadas, e quem responde às reclamações
 - [ ] **Percentagem do sinal.** Está em 30% (`SINAL_PERCENTAGEM`), número
       inventado por falta de decisão. Num kit de 85 € dá 25,50 €
 - [ ] **Pagamento ligado.** O site regista a encomenda e diz o valor; os
