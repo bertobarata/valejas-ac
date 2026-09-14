@@ -1,6 +1,7 @@
 # TODO — Website Valejas AC
 
 Estado a 14/09/2026, fim da segunda sessão de trabalho.
+Revisto ao fim do dia — ver a nota do corpo técnico na secção 5.
 
 O código está feito e testado. **O que falta é quase tudo fora do código:**
 contas por criar, dados que só o clube tem, e três decisões que custam
@@ -155,7 +156,11 @@ Três saídas:
 
 ## 2. Segredos a gerar antes de ir para o ar
 
-- [ ] `DIRECAO_PASSWORD` — está `valejas1966`, valor de desenvolvimento. **Trocar.**
+- [ ] `DIRECAO_UTILIZADORES` — uma conta por pessoa, em pares
+      `nome:palavra-passe` separados por vírgulas. São escritas por
+      pessoas: três palavras sem relação entre si valem mais que `Vlj!26#`
+- [ ] Apagar `DIRECAO_PASSWORD` depois — está `valejas1966`, valor de
+      desenvolvimento, e só é usada enquanto não houver contas
 - [ ] `DIRECAO_SECRET` — `openssl rand -hex 32`
 - [ ] `MAKE_WEBHOOK_SEGREDO` — `openssl rand -hex 24`
 - [ ] `IFTHENPAY_CALLBACK_CHAVE` — `openssl rand -hex 24`
@@ -175,8 +180,11 @@ Três saídas:
 - [ ] **Atletismo** — grupo (competição ou comunidade?), vertentes reais
       (pista, estrada, corta-mato, marcha?), escalões, federação. O texto
       atual foi escrito por inferência
-- [ ] **Fotografias reais** — plantel e corpo técnico continuam com
-      placeholders (`PlantelFilter.tsx`, `EquipasHero.tsx`, `CorpoTecnico.tsx`)
+- [ ] **Corpo técnico** — quem treina cada equipa e cada escalão. A lista
+      está **vazia** em `EQUIPA_TECNICA` e a página assume isso. Ver o
+      aviso na secção 5 sobre o que lá estava antes
+- [ ] **Fotografias reais** — plantel, equipa técnica e o retrato do hero
+      de `/equipas` continuam com lugares reservados
 - [ ] **Plantel** — a Direção já o pode escrever em `/direcao/plantel`.
       Falta escrevê-lo: nome, número e posição, por equipa. Enquanto não
       estiver no CMS, o site mostra os oito nomes de exemplo de
@@ -212,8 +220,17 @@ Três saídas:
 
 ## 5. Dívida técnica conhecida
 
-- [x] ~~**Conteúdo de notícias inventado**~~ — apagado. `ARTIGOS` está
-      vazio e a secção mostra estado vazio até haver notícias a sério
+- [x] ~~**Conteúdo de notícias inventado**~~ — apagado, e `/noticias` passou
+      a redirecionar para `/comunicados`: eram dois sítios para escrever a
+      mesma coisa e um estava vazio
+- [x] ~~**Corpo técnico inventado**~~ — apanhado a 14/09/2026, ao rever o
+      TODO. O treinador principal de `/equipas` chamava-se **Marco Reus** —
+      o jogador do Borussia Dortmund — com uma citação inventada atribuída
+      a ele e a época 2024/25, mais três adjuntos que não existem. Estava
+      publicado desde maio. Apagado; a secção passa a dizer a verdade
+- [x] ~~**Sem documentos para descarregar**~~ — o exame médico desportivo
+      do IPDJ está em `/inscricoes`, e no ecrã logo a seguir a enviar a
+      inscrição
 - [x] ~~**Navegação com 8 itens**~~ — resolvido a 14/09/2026: cinco
       destinos (Início, Comunicados, Modalidades, Sénior, Contactos), um
       submenu «Clube» com as cinco páginas do clube, e a loja e o cartão

@@ -70,6 +70,25 @@ export const PLANTEL_DE_EXEMPLO: Jogador[] = [
   { numero: 19, nome: "Alex Silva",     posicao: "Pivot",        equipa: "a" },
 ];
 
+/**
+ * CORPO TÉCNICO
+ * ─────────────────────────────────────────────────────────────────
+ * Vazio até o clube dizer quem são.
+ *
+ * Havia aqui um treinador chamado **Marco Reus** — o jogador do
+ * Borussia Dortmund — com uma citação inventada e a época 2024/25, mais
+ * três adjuntos que também não existem. Estava publicado em /equipas.
+ * Apagado a 14/09/2026, pelo mesmo motivo que as notícias do "São Paulo
+ * FC": um clube não pode ter no site pessoas que não tem.
+ * ─────────────────────────────────────────────────────────────────
+ */
+export interface MembroEquipaTecnica {
+  funcao: string;
+  nome:   string;
+}
+
+export const EQUIPA_TECNICA: MembroEquipaTecnica[] = [];
+
 /* ── Ponte com o CMS ─────────────────────────────────────────────── */
 
 export interface JogadorSanity {
