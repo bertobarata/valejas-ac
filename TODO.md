@@ -13,11 +13,14 @@ degradado — cada uma tem um comportamento de recurso que não rebenta.
 ### Domínio (Amen)
 - [x] Comprar domínio do clube — **valejasac.pt**, comprado a
       14/09/2026, à espera da confirmação do registo
-- [ ] Apontar DNS para a Vercel (A `76.76.21.21` para o domínio raiz,
-      CNAME `cname.vercel-dns.com` para o `www`)
+- [ ] Apontar DNS para a Vercel: `A` → `76.76.21.21` no domínio raiz,
+      `CNAME` → `cname.vercel-dns.com` no `www`. O endereço oficial é
+      **valejasac.pt**, sem `www`; o `www` fica a redirecionar para lá
 - [ ] Acrescentar o domínio ao projeto na Vercel e esperar pelo
       certificado, que é automático
-- [ ] `NEXT_PUBLIC_SITE_URL="https://www.valejasac.pt"` na Vercel
+- [ ] `NEXT_PUBLIC_SITE_URL="https://valejasac.pt"` na Vercel
+- [ ] Na Vercel, marcar `valejasac.pt` como domínio principal e o `www`
+      como redirecionamento — não o contrário
 - **Sem isto:** site vive no `.vercel.app`. A Meta precisa de um endereço
   público para ir buscar a imagem dos comunicados.
 
