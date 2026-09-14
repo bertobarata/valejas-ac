@@ -1,6 +1,6 @@
 # TODO — Website Valejas AC
 
-Estado em 13/09/2026. O código está feito e testado; o que falta abaixo
+Estado em 14/09/2026. O código está feito e testado; o que falta abaixo
 é sobretudo **contas externas e dados reais do clube**.
 
 ---
@@ -94,10 +94,10 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
       atual foi escrito por inferência
 - [ ] **Fotografias reais** — plantel e corpo técnico continuam com
       placeholders (`PlantelFilter.tsx`, `EquipasHero.tsx`, `CorpoTecnico.tsx`)
-- [ ] **Plantel** — a página já está por Equipa A / Equipa B / Formação e
-      sem estatísticas, mas os oito jogadores em `PlantelFilter.tsx` são
-      inventados. Falta o plantel real: nome, número e posição, por equipa.
-      A Equipa B e a Formação estão vazias e mostram estado vazio
+- [ ] **Plantel** — a Direção já o pode escrever em `/direcao/plantel`.
+      Falta escrevê-lo: nome, número e posição, por equipa. Enquanto não
+      estiver no CMS, o site mostra os oito nomes de exemplo de
+      `src/lib/data/plantel.ts`
 - [ ] **Atletismo** — o site diz "todos os escalões" sem os enumerar.
       Se a Direção quiser a lista escalão a escalão, como no futsal, falta
       saber quais são e a federação
@@ -106,10 +106,10 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
       cartões mostram as iniciais
 - [ ] **Órgãos sociais** — no cartaz, Mário Sérgio Barata e Teresa Santos
       têm ambos o Sócio N.º 167. Um dos dois está errado
-- [ ] **Jogos** — os adversários chamam-se "Equipa Adversária N" de
-      propósito, para não repetir o erro dos nomes inventados. Assim que
-      o Sanity estiver ligado, o departamento de comunicação preenche em
-      `/direcao/jogos` e o site passa a usar esses dados
+- [x] ~~**Jogos** — adversários de exemplo~~ — resolvido a 14/09/2026: o
+      calendário oficial das 30 jornadas veio do PDF da AF Lisboa. Falta
+      preencher resultados e classificação em `/direcao/jogos` à medida
+      que se joga
 - [ ] **Patrocinadores** — faltam logótipos e links. Descrições de QB,
       Ninho da Rola e Muchacho são genéricas por falta de informação
 - [ ] **Instalações** — faltam fotografias da sede e do pavilhão
@@ -129,17 +129,16 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 
 ## 5. Dívida técnica conhecida
 
-- [ ] **Conteúdo de notícias é inventado** — `noticias.ts` tem um reforço
-      vindo do "São Paulo FC" para um clube de futsal de Barcarena, uma
-      academia em construção, uma entrevista e um derby 5-1, todos datados
-      de 2024. Os cartões já não levam a páginas mortas, mas o texto
-      continua lá e é o que ocupa a maior secção da homepage
-- [ ] **Navegação cresceu para 8 itens** — `/jogos` entrou por ser
-      essencial, mas a barra está no limite. A crítica já apontava
-      sobrecarga com 7. Rever a arquitetura de navegação, não só a lista
-- [ ] **Sem fotografias em todo o site** — `public/` tem quatro ficheiros
-      do emblema e seis de tipografia. Zero pessoas. A crítica identifica
-      isto como a razão de o site ler frio apesar do sistema visual
+- [x] ~~**Conteúdo de notícias inventado**~~ — apagado. `ARTIGOS` está
+      vazio e a secção mostra estado vazio até haver notícias a sério
+- [x] ~~**Navegação com 8 itens**~~ — resolvido a 14/09/2026: cinco
+      destinos (Início, Comunicados, Modalidades, Sénior, Contactos), um
+      submenu «Clube» com as cinco páginas do clube, e a loja e o cartão
+      de sócio passados a botões
+- [ ] **Sem fotografias de pessoas em todo o site** — há agora as 23
+      maquetas de equipamento da loja, mas nem uma fotografia de gente:
+      jogadores, treinos, pavilhão, bancada. É a razão de o site ler frio
+      apesar do sistema visual
 - [ ] **Publicar comunicado não tem confirmação** — um clique envia para
       Facebook e Instagram, sem rascunho guardado e sem forma de corrigir
 
@@ -194,7 +193,7 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 
 | Página | O que faz |
 |---|---|
-| `/loja` | Catálogo por categorias, kit de formação em destaque, escolha de tamanho, stock por tamanho, personalização com nome e número |
+| `/loja` | Kit obrigatório de atleta em destaque, catálogo com filtros por família e por preço, escolha de tamanho por lista, personalização com nome e número |
 | `/loja/carrinho` | Revisão da encomenda, identificação de quem encomenda, escolha entre sinal e pagamento total, envio |
 | `/api/loja/encomenda` | Revalida tudo no servidor (os preços vêm do catálogo, nunca do browser), envia email ao clube e recibo a quem encomendou, cria o registo no Sanity |
 | `/direcao/encomendas` | Lista das encomendas, resumo do que há a pedir ao fornecedor, estados *recebida → encomendada → pronta → levantada*, marcação de pagamento e notas internas |
