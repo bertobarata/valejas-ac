@@ -1,6 +1,6 @@
 # TODO — Website Valejas AC
 
-Estado a 14/09/2026, fim da segunda sessão de trabalho.
+Estado a 14/09/2026, fim da terceira sessão de trabalho.
 Revisto ao fim do dia — ver a nota do corpo técnico na secção 5.
 
 O código está feito e testado. **O que falta é quase tudo fora do código:**
@@ -13,18 +13,18 @@ Por ordem de quem desbloqueia mais coisas de uma vez:
 
 | # | O quê | Sem isto |
 |---|---|---|
-| 1 | **Resolver o impasse da Vercel** — projeto antigo ocupa o subdomínio | Não há deploy nenhum |
+| 1 | ~~Vercel~~ | ✅ feito a 14/09/2026 — projeto `valejasac`, 18 variáveis, preview aberto sem palavra-passe |
 | 2 | ~~Email~~ | ✅ feito a 14/09/2026 — cinco caixas, Resend verificada, três envios reais a chegar à entrada |
-| 3 | **Contas e segredos** — criar `DIRECAO_UTILIZADORES` (uma por pessoa) e apagar a palavra-passe de desenvolvimento | Quem adivinhar `valejas1966` publica no Instagram do clube |
-| 4 | **DNS do domínio** quando o registo confirmar | O site vive no `.vercel.app` |
-| 5 | **`SANITY_API_TOKEN` na Vercel** | O site mostra dados de exemplo em vez do CMS |
+| 3 | ~~Contas da Direção~~ | ✅ feito a 14/09/2026 — `presidente` e `comunicacao`, `DIRECAO_PASSWORD` apagada |
+| 4 | **DNS do domínio** — `A` → `76.76.21.21` na Amen, e acrescentar `valejasac.pt` ao projeto na Vercel | O site vive num endereço `.vercel.app` que muda a cada deploy |
+| 5 | ~~`SANITY_API_TOKEN` na Vercel~~ | ✅ feito a 14/09/2026 |
 | 6 | ~~Confirmação antes de publicar nas redes~~ | ✅ feito a 14/09/2026 |
 
 ## Decisões com prazo
 
 | Até quando | O quê |
 |---|---|
-| **14/10/2026** | Plano do Sanity — o Free não permite datasets privados, e as encomendas levam nome, email e telemóvel (§1) |
+| ~~14/10/2026~~ | ~~Plano do Sanity~~ ✅ resolvido a 15/09/2026 — as encomendas saíram do CMS para base de dados própria, e o Free chega para o resto |
 | Antes da loja abrir | Percentagem do sinal (está 30%, inventado por mim) e preços dos 11 artigos sob consulta (§7) |
 | Quando houver tempo | Se se recolhem dados clínicos online, e como (§8) |
 | Sem prazo | Línguas do site — cinco escolhidas (§9) |
@@ -141,39 +141,44 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 - [ ] Repetir as três variáveis na Vercel quando o projeto lá existir
 - [ ] Escrever o conteúdo verdadeiro: plantel, resultados, classificação
 
-#### ⚠️ Decisão a tomar antes de 14/10/2026 — fim do teste
+#### ✅ Decisão tomada a 15/09/2026 — as encomendas saíram do CMS
 
 O projeto está no **Growth Trial**, 30 dias. Ao fim disso desce para o
 plano **Free**, e o Free só permite **datasets públicos**. Público quer
 dizer que qualquer pessoa com o id do projeto lê tudo sem token.
 
 Conteúdo editorial — comunicados, notícias, jogos, plantel — é para ser
-público de qualquer maneira: sai no site. **O problema são as
+público de qualquer maneira: sai no site. **O problema eram as
 encomendas da loja**, que levam nome, email e telemóvel.
 
-Três saídas:
+**Resolvido a 15/09/2026, pela terceira via:** as encomendas saíram do
+CMS para uma base de dados Postgres própria (Neon, plano grátis, região
+`fra1`). O Sanity fica só com o que é para publicar, e o plano Free
+deixa de ser um problema — a 14/10 desce sozinho, sem consequências.
 
-- [ ] **Pagar o Growth** — 15 $/lugar/mês, ou seja ~14 €. Um lugar
-      chega se só o Berto entrar no Studio; a Direção usa `/direcao`,
-      que não precisa de conta Sanity. É a saída que não muda nada
-- [ ] **Tirar os dados pessoais do CMS** — a encomenda fica no Sanity
-      só com número, peças e estado; o nome, email e telemóvel vivem
-      apenas no email que chega ao clube. Custa zero, mas a Direção
-      deixa de poder ligar a alguém a partir da página
-- [ ] **Mudar as encomendas para uma base de dados** (Neon, Supabase,
-      Vercel Postgres — todas com plano grátis suficiente para isto).
-      Mais trabalho de uma vez, e resolve de vez
+- [x] Base de dados criada e ligada ao projeto na Vercel
+- [x] `src/lib/db/` — ligação e camada das encomendas, tabela criada
+      sozinha à primeira utilização
+- [x] Schema `encomenda` apagado do Sanity
+- [x] Ciclo testado contra a base de dados real: gravar, ler, alterar
+      estado, marcar pago, nota interna, apagar
+- [ ] Prazo de conservação — hoje a encomenda fica lá para sempre. O
+      RGPD pede um limite; decidir quanto tempo e apagar o que passar
 
 ---
 
 ## 2. Segredos a gerar antes de ir para o ar
 
-- [ ] `DIRECAO_UTILIZADORES` — uma conta por pessoa, em pares
-      `nome:palavra-passe` separados por vírgulas. São escritas por
-      pessoas: três palavras sem relação entre si valem mais que `Vlj!26#`
-- [ ] Apagar `DIRECAO_PASSWORD` depois — está `valejas1966`, valor de
-      desenvolvimento, e só é usada enquanto não houver contas
-- [ ] `DIRECAO_SECRET` — `openssl rand -hex 32`
+- [x] `DIRECAO_UTILIZADORES` — feito a 14/09/2026. Duas contas,
+      `presidente` e `comunicacao`, em pares `nome:palavra-passe`
+      separados por vírgulas. Três palavras sem relação entre si, que é
+      o que se guarda de cabeça e ninguém adivinha
+- [x] `DIRECAO_PASSWORD` apagada — era `valejas1966`, valor de
+      desenvolvimento. Já não abre nada
+- [x] `DIRECAO_SECRET` — feito, `openssl rand -hex 32`
+- [ ] Trocar as duas palavras-passe da Direção — foram escritas em
+      conversa com a IA, portanto existem fora do cofre. Não é urgente
+      enquanto o site não estiver público, mas é uma linha na Vercel
 - [ ] `MAKE_WEBHOOK_SEGREDO` — `openssl rand -hex 24`
 - [ ] `IFTHENPAY_CALLBACK_CHAVE` — `openssl rand -hex 24`
 - [ ] Todas as variáveis repetidas na Vercel → Settings → Environment Variables,
@@ -334,7 +339,7 @@ Três saídas:
 |---|---|
 | `/loja` | Kit obrigatório de atleta em destaque, catálogo com filtros por família e por preço, escolha de tamanho por lista, personalização com nome e número |
 | `/loja/carrinho` | Revisão da encomenda, identificação de quem encomenda, escolha entre sinal e pagamento total, envio |
-| `/api/loja/encomenda` | Revalida tudo no servidor (os preços vêm do catálogo, nunca do browser), envia email ao clube e recibo a quem encomendou, cria o registo no Sanity |
+| `/api/loja/encomenda` | Revalida tudo no servidor (os preços vêm do catálogo, nunca do browser), grava na base de dados, envia email ao clube e recibo a quem encomendou |
 | `/direcao/encomendas` | Lista das encomendas, resumo do que há a pedir ao fornecedor, estados *recebida → encomendada → pronta → levantada*, marcação de pagamento e notas internas |
 
 O carrinho vive no `localStorage` do browser. A encomenda em si não
@@ -361,8 +366,8 @@ encomenda existe na caixa de correio do clube.
       dados de pagamento seguem no email. Falta decidir se o MB WAY e a
       referência das quotas passam também a servir a loja
 - [ ] **Fotografias dos produtos.** O catálogo aceita imagem, não há nenhuma
-- [ ] **Sanity configurado no servidor**, senão `/direcao/encomendas` só
-      mostra o aviso de CMS em falta
+- [x] **Base de dados ligada** — `/direcao/encomendas` já lê e escreve.
+      Sem `DATABASE_URL` a página avisa e a encomenda segue só por email
 
 ### Objetivo
 

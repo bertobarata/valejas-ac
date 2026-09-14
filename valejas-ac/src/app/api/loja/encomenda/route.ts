@@ -7,9 +7,13 @@
  *   1. Email para o clube (e recibo para quem encomendou). Isto é o
  *      que garante que a encomenda não se perde — funciona mesmo sem
  *      CMS ligado.
- *   2. Documento no Sanity, quando há token de escrita, para a
+ *   2. Registo na base de dados, quando há `DATABASE_URL`, para a
  *      encomenda aparecer em /direcao/encomendas e poder mudar de
  *      estado.
+ *
+ * A encomenda leva nome, email e telemóvel: dados pessoais. É por isso
+ * que vive em base de dados própria e não no CMS, cujo dataset é
+ * legível por quem souber o id do projeto.
  *
  * Os preços NUNCA vêm do cliente: chegam slugs, tamanhos e
  * quantidades, e o servidor vai buscar o preço ao catálogo. Se o
@@ -30,7 +34,7 @@ import {
 } from "@/lib/data/encomendas";
 import { validarEmail, validarNomeCompleto, validarTelemovel } from "@/lib/validacao";
 import { enviarEmail, emailDoClube, emailPara, emailConfigurado } from "@/lib/email";
-import { sanityClientLive, isSanityConfigured } from "@/sanity/client";
+import { bdConfigurada, guardarEncomenda, type EncomendaNova } from "@/lib/db/encomendas";
 
 export const runtime = "nodejs";
 
@@ -238,9 +242,7 @@ export async function POST(req: Request) {
   }
 
   const total = linhas.reduce((s, l) => s + l.preco * l.quantidade, 0);
-  const encomenda: Encomenda = {
-    numero: gerarNumero(),
-    data: new Date().toISOString(),
+  const nova: EncomendaNova = {
     nome, email, telemovel,
     ...(socio  ? { socio }  : {}),
     ...(atleta ? { atleta } : {}),
@@ -249,11 +251,26 @@ export async function POST(req: Request) {
     total,
     momento,
     aPagarAgora: momento === "sinal" ? sinalDe(total) : total,
-    estado: "recebida",
-    pago: false,
   };
 
-  // 1. Email — a via que não pode falhar. Se o clube não a receber, a
+  // 1. Base de dados — primeiro, porque é ela que garante que o número
+  //    da encomenda é único. Os emails já levam o número final.
+  //    Se falhar, a encomenda segue à mesma: gera-se o número aqui e o
+  //    email continua a ser o registo. O que se perde é o acompanhamento
+  //    em /direcao/encomendas, não a encomenda.
+  let encomenda: Encomenda;
+  if (bdConfigurada()) {
+    try {
+      encomenda = await guardarEncomenda(nova);
+    } catch (err) {
+      console.error("Encomenda: falha a guardar na base de dados:", err instanceof Error ? err.message : err);
+      encomenda = { ...nova, numero: gerarNumero(), data: new Date().toISOString(), estado: "recebida", pago: false };
+    }
+  } else {
+    encomenda = { ...nova, numero: gerarNumero(), data: new Date().toISOString(), estado: "recebida", pago: false };
+  }
+
+  // 2. Email — a via que não pode falhar. Se o clube não a receber, a
   //    encomenda não existe para ninguém.
   try {
     await enviarEmail({
@@ -276,7 +293,7 @@ export async function POST(req: Request) {
     );
   }
 
-  // 2. Recibo para quem encomendou. Falhar aqui não invalida a encomenda.
+  // 3. Recibo para quem encomendou. Falhar aqui não invalida a encomenda.
   try {
     await enviarEmail({
       para: email,
@@ -286,20 +303,6 @@ export async function POST(req: Request) {
     });
   } catch (err) {
     console.error("Encomenda: falha a enviar recibo:", err instanceof Error ? err.message : err);
-  }
-
-  // 3. CMS — para a Direção poder acompanhar o estado. Também não é
-  //    crítico: o email já garantiu o registo.
-  if (isSanityConfigured() && process.env.SANITY_API_TOKEN) {
-    try {
-      await sanityClientLive.create({
-        _type: "encomenda",
-        ...encomenda,
-        linhas: encomenda.linhas.map((l) => ({ _type: "linha", ...l })),
-      });
-    } catch (err) {
-      console.error("Encomenda: falha a guardar no CMS:", err instanceof Error ? err.message : err);
-    }
   }
 
   return NextResponse.json({
