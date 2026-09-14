@@ -12,7 +12,7 @@
  *    para não piscar. Um splash que demora mais do que o site é pior
  *    do que não ter splash.
  *  - Há um limite de tempo: mesmo que algo fique pendurado, sai ao fim
- *    de 2,5 segundos. Ninguém fica preso a olhar para um logótipo.
+ *    de 3,5 segundos. Ninguém fica preso a olhar para um logótipo.
  *  - Se o JavaScript falhar, o CSS tira-o na mesma (ver globals.css).
  *    Sem isso, uma falha de script deixava o site inacessível.
  * ─────────────────────────────────────────────────────────────────
@@ -21,8 +21,11 @@
 import { useEffect, useState } from "react";
 
 const CHAVE_SESSAO = "vac_splash_visto";
-const MINIMO_MS    = 500;
-const LIMITE_MS    = 2500;
+/** Tempo mínimo em que o emblema fica à vista, mesmo que o site já esteja
+ *  pronto: meio segundo passava tão depressa que ninguém o via. */
+const MINIMO_MS    = 1500;
+/** E o máximo, para ninguém ficar preso a olhar para um logótipo. */
+const LIMITE_MS    = 3500;
 
 export default function EcraCarregamento() {
   const [aSair, setASair]   = useState(false);

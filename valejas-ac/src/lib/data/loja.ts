@@ -68,6 +68,8 @@ export interface Produto {
   personalizavel?: boolean;
   /** Ficheiro em /public/loja/. Sem ele, mostra-se um lugar reservado. */
   imagem?:     string;
+  /** Conjunto montado a partir de outras peças do catálogo. */
+  kit?:        boolean;
 }
 
 export const CATEGORIAS: {
@@ -116,7 +118,7 @@ function porEncomenda(tamanhos: string[]): Variante[] {
   return tamanhos.map((tamanho) => ({ tamanho, stock: 0 }));
 }
 
-export const PRODUTOS: Produto[] = [
+const CATALOGO: Produto[] = [
   // ── Equipamento de jogo ───────────────────────────────────────
   {
     slug: "equipamento-principal",
@@ -394,6 +396,59 @@ export const PRODUTOS: Produto[] = [
     imagem: "/loja/mochila.webp",
   },
 ];
+
+/**
+ * KIT OBRIGATÓRIO DE ATLETA
+ * ─────────────────────────────────────────────────────────────────
+ * Quem se inscreve para jogar leva isto: o equipamento das cores do
+ * clube, o alternativo para quando as cores chocam com as do
+ * adversário, e um conjunto para treinar durante a semana.
+ *
+ * O preço é a soma das peças, calculada a partir do catálogo — não
+ * escrita à mão. Se a Direção fechar um preço de pacote diferente da
+ * soma, muda-se aqui e em mais lado nenhum.
+ * ─────────────────────────────────────────────────────────────────
+ */
+export const PECAS_DO_KIT = [
+  "equipamento-principal",
+  "equipamento-branco",
+  "conjunto-azul",
+] as const;
+
+function montarKit(catalogo: Produto[]): Produto {
+  const pecas = PECAS_DO_KIT
+    .map((slug) => catalogo.find((p) => p.slug === slug))
+    .filter((p): p is Produto => Boolean(p));
+
+  return {
+    slug: "kit-atleta",
+    nome: "Kit obrigatório de atleta",
+    referencia: pecas.map((p) => p.referencia).join(" + "),
+    categoria: "jogo",
+    descricao:
+      "O que todo o atleta do clube tem de ter: equipamento principal, " +
+      "equipamento alternativo e conjunto de treino. Num pedido só.",
+    preco: pecas.reduce((soma, p) => soma + p.preco, 0),
+    inclui: pecas.map((p) => p.nome),
+    personalizavel: true,
+    // Todas as peças partilham a mesma escala de tamanhos.
+    variantes: pecas[0]?.variantes ?? [],
+    imagem: "/loja/kit-atleta.webp",
+    kit: true,
+  };
+}
+
+export const KIT_ATLETA: Produto = montarKit(CATALOGO);
+
+/** O kit primeiro: é o que a maioria vem cá buscar. */
+export const PRODUTOS: Produto[] = [KIT_ATLETA, ...CATALOGO];
+
+/** As peças soltas que o kit junta, para as mostrar por baixo dele. */
+export function pecasDoKit(): Produto[] {
+  return PECAS_DO_KIT
+    .map((slug) => CATALOGO.find((p) => p.slug === slug))
+    .filter((p): p is Produto => Boolean(p));
+}
 
 export function produtosPorCategoria(c: CategoriaLoja): Produto[] {
   return PRODUTOS.filter((p) => p.categoria === c);

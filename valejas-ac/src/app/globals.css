@@ -316,9 +316,10 @@
     animation: splash-entrada 1.5s ease-in-out both;
   }
   /* Rede de segurança: se o JavaScript falhar, o splash desaparece na
-     mesma ao fim de 3 segundos em vez de tapar o site para sempre. */
+     mesma — um segundo depois do limite que o próprio script tem, para
+     não lhe cortar a saída a meio. */
   [data-splash] {
-    animation: splash-desistir 0s linear 3s forwards;
+    animation: splash-desistir 0s linear 4.5s forwards;
   }
 
   /* Uma entrada só, não um ciclo: cresce, passa do ponto, assenta. */

@@ -62,6 +62,12 @@ function resolverLinhas(recebidas: LinhaRecebida[]): { linhas: LinhaEncomenda[];
       erros.push(`Peça desconhecida: ${slug || "(sem referência)"}.`);
       continue;
     }
+    // Sem preço fechado não há nada a cobrar: pede-se orçamento ao clube.
+    // O site já não mostra botão, mas a regra tem de valer no servidor.
+    if (produto.sobConsulta || produto.preco <= 0) {
+      erros.push(`${produto.nome} é sob consulta — fala com o clube para encomendar.`);
+      continue;
+    }
     if (!produto.variantes.some((v) => v.tamanho === tamanho)) {
       erros.push(`Tamanho inválido para ${produto.nome}.`);
       continue;

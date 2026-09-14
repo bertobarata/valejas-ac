@@ -2,22 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import {
-  CATEGORIAS, FORNECEDOR, PRAZO_ENCOMENDA_SEMANAS, getProduto, produtosPorCategoria,
+  FORNECEDOR, KIT_ATLETA, PRAZO_ENCOMENDA_SEMANAS,
 } from "@/lib/data/loja";
 import CartaoProduto from "@/components/loja/CartaoProduto";
+import CatalogoLoja from "@/components/loja/CatalogoLoja";
 import BarraCarrinho from "@/components/loja/BarraCarrinho";
 import RodapeLoja from "@/components/loja/RodapeLoja";
 
 export const metadata: Metadata = {
   title: "Loja",
   description:
-    "Equipamento oficial do Valejas Atlético Clube. Kit de formação, material de jogo e de treino. Levantamento sempre na sede.",
+    "Equipamento oficial do Valejas Atlético Clube. Kit obrigatório de atleta, material de jogo, treino e acessórios. Levantamento sempre na sede.",
 };
 
 export default function LojaPage() {
-  // O equipamento principal abre a loja: é o que mais gente vem procurar.
-  const destaque = getProduto("equipamento-principal");
-
   return (
     <div className="bg-surface pb-28">
       {/* Cabeçalho */}
@@ -30,7 +28,8 @@ export default function LojaPage() {
             Loja do <span>clube</span>
           </h1>
 
-          {/* As duas regras que governam tudo o resto */}
+          {/* As duas regras que governam tudo o resto — ditas aqui uma vez,
+              para não terem de ser repetidas em cada peça e cada tamanho. */}
           <div className="grid sm:grid-cols-2 gap-6 mt-8 max-w-2xl">
             <p className="flex items-start gap-3 font-body text-on-surface-muted leading-relaxed">
               <MapPin size={18} className="text-yellow shrink-0 mt-1" aria-hidden />
@@ -38,56 +37,46 @@ export default function LojaPage() {
             </p>
             <p className="flex items-start gap-3 font-body text-on-surface-muted leading-relaxed">
               <Clock size={18} className="text-yellow shrink-0 mt-1" aria-hidden />
-              O que não está na sede encomenda-se, até {PRAZO_ENCOMENDA_SEMANAS} semanas.
+              O que não houver em stock é encomendado, num prazo máximo de{" "}
+              {PRAZO_ENCOMENDA_SEMANAS} semanas.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Equipamento principal em destaque */}
-      {destaque && (
-        <section className="section-container py-14 md:py-20">
-          <div className="max-w-2xl mb-8">
-            <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow mb-2">
-              As cores do clube
+      {/* Kit obrigatório — o que traz cá a maioria de quem entra na loja */}
+      <section className="section-container py-14 md:py-20">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] gap-10 lg:gap-14 items-center">
+          <div>
+            <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow mb-3">
+              Obrigatório para quem joga
             </p>
-            <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-              {destaque.nome}
+            <h2 className="font-headline font-black uppercase text-4xl md:text-5xl tracking-tighter text-on-surface leading-none">
+              Kit de <span className="text-yellow">atleta</span>
             </h2>
+            <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-5 max-w-md">
+              Quem se inscreve para jogar leva isto: as cores do clube para os
+              jogos em casa, o equipamento alternativo para quando as cores
+              chocam com as do adversário, e um conjunto para treinar durante
+              a semana.
+            </p>
+            <p className="font-body text-on-surface-muted leading-relaxed mt-4 max-w-md">
+              Escolhe o tamanho uma vez e leva as três peças de uma assentada.
+              Depois, cada uma pode ser comprada à parte aqui em baixo.
+            </p>
           </div>
-          <CartaoProduto produto={destaque} destaque />
-        </section>
-      )}
 
-      {/* Categorias */}
-      {CATEGORIAS.map((cat) => {
-        const itens = produtosPorCategoria(cat.id);
-        if (itens.length === 0) return null;
+          <CartaoProduto produto={KIT_ATLETA} destaque />
+        </div>
+      </section>
 
-        return (
-          <section
-            key={cat.id}
-            id={cat.id}
-            className="section-container py-12 md:py-16 border-t border-on-surface/10 scroll-mt-24"
-          >
-            <div className="max-w-2xl mb-8">
-              <h2 className="font-headline font-black uppercase text-2xl md:text-3xl tracking-tighter text-on-surface">
-                {cat.nome}
-              </h2>
-              <p className="font-body text-on-surface-muted mt-2">{cat.intro}</p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-on-surface/10">
-              {itens.map((p) => (
-                <CartaoProduto key={p.slug} produto={p} />
-              ))}
-            </div>
-          </section>
-        );
-      })}
+      {/* Catálogo com filtros */}
+      <div className="border-t border-on-surface/10">
+        <CatalogoLoja />
+      </div>
 
       {/* Dúvidas */}
-      <section className="section-container pt-4">
+      <section className="section-container">
         <p className="font-body text-on-surface-muted">
           Dúvidas de tamanhos? Passa pela sede e experimenta antes de encomendar,
           ou <Link href="/contactos" className="text-yellow underline">fala connosco</Link>.

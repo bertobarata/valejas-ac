@@ -3,9 +3,13 @@
 /**
  * CARTÃO DE PRODUTO
  * ─────────────────────────────────────────────────────────────────
- * Escolher tamanho e juntar ao carrinho, sem sair da página. Uma loja
- * com sete produtos não precisa de página de detalhe por peça — era
- * um clique a mais para ver o que já está à vista.
+ * Escolher tamanho e juntar ao carrinho, sem sair da página. Um
+ * catálogo de vinte e três peças não precisa de página de detalhe por
+ * peça — era um clique a mais para ver o que já está à vista.
+ *
+ * O cartão não fala de stock nem de prazos. Quase tudo é por encomenda,
+ * e repetir isso em cada tamanho de cada peça era ruído: a regra está
+ * dita uma vez, no cabeçalho da loja.
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -13,11 +17,20 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
-import { Check, Mail, Plus } from "lucide-react";
-import {
-  PRAZO_ENCOMENDA_SEMANAS, formatEuros, stockDe, type Produto,
-} from "@/lib/data/loja";
+import { Check, ChevronDown, Mail, Plus } from "lucide-react";
+import { formatEuros, type Produto } from "@/lib/data/loja";
 import { useCarrinho } from "@/lib/loja/carrinho";
+
+/**
+ * "Do 4 anos ao 3XL". Diz a escala numa linha, em vez de despejar treze
+ * botões antes de a pessoa saber sequer se o produto lhe interessa.
+ */
+function escalaDeTamanhos(produto: Produto): string {
+  const tamanhos = produto.variantes.map((v) => v.tamanho);
+  if (tamanhos.length === 0) return "Tamanho único";
+  if (tamanhos.length === 1) return tamanhos[0];
+  return `Do ${tamanhos[0]} ao ${tamanhos[tamanhos.length - 1]}`;
+}
 
 export default function CartaoProduto({
   produto, destaque,
@@ -32,8 +45,7 @@ export default function CartaoProduto({
   const [juntou, setJuntou] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
-  const stock = tamanho ? stockDe(produto, tamanho) : 0;
-  const porEncomenda = Boolean(tamanho) && stock === 0;
+  const idTamanho = `tamanho-${produto.slug}`;
 
   function adicionar() {
     if (!tamanho) {
@@ -64,7 +76,14 @@ export default function CartaoProduto({
           por isso vive dentro de uma moldura própria, sem se fingir de
           fotografia de estúdio do clube. */}
       {produto.imagem && (
-        <div className={clsx("relative bg-white", destaque ? "aspect-[2/1]" : "aspect-[3/2]")}>
+        <div
+          className={clsx(
+            "relative bg-white",
+            // A imagem do kit é três maquetas lado a lado: numa moldura
+            // quadrada ficaria minúscula ao centro.
+            produto.kit ? "aspect-[16/4]" : destaque ? "aspect-[2/1]" : "aspect-[3/2]"
+          )}
+        >
           <Image
             src={produto.imagem}
             alt={produto.nome}
@@ -136,47 +155,46 @@ export default function CartaoProduto({
         </div>
       ) : (
       <>
-      {/* Tamanhos */}
-      <fieldset className="mt-6">
-        <legend className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-3">
+      {/* Tamanhos — um botão que abre a lista, com a escala escrita em cima */}
+      <div className="mt-6">
+        <label
+          htmlFor={idTamanho}
+          className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block"
+        >
           Tamanho
-        </legend>
-        <div className="flex flex-wrap gap-2">
-          {produto.variantes.map((v) => {
-            const ativo = tamanho === v.tamanho;
-            return (
-              <button
-                key={v.tamanho}
-                type="button"
-                onClick={() => { setTamanho(v.tamanho); setErro(null); }}
-                aria-pressed={ativo}
-                className={clsx(
-                  "font-body text-sm px-4 py-2.5 border transition-colors duration-200",
-                  ativo
-                    ? "border-yellow bg-yellow/15 text-on-surface"
-                    : "border-on-surface/20 text-on-surface-muted hover:border-on-surface/50 hover:text-on-surface"
-                )}
-              >
-                {v.tamanho}
-                {v.stock === 0 && (
-                  <span className="block font-body text-[0.7rem] text-on-surface-muted">
-                    por encomenda
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-      </fieldset>
-
-      {/* Disponibilidade do tamanho escolhido */}
-      {tamanho && (
-        <p className="font-body text-sm text-on-surface-muted mt-3">
-          {porEncomenda
-            ? `Não está na sede. Encomenda-se ao fornecedor, até ${PRAZO_ENCOMENDA_SEMANAS} semanas.`
-            : `Disponível na sede${stock <= 2 ? ` — resta${stock === 1 ? "" : "m"} ${stock}` : ""}.`}
+        </label>
+        <p className="font-body text-sm text-on-surface-muted mt-1 mb-3">
+          {escalaDeTamanhos(produto)}
         </p>
-      )}
+
+        <div className="relative">
+          <select
+            id={idTamanho}
+            value={tamanho}
+            onChange={(e) => { setTamanho(e.target.value); setErro(null); }}
+            className={clsx(
+              "appearance-none w-full font-body text-sm text-left",
+              "px-4 py-3.5 pr-11 border transition-colors duration-200 cursor-pointer",
+              "bg-transparent text-on-surface",
+              tamanho
+                ? "border-yellow bg-yellow/10"
+                : "border-on-surface/20 hover:border-on-surface/50"
+            )}
+          >
+            <option value="">Escolher tamanho</option>
+            {produto.variantes.map((v) => (
+              <option key={v.tamanho} value={v.tamanho}>
+                {v.tamanho}
+              </option>
+            ))}
+          </select>
+          <ChevronDown
+            size={16}
+            aria-hidden
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-muted pointer-events-none"
+          />
+        </div>
+      </div>
 
       {/* Gravação */}
       {produto.personalizavel && (

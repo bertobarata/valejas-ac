@@ -15,7 +15,7 @@ import clsx from "clsx";
 import { Check, Loader2, Minus, Plus, Send, ShoppingBag, Trash2 } from "lucide-react";
 import { useCarrinho } from "@/lib/loja/carrinho";
 import {
-  PRAZO_ENCOMENDA_SEMANAS, SINAL_PERCENTAGEM, formatEuros, getProduto, stockDe,
+  PRAZO_ENCOMENDA_SEMANAS, SINAL_PERCENTAGEM, formatEuros, getProduto,
 } from "@/lib/data/loja";
 import { MOMENTOS_PAGAMENTO, type MomentoPagamento } from "@/lib/data/encomendas";
 import { validarEmail, validarTelemovel } from "@/lib/validacao";
@@ -37,11 +37,6 @@ export default function Carrinho() {
   const [feito, setFeito]     = useState<{ numero: string; aPagarAgora: number } | null>(null);
 
   const aPagarAgora = momento === "sinal" ? sinal : total;
-  const porEncomendar = linhas.filter((l) => {
-    const p = getProduto(l.slug);
-    return p ? stockDe(p, l.tamanho) === 0 : false;
-  });
-
   async function submeter(e: React.FormEvent) {
     e.preventDefault();
     const falhas: string[] = [];
@@ -152,7 +147,6 @@ export default function Carrinho() {
             {linhas.map((l, i) => {
               const p = getProduto(l.slug);
               if (!p) return null;
-              const emStock = stockDe(p, l.tamanho) > 0;
 
               return (
                 <li key={`${l.slug}-${l.tamanho}-${i}`} className="py-5 border-b border-on-surface/10">
@@ -167,11 +161,7 @@ export default function Carrinho() {
                           <> · {l.personalizacao.nome} {l.personalizacao.numero}</>
                         )}
                       </p>
-                      <p className="font-body text-sm text-on-surface-muted">
-                        {emStock
-                          ? "Na sede"
-                          : `Por encomenda, até ${PRAZO_ENCOMENDA_SEMANAS} semanas`}
-                      </p>
+
                     </div>
 
                     <div className="flex items-center gap-4 shrink-0">
@@ -216,14 +206,12 @@ export default function Carrinho() {
             })}
           </ul>
 
-          {porEncomendar.length > 0 && (
-            <p className="font-body text-sm text-on-surface-muted mt-4 bg-surface-high p-4">
-              {porEncomendar.length === 1 ? "Uma peça não está" : `${porEncomendar.length} peças não estão`} na
-              sede e {porEncomendar.length === 1 ? "tem" : "têm"} de ser encomendada
-              {porEncomendar.length === 1 ? "" : "s"} ao fornecedor. A encomenda
-              inteira fica pronta quando chegar, até {PRAZO_ENCOMENDA_SEMANAS} semanas.
-            </p>
-          )}
+          {/* A regra do prazo é dita uma vez, aqui — não peça a peça. */}
+          <p className="font-body text-sm text-on-surface-muted mt-4 bg-surface-high p-4">
+            O que estiver na sede separa-se de imediato. O que faltar é pedido ao
+            fornecedor e a encomenda fica pronta quando chegar, até{" "}
+            {PRAZO_ENCOMENDA_SEMANAS} semanas. Avisamos-te por email.
+          </p>
         </section>
 
         {/* Quem encomenda */}
