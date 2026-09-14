@@ -18,7 +18,7 @@ import {
   validarEmail, validarTelemovel, validarNomeCompleto,
   validarDataNascimento, calcularIdade, eMenor, formatar,
 } from "@/lib/validacao";
-import { enviarEmail, emailDoClube, emailConfigurado } from "@/lib/email";
+import { enviarEmail, emailDoClube, emailPara, emailConfigurado } from "@/lib/email";
 import { declaracao } from "@/lib/data/direitosImagem";
 
 export const runtime = "nodejs";
@@ -124,7 +124,7 @@ export async function POST(req: Request) {
 
   try {
     await enviarEmail({
-      para: emailConfigurado() ? emailDoClube() : "log@localhost",
+      para: emailConfigurado() ? emailPara("inscricoes") : "log@localhost",
       assunto: `Pedido de inscrição — ${m!.nome} — ${nome}`,
       texto: linhas.join("\n"),
       responder: email,

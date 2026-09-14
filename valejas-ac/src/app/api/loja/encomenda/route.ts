@@ -29,7 +29,7 @@ import {
   type Encomenda, type LinhaEncomenda, type MomentoPagamento,
 } from "@/lib/data/encomendas";
 import { validarEmail, validarNomeCompleto, validarTelemovel } from "@/lib/validacao";
-import { enviarEmail, emailDoClube, emailConfigurado } from "@/lib/email";
+import { enviarEmail, emailDoClube, emailPara, emailConfigurado } from "@/lib/email";
 import { sanityClientLive, isSanityConfigured } from "@/sanity/client";
 
 export const runtime = "nodejs";
@@ -257,7 +257,7 @@ export async function POST(req: Request) {
   //    encomenda não existe para ninguém.
   try {
     await enviarEmail({
-      para: emailConfigurado() ? emailDoClube() : "log@localhost",
+      para: emailConfigurado() ? emailPara("loja") : "log@localhost",
       assunto: `Encomenda ${encomenda.numero} — ${nome}`,
       texto: corpoParaOClube(encomenda),
       responder: email,

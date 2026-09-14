@@ -42,6 +42,35 @@ export function emailDoClube(): string {
   return process.env.EMAIL_CLUBE ?? "";
 }
 
+/**
+ * Para onde vai cada coisa.
+ *
+ * O clube tem cinco caixas e nem tudo é para a mesma pessoa: as fichas
+ * de sócio são transcritas pelo Presidente, as encomendas são separadas
+ * por quem trata da loja, os pedidos de inscrição são respondidos por
+ * quem coordena as modalidades.
+ *
+ * Cada um tem a sua variável; faltando, cai na caixa geral. Assim
+ * começa-se com uma caixa só e separa-se depois, sem tocar em código.
+ *
+ *   EMAIL_SOCIOS=direcao@valejasac.pt
+ *   EMAIL_INSCRICOES=coordenacao@valejasac.pt
+ *   EMAIL_LOJA=geral@valejasac.pt
+ *   EMAIL_PAGAMENTOS=direcao@valejasac.pt
+ */
+export type Assunto = "socios" | "inscricoes" | "loja" | "pagamentos";
+
+const VARIAVEL: Record<Assunto, string> = {
+  socios:     "EMAIL_SOCIOS",
+  inscricoes: "EMAIL_INSCRICOES",
+  loja:       "EMAIL_LOJA",
+  pagamentos: "EMAIL_PAGAMENTOS",
+};
+
+export function emailPara(assunto: Assunto): string {
+  return process.env[VARIAVEL[assunto]]?.trim() || emailDoClube();
+}
+
 export async function enviarEmail(msg: Mensagem): Promise<void> {
   const provider = process.env.EMAIL_PROVIDER ?? (process.env.RESEND_API_KEY ? "resend" : "log");
 

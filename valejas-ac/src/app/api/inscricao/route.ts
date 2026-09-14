@@ -35,7 +35,7 @@ import {
   validarTelefoneFixo, validarEmail, validarDataNascimento,
   validarValidadeCC, validarNomeCompleto, eMenor, formatar,
 } from "@/lib/validacao";
-import { enviarEmail, emailDoClube, emailConfigurado } from "@/lib/email";
+import { enviarEmail, emailDoClube, emailPara, emailConfigurado } from "@/lib/email";
 
 export const runtime = "nodejs";
 
@@ -285,7 +285,7 @@ export async function POST(req: Request) {
     const orderId = texto("orderId");
 
     const menor = eMenor(proposta.dataNascimento);
-    const destino = emailDoClube();
+    const destino = emailPara("socios");
     if (!emailConfigurado() && process.env.EMAIL_PROVIDER !== "log") {
       return NextResponse.json(
         { ok: false, erros: ["Envio de email ainda não configurado no servidor."] },

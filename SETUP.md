@@ -41,6 +41,7 @@ O que acontece sem cada uma:
 | `NEXT_PUBLIC_SITE_URL` | Funciona, mas as imagens de partilha saem relativas e a Meta não as vai buscar |
 | `DIRECAO_UTILIZADORES` + `DIRECAO_SECRET` | A área da Direção diz que não está configurada |
 | `RESEND_API_KEY` + `EMAIL_CLUBE` | **Inscrições e encomendas não chegam a ninguém** (modo `log` escreve no terminal) |
+| `EMAIL_SOCIOS`, `EMAIL_INSCRICOES`, `EMAIL_LOJA`, `EMAIL_PAGAMENTOS` | Nada: cada assunto cai na caixa geral |
 | Sanity | Mostra os dados de exemplo; as áreas da Direção avisam que o CMS não está ligado |
 | Ifthenpay | MB WAY e referência dão 503 e o formulário cai para transferência |
 | Make.com | O comunicado sai no site e as redes ficam em demonstração |

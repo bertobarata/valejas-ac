@@ -16,7 +16,7 @@
  */
 
 import { NextResponse } from "next/server";
-import { enviarEmail, emailDoClube } from "@/lib/email";
+import { enviarEmail, emailDoClube, emailPara } from "@/lib/email";
 
 export const runtime = "nodejs";
 
@@ -37,7 +37,7 @@ export async function GET(req: Request) {
 
   try {
     await enviarEmail({
-      para:    emailDoClube() || "log@localhost",
+      para:    emailPara("pagamentos") || "log@localhost",
       assunto: `Quota paga — ${orderId}`,
       texto: [
         "PAGAMENTO DE QUOTA RECEBIDO",

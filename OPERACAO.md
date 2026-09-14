@@ -86,6 +86,31 @@ encomendou. É a via que não depende do CMS estar de pé.
 
 ---
 
+## As cinco caixas de correio
+
+O clube tem cinco endereços em `valejasac.pt`, e o site sabe mandar cada
+coisa para a caixa certa. A variável de cada assunto está no
+`.env.example`; faltando alguma, o email cai na caixa geral.
+
+| O que entra pelo site | Vai para | Quem trata |
+|---|---|---|
+| Ficha de sócio | `EMAIL_SOCIOS` | Quem transcreve para o Softgab |
+| Pedido de inscrição numa modalidade | `EMAIL_INSCRICOES` | Quem coordena as modalidades |
+| Encomenda da loja | `EMAIL_LOJA` | Quem separa e pede ao fornecedor |
+| Confirmação de pagamento | `EMAIL_PAGAMENTOS` | Quem confere as contas |
+| Tudo o resto | `EMAIL_CLUBE` | |
+
+Quem **assina** os envios é sempre o `EMAIL_REMETENTE`, e tem de ser um
+endereço do domínio verificado na Resend. A resposta vai para quem
+escreveu — as mensagens levam `reply-to` com o email da pessoa, para que
+responder na caixa chegue a quem de direito.
+
+> O `valejas.a.c@hotmail.com` está impresso na ficha de atleta e no termo
+> de direitos de imagem que as pessoas têm em casa. Vale a pena mantê-lo a
+> reencaminhar durante uns meses.
+
+---
+
 ## Documentos para descarregar
 
 Papéis que a pessoa imprime, trata fora do site e entrega na sede.
