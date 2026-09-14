@@ -174,6 +174,9 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
 - [x] **5** — Página de órgãos sociais (Direção, Conselho Fiscal, MAG)
 - [x] **6** — Página da história (fundação, origens, localização com mapa)
 - [x] **7** — Mote, patrocinadores e instalações
+- [x] Plantéis editáveis pela Direção em /direcao/plantel — equipa A, B e os
+      sete escalões. Falta a lista real de jogadores: o que está no site é
+      um plantel de exemplo até alguém escrever o verdadeiro
 - [x] **8** — Página de jogos + área do departamento de comunicação
       (calendário oficial das 30 jornadas importado do PDF da AF Lisboa
       a 14/09/2026; resultados e classificação atualizam-se em /direcao/jogos)

@@ -24,80 +24,27 @@ import { getModalidade } from "@/lib/data/modalidades";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Tipos ──────────────────────────────────────────────────────────
-/** Identificador de equipa: seniores ou escalão de formação. */
-type Equipa = string;
+import {
+  EQUIPAS, PLANTEL_DE_EXEMPLO, PLURAL_POSICAO, porPosicao,
+  type Jogador,
+} from "@/lib/data/plantel";
 
-type Posicao = "Guarda-Redes" | "Fixo" | "Ala" | "Pivot" | "Universal";
+export default function PlantelFilter({ jogadores }: { jogadores?: Jogador[] }) {
+  // Sem CMS ligado, o site mostra o plantel de exemplo — assinalado
+  // como tal em @/lib/data/plantel.
+  const plantel = jogadores?.length ? jogadores : PLANTEL_DE_EXEMPLO;
 
-type Jogador = {
-  numero:   number;
-  nome:     string;
-  posicao:  Posicao;
-  equipa:   Equipa;
-  capitao?: boolean;
-};
-
-/**
- * Equipas por ordem descendente de idade — seniores primeiro, petizes
- * no fim. Os escalões vêm da mesma fonte que a página de modalidades,
- * invertidos, para não haver duas listas a divergir com o tempo.
- */
-const ESCALOES_FUTSAL = getModalidade("futsal")?.escaloes ?? [];
-
-const EQUIPAS: { id: Equipa; label: string }[] = [
-  { id: "a", label: "Equipa A" },
-  { id: "b", label: "Equipa B" },
-  ...[...ESCALOES_FUTSAL].reverse().map((e) => ({
-    id: e.toLowerCase(),
-    label: e,
-  })),
-];
-
-// ── Dados de exemplo — substituir pelo plantel real ────────────────
-// ⚠️ Nomes inventados. A Direção tem de fornecer o plantel verdadeiro,
-//    separado por Equipa A e Equipa B. Registado no TODO.md.
-const JOGADORES: Jogador[] = [
-  { numero: 1,  nome: "Tiago Santos",   posicao: "Guarda-Redes", equipa: "a" },
-  { numero: 13, nome: "Fábio Lima",     posicao: "Guarda-Redes", equipa: "a" },
-  { numero: 3,  nome: "Pedro Nunes",    posicao: "Fixo",         equipa: "a" },
-  { numero: 7,  nome: "Bruno Mendes",   posicao: "Fixo",         equipa: "a" },
-  { numero: 10, nome: "Ricardo Fontes", posicao: "Ala",          equipa: "a", capitao: true },
-  { numero: 8,  nome: "Dani Ferreira",  posicao: "Ala",          equipa: "a" },
-  { numero: 11, nome: "André Costa",    posicao: "Ala",          equipa: "a" },
-  { numero: 19, nome: "Alex Silva",     posicao: "Pivot",        equipa: "a" },
-];
-
-/** Ordem de apresentação — a mesma que se usa numa ficha de jogo. */
-const ORDEM_POSICOES: Posicao[] = ["Guarda-Redes", "Fixo", "Ala", "Pivot", "Universal"];
-
-const PLURAL: Record<Posicao, string> = {
-  "Guarda-Redes": "Guarda-Redes",
-  Fixo:           "Fixos",
-  Ala:            "Alas",
-  Pivot:          "Pivots",
-  Universal:      "Universais",
-};
-
-export default function PlantelFilter() {
-  const [equipa, setEquipa] = useState<Equipa>("a");
+  const [equipa, setEquipa] = useState(EQUIPAS[0]?.id ?? "a");
   const sectionRef = useRef<HTMLElement>(null);
 
   const visiveis = useMemo(
-    () => JOGADORES.filter((j) => j.equipa === equipa),
-    [equipa]
+    () => plantel.filter((j) => j.equipa === equipa),
+    [plantel, equipa]
   );
 
   const nomeEquipa = EQUIPAS.find((e) => e.id === equipa)?.label ?? "";
 
-  const porPosicao = useMemo(
-    () =>
-      ORDEM_POSICOES.map((p) => ({
-        posicao: p,
-        jogadores: visiveis.filter((j) => j.posicao === p),
-      })).filter((g) => g.jogadores.length > 0),
-    [visiveis]
-  );
+  const grupos = useMemo(() => porPosicao(visiveis), [visiveis]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -149,16 +96,16 @@ export default function PlantelFilter() {
         </div>
 
         {/* Plantel, por posição */}
-        {porPosicao.length === 0 ? (
+        {grupos.length === 0 ? (
           <p className="font-body text-on-surface-muted py-12">
             O plantel de {nomeEquipa} ainda não está publicado.
           </p>
         ) : (
           <div className="space-y-14">
-            {porPosicao.map((grupo) => (
+            {grupos.map((grupo) => (
               <div key={grupo.posicao}>
                 <h3 className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-on-surface-muted border-b border-on-surface/10 pb-3 mb-6">
-                  {PLURAL[grupo.posicao]}
+                  {PLURAL_POSICAO[grupo.posicao]}
                 </h3>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-on-surface/10">

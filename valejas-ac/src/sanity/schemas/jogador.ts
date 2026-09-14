@@ -1,39 +1,44 @@
 import { defineField, defineType } from "sanity";
 
+/**
+ * JOGADOR
+ * ─────────────────────────────────────────────────────────────────
+ * O plantel escreve-se em /direcao/plantel, não aqui — esta é a
+ * forma como fica guardado.
+ *
+ * Sem estatísticas: a Direção pediu um plantel, não uma ficha de
+ * scouting. Golos, assistências e ratings saíram do modelo em vez de
+ * ficarem a zero para sempre.
+ * ─────────────────────────────────────────────────────────────────
+ */
 export const jogador = defineType({
   name: "jogador",
   title: "Jogador",
   type: "document",
-  groups: [
-    { name: "perfil",      title: "Perfil" },
-    { name: "estatisticas", title: "Estatísticas" },
-  ],
   fields: [
     defineField({
       name: "nome",
-      title: "Nome do jogador",
+      title: "Nome",
       type: "string",
-      group: "perfil",
       validation: (R) => R.required(),
     }),
     defineField({
       name: "numero",
       title: "Número de camisola",
       type: "number",
-      group: "perfil",
       validation: (R) => R.required().min(1).max(99),
     }),
     defineField({
       name: "posicao",
       title: "Posição",
       type: "string",
-      group: "perfil",
       options: {
         list: [
-          { title: "Guarda-redes", value: "Guarda-redes" },
-          { title: "Universal",    value: "Universal" },
+          { title: "Guarda-Redes", value: "Guarda-Redes" },
+          { title: "Fixo",         value: "Fixo" },
           { title: "Ala",          value: "Ala" },
           { title: "Pivot",        value: "Pivot" },
+          { title: "Universal",    value: "Universal" },
         ],
         layout: "radio",
       },
@@ -42,94 +47,34 @@ export const jogador = defineType({
     defineField({
       name: "equipa",
       title: "Equipa",
+      description: "«a» e «b» para os seniores; os escalões em minúsculas.",
       type: "string",
-      group: "perfil",
-      options: {
-        list: [
-          { title: "Seniores Masculinos",  value: "Masculinos" },
-          { title: "Seniores Femininos",   value: "Femininos" },
-          { title: "Sub-19",               value: "Sub-19" },
-          { title: "Sub-17",               value: "Sub-17" },
-          { title: "Sub-15",               value: "Sub-15" },
-        ],
-      },
       validation: (R) => R.required(),
     }),
     defineField({
-      name: "ativo",
-      title: "Ativo no plantel",
-      description: "Desativar para jogadores que saíram mas devem constar no histórico.",
+      name: "capitao",
+      title: "Capitão",
       type: "boolean",
-      group: "perfil",
+      initialValue: false,
+    }),
+    defineField({
+      name: "ativo",
+      title: "No plantel",
+      description: "Desligar em vez de apagar, para quem saiu a meio da época.",
+      type: "boolean",
       initialValue: true,
     }),
-    defineField({
-      name: "foto",
-      title: "Fotografia",
-      type: "image",
-      group: "perfil",
-      options: { hotspot: true },
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Descrição da imagem",
-          type: "string",
-        }),
-      ],
-    }),
-    defineField({
-      name: "nacionalidade",
-      title: "Nacionalidade",
-      type: "string",
-      group: "perfil",
-      initialValue: "Portuguesa",
-    }),
-    defineField({
-      name: "golos",
-      title: "Golos na época",
-      type: "number",
-      group: "estatisticas",
-      initialValue: 0,
-    }),
-    defineField({
-      name: "assistencias",
-      title: "Assistências na época",
-      type: "number",
-      group: "estatisticas",
-      initialValue: 0,
-    }),
-    defineField({
-      name: "rating",
-      title: "Rating (0–10)",
-      type: "number",
-      group: "estatisticas",
-      validation: (R) => R.min(0).max(10),
-      initialValue: 0,
-    }),
-    defineField({
-      name: "epoca",
-      title: "Época",
-      description: "Ex: 2024/25",
-      type: "string",
-      group: "estatisticas",
-      initialValue: "2024/25",
-    }),
   ],
+
+  orderings: [
+    { name: "numero", title: "Por número", by: [{ field: "numero", direction: "asc" }] },
+  ],
+
   preview: {
-    select: {
-      title:    "nome",
-      subtitle: "posicao",
-      media:    "foto",
-      numero:   "numero",
-    },
-    prepare: ({ title, subtitle, media, numero }) => ({
-      title: `${numero ? `#${numero} ` : ""}${title}`,
-      subtitle,
-      media,
+    select: { nome: "nome", numero: "numero", posicao: "posicao", equipa: "equipa" },
+    prepare: ({ nome, numero, posicao, equipa }) => ({
+      title: `${numero ?? "?"} · ${nome}`,
+      subtitle: [posicao, equipa].filter(Boolean).join(" — "),
     }),
   },
-  orderings: [
-    { title: "Número de camisola", name: "numeroAsc", by: [{ field: "numero", direction: "asc" }] },
-    { title: "Nome (A–Z)",         name: "nomeAsc",   by: [{ field: "nome",   direction: "asc" }] },
-  ],
 });

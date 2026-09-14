@@ -42,6 +42,9 @@ export default function DirecaoPage() {
               <Link href="/direcao/jogos" className="btn-ghost text-sm">
                 Jogos e classificação
               </Link>
+              <Link href="/direcao/plantel" className="btn-ghost text-sm">
+                Plantéis
+              </Link>
               <Link href="/direcao/encomendas" className="btn-ghost text-sm">
                 Encomendas da loja
               </Link>

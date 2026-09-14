@@ -1,5 +1,6 @@
 import { sanityClient, isSanityConfigured } from "./client";
 import type { Artigo, Categoria } from "@/lib/data/noticias";
+import type { JogadorSanity } from "@/lib/data/plantel";
 
 // ────────────────────────────────────────────────────────────────────────────
 // Tipos Sanity → tipos do site
@@ -15,20 +16,6 @@ interface SanityArtigo {
   autor:     string;
   excerto:   string;
   imagem?:   { asset: { _ref: string }; alt?: string };
-}
-
-interface SanityJogador {
-  _id:          string;
-  nome:         string;
-  numero:       number;
-  posicao:      string;
-  equipa:       string;
-  ativo:        boolean;
-  foto?:        { asset: { _ref: string }; alt?: string };
-  golos:        number;
-  assistencias: number;
-  rating:       number;
-  epoca:        string;
 }
 
 interface SanityJogo {
@@ -116,19 +103,19 @@ function sanityArtigoToArtigo(a: SanityArtigo): Artigo {
 // JOGADORES
 // ────────────────────────────────────────────────────────────────────────────
 
-export async function fetchJogadores(equipa?: string): Promise<SanityJogador[] | null> {
+/**
+ * O plantel guardado. Só quem está no plantel — quem saiu fica no CMS
+ * desligado, para o histórico, mas não aparece no site.
+ */
+export async function fetchJogadores(equipa?: string): Promise<JogadorSanity[] | null> {
   if (!isSanityConfigured()) return null;
   try {
-    const filter = equipa
-      ? `*[_type == "jogador" && ativo == true && equipa == $equipa] | order(numero asc)`
-      : `*[_type == "jogador" && ativo == true] | order(numero asc)`;
+    const filtro = equipa
+      ? `*[_type == "jogador" && ativo != false && equipa == $equipa] | order(numero asc)`
+      : `*[_type == "jogador" && ativo != false] | order(numero asc)`;
 
-    return await sanityClient.fetch<SanityJogador[]>(
-      `${filter} {
-        _id, nome, numero, posicao, equipa, ativo,
-        foto { asset, alt },
-        golos, assistencias, rating, epoca
-      }`,
+    return await sanityClient.fetch<JogadorSanity[]>(
+      `${filtro} { _id, nome, numero, posicao, equipa, capitao, ativo }`,
       equipa ? { equipa } : {}
     );
   } catch {
