@@ -445,22 +445,26 @@ agarrado à encomenda em vez de perdido na caixa de correio.
 
 ---
 
-## 8. Ficha oficial de atleta — o que o site ainda não pede
+## 8. Ficha oficial de atleta — fica em papel ✅ fechado a 15/09/2026
 
 O clube tem uma **Ficha Individual de Atleta** em papel (época 2026/2027,
 fotografada a 14/09/2026) bem mais completa do que o formulário de
 `/inscricoes`. O site pede o que serve para responder depressa; o resto
-preenche-se na sede. Se um dia se quiser a ficha inteira online, falta:
+preenche-se na sede.
 
-- [ ] Morada, código postal, naturalidade, CC/TR com validade
-- [ ] Agregado familiar: pai e mãe, com telemóvel, email e profissão
-- [ ] Ocupação: escola e ano, passou ou reprovou, ou empresa e profissão
-- [ ] Dados clínicos: médico e telefone, grupo sanguíneo, lesões graves,
-      operações, uso de óculos
-- [ ] Currículo desportivo: pratica futsal desde, 1.º clube, clubes que
-      representou, escalão, no VAC desde que época
-- [ ] Licença FPF e número de sócio-atleta
-- [ ] A declaração de autorização para inscrição como sócio-atleta
+**Decisão do Berto: fica assim.** Nada disto passa para o site. O que
+segue é o registo do que a ficha em papel pede e o site não — não é uma
+lista de tarefas:
+
+- Morada, código postal, naturalidade, CC/TR com validade
+- Agregado familiar: pai e mãe, com telemóvel, email e profissão
+- Ocupação: escola e ano, passou ou reprovou, ou empresa e profissão
+- Dados clínicos: médico e telefone, grupo sanguíneo, lesões graves,
+  operações, uso de óculos
+- Currículo desportivo: pratica futsal desde, 1.º clube, clubes que
+  representou, escalão, no VAC desde que época
+- Licença FPF e número de sócio-atleta
+- A declaração de autorização para inscrição como sócio-atleta
 
 ### Decidido a 15/09/2026: não se recolhe online
 
