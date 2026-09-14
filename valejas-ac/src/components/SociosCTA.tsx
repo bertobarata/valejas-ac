@@ -23,6 +23,10 @@ gsap.registerPlugin(ScrollTrigger);
  * Quem chega ao fim de uma página leu o que lá estava e é aí que
  * decide. O fecho diz de quem é o clube e abre as quatro portas:
  * sócio, loja, contactos e redes.
+ *
+ * A segunda linha está na primeira pessoa de propósito — «é meu», não
+ * «é teu». Não é o clube a convidar de fora: é a frase que quem se faz
+ * sócio passa a poder dizer.
  * ─────────────────────────────────────────────────────────────────
  */
 export default function SociosCTA() {
@@ -75,7 +79,7 @@ export default function SociosCTA() {
           </p>
           <h2 className="font-headline font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] uppercase leading-[0.95] tracking-tighter text-white mb-5 text-balance">
             O Valejas é de nós todos
-            <span className="block text-yellow">e agora também é teu</span>
+            <span className="block text-yellow">e agora também é meu</span>
           </h2>
           <p className="font-body text-base md:text-lg text-white/85 leading-relaxed mb-10">
             Faz-te sócio por {formatEuros(QUOTA_MENSAL)} por mês, veste as cores,
