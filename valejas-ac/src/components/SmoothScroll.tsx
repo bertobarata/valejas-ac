@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +15,38 @@ export default function SmoothScroll({
   children: React.ReactNode;
 }) {
   const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
+  /**
+   * Cada página abre no princípio.
+   *
+   * O browser guarda a posição de scroll e repõe-na na navegação
+   * seguinte; o Next também tenta pôr no topo, mas fá-lo antes de a
+   * página nova ter altura. Resultado: chegava-se a meio da página,
+   * sem se ter rolado nada.
+   *
+   * `scrollRestoration = "manual"` tira o browser da jogada, e a
+   * reposição é feita aqui — no Lenis, que é quem manda no scroll, e
+   * também no window, para o caso de o Lenis não estar de pé (movimento
+   * reduzido). Fica de fora quando o endereço traz âncora: aí quem
+   * manda é o destino da âncora.
+   */
+  useLayoutEffect(() => {
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    if (window.location.hash) return;
+
+    lenisRef.current?.scrollTo(0, { immediate: true });
+    window.scrollTo(0, 0);
+
+    // Depois de a página nova ter altura, as posições dos ScrollTrigger
+    // mudaram todas — sem isto, as animações disparam nos sítios errados.
+    const id = requestAnimationFrame(() => {
+      lenisRef.current?.scrollTo(0, { immediate: true });
+      window.scrollTo(0, 0);
+      ScrollTrigger.refresh();
+    });
+    return () => cancelAnimationFrame(id);
+  }, [pathname]);
 
   useEffect(() => {
     /**

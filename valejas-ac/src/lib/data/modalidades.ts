@@ -196,7 +196,7 @@ export const GRUPOS: { id: Grupo; titulo: string; intro: string }[] = [
     id: "desporto",
     titulo: "Desportos",
     intro:
-      "Do pavilhão à pista e à estrada. Umas competem federadas, outras existem só para formar — está dito em cada uma.",
+      "Do pavilhão à pista e à estrada. Umas competem federadas, outras existem só para formar",
   },
   {
     id: "cultura",

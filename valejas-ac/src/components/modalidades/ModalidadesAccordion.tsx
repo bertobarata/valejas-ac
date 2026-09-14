@@ -151,7 +151,7 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
                 </p>
                 {m.ancora && (
                   <Link href="/equipas" className="btn-ghost text-sm">
-                    Ver plantel
+                    Ver planteis
                   </Link>
                 )}
               </div>
