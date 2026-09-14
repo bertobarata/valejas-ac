@@ -3,9 +3,9 @@
 /**
  * MOTE DO CLUBE
  * ─────────────────────────────────────────────────────────────────
- * "A união faz a força" em faixa própria. A Direção pediu ênfase, e
- * um mote enterrado num parágrafo não é ênfase — precisa de espaço,
- * escala e nada a competir com ele.
+ * O mote passou a ser o título do hero — é lá que tem a escala toda.
+ * Esta faixa deixa de o repetir ao mesmo tamanho e passa a fazer o que
+ * o hero não tem espaço para fazer: explicar de onde vem.
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -37,10 +37,10 @@ export default function MoteBanner() {
     <section ref={ref} className="section-dark bg-blue text-white bg-texture">
       <div className="section-container py-20 md:py-28 text-center">
         <p className="mote-linha font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow mb-6">
-          O mote do clube
+          O que o mote quer dizer
         </p>
 
-        <p className="mote-linha font-headline font-black uppercase leading-[0.9] tracking-tighter wdth-condensed text-5xl md:text-7xl lg:text-8xl">
+        <p className="mote-linha font-headline font-black uppercase leading-[0.9] tracking-tighter wdth-condensed text-3xl md:text-5xl">
           A união faz a{" "}
           <span className="text-yellow">força</span>
         </p>

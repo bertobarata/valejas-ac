@@ -253,13 +253,14 @@ export default function HeroSection() {
             Fundado em 1966 · Valejas, Oeiras
           </p>
 
-          {/* Main headline — overlapping editorial style */}
+          {/* Título — o mote do clube. A Direção pediu ênfase no mote, e
+              não há sítio com mais ênfase do que a primeira coisa que se vê. */}
           <h1
             ref={headlineRef}
-            className="font-headline font-black wdth-condensed text-6xl md:text-8xl lg:text-[9rem] uppercase leading-none tracking-tighter text-white mb-6"
+            className="font-headline font-black wdth-condensed text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] uppercase leading-[0.85] tracking-tighter text-white mb-6"
           >
-            Somos Todos{" "}
-            <span className="text-yellow block md:inline on-dark">Valejas</span>
+            A união faz a{" "}
+            <span className="text-yellow block on-dark">força</span>
           </h1>
 
           {/* Sub */}
@@ -267,8 +268,8 @@ export default function HeroSection() {
             ref={subRef}
             className="font-body text-lg text-white/80 max-w-md leading-relaxed mb-10"
           >
-            Desde 1966, o clube da nossa terra. Do futsal ao atletismo, dos mais
-            novos aos veteranos.
+            Somos todos Valejas. Desde 1966, o clube da nossa terra — do futsal
+            ao atletismo, dos mais novos aos veteranos.
           </p>
 
           {/* CTAs */}
