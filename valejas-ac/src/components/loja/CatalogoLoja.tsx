@@ -163,12 +163,23 @@ function Opcao({
       disabled={conta === 0 && !ativo}
       className={clsx(
         "font-body text-sm transition-colors duration-200 text-left",
-        "px-4 py-2.5 lg:px-0 lg:py-2 border lg:border-0 lg:border-b lg:border-on-surface/10",
         "flex items-center justify-between gap-3",
+        // Telemóvel: botões em fila. Ecrã grande: lista com barra à esquerda.
+        "px-4 py-2.5 border",
+        "lg:border-0 lg:border-l-[3px] lg:border-b lg:border-b-on-surface/10 lg:py-2.5 lg:pl-3 lg:pr-1",
         conta === 0 && !ativo && "opacity-40 cursor-not-allowed",
         ativo
-          ? "border-yellow bg-yellow/10 text-on-surface font-semibold lg:bg-transparent lg:text-yellow"
-          : "border-on-surface/20 text-on-surface-muted hover:text-on-surface"
+          ? [
+              // O amarelo é barra e fundo, não texto: em modo claro o
+              // texto amarelo é recolorido para azul e o item escolhido
+              // ficava igual aos outros.
+              "border-yellow bg-yellow/20 text-on-surface font-semibold",
+              "lg:bg-yellow/15 lg:border-l-yellow lg:border-b-yellow/40",
+            ]
+          : [
+              "border-on-surface/20 text-on-surface-muted hover:text-on-surface",
+              "lg:border-l-transparent lg:hover:border-l-on-surface/30",
+            ]
       )}
     >
       {nome}
