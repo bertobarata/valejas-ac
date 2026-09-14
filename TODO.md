@@ -11,8 +11,12 @@ Nenhuma destas existe ainda. Sem elas o site funciona, mas em modo
 degradado — cada uma tem um comportamento de recurso que não rebenta.
 
 ### Domínio (Amen)
-- [ ] Comprar domínio do clube
-- [ ] Apontar DNS para a Vercel
+- [x] Comprar domínio do clube — comprado a 14/09/2026, à espera da
+      confirmação do registo
+- [ ] Apontar DNS para a Vercel (A `76.76.21.21` para o domínio raiz,
+      CNAME `cname.vercel-dns.com` para o `www`)
+- [ ] Acrescentar o domínio ao projeto na Vercel e esperar pelo
+      certificado, que é automático
 - [ ] `NEXT_PUBLIC_SITE_URL` com o endereço final
 - **Sem isto:** site vive no `.vercel.app`. A Meta precisa de um endereço
   público para ir buscar a imagem dos comunicados.
