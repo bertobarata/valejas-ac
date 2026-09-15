@@ -96,9 +96,14 @@ export default function PedidoInscricao() {
           papel é este: acabou de se inscrever e está à espera de saber o
           que falta. É aqui que o exame médico tem de aparecer.
         */}
-        <div className="border-l-2 border-yellow pl-5">
+        {/* Fundo próprio em vez de barra lateral amarela: a DESIGN.md tirou
+            seis dessas do site e estas duas tinham voltado a entrar. */}
+        <div className="bg-surface-high border border-on-surface/10 p-5">
+          <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-2">
+            Falta fazer
+          </p>
           <p className="font-body text-on-surface leading-relaxed">
-            <strong>Falta o exame médico.</strong> É obrigatório para treinar e
+            <strong>O exame médico.</strong> É obrigatório para treinar e
             competir. Imprime, leva ao médico, e entrega o original na sede.
           </p>
           <a href={EXAME_MEDICO.ficheiro} download className="btn-ghost text-sm mt-4">
@@ -107,9 +112,12 @@ export default function PedidoInscricao() {
         </div>
 
         {!feito.jaSocio && (
-          <div className="border-l-2 border-yellow pl-5">
+          <div className="bg-surface-high border border-on-surface/10 p-5">
+            <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-2">
+              Falta fazer
+            </p>
             <p className="font-body text-on-surface leading-relaxed">
-              Falta o primeiro passo: <strong>ser sócio</strong>. Sem isso não
+              O primeiro passo: <strong>ser sócio</strong>. Sem isso não
               se pratica no clube — e são 1 € por mês.
             </p>
             <Link href="/socios/inscricao" className="btn-primary text-sm mt-4">
@@ -223,7 +231,7 @@ export default function PedidoInscricao() {
           <input
             type="checkbox" checked={jaSocio}
             onChange={(e) => setJaSocio(e.target.checked)}
-            className="w-5 h-5 accent-yellow mt-0.5 shrink-0"
+            className="w-6 h-6 accent-yellow shrink-0"
           />
           <span className="font-body text-on-surface leading-relaxed">
             Já sou sócio do clube
@@ -290,7 +298,7 @@ export default function PedidoInscricao() {
         <h3 className="font-headline font-black uppercase text-base text-on-surface">
           Direitos de imagem
         </h3>
-        <p className="font-body text-sm text-on-surface-muted leading-relaxed">
+        <p className="font-body text-sm text-on-surface-muted leading-relaxed max-w-[65ch]">
           O clube fotografa e filma treinos, jogos e convívios, e publica-os
           no site e nas redes. Para isso precisa da tua autorização — é
           obrigatória para todos os atletas e pode ser retirada a qualquer
@@ -303,7 +311,7 @@ export default function PedidoInscricao() {
             checked={consentimento}
             onChange={(e) => setConsentimento(e.target.checked)}
             required
-            className="w-5 h-5 accent-yellow mt-0.5 shrink-0"
+            className="w-6 h-6 accent-yellow shrink-0"
           />
           <span className="font-body text-on-surface leading-relaxed">
             {declaracao(menor)}
@@ -313,7 +321,7 @@ export default function PedidoInscricao() {
         <Link
           href="/inscricoes/direitos-de-imagem"
           target="_blank"
-          className="inline-flex items-center gap-2 font-body text-sm text-yellow underline underline-offset-4"
+          className="inline-flex items-center gap-2 min-h-11 font-body text-sm text-yellow underline underline-offset-4"
         >
           Ler o termo completo <ExternalLink size={13} aria-hidden />
         </Link>

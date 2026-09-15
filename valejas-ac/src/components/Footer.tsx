@@ -47,10 +47,15 @@ export default function Footer() {
     <footer className="bg-surface-low border-t border-on-surface/10">
       {/* Top section */}
       <div className="section-container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        {/*
+          Duas colunas já no telemóvel. Com alvos de 44px, uma coluna só
+          dava um rodapé de mais de mil pixels — a dois fica mais curto do
+          que era antes, e com os links finalmente acertáveis.
+        */}
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-10">
 
           {/* Brand column */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <Image
                 src="/brand/crest.png"
@@ -95,7 +100,7 @@ export default function Footer() {
               <h4 className="font-body font-semibold text-xs uppercase tracking-widest text-yellow mb-4">
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </h4>
-              <ul className="space-y-2.5">
+              <ul className="-my-1">
                 {items.map((item) => (
                   <li key={item.href}>
                     {"external" in item && item.external ? (
@@ -103,14 +108,14 @@ export default function Footer() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                        className="alvo-toque font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
                       >
                         {item.label}
                       </a>
                     ) : (
                       <Link
                         href={item.href}
-                        className="font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                        className="alvo-toque font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
                       >
                         {item.label}
                       </Link>

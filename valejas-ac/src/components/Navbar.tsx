@@ -39,6 +39,11 @@ interface ItemNav {
   submenu?:  { label: string; href: string }[];
 }
 
+/** Liga o botão da seta à lista que ele abre, para os leitores de ecrã. */
+function submenuId(href: string): string {
+  return "submenu-" + href.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "");
+}
+
 const NAV_ITEMS: ItemNav[] = [
   { label: "Início",      href: "/" },
   { label: "Comunicados", href: "/comunicados" },
@@ -151,6 +156,33 @@ export default function Navbar() {
     animateMenuClose(() => setMenuOpen(false));
   }, [animateMenuClose]);
 
+  /**
+   * Um menu que abre por toque tem de fechar por toque. Sem isto ficava
+   * aberto até alguém carregar noutro sítio da barra — e num telemóvel ou
+   * tablet não há rato para "sair de cima".
+   */
+  useEffect(() => {
+    if (!submenuAberto) return;
+
+    const aoTocarFora = (e: PointerEvent) => {
+      // `navRef` é o <header> inteiro: a barra toda conta como dentro.
+      if (!navRef.current?.contains(e.target as Node)) setSubmenuAberto(null);
+    };
+    const aoEscapar = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSubmenuAberto(null);
+    };
+
+    document.addEventListener("pointerdown", aoTocarFora);
+    document.addEventListener("keydown", aoEscapar);
+    return () => {
+      document.removeEventListener("pointerdown", aoTocarFora);
+      document.removeEventListener("keydown", aoEscapar);
+    };
+  }, [submenuAberto]);
+
+  /** Mudar de página fecha o submenu: senão fica aberto sobre a página nova. */
+  useEffect(() => { setSubmenuAberto(null); }, [pathname]);
+
   // Lock body scroll when menu open
   useEffect(() => {
     if (menuOpen) {
@@ -223,7 +255,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop nav */}
-          <ul className="hidden lg:flex items-center gap-4 xl:gap-6 whitespace-nowrap">
+          <ul className="hidden lg:flex items-center gap-3 xl:gap-5 whitespace-nowrap">
             {NAV_ITEMS.map((item) => (
               <li
                 key={item.href}
@@ -234,31 +266,56 @@ export default function Navbar() {
                 {item.submenu ? (
                   <>
                     {/*
-                      O pai é um destino e um menu ao mesmo tempo: carregar
-                      leva à história do clube, passar por cima (ou dar foco
-                      pelo teclado) abre as cinco páginas.
+                      O pai é um destino e um menu ao mesmo tempo, e isso
+                      exige duas coisas separadas: o nome leva à história do
+                      clube, a seta abre as cinco páginas.
+                      Já foram uma só, e num iPad deitado — que recebe esta
+                      barra, não a de telemóvel — tocar no nome navegava e o
+                      submenu nunca abria. Quatro páginas só se alcançavam
+                      pelo rodapé. Com um botão à parte, o rato continua a
+                      abrir por cima e o dedo passa a ter onde carregar.
                     */}
-                    <Link
-                      href={item.href}
-                      aria-expanded={submenuAberto === item.href}
-                      onFocus={() => setSubmenuAberto(item.href)}
-                      className={clsx(
-                        "nav-link inline-flex items-center gap-1.5",
-                        pathname.startsWith(item.href) && "active"
-                      )}
-                    >
-                      {item.label}
-                      <ChevronDown
-                        size={14}
-                        aria-hidden
+                    <span className="inline-flex items-center">
+                      <Link
+                        href={item.href}
                         className={clsx(
-                          "transition-transform duration-200",
-                          submenuAberto === item.href && "rotate-180"
+                          "nav-link",
+                          pathname.startsWith(item.href) && "active"
                         )}
-                      />
-                    </Link>
+                      >
+                        {item.label}
+                      </Link>
+
+                      <button
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded={submenuAberto === item.href}
+                        aria-controls={submenuId(item.href)}
+                        aria-label={
+                          submenuAberto === item.href
+                            ? `Fechar as páginas de ${item.label}`
+                            : `Ver as páginas de ${item.label}`
+                        }
+                        onClick={() =>
+                          setSubmenuAberto((atual) =>
+                            atual === item.href ? null : item.href
+                          )
+                        }
+                        className="w-11 h-11 -ml-1 flex items-center justify-center text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                      >
+                        <ChevronDown
+                          size={14}
+                          aria-hidden
+                          className={clsx(
+                            "transition-transform duration-200",
+                            submenuAberto === item.href && "rotate-180"
+                          )}
+                        />
+                      </button>
+                    </span>
 
                     <ul
+                      id={submenuId(item.href)}
                       className={clsx(
                         "absolute left-1/2 -translate-x-1/2 top-full pt-3 min-w-[13rem] transition-all duration-200",
                         submenuAberto === item.href

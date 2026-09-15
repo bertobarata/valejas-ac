@@ -92,7 +92,7 @@ export default function ContactoSection() {
                       <li key={endereco}>
                         <a
                           href={`mailto:${endereco}`}
-                          className="font-body text-sm text-on-surface hover:text-yellow transition-colors duration-200 break-all"
+                          className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors duration-200 break-all"
                         >
                           {endereco}
                         </a>
@@ -111,7 +111,7 @@ export default function ContactoSection() {
                 <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-1">Telefone</p>
                 <a
                   href={`tel:${CONTACTO.telefone}`}
-                  className="font-body text-sm text-on-surface hover:text-yellow transition-colors duration-200"
+                  className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors duration-200"
                 >
                   {CONTACTO.telefone}
                 </a>
@@ -154,19 +154,19 @@ export default function ContactoSection() {
               <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-4">Segue-nos</p>
               <div className="flex items-center gap-3">
                 <a href={`mailto:${EMAILS.geral}`} aria-label="Enviar email ao clube"
-                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-yellow hover:text-blue-deep transition-all duration-200">
+                   className="w-11 h-11 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-yellow hover:text-blue-deep transition-all duration-200">
                   <Mail size={18} />
                 </a>
                 <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#E4405F] hover:text-white transition-all duration-200">
+                   className="w-11 h-11 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#E4405F] hover:text-white transition-all duration-200">
                   <InstagramIcon size={18} />
                 </a>
                 <a href={CONTACTO.redesSociais.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#1877F2] hover:text-white transition-all duration-200">
+                   className="w-11 h-11 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#1877F2] hover:text-white transition-all duration-200">
                   <FacebookIcon size={18} />
                 </a>
                 <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-                   className="w-10 h-10 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#FF0000] hover:text-white transition-all duration-200">
+                   className="w-11 h-11 flex items-center justify-center bg-surface-highest text-on-surface hover:bg-[#FF0000] hover:text-white transition-all duration-200">
                   <YouTubeIcon size={18} />
                 </a>
               </div>

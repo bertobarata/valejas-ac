@@ -186,7 +186,7 @@ export default function GestorPlantel() {
               )}
             >
               {e.label}
-              <span className={clsx("font-body text-[0.7rem]", ativo ? "opacity-70" : "opacity-60")}>
+              <span className={clsx("font-body text-xs", ativo ? "opacity-70" : "opacity-60")}>
                 {contaDaEquipa(e.id)}
               </span>
             </button>
@@ -325,12 +325,12 @@ export default function GestorPlantel() {
                       </span>
 
                       {j.capitao && (
-                        <span className="inline-flex items-center gap-1 font-body text-[0.7rem] font-bold uppercase tracking-widest text-on-surface bg-yellow/25 px-2 py-0.5 shrink-0">
+                        <span className="inline-flex items-center gap-1 font-body text-xs font-bold uppercase tracking-widest text-on-surface bg-yellow/25 px-2 py-0.5 shrink-0">
                           <Star size={11} aria-hidden /> Capitão
                         </span>
                       )}
                       {j.ativo === false && (
-                        <span className="font-body text-[0.7rem] font-bold uppercase tracking-widest text-on-surface-muted border border-on-surface/25 px-2 py-0.5 shrink-0">
+                        <span className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted border border-on-surface/25 px-2 py-0.5 shrink-0">
                           Fora
                         </span>
                       )}

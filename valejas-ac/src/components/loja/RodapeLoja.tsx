@@ -13,28 +13,28 @@ import { FORNECEDOR } from "@/lib/data/loja";
 export default function RodapeLoja() {
   return (
     <section className="section-container pt-10 pb-16 border-t border-on-surface/10 mt-14">
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-        <Link href="/loja/condicoes" className="font-body text-sm text-on-surface hover:text-yellow transition-colors">
+      <div className="flex flex-wrap items-center gap-x-8 gap-y-1">
+        <Link href="/loja/condicoes" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
           Condições da loja
         </Link>
-        <Link href="/loja/condicoes#trocas-e-devolucoes" className="font-body text-sm text-on-surface hover:text-yellow transition-colors">
+        <Link href="/loja/condicoes#trocas-e-devolucoes" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
           Trocas e devoluções
         </Link>
-        <Link href="/privacidade" className="font-body text-sm text-on-surface hover:text-yellow transition-colors">
+        <Link href="/privacidade" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
           Privacidade
         </Link>
-        <Link href="/termos" className="font-body text-sm text-on-surface hover:text-yellow transition-colors">
+        <Link href="/termos" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
           Termos e condições
         </Link>
         <a
           href="https://www.livroreclamacoes.pt/inicio"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 font-body text-sm text-on-surface hover:text-yellow transition-colors"
+          className="inline-flex items-center gap-1.5 min-h-11 font-body text-sm text-on-surface hover:text-yellow transition-colors"
         >
           Livro de Reclamações <ExternalLink size={13} aria-hidden />
         </a>
-        <Link href="/contactos" className="font-body text-sm text-on-surface hover:text-yellow transition-colors">
+        <Link href="/contactos" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
           Contactos
         </Link>
       </div>

@@ -163,22 +163,23 @@ function Opcao({
       disabled={conta === 0 && !ativo}
       className={clsx(
         "font-body text-sm transition-colors duration-200 text-left",
-        "flex items-center justify-between gap-3",
-        // Telemóvel: botões em fila. Ecrã grande: lista com barra à esquerda.
+        "flex items-center justify-between gap-3 min-h-11",
+        // Telemóvel: botões em fila. Ecrã grande: lista empilhada.
         "px-4 py-2.5 border",
-        "lg:border-0 lg:border-l-[3px] lg:border-b lg:border-b-on-surface/10 lg:py-2.5 lg:pl-3 lg:pr-1",
+        "lg:border-0 lg:border-b lg:border-b-on-surface/10 lg:px-3",
         conta === 0 && !ativo && "opacity-40 cursor-not-allowed",
         ativo
           ? [
-              // O amarelo é barra e fundo, não texto: em modo claro o
-              // texto amarelo é recolorido para azul e o item escolhido
-              // ficava igual aos outros.
+              // O amarelo é fundo, não texto: em modo claro o texto amarelo
+              // é recolorido para azul e o item escolhido ficava igual aos
+              // outros. E é fundo e não barra lateral — a DESIGN.md tirou
+              // seis dessas do site e esta tinha voltado a entrar.
               "border-yellow bg-yellow/20 text-on-surface font-semibold",
-              "lg:bg-yellow/15 lg:border-l-yellow lg:border-b-yellow/40",
+              "lg:bg-yellow/15 lg:border-b-yellow/40",
             ]
           : [
               "border-on-surface/20 text-on-surface-muted hover:text-on-surface",
-              "lg:border-l-transparent lg:hover:border-l-on-surface/30",
+              "lg:hover:bg-on-surface/5",
             ]
       )}
     >

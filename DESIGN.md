@@ -121,6 +121,12 @@ clube-família. O amarelo ficou; a voltagem saiu.
 - Feed de rede social com moldura de site
 - Clichê desportivo: chamas, cromados, "guerreiros", gradientes agressivos
 
+**Medida de leitura.** 65ch, e o limite vai no parágrafo, não no contentor —
+assim os títulos e as tabelas continuam largos. `.texto-legal` já o aplica a
+todos os `p` e `li`. Onde a grelha só se divide em `lg:`, o parágrafo tem de
+trazer o seu próprio limite: num iPad vertical a coluna é a largura toda, e
+já houve linhas de 95 caracteres em `/inscricoes`.
+
 **Layout.** Secções de `py-14` a `py-28`, a crescer em `md:`. Grelhas com
 `gap-px` sobre `bg-on-surface/10`, o que dá linhas finas entre blocos sem
 desenhar bordas. Medida de leitura limitada a `max-w-prose`. A largura e as
@@ -213,7 +219,8 @@ Regras:
 - **Nunca `italic` em títulos.** Houve uma fonte sem itálico desenhado e o
   falso-itálico ficou registado como erro a não repetir
 - Nada abaixo de **12px**. O público vai dos 10 aos 60+ e está quase todo em
-  telemóvel
+  telemóvel. A regra esteve escrita e quebrada em cinco sítios até 15/09/2026
+  (`.th-tabela` a 10,4px, quatro `text-[0.7rem]` a 11,2px)
 - `tabular-nums` em resultados, datas, preços e números de camisola
 
 ### O que uma fonte tem de ter para entrar aqui
@@ -271,6 +278,12 @@ Cantos: botões em pílula (`rounded-full`), tudo o resto a direito.
 | `.link-salto` | Salto para o conteúdo, visível só com foco |
 | `.entrada-pagina` | Entrada de página, com reposição em CSS |
 
+**Alvos de toque.** 44px de altura mínima em tudo o que se carrega, pela
+classe `.alvo-toque` ou por `min-h-11`. Inclui a barra de navegação de
+computador: um iPad deitado tem mais de 1024px e recebe-a, operada com o
+dedo. Links dentro de uma frase são a exceção — o WCAG dispensa-os, e
+esticá-los partia a linha.
+
 **Foco.** Anel de 3px via `--anel-foco`: azul em tema claro, amarelo em escuro.
 Nunca `outline: none` sem substituto. Todos os campos têm nome acessível, por
 `<label htmlFor>` ou por etiqueta que os envolve.
@@ -295,7 +308,10 @@ Aprendido a corrigir este site, não copiado de uma lista genérica.
 **Não fazer:**
 
 - **Barras laterais coloridas** (`border-l-2` amarelo como destaque). Havia
-  seis; foram todas substituídas por fundo próprio ou rótulo tipográfico
+  seis; foram todas substituídas por fundo próprio ou rótulo tipográfico.
+  **Voltaram a entrar três vezes** — nos filtros da loja e em dois blocos da
+  inscrição — e foram outra vez removidas a 15/09/2026. É o erro que mais
+  reincide neste projeto
 - **Grelhas de cartões idênticos.** Os órgãos sociais eram 20 retângulos iguais
   com iniciais, onde o Presidente e o 2.º suplente tinham o mesmo peso, e onde
   duas pessoas davam as mesmas iniciais. Uma lista com hierarquia resolveu os

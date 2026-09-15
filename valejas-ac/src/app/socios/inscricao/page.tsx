@@ -19,7 +19,7 @@ export default function InscricaoPage() {
         <div className="section-container py-14 md:py-20">
           <Link
             href="/socios-contacto"
-            className="inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-on-surface-muted hover:text-yellow transition-colors mb-8"
+            className="inline-flex items-center gap-2 min-h-11 font-body text-xs uppercase tracking-widest text-on-surface-muted hover:text-yellow transition-colors mb-6"
           >
             <ArrowLeft size={14} /> Sócios
           </Link>

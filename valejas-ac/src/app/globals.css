@@ -21,7 +21,7 @@
    * sítios, mais cedo ou mais tarde uma delas ficava para trás e os
    * títulos das páginas voltavam a desaparecer atrás da barra.
    */
-  --barra-altura: 6rem;
+  --barra-altura: 4rem;
 
   /*
    * Superfícies em modo claro.
@@ -117,6 +117,13 @@
   padding-top: calc(var(--barra-altura) + 2rem);
 }
 
+/*
+  A altura reservada tem de ser a altura real, senão sobra vazio no sítio
+  onde menos há espaço. Abaixo de 768px a faixa vermelha está escondida
+  (`hidden md:block`) e a linha da barra é `h-16`: 64px, não 96. Estavam
+  reservados 96, o que punha 64px de nada por cima de cada título no
+  telemóvel — 7,6% de um ecrã de 844px gastos antes de a página começar.
+*/
 @media (min-width: 768px) {
   :root { --barra-altura: 7rem; }
 }
@@ -361,14 +368,21 @@
   .texto-legal h3 {
     @apply font-headline font-black uppercase text-base text-on-surface mt-8 mb-3;
   }
+  /*
+     65ch é onde o olho ainda encontra o início da linha seguinte sem se
+     perder. O contentor é `max-w-3xl` (768px), que a 16px dá ~90 caracteres
+     — e num iPad vertical era a página inteira a essa largura. O limite vai
+     no parágrafo e não no contentor para os títulos e as tabelas poderem
+     continuar largos.
+  */
   .texto-legal p {
-    @apply font-body text-base text-on-surface-muted leading-relaxed mb-4;
+    @apply font-body text-base text-on-surface-muted leading-relaxed mb-4 max-w-[65ch];
   }
   .texto-legal ul {
     @apply mb-5 space-y-2;
   }
   .texto-legal li {
-    @apply font-body text-base text-on-surface-muted leading-relaxed pl-5 relative;
+    @apply font-body text-base text-on-surface-muted leading-relaxed pl-5 relative max-w-[65ch];
   }
   .texto-legal li::before {
     content: "";
@@ -390,9 +404,21 @@
     @apply font-body text-sm text-on-surface-muted border-b border-on-surface/10 py-3 pr-4 align-top;
   }
 
+  /* ── Alvo de toque ──
+     44px de altura mínima, o mínimo confortável para um dedo. Cresce a
+     área que se acerta, não o texto: o tipo fica onde estava.
+     Aparece onde havia links de 18px encostados uns aos outros — rodapés,
+     listas de contactos, ligações soltas dentro de texto de bloco. */
+  .alvo-toque {
+    @apply inline-flex items-center min-h-11;
+  }
+
   /* ── Tabela de classificação ── */
+  /* 12px é o piso da DESIGN.md e não é decorativo: o público vai dos 10
+     aos 60+ e lê isto ao telemóvel. Estes cabeçalhos estavam a 10,4px.
+     O tracking apertou um pouco para a linha continuar a caber. */
   .th-tabela {
-    @apply font-body text-[0.65rem] font-bold uppercase tracking-widest text-on-surface-muted py-3 px-2;
+    @apply font-body text-xs font-bold uppercase tracking-wider text-on-surface-muted py-3 px-2;
   }
   .td-tabela {
     @apply font-body text-sm py-3 px-2;
@@ -419,15 +445,22 @@
   }
 
   /* ── Nav link ── */
+  /*
+     Esta barra aparece a partir de 1024px — e um iPad deitado tem mais do
+     que isso. Ou seja: é uma barra de computador operada com o dedo. Os
+     links mediam 18px de altura; agora a caixa tem 44 e o texto continua
+     onde estava.
+  */
   .nav-link {
-    @apply font-body font-semibold text-sm uppercase tracking-wider text-on-surface/70 hover:text-on-surface transition-colors duration-200 relative;
+    @apply inline-flex items-center min-h-11 font-body font-semibold text-sm uppercase tracking-wider text-on-surface/70 hover:text-on-surface transition-colors duration-200 relative;
   }
   .nav-link.active {
     @apply text-yellow;
   }
   .nav-link.active::after {
     content: "";
-    @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow;
+    /* O sublinhado acompanha o texto, não a caixa de 44px. */
+    @apply absolute bottom-[0.6rem] left-0 right-0 h-0.5 bg-yellow;
   }
 
   /* ── Match scoreboard ── */

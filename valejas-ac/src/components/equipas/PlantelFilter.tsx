@@ -83,7 +83,7 @@ export default function PlantelFilter({ jogadores }: { jogadores?: Jogador[] }) 
                 onClick={() => setEquipa(e.id)}
                 aria-pressed={ativo}
                 className={clsx(
-                  "font-headline font-black text-xs uppercase tracking-widest px-5 py-3 transition-colors duration-200",
+                  "font-headline font-black text-xs uppercase tracking-widest px-5 py-3 min-h-11 inline-flex items-center transition-colors duration-200",
                   ativo
                     ? "bg-yellow text-blue-deep"
                     : "border border-on-surface/20 text-on-surface-muted hover:border-on-surface/50 hover:text-on-surface"

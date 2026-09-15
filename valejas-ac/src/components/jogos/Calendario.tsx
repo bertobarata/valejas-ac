@@ -59,7 +59,7 @@ export default function Calendario() {
 
                 <span
                   className={clsx(
-                    "font-body text-[0.7rem] font-bold uppercase tracking-widest px-2 py-0.5 shrink-0",
+                    "font-body text-xs font-bold uppercase tracking-widest px-2 py-0.5 shrink-0",
                     emCasa
                       ? "bg-yellow/25 text-on-surface"
                       : "border border-on-surface/25 text-on-surface-muted"

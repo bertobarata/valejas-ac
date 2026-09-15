@@ -29,7 +29,7 @@ export default function CondicoesLojaPage() {
         <div className="section-container py-14 md:py-20">
           <Link
             href="/loja"
-            className="inline-flex items-center gap-2 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors mb-4"
+            className="inline-flex items-center gap-2 min-h-11 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors mb-2"
           >
             <ArrowLeft size={16} aria-hidden />
             Voltar à loja
@@ -119,7 +119,7 @@ export default function CondicoesLojaPage() {
             href="https://www.livroreclamacoes.pt/inicio"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2 min-h-11"
           >
             Livro de Reclamações <ExternalLink size={14} />
           </a>
