@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
@@ -105,11 +106,8 @@ export default function Navbar() {
     const tl = gsap.timeline();
 
     // Overlay fade in
-    tl.fromTo(
-      overlayRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.35, ease: "power2.out" }
-    );
+    // O overlay já está visível pelo CSS. O GSAP só anima o que está
+    // dentro dele — se falhar, o menu continua a funcionar.
 
     // Links stagger from bottom
     tl.fromTo(
@@ -119,8 +117,7 @@ export default function Navbar() {
         y: 0, opacity: 1, rotateX: 0,
         duration: 0.5, stagger: 0.06,
         ease: "power3.out",
-      },
-      "-=0.15"
+      }
     );
 
     // Bottom elements
@@ -410,12 +407,27 @@ export default function Navbar() {
 
       {/* ═══════════════════════════════════════════════════════════════
          MOBILE MENU — FULL-SCREEN OVERLAY
+         Vai para o <body> por portal, e isso não é preciosismo: o <header>
+         leva um `transform` da animação de entrada, e um antepassado com
+         transform passa a ser a referência do `position: fixed`. Dentro do
+         header, este `inset-0` media 386×64 — a barra, não o ecrã — e o
+         menu aparecia recortado com a página a ver-se por baixo.
          ═══════════════════════════════════════════════════════════════ */}
-      {menuOpen && (
-        <div
+      {menuOpen && mounted && createPortal(
+        (<div
           ref={overlayRef}
-          className="fixed inset-0 z-40 bg-surface/[0.98] backdrop-blur-2xl lg:hidden flex flex-col"
-          style={{ opacity: 0 }}
+          /*
+            Opaco e sem animação nenhuma no fundo. Esteve em `opacity: 0`
+            à espera do GSAP, com o fundo a 98%: via-se a página através do
+            menu e os dois textos sobrepunham-se, ilegíveis.
+            Trocar isso por uma animação CSS não resolvia — o estado de
+            partida continuava a ser invisível, e num separador em segundo
+            plano a linha temporal congela e a animação nunca termina.
+            Um fundo de menu não se anima: ou está lá, ou o menu não serve.
+            Quem anima são os links, por dentro, e isso pode falhar sem
+            consequências.
+          */
+          className="fixed inset-0 z-[45] bg-surface lg:hidden flex flex-col"
         >
           {/* Crest watermark */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -430,7 +442,7 @@ export default function Navbar() {
           {/* Nav links — centered, huge typography */}
           <div
             ref={linksRef}
-            className="flex-1 flex flex-col items-start justify-center px-8 sm:px-12 gap-1"
+            className="flex-1 flex flex-col items-center justify-center text-center px-8 sm:px-12 gap-1 overflow-y-auto py-8"
           >
             {NAV_ITEMS.map((item, i) => {
               const itemClass = clsx(
@@ -471,7 +483,7 @@ export default function Navbar() {
                   {/* No telemóvel não há sítio para submenus a abrir: as
                       páginas do clube ficam listadas, mais pequenas, por baixo. */}
                   {item.submenu && (
-                    <div className="flex flex-wrap gap-x-5 gap-y-1 pl-0.5 pb-2">
+                    <div className="flex flex-wrap justify-center gap-x-5 gap-y-1 pb-2">
                       {item.submenu.map((sub) => (
                         <Link
                           key={sub.href + sub.label}
@@ -509,8 +521,8 @@ export default function Navbar() {
             </div>
 
             {/* Social + theme */}
-            <div className="mobile-bottom flex items-center justify-between">
-              <div className="flex items-center gap-4">
+            <div className="mobile-bottom flex flex-col items-center gap-3">
+              <div className="flex items-center justify-center gap-5">
                 <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#E4405F] transition-colors" aria-label="Instagram">
                   <InstagramIcon size={20} />
                 </a>
@@ -529,7 +541,8 @@ export default function Navbar() {
               </span>
             </div>
           </div>
-        </div>
+        </div>),
+        document.body
       )}
     </header>
   );

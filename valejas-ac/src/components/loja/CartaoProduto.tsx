@@ -85,26 +85,26 @@ export default function CartaoProduto({
         <div
           className={clsx(
             "relative overflow-hidden bg-surface-mid",
-            produto.kit ? "aspect-[32/5]" : destaque ? "aspect-[5/2]" : "aspect-[2/1]"
+            produto.kit ? "aspect-[32/5]" : destaque ? "aspect-[5/2]" : "aspect-square sm:aspect-[2/1]"
           )}
         >
           <Image
             src={produto.imagem}
             alt={produto.nome}
             fill
-            sizes={destaque ? "(max-width: 1024px) 100vw, 60vw" : "(max-width: 640px) 100vw, 33vw"}
+            sizes={destaque ? "(max-width: 1024px) 100vw, 60vw" : "(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 25vw"}
             className="object-cover"
           />
         </div>
       )}
 
-      <div className={clsx("flex flex-col flex-1", destaque ? "p-7 md:p-10" : "p-6")}>
+      <div className={clsx("flex flex-col flex-1", destaque ? "p-7 md:p-10" : "p-4 sm:p-6")}>
       <div className="flex-1">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between gap-x-4 gap-y-1 min-w-0">
           <h3
             className={clsx(
-              "font-headline font-black uppercase text-on-surface leading-tight",
-              destaque ? "text-3xl md:text-4xl tracking-tighter" : "text-xl"
+              "font-headline font-black uppercase text-on-surface leading-tight min-w-0 break-words hyphens-auto",
+              destaque ? "text-3xl md:text-4xl tracking-tighter" : "text-base sm:text-xl"
             )}
           >
             {produto.nome}
@@ -114,18 +114,20 @@ export default function CartaoProduto({
               "font-headline font-black text-yellow leading-none",
               produto.sobConsulta
                 ? "text-sm uppercase tracking-widest"
-                : destaque ? "text-4xl" : "text-2xl"
+                : destaque ? "text-4xl" : "text-xl sm:text-2xl"
             )}
           >
             {produto.sobConsulta ? "Sob consulta" : formatEuros(produto.preco)}
           </p>
         </div>
 
-        <p className="font-body text-on-surface-muted leading-relaxed mt-3">
+        <p className="font-body text-sm sm:text-base text-on-surface-muted leading-relaxed mt-2 sm:mt-3">
           {produto.descricao}
         </p>
 
-        <p className="font-body text-xs text-on-surface-muted mt-2">
+        {/* A referência é para quem liga ao clube a perguntar por uma peça.
+            Num cartão de 180px rouba a linha a quem só quer ver o preço. */}
+        <p className="hidden sm:block font-body text-xs text-on-surface-muted mt-2">
           Referência {produto.referencia}
         </p>
 
@@ -153,7 +155,7 @@ export default function CartaoProduto({
             Este artigo não tem preço fechado — depende do que se
             personalizar e da quantidade. Fala com o clube e dizemos quanto é.
           </p>
-          <Link href="/contactos" className="btn-ghost text-sm mt-4">
+          <Link href="/contactos" className="btn-ghost text-sm mt-4 w-full justify-center px-3 sm:px-6">
             <Mail size={16} /> Pedir orçamento
           </Link>
         </div>
@@ -202,7 +204,7 @@ export default function CartaoProduto({
 
       {/* Gravação */}
       {produto.personalizavel && (
-        <div className="grid grid-cols-[1fr_6rem] gap-3 mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_6rem] gap-3 mt-5">
           <label className="block">
             <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
               Nome nas costas <span className="normal-case tracking-normal opacity-60">(opcional)</span>
@@ -238,7 +240,7 @@ export default function CartaoProduto({
         type="button"
         onClick={adicionar}
         className={clsx(
-          "mt-6 justify-center",
+          "mt-6 w-full justify-center px-3 sm:px-6",
           juntou ? "btn-ghost" : "btn-primary",
           destaque ? "text-base py-4" : "text-sm"
         )}

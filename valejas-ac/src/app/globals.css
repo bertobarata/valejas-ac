@@ -21,7 +21,7 @@
    * sítios, mais cedo ou mais tarde uma delas ficava para trás e os
    * títulos das páginas voltavam a desaparecer atrás da barra.
    */
-  --barra-altura: 4rem;
+  --barra-altura: 5.5rem;
 
   /*
    * Superfícies em modo claro.
@@ -118,11 +118,12 @@
 }
 
 /*
-  A altura reservada tem de ser a altura real, senão sobra vazio no sítio
-  onde menos há espaço. Abaixo de 768px a faixa vermelha está escondida
-  (`hidden md:block`) e a linha da barra é `h-16`: 64px, não 96. Estavam
-  reservados 96, o que punha 64px de nada por cima de cada título no
-  telemóvel — 7,6% de um ecrã de 844px gastos antes de a página começar.
+  A altura reservada não é a da barra: é a do emblema, que desce abaixo
+  dela de propósito. Abaixo de 768px a faixa vermelha está escondida
+  (`hidden md:block`) e a linha da barra é `h-16` — 64px. Mas o emblema
+  tem 96px e está centrado nesses 64, portanto o bico dele chega aos 80.
+  Reservar só 64 punha o emblema por cima dos títulos; reservar 96 deixava
+  um vazio. 88px (5,5rem) limpa o emblema com 8px de folga.
 */
 @media (min-width: 768px) {
   :root { --barra-altura: 7rem; }
@@ -169,6 +170,19 @@
   }
   main :where(.flex.flex-col.items-start) {
     align-items: center;
+  }
+
+  /* Listas de ícone + texto (os vistos do que o kit inclui, por exemplo):
+     centrar cada linha à parte punha os ícones em zigue-zague. A lista
+     inteira passa a um bloco centrado, com as linhas alinhadas entre si. */
+  main :where(ul, ol):has(> li > svg),
+  main :where(ul, ol):has(> li > .shrink-0) {
+    width: fit-content;
+    margin-inline: auto;
+  }
+  main :where(ul, ol):has(> li > svg) > li,
+  main :where(ul, ol):has(> li > .shrink-0) > li {
+    text-align: left;
   }
 
   /* Campos de formulário: escrever num campo centrado é desagradável —

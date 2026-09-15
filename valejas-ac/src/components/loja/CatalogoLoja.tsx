@@ -11,12 +11,16 @@
  * sem procurar, e viram uma fila de botões no telemóvel. Cada filtro
  * diz quantas peças tem: um filtro que leva a zero resultados é uma
  * perda de tempo que se evita antes do clique.
+ * No telemóvel são dois cartões por linha, e as colunas são
+ * `minmax(0,1fr)` e não `1fr`: por omissão um item de grelha tem
+ * `min-width: auto`, e o conteúdo mais largo do cartão alargava a coluna
+ * até a página deslizar de lado.
  * ─────────────────────────────────────────────────────────────────
  */
 
 import { useMemo, useState } from "react";
 import clsx from "clsx";
-import { SlidersHorizontal } from "lucide-react";
+import { SlidersHorizontal, X } from "lucide-react";
 import {
   CATEGORIAS, PRODUTOS, type CategoriaLoja, type Produto,
 } from "@/lib/data/loja";
@@ -39,6 +43,9 @@ const FEITIOS: { id: Feitio; nome: string; teste: (p: Produto) => boolean }[] = 
 export default function CatalogoLoja() {
   const [familia, setFamilia] = useState<Familia>("todas");
   const [feitio, setFeitio]   = useState<Feitio>("todos");
+  /* No telemóvel os filtros ocupavam meio ecrã antes de se ver um produto.
+     Passam para uma gaveta, que é o que uma loja faz num telefone. */
+  const [gaveta, setGaveta]   = useState(false);
 
   const testeFeitio = FEITIOS.find((f) => f.id === feitio)!.teste;
 
@@ -66,16 +73,11 @@ export default function CatalogoLoja() {
       ? "Equipamento de jogo, treino, peças de adepto e acessórios."
       : CATEGORIAS.find((c) => c.id === familia)!.intro;
 
-  return (
-    <div className="section-container grid lg:grid-cols-[15rem_minmax(0,1fr)] gap-10 lg:gap-14 py-12 md:py-16">
+  /** Quantos filtros estão postos. Zero quer dizer que se vê tudo. */
+  const postos = (familia !== "todas" ? 1 : 0) + (feitio !== "todos" ? 1 : 0);
 
-      {/* ── Filtros ── */}
-      <aside className="lg:sticky lg:top-32 h-fit">
-        <h2 className="flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-4">
-          <SlidersHorizontal size={14} aria-hidden />
-          Filtrar
-        </h2>
-
+  const filtros = (
+    <>
         <Grupo titulo="Família">
           <Opcao
             nome="Tudo"
@@ -105,7 +107,75 @@ export default function CatalogoLoja() {
             />
           ))}
         </Grupo>
+    </>
+  );
+
+  return (
+    <div className="section-container grid lg:grid-cols-[15rem_minmax(0,1fr)] gap-10 lg:gap-14 py-12 md:py-16">
+
+      {/* ── Filtros, no ecrã grande ── */}
+      <aside className="hidden lg:block lg:sticky lg:top-32 h-fit">
+        <h2 className="flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-4">
+          <SlidersHorizontal size={14} aria-hidden />
+          Filtrar
+        </h2>
+        {filtros}
       </aside>
+
+      {/* ── Filtros, no telemóvel: gaveta ── */}
+      <button
+        type="button"
+        onClick={() => setGaveta(true)}
+        aria-expanded={gaveta}
+        className="lg:hidden btn-ghost w-full justify-center"
+      >
+        <SlidersHorizontal size={16} aria-hidden />
+        Filtrar
+        {postos > 0 && (
+          <span className="ml-1 inline-flex items-center justify-center min-w-6 h-6 px-1.5 bg-yellow text-black font-body text-xs font-bold tabular-nums">
+            {postos}
+          </span>
+        )}
+      </button>
+
+      {gaveta && (
+        <div className="lg:hidden fixed inset-0 z-50 bg-surface flex flex-col">
+          <div className="flex items-center justify-between border-b border-on-surface/10 px-5 h-16 shrink-0">
+            <span className="font-headline font-black uppercase text-lg text-on-surface">
+              Filtrar
+            </span>
+            <button
+              type="button"
+              onClick={() => setGaveta(false)}
+              aria-label="Fechar os filtros"
+              className="w-11 h-11 flex items-center justify-center text-on-surface"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto px-5 py-6">{filtros}</div>
+
+          <div className="border-t border-on-surface/10 p-5 shrink-0 flex flex-col gap-3">
+            <button
+              type="button"
+              onClick={() => setGaveta(false)}
+              className="btn-primary w-full justify-center"
+            >
+              Ver {visiveis.length} {visiveis.length === 1 ? "artigo" : "artigos"}
+            </button>
+            {postos > 0 && (
+              <button
+                type="button"
+                onClick={() => { setFamilia("todas"); setFeitio("todos"); }}
+                className="font-body text-sm text-on-surface-muted underline underline-offset-4 min-h-11"
+              >
+                Limpar filtros
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* ── Produtos ── */}
       <section>
@@ -124,7 +194,7 @@ export default function CatalogoLoja() {
             Nada com estes filtros. Tira um deles para voltar a ver o catálogo.
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-px bg-on-surface/10">
+          <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:grid-cols-3 gap-px bg-on-surface/10">
             {visiveis.map((p) => (
               <CartaoProduto key={p.slug} produto={p} />
             ))}
