@@ -177,6 +177,12 @@ existe, para levar à segunda reunião com a Direção:
 
 - [ ] O que está feito no site, página a página, em linguagem de quem
       não programa
+- [ ] **Como foi feito** — com que ferramentas, onde está alojado, quanto
+      custa cada peça, e de quem é cada conta. A Direção tem de saber que
+      o site não depende de uma pessoa: domínio na Amen, alojamento na
+      Vercel, conteúdo no Sanity, encomendas em base de dados em
+      Frankfurt, email pela Resend. Com o registo de quem tem acesso a
+      quê, para o dia em que alguém sair
 - [ ] O que a Direção tem de perceber para o usar: publicar comunicados,
       acompanhar encomendas, escrever o plantel, onde cada email cai
 - [ ] O que falta e **quem o desbloqueia** — separar o que depende do
