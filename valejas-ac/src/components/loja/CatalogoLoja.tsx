@@ -142,7 +142,11 @@ function Grupo({ titulo, children }: { titulo: string; children: React.ReactNode
         {titulo}
       </legend>
       {/* No telemóvel os filtros deitam-se numa fila que se enrola. */}
-      <div className="flex flex-wrap lg:flex-col gap-2 lg:gap-0">{children}</div>
+      {/* No telemóvel os filtros deitam-se numa fila que se enrola, ao
+          centro como o resto da página. */}
+      <div className="flex flex-wrap justify-center lg:justify-start lg:flex-col gap-2 lg:gap-0">
+        {children}
+      </div>
     </fieldset>
   );
 }
@@ -170,12 +174,16 @@ function Opcao({
         conta === 0 && !ativo && "opacity-40 cursor-not-allowed",
         ativo
           ? [
-              // O amarelo é fundo, não texto: em modo claro o texto amarelo
-              // é recolorido para azul e o item escolhido ficava igual aos
-              // outros. E é fundo e não barra lateral — a DESIGN.md tirou
-              // seis dessas do site e esta tinha voltado a entrar.
-              "border-yellow bg-yellow/20 text-on-surface font-semibold",
-              "lg:bg-yellow/15 lg:border-b-yellow/40",
+              /*
+                Amarelo a sério, com texto preto por cima: 15,2:1.
+                Esteve em `bg-yellow/20` — um tom a 20% que não se via, e
+                que ficou ainda mais fraco quando a barra lateral amarela
+                saiu daqui. Um filtro escolhido tem de gritar: é a única
+                coisa que explica porque é que faltam produtos na grelha.
+                Fundo e não barra: a barra lateral é padrão banido.
+              */
+              "border-yellow bg-yellow text-black font-bold",
+              "lg:border-b-yellow",
             ]
           : [
               "border-on-surface/20 text-on-surface-muted hover:text-on-surface",
@@ -184,7 +192,14 @@ function Opcao({
       )}
     >
       {nome}
-      <span className="font-body text-xs tabular-nums opacity-70">{conta}</span>
+      <span
+        className={clsx(
+          "font-body text-xs tabular-nums",
+          ativo ? "text-black/65 font-bold" : "opacity-70"
+        )}
+      >
+        {conta}
+      </span>
     </button>
   );
 }

@@ -278,6 +278,20 @@ Cantos: botões em pílula (`rounded-full`), tudo o resto a direito.
 | `.link-salto` | Salto para o conteúdo, visível só com foco |
 | `.entrada-pagina` | Entrada de página, com reposição em CSS |
 
+**Telemóvel: tudo ao centro.** Abaixo de 768px o conteúdo do `main` e do
+rodapé alinha ao centro, texto corrido incluído. Decisão do cliente a
+15/09/2026, tomada com o aviso de que texto longo centrado se lê pior — a
+margem esquerda irregular obriga o olho a procurar o início de cada linha.
+A partir de 768px volta a alinhar à esquerda, o que protege a leitura no
+tablet e no computador.
+
+As exceções não são gosto, são sítios onde centrar parte alguma coisa:
+campos de formulário (o cursor saltava a cada letra), células de tabela (é
+o alinhamento que permite comparar), e marcadores de lista, que passam a
+ponto acima do texto em vez de ficarem encostados à esquerda. Ícones,
+imagens e botões dentro de colunas flex precisam de `align-self`, porque o
+`text-align` não lhes chega.
+
 **Alvos de toque.** 44px de altura mínima em tudo o que se carrega, pela
 classe `.alvo-toque` ou por `min-h-11`. Inclui a barra de navegação de
 computador: um iPad deitado tem mais de 1024px e recebe-a, operada com o

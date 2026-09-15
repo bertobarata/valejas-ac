@@ -128,6 +128,72 @@
   :root { --barra-altura: 7rem; }
 }
 
+/* ──────────────────────────────────────────────────────────────────
+   TELEMÓVEL: TUDO AO CENTRO
+   Pedido do Berto a 15/09/2026. Abaixo de 768px o conteúdo alinha ao
+   centro, texto incluído.
+
+   Fica o aviso para quem vier a seguir: texto corrido centrado lê-se
+   pior — a margem esquerda irregular obriga o olho a procurar o início
+   de cada linha, e este público vai até aos 60+. Foi decisão do cliente,
+   tomada com o aviso em cima da mesa.
+
+   As exceções abaixo não são gosto: são sítios onde centrar parte
+   mesmo alguma coisa.
+   ────────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  main,
+  footer {
+    text-align: center;
+  }
+
+  /* Blocos com largura máxima deixam de encostar à esquerda. */
+  main :where([class*="max-w-"]),
+  footer :where([class*="max-w-"]) {
+    margin-inline: auto;
+  }
+
+  /* Linhas de ícone + texto passam a empilhar, centradas. Deixá-las em
+     linha com o texto centrado dava um bloco torto ao lado do ícone. */
+  main :where(.flex.items-start, .flex.items-center):not(.flex-col):not(.justify-center):not(.justify-between) {
+    justify-content: center;
+  }
+
+  /* Numa coluna flex, o que não estica encosta à esquerda: ícones,
+     imagens e botões ficavam à esquerda enquanto o texto ao lado ia para
+     o meio. `text-align` não lhes chega — é preciso alinhá-los no eixo. */
+  main :where(.flex.flex-col) > :where(svg, img, a, button),
+  main :where(.self-start),
+  main :where(.w-fit) {
+    align-self: center;
+  }
+  main :where(.flex.flex-col.items-start) {
+    align-items: center;
+  }
+
+  /* Campos de formulário: escrever num campo centrado é desagradável —
+     o cursor salta a cada letra. */
+  main :where(input, textarea, select) {
+    text-align: left;
+  }
+
+  /* Tabelas mantêm as colunas alinhadas: é assim que se compara. */
+  main :where(th, td) {
+    text-align: inherit;
+  }
+
+  /* Listas com marcador redondo: o marcador estava colado à esquerda e
+     o texto ia para o meio. Passa a ponto acima do texto. */
+  .texto-legal li {
+    padding-left: 0;
+  }
+  .texto-legal li::before {
+    position: static;
+    display: block;
+    margin: 0 auto 0.4rem;
+  }
+}
+
 @layer base {
   :focus-visible {
     outline: 3px solid var(--anel-foco);
