@@ -240,7 +240,35 @@ a encomenda e diz o valor; alguém tem de ir ao banco ver se entrou.
       site mostra vazios honestos em vez de inventar. Decidir se se
       lança assim ou se se espera
 
-**5. Redes sociais**
+**5. Direitos de imagem obrigatórios — risco legal a decidir**
+
+- [ ] ⚠️ **O consentimento pode não ser válido.** Hoje não se inscreve
+      ninguém sem aceitar o termo de direitos de imagem. O RGPD exige
+      consentimento **livre**, e não o é quando se condiciona um serviço
+      à aceitação de algo que não é necessário para o prestar —
+      inscrever uma criança no futsal não exige poder publicar a
+      fotografia dela. O site só reproduz o que a ficha em papel já
+      fazia, mas passar isto para a internet expõe-o
+- [ ] Saída: **separar em dois consentimentos** — um obrigatório para
+      tratar a inscrição, outro opcional para publicar fotografias. Meio
+      dia de trabalho. Quem recusar inscreve-se na mesma e fica fora das
+      fotos. Se se separar no site, separar também no papel
+- [ ] Recomendação minha: separar. Tira um risco desnecessário e deixa
+      inscrever famílias que hoje hesitam
+
+**6. RGPD — o que é trabalho do clube e não meu**
+
+- [ ] **Registo das atividades de tratamento** (artigo 30.º). A dispensa
+      para organizações pequenas não se aplica a tratamento regular, e
+      inscrever atletas todas as épocas é regular. Posso fazer rascunho
+- [ ] **Nomear quem responde** a pedidos de acesso e apagamento, e pôr
+      esse contacto na política de privacidade. `geral@` serve se alguém
+      a ler
+- [ ] **Saber do prazo de 72h** para comunicar uma fuga à CNPD
+- [ ] Confirmar com quem saiba se é preciso Encarregado de Proteção de
+      Dados — pelo que percebi, um clube deste tamanho não é obrigado
+
+**7. Redes sociais**
 
 - [ ] O Make.com não está ligado: o comunicado sai no site e fica-se por
       aí. Decidir se vale a pena ligar, e quem fica responsável

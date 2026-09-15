@@ -1,0 +1,817 @@
+<title>Reunião 2 do Valejas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+  :root {
+    --papel:      #F2F4F7;
+    --superficie: #FFFFFF;
+    --orla:       #D3DAE4;
+    --orla-forte: #9AA7BA;
+    --tinta:      #101822;
+    --tinta-fraca:#4C5A6E;
+    --azul:       #1554BB;
+    --azul-fundo: #E6EDFA;
+    --amarelo:    #FADB09;
+    --risco:      #A63A2A;
+    --risco-fundo:#FBEAE6;
+    --custo:      #8A6A12;
+    --feito:      #1E7A5A;
+    --feito-fundo:#E4F2EC;
+
+    --medida: 34rem;
+    --t-micro: 0.72rem;
+    --t-peq:   0.85rem;
+    --t-base:  1.06rem;
+    --t-md:    1.3rem;
+    --t-lg:    1.75rem;
+    --t-xl:    2.4rem;
+    --t-xxl:   3.4rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --papel:      #0D131C;
+      --superficie: #151E2B;
+      --orla:       #2A374A;
+      --orla-forte: #4D5F79;
+      --tinta:      #E9EEF6;
+      --tinta-fraca:#9DACC1;
+      --azul:       #6E9BEE;
+      --azul-fundo: #17263F;
+      --amarelo:    #FADB09;
+      --risco:      #E8896F;
+      --risco-fundo:#2E1B16;
+      --custo:      #D9B45B;
+      --feito:      #59C69B;
+      --feito-fundo:#122A22;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --papel:      #0D131C;
+    --superficie: #151E2B;
+    --orla:       #2A374A;
+    --orla-forte: #4D5F79;
+    --tinta:      #E9EEF6;
+    --tinta-fraca:#9DACC1;
+    --azul:       #6E9BEE;
+    --azul-fundo: #17263F;
+    --amarelo:    #FADB09;
+    --risco:      #E8896F;
+    --risco-fundo:#2E1B16;
+    --custo:      #D9B45B;
+    --feito:      #59C69B;
+    --feito-fundo:#122A22;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: var(--t-base);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .env { max-width: var(--medida); margin: 0 auto; padding: 0 1.4rem; }
+
+  h1, h2, h3, .rotulo, .num, th, .opcao-nome, .btn {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .rotulo {
+    font-size: var(--t-micro);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--tinta-fraca);
+  }
+
+  /* ── Abertura ─────────────────────────────────────────── */
+  .capa {
+    border-bottom: 2px solid var(--tinta);
+    padding: 3.4rem 0 2.2rem;
+  }
+  .faixa { display: flex; height: 7px; margin-bottom: 2.6rem; }
+  .faixa span { flex: 1; }
+  .faixa span:first-child { background: var(--amarelo); }
+  .faixa span:last-child  { background: var(--azul); }
+
+  h1 {
+    font-size: var(--t-xxl);
+    font-weight: 900;
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0.6rem 0 1.1rem;
+  }
+  .abre {
+    font-size: var(--t-md);
+    color: var(--tinta-fraca);
+    margin: 0 0 1.6rem;
+    text-wrap: pretty;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: var(--t-peq);
+    color: var(--tinta-fraca);
+  }
+
+  /* ── Secções ──────────────────────────────────────────── */
+  section { padding: 3rem 0 0; }
+  h2 {
+    font-size: var(--t-xl);
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0.5rem 0 1rem;
+  }
+  h3 {
+    font-size: var(--t-md);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 2rem 0 0.5rem;
+  }
+  p { margin: 0 0 1.05rem; text-wrap: pretty; }
+  a { color: var(--azul); text-underline-offset: 3px; }
+  strong { font-weight: 600; }
+  :focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; }
+
+  /* ── Números da abertura ──────────────────────────────── */
+  .numeros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7.2rem, 1fr));
+    gap: 1px;
+    background: var(--orla);
+    border: 1px solid var(--orla);
+    margin: 1.6rem 0;
+  }
+  .numeros div { background: var(--superficie); padding: 0.9rem 0.8rem; }
+  .numeros b {
+    display: block;
+    font-family: Archivo, sans-serif;
+    font-size: 1.7rem; font-weight: 900; line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .numeros span { font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.1em; color: var(--tinta-fraca); font-family: Archivo, sans-serif; font-weight: 500; }
+
+  /* ── Tabelas ──────────────────────────────────────────── */
+  .rolo { overflow-x: auto; margin: 1.2rem 0 1.6rem; border: 1px solid var(--orla); background: var(--superficie); }
+  table { width: 100%; border-collapse: collapse; font-size: var(--t-peq); }
+  th, td { padding: 0.7rem 0.8rem; text-align: left; border-bottom: 1px solid var(--orla); vertical-align: top; }
+  th {
+    font-size: var(--t-micro); font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--tinta-fraca);
+    border-bottom: 2px solid var(--orla-forte); white-space: nowrap;
+  }
+  tr:last-child td { border-bottom: 0; }
+  td.n { font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ── Decisões ─────────────────────────────────────────── */
+  .decisao { border-top: 4px solid var(--tinta); margin-top: 2.6rem; padding-top: 1.1rem; }
+  .cabeca { display: flex; gap: 0.9rem; align-items: baseline; }
+  .num {
+    font-size: var(--t-lg); font-weight: 900; line-height: 1;
+    background: var(--amarelo); color: #101822;
+    padding: 0.18em 0.42em; font-variant-numeric: tabular-nums;
+  }
+  .cabeca h2 { margin: 0; font-size: var(--t-lg); }
+
+  .bloco { border: 1px solid var(--orla); background: var(--superficie); padding: 1rem 1.1rem; margin: 1.1rem 0; }
+  .bloco > :last-child { margin-bottom: 0; }
+  .bloco .rotulo { display: block; margin-bottom: 0.5rem; }
+  .bloco.perigo { background: var(--risco-fundo); border-color: var(--risco); }
+  .bloco.perigo .rotulo { color: var(--risco); }
+  .bloco.opiniao { background: var(--azul-fundo); border-color: var(--azul); }
+  .bloco.opiniao .rotulo { color: var(--azul); }
+  .bloco.ok { background: var(--feito-fundo); border-color: var(--feito); }
+  .bloco.ok .rotulo { color: var(--feito); }
+
+  ul, ol { margin: 0 0 1.05rem; padding-left: 1.15rem; }
+  li { margin-bottom: 0.45rem; }
+  li::marker { color: var(--orla-forte); }
+
+  .opcoes { display: flex; flex-direction: column; gap: 1px; background: var(--orla); border: 1px solid var(--orla); margin: 1.2rem 0; }
+  .opcao { background: var(--superficie); padding: 0.85rem 1rem; display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; align-items: baseline; }
+  .opcao-nome { font-weight: 700; font-size: var(--t-peq); flex: 1 1 11rem; }
+  .opcao-preco {
+    font-family: "IBM Plex Mono", monospace; font-size: var(--t-peq);
+    font-weight: 600; color: var(--custo); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .opcao-preco.gratis { color: var(--feito); }
+  .opcao-nota { flex: 1 1 100%; font-size: var(--t-peq); color: var(--tinta-fraca); }
+
+  .fechada { color: var(--tinta-fraca); }
+  .fechada strong { color: var(--tinta); }
+
+  footer { border-top: 2px solid var(--tinta); margin-top: 3.4rem; padding: 1.6rem 0 3.4rem; font-size: var(--t-peq); color: var(--tinta-fraca); }
+  .lema { font-family: Archivo, sans-serif; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; color: var(--tinta); font-size: var(--t-peq); }
+
+  @media (max-width: 34rem) {
+    :root { --t-xxl: 2.4rem; --t-xl: 1.8rem; --t-lg: 1.4rem; }
+    .cabeca { flex-wrap: wrap; }
+  }
+</style>
+
+<div class="capa">
+  <div class="env">
+    <div class="faixa"><span></span><span></span></div>
+    <p class="rotulo">Valejas Atlético Clube · Documento para a Direção</p>
+    <h1>O site, por dentro</h1>
+    <p class="abre">
+      O que está feito, como foi feito, quanto custa, o que o RGPD
+      obriga — e as seis coisas que ficam à vossa espera. Este documento não vos pede que concordem
+      comigo. Pede que decidam.
+    </p>
+    <div class="meta">
+      <span>15 de setembro de 2026</span>
+      <span>Segunda reunião</span>
+      <span>Leitura: 12 minutos</span>
+    </div>
+  </div>
+</div>
+
+<div class="env">
+
+<section>
+  <p class="rotulo">Se só lerem uma página</p>
+  <h2>Seis decisões</h2>
+  <p>
+    O site está construído e a funcionar. Falta uma coisa técnica — ligar o
+    endereço <strong>valejasac.pt</strong> — e seis decisões que não são
+    minhas para tomar, porque o risco é do clube e não meu.
+  </p>
+  <div class="rolo">
+    <table>
+      <thead>
+        <tr><th>#</th><th>A decisão</th><th>Se não decidirem</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="n">1</td><td>Conferir os pagamentos à mão, ou pagar para serem conferidos sozinhos</td><td>Fica à mão. É o que está hoje</td></tr>
+        <tr><td class="n">2</td><td>Abrir a loja já, ou esperar pelos preços da ZEMIG</td><td>A loja não abre</td></tr>
+        <tr><td class="n">3</td><td>Quantas pessoas entram na área da Direção</td><td>Ficam duas contas partilhadas</td></tr>
+        <tr><td class="n">4</td><td>Lançar com as páginas vazias, ou esperar pelo conteúdo</td><td>O site espera indefinidamente</td></tr>
+        <tr><td class="n">5</td><td>Ligar os comunicados às redes sociais, e quem fica responsável</td><td>Publica-se só no site</td></tr>
+        <tr><td class="n">6</td><td>Se os direitos de imagem continuam obrigatórios para inscrever</td><td>Ficam obrigatórios, com o risco legal que isso traz</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <p class="rotulo">Ponto um</p>
+  <h2>O que já existe</h2>
+  <p>
+    Vinte e oito páginas, escritas a partir dos documentos do clube e das
+    fotografias que me deram. Nada foi inventado: onde não havia informação
+    verdadeira, a página diz que ainda não há, em vez de encher com texto
+    bonito.
+  </p>
+
+  <div class="numeros">
+    <div><b>28</b><span>Páginas</span></div>
+    <div><b>7</b><span>Modalidades</span></div>
+    <div><b>30</b><span>Jogos</span></div>
+    <div><b>23</b><span>Artigos</span></div>
+    <div><b>20</b><span>Dirigentes</span></div>
+    <div><b>60</b><span>Anos de clube</span></div>
+  </div>
+
+  <h3>O que o público vê</h3>
+  <ul>
+    <li><strong>História, emblema, instalações, órgãos sociais e patrocinadores</strong> — a identidade do clube, com o significado da águia e das cores explicado.</li>
+    <li><strong>Modalidades</strong> — as sete, cada uma com a sua página.</li>
+    <li><strong>Jogos</strong> — o calendário oficial da AF Lisboa, as 30 jornadas do distrital, com datas, horas e pavilhões. Resultados e classificação ficam a zero até haver jogos.</li>
+    <li><strong>Loja</strong> — os 23 artigos da ZEMIG, mais um kit de atleta montado a partir de três peças, com o preço calculado e não escrito à mão.</li>
+    <li><strong>Inscrições</strong> — formulário com os direitos de imagem obrigatórios, no texto exato da ficha do clube, e o exame médico do IPDJ para descarregar e entregar na sede.</li>
+    <li><strong>Sócios, contactos e comunicados.</strong></li>
+  </ul>
+
+  <h3>O que só a Direção vê</h3>
+  <p>
+    Em <strong>valejasac.pt/direcao</strong>, com palavra-passe: escrever e
+    publicar comunicados, acompanhar encomendas da loja, e escrever o plantel
+    e os resultados sem me pedir nada.
+  </p>
+
+  <div class="bloco ok">
+    <span class="rotulo">Já testado a sério</span>
+    <p>
+      Cinco caixas de correio criadas e a entregar — três envios reais
+      chegaram à entrada, nenhum ao spam. As encomendas gravam, leem e
+      alteram-se contra a base de dados verdadeira. Vinte e cinco testes
+      automáticos correm a cada alteração.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="rotulo">Ponto dois</p>
+  <h2>Como foi feito</h2>
+  <p>
+    Isto interessa por uma razão só: <strong>para o site não depender de uma
+    pessoa.</strong> Se eu desaparecer amanhã, quem vier a seguir tem de saber
+    onde está cada peça e quem tem a chave.
+  </p>
+
+  <div class="rolo">
+    <table>
+      <thead>
+        <tr><th>Peça</th><th>Onde está</th><th>Custo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Endereço <strong>valejasac.pt</strong></td><td>Amen</td><td class="n">Anual, já pago</td></tr>
+        <tr><td>Alojamento do site</td><td>Vercel</td><td class="n">0 €</td></tr>
+        <tr><td>Textos e notícias</td><td>Sanity</td><td class="n">0 €</td></tr>
+        <tr><td>Encomendas da loja</td><td>Neon, Frankfurt</td><td class="n">0 €</td></tr>
+        <tr><td>Envio de emails</td><td>Resend</td><td class="n">0 €</td></tr>
+        <tr><td>Código</td><td>GitHub</td><td class="n">0 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <strong>O site custa hoje zero euros por mês.</strong> O domínio é a única
+    coisa que se paga, uma vez por ano, e já está pago. Tudo o resto corre em
+    planos gratuitos que chegam de sobra para o tamanho do clube.
+  </p>
+
+  <div class="bloco perigo">
+    <span class="rotulo">A saber, não a temer</span>
+    <p>
+      <strong>Os planos grátis têm condições.</strong> O da Vercel destina-se a
+      uso não comercial — uma loja a vender equipamento pode levantar essa
+      questão, e não sou eu que a decido. Se um dia for preciso mudar para o
+      plano pago, são cerca de 19 € por mês. Não é urgente; é para saberem
+      que existe e não serem apanhados de surpresa.
+    </p>
+  </div>
+
+  <h3>Onde ficam os dados das pessoas</h3>
+  <p>
+    Fichas de sócio, inscrições e mensagens de contacto <strong>não ficam
+    guardadas no site</strong>: seguem direto para o email do clube e mais
+    nada. As encomendas da loja são a exceção — o clube tem de saber quem
+    está à espera de quê — e essas ficam numa base de dados em
+    <strong>Frankfurt, na União Europeia</strong>, apagada automaticamente ao
+    fim de um ano.
+  </p>
+  <p>
+    Não se recolhem dados de saúde em lado nenhum. O exame médico é em papel,
+    entregue em mão. Foi decisão consciente: dados clínicos são categoria
+    especial no RGPD, e a forma mais segura de os proteger é não os ter.
+  </p>
+
+  <h3>Para onde vai cada mensagem</h3>
+  <div class="rolo">
+    <table>
+      <thead><tr><th>Caixa</th><th>Recebe</th></tr></thead>
+      <tbody>
+        <tr><td class="n">geral@</td><td>Contactos, fichas de sócio, encomendas, pagamentos</td></tr>
+        <tr><td class="n">coordenacao@</td><td>Inscrições e tudo o que seja modalidades</td></tr>
+        <tr><td class="n">comunicacao@</td><td>Parcerias, imprensa, cópia de cada comunicado</td></tr>
+        <tr><td class="n">presidente@</td><td>Nada, por decisão vossa</td></tr>
+        <tr><td class="n">direcao@</td><td>Nada, por decisão vossa</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <p class="rotulo">Ponto três</p>
+  <h2>O RGPD, em português</h2>
+
+  <div class="bloco perigo">
+    <span class="rotulo">Antes de mais</span>
+    <p>
+      <strong>Não sou advogado e isto não é parecer jurídico.</strong> É o que
+      percebi ao construir o site, escrito para vos dar perguntas certas a
+      fazer a quem de direito. A responsabilidade legal é do clube, e uma
+      confirmação por alguém habilitado custa pouco e vale muito.
+    </p>
+  </div>
+
+  <h3>Quem responde perante a lei</h3>
+  <p>
+    <strong>O clube.</strong> Não eu, não a Vercel, não o fornecedor de email.
+    Em linguagem da lei, a associação é a «responsável pelo tratamento»: é a
+    ela que a CNPD pergunta, e é ela que responde a quem quiser saber que
+    dados tem sobre si. As empresas onde o site corre são «subcontratantes» —
+    trabalham por conta do clube e têm contratos-padrão de proteção de dados.
+  </p>
+  <p>
+    Isto não muda por o site ser gratuito nem por ter sido eu a construí-lo.
+    <strong>Alguém na Direção tem de ser a pessoa que responde</strong> quando
+    um pai pedir para apagar os dados do filho. Hoje essa pessoa não está
+    nomeada.
+  </p>
+
+  <h3>O que o site já faz bem</h3>
+  <ul>
+    <li><strong>Pede o mínimo.</strong> Nome, email, telemóvel. Nada de morada, número de cartão de cidadão ou dados de saúde.</li>
+    <li><strong>Não guarda o que não precisa.</strong> Inscrições, fichas de sócio e mensagens seguem para o email do clube e desaparecem do site.</li>
+    <li><strong>Tem prazo.</strong> As encomendas apagam-se sozinhas ao fim de um ano.</li>
+    <li><strong>Fica na Europa.</strong> A base de dados está em Frankfurt. Nada de dados pessoais em servidores americanos.</li>
+    <li><strong>Regista o consentimento</strong> com o texto exato que a pessoa aceitou, a data e quem aceitou. Sem isso, um consentimento não se prova.</li>
+    <li><strong>Não recolhe dados de saúde.</strong> A forma mais segura de proteger dados clínicos é não os ter.</li>
+  </ul>
+
+  <h3>O que falta, e é trabalho do clube</h3>
+  <ul>
+    <li>
+      <strong>Registo das atividades de tratamento.</strong> Um documento
+      simples que diz que dados o clube trata, para quê, durante quanto tempo
+      e com quem os partilha. Há uma dispensa para organizações pequenas, mas
+      ela não se aplica quando o tratamento é regular — e inscrever atletas
+      todas as épocas é regular. Faço um rascunho se quiserem.
+    </li>
+    <li>
+      <strong>Nomear quem responde</strong> aos pedidos de acesso e de
+      apagamento, e pôr esse contacto na política de privacidade. A caixa
+      <strong>geral@</strong> serve, desde que alguém a leia.
+    </li>
+    <li>
+      <strong>Saber o que fazer se houver uma fuga.</strong> A lei dá
+      <strong>72 horas</strong> para comunicar à CNPD. Não é preciso um plano
+      elaborado — é preciso que alguém saiba que o prazo existe.
+    </li>
+    <li>
+      <strong>Encarregado de proteção de dados.</strong> Pelo que percebi, um
+      clube deste tamanho não é obrigado a ter um. Vale a pergunta a quem
+      saiba, não vale perder tempo a nomear sem confirmar.
+    </li>
+  </ul>
+
+  <h3>Os menores</h3>
+  <p>
+    A maioria dos atletas são crianças, e isso muda tudo. O consentimento de
+    um menor tem de ser dado por quem exerce as responsabilidades parentais, e
+    o texto tem de ser compreensível <strong>para a criança também</strong> —
+    não é um detalhe simpático, é o que a lei pede. O termo de direitos de
+    imagem do clube já distingue o texto para maiores e para menores, que é
+    mais do que a maioria dos clubes faz.
+  </p>
+</section>
+
+<section>
+  <p class="rotulo">Ponto quatro</p>
+  <h2>As decisões</h2>
+  <p>
+    Cada uma leva o que custa, o que corre mal, e a minha opinião — separada
+    e assinada, para que a possam ignorar sem culpa.
+  </p>
+
+  <!-- 1 -->
+  <div class="decisao">
+    <div class="cabeca"><span class="num">1</span><h2>Os pagamentos</h2></div>
+
+    <p>
+      Hoje o site aceita <strong>MB WAY e transferência</strong>. Regista a
+      encomenda, diz o valor a pagar, e fica por aí. Alguém do clube tem de ir
+      ao banco ver se o dinheiro entrou e marcar a encomenda como paga.
+    </p>
+
+    <div class="bloco perigo">
+      <span class="rotulo">O que isto expõe</span>
+      <ul>
+        <li><strong>Encomendar sem pagar nada.</strong> Qualquer pessoa preenche o formulário sem transferir um cêntimo. Se o clube pedir à ZEMIG com base nisso, fica com equipamento que ninguém vem buscar. <strong>É o único destes riscos que custa dinheiro.</strong></li>
+        <li><strong>«Já paguei» sem prova.</strong> O extrato mostra o nome do titular da conta, que muitas vezes não é quem encomendou — o pai paga pelo filho. Cruzar as duas coisas é adivinhar.</li>
+        <li><strong>Depende de uma pessoa.</strong> Quem tem o homebanking é o único que confirma. De férias, para tudo.</li>
+        <li><strong>Sem rasto para a contabilidade</strong> além do que alguém escrever à mão.</li>
+      </ul>
+    </div>
+
+    <p class="rotulo">As saídas</p>
+    <div class="opcoes">
+      <div class="opcao">
+        <span class="opcao-nome">Ficar como está, com duas regras</span>
+        <span class="opcao-preco gratis">0 €</span>
+        <span class="opcao-nota">
+          Pedir o número da encomenda no descritivo da transferência, e só
+          encomendar à ZEMIG depois de confirmar que o dinheiro entrou.
+          Resolve metade do problema e não custa nada.
+        </span>
+      </div>
+      <div class="opcao">
+        <span class="opcao-nome">Exigir comprovativo</span>
+        <span class="opcao-preco gratis">0 €</span>
+        <span class="opcao-nota">
+          Quem paga envia o comprovativo. Mais trabalho para quem compra, e
+          continua a ser papel — não é confirmação a sério.
+        </span>
+      </div>
+      <div class="opcao">
+        <span class="opcao-nome">Referência Multibanco automática</span>
+        <span class="opcao-preco">1,23 € por kit</span>
+        <span class="opcao-nota">
+          O site confirma sozinho. Sem mensalidade nem fidelização: só se
+          paga por pagamento recebido. Cem encomendas por ano dão cerca de
+          55 € (MB WAY) a 123 € (referência).
+        </span>
+      </div>
+      <div class="opcao">
+        <span class="opcao-nome">Misto</span>
+        <span class="opcao-preco">conforme</span>
+        <span class="opcao-nota">
+          Grátis nas compras pequenas, referência no kit e nas encomendas
+          grandes — que são as que doem se ninguém as levantar.
+        </span>
+      </div>
+    </div>
+
+    <p>
+      Uma nota legal: a lei portuguesa <strong>proíbe cobrar essa taxa a quem
+      compra</strong>. Nada de «mais 1,23 € se pagar por referência». Ou o
+      clube absorve, ou embute no preço de tabela.
+    </p>
+
+    <div class="bloco opiniao">
+      <span class="rotulo">Opinião minha, não facto</span>
+      <p>
+        Ficaria no grátis, <strong>com as duas regras</strong>. O número da
+        encomenda no descritivo é a coisa mais barata desta lista e ninguém
+        se lembra dela. A partir de umas cinquenta encomendas por mês, os
+        120 € por ano compram de volta horas de tesouraria — e aí mudava.
+      </p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="decisao">
+    <div class="cabeca"><span class="num">2</span><h2>Abrir a loja</h2></div>
+    <p>
+      Faltam duas coisas, e nenhuma depende de mim. <strong>Onze dos
+      vinte e três artigos não têm preço</strong> — fui confirmar à loja da
+      ZEMIG e é lá que diz «preço sob consulta». Um email ao fornecedor a
+      pedir a tabela resolve. E o <strong>stock está todo a zero</strong>,
+      porque ninguém contou o que existe na sede.
+    </p>
+    <p>
+      Com stock a zero, tudo aparece como «por encomenda, até duas semanas».
+      Funciona, mas é mais lento do que precisa de ser se houver caixas na
+      sede com material lá dentro.
+    </p>
+    <div class="opcoes">
+      <div class="opcao">
+        <span class="opcao-nome">Abrir já, com o que há</span>
+        <span class="opcao-preco gratis">Imediato</span>
+        <span class="opcao-nota">Doze artigos com preço, onze a dizer «pedir orçamento». Tudo por encomenda.</span>
+      </div>
+      <div class="opcao">
+        <span class="opcao-nome">Esperar pela ZEMIG e contar o stock</span>
+        <span class="opcao-preco">Dias ou semanas</span>
+        <span class="opcao-nota">Loja completa, entrega imediata no que houver na sede.</span>
+      </div>
+    </div>
+    <div class="bloco opiniao">
+      <span class="rotulo">Opinião minha</span>
+      <p>
+        Mandava o email à ZEMIG hoje e contava o stock no mesmo dia. São duas
+        tarefas de uma tarde que mudam a loja de «funciona» para «boa».
+      </p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="decisao">
+    <div class="cabeca"><span class="num">3</span><h2>Quem entra na área da Direção</h2></div>
+    <p>
+      Existem <strong>duas contas</strong>: uma do presidente, outra da
+      comunicação. Quem tiver a palavra-passe escreve e publica em nome do
+      clube.
+    </p>
+    <div class="bloco perigo">
+      <span class="rotulo">O que isto expõe</span>
+      <p>
+        Não há segundo fator — nenhum código de confirmação no telemóvel. Uma
+        palavra-passe partilhada por WhatsApp e reencaminhada duas vezes deixa
+        de ser secreta sem ninguém dar por isso. E não se sabe quem fez o quê
+        se as pessoas usarem a mesma conta.
+      </p>
+    </div>
+    <p>
+      Decidam <strong>quantas pessoas precisam mesmo</strong> de entrar. Se
+      forem quatro, faço quatro contas — uma por pessoa, para se saber quem
+      publicou. Se uma sair da Direção, apaga-se a dela e as outras ficam.
+    </p>
+    <div class="bloco opiniao">
+      <span class="rotulo">Opinião minha</span>
+      <p>
+        Uma conta por pessoa, sempre. E as palavras-passe atuais devem ser
+        trocadas antes de o site abrir ao público — foram escritas durante o
+        trabalho e é boa prática não confiar em segredos que já andaram por aí.
+      </p>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="decisao">
+    <div class="cabeca"><span class="num">4</span><h2>Lançar com as páginas vazias</h2></div>
+    <p>
+      Há coisas que o site não tem porque ninguém as forneceu:
+      <strong>o plantel, o corpo técnico, e fotografias de pessoas</strong>. O
+      site inteiro não tem uma única fotografia de gente do clube.
+    </p>
+    <p>
+      Onde falta informação, a página diz que ainda não há. Não inventa. Isto
+      já foi preciso corrigir uma vez: o site chegou a ter um treinador
+      principal que não existe, com uma frase atribuída a ele. Estava lá desde
+      maio. Foi apagado.
+    </p>
+    <div class="opcoes">
+      <div class="opcao">
+        <span class="opcao-nome">Lançar assim</span>
+        <span class="opcao-preco gratis">Imediato</span>
+        <span class="opcao-nota">O site existe e vai enchendo. Vazios honestos em vez de invenção.</span>
+      </div>
+      <div class="opcao">
+        <span class="opcao-nome">Esperar pelo conteúdo</span>
+        <span class="opcao-preco">Indefinido</span>
+        <span class="opcao-nota">Depende de alguém tirar fotografias e escrever os plantéis.</span>
+      </div>
+    </div>
+    <div class="bloco opiniao">
+      <span class="rotulo">Opinião minha</span>
+      <p>
+        Lançar. Um site que existe e cresce vale mais do que um site perfeito
+        que nunca sai. A prioridade nas fotografias: a equipa principal, o
+        pavilhão e a sede — três, e já muda tudo.
+      </p>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="decisao">
+    <div class="cabeca"><span class="num">5</span><h2>Os comunicados nas redes</h2></div>
+    <p>
+      O site já gera, para cada comunicado, <strong>uma imagem quadrada com o
+      emblema</strong> pronta a publicar — o Instagram não aceita publicações
+      só de texto, e sem isso não haveria publicação nenhuma.
+    </p>
+    <p>
+      O que falta é a ligação automática. Hoje o comunicado sai no site e
+      alguém tem de o levar às redes à mão. Ligar isso é grátis, mas precisa
+      de o Instagram do clube estar em conta <strong>Profissional</strong> e
+      ligado à página de Facebook — e de alguém ficar responsável.
+    </p>
+    <div class="bloco opiniao">
+      <span class="rotulo">Opinião minha</span>
+      <p>
+        Vale a pena, mas só depois de tudo o resto. É o mais fácil de adiar e
+        o que menos custa deixar manual no primeiro mês.
+      </p>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="decisao">
+    <div class="cabeca"><span class="num">6</span><h2>Os direitos de imagem</h2></div>
+    <p>
+      Hoje, para inscrever um atleta no site, <strong>é obrigatório aceitar o
+      termo de direitos de imagem</strong>. Sem aceitar, o formulário não
+      avança. Foi assim que me pediram, e é assim que a ficha em papel do
+      clube funciona.
+    </p>
+
+    <div class="bloco perigo">
+      <span class="rotulo">O problema que isto levanta</span>
+      <p>
+        O RGPD exige que o consentimento seja <strong>livre</strong>. E diz
+        que não é livre quando se condiciona um serviço à aceitação de algo
+        que não é necessário para o prestar. <strong>Inscrever uma criança no
+        futsal não exige poder publicar a fotografia dela.</strong> São duas
+        coisas diferentes coladas numa só caixa.
+      </p>
+      <p>
+        Um pai que não queira o filho no Instagram do clube, hoje, não o pode
+        inscrever. Se esse pai reclamar, o clube tem pouca defesa — e a
+        reclamação não precisa de tribunal nenhum, basta uma queixa à CNPD.
+      </p>
+    </div>
+
+    <p>
+      Isto não é falha do site: o site faz o que o papel do clube já fazia.
+      Mas passar uma prática de papel para a internet costuma ser o momento em
+      que ela é olhada com mais atenção.
+    </p>
+
+    <div class="opcoes">
+      <div class="opcao">
+        <span class="opcao-nome">Separar em duas caixas</span>
+        <span class="opcao-preco gratis">Meio dia de trabalho</span>
+        <span class="opcao-nota">
+          Uma obrigatória, para tratar a inscrição — sem ela não há inscrição
+          possível, e é legítimo. Outra opcional, só para publicar fotografias.
+          Quem disser que não, inscreve na mesma e fica de fora das fotos.
+        </span>
+      </div>
+      <div class="opcao">
+        <span class="opcao-nome">Manter obrigatório</span>
+        <span class="opcao-preco gratis">0 €</span>
+        <span class="opcao-nota">
+          Mais simples de gerir e igual ao papel. Assume-se o risco, que é
+          pequeno em probabilidade e chato em consequência.
+        </span>
+      </div>
+    </div>
+
+    <div class="bloco opiniao">
+      <span class="rotulo">Opinião minha</span>
+      <p>
+        Separava. É meio dia de trabalho meu e tira ao clube um risco que não
+        precisa de correr. E há um ganho que não é legal, é humano: <strong>a
+        família que hoje hesita em inscrever passa a poder inscrever</strong>.
+        Ninguém fica de fora do clube por causa de uma fotografia.
+      </p>
+      <p>
+        Se decidirem separar, faz sentido aplicar o mesmo à ficha de papel —
+        senão o site fica correto e a secretaria continua igual.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <p class="rotulo">Ponto cinco</p>
+  <h2>Quem desbloqueia o quê</h2>
+  <p>
+    Nada aqui está parado à espera de código. Está à espera de pessoas.
+  </p>
+
+  <h3>Depende do clube</h3>
+  <ul>
+    <li>Contar o stock que existe na sede</li>
+    <li>Escrever o plantel e o corpo técnico de cada escalão</li>
+    <li>Tirar fotografias: equipa principal, pavilhão, sede</li>
+    <li>Logótipos e links dos seis patrocinadores</li>
+    <li>Decidir a percentagem do sinal da loja — está em 30 %, número que eu inventei por falta de decisão vossa</li>
+    <li>Nomear quem responde aos pedidos de dados pessoais, e confirmar o registo de tratamentos com quem vos aconselha</li>
+  </ul>
+
+  <h3>Depende de terceiros</h3>
+  <ul>
+    <li><strong>ZEMIG</strong> — a tabela de preços dos onze artigos</li>
+    <li><strong>Ifthenpay</strong> — só se decidirem pela referência automática. Precisa do NIF e do IBAN do clube</li>
+    <li><strong>Instagram e Facebook</strong> — conta profissional e confirmação de quem é administrador da página</li>
+  </ul>
+
+  <h3>Depende de mim</h3>
+  <ul>
+    <li>Ligar o endereço <strong>valejasac.pt</strong> — meia hora, e é a única coisa entre o site e o público</li>
+    <li>Traduzir o site para inglês, espanhol, francês e crioulo de Cabo Verde. Fica para o fim: traduzir texto que ainda vai mudar é pagar cinco vezes pela mesma frase</li>
+  </ul>
+</section>
+
+<section class="fechada">
+  <p class="rotulo">Ponto seis</p>
+  <h2>Já decidido</h2>
+  <p>
+    Isto está fechado. Está aqui para não se voltar a discutir — e para ficar
+    o porquê, que é o que costuma perder-se.
+  </p>
+  <ul>
+    <li><strong>A loja é sempre levantada na sede.</strong> Não se envia para casa. Evita portes, devoluções e trocas por correio.</li>
+    <li><strong>Dados clínicos ficam fora do site.</strong> O exame médico descarrega-se, imprime-se e entrega-se em mão.</li>
+    <li><strong>As encomendas guardam-se um ano</strong> e são apagadas automaticamente. Tempo suficiente para tratar uma troca ou uma reclamação.</li>
+    <li><strong>Os direitos de imagem são obrigatórios</strong> na inscrição, no texto exato da ficha do clube, com registo de quem aceitou e quando.</li>
+    <li><strong>As línguas ficam para o fim</strong>, com o site já concluído.</li>
+    <li><strong>O presidente e a direção não recebem email do site.</strong> Tudo cai nas três caixas de trabalho.</li>
+    <li><strong>Nada é publicado nas redes sem alguém carregar em publicar.</strong> O site nunca fala sozinho em nome do clube.</li>
+  </ul>
+</section>
+
+<section>
+  <p class="rotulo">Ponto sete</p>
+  <h2>A seguir</h2>
+  <ol>
+    <li><strong>Vejam o site.</strong> Mando o endereço antes da reunião. Entrem, cliquem em tudo, tentem partir.</li>
+    <li><strong>Respondam às cinco decisões.</strong> Bastam cinco frases.</li>
+    <li><strong>Mandem o email à ZEMIG</strong> e contem o stock. Não depende de mais nada.</li>
+    <li><strong>Digam quantas pessoas entram na área da Direção</strong> e eu faço as contas.</li>
+    <li><strong>Depois disso ligo o endereço</strong> e o site passa a ser <strong>valejasac.pt</strong>.</li>
+  </ol>
+</section>
+
+<footer>
+  <p class="lema">A união faz a força</p>
+  <p>
+    Documento preparado para a segunda reunião com a Direção do Valejas
+    Atlético Clube. Os números vêm do próprio site: se mudarem lá, este
+    documento fica desatualizado, e é para isso que tem data.
+  </p>
+</footer>
+
+</div>
