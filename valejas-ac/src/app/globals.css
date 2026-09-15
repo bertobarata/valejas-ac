@@ -21,7 +21,7 @@
    * sítios, mais cedo ou mais tarde uma delas ficava para trás e os
    * títulos das páginas voltavam a desaparecer atrás da barra.
    */
-  --barra-altura: 5.5rem;
+  --barra-altura: 6rem;
 
   /*
    * Superfícies em modo claro.
@@ -119,11 +119,12 @@
 
 /*
   A altura reservada não é a da barra: é a do emblema, que desce abaixo
-  dela de propósito. Abaixo de 768px a faixa vermelha está escondida
-  (`hidden md:block`) e a linha da barra é `h-16` — 64px. Mas o emblema
-  tem 96px e está centrado nesses 64, portanto o bico dele chega aos 80.
-  Reservar só 64 punha o emblema por cima dos títulos; reservar 96 deixava
-  um vazio. 88px (5,5rem) limpa o emblema com 8px de folga.
+  dela de propósito. A barra mede 64px no telemóvel (`h-16`, sem a faixa
+  vermelha), mas o emblema tem 96 e está encostado ao topo, portanto chega
+  exatamente aos 96.
+
+  Isto já esteve em 6rem, foi reduzido para 4rem por se achar que a folga
+  era a da barra, e o emblema passou a tapar os títulos. Era a do emblema.
 */
 @media (min-width: 768px) {
   :root { --barra-altura: 7rem; }
