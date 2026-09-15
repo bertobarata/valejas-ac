@@ -170,6 +170,29 @@ deixa de ser um problema — a 14/10 desce sozinho, sem consequências.
 
 ---
 
+## 1b. Documento para a Direção — `reuniao_2`
+
+Pedido do Berto a 15/09/2026. Juntar **num único documento** tudo o que
+existe, para levar à segunda reunião com a Direção:
+
+- [ ] O que está feito no site, página a página, em linguagem de quem
+      não programa
+- [ ] O que a Direção tem de perceber para o usar: publicar comunicados,
+      acompanhar encomendas, escrever o plantel, onde cada email cai
+- [ ] O que falta e **quem o desbloqueia** — separar o que depende do
+      clube (plantel, stock, fotografias, contactos) do que depende de
+      terceiros (ZEMIG, Ifthenpay, Make.com) do que depende de mim
+- [ ] As decisões já tomadas e porquê, para não se voltarem a discutir:
+      loja com levantamento na sede, dados clínicos fora do site,
+      encomendas guardadas um ano, línguas só no fim
+- [ ] O que custa dinheiro e o que não custa — hoje o site corre a zero
+      euros por mês; dizer onde é que isso deixaria de ser verdade
+
+Fonte: este `TODO.md`, o `PRODUCT.md` e o `OPERACAO.md`. O documento é
+de leitura, não de trabalho — vai para pessoas que não abrem um repo.
+
+---
+
 ## 2. Segredos a gerar antes de ir para o ar
 
 - [x] `DIRECAO_UTILIZADORES` — feito a 14/09/2026. Duas contas,
