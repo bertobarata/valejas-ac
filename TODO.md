@@ -170,29 +170,80 @@ deixa de ser um problema — a 14/10 desce sozinho, sem consequências.
 
 ---
 
-## 1b. Documento para a Direção — `reuniao_2`
+## 1b. `reuniao_2` — documento de decisão para a Direção
 
-Pedido do Berto a 15/09/2026. Juntar **num único documento** tudo o que
-existe, para levar à segunda reunião com a Direção:
+Pedido do Berto a 15/09/2026, com o objetivo esclarecido: **não é um
+relatório de progresso.** É pôr as vulnerabilidades à vista e deixar a
+Direção escolher como quer trabalhar. O site faz o que lhe mandarem —
+quem assume o risco é quem manda.
 
-- [ ] O que está feito no site, página a página, em linguagem de quem
-      não programa
-- [ ] **Como foi feito** — com que ferramentas, onde está alojado, quanto
-      custa cada peça, e de quem é cada conta. A Direção tem de saber que
-      o site não depende de uma pessoa: domínio na Amen, alojamento na
-      Vercel, conteúdo no Sanity, encomendas em base de dados em
-      Frankfurt, email pela Resend. Com o registo de quem tem acesso a
-      quê, para o dia em que alguém sair
-- [ ] O que a Direção tem de perceber para o usar: publicar comunicados,
-      acompanhar encomendas, escrever o plantel, onde cada email cai
-- [ ] O que falta e **quem o desbloqueia** — separar o que depende do
-      clube (plantel, stock, fotografias, contactos) do que depende de
-      terceiros (ZEMIG, Ifthenpay, Make.com) do que depende de mim
-- [ ] As decisões já tomadas e porquê, para não se voltarem a discutir:
-      loja com levantamento na sede, dados clínicos fora do site,
-      encomendas guardadas um ano, línguas só no fim
-- [ ] O que custa dinheiro e o que não custa — hoje o site corre a zero
-      euros por mês; dizer onde é que isso deixaria de ser verdade
+Regra do documento: **cada escolha leva o que custa, o que poupa e o que
+corre mal.** Sem recomendação disfarçada de facto. A recomendação vai
+separada, no fim de cada ponto, e assinada como opinião minha.
+
+### O que o documento tem de levar
+
+- [ ] O que está feito no site, página a página, para quem não programa
+- [ ] **Como foi feito** — ferramentas, alojamento, custo de cada peça e
+      **de quem é cada conta**: Amen, Vercel, Sanity, Neon, Resend. Com
+      quem tem acesso a quê, para o dia em que alguém sair da Direção
+- [ ] O que falta e **quem o desbloqueia** — o clube, terceiros, ou eu
+- [ ] As decisões já tomadas e porquê, para não se voltarem a discutir
+- [ ] O que custa dinheiro e o que não. Hoje o site corre a **zero euros
+      por mês**; dizer exatamente onde é que isso deixaria de ser verdade
+
+### As escolhas a pôr à Direção
+
+**1. Pagamentos — verificar ou não verificar** (a que o Berto levantou)
+
+Hoje: MB WAY e transferência, sem confirmação automática. O site regista
+a encomenda e diz o valor; alguém tem de ir ao banco ver se entrou.
+
+- [ ] Explicar o que isto expõe:
+      - **Encomenda sem pagamento nenhum.** Qualquer pessoa encomenda
+        sem pagar. Se o clube pedir ao fornecedor com base nisso, fica
+        com stock que ninguém levanta. É o único risco que custa dinheiro
+      - **«Já paguei» sem prova.** O extrato mostra o titular da conta,
+        que muitas vezes não é quem encomendou — o pai paga pelo filho.
+        Cruzar é adivinhar
+      - **Depende de uma pessoa.** Quem tem o homebanking é o único que
+        confirma. De férias, para tudo
+      - **Sem rasto para a contabilidade**, a não ser o que se escrever
+        à mão
+- [ ] Dar as saídas, por ordem de custo:
+      - **Grátis, com disciplina.** Pedir o número da encomenda
+        (`VAC-…`) no descritivo da transferência — resolve metade da
+        reconciliação e custa zero. Só pedir ao fornecedor depois de
+        confirmar a entrada. Sinal obrigatório nas encomendas grandes
+      - **Grátis, com comprovativo.** Quem paga envia o comprovativo.
+        Mais trabalho para quem compra, e é papel, não é confirmação
+      - **Pago: referência Multibanco.** Confirma-se sozinha. 1,48 € num
+        kit de 85 €, sem mensalidade. ~70–150 €/ano a cem encomendas
+      - **Misto.** Grátis nas pequenas, referência no kit e nas grandes
+- [ ] Recomendação minha: ficar no grátis **com** a regra do número da
+      encomenda no descritivo e a regra de só encomendar depois de
+      confirmar. A partir de ~50 encomendas/mês, passar a referência
+
+**2. Loja — abrir já ou esperar pelos preços**
+
+- [ ] Onze artigos sem preço até a ZEMIG responder, e stock todo a zero.
+      Abrir assim significa que tudo aparece como «por encomenda»
+
+**3. Quem entra na área da Direção**
+
+- [ ] Duas contas hoje. Sem segundo fator. Quem souber a palavra-passe
+      publica em nome do clube. Decidir quantas pessoas precisam mesmo
+
+**4. Conteúdo a sério ou estados vazios**
+
+- [ ] Plantel, corpo técnico e fotografias de pessoas não existem. O
+      site mostra vazios honestos em vez de inventar. Decidir se se
+      lança assim ou se se espera
+
+**5. Redes sociais**
+
+- [ ] O Make.com não está ligado: o comunicado sai no site e fica-se por
+      aí. Decidir se vale a pena ligar, e quem fica responsável
 
 Fonte: este `TODO.md`, o `PRODUCT.md` e o `OPERACAO.md`. O documento é
 de leitura, não de trabalho — vai para pessoas que não abrem um repo.
