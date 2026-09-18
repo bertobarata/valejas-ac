@@ -1,11 +1,18 @@
 /**
  * CAMADA DE DADOS — PATROCINADORES E PARCERIAS
  * ─────────────────────────────────────────────────────────────────
- * Quem apoia o clube. Lista fornecida pela Direção (13/09/2026).
+ * Quem apoia o clube. Lista fornecida pela Direção (13/09/2026),
+ * logótipos entregues pela Direção a 17/09/2026.
  *
- * ⚠️ Faltam logótipos e links. Enquanto não existirem, cada apoio
- * aparece com o nome em tipografia do clube — o que é melhor do que
- * um logótipo esticado ou de má qualidade.
+ * Os logótipos vieram com fundos diferentes — uns brancos, dois
+ * pretos — e em qualidades muito diferentes. Estão todos normalizados
+ * em ladrilho branco de 440×440 em `/public/patrocinadores/`, para a
+ * faixa não parecer uma colagem. Quem não tem ficheiro continua a
+ * aparecer só com o nome em tipografia do clube, que é melhor do que
+ * um logótipo esticado.
+ *
+ * ⚠️ Faltam os logótipos dos dois apoios que mais se veem: a ZEMIG,
+ * que veste o clube, e a Junta de Freguesia de Barcarena.
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -20,6 +27,13 @@ export interface Apoio {
   url?:      string;
   /** Ficheiro em /public/patrocinadores/, quando houver. */
   logo?:     string;
+  /**
+   * Apoio cujo logótipo chegou mas que não consta da lista que a
+   * Direção deu a 13/09. Fica fora do site até alguém do clube
+   * confirmar que é apoiante e em que escalão entra — pôr uma casa na
+   * parede de patrocínios sem ela saber é pior do que não a pôr.
+   */
+  porConfirmar?: boolean;
 }
 
 export const APOIOS: Apoio[] = [
@@ -41,21 +55,44 @@ export const APOIOS: Apoio[] = [
     tipo: "institucional",
     descricao:
       "A marca do concelho de Oeiras, onde o Valejas compete e forma.",
+    logo: "/patrocinadores/oeiras-valley.webp",
   },
   {
     nome: "Restaurante QB",
     tipo: "local",
-    descricao: "Apoio local ao clube.",
+    descricao: "Restaurante em Queluz de Baixo.",
+    logo: "/patrocinadores/qb-restaurante.webp",
   },
   {
     nome: "Ninho da Rola",
     tipo: "local",
-    descricao: "Apoio local ao clube.",
+    descricao: "Restaurante e café.",
+    logo: "/patrocinadores/ninho-da-rola.webp",
   },
   {
     nome: "Muchacho",
     tipo: "local",
-    descricao: "Apoio local ao clube.",
+    descricao: "Restaurante.",
+    logo: "/patrocinadores/muchacho.webp",
+  },
+  /*
+   * Os dois seguintes vieram na pasta de logótipos mas não na lista da
+   * Direção. O ficheiro está tratado e o sítio está feito: tirar o
+   * `porConfirmar` publica-os.
+   */
+  {
+    nome: "Ciao Cuore",
+    tipo: "local",
+    descricao: "Restaurante italiano e sushi.",
+    logo: "/patrocinadores/ciao-cuore.webp",
+    porConfirmar: true,
+  },
+  {
+    nome: "RE/MAX Grupo Sunset",
+    tipo: "local",
+    descricao: "Mediação imobiliária.",
+    logo: "/patrocinadores/remax-grupo-sunset.webp",
+    porConfirmar: true,
   },
 ];
 
@@ -77,7 +114,8 @@ export const TIPOS: { id: TipoApoio; titulo: string; intro: string }[] = [
   },
 ];
 
+/** Só o que está confirmado pela Direção chega ao site. */
 export function apoiosPorTipo(tipo: TipoApoio): Apoio[] {
-  return APOIOS.filter((a) => a.tipo === tipo);
+  return APOIOS.filter((a) => a.tipo === tipo && !a.porConfirmar);
 }
 

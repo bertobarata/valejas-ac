@@ -23,6 +23,14 @@ export interface Jogador {
   /** Id da equipa: "a", "b" ou o escalão em minúsculas. */
   equipa:   string;
   capitao?: boolean;
+  /**
+   * Retrato já recortado pelo CDN do Sanity. Quem não tiver fotografia
+   * fica com o número gigante em marca de água — o cartão nunca fica
+   * com um buraco.
+   */
+  foto?:    string;
+  /** Miniatura minúscula embutida, para não haver salto ao carregar. */
+  fotoLqip?: string;
 }
 
 /** Ordem de apresentação — a mesma que se usa numa ficha de jogo. */
@@ -99,6 +107,14 @@ export interface JogadorSanity {
   equipa:   string;
   capitao?: boolean;
   ativo?:   boolean;
+  /**
+   * Endereços já resolvidos em @/sanity/queries, do lado do servidor.
+   * O construtor de imagens do Sanity não entra neste módulo de
+   * propósito: ele é importado pelo cartão do plantel, que é um
+   * componente de cliente, e iria parar ao JavaScript do telemóvel.
+   */
+  fotoUrl?:  string;
+  fotoLqip?: string;
 }
 
 export function doSanity(j: JogadorSanity): Jogador {
@@ -110,6 +126,8 @@ export function doSanity(j: JogadorSanity): Jogador {
       : "Universal",
     equipa:  j.equipa,
     ...(j.capitao ? { capitao: true } : {}),
+    ...(j.fotoUrl ? { foto: j.fotoUrl } : {}),
+    ...(j.fotoLqip ? { fotoLqip: j.fotoLqip } : {}),
   };
 }
 

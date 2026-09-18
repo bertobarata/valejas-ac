@@ -1,4 +1,5 @@
 import { sanityClient, isSanityConfigured } from "./client";
+import { urlDaImagem, type ImagemSanity } from "./image";
 import type { Artigo, Categoria } from "@/lib/data/noticias";
 import type { JogadorSanity } from "@/lib/data/plantel";
 
@@ -114,10 +115,34 @@ export async function fetchJogadores(equipa?: string): Promise<JogadorSanity[] |
       ? `*[_type == "jogador" && ativo != false && equipa == $equipa] | order(numero asc)`
       : `*[_type == "jogador" && ativo != false] | order(numero asc)`;
 
-    return await sanityClient.fetch<JogadorSanity[]>(
-      `${filtro} { _id, nome, numero, posicao, equipa, capitao, ativo }`,
+    /*
+     * A fotografia vem em bruto — referência, hotspot e recorte — porque
+     * é disso que o construtor de endereços precisa. O `lqip` é uma
+     * miniatura embutida que o Sanity calcula ao carregar o ficheiro:
+     * serve de borrão enquanto o retrato não chega, e assim o cartão
+     * não salta quando a imagem aparece.
+     */
+    const crus = await sanityClient.fetch<
+      (JogadorSanity & {
+        fotografia?: ImagemSanity;
+        fotoLqipCru?: string;
+      })[]
+    >(
+      `${filtro} {
+        _id, nome, numero, posicao, equipa, capitao, ativo,
+        fotografia,
+        "fotoLqipCru": fotografia.asset->metadata.lqip
+      }`,
       equipa ? { equipa } : {}
     );
+
+    // Os retratos aparecem numa grelha de até quatro colunas; 800×1066
+    // chega para ecrãs de alta densidade sem mandar ficheiros enormes.
+    return crus.map(({ fotografia, fotoLqipCru, ...j }) => ({
+      ...j,
+      fotoUrl: urlDaImagem(fotografia, { largura: 800, altura: 1066 }),
+      fotoLqip: fotoLqipCru,
+    }));
   } catch {
     return null;
   }

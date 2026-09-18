@@ -47,7 +47,9 @@ export async function GET() {
   try {
     const jogadores = await sanityClientLive.fetch(
       `*[_type == "jogador"] | order(equipa asc, numero asc){
-        _id, nome, numero, posicao, equipa, capitao, ativo
+        _id, nome, numero, posicao, equipa, capitao, ativo,
+        "fotoAssetId": fotografia.asset._ref,
+        "fotoUrl": fotografia.asset->url
       }`
     );
     return NextResponse.json({ ok: true, jogadores });
@@ -85,6 +87,27 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, erro: erros.join(" ") }, { status: 400 });
   }
 
+  /*
+   * A fotografia chega já carregada, como referência devolvida por
+   * /api/direcao/plantel/fotografia. O formato é fixo e verificado aqui
+   * — sem isto, o corpo do pedido podia apontar o campo a qualquer
+   * documento do dataset.
+   *
+   * Três casos distintos, e a diferença importa:
+   *   ausente      → não se mexe na fotografia que lá está
+   *   string vazia → apaga-se a fotografia
+   *   referência   → substitui-se
+   */
+  const fotoCru = b.fotoAssetId;
+  const mexeNaFoto = fotoCru !== undefined && fotoCru !== null;
+  const fotoAssetId = mexeNaFoto ? String(fotoCru).trim() : "";
+  if (fotoAssetId && !/^image-[a-f0-9]{40}-\d+x\d+-[a-z0-9]+$/.test(fotoAssetId)) {
+    return NextResponse.json(
+      { ok: false, erro: "Fotografia inválida." },
+      { status: 400 }
+    );
+  }
+
   const doc = {
     _type: "jogador",
     nome,
@@ -93,6 +116,14 @@ export async function POST(req: Request) {
     equipa,
     capitao: Boolean(b.capitao),
     ativo:   b.ativo === undefined ? true : Boolean(b.ativo),
+    ...(fotoAssetId
+      ? {
+          fotografia: {
+            _type: "image",
+            asset: { _type: "reference", _ref: fotoAssetId },
+          },
+        }
+      : {}),
   };
 
   try {
@@ -109,9 +140,18 @@ export async function POST(req: Request) {
       );
     }
 
-    const resultado = b._id
-      ? await sanityClientLive.patch(String(b._id)).set(doc).commit()
-      : await sanityClientLive.create(doc);
+    let resultado;
+    if (b._id) {
+      const patch = sanityClientLive.patch(String(b._id)).set(doc);
+      // Tirar a fotografia é apagar o campo, não gravá-lo vazio: um
+      // campo de imagem vazio continua a contar como imagem partida.
+      resultado = await (mexeNaFoto && !fotoAssetId
+        ? patch.unset(["fotografia"])
+        : patch
+      ).commit();
+    } else {
+      resultado = await sanityClientLive.create(doc);
+    }
     return NextResponse.json({ ok: true, id: resultado._id });
   } catch (err) {
     console.error("Erro a guardar jogador:", err instanceof Error ? err.message : err);

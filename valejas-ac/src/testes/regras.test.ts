@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import {
   PRODUTOS, KIT_ATLETA, getProduto, sinalDe, stockDe, temPrecoFechado,
   SINAL_PERCENTAGEM, PECAS_DO_KIT,
@@ -11,6 +13,8 @@ import {
 import { MODALIDADES } from "@/lib/data/modalidades";
 import { CALENDARIO, CLUBE, ehValejas, proximoJogo } from "@/lib/data/jogos";
 import { EQUIPAS, ORDEM_POSICOES, doSanity } from "@/lib/data/plantel";
+import { APOIOS, apoiosPorTipo } from "@/lib/data/patrocinadores";
+import { emblemaDe } from "@/lib/data/emblemas";
 
 /*
  * As regras que, se partirem, custam dinheiro ao clube ou expõem
@@ -176,5 +180,76 @@ describe("plantel — o que vem do CMS", () => {
     const comCapitao = doSanity({ _id: "y", nome: "C D", numero: 2, posicao: "Ala", equipa: "a", capitao: true });
     expect(semCapitao.capitao).toBeUndefined();
     expect(comCapitao.capitao).toBe(true);
+  });
+
+  it("sem fotografia o cartão não fica com um endereço vazio", () => {
+    // O cartão decide por `foto` ser undefined; uma string vazia passava
+    // no `if` e pedia uma imagem a lado nenhum.
+    const j = doSanity({ _id: "x", nome: "A B", numero: 1, posicao: "Ala", equipa: "a" });
+    expect(j.foto).toBeUndefined();
+    expect("foto" in j).toBe(false);
+  });
+
+  it("a fotografia e o borrão atravessam do CMS para o cartão", () => {
+    const j = doSanity({
+      _id: "x", nome: "A B", numero: 1, posicao: "Ala", equipa: "a",
+      fotoUrl: "https://cdn.sanity.io/images/abc/production/x-800x1066.jpg",
+      fotoLqip: "data:image/jpeg;base64,abc",
+    });
+    expect(j.foto).toContain("cdn.sanity.io");
+    expect(j.fotoLqip).toMatch(/^data:image/);
+  });
+});
+
+describe("emblemas dos adversários", () => {
+  const adversarios = [
+    ...new Set(CALENDARIO.flatMap((j) => [j.casa, j.fora])),
+  ].filter((n) => !ehValejas(n));
+
+  it("todos os adversários da época têm emblema", () => {
+    // Os quatro que não batem certo pelo nome — Académico Desportos,
+    // Forte Casa, Futsal Oeiras e SM 3 Agosto — estão no mapa de
+    // sinónimos. Se alguém renomear um clube no calendário, é aqui que
+    // se percebe, e não com um buraco na lista já publicada.
+    const semEmblema = adversarios.filter((a) => !emblemaDe(a));
+    expect(semEmblema).toEqual([]);
+  });
+
+  it("cada emblema aponta para um ficheiro que existe", () => {
+    const publico = join(process.cwd(), "public");
+    for (const a of adversarios) {
+      expect(existsSync(join(publico, emblemaDe(a)!)), a).toBe(true);
+    }
+  });
+
+  it("um clube desconhecido não inventa emblema", () => {
+    expect(emblemaDe("Clube Que Não Existe")).toBeUndefined();
+    // Prefixos curtos apanhariam meio campeonato; abaixo de quatro
+    // letras a procura por prefixo não corre.
+    expect(emblemaDe("SM")).toBeUndefined();
+    expect(emblemaDe("")).toBeUndefined();
+  });
+
+  it("a procura ignora acentos e maiúsculas", () => {
+    expect(emblemaDe("fonsecas calcada")).toBe(emblemaDe("Fonsecas Calçada"));
+    expect(emblemaDe("PREGANÇA")).toBe(emblemaDe("Pregança"));
+  });
+});
+
+describe("patrocinadores", () => {
+  it("um apoio por confirmar não chega ao site", () => {
+    // Pôr uma casa na parede de patrocínios sem ela saber é pior do que
+    // não a pôr: os dois logótipos que vieram fora da lista da Direção
+    // ficam retidos até alguém do clube confirmar.
+    const locais = apoiosPorTipo("local");
+    expect(locais.every((a) => !a.porConfirmar)).toBe(true);
+    expect(APOIOS.some((a) => a.porConfirmar)).toBe(true);
+  });
+
+  it("cada logótipo aponta para um ficheiro que existe", () => {
+    const publico = join(process.cwd(), "public");
+    for (const a of APOIOS.filter((x) => x.logo)) {
+      expect(existsSync(join(publico, a.logo!)), a.nome).toBe(true);
+    }
   });
 });
