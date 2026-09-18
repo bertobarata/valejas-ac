@@ -18,7 +18,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { Check, Download, ExternalLink, Loader2, Send } from "lucide-react";
-import { MODALIDADES, VAGAS } from "@/lib/data/modalidades";
+import { MODALIDADES } from "@/lib/data/modalidades";
 import { declaracao } from "@/lib/data/direitosImagem";
 import { EXAME_MEDICO } from "@/lib/data/documentos";
 import { calcularIdade, eMenor } from "@/lib/validacao";
@@ -338,9 +338,6 @@ export default function PedidoInscricao() {
             <><Send size={16} /> Enviar inscrição</>
           )}
         </button>
-        <p className="font-body text-sm text-on-surface-muted">
-          {VAGAS.curto}
-        </p>
       </div>
     </form>
   );
