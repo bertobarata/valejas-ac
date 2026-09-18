@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import { usePathname } from "next/navigation";
@@ -37,6 +38,11 @@ interface ItemNav {
   external?: boolean;
   /** Quando existe, o item abre um submenu em vez de ser só um destino. */
   submenu?:  { label: string; href: string }[];
+}
+
+/** Liga o botão da seta à lista que ele abre, para os leitores de ecrã. */
+function submenuId(href: string): string {
+  return "submenu-" + href.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "");
 }
 
 const NAV_ITEMS: ItemNav[] = [
@@ -78,8 +84,6 @@ export default function Navbar() {
   /** href do item cujo submenu está aberto. Um de cada vez. */
   const [submenuAberto, setSubmenuAberto] = useState<string | null>(null);
   const navRef  = useRef<HTMLElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const linksRef   = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -93,63 +97,44 @@ export default function Navbar() {
     return () => trigger.kill();
   }, []);
 
-  // ── Animate mobile overlay open/close ──
-  const animateMenuOpen = useCallback(() => {
-    if (!overlayRef.current || !linksRef.current) return;
+  /*
+    O menu abre e fecha sem animação nenhuma.
+    Havia uma: os itens entravam de baixo com `rotateX`, em escada. Num
+    telemóvel isso lê-se como a lista a dançar enquanto se tenta acertar
+    num link — e o fecho dependia de um `onComplete` do GSAP, portanto se a
+    animação não corresse o menu não fechava. Um menu de navegação está lá
+    ou não está.
+  */
+  const openMenu  = useCallback(() => setMenuOpen(true), []);
 
-    const tl = gsap.timeline();
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
-    // Overlay fade in
-    tl.fromTo(
-      overlayRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.35, ease: "power2.out" }
-    );
+  /**
+   * Um menu que abre por toque tem de fechar por toque. Sem isto ficava
+   * aberto até alguém carregar noutro sítio da barra — e num telemóvel ou
+   * tablet não há rato para "sair de cima".
+   */
+  useEffect(() => {
+    if (!submenuAberto) return;
 
-    // Links stagger from bottom
-    tl.fromTo(
-      linksRef.current.querySelectorAll(".mobile-nav-item"),
-      { y: 60, opacity: 0, rotateX: -15 },
-      {
-        y: 0, opacity: 1, rotateX: 0,
-        duration: 0.5, stagger: 0.06,
-        ease: "power3.out",
-      },
-      "-=0.15"
-    );
+    const aoTocarFora = (e: PointerEvent) => {
+      // `navRef` é o <header> inteiro: a barra toda conta como dentro.
+      if (!navRef.current?.contains(e.target as Node)) setSubmenuAberto(null);
+    };
+    const aoEscapar = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSubmenuAberto(null);
+    };
 
-    // Bottom elements
-    tl.fromTo(
-      overlayRef.current.querySelectorAll(".mobile-bottom"),
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.4, stagger: 0.08, ease: "power2.out" },
-      "-=0.3"
-    );
-  }, []);
+    document.addEventListener("pointerdown", aoTocarFora);
+    document.addEventListener("keydown", aoEscapar);
+    return () => {
+      document.removeEventListener("pointerdown", aoTocarFora);
+      document.removeEventListener("keydown", aoEscapar);
+    };
+  }, [submenuAberto]);
 
-  const animateMenuClose = useCallback((onComplete: () => void) => {
-    if (!overlayRef.current) {
-      onComplete();
-      return;
-    }
-
-    gsap.to(overlayRef.current, {
-      opacity: 0,
-      duration: 0.25,
-      ease: "power2.in",
-      onComplete,
-    });
-  }, []);
-
-  const openMenu = useCallback(() => {
-    setMenuOpen(true);
-    // Wait for render, then animate
-    requestAnimationFrame(() => animateMenuOpen());
-  }, [animateMenuOpen]);
-
-  const closeMenu = useCallback(() => {
-    animateMenuClose(() => setMenuOpen(false));
-  }, [animateMenuClose]);
+  /** Mudar de página fecha o submenu: senão fica aberto sobre a página nova. */
+  useEffect(() => { setSubmenuAberto(null); }, [pathname]);
 
   // Lock body scroll when menu open
   useEffect(() => {
@@ -205,8 +190,16 @@ export default function Navbar() {
             aparece de imediato.
           */}
           <div className={clsx(
-            // Maior que a barra: transborda ligeiramente para baixo (emblema pendurado).
-            "transition-all duration-300 z-50 -mb-6",
+            /*
+              O emblema é maior que a barra e desce abaixo dela — o emblema
+              pendurado. Mas tem de descer só para baixo.
+
+              Estava centrado na linha, e uma peça de 96px centrada numa
+              barra de 64 sobra 16px para cada lado: os de cima caíam fora
+              do ecrã e cortavam a cabeça da águia. `self-start` encosta-o
+              ao topo da barra, e a partir daí só transborda por baixo.
+            */
+            "self-start transition-all duration-300 z-50",
             (scrolled || !temEmblemaNoTopo)
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-1 pointer-events-none"
@@ -223,7 +216,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop nav */}
-          <ul className="hidden lg:flex items-center gap-4 xl:gap-6 whitespace-nowrap">
+          <ul className="hidden lg:flex items-center gap-3 xl:gap-5 whitespace-nowrap">
             {NAV_ITEMS.map((item) => (
               <li
                 key={item.href}
@@ -234,31 +227,56 @@ export default function Navbar() {
                 {item.submenu ? (
                   <>
                     {/*
-                      O pai é um destino e um menu ao mesmo tempo: carregar
-                      leva à história do clube, passar por cima (ou dar foco
-                      pelo teclado) abre as cinco páginas.
+                      O pai é um destino e um menu ao mesmo tempo, e isso
+                      exige duas coisas separadas: o nome leva à história do
+                      clube, a seta abre as cinco páginas.
+                      Já foram uma só, e num iPad deitado — que recebe esta
+                      barra, não a de telemóvel — tocar no nome navegava e o
+                      submenu nunca abria. Quatro páginas só se alcançavam
+                      pelo rodapé. Com um botão à parte, o rato continua a
+                      abrir por cima e o dedo passa a ter onde carregar.
                     */}
-                    <Link
-                      href={item.href}
-                      aria-expanded={submenuAberto === item.href}
-                      onFocus={() => setSubmenuAberto(item.href)}
-                      className={clsx(
-                        "nav-link inline-flex items-center gap-1.5",
-                        pathname.startsWith(item.href) && "active"
-                      )}
-                    >
-                      {item.label}
-                      <ChevronDown
-                        size={14}
-                        aria-hidden
+                    <span className="inline-flex items-center">
+                      <Link
+                        href={item.href}
                         className={clsx(
-                          "transition-transform duration-200",
-                          submenuAberto === item.href && "rotate-180"
+                          "nav-link",
+                          pathname.startsWith(item.href) && "active"
                         )}
-                      />
-                    </Link>
+                      >
+                        {item.label}
+                      </Link>
+
+                      <button
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded={submenuAberto === item.href}
+                        aria-controls={submenuId(item.href)}
+                        aria-label={
+                          submenuAberto === item.href
+                            ? `Fechar as páginas de ${item.label}`
+                            : `Ver as páginas de ${item.label}`
+                        }
+                        onClick={() =>
+                          setSubmenuAberto((atual) =>
+                            atual === item.href ? null : item.href
+                          )
+                        }
+                        className="w-11 h-11 -ml-1 flex items-center justify-center text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                      >
+                        <ChevronDown
+                          size={14}
+                          aria-hidden
+                          className={clsx(
+                            "transition-transform duration-200",
+                            submenuAberto === item.href && "rotate-180"
+                          )}
+                        />
+                      </button>
+                    </span>
 
                     <ul
+                      id={submenuId(item.href)}
                       className={clsx(
                         "absolute left-1/2 -translate-x-1/2 top-full pt-3 min-w-[13rem] transition-all duration-200",
                         submenuAberto === item.href
@@ -353,88 +371,98 @@ export default function Navbar() {
 
       {/* ═══════════════════════════════════════════════════════════════
          MOBILE MENU — FULL-SCREEN OVERLAY
+         Vai para o <body> por portal, e isso não é preciosismo: o <header>
+         leva um `transform` da animação de entrada, e um antepassado com
+         transform passa a ser a referência do `position: fixed`. Dentro do
+         header, este `inset-0` media 386×64 — a barra, não o ecrã — e o
+         menu aparecia recortado com a página a ver-se por baixo.
          ═══════════════════════════════════════════════════════════════ */}
-      {menuOpen && (
-        <div
-          ref={overlayRef}
-          className="fixed inset-0 z-40 bg-surface/[0.98] backdrop-blur-2xl lg:hidden flex flex-col"
-          style={{ opacity: 0 }}
+      {menuOpen && mounted && createPortal(
+        (<div
+          /*
+            Opaco e sem animação nenhuma no fundo. Esteve em `opacity: 0`
+            à espera do GSAP, com o fundo a 98%: via-se a página através do
+            menu e os dois textos sobrepunham-se, ilegíveis.
+            Trocar isso por uma animação CSS não resolvia — o estado de
+            partida continuava a ser invisível, e num separador em segundo
+            plano a linha temporal congela e a animação nunca termina.
+            Um fundo de menu não se anima: ou está lá, ou o menu não serve.
+            Quem anima são os links, por dentro, e isso pode falhar sem
+            consequências.
+          */
+          className="fixed inset-0 z-[45] bg-surface lg:hidden flex flex-col pt-24"
         >
-          {/* Crest watermark */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span className="font-headline font-black text-[22rem] text-on-surface/[0.02] leading-none select-none">
-              V
-            </span>
-          </div>
-
-          {/* Diagonal red sash accent — brand motif */}
-          <div className="absolute top-0 right-0 w-2 h-full bg-gradient-to-b from-red via-red/50 to-transparent" />
-
-          {/* Nav links — centered, huge typography */}
-          <div
-            ref={linksRef}
-            className="flex-1 flex flex-col items-start justify-center px-8 sm:px-12 gap-1"
-          >
-            {NAV_ITEMS.map((item, i) => {
-              const itemClass = clsx(
-                "block py-2 font-headline font-black uppercase leading-[0.9] tracking-tighter transition-colors duration-200",
-                "text-5xl sm:text-6xl md:text-7xl",
-                !item.external && pathname === item.href
-                  ? "text-yellow"
-                  : "text-on-surface hover:text-yellow"
-              );
-              const numberLabel = (
-                <span className="font-body text-xs font-semibold tracking-[0.3em] text-on-surface-muted block mb-0.5 not-italic normal-case">
-                  0{i + 1}
-                </span>
-              );
-              if (item.external) {
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMenu}
-                    className={itemClass}
-                  >
-                    {numberLabel}
-                    {item.label}
-                  </a>
+          {/*
+            Um menu de telemóvel normal: uma lista que se percorre de cima
+            para baixo, com uma linha por destino.
+            Já foi tipografia gigante centrada num contentor que rolava, com
+            os itens a entrar em rotação — não se lia nem se acertava nele.
+            O topo fica livre porque a barra continua por cima, com o
+            emblema e o botão de fechar. São 96px e não os 64 da barra,
+            porque o emblema desce abaixo dela e chega exatamente aos 96.
+          */}
+          <nav className="flex-1 overflow-y-auto overscroll-contain">
+            <ul>
+              {NAV_ITEMS.map((item) => {
+                const ativo = !item.external && (
+                  item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
                 );
-              }
+                const linha = clsx(
+                  "flex items-center justify-center min-h-14 px-5 text-center",
+                  "font-headline font-black uppercase text-xl tracking-tight",
+                  "border-b border-on-surface/10 transition-colors duration-200",
+                  ativo ? "text-yellow" : "text-on-surface"
+                );
 
-              return (
-                <div key={item.href} className="mobile-nav-item">
-                  <Link href={item.href} onClick={closeMenu} className={itemClass}>
-                    {numberLabel}
-                    {item.label}
-                  </Link>
+                return (
+                  <li key={item.href}>
+                    {item.external ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={closeMenu}
+                        className={linha}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link href={item.href} onClick={closeMenu} className={linha}>
+                        {item.label}
+                      </Link>
+                    )}
 
-                  {/* No telemóvel não há sítio para submenus a abrir: as
-                      páginas do clube ficam listadas, mais pequenas, por baixo. */}
-                  {item.submenu && (
-                    <div className="flex flex-wrap gap-x-5 gap-y-1 pl-0.5 pb-2">
-                      {item.submenu.map((sub) => (
-                        <Link
-                          key={sub.href + sub.label}
-                          href={sub.href}
-                          onClick={closeMenu}
-                          className="font-body text-sm text-on-surface-muted hover:text-yellow transition-colors duration-200"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                    {/* As páginas do clube ficam listadas por baixo, mais
+                        pequenas: num telemóvel não há sítio para um submenu
+                        que abre de lado. */}
+                    {item.submenu && (
+                      <ul className="border-b border-on-surface/10 bg-surface-low">
+                        {item.submenu.map((sub) => (
+                          <li key={sub.href + sub.label}>
+                            <Link
+                              href={sub.href}
+                              onClick={closeMenu}
+                              className={clsx(
+                                "flex items-center justify-center min-h-11 px-5 text-center",
+                                "font-body text-sm transition-colors duration-200",
+                                pathname === sub.href ? "text-yellow" : "text-on-surface-muted"
+                              )}
+                            >
+                              {sub.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
-          {/* Bottom bar — as duas ações, social e tema */}
-          <div className="px-8 sm:px-12 pb-10 flex flex-col gap-5">
-            <div className="mobile-bottom flex flex-col sm:flex-row gap-3">
+          {/* As duas ações e as redes, sempre à vista no fundo */}
+          <div className="shrink-0 border-t border-on-surface/10 px-5 py-5 flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               {ACOES.map(({ label, href, Icon }, i) => (
                 <Link
                   key={href}
@@ -451,28 +479,23 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Social + theme */}
-            <div className="mobile-bottom flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#E4405F] transition-colors" aria-label="Instagram">
-                  <InstagramIcon size={20} />
-                </a>
-                <a href={CONTACTO.redesSociais.facebook} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#1877F2] transition-colors" aria-label="Facebook">
-                  <FacebookIcon size={20} />
-                </a>
-                <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" className="text-on-surface-muted hover:text-[#FF0000] transition-colors" aria-label="YouTube">
-                  <YouTubeIcon size={20} />
-                </a>
-                <a href={`mailto:${CONTACTO.email}`} className="text-on-surface-muted hover:text-yellow transition-colors" aria-label="Escrever ao clube">
-                  <Mail size={20} />
-                </a>
-              </div>
-              <span className="font-body text-xs text-on-surface-muted uppercase tracking-widest">
-                A casa do clube
-              </span>
+            <div className="flex items-center justify-center gap-5">
+              <a href={CONTACTO.redesSociais.instagram} target="_blank" rel="noopener noreferrer" className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-[#E4405F] transition-colors" aria-label="Instagram">
+                <InstagramIcon size={20} />
+              </a>
+              <a href={CONTACTO.redesSociais.facebook} target="_blank" rel="noopener noreferrer" className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-[#1877F2] transition-colors" aria-label="Facebook">
+                <FacebookIcon size={20} />
+              </a>
+              <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-[#FF0000] transition-colors" aria-label="YouTube">
+                <YouTubeIcon size={20} />
+              </a>
+              <a href={`mailto:${CONTACTO.email}`} className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-yellow transition-colors" aria-label="Escrever ao clube">
+                <Mail size={20} />
+              </a>
             </div>
           </div>
-        </div>
+        </div>),
+        document.body
       )}
     </header>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import {
@@ -126,19 +127,39 @@ function ApoioPrincipal({ apoio }: { apoio: Apoio }) {
  * ─────────────────────────────────────────────────────────────────
  * Eram cartões com um retângulo em gradiente e as iniciais do nome lá
  * dentro. Sem logótipos, um cartão de apoio não tem nada para mostrar:
- * a moldura só sublinhava a ausência. Quando houver ficheiros reais,
- * é aqui que entram.
+ * a moldura só sublinhava a ausência.
+ *
+ * Os ficheiros chegaram a 17/09/2026 e o logótipo entrou à esquerda,
+ * do tamanho de um selo. Quem ainda não tem ficheiro fica sem a
+ * coluna — a linha corre para a esquerda em vez de deixar um quadrado
+ * vazio a apontar para o que falta.
  * ─────────────────────────────────────────────────────────────────
  */
 function ApoioLinha({ apoio }: { apoio: Apoio }) {
   const conteudo = (
-    <div className="grid grid-cols-1 sm:grid-cols-[16rem_1fr] sm:items-baseline gap-x-8 gap-y-1 py-5">
-      <span className="font-headline font-black uppercase text-lg md:text-xl text-on-surface leading-tight">
-        {apoio.nome}
-      </span>
-      <span className="font-body text-on-surface-muted leading-relaxed">
-        {apoio.descricao}
-      </span>
+    <div className="flex items-center gap-5 py-5">
+      {apoio.logo && (
+        // A respiração é dada aqui, e não dentro do ficheiro: com folga
+        // nos dois sítios o logótipo encolhia para metade do selo.
+        <span className="w-20 h-20 bg-white shrink-0 p-2 flex items-center justify-center">
+          <Image
+            src={apoio.logo}
+            alt=""
+            width={440}
+            height={440}
+            sizes="80px"
+            className="max-w-full max-h-full object-contain"
+          />
+        </span>
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-[16rem_1fr] sm:items-baseline gap-x-8 gap-y-1 min-w-0 flex-1">
+        <span className="font-headline font-black uppercase text-lg md:text-xl text-on-surface leading-tight">
+          {apoio.nome}
+        </span>
+        <span className="font-body text-on-surface-muted leading-relaxed">
+          {apoio.descricao}
+        </span>
+      </div>
     </div>
   );
 

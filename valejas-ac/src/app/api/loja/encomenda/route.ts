@@ -33,6 +33,7 @@ import {
   type Encomenda, type LinhaEncomenda, type MomentoPagamento,
 } from "@/lib/data/encomendas";
 import { validarEmail, validarNomeCompleto, validarTelemovel } from "@/lib/validacao";
+import { DADOS_BANCARIOS } from "@/lib/data/quota";
 import { enviarEmail, emailDoClube, emailPara, emailConfigurado } from "@/lib/email";
 import { bdConfigurada, guardarEncomenda, type EncomendaNova } from "@/lib/db/encomendas";
 
@@ -199,8 +200,48 @@ function corpoParaQuemEncomendou(e: Encomenda): string {
     l.push("Está tudo na sede. Avisamos-te quando estiver separada para levantar.");
   }
   l.push("O levantamento é sempre na sede do clube. Não enviamos para casa.");
-  l.push("", "Para pagar ou esclarecer qualquer coisa, responde a este email");
-  l.push("ou passa pela sede.", "", "A UNIÃO FAZ A FORÇA", "Valejas Atlético Clube");
+
+  /*
+    Sem isto, quem encomendava ficava a saber quanto devia e não a quem.
+    O número da encomenda no descritivo não é um capricho: o extrato do
+    banco mostra o nome do titular da conta, que muitas vezes não é o de
+    quem encomendou — o pai paga pelo filho. É o que permite ao clube
+    ligar o dinheiro à encomenda sem andar a adivinhar.
+  */
+  l.push("", "─────────────────────────────────────────────");
+  l.push("COMO PAGAR");
+  l.push("");
+  l.push(`Valor a pagar agora: ${formatEuros(e.aPagarAgora)}`);
+  if (e.momento === "sinal") {
+    l.push(`O resto (${formatEuros(e.total - e.aPagarAgora)}) paga-se na sede, ao levantar.`);
+  }
+  l.push("");
+  l.push(`Escreve ${e.numero} na descrição do pagamento.`);
+  l.push("É por aí que sabemos que o dinheiro é teu.");
+  l.push("");
+
+  if (DADOS_BANCARIOS.mbway) {
+    l.push("MB WAY");
+    l.push(`   ${DADOS_BANCARIOS.mbway}`);
+    l.push("");
+  }
+  if (DADOS_BANCARIOS.iban) {
+    l.push("TRANSFERÊNCIA BANCÁRIA");
+    l.push(`   IBAN    : ${DADOS_BANCARIOS.iban}`);
+    l.push(`   Titular : ${DADOS_BANCARIOS.titular}`);
+    l.push("");
+  }
+  if (!DADOS_BANCARIOS.mbway && !DADOS_BANCARIOS.iban) {
+    l.push("Fala connosco para combinar o pagamento: responde a este email");
+    l.push("ou passa pela sede.");
+    l.push("");
+  }
+
+  l.push("Também podes pagar na sede, em dinheiro.");
+  l.push("A encomenda só é pedida ao fornecedor depois de o pagamento entrar.");
+
+  l.push("", "Qualquer dúvida, responde a este email ou passa pela sede.");
+  l.push("", "A UNIÃO FAZ A FORÇA", "Valejas Atlético Clube");
 
   return l.join("\n");
 }

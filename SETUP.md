@@ -44,6 +44,7 @@ O que acontece sem cada uma:
 | `EMAIL_SOCIOS`, `EMAIL_INSCRICOES`, `EMAIL_LOJA`, `EMAIL_PAGAMENTOS` | Nada: cada assunto cai na caixa geral |
 | Sanity | Mostra os dados de exemplo; as áreas da Direção avisam que o CMS não está ligado |
 | `DATABASE_URL` | A loja continua a vender e a encomenda chega por email, mas `/direcao/encomendas` não tem o que mostrar |
+| `CRON_SECRET` | A limpeza diária recusa tudo e as encomendas nunca são apagadas — o prazo de um ano deixa de ser cumprido |
 | Ifthenpay | MB WAY e referência dão 503 e o formulário cai para transferência |
 | Make.com | O comunicado sai no site e as redes ficam em demonstração |
 
@@ -104,6 +105,17 @@ menores. Ficam na União Europeia.
 A tabela `encomendas` **cria-se sozinha** à primeira utilização
 (`create table if not exists`). Não há migrações para correr à mão — um
 clube não tem quem o faça.
+
+**Prazo de conservação: um ano.** O cron da Vercel chama
+`/api/manutencao/encomendas` todos os dias às 4h e apaga o que passou.
+O endpoint só responde a quem traga o `CRON_SECRET` no cabeçalho, que é
+o que a Vercel envia sozinha quando a variável existe. Para o testar à
+mão:
+
+```bash
+curl -H "Authorization: Bearer $CRON_SECRET" \
+     https://valejasac.pt/api/manutencao/encomendas
+```
 
 ---
 

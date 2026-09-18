@@ -19,7 +19,7 @@ import type postgres from "postgres";
 
 import { bd, bdConfigurada } from "./cliente";
 import {
-  gerarNumero,
+  gerarNumero, PRAZO_CONSERVACAO_DIAS,
   type Encomenda,
   type EstadoEncomenda,
   type LinhaEncomenda,
@@ -193,4 +193,23 @@ export async function atualizarEncomenda(id: string, a: Alteracoes): Promise<boo
     returning id
   `;
   return Boolean(linha);
+}
+
+/**
+ * Apaga as encomendas que passaram do prazo de conservação.
+ *
+ * Corre uma vez por dia, chamada pelo cron da Vercel. Devolve quantas
+ * apagou, para ficar registo de que a limpeza aconteceu.
+ */
+export async function apagarEncomendasAntigas(
+  dias = PRAZO_CONSERVACAO_DIAS
+): Promise<number> {
+  await garantirTabela();
+  const sql = bd();
+  const apagadas = await sql<{ id: string }[]>`
+    delete from encomendas
+    where criada_em < now() - make_interval(days => ${dias})
+    returning id
+  `;
+  return apagadas.length;
 }

@@ -117,8 +117,96 @@
   padding-top: calc(var(--barra-altura) + 2rem);
 }
 
+/*
+  A altura reservada não é a da barra: é a do emblema, que desce abaixo
+  dela de propósito. A barra mede 64px no telemóvel (`h-16`, sem a faixa
+  vermelha), mas o emblema tem 96 e está encostado ao topo, portanto chega
+  exatamente aos 96.
+
+  Isto já esteve em 6rem, foi reduzido para 4rem por se achar que a folga
+  era a da barra, e o emblema passou a tapar os títulos. Era a do emblema.
+*/
 @media (min-width: 768px) {
   :root { --barra-altura: 7rem; }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   TELEMÓVEL: TUDO AO CENTRO
+   Pedido do Berto a 15/09/2026. Abaixo de 768px o conteúdo alinha ao
+   centro, texto incluído.
+
+   Fica o aviso para quem vier a seguir: texto corrido centrado lê-se
+   pior — a margem esquerda irregular obriga o olho a procurar o início
+   de cada linha, e este público vai até aos 60+. Foi decisão do cliente,
+   tomada com o aviso em cima da mesa.
+
+   As exceções abaixo não são gosto: são sítios onde centrar parte
+   mesmo alguma coisa.
+   ────────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  main,
+  footer {
+    text-align: center;
+  }
+
+  /* Blocos com largura máxima deixam de encostar à esquerda. */
+  main :where([class*="max-w-"]),
+  footer :where([class*="max-w-"]) {
+    margin-inline: auto;
+  }
+
+  /* Linhas de ícone + texto passam a empilhar, centradas. Deixá-las em
+     linha com o texto centrado dava um bloco torto ao lado do ícone. */
+  main :where(.flex.items-start, .flex.items-center):not(.flex-col):not(.justify-center):not(.justify-between) {
+    justify-content: center;
+  }
+
+  /* Numa coluna flex, o que não estica encosta à esquerda: ícones,
+     imagens e botões ficavam à esquerda enquanto o texto ao lado ia para
+     o meio. `text-align` não lhes chega — é preciso alinhá-los no eixo. */
+  main :where(.flex.flex-col) > :where(svg, img, a, button),
+  main :where(.self-start),
+  main :where(.w-fit) {
+    align-self: center;
+  }
+  main :where(.flex.flex-col.items-start) {
+    align-items: center;
+  }
+
+  /* Listas de ícone + texto (os vistos do que o kit inclui, por exemplo):
+     centrar cada linha à parte punha os ícones em zigue-zague. A lista
+     inteira passa a um bloco centrado, com as linhas alinhadas entre si. */
+  main :where(ul, ol):has(> li > svg),
+  main :where(ul, ol):has(> li > .shrink-0) {
+    width: fit-content;
+    margin-inline: auto;
+  }
+  main :where(ul, ol):has(> li > svg) > li,
+  main :where(ul, ol):has(> li > .shrink-0) > li {
+    text-align: left;
+  }
+
+  /* Campos de formulário: escrever num campo centrado é desagradável —
+     o cursor salta a cada letra. */
+  main :where(input, textarea, select) {
+    text-align: left;
+  }
+
+  /* Tabelas mantêm as colunas alinhadas: é assim que se compara. */
+  main :where(th, td) {
+    text-align: inherit;
+  }
+
+  /* Listas com marcador redondo: o marcador estava colado à esquerda e
+     o texto ia para o meio. Passa a ponto acima do texto. */
+  .texto-legal li {
+    padding-left: 0;
+  }
+  .texto-legal li::before {
+    position: static;
+    display: block;
+    margin: 0 auto 0.4rem;
+  }
 }
 
 @layer base {
@@ -361,14 +449,21 @@
   .texto-legal h3 {
     @apply font-headline font-black uppercase text-base text-on-surface mt-8 mb-3;
   }
+  /*
+     65ch é onde o olho ainda encontra o início da linha seguinte sem se
+     perder. O contentor é `max-w-3xl` (768px), que a 16px dá ~90 caracteres
+     — e num iPad vertical era a página inteira a essa largura. O limite vai
+     no parágrafo e não no contentor para os títulos e as tabelas poderem
+     continuar largos.
+  */
   .texto-legal p {
-    @apply font-body text-base text-on-surface-muted leading-relaxed mb-4;
+    @apply font-body text-base text-on-surface-muted leading-relaxed mb-4 max-w-[65ch];
   }
   .texto-legal ul {
     @apply mb-5 space-y-2;
   }
   .texto-legal li {
-    @apply font-body text-base text-on-surface-muted leading-relaxed pl-5 relative;
+    @apply font-body text-base text-on-surface-muted leading-relaxed pl-5 relative max-w-[65ch];
   }
   .texto-legal li::before {
     content: "";
@@ -390,9 +485,21 @@
     @apply font-body text-sm text-on-surface-muted border-b border-on-surface/10 py-3 pr-4 align-top;
   }
 
+  /* ── Alvo de toque ──
+     44px de altura mínima, o mínimo confortável para um dedo. Cresce a
+     área que se acerta, não o texto: o tipo fica onde estava.
+     Aparece onde havia links de 18px encostados uns aos outros — rodapés,
+     listas de contactos, ligações soltas dentro de texto de bloco. */
+  .alvo-toque {
+    @apply inline-flex items-center min-h-11;
+  }
+
   /* ── Tabela de classificação ── */
+  /* 12px é o piso da DESIGN.md e não é decorativo: o público vai dos 10
+     aos 60+ e lê isto ao telemóvel. Estes cabeçalhos estavam a 10,4px.
+     O tracking apertou um pouco para a linha continuar a caber. */
   .th-tabela {
-    @apply font-body text-[0.65rem] font-bold uppercase tracking-widest text-on-surface-muted py-3 px-2;
+    @apply font-body text-xs font-bold uppercase tracking-wider text-on-surface-muted py-3 px-2;
   }
   .td-tabela {
     @apply font-body text-sm py-3 px-2;
@@ -419,15 +526,22 @@
   }
 
   /* ── Nav link ── */
+  /*
+     Esta barra aparece a partir de 1024px — e um iPad deitado tem mais do
+     que isso. Ou seja: é uma barra de computador operada com o dedo. Os
+     links mediam 18px de altura; agora a caixa tem 44 e o texto continua
+     onde estava.
+  */
   .nav-link {
-    @apply font-body font-semibold text-sm uppercase tracking-wider text-on-surface/70 hover:text-on-surface transition-colors duration-200 relative;
+    @apply inline-flex items-center min-h-11 font-body font-semibold text-sm uppercase tracking-wider text-on-surface/70 hover:text-on-surface transition-colors duration-200 relative;
   }
   .nav-link.active {
     @apply text-yellow;
   }
   .nav-link.active::after {
     content: "";
-    @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow;
+    /* O sublinhado acompanha o texto, não a caixa de 44px. */
+    @apply absolute bottom-[0.6rem] left-0 right-0 h-0.5 bg-yellow;
   }
 
   /* ── Match scoreboard ── */

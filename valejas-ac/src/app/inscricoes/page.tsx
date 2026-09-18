@@ -101,7 +101,10 @@ export default function InscricoesPage() {
         className="section-container py-14 md:py-20 border-t border-on-surface/10 scroll-mt-32"
       >
         <div className="grid lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-10 lg:gap-16">
-          <div>
+          {/* A coluna só se divide em dois a partir de `lg`. Abaixo disso é a
+              largura toda, e num iPad vertical isso dava linhas de 95
+              caracteres. O limite de leitura não pode depender da grelha. */}
+          <div className="max-w-prose">
             <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
               Enviar inscrição
             </h2>

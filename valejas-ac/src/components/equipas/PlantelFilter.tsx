@@ -17,6 +17,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import clsx from "clsx";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -83,7 +84,7 @@ export default function PlantelFilter({ jogadores }: { jogadores?: Jogador[] }) 
                 onClick={() => setEquipa(e.id)}
                 aria-pressed={ativo}
                 className={clsx(
-                  "font-headline font-black text-xs uppercase tracking-widest px-5 py-3 transition-colors duration-200",
+                  "font-headline font-black text-xs uppercase tracking-widest px-5 py-3 min-h-11 inline-flex items-center transition-colors duration-200",
                   ativo
                     ? "bg-yellow text-blue-deep"
                     : "border border-on-surface/20 text-on-surface-muted hover:border-on-surface/50 hover:text-on-surface"
@@ -114,14 +115,31 @@ export default function PlantelFilter({ jogadores }: { jogadores?: Jogador[] }) 
                       key={`${j.equipa}-${j.numero}`}
                       className="jogador-card group bg-surface-high hover:bg-surface-highest transition-colors duration-300"
                     >
-                      {/* Retrato — placeholder até haver fotografias reais */}
+                      {/*
+                        Retrato. Quem ainda não tem fotografia no CMS fica
+                        com o número em marca de água, como antes — o
+                        cartão nunca fica com um buraco no meio.
+                      */}
                       <div className="relative aspect-[3/4] bg-gradient-to-b from-blue-deep to-surface-low overflow-hidden">
-                        <span
-                          aria-hidden
-                          className="absolute inset-0 flex items-center justify-center font-headline font-black text-[7rem] leading-none text-white/10 group-hover:text-yellow/20 transition-colors duration-300"
-                        >
-                          {j.numero}
-                        </span>
+                        {j.foto ? (
+                          <Image
+                            src={j.foto}
+                            alt={j.nome}
+                            fill
+                            sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+                            className="object-cover"
+                            {...(j.fotoLqip
+                              ? { placeholder: "blur" as const, blurDataURL: j.fotoLqip }
+                              : {})}
+                          />
+                        ) : (
+                          <span
+                            aria-hidden
+                            className="absolute inset-0 flex items-center justify-center font-headline font-black text-[7rem] leading-none text-white/10 group-hover:text-yellow/20 transition-colors duration-300"
+                          >
+                            {j.numero}
+                          </span>
+                        )}
                         {j.capitao && (
                           <span className="absolute top-3 left-3 font-body text-xs font-bold uppercase tracking-widest bg-yellow text-blue-deep px-2 py-1">
                             Capitão
@@ -131,6 +149,12 @@ export default function PlantelFilter({ jogadores }: { jogadores?: Jogador[] }) 
 
                       <div className="p-4">
                         <p className="font-headline font-black uppercase text-base text-on-surface leading-tight">
+                          {/*
+                            Com fotografia, o número deixa de estar na marca
+                            de água. Passa a viver aqui, que é onde continua
+                            a fazer falta: um plantel lê-se pelo número.
+                          */}
+                          <span className="text-yellow tabular-nums mr-2">{j.numero}</span>
                           {j.nome}
                         </p>
                         <p className="font-body text-sm text-on-surface-muted mt-0.5">

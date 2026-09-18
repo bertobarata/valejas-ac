@@ -166,11 +166,19 @@ export default function PrivacidadePage() {
 
       <h2>6. Onde ficam guardados</h2>
       <p>
-        A ficha de sócio <strong>não é guardada neste site</strong>. Não há base
-        de dados, não fica em disco e não é registada nos relatórios do servidor:
-        os dados existem em memória durante o envio e seguem para a caixa de
-        correio do clube. A partir daí vivem no sistema de gestão de sócios do
-        clube, num computador na sede.
+        A ficha de sócio, a inscrição e as mensagens de contacto{" "}
+        <strong>não são guardadas neste site</strong>. Não ficam em disco nem são
+        registadas nos relatórios do servidor: existem em memória durante o envio
+        e seguem para a caixa de correio do clube. A partir daí vivem no sistema
+        de gestão do clube, num computador na sede.
+      </p>
+      <p>
+        As <strong>encomendas da loja</strong> são a exceção. Ficam guardadas numa
+        base de dados do clube, porque é a única forma de saber quem está à espera
+        de quê e em que ponto está cada encomenda. Essa base de dados está em
+        Frankfurt, na União Europeia, e só é acessível com as credenciais da
+        Direção. Guarda o nome, o email, o telemóvel, o número de sócio se o
+        tiveres dado, e as peças encomendadas — nada de pagamentos.
       </p>
 
       <h2>7. Durante quanto tempo</h2>
@@ -186,6 +194,12 @@ export default function PrivacidadePage() {
         <li>
           <strong>Mensagens de contacto</strong>: o tempo necessário para
           responder e resolver o assunto
+        </li>
+        <li>
+          <strong>Encomendas da loja</strong>: um ano a contar da data da
+          encomenda. Serve para tratar uma troca, uma reclamação ou uma dúvida
+          sobre o que foi encomendado. Passado esse ano, o site apaga-as
+          automaticamente
         </li>
       </ul>
 

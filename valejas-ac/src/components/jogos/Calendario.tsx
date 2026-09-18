@@ -1,8 +1,10 @@
+import Image from "next/image";
 import clsx from "clsx";
 import { MapPin } from "lucide-react";
 import {
   CALENDARIO, CLUBE, EPOCA, ehValejas, formatarHora,
 } from "@/lib/data/jogos";
+import { emblemaDe } from "@/lib/data/emblemas";
 
 /**
  * CALENDÁRIO DA ÉPOCA
@@ -35,6 +37,7 @@ export default function Calendario() {
           const passado  = new Date(jogo.data) < agora;
           const seguinte = i === proximoIndice;
           const data = new Date(jogo.data);
+          const emblema = emblemaDe(adversario);
 
           return (
             <li
@@ -59,7 +62,7 @@ export default function Calendario() {
 
                 <span
                   className={clsx(
-                    "font-body text-[0.7rem] font-bold uppercase tracking-widest px-2 py-0.5 shrink-0",
+                    "font-body text-xs font-bold uppercase tracking-widest px-2 py-0.5 shrink-0",
                     emCasa
                       ? "bg-yellow/25 text-on-surface"
                       : "border border-on-surface/25 text-on-surface-muted"
@@ -68,8 +71,26 @@ export default function Calendario() {
                   {emCasa ? "Casa" : "Fora"}
                 </span>
 
-                <span className="font-headline font-black uppercase text-base text-on-surface flex-1 min-w-[10rem]">
-                  {emCasa ? `${CLUBE} – ${adversario}` : `${adversario} – ${CLUBE}`}
+                {/*
+                  O emblema entra antes do confronto, à frente do nome do
+                  adversário — é por ele que se corre a lista à procura de
+                  um jogo, mais depressa do que a ler trinta nomes. Quem
+                  não tem ficheiro não deixa buraco: a linha fecha-se.
+                */}
+                <span className="flex items-center gap-2.5 flex-1 min-w-[10rem]">
+                  {emblema && (
+                    <Image
+                      src={emblema}
+                      alt=""
+                      width={200}
+                      height={200}
+                      sizes="24px"
+                      className="w-6 h-6 object-contain bg-white shrink-0"
+                    />
+                  )}
+                  <span className="font-headline font-black uppercase text-base text-on-surface">
+                    {emCasa ? `${CLUBE} – ${adversario}` : `${adversario} – ${CLUBE}`}
+                  </span>
                 </span>
 
                 <span className="font-body text-sm text-on-surface tabular-nums shrink-0">

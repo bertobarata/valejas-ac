@@ -40,7 +40,7 @@ export default function AcademiaCTA() {
             </p>
             <Link
               href="/inscricoes"
-              className="inline-flex items-center gap-2 font-headline font-black text-sm uppercase tracking-widest text-on-surface border-b border-yellow pb-1 hover:text-yellow transition-colors duration-200 w-fit"
+              className="inline-flex items-center gap-2 min-h-11 font-headline font-black text-sm uppercase tracking-widest text-on-surface border-b border-yellow hover:text-yellow transition-colors duration-200 w-fit"
             >
               Inscrever um atleta <ArrowRight size={14} />
             </Link>

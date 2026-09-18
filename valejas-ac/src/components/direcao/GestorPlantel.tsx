@@ -12,10 +12,11 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import {
-  AlertCircle, Check, Loader2, Pencil, Plus, RefreshCw, Star, Trash2, X,
+  AlertCircle, Check, ImageUp, Loader2, Pencil, Plus, RefreshCw, Star,
+  Trash2, User, X,
 } from "lucide-react";
 import {
   EQUIPAS, ORDEM_POSICOES, PLURAL_POSICAO, nomeDaEquipa,
@@ -30,6 +31,8 @@ interface JogadorAPI {
   equipa:   string;
   capitao?: boolean;
   ativo?:   boolean;
+  fotoAssetId?: string;
+  fotoUrl?:     string;
 }
 
 const VAZIO = {
@@ -39,6 +42,14 @@ const VAZIO = {
   posicao: "Ala" as Posicao,
   capitao: false,
   ativo: true,
+  /*
+   * `""` e `undefined` não querem dizer o mesmo quando isto chega ao
+   * servidor: vazio apaga a fotografia, ausente deixa-a como está.
+   * Aqui, dentro do formulário, `""` é sempre "sem fotografia" porque
+   * o formulário mostra o estado final que vai ser gravado.
+   */
+  fotoAssetId: "",
+  fotoUrl: "",
 };
 
 export default function GestorPlantel() {
@@ -47,7 +58,9 @@ export default function GestorPlantel() {
   const [form, setForm]           = useState({ ...VAZIO });
   const [aCarregar, setACarregar] = useState(true);
   const [aGuardar, setAGuardar]   = useState(false);
+  const [aEnviarFoto, setAEnviarFoto] = useState(false);
   const [erro, setErro]           = useState("");
+  const inputFoto = useRef<HTMLInputElement>(null);
 
   const carregar = useCallback(async () => {
     setACarregar(true);
@@ -89,8 +102,39 @@ export default function GestorPlantel() {
       posicao: j.posicao as Posicao,
       capitao: Boolean(j.capitao),
       ativo: j.ativo !== false,
+      fotoAssetId: j.fotoAssetId ?? "",
+      fotoUrl: j.fotoUrl ?? "",
     });
     setErro("");
+  }
+
+  async function enviarFoto(e: React.ChangeEvent<HTMLInputElement>) {
+    const ficheiro = e.target.files?.[0];
+    // Limpar já: escolher o mesmo ficheiro outra vez tem de voltar a disparar.
+    e.target.value = "";
+    if (!ficheiro) return;
+
+    setAEnviarFoto(true);
+    setErro("");
+    try {
+      const corpo = new FormData();
+      corpo.append("ficheiro", ficheiro);
+      const res = await fetch("/api/direcao/plantel/fotografia", {
+        method: "POST",
+        body: corpo,
+      });
+      const json = await res.json();
+      if (!res.ok || !json.ok) {
+        setErro(json.erro ?? "Não foi possível carregar a fotografia.");
+        return;
+      }
+      // A fotografia só fica ligada ao jogador quando se guardar.
+      setForm((f) => ({ ...f, fotoAssetId: json.assetId, fotoUrl: json.url }));
+    } catch {
+      setErro("Falha de ligação.");
+    } finally {
+      setAEnviarFoto(false);
+    }
   }
 
   async function guardar(e: React.FormEvent) {
@@ -109,6 +153,7 @@ export default function GestorPlantel() {
           equipa,
           capitao: form.capitao,
           ativo: form.ativo,
+          fotoAssetId: form.fotoAssetId,
         }),
       });
       const json = await res.json();
@@ -186,7 +231,7 @@ export default function GestorPlantel() {
               )}
             >
               {e.label}
-              <span className={clsx("font-body text-[0.7rem]", ativo ? "opacity-70" : "opacity-60")}>
+              <span className={clsx("font-body text-xs", ativo ? "opacity-70" : "opacity-60")}>
                 {contaDaEquipa(e.id)}
               </span>
             </button>
@@ -245,6 +290,68 @@ export default function GestorPlantel() {
               ))}
             </select>
           </label>
+        </div>
+
+        {/*
+          Fotografia. Fica ao lado da pré-visualização e não dentro de um
+          modal: quem está a pôr 25 retratos precisa de ver o que acabou
+          de carregar sem fechar nada.
+        */}
+        <div className="flex items-start gap-4">
+          <div className="w-20 aspect-[3/4] bg-surface-low border border-on-surface/15 shrink-0 overflow-hidden flex items-center justify-center">
+            {form.fotoUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element -- pré-visualização
+              // temporária de um ficheiro acabado de carregar; não vale um
+              // pedido de otimização ao servidor.
+              <img
+                src={form.fotoUrl}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <User size={22} className="text-on-surface-muted/50" aria-hidden />
+            )}
+          </div>
+
+          <div className="space-y-2 min-w-0">
+            <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block">
+              Fotografia
+            </span>
+            <input
+              ref={inputFoto}
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              onChange={enviarFoto}
+              className="sr-only"
+            />
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => inputFoto.current?.click()}
+                disabled={aEnviarFoto}
+                className="btn-ghost text-xs disabled:opacity-60"
+              >
+                {aEnviarFoto
+                  ? <Loader2 size={14} className="animate-spin" />
+                  : <ImageUp size={14} />}
+                {form.fotoUrl ? "Trocar" : "Escolher"}
+              </button>
+
+              {form.fotoUrl && (
+                <button
+                  type="button"
+                  onClick={() => setForm({ ...form, fotoAssetId: "", fotoUrl: "" })}
+                  className="btn-ghost text-xs"
+                >
+                  <X size={14} /> Tirar
+                </button>
+              )}
+            </div>
+            <p className="font-body text-xs text-on-surface-muted leading-relaxed">
+              JPG, PNG ou WebP, até 15 MB. Sem fotografia, o cartão mostra o
+              número — não fica vazio.
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-6">
@@ -317,6 +424,16 @@ export default function GestorPlantel() {
                         j.ativo === false && "opacity-50"
                       )}
                     >
+                      {/* Quem ainda não tem retrato vê-se de relance. */}
+                      <span className="w-8 h-10 bg-surface-low border border-on-surface/15 shrink-0 overflow-hidden flex items-center justify-center">
+                        {j.fotoUrl ? (
+                          // eslint-disable-next-line @next/next/no-img-element -- miniatura
+                          // de gestão interna, fora do site público.
+                          <img src={j.fotoUrl} alt="" className="w-full h-full object-cover" />
+                        ) : (
+                          <User size={13} className="text-on-surface-muted/40" aria-hidden />
+                        )}
+                      </span>
                       <span className="font-headline font-black text-lg text-yellow w-8 tabular-nums shrink-0">
                         {j.numero}
                       </span>
@@ -325,12 +442,12 @@ export default function GestorPlantel() {
                       </span>
 
                       {j.capitao && (
-                        <span className="inline-flex items-center gap-1 font-body text-[0.7rem] font-bold uppercase tracking-widest text-on-surface bg-yellow/25 px-2 py-0.5 shrink-0">
+                        <span className="inline-flex items-center gap-1 font-body text-xs font-bold uppercase tracking-widest text-on-surface bg-yellow/25 px-2 py-0.5 shrink-0">
                           <Star size={11} aria-hidden /> Capitão
                         </span>
                       )}
                       {j.ativo === false && (
-                        <span className="font-body text-[0.7rem] font-bold uppercase tracking-widest text-on-surface-muted border border-on-surface/25 px-2 py-0.5 shrink-0">
+                        <span className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted border border-on-surface/25 px-2 py-0.5 shrink-0">
                           Fora
                         </span>
                       )}

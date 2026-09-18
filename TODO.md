@@ -25,9 +25,9 @@ Por ordem de quem desbloqueia mais coisas de uma vez:
 | Até quando | O quê |
 |---|---|
 | ~~14/10/2026~~ | ~~Plano do Sanity~~ ✅ resolvido a 15/09/2026 — as encomendas saíram do CMS para base de dados própria, e o Free chega para o resto |
-| Antes da loja abrir | Percentagem do sinal (está 30%, inventado por mim) e preços dos 11 artigos sob consulta (§7) |
-| Quando houver tempo | Se se recolhem dados clínicos online, e como (§8) |
-| Sem prazo | Línguas do site — cinco escolhidas (§9) |
+| Antes da loja abrir | Percentagem do sinal (está 30%, inventado por mim). Os 11 preços dependem da ZEMIG, não do clube (§7) |
+| ~~Quando houver tempo~~ | ~~Dados clínicos online~~ ✅ decidido a 15/09/2026 — **não se recolhem**. O exame médico descarrega-se e entrega-se em mão (§8) |
+| Só depois do site fechado | Línguas — cinco escolhidas. Decisão do Berto a 15/09/2026: só arranca com o site 100% concluído e otimizado, para não traduzir o que ainda vai mudar (§9) |
 
 ## Índice
 
@@ -133,12 +133,12 @@ Decisão da Direção: emails no domínio do clube, não Gmail.
       quer dizer que qualquer pessoa com o id do projeto — que está no
       JavaScript do site — lia tudo sem token, incluindo os nomes,
       emails e telemóveis das encomendas da loja
-- [ ] ⚠️ Como o dataset é privado, **sem `SANITY_API_TOKEN` no servidor
+- [x] ⚠️ Como o dataset é privado, **sem `SANITY_API_TOKEN` no servidor
       o site não lê nada** e volta aos dados de exemplo. A variável tem
       de estar na Vercel antes de o site ir para o ar
 - [x] Ciclo completo testado contra o Sanity real: escrever um jogador,
       lê-lo na API, vê-lo na página pública e apagá-lo
-- [ ] Repetir as três variáveis na Vercel quando o projeto lá existir
+- [x] Repetir as três variáveis na Vercel — feito a 14/09/2026
 - [ ] Escrever o conteúdo verdadeiro: plantel, resultados, classificação
 
 #### ✅ Decisão tomada a 15/09/2026 — as encomendas saíram do CMS
@@ -162,8 +162,119 @@ deixa de ser um problema — a 14/10 desce sozinho, sem consequências.
 - [x] Schema `encomenda` apagado do Sanity
 - [x] Ciclo testado contra a base de dados real: gravar, ler, alterar
       estado, marcar pago, nota interna, apagar
-- [ ] Prazo de conservação — hoje a encomenda fica lá para sempre. O
-      RGPD pede um limite; decidir quanto tempo e apagar o que passar
+- [x] **Prazo de conservação: um ano** (decisão do Berto, 15/09/2026).
+      Tempo de tratar uma troca, uma reclamação ou uma dúvida sobre o que
+      foi encomendado. O cron da Vercel corre todos os dias às 4h e apaga
+      o que passou — `/api/manutencao/encomendas`, fechado com `CRON_SECRET`.
+      Dito também na política de privacidade e nas condições da loja
+
+---
+
+## 1b. `reuniao_2` — documento de decisão para a Direção
+
+Pedido do Berto a 15/09/2026, com o objetivo esclarecido: **não é um
+relatório de progresso.** É pôr as vulnerabilidades à vista e deixar a
+Direção escolher como quer trabalhar. O site faz o que lhe mandarem —
+quem assume o risco é quem manda.
+
+Regra do documento: **cada escolha leva o que custa, o que poupa e o que
+corre mal.** Sem recomendação disfarçada de facto. A recomendação vai
+separada, no fim de cada ponto, e assinada como opinião minha.
+
+### O que o documento tem de levar
+
+- [ ] O que está feito no site, página a página, para quem não programa
+- [ ] **Como foi feito** — ferramentas, alojamento, custo de cada peça e
+      **de quem é cada conta**: Amen, Vercel, Sanity, Neon, Resend. Com
+      quem tem acesso a quê, para o dia em que alguém sair da Direção
+- [ ] O que falta e **quem o desbloqueia** — o clube, terceiros, ou eu
+- [ ] As decisões já tomadas e porquê, para não se voltarem a discutir
+- [ ] O que custa dinheiro e o que não. Hoje o site corre a **zero euros
+      por mês**; dizer exatamente onde é que isso deixaria de ser verdade
+
+### As escolhas a pôr à Direção
+
+**1. Pagamentos — verificar ou não verificar** (a que o Berto levantou)
+
+Hoje: MB WAY e transferência, sem confirmação automática. O site regista
+a encomenda e diz o valor; alguém tem de ir ao banco ver se entrou.
+
+- [ ] Explicar o que isto expõe:
+      - **Encomenda sem pagamento nenhum.** Qualquer pessoa encomenda
+        sem pagar. Se o clube pedir ao fornecedor com base nisso, fica
+        com stock que ninguém levanta. É o único risco que custa dinheiro
+      - **«Já paguei» sem prova.** O extrato mostra o titular da conta,
+        que muitas vezes não é quem encomendou — o pai paga pelo filho.
+        Cruzar é adivinhar
+      - **Depende de uma pessoa.** Quem tem o homebanking é o único que
+        confirma. De férias, para tudo
+      - **Sem rasto para a contabilidade**, a não ser o que se escrever
+        à mão
+- [ ] Dar as saídas, por ordem de custo:
+      - **Grátis, com disciplina.** Pedir o número da encomenda
+        (`VAC-…`) no descritivo da transferência — resolve metade da
+        reconciliação e custa zero. Só pedir ao fornecedor depois de
+        confirmar a entrada. Sinal obrigatório nas encomendas grandes
+      - **Grátis, com comprovativo.** Quem paga envia o comprovativo.
+        Mais trabalho para quem compra, e é papel, não é confirmação
+      - **Pago: referência Multibanco.** Confirma-se sozinha. 1,48 € num
+        kit de 85 €, sem mensalidade. ~70–150 €/ano a cem encomendas
+      - **Misto.** Grátis nas pequenas, referência no kit e nas grandes
+- [ ] Recomendação minha: ficar no grátis **com** a regra do número da
+      encomenda no descritivo e a regra de só encomendar depois de
+      confirmar. A partir de ~50 encomendas/mês, passar a referência
+
+**2. Loja — abrir já ou esperar pelos preços**
+
+- [ ] Onze artigos sem preço até a ZEMIG responder, e stock todo a zero.
+      Abrir assim significa que tudo aparece como «por encomenda»
+
+**3. Quem entra na área da Direção**
+
+- [ ] Duas contas hoje. Sem segundo fator. Quem souber a palavra-passe
+      publica em nome do clube. Decidir quantas pessoas precisam mesmo
+
+**4. Conteúdo a sério ou estados vazios**
+
+- [ ] Plantel, corpo técnico e fotografias de pessoas não existem. O
+      site mostra vazios honestos em vez de inventar. Decidir se se
+      lança assim ou se se espera
+
+**5. Direitos de imagem obrigatórios — risco legal a decidir**
+
+- [ ] ⚠️ **O consentimento pode não ser válido.** Hoje não se inscreve
+      ninguém sem aceitar o termo de direitos de imagem. O RGPD exige
+      consentimento **livre**, e não o é quando se condiciona um serviço
+      à aceitação de algo que não é necessário para o prestar —
+      inscrever uma criança no futsal não exige poder publicar a
+      fotografia dela. O site só reproduz o que a ficha em papel já
+      fazia, mas passar isto para a internet expõe-o
+- [ ] Saída: **separar em dois consentimentos** — um obrigatório para
+      tratar a inscrição, outro opcional para publicar fotografias. Meio
+      dia de trabalho. Quem recusar inscreve-se na mesma e fica fora das
+      fotos. Se se separar no site, separar também no papel
+- [ ] Recomendação minha: separar. Tira um risco desnecessário e deixa
+      inscrever famílias que hoje hesitam
+
+**6. RGPD — o que é trabalho do clube e não meu**
+
+- [ ] **Registo das atividades de tratamento** (artigo 30.º). A dispensa
+      para organizações pequenas não se aplica a tratamento regular, e
+      inscrever atletas todas as épocas é regular. Posso fazer rascunho
+- [ ] **Nomear quem responde** a pedidos de acesso e apagamento, e pôr
+      esse contacto na política de privacidade. `geral@` serve se alguém
+      a ler
+- [ ] **Saber do prazo de 72h** para comunicar uma fuga à CNPD
+- [ ] Confirmar com quem saiba se é preciso Encarregado de Proteção de
+      Dados — pelo que percebi, um clube deste tamanho não é obrigado
+
+**7. Redes sociais**
+
+- [ ] O Make.com não está ligado: o comunicado sai no site e fica-se por
+      aí. Decidir se vale a pena ligar, e quem fica responsável
+
+Fonte: este `TODO.md`, o `PRODUCT.md` e o `OPERACAO.md`. O documento é
+de leitura, não de trabalho — vai para pessoas que não abrem um repo.
 
 ---
 
@@ -214,23 +325,11 @@ deixa de ser um problema — a 14/10 desce sozinho, sem consequências.
       cartões mostram as iniciais
 - [ ] **Órgãos sociais** — no cartaz, Mário Sérgio Barata e Teresa Santos
       têm ambos o Sócio N.º 167. Um dos dois está errado
-- [ ] ⚠️ **Contactos do site não batem certo com os documentos do clube.**
-      Apanhado a 14/09/2026, ao comparar com a ficha de atleta e o termo
-      de direitos de imagem:
-
-      | | No site | Nos documentos do clube |
-      |---|---|---|
-      | Telefone | +351 214 365 104 | 216 023 289 |
-      | Email | valejas.a.c@gmail.com | valejas.a.c@hotmail.com (rodapé) e secretaria.valejasac@gmail.com (dados) |
-      | Localidade | 2730-132 Valejas | Valejas — 2730-132 Barcarena |
-
-      **Não mudei nada**: os documentos são de 2022 e 2026 e podem estar
-      desatualizados tal como o site. É preciso alguém do clube dizer qual
-      é o número que atende e qual é a caixa que alguém lê
-- [x] ~~**Jogos** — adversários de exemplo~~ — resolvido a 14/09/2026: o
-      calendário oficial das 30 jornadas veio do PDF da AF Lisboa. Falta
-      preencher resultados e classificação em `/direcao/jogos` à medida
-      que se joga
+- [x] **Contactos confirmados pelo Berto a 15/09/2026.** Valem os que
+      estão no site: telefone **21 436 5104** e os emails novos do domínio
+      `valejasac.pt`. O `216 023 289` e o endereço de hotmail que apareciam
+      em documentos antigos do clube estão fora de uso — não se mexe em
+      nada, o site já estava certo
 - [ ] **Patrocinadores** — faltam logótipos e links. Descrições de QB,
       Ninho da Rola e Muchacho são genéricas por falta de informação
 - [ ] **Instalações** — faltam fotografias da sede e do pavilhão
@@ -353,9 +452,16 @@ encomenda existe na caixa de correio do clube.
 - [ ] **Stock da sede.** Está tudo a zero, ou seja, tudo «por encomenda».
       Alguém tem de contar o que há na sede e pôr os números em
       `src/lib/data/loja.ts`
-- [ ] **Preços sob consulta.** Treze artigos não têm preço fechado no
-      fornecedor e por isso não se encomendam pelo site — só por contacto.
-      Se a Direção fechar preços, entram no carrinho
+- [ ] **Preços sob consulta — pedir à ZEMIG.** Onze artigos não têm preço
+      publicado. Confirmado a 15/09/2026 na loja do fornecedor: essas onze
+      referências dizem lá «Preço sob consulta», exatamente as mesmas que o
+      nosso catálogo marca assim. Não é falta de importação — o preço não
+      existe publicado. Um email à ZEMIG a pedir a tabela resolve:
+      `PB-6440.01` (casaco California), `ZM-10000.01` e `.02` (camisolas de
+      adepto), `ZM-11000.01` (bermuda), `ZM-18000.01` (calças de treino),
+      `ZM-23000.01` (camisola com capuz), `ZM-27000.01` (camisola de
+      família), `ZM-32000.01/.02/.03` (cachecóis), `ZM-69000.01` (mochila).
+      Os outros doze têm preço e já estão no site
 - [ ] **Condições da loja** (`/loja/condicoes`): escritas a partir do
       regime geral de vendas à distância. Falta a Direção confirmar o
       prazo de troca (14 dias), se aceita trocas de peças não
@@ -447,24 +553,28 @@ agarrado à encomenda em vez de perdido na caixa de correio.
 
 ---
 
-## 8. Ficha oficial de atleta — o que o site ainda não pede
+## 8. Ficha oficial de atleta — fica em papel ✅ fechado a 15/09/2026
 
 O clube tem uma **Ficha Individual de Atleta** em papel (época 2026/2027,
 fotografada a 14/09/2026) bem mais completa do que o formulário de
 `/inscricoes`. O site pede o que serve para responder depressa; o resto
-preenche-se na sede. Se um dia se quiser a ficha inteira online, falta:
+preenche-se na sede.
 
-- [ ] Morada, código postal, naturalidade, CC/TR com validade
-- [ ] Agregado familiar: pai e mãe, com telemóvel, email e profissão
-- [ ] Ocupação: escola e ano, passou ou reprovou, ou empresa e profissão
-- [ ] Dados clínicos: médico e telefone, grupo sanguíneo, lesões graves,
-      operações, uso de óculos
-- [ ] Currículo desportivo: pratica futsal desde, 1.º clube, clubes que
-      representou, escalão, no VAC desde que época
-- [ ] Licença FPF e número de sócio-atleta
-- [ ] A declaração de autorização para inscrição como sócio-atleta
+**Decisão do Berto: fica assim.** Nada disto passa para o site. O que
+segue é o registo do que a ficha em papel pede e o site não — não é uma
+lista de tarefas:
 
-### Como recolher isto, se se quiser mesmo (14/09/2026)
+- Morada, código postal, naturalidade, CC/TR com validade
+- Agregado familiar: pai e mãe, com telemóvel, email e profissão
+- Ocupação: escola e ano, passou ou reprovou, ou empresa e profissão
+- Dados clínicos: médico e telefone, grupo sanguíneo, lesões graves,
+  operações, uso de óculos
+- Currículo desportivo: pratica futsal desde, 1.º clube, clubes que
+  representou, escalão, no VAC desde que época
+- Licença FPF e número de sócio-atleta
+- A declaração de autorização para inscrição como sócio-atleta
+
+### Decidido a 15/09/2026: não se recolhe online
 
 Metade dos campos acima são **dados de saúde** — categoria especial no
 artigo 9.º do RGPD. «O site é seguro» não é uma propriedade do site: é
@@ -476,15 +586,21 @@ sair **por email**. É a pior das hipóteses — ficam na caixa de correio
 para sempre, nos registos do fornecedor de email, e reencaminháveis com
 um clique. Email não é sítio para dados de saúde.
 
-Três caminhos:
+**Decisão do Berto:** caminho 1. Nada disto passa pelo site. O exame
+médico descarrega-se em `/inscricoes`, imprime-se, e entrega-se em mão
+na secretaria, ao treinador ou a quem o clube indicar. O site não vê
+dados de saúde, e por isso não tem de os proteger.
 
-- [ ] **1. Não recolher online** — a ficha clínica preenche-se na sede,
-      em papel, com o exame médico. É o que está hoje. Risco zero
-- [ ] **2. Recolher online tudo menos o clínico** — identificação,
+Os outros dois caminhos ficam aqui só como registo de que foram
+ponderados — não são para fazer.
+
+- [x] **1. Não recolher online** — a ficha clínica preenche-se na sede,
+      em papel, com o exame médico. **É a decisão.** Risco zero
+- [ ] ~~**2. Recolher online tudo menos o clínico**~~ — identificação,
       agregado familiar, ocupação e currículo desportivo não são
       categoria especial. Dá 80% da ficha digital sem entrar no regime
       do artigo 9.º. **É o que eu recomendo**
-- [ ] **3. Recolher tudo, com o clínico cifrado** — possível, mas são
+- [ ] ~~**3. Recolher tudo, com o clínico cifrado**~~ — possível, mas são
       quatro peças e não uma:
       - Base de dados em região europeia (Neon ou Supabase), nunca email
         nem Sanity
@@ -518,6 +634,11 @@ no saco do equipamento: num acidente ninguém abre o site.
 Pedido do Berto (14/09/2026). O site está todo escrito em português de
 Portugal; a ideia é chegar a quem vive em Valejas e não tem o português
 como primeira língua. Cinco línguas, fechadas a 14/09/2026.
+
+> **Quando começar (decisão do Berto, 15/09/2026): só com o site 100%
+> concluído e otimizado.** Traduzir texto que ainda vai mudar é pagar
+> cinco vezes por cada frase reescrita. Primeiro fecham-se todas as
+> páginas e todos os pontos; depois traduz-se o que ficou.
 
 ### Línguas a fazer
 

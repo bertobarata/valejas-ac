@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import EmblemHero from "@/components/clube/EmblemHero";
 import EagleSection from "@/components/clube/EagleSection";
 import ColorsBento from "@/components/clube/ColorsBento";
-import EmblemCTA from "@/components/clube/EmblemCTA";
 
 export const metadata: Metadata = {
   title: "O Nosso Emblema",
@@ -16,7 +15,6 @@ export default function EmblemaPage() {
       <EmblemHero />
       <EagleSection />
       <ColorsBento />
-      <EmblemCTA />
     </>
   );
 }

@@ -52,6 +52,17 @@ export const jogador = defineType({
       validation: (R) => R.required(),
     }),
     defineField({
+      name: "fotografia",
+      title: "Fotografia",
+      description:
+        "Retrato do jogador. Aparece no cartão em /equipas, recortado ao alto. " +
+        "Arrasta o círculo sobre a cara: é esse ponto que fica sempre visível, " +
+        "seja qual for o tamanho do ecrã.",
+      type: "image",
+      // Sem hotspot, um retrato ao alto cortado a 3:4 perde a cabeça.
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "capitao",
       title: "Capitão",
       type: "boolean",
@@ -71,10 +82,14 @@ export const jogador = defineType({
   ],
 
   preview: {
-    select: { nome: "nome", numero: "numero", posicao: "posicao", equipa: "equipa" },
-    prepare: ({ nome, numero, posicao, equipa }) => ({
+    select: {
+      nome: "nome", numero: "numero", posicao: "posicao",
+      equipa: "equipa", media: "fotografia",
+    },
+    prepare: ({ nome, numero, posicao, equipa, media }) => ({
       title: `${numero ?? "?"} · ${nome}`,
       subtitle: [posicao, equipa].filter(Boolean).join(" — "),
+      media,
     }),
   },
 });

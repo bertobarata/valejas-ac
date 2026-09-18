@@ -49,3 +49,7 @@ yarn-error.log*
 FontshareKit-*/
 .vercel
 .env*
+
+# Originais de fotos/vídeos (7,4 GB, Google Drive da Direção) — nunca no git
+/FOTOS/
+/reuniao1valejas*.odt
