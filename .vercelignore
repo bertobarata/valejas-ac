@@ -1,0 +1,23 @@
+# O que o Vercel NÃO envia no deploy.
+#
+# O .gitignore não conta aqui: o CLI empacota a pasta de trabalho, não o
+# que o git segue. Sem este ficheiro, cada deploy tentava enviar os
+# 3 GB de originais de fotografia e vídeo e rebentava a meio do upload.
+
+# Originais de fotografia e vídeo (Google Drive da Direção)
+/FOTOS/
+
+# Documentos soltos da reunião
+/reuniao1valejas*.odt
+*.odt
+
+# Dependências e build — o Vercel instala e compila do lado dele
+node_modules/
+.next/
+out/
+
+# Kit de fontes descarregado; o que é preciso vive em public/fonts/
+FontshareKit-*/
+
+.git/
+.DS_Store
