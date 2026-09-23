@@ -1,7 +1,7 @@
 # TODO — Website Valejas AC
 
-Estado a 14/09/2026, fim da terceira sessão de trabalho.
-Revisto ao fim do dia — ver a nota do corpo técnico na secção 5.
+Estado a 23/09/2026.
+Revisto depois de o plantel e os valores da época entrarem no site.
 
 O código está feito e testado. **O que falta é quase tudo fora do código:**
 contas por criar, dados que só o clube tem, e três decisões que custam
@@ -16,9 +16,10 @@ Por ordem de quem desbloqueia mais coisas de uma vez:
 | 1 | ~~Vercel~~ | ✅ feito a 14/09/2026 — projeto `valejasac`, 18 variáveis, preview aberto sem palavra-passe |
 | 2 | ~~Email~~ | ✅ feito a 14/09/2026 — cinco caixas, Resend verificada, três envios reais a chegar à entrada |
 | 3 | ~~Contas da Direção~~ | ✅ feito a 14/09/2026 — `presidente` e `comunicacao`, `DIRECAO_PASSWORD` apagada |
-| 4 | **DNS do domínio** — `A` → `76.76.21.21` na Amen, e acrescentar `valejasac.pt` ao projeto na Vercel | O site vive num endereço `.vercel.app` que muda a cada deploy |
-| 5 | ~~`SANITY_API_TOKEN` na Vercel~~ | ✅ feito a 14/09/2026 |
-| 6 | ~~Confirmação antes de publicar nas redes~~ | ✅ feito a 14/09/2026 |
+| 4 | **Trocar as palavras-passe da Direção e a chave da Resend** (§2) | Existem fora do cofre desde 15/09. Apontar o DNS sem isto abre `/direcao` a quem souber o endereço |
+| 5 | **DNS do domínio** — `A` → `76.76.21.21` na Amen, e acrescentar `valejasac.pt` ao projeto na Vercel. **Depois do ponto 4** | O site vive num endereço `.vercel.app` que muda a cada deploy |
+| 6 | ~~`SANITY_API_TOKEN` na Vercel~~ | ✅ feito a 14/09/2026 |
+| 7 | ~~Confirmação antes de publicar nas redes~~ | ✅ feito a 14/09/2026 |
 
 ## Decisões com prazo
 
@@ -287,9 +288,14 @@ de leitura, não de trabalho — vai para pessoas que não abrem um repo.
 - [x] `DIRECAO_PASSWORD` apagada — era `valejas1966`, valor de
       desenvolvimento. Já não abre nada
 - [x] `DIRECAO_SECRET` — feito, `openssl rand -hex 32`
-- [ ] Trocar as duas palavras-passe da Direção — foram escritas em
-      conversa com a IA, portanto existem fora do cofre. Não é urgente
-      enquanto o site não estiver público, mas é uma linha na Vercel
+- [ ] **Trocar as duas palavras-passe da Direção — passou a urgente.**
+      Foram escritas em conversa com a IA, portanto existem fora do
+      cofre. Enquanto o site vivia num endereço `.vercel.app` que
+      ninguém sabia de cor, o risco era teórico; apontar o DNS torna
+      `/direcao` alcançável por quem souber o endereço, e lá dentro
+      estão os dados pessoais dos sócios e as encomendas. **Isto tem de
+      vir antes do ponto 4 da tabela de bloqueios**
+- [ ] **Trocar a chave da Resend** — pelo mesmo motivo e na mesma volta
 - [ ] `MAKE_WEBHOOK_SEGREDO` — `openssl rand -hex 24`
 - [ ] `IFTHENPAY_CALLBACK_CHAVE` — `openssl rand -hex 24`
 - [ ] Todas as variáveis repetidas na Vercel → Settings → Environment Variables,
@@ -304,37 +310,72 @@ de leitura, não de trabalho — vai para pessoas que não abrem um repo.
 - [ ] **História** — não há registo público dos fundadores nem ata da
       fundação. A página assume isso e convida quem souber a contar.
       Vale a pena a Direção procurar no arquivo do clube
-- [ ] **Quota** — confirmar com a Direção: 1€/mês, sem jóia, sem categorias
+- [x] ~~**Quota**~~ — confirmada a 23/09/2026 pelo comunicado da Direção
+      de 01/09/2026: 1€/mês, incluída na inscrição e na reinscrição. Sem
+      jóia e sem categorias, como estava
 - [ ] **Atletismo** — grupo (competição ou comunidade?), vertentes reais
       (pista, estrada, corta-mato, marcha?), escalões, federação. O texto
       atual foi escrito por inferência
 - [ ] **Corpo técnico** — quem treina cada equipa e cada escalão. A lista
       está **vazia** em `EQUIPA_TECNICA` e a página assume isso. Ver o
       aviso na secção 5 sobre o que lá estava antes
-- [ ] **Fotografias reais** — plantel, equipa técnica e o retrato do hero
-      de `/equipas` continuam com lugares reservados
-- [ ] **Plantel** — a Direção já o pode escrever em `/direcao/plantel`.
-      Falta escrevê-lo: nome, número e posição, por equipa. Enquanto não
-      estiver no CMS, o site mostra os oito nomes de exemplo de
-      `src/lib/data/plantel.ts`
+- [x] ~~**Fotografias do plantel**~~ — 51 retratos dos 25 jogadores
+      carregados no Sanity a 23/09/2026, um ligado a cada jogador
+- [ ] **Fotografias** — equipa técnica e o retrato do hero de `/equipas`
+      continuam com lugares reservados
+- [ ] **Enquadramento dos retratos** — todos com o ponto de foco no
+      mesmo sítio (`y=0.32`). Serve para enquadrar caras, mas cada um
+      devia ser afinado à mão no Studio
+- [ ] **Plantel — 25 jogadores criados a 23/09/2026, todos desligados.**
+      Estão no CMS com fotografia, visíveis em `/direcao/plantel` a
+      meio-tom, e fora do site até alguém ligar o interruptor. Falta:
+      - **números** — só 10 vieram das camisolas das fotografias; os
+        outros 15 levam provisório na casa dos 80-94, que salta à vista
+      - **posições** — todas em `Universal`, por confirmar
+      - **nomes da Equipa A** — vieram alcunhas das fotografias (Bicho,
+        Vaz, Xavito, Samu, Pinto), e falta saber se é «Taveres» ou
+        «Tavares»
+      Enquanto nenhum estiver ligado, o site mostra os oito nomes de
+      exemplo de `src/lib/data/plantel.ts`. Recarregar tudo do zero:
+      `node --env-file=.env.local scripts/carregar-plantel.mjs`
 - [ ] **Atletismo** — o site diz "todos os escalões" sem os enumerar.
       Se a Direção quiser a lista escalão a escalão, como no futsal, falta
       saber quais são e a federação
 - [ ] **Órgãos sociais** — faltam as fotografias dos 20 membros. O cartaz
       da Lista A tem-nas; é preciso os ficheiros. Enquanto não houver, os
       cartões mostram as iniciais
-- [ ] **Órgãos sociais** — no cartaz, Mário Sérgio Barata e Teresa Santos
-      têm ambos o Sócio N.º 167. Um dos dois está errado
+- [x] ~~**Órgãos sociais — o 167 duplicado**~~ — resolvido a 23/09/2026.
+      O cartaz da Lista A dá 100 ao Mário Sérgio Barata; o 167 é da
+      Teresa Santos. Era erro de cópia nosso, corrigido
 - [x] **Contactos confirmados pelo Berto a 15/09/2026.** Valem os que
       estão no site: telefone **21 436 5104** e os emails novos do domínio
       `valejasac.pt`. O `216 023 289` e o endereço de hotmail que apareciam
       em documentos antigos do clube estão fora de uso — não se mexe em
       nada, o site já estava certo
+- [ ] **Valores da época — por confirmar com a Direção.** Publicados a
+      23/09/2026 em `src/lib/data/precos.ts`, a partir do comunicado de
+      01/09: inscrição 60€, reinscrição 55€, exame médico 15€,
+      mensalidades de 30€ e 20€, desconto de 5€ por irmão. Enquanto
+      `PRECOS_CONFIRMADOS` for `false`, `/inscricoes` mostra o aviso de
+      que se confirmam na secretaria. A Direção valida e passa a `true`
+- [ ] **Preço de três peças da loja** — camisola com capuz, calças de
+      fato de treino e bermuda entram no kit mas estão sem valor fechado
+      (fazem parte das onze sob consulta, §7)
 - [ ] **Patrocinadores** — faltam logótipos e links. Descrições de QB,
       Ninho da Rola e Muchacho são genéricas por falta de informação
 - [ ] **Instalações** — faltam fotografias da sede e do pavilhão
 - [ ] **Academia Sénior** — confirmar se a lista de atividades está completa
       e se o horário se mantém
+
+---
+
+### Encomenda de teste por apagar
+
+- [ ] `VAC-260915-6LIE` continua na base de dados de produção. A área da
+      Direção **não consegue apagar encomendas** — não há `DELETE` na API
+      nem botão no `GestorEncomendas`, por decisão de desenho: quem limpa
+      é o cron ao fim de um ano. Qualquer engano de teste futuro volta a
+      precisar de SQL à mão, por isso vale a pena ponderar um botão
 
 ---
 
@@ -447,8 +488,13 @@ encomenda existe na caixa de correio do clube.
 
 ### O que falta para isto ir para o ar
 
-- [x] **Catálogo real.** Os 23 artigos da ZEMIG (referências, preços,
+- [x] **Catálogo real.** Os 26 artigos da ZEMIG (referências, preços,
       tamanhos e fotografias) foram importados a 14/09/2026 da loja CTT
+- [x] **Preço do kit.** Passou a 110€ a 23/09/2026 — o preço de pacote do
+      comunicado da Direção de 01/09. Era a soma de três peças do
+      catálogo e dava 68,89€, número que o clube nunca cobrou
+- [ ] **A referência do polo.** Faz parte do kit no comunicado da
+      Direção, mas não existe no catálogo da ZEMIG que importámos
 - [ ] **Stock da sede.** Está tudo a zero, ou seja, tudo «por encomenda».
       Alguém tem de contar o que há na sede e pôr os números em
       `src/lib/data/loja.ts`
@@ -467,7 +513,7 @@ encomenda existe na caixa de correio do clube.
       prazo de troca (14 dias), se aceita trocas de peças não
       personalizadas, e quem responde às reclamações
 - [ ] **Percentagem do sinal.** Está em 30% (`SINAL_PERCENTAGEM`), número
-      inventado por falta de decisão. Num kit de 85 € dá 25,50 €
+      inventado por falta de decisão. No kit de 110 € dá 33 €
 - [ ] **Pagamento ligado.** O site regista a encomenda e diz o valor; os
       dados de pagamento seguem no email. Falta decidir se o MB WAY e a
       referência das quotas passam também a servir a loja

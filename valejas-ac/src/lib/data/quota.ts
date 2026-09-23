@@ -11,7 +11,7 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-/** ⚠️ Confirmar com a Direção antes de produção. */
+/** Confirmado pelo comunicado da Direção de 01/09/2026, época 2026/2027. */
 export const QUOTA_MENSAL = 1; // €/mês por sócio
 export const JOIA = 0;         // sem valor de entrada
 

@@ -404,15 +404,42 @@ const CATALOGO: Produto[] = [
  * clube, o alternativo para quando as cores chocam com as do
  * adversário, e um conjunto para treinar durante a semana.
  *
- * O preço é a soma das peças, calculada a partir do catálogo — não
- * escrita à mão. Se a Direção fechar um preço de pacote diferente da
- * soma, muda-se aqui e em mais lado nenhum.
+ * O preço vem do comunicado da Direção de 01/09/2026 e é um preço de
+ * pacote: 110€ fechados, abaixo da soma das peças ao balcão. Era
+ * calculado a partir do catálogo e dava 68,89€ — número que o clube
+ * nunca cobrou, porque o kit da Direção leva mais peças do que as três
+ * que a soma contava.
  * ─────────────────────────────────────────────────────────────────
+ */
+
+/** Preço de pacote fechado pela Direção para a época 2026/2027. */
+export const PRECO_KIT = 110;
+
+/**
+ * O que o comunicado diz que o kit leva. É esta a lista que a família
+ * lê no papel, por isso é esta que o site mostra — não a dos slugs.
+ */
+const CONTEUDO_DO_KIT = [
+  "2 equipamentos de jogo",
+  "1 camisola de treino",
+  "1 calção de treino",
+  "1 par de meias de treino",
+  "1 fato de treino com capuz",
+  "1 polo",
+  "1 bermuda",
+];
+
+/**
+ * As peças do catálogo que se mostram por baixo do kit. Cobrem o
+ * essencial do conteúdo acima; o polo ainda não existe no catálogo da
+ * ZEMIG que recebemos a 14/09.
  */
 export const PECAS_DO_KIT = [
   "equipamento-principal",
   "equipamento-branco",
   "conjunto-azul",
+  "fato-treino",
+  "bermuda",
 ] as const;
 
 function montarKit(catalogo: Produto[]): Produto {
@@ -426,10 +453,11 @@ function montarKit(catalogo: Produto[]): Produto {
     referencia: pecas.map((p) => p.referencia).join(" + "),
     categoria: "jogo",
     descricao:
-      "O que todo o atleta do clube tem de ter: equipamento principal, " +
-      "equipamento alternativo e conjunto de treino. Num pedido só.",
-    preco: pecas.reduce((soma, p) => soma + p.preco, 0),
-    inclui: pecas.map((p) => p.nome),
+      "O que todo o atleta do clube tem de ter, num pedido só: dois " +
+      "equipamentos de jogo, o que é preciso para treinar durante a " +
+      "semana, e o agasalho para a beira do campo.",
+    preco: PRECO_KIT,
+    inclui: CONTEUDO_DO_KIT,
     personalizavel: true,
     // Todas as peças partilham a mesma escala de tamanhos.
     variantes: pecas[0]?.variantes ?? [],
