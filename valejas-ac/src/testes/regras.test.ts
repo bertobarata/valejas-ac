@@ -15,6 +15,7 @@ import { CALENDARIO, CLUBE, ehValejas, proximoJogo } from "@/lib/data/jogos";
 import { EQUIPAS, ORDEM_POSICOES, doSanity } from "@/lib/data/plantel";
 import { APOIOS, apoiosPorTipo } from "@/lib/data/patrocinadores";
 import { emblemaDe } from "@/lib/data/emblemas";
+import { organizacao, proximosJogos } from "@/lib/seo/dadosEstruturados";
 
 /*
  * As regras que, se partirem, custam dinheiro ao clube ou expõem
@@ -254,5 +255,30 @@ describe("patrocinadores", () => {
     for (const a of APOIOS.filter((x) => x.logo)) {
       expect(existsSync(join(publico, a.logo!)), a.nome).toBe(true);
     }
+  });
+});
+
+describe("dados estruturados — o que o Google lê", () => {
+  it("o clube identifica-se com morada, contactos e redes", () => {
+    const o = organizacao() as Record<string, unknown>;
+    expect(o["@type"]).toBe("SportsOrganization");
+    expect(o.foundingDate).toBe("1966-11-01");
+    expect(o.telephone).toBeTruthy();
+    expect((o.sameAs as string[]).every((u) => u.startsWith("https://"))).toBe(true);
+  });
+
+  it("só entram jogos que ainda não aconteceram", () => {
+    // Um evento passado no Google não ajuda ninguém a encontrar o
+    // próximo jogo — e o calendário tem a época inteira.
+    const antes = new Date("2026-09-01T00:00:00Z");
+    const g = proximosJogos(antes) as { "@graph": { startDate: string }[] };
+    expect(g["@graph"].length).toBeGreaterThan(0);
+    for (const e of g["@graph"]) {
+      expect(new Date(e.startDate).getTime()).toBeGreaterThanOrEqual(antes.getTime());
+    }
+  });
+
+  it("depois da época acabar não se anuncia nada", () => {
+    expect(proximosJogos(new Date("2030-01-01T00:00:00Z"))).toBeNull();
   });
 });

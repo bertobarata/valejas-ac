@@ -8,6 +8,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 import EcraCarregamento from "@/components/EcraCarregamento";
 import ConteudoPrincipal from "@/components/ConteudoPrincipal";
 import ChamadaSocio from "@/components/ChamadaSocio";
+import DadosEstruturados from "@/components/seo/DadosEstruturados";
+import { organizacao } from "@/lib/seo/dadosEstruturados";
 
 export const metadata: Metadata = {
   title: {
@@ -40,6 +42,19 @@ export const metadata: Metadata = {
     images: ["/imagem-partilha"],
   },
   alternates: { canonical: "/" },
+
+  /*
+   * Search Console. O Google dá um código para provar que o site é
+   * nosso; põe-se em `GOOGLE_SITE_VERIFICATION` na Vercel e aparece
+   * como meta tag. Sem a variável, não se escreve tag nenhuma — uma
+   * verificação vazia é pior do que nenhuma.
+   *
+   * Só serve depois do domínio apontado: o Google verifica
+   * valejasac.pt, não o endereço de pré-visualização.
+   */
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export default function RootLayout({
@@ -54,6 +69,7 @@ export default function RootLayout({
       className={`${archivo.variable} ${generalSans.variable}`}
     >
       <body>
+        <DadosEstruturados dados={organizacao()} />
         <EcraCarregamento />
 
         {/* Link de salto: com cabeçalho fixo e oito itens de navegação,
