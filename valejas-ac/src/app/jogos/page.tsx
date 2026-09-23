@@ -8,6 +8,8 @@ import {
   PROXIMO_JOGO, RESULTADOS, CLASSIFICACAO,
   doSanity, proximoDe, resultadosDe,
 } from "@/lib/data/jogos";
+import DadosEstruturados from "@/components/seo/DadosEstruturados";
+import { proximosJogos } from "@/lib/seo/dadosEstruturados";
 
 export const metadata: Metadata = {
   title: "Jogos",
@@ -35,6 +37,7 @@ export default async function JogosPage() {
 
   return (
     <div className="bg-surface">
+      <DadosEstruturados dados={proximosJogos()} />
       {/* Cabeçalho */}
       <section className="bg-surface-low bg-texture border-b border-on-surface/10">
         <div className="section-container py-16 md:py-20">
