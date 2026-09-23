@@ -38,7 +38,9 @@ export const CONTACTO = {
   ],
   redesSociais: {
     instagram: "https://instagram.com/valejasa.c.desporto",
-    facebook:  "https://facebook.com/valejasacdesporto",
+    // A página certa, indicada pela comunicação do clube a 23/09/2026.
+    // O endereço anterior, /valejasacdesporto, não é a página oficial.
+    facebook:  "https://www.facebook.com/profile.php?id=61590043516439",
     youtube:   "https://youtube.com/@valejastv",
   },
 };

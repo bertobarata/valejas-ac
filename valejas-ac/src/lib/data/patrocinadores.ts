@@ -75,18 +75,34 @@ export const APOIOS: Apoio[] = [
     descricao: "Restaurante.",
     logo: "/patrocinadores/muchacho.webp",
   },
-  /*
-   * Os dois seguintes vieram na pasta de logótipos mas não na lista da
-   * Direção. O ficheiro está tratado e o sítio está feito: tirar o
-   * `porConfirmar` publica-os.
-   */
   {
+    // Confirmado pelo presidente a 23/09/2026, com o ramo descrito por
+    // ele: veio na pasta de logótipos mas não na lista de 13/09.
     nome: "Ciao Cuore",
     tipo: "local",
     descricao: "Restaurante italiano e sushi.",
     logo: "/patrocinadores/ciao-cuore.webp",
-    porConfirmar: true,
   },
+  /*
+   * Os dois seguintes foram indicados pelo presidente a 23/09/2026, e
+   * não constavam da lista de 13/09. Sem logótipo — o cartão mostra o
+   * nome enquanto não houver ficheiro.
+   */
+  {
+    nome: "Drive 360",
+    tipo: "local",
+    descricao: "Peças para automóveis.",
+  },
+  {
+    nome: "António Rosa",
+    tipo: "local",
+    descricao: "Engenharia civil e certificação energética.",
+  },
+  /*
+   * Veio na pasta de logótipos mas não na lista da Direção, e o
+   * presidente não se pronunciou sobre ele a 23/09. O ficheiro está
+   * tratado e o sítio está feito: tirar o `porConfirmar` publica-o.
+   */
   {
     nome: "RE/MAX Grupo Sunset",
     tipo: "local",
