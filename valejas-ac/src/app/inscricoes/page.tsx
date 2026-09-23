@@ -5,6 +5,7 @@ import { MODALIDADES, VAGAS } from "@/lib/data/modalidades";
 import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
 import { DOCUMENTOS } from "@/lib/data/documentos";
 import PedidoInscricao from "@/components/inscricoes/PedidoInscricao";
+import ValoresEpoca from "@/components/inscricoes/ValoresEpoca";
 
 export const metadata: Metadata = {
   title: "Inscrições",
@@ -128,6 +129,8 @@ export default function InscricoesPage() {
           <PedidoInscricao />
         </div>
       </section>
+
+      <ValoresEpoca />
 
       {/* O que é preciso levar à sede */}
       <section className="section-container py-14 md:py-20 border-t border-on-surface/10">

@@ -7,6 +7,10 @@
 # Originais de fotografia e vídeo (Google Drive da Direção)
 /FOTOS/
 
+# Documentos internos da Direção — dados pessoais de sócios e órgãos
+# sociais. Vivem no repositório (privado) para consulta, nunca no site.
+/documentos-internos/
+
 # Documentos soltos da reunião
 /reuniao1valejas*.odt
 *.odt

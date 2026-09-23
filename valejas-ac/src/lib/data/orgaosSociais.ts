@@ -59,7 +59,7 @@ export const ORGAOS: Orgao[] = [
       { cargo: "2.º Vogal",       nome: "Guilherme Rosa",      numero: 151, desde: 2025 },
       { cargo: "3.º Vogal",       nome: "Carlos Sacramento",   numero: 109, desde: 2023 },
       { cargo: "4.º Vogal",       nome: "Luísa Sacramento",    numero: 110, desde: 2023 },
-      { cargo: "1.º Suplente",    nome: "Mário Sérgio Barata", numero: 167, desde: 2019, suplente: true },
+      { cargo: "1.º Suplente",    nome: "Mário Sérgio Barata", numero: 100, desde: 2019, suplente: true },
       { cargo: "2.º Suplente",    nome: "Teresa Santos",       numero: 167, desde: 2025, suplente: true },
       { cargo: "3.º Suplente",    nome: "Fernando Dias",       numero: 2,   desde: 1981, suplente: true },
     ],

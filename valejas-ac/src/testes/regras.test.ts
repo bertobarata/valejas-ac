@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import {
   PRODUTOS, KIT_ATLETA, getProduto, sinalDe, stockDe, temPrecoFechado,
-  SINAL_PERCENTAGEM, PECAS_DO_KIT,
+  SINAL_PERCENTAGEM, PECAS_DO_KIT, PRECO_KIT
 } from "@/lib/data/loja";
 import { gerarNumero } from "@/lib/data/encomendas";
 import {
@@ -32,11 +32,14 @@ describe("loja — os preços nunca vêm do browser", () => {
     expect(getProduto("camisola-do-benfica")).toBeUndefined();
   });
 
-  it("o kit custa a soma das peças que o compõem, não um número à mão", () => {
-    const soma = PECAS_DO_KIT
-      .map((slug) => getProduto(slug)?.preco ?? 0)
-      .reduce((a, b) => a + b, 0);
-    expect(KIT_ATLETA.preco).toBeCloseTo(soma, 2);
+  it("o kit custa o preço de pacote da Direção, não a soma das peças", () => {
+    expect(KIT_ATLETA.preco).toBe(PRECO_KIT);
+  });
+
+  it("as peças que o kit junta existem todas no catálogo", () => {
+    for (const slug of PECAS_DO_KIT) {
+      expect(getProduto(slug), `peça em falta: ${slug}`).toBeDefined();
+    }
   });
 
   it("os artigos sob consulta não têm preço para cobrar", () => {
