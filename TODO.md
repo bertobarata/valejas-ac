@@ -35,6 +35,7 @@ Por ordem de quem desbloqueia mais coisas de uma vez:
 1. [Contas externas a criar](#1-contas-externas-a-criar) — domínio, email, pagamentos, redes, CMS
 2. [Segredos a gerar](#2-segredos-a-gerar-antes-de-ir-para-o-ar)
 3. [Dados reais em falta](#3-dados-reais-em-falta) — plantel, fotografias, stock
+3b. [SEO e presença no Google](#3b-seo-e-presença-no-google)
 4. [Por verificar quando houver CMS](#4-por-verificar-quando-houver-cms)
 5. [Dívida técnica conhecida](#5-dívida-técnica-conhecida)
 6. [Pontos da reunião](#6-pontos-da-reunião) — o que ficou feito
@@ -376,6 +377,41 @@ de leitura, não de trabalho — vai para pessoas que não abrem um repo.
       nem botão no `GestorEncomendas`, por decisão de desenho: quem limpa
       é o cron ao fim de um ano. Qualquer engano de teste futuro volta a
       precisar de SQL à mão, por isso vale a pena ponderar um botão
+
+---
+
+## 3b. SEO e presença no Google
+
+O que o site já tem, feito a 23/09/2026:
+
+- [x] `sitemap.xml` com as 23 páginas públicas e prioridades declaradas
+- [x] `robots.txt` — `/direcao`, `/studio` e `/api/` fora do índice
+- [x] Título e descrição próprios em 26 das 28 páginas
+- [x] Imagem de partilha gerada (`/imagem-partilha`), Open Graph e Twitter
+- [x] **Dados estruturados** — o clube declara-se como `SportsOrganization`
+      com morada, coordenadas, telefone, email, redes e data de fundação;
+      `/jogos` publica os próximos dez como `SportsEvent`
+
+Falta, e **tudo isto depende do DNS estar apontado** (§1):
+
+- [ ] **Google Search Console** — `search.google.com/search-console`,
+      propriedade do tipo **Domínio**, que se verifica com um registo
+      `TXT` na Amen. É a mesma ida ao painel onde se põe o `A`, por isso
+      faz-se de uma vez. A alternativa, propriedade por «Prefixo de URL»,
+      verifica-se por meta tag: o sítio já está feito, basta pôr o código
+      em `GOOGLE_SITE_VERIFICATION` na Vercel
+- [ ] **Submeter o sitemap** no Search Console depois de verificado
+- [ ] **Google Business Profile** — a ficha do clube no Maps e no painel
+      lateral das pesquisas. É outra inscrição, separada do Search
+      Console, e para um clube local é o que mais se nota
+- [ ] **`NEXT_PUBLIC_SITE_URL` só existe em Production** na Vercel. Nos
+      previews, o `metadataBase` cai em `http://localhost:3000` e as
+      imagens de partilha de um preview saem partidas. Não afeta o site
+      publicado; se incomodar, acrescenta-se a variável ao ambiente de
+      Preview
+
+Não confundir: o **Search Console** é gratuito e é o que interessa.
+**Google Cloud** é infraestrutura paga e não tem nada a ver com isto.
 
 ---
 
