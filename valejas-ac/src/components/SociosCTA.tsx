@@ -77,7 +77,7 @@ export default function SociosCTA() {
 
       <div className="section-container relative z-10">
         <div ref={textRef} className="text-center max-w-3xl mx-auto">
-          <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow/80 mb-4">
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow mb-4">
             Faz parte
           </p>
           <h2 className="font-headline font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] uppercase leading-[0.95] tracking-tighter text-white mb-5 text-balance">

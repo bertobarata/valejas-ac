@@ -31,7 +31,7 @@ export default function ColorsBento() {
           {/* Amarelo — bloco principal */}
           <div className="bento-block md:col-span-7 bg-yellow p-10 md:p-14 flex flex-col justify-end relative overflow-hidden min-h-[320px] md:min-h-[420px] cursor-default">
             <div>
-              <p className="font-body text-xs font-bold uppercase tracking-[0.4em] text-black/40 mb-3">01. Cor principal</p>
+              <p className="font-body text-xs font-bold uppercase tracking-[0.4em] text-black/70 mb-3">01. Cor principal</p>
               <h3 className="font-headline font-black text-6xl md:text-7xl uppercase tracking-tighter text-black mb-4">
                 Amarelo
               </h3>
@@ -39,13 +39,13 @@ export default function ColorsBento() {
                 A cor do clube. O amarelo da camisola que veste gerações de valejenses
                 desde 1966 — quente, vibrante e inconfundível no campo.
               </p>
-              <p className="font-body font-bold text-sm text-black/40 mt-4 font-mono">#FADB09</p>
+              <p className="font-body font-bold text-sm text-black/70 mt-4 font-mono">#FADB09</p>
             </div>
           </div>
 
           {/* Azul */}
           <div className="bento-block md:col-span-5 bg-blue p-10 md:p-12 flex flex-col justify-between min-h-[320px] md:min-h-[420px] cursor-default">
-            <span className="font-headline font-black text-white/30 text-2xl">02.</span>
+            <span className="font-headline font-black text-white/70 text-2xl">02.</span>
             <div>
               <h3 className="font-headline font-black text-4xl md:text-5xl uppercase tracking-tighter text-white mb-3">
                 Azul
@@ -54,7 +54,7 @@ export default function ColorsBento() {
                 A lealdade e a serenidade de quem representa Valejas dentro e fora das
                 quatro linhas. A profundidade do nosso compromisso com a comunidade.
               </p>
-              <p className="font-body font-bold text-xs text-white/30 mt-4 font-mono">#1554BB</p>
+              <p className="font-body font-bold text-xs text-white/85 mt-4 font-mono">#1554BB</p>
             </div>
           </div>
 

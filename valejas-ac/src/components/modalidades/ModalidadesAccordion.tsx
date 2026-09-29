@@ -48,14 +48,17 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
         const painelId = `painel-${m.slug}`;
 
         return (
-          <div key={m.slug} id={m.slug} className="scroll-mt-24">
+          <div key={m.slug} id={m.slug} className="scroll-mt-24 py-1 md:py-0">
+            {/* 4px acima e abaixo que não se carregam: no telemóvel os
+                botões ficavam a 1px uns dos outros. O botão perde o mesmo
+                no padding, e a linha fica com a altura que tinha. */}
             <h3>
               <button
                 type="button"
                 onClick={() => setAberta(estaAberta ? null : m.slug)}
                 aria-expanded={estaAberta}
                 aria-controls={painelId}
-                className="w-full text-left py-6 flex items-start gap-5 group"
+                className="w-full text-left py-5 md:py-6 flex items-start gap-5 group"
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2">

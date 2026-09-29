@@ -40,7 +40,7 @@ export default function SociosHero() {
       />
 
       <div className="section-container relative z-10 socios-hero-content space-y-5">
-        <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow/80">
+        <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow">
           Faz parte da família
         </p>
         <h1 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">

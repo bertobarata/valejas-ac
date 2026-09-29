@@ -89,7 +89,7 @@ export default function EcraCarregamento() {
       data-splash
       role="status"
       aria-live="polite"
-      className={`splash-fundo fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-[450ms] ${
+      className={`splash-fundo fixed inset-0 z-splash flex items-center justify-center transition-opacity duration-[450ms] ${
         aSair ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >

@@ -50,7 +50,7 @@ export default function PaginaLegal({
               <Link
                 href={p.href}
                 aria-current={p.href === atual ? "page" : undefined}
-                className={`inline-block font-body text-sm px-4 py-2 border transition-colors duration-200 ${
+                className={`inline-flex items-center min-h-11 font-body text-sm px-4 border transition-colors duration-200 ${
                   p.href === atual
                     ? "border-yellow bg-yellow/10 text-on-surface"
                     : "border-on-surface/20 text-on-surface-muted hover:border-on-surface/50 hover:text-on-surface"

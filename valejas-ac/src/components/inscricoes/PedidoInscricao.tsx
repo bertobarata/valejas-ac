@@ -227,7 +227,7 @@ export default function PedidoInscricao() {
 
       {/* Sócio */}
       <div className="bg-surface-high p-5 space-y-4">
-        <label className="flex items-start gap-3 cursor-pointer">
+        <label className="flex items-start gap-3 cursor-pointer py-2.5">
           <input
             type="checkbox" checked={jaSocio}
             onChange={(e) => setJaSocio(e.target.checked)}
@@ -305,7 +305,7 @@ export default function PedidoInscricao() {
           momento, por escrito.
         </p>
 
-        <label className="flex items-start gap-3 cursor-pointer">
+        <label className="flex items-start gap-3 cursor-pointer py-2.5">
           <input
             type="checkbox"
             checked={consentimento}

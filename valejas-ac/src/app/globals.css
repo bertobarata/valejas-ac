@@ -81,6 +81,19 @@
   color: #FF6B5E;
 }
 
+/* O azul do emblema (#1554BB) dá 2,67:1 sobre o fundo escuro. Enquanto
+   o escuro era opcional ninguém reparava; desde 29/09/2026 é o tema por
+   omissão, e as frases das modalidades ficaram quase invisíveis. Mesma
+   receita do vermelho: clarear até passar, sem sair do azul do clube.
+   #6E9BEE → 6,70:1 sobre o fundo, 6,17 sobre a secção, 5,20 sobre o
+   elevado. Secções azuis não levam texto azul, por isso não há exceção. */
+.dark .text-blue {
+  color: #6E9BEE;
+}
+.dark .hover\:text-blue:hover {
+  color: #6E9BEE;
+}
+
 /* Secções de fundo escuro: o amarelo-texto mantém-se (contraste ok).
    A regra deriva do PRÓPRIO fundo, não de uma marca que alguém se tem
    de lembrar de pôr. Antes só `.section-dark` a anulava, e bastou uma
@@ -128,6 +141,50 @@
 */
 @media (min-width: 768px) {
   :root { --barra-altura: 7rem; }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   MEDIDA DE LEITURA
+   O limite vai no parágrafo, não no contentor (DESIGN.md). Estava escrito
+   e dependia de cada parágrafo se lembrar de trazer `max-w-prose`; num
+   iPad vertical, uns vinte não traziam e chegavam aos 84-110 caracteres.
+   Agora é o predefinido: 62ch, e quem já traz o seu `max-w-*` manda.
+   62 e não 70: o `ch` é a largura do «0», e a General Sans é estreita —
+   a 70ch davam 76 a 83 letras por linha, medidas. A 62 ficam nas 65-75.
+   Parágrafos centrados continuam ao centro. As listas ficam de fora —
+   as linhas do calendário dos jogos são `li` e querem a largura toda.
+   ────────────────────────────────────────────────────────────────── */
+main p:not([class*="max-w-"]) {
+  max-width: 62ch;
+}
+main :is(.text-center, [class*="text-center"]) p:not([class*="max-w-"]),
+main p.text-center:not([class*="max-w-"]) {
+  margin-inline: auto;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   TELEMÓVEL: TEXTO CORRIDO A 16PX
+   Auditoria de 29/09/2026: cerca de 110 parágrafos a 14px (`text-sm`)
+   e os pavilhões dos jogos fora a 12px, com entrelinha de 1,33. É isso
+   que um pai lê no carro a caminho do jogo, e o público vai até aos 60+.
+
+   Uma regra em vez de 110 classes: é assim que se garante que o próximo
+   parágrafo escrito com `text-sm` também sobe. Só abaixo de 768px — no
+   computador o desenho fica como estava.
+
+   Fica de fora o que é rótulo e não texto (maiúsculas: sobretítulos,
+   etiquetas) e o que levar `.manter-tamanho`, para os raros casos em que
+   o tamanho pequeno é mesmo o certo.
+   ────────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  main :is(p, li, dd).text-sm:not(.uppercase):not(.manter-tamanho) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  main :is(p, li, dd).text-xs:not(.uppercase):not(.manter-tamanho) {
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
 }
 
 /* ──────────────────────────────────────────────────────────────────
@@ -356,7 +413,7 @@
      quem navega por teclado deixa de percorrer oito itens de navegação
      em todas as páginas. */
   .link-salto {
-    @apply fixed left-4 z-[200] -translate-y-24 bg-yellow text-blue-deep
+    @apply fixed left-4 z-salto -translate-y-24 bg-yellow text-blue-deep
            font-headline font-black text-sm uppercase tracking-wider
            px-5 py-3 transition-transform duration-200;
     top: 1rem;

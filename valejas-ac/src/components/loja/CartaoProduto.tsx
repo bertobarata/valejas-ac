@@ -121,7 +121,15 @@ export default function CartaoProduto({
           </p>
         </div>
 
-        <p className="font-body text-sm sm:text-base text-on-surface-muted leading-relaxed mt-2 sm:mt-3">
+        {/* Num cartão de meia largura, a descrição inteira fazia cada peça
+            ter quase mil pixels e a loja dezasseis ecrãs. Três linhas dão a
+            ideia; o texto todo volta a partir do tablet. */}
+        <p
+          className={clsx(
+            "font-body text-sm sm:text-base text-on-surface-muted leading-relaxed mt-2 sm:mt-3",
+            !destaque && "line-clamp-3 sm:line-clamp-none"
+          )}
+        >
           {produto.descricao}
         </p>
 
@@ -131,8 +139,14 @@ export default function CartaoProduto({
           Referência {produto.referencia}
         </p>
 
+        {produto.inclui && !destaque && (
+          <p className="sm:hidden font-body text-sm text-on-surface-muted mt-3">
+            {produto.inclui.join(" · ")}
+          </p>
+        )}
+
         {produto.inclui && (
-          <ul className="mt-5 space-y-2">
+          <ul className={clsx("mt-5 space-y-2", !destaque && "hidden sm:block")}>
             {produto.inclui.map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <Check size={16} className="text-yellow shrink-0 mt-1" aria-hidden />
@@ -162,7 +176,7 @@ export default function CartaoProduto({
       ) : (
       <>
       {/* Tamanhos — um botão que abre a lista, com a escala escrita em cima */}
-      <div className="mt-6">
+      <div className={destaque ? "mt-6" : "mt-4 sm:mt-6"}>
         <label
           htmlFor={idTamanho}
           className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block"
@@ -179,7 +193,8 @@ export default function CartaoProduto({
             value={tamanho}
             onChange={(e) => { setTamanho(e.target.value); setErro(null); }}
             className={clsx(
-              "appearance-none w-full font-body text-sm text-left",
+              // 16px: abaixo disto o Safari do iPhone faz zoom ao tocar no campo
+              "appearance-none w-full font-body text-base text-left",
               "px-4 py-3.5 pr-11 border transition-colors duration-200 cursor-pointer",
               "bg-transparent text-on-surface",
               tamanho
@@ -187,7 +202,9 @@ export default function CartaoProduto({
                 : "border-on-surface/20 hover:border-on-surface/50"
             )}
           >
-            <option value="">Escolher tamanho</option>
+            {/* «Escolher tamanho» cortava-se a meio num cartão de meia largura,
+                e o rótulo «Tamanho» já está por cima. */}
+            <option value="">Escolher</option>
             {produto.variantes.map((v) => (
               <option key={v.tamanho} value={v.tamanho}>
                 {v.tamanho}
@@ -202,8 +219,11 @@ export default function CartaoProduto({
         </div>
       </div>
 
-      {/* Gravação */}
+      {/* Gravação. É opcional, e aberta em cada cartão fazia a fila inteira
+          crescer 176px no telemóvel. Nos cartões da grelha fica atrás de um
+          «Personalizar»; no kit em destaque continua à vista. */}
       {produto.personalizavel && (
+        destaque ? (
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_6rem] gap-3 mt-5">
           <label className="block">
             <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
@@ -230,6 +250,40 @@ export default function CartaoProduto({
             />
           </label>
         </div>
+        ) : (
+          <details className="mt-4 group">
+            <summary className="alvo-toque cursor-pointer list-none font-body text-sm text-on-surface-muted underline underline-offset-4 hover:text-on-surface [&::-webkit-details-marker]:hidden">
+              {nome || numero ? "Personalizado" : "Personalizar"}
+              <span className="sr-only"> com nome e número (opcional)</span>
+            </summary>
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_6rem] gap-3 mt-2">
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
+              Nome nas costas <span className="normal-case tracking-normal opacity-60">(opcional)</span>
+            </span>
+            <input
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              maxLength={12}
+              autoComplete="off"
+              className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
+            />
+          </label>
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
+              Número
+            </span>
+            <input
+              value={numero}
+              onChange={(e) => setNumero(e.target.value.replace(/\D/g, "").slice(0, 2))}
+              inputMode="numeric"
+              autoComplete="off"
+              className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
+            />
+          </label>
+        </div>
+          </details>
+        )
       )}
 
       {erro && (
@@ -240,7 +294,8 @@ export default function CartaoProduto({
         type="button"
         onClick={adicionar}
         className={clsx(
-          "mt-6 w-full justify-center px-3 sm:px-6",
+          "w-full justify-center px-3 sm:px-6",
+          destaque ? "mt-6" : "mt-4 sm:mt-6",
           juntou ? "btn-ghost" : "btn-primary",
           destaque ? "text-base py-4" : "text-sm"
         )}
