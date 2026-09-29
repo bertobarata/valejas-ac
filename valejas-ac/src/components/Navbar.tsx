@@ -390,7 +390,7 @@ export default function Navbar() {
             Quem anima são os links, por dentro, e isso pode falhar sem
             consequências.
           */
-          className="fixed inset-0 z-[45] bg-surface lg:hidden flex flex-col pt-24"
+          className="fixed inset-0 z-menu bg-surface lg:hidden flex flex-col pt-24"
         >
           {/*
             Um menu de telemóvel normal: uma lista que se percorre de cima

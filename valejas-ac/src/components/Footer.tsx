@@ -104,9 +104,9 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(LINKS).map(([section, items]) => (
             <div key={section}>
-              <h4 className="font-body font-semibold text-xs uppercase tracking-widest text-yellow mb-3">
+              <h2 className="font-body font-semibold text-xs uppercase tracking-widest text-yellow mb-3">
                 {section.charAt(0).toUpperCase() + section.slice(1)}
-              </h4>
+              </h2>
               <ul className="-my-1">
                 {items.map((item) => (
                   <li key={item.href}>

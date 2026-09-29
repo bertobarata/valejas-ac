@@ -18,11 +18,18 @@
 import { Archivo } from "next/font/google";
 import localFont from "next/font/local";
 
+/*
+ * Só o subconjunto latino e só o estilo normal. O latino já cobre o
+ * português inteiro (acentos, ç, travessões). O `latin-ext` e o itálico
+ * eram três ficheiros de ~90 KB descarregados em cada visita — o
+ * next/font pré-carrega todos os subconjuntos pedidos — e nenhum era
+ * usado: os títulos nunca levam itálico (DESIGN.md).
+ */
 export const archivo = Archivo({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   // Além do peso, expor o eixo de largura para os títulos grandes.
   axes: ["wdth"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   variable: "--font-headline",
   display: "swap",
   fallback: ["system-ui", "sans-serif"],

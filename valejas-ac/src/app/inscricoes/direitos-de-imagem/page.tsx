@@ -27,7 +27,7 @@ export default function DireitosDeImagemPage() {
         <div className="section-container py-14 md:py-20">
           <Link
             href="/inscricoes"
-            className="inline-flex items-center gap-2 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors mb-4"
+            className="inline-flex items-center gap-2 min-h-11 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors mb-2"
           >
             <ArrowLeft size={16} aria-hidden />
             Voltar às inscrições

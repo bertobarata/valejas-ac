@@ -47,8 +47,8 @@ export default function EquipasHero() {
           <div className="lg:col-span-7 equipa-hero-content space-y-6 z-10">
             <nav aria-label="Navegação" className="font-body text-xs uppercase tracking-widest text-on-surface-muted">
               <Link href="/modalidades" className="alvo-toque hover:text-yellow transition-colors">Modalidades</Link>
-              <span className="mx-2 text-on-surface/40">/</span>
-              <span className="text-yellow">Futsal</span>
+              <span className="mx-2 text-on-surface/40" aria-hidden>/</span>
+              <span className="text-yellow" aria-current="page">Futsal</span>
             </nav>
 
             <h1 className="font-headline font-black wdth-condensed text-8xl md:text-[10rem] uppercase leading-[0.85] tracking-tighter">

@@ -9,6 +9,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // ── CAMADAS ──────────────────────────────────────────────────────
+      // A escala inteira num sítio só. As do Tailwind (10, 40, 50) ficam
+      // para o que é conteúdo, a barra do carrinho e a navegação; estas
+      // três tinham números soltos no código (45, 100, 200).
+      //   z-10    elementos por cima do próprio cartão
+      //   z-40    barra do carrinho, fixa em baixo
+      //   z-menu  menu do telemóvel — por cima do carrinho, debaixo da barra
+      //   z-50    barra de navegação e gaveta dos filtros
+      //   z-splash ecrã de carregamento, por cima de tudo o que é página
+      //   z-salto  «Saltar para o conteúdo» — nunca pode ficar tapado
+      zIndex: {
+        menu: "45",
+        splash: "100",
+        salto: "200",
+      },
+
       // ── BRAND COLOURS ────────────────────────────────────────────────
       // These never change between modes. They are the club's identity.
       colors: {

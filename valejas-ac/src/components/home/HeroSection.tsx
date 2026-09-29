@@ -281,11 +281,14 @@ export default function HeroSection() {
           </p>
 
           {/* CTAs */}
-          <div ref={ctaRef} className="flex flex-wrap gap-4">
-            <Link href="/clube" className="btn-primary text-sm">
+          {/* No telemóvel empilham com a mesma largura: lado a lado, com
+              larguras diferentes, ficavam encostados à esquerda de um hero
+              todo centrado. */}
+          <div ref={ctaRef} className="flex flex-col sm:flex-row sm:flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none mx-auto lg:mx-0">
+            <Link href="/clube" className="btn-primary text-sm justify-center w-full sm:w-auto">
               Conhecer o clube
             </Link>
-            <Link href="/jogos" className="btn-ghost text-sm text-white border-white/30 hover:border-yellow hover:text-yellow">
+            <Link href="/jogos" className="btn-ghost text-sm justify-center w-full sm:w-auto text-white border-white/30 hover:border-yellow hover:text-yellow">
               Últimos Jogos
             </Link>
           </div>

@@ -56,7 +56,7 @@ export default async function ProximoJogoHome() {
 
           <Link
             href="/jogos"
-            className="btn-primary shrink-0 self-start lg:self-center bg-yellow text-blue-deep hover:bg-yellow-dim text-sm"
+            className="btn-primary shrink-0 self-center md:self-start lg:self-center bg-yellow text-blue-deep hover:bg-yellow-dim text-sm"
           >
             Jogos e classificação
           </Link>

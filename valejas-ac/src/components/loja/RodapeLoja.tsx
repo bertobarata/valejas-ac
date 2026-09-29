@@ -13,7 +13,7 @@ import { FORNECEDOR } from "@/lib/data/loja";
 export default function RodapeLoja() {
   return (
     <section className="section-container pt-10 pb-16 border-t border-on-surface/10 mt-14">
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-1">
+      <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
         <Link href="/loja/condicoes" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
           Condições da loja
         </Link>

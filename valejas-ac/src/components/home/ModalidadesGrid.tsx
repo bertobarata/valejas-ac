@@ -84,8 +84,10 @@ export default function ModalidadesGrid() {
         </div>
 
         {/* O fundo faz de risco entre cartões: cada um é opaco e o gap de
-            1px deixa passar esta cor. Uma linha, sem borders a duplicar. */}
-        <div className="bg-on-surface/10 flex flex-col gap-px">
+            1px deixa passar esta cor. Uma linha, sem borders a duplicar.
+            No telemóvel o risco dá lugar a 8px de intervalo: com o dedo,
+            dois cartões a 1px um do outro tocam-se por engano. */}
+        <div className="flex flex-col gap-2 md:gap-px md:bg-on-surface/10">
 
           {/* Futsal — faixa inteira */}
           <Link
@@ -138,7 +140,7 @@ export default function ModalidadesGrid() {
           </Link>
 
           {/* Restantes — fila que se enrola e fecha sempre a margem */}
-          <div className="flex flex-wrap gap-px">
+          <div className="flex flex-wrap gap-2 md:gap-px">
             {rest.map((m) => (
               <Link
                 key={m.slug}
