@@ -10,6 +10,7 @@
  */
 
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { sessaoValida, COOKIE_SESSAO } from "@/lib/auth-direcao";
 import { sanityClientLive, isSanityConfigured } from "@/sanity/client";
@@ -152,6 +153,8 @@ export async function POST(req: Request) {
     } else {
       resultado = await sanityClientLive.create(doc);
     }
+    // O site mostra a mudança já, sem esperar pelo minuto do revalidate.
+    revalidatePath("/equipas");
     return NextResponse.json({ ok: true, id: resultado._id });
   } catch (err) {
     console.error("Erro a guardar jogador:", err instanceof Error ? err.message : err);
@@ -174,6 +177,7 @@ export async function DELETE(req: Request) {
 
   try {
     await sanityClientLive.delete(id);
+    revalidatePath("/equipas");
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Erro a apagar jogador:", err instanceof Error ? err.message : err);

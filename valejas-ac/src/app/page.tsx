@@ -6,6 +6,13 @@ import ModalidadesGrid from "@/components/home/ModalidadesGrid";
 import MoteBanner from "@/components/home/MoteBanner";
 import ConhecerClube from "@/components/home/ConhecerClube";
 
+/*
+ * O próximo jogo e o comunicado em destaque vêm do CMS. Refaz-se de
+ * minuto a minuto. Sem isto a página ficava tal como saiu
+ * do último deploy: o que se mudava no Studio nunca chegava ao site.
+ */
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };

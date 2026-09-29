@@ -7,6 +7,12 @@ import AcademiaCTA from "@/components/equipas/AcademiaCTA";
 import { fetchJogadores } from "@/sanity/queries";
 import { doSanity } from "@/lib/data/plantel";
 
+/*
+ * Refaz-se de minuto a minuto. Sem isto a página ficava tal como saiu
+ * do último deploy: o que se mudava no Studio nunca chegava ao site.
+ */
+export const revalidate = 60;
+
 export const metadata: Metadata = paraPagina("/equipas", {
   title: "Equipas & Plantel",
   description:
