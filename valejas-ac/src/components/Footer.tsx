@@ -7,21 +7,27 @@ import { MODALIDADES } from "@/lib/data/modalidades";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { Mail as MailIcon } from "lucide-react";
 
+/*
+ * Treze links numa coluna faziam do rodapé a parte mais alta da página.
+ * Partidos pelo que a pessoa vem fazer: conhecer o clube, ou participar.
+ * «Início» sai — o emblema lá em cima já leva à inicial.
+ */
 const LINKS = {
-  navegação: [
-    { label: "Início",       href: "/" },
+  clube: [
+    { label: "O Clube",         href: "/clube" },
+    { label: "O Emblema",       href: "/clube/emblema" },
+    { label: "Instalações",     href: "/instalacoes" },
+    { label: "Órgãos Sociais",  href: "/orgaos-sociais" },
+    { label: "Patrocinadores",  href: "/patrocinadores" },
+    { label: "Academia Sénior", href: "/academia-senior" },
+  ],
+  participar: [
     { label: "Comunicados",  href: "/comunicados" },
     { label: "Jogos",        href: "/jogos" },
-    { label: "O Clube",      href: "/clube" },
-    { label: "O Emblema",    href: "/clube/emblema" },
-    { label: "Instalações",  href: "/instalacoes" },
-    { label: "Patrocinadores", href: "/patrocinadores" },
-    { label: "Academia Sénior", href: "/academia-senior" },
-    { label: "Órgãos Sociais", href: "/orgaos-sociais" },
-    { label: "Loja Oficial", href: STORE_URL },
     { label: "Inscrições",   href: "/inscricoes" },
     { label: "Sócios",       href: "/socios-contacto" },
     { label: "Fazer Sócio",  href: "/socios/inscricao" },
+    { label: "Loja Oficial", href: STORE_URL },
   ],
   modalidades: MODALIDADES.map((m) => ({
     label: m.nome,
@@ -46,13 +52,14 @@ export default function Footer() {
   return (
     <footer className="bg-surface-low border-t border-on-surface/10">
       {/* Top section */}
-      <div className="section-container py-16">
+      <div className="section-container py-12">
         {/*
           Duas colunas já no telemóvel. Com alvos de 44px, uma coluna só
           dava um rodapé de mais de mil pixels — a dois fica mais curto do
-          que era antes, e com os links finalmente acertáveis.
+          que era antes, e com os links finalmente acertáveis. No
+          computador o rato não precisa de 44px: as linhas encolhem.
         */}
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-10">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-x-6 gap-y-10">
 
           {/* Brand column */}
           <div className="col-span-2">
@@ -97,7 +104,7 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(LINKS).map(([section, items]) => (
             <div key={section}>
-              <h4 className="font-body font-semibold text-xs uppercase tracking-widest text-yellow mb-4">
+              <h4 className="font-body font-semibold text-xs uppercase tracking-widest text-yellow mb-3">
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </h4>
               <ul className="-my-1">
@@ -108,14 +115,14 @@ export default function Footer() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="alvo-toque font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                        className="alvo-toque lg:min-h-8 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
                       >
                         {item.label}
                       </a>
                     ) : (
                       <Link
                         href={item.href}
-                        className="alvo-toque font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                        className="alvo-toque lg:min-h-8 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
                       >
                         {item.label}
                       </Link>
