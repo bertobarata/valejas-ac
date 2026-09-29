@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import PaginaLegal from "@/components/legal/PaginaLegal";
 import { CONTACTO } from "@/lib/data/socios";
 import { LOCALIZACAO } from "@/lib/data/historia";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/privacidade", {
   title: "Política de Privacidade",
   description:
     "Que dados o Valejas Atlético Clube recolhe, para que servem, com quem são partilhados e que direitos tens sobre eles.",
-};
+});
 
 export default function PrivacidadePage() {
   return (

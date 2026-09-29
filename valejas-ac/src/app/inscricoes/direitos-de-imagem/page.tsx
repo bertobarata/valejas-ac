@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import {
   CLUBE_DOCUMENTO, DIREITOS_IMAGEM_PARAGRAFOS, DIRETOS_IMAGEM_TITULO, declaracao,
 } from "@/lib/data/direitosImagem";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/inscricoes/direitos-de-imagem", {
   title: "Direitos de imagem",
   description:
     "Termo de consentimento para captação e utilização de imagens do Valejas Atlético Clube, nos termos do RGPD.",
-};
+});
 
 /**
  * DIREITOS DE IMAGEM

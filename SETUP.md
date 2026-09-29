@@ -147,6 +147,21 @@ os emails de inscrição caem no spam.
 ⚠️ **Impasse conhecido:** existe um projeto Vercel antigo a ocupar o subdomínio
 `valejas-ac.vercel.app`, provavelmente noutra conta. Impede criar o novo.
 
+### Trocar palavras-passe e chaves
+
+Sempre que a Direção pedir uma palavra-passe nova, ou alguém sair:
+
+1. Abrir `valejas-ac/.env.local` num editor e mudar a linha
+   `DIRECAO_UTILIZADORES=presidente:<nova>,comunicacao:<nova>`.
+   Mínimo 12 caracteres, **sem vírgulas**. Nunca a escrever num chat
+2. Mandar para a Vercel sem a mostrar no ecrã:
+   `cd valejas-ac && scripts/enviar-segredos.sh DIRECAO_UTILIZADORES`
+3. `cd .. && vercel deploy --prod` — só entra no deploy seguinte
+4. Para fechar sessões abertas com a palavra-passe antiga, fazer o mesmo
+   com um `DIRECAO_SECRET` novo (`openssl rand -hex 32`)
+
+Serve para qualquer variável: `scripts/enviar-segredos.sh RESEND_API_KEY`.
+
 ## 5. Testes
 
 ```bash

@@ -33,7 +33,11 @@ export async function generateMetadata(
   return {
     title: c.titulo,
     description: c.resumoRedes || c.corpo[0]?.slice(0, 160),
+    alternates: { canonical: `/comunicados/${c.slug}` },
     openGraph: {
+      siteName: "Valejas Atlético Clube",
+      locale: "pt_PT",
+      url: `/comunicados/${c.slug}`,
       title: c.titulo,
       description: c.resumoRedes || c.corpo[0]?.slice(0, 160),
       type: "article",

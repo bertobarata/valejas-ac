@@ -41,7 +41,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/imagem-partilha"],
   },
-  alternates: { canonical: "/" },
+  // O canónico vive em cada página (`paraPagina`). Aqui herdava-o toda a
+  // gente, e o Google lia todas as páginas como cópias da inicial.
 
   /*
    * Search Console. O Google dá um código para provar que o site é

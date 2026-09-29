@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { MODALIDADES } from "@/lib/data/modalidades";
+import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
+import { fetchComunicados } from "@/sanity/queries";
 
 /**
  * MAPA DO SITE
@@ -12,9 +13,11 @@ import { MODALIDADES } from "@/lib/data/modalidades";
  * importância relativa: o que o clube quer que apareça primeiro.
  * ─────────────────────────────────────────────────────────────────
  */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://valejasac.pt";
   const agora = new Date();
+  const comunicados =
+    ((await fetchComunicados()) as Comunicado[] | null) ?? getComunicados();
 
   const paginas: { rota: string; prioridade: number; frequencia: MetadataRoute.Sitemap[0]["changeFrequency"] }[] = [
     { rota: "",                              prioridade: 1.0,  frequencia: "weekly" },
@@ -47,12 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: frequencia,
       priority: prioridade,
     })),
-    // As modalidades são âncoras da mesma página, mas é por elas que se
-    // procura: "karate Barcarena", "judo Valejas".
-    ...MODALIDADES.map((m) => ({
-      url: `${base}/modalidades#${m.slug}`,
-      lastModified: agora,
-      changeFrequency: "monthly" as const,
+    // Cada comunicado tem página própria, e é o que mais muda. As
+    // modalidades não entram: são âncoras de /modalidades, e o Google
+    // ignora o que vem depois do # — seriam sete cópias da mesma página.
+    ...comunicados.map((c) => ({
+      url: `${base}/comunicados/${c.slug}`,
+      lastModified: new Date(c.data),
+      changeFrequency: "yearly" as const,
       priority: 0.6,
     })),
   ];

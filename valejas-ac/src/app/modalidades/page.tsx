@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { GRUPOS, VAGAS, getModalidadesPorGrupo } from "@/lib/data/modalidades";
 import ModalidadesAccordion from "@/components/modalidades/ModalidadesAccordion";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/modalidades", {
   title: "Modalidades",
   description:
     "Futsal e atletismo federados, judo, karate, dança, teatro e cicloturismo — " +
     "um clube, muitas formas de pertencer.",
-};
+});
 
 export default function ModalidadesPage() {
   return (

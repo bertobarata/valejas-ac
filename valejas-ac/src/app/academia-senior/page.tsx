@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { Clock, MapPin } from "lucide-react";
 import {
   ACADEMIA, FAMILIAS, atividadesPorFamilia,
 } from "@/lib/data/academiaSenior";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/academia-senior", {
   title: "Academia Sénior",
   description:
     "Programa comunitário do Valejas A.C. Social para maiores de 50 anos. " +
     "Coro, chi kung, pintura, informática, danças tradicionais, sueca e bilhar.",
-};
+});
 
 export default function AcademiaSeniorPage() {
   return (

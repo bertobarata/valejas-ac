@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import PropostaSocioForm from "@/components/socios/PropostaSocioForm";
 import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/socios/inscricao", {
   title: "Inscrição de Sócio",
   description:
     `Torna-te sócio do Valejas Atlético Clube. Quota de ${formatEuros(QUOTA_MENSAL)} por mês. ` +
     "Aberto a toda a gente, e obrigatório para quem quer praticar uma modalidade.",
-};
+});
 
 export default function InscricaoPage() {
   return (

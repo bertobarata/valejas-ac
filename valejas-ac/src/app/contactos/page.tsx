@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import ContactoSection from "@/components/socios/ContactoSection";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/contactos", {
   title: "Contactos",
   description:
     "Fala com o Valejas Atlético Clube — email, telefone, morada e localização. Estamos em Valejas, Oeiras.",
-};
+});
 
 export default function ContactosPage() {
   return (

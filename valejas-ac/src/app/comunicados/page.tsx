@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
 import { fetchComunicados } from "@/sanity/queries";
@@ -6,11 +7,11 @@ import { fetchComunicados } from "@/sanity/queries";
 // ISR: comunicados frescos sem rebuild (quando ligado ao Sanity)
 export const revalidate = 60;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/comunicados", {
   title: "Comunicados Oficiais",
   description:
     "Comunicados e notas oficiais da Direção do Valejas Atlético Clube.",
-};
+});
 
 const CANAL_LABEL: Record<string, string> = {
   site: "Site",

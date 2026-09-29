@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import {
@@ -30,12 +31,12 @@ const PAGINAS_DO_CLUBE = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/clube", {
   title: "O Clube",
   description:
     `Fundado a ${FUNDACAO.data}, em Valejas, Barcarena. O Valejas Atlético Clube ` +
     "começou no atletismo, no cicloturismo e na malha, e é hoje a casa de sete modalidades.",
-};
+});
 
 /**
  * O CLUBE

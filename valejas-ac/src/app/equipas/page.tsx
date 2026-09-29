@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import EquipasHero from "@/components/equipas/EquipasHero";
 import PlantelFilter from "@/components/equipas/PlantelFilter";
 import CorpoTecnico from "@/components/equipas/CorpoTecnico";
@@ -6,11 +7,11 @@ import AcademiaCTA from "@/components/equipas/AcademiaCTA";
 import { fetchJogadores } from "@/sanity/queries";
 import { doSanity } from "@/lib/data/plantel";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/equipas", {
   title: "Equipas & Plantel",
   description:
     "O plantel de futsal do Valejas AC, equipa a equipa: da equipa A aos petizes.",
-};
+});
 
 export default async function EquipasPage() {
   // O plantel vem do CMS, escrito em /direcao/plantel. Sem CMS, o
