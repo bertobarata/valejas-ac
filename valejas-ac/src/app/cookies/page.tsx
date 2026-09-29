@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import PaginaLegal from "@/components/legal/PaginaLegal";
 import { CONTACTO } from "@/lib/data/socios";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/cookies", {
   title: "Política de Cookies",
   description:
     "Que cookies e armazenamento local o site do Valejas Atlético Clube usa — e porque não há banner de consentimento.",
-};
+});
 
 export default function CookiesPage() {
   return (

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { FORNECEDOR, PRAZO_ENCOMENDA_SEMANAS, SINAL_PERCENTAGEM } from "@/lib/data/loja";
 import { LOCALIZACAO } from "@/lib/data/historia";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/loja/condicoes", {
   title: "Condições da loja",
   description:
     "Como funcionam as encomendas na loja do Valejas Atlético Clube: pagamento, prazos, levantamento na sede, trocas e devoluções.",
-};
+});
 
 /**
  * CONDIÇÕES DA LOJA

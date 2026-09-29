@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
@@ -7,11 +8,11 @@ import {
 } from "@/lib/data/patrocinadores";
 import { MOTE } from "@/lib/data/clube";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/patrocinadores", {
   title: "Patrocinadores e Parcerias",
   description:
     "Quem apoia o Valejas Atlético Clube — patrocinador principal, apoios institucionais e o comércio local da freguesia de Barcarena.",
-};
+});
 
 export default function PatrocinadoresPage() {
   return (

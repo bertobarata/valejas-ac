@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import {
@@ -9,11 +10,11 @@ import CatalogoLoja from "@/components/loja/CatalogoLoja";
 import BarraCarrinho from "@/components/loja/BarraCarrinho";
 import RodapeLoja from "@/components/loja/RodapeLoja";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/loja", {
   title: "Loja",
   description:
     "Equipamento oficial do Valejas Atlético Clube. Kit obrigatório de atleta, material de jogo, treino e acessórios. Levantamento sempre na sede.",
-};
+});
 
 export default function LojaPage() {
   return (

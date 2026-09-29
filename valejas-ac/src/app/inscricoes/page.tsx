@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { ArrowRight, ClipboardCheck, Download, FileText, MessageSquare, UserPlus } from "lucide-react";
 import { MODALIDADES, VAGAS } from "@/lib/data/modalidades";
@@ -7,11 +8,11 @@ import { DOCUMENTOS } from "@/lib/data/documentos";
 import PedidoInscricao from "@/components/inscricoes/PedidoInscricao";
 import ValoresEpoca from "@/components/inscricoes/ValoresEpoca";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/inscricoes", {
   title: "Inscrições",
   description:
     "Como começar a praticar no Valejas Atlético Clube: fazer-se sócio, pedir vaga na modalidade e fechar a inscrição na sede.",
-};
+});
 
 /**
  * INSCRIÇÕES

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import PaginaLegal from "@/components/legal/PaginaLegal";
 import { CONTACTO } from "@/lib/data/socios";
 import { LOCALIZACAO } from "@/lib/data/historia";
 import { QUOTA_MENSAL, formatEuros, PERIODICIDADES, valorPorCobranca } from "@/lib/data/quota";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/termos", {
   title: "Termos e Condições",
   description:
     "Condições de utilização do site do Valejas Atlético Clube, da inscrição como sócio e do pagamento de quotas.",
-};
+});
 
 export default function TermosPage() {
   return (

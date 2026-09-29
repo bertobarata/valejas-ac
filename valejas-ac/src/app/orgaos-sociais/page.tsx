@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import {
   ORGAOS, MANDATO, MOSTRAR_NUMERO_SOCIO, anosDeSocio,
   type Membro,
 } from "@/lib/data/orgaosSociais";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/orgaos-sociais", {
   title: "Órgãos Sociais",
   description:
     "Direção, Conselho Fiscal e Mesa da Assembleia Geral do Valejas Atlético Clube — quem são as pessoas que gerem o clube.",
-};
+});
 
 export default function OrgaosSociaisPage() {
   return (

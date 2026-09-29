@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { paraPagina } from "@/lib/seo/metadados";
 import ProximoJogo from "@/components/jogos/ProximoJogo";
 import ResultadosRecentes from "@/components/jogos/ResultadosRecentes";
 import TabelaClassificativa from "@/components/jogos/TabelaClassificativa";
@@ -11,11 +12,11 @@ import {
 import DadosEstruturados from "@/components/seo/DadosEstruturados";
 import { proximosJogos } from "@/lib/seo/dadosEstruturados";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = paraPagina("/jogos", {
   title: "Jogos",
   description:
     "Próximo jogo, resultados recentes e classificação do Valejas AC no distrital da AF Lisboa.",
-};
+});
 
 // Os jogos mudam ao fim de semana; não vale a pena reconstruir o site
 // inteiro por isso, mas também não pode ficar preso a um build antigo.
