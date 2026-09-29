@@ -13,6 +13,9 @@ import { fetchComunicados } from "@/sanity/queries";
  * importância relativa: o que o clube quer que apareça primeiro.
  * ─────────────────────────────────────────────────────────────────
  */
+/** Os comunicados novos entram no sitemap dentro de uma hora. */
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://valejasac.pt";
   const agora = new Date();

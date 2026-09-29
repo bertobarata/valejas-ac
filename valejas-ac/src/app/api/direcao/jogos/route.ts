@@ -12,6 +12,7 @@
  */
 
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { sessaoValida, COOKIE_SESSAO } from "@/lib/auth-direcao";
 import { sanityClientLive, isSanityConfigured } from "@/sanity/client";
@@ -39,6 +40,12 @@ function semCMS() {
 
 function podeEscrever(): boolean {
   return isSanityConfigured() && Boolean(process.env.SANITY_API_TOKEN);
+}
+
+/** Os jogos aparecem na página de jogos e no próximo jogo da inicial. */
+function atualizarPaginasDeJogos() {
+  revalidatePath("/jogos");
+  revalidatePath("/");
 }
 
 export async function GET() {
@@ -103,6 +110,8 @@ export async function POST(req: Request) {
     const resultado = b._id
       ? await sanityClientLive.patch(String(b._id)).set(doc).commit()
       : await sanityClientLive.create(doc);
+    // O site mostra a mudança já, sem esperar pelo revalidate.
+    atualizarPaginasDeJogos();
     return NextResponse.json({ ok: true, id: resultado._id });
   } catch (err) {
     console.error("Erro a guardar jogo:", err instanceof Error ? err.message : err);
@@ -143,6 +152,7 @@ export async function PUT(req: Request) {
       atualizadoEm: new Date().toISOString(),
       linhas,
     });
+    atualizarPaginasDeJogos();
     return NextResponse.json({ ok: true, total: linhas.length });
   } catch (err) {
     console.error("Erro a guardar classificação:", err instanceof Error ? err.message : err);
@@ -164,6 +174,7 @@ export async function DELETE(req: Request) {
 
   try {
     await sanityClientLive.delete(id);
+    atualizarPaginasDeJogos();
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Erro a apagar jogo:", err instanceof Error ? err.message : err);

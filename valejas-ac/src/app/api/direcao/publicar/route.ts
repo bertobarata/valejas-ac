@@ -12,6 +12,7 @@
  */
 
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { quemEsta, COOKIE_SESSAO } from "@/lib/auth-direcao";
 import { enviarEmail } from "@/lib/email";
@@ -118,6 +119,10 @@ export async function POST(req: Request) {
         canais: ["site", ...canais],
         publicado: true,
       });
+      // O comunicado aparece já na lista, na inicial e no sitemap.
+      revalidatePath("/comunicados");
+      revalidatePath("/");
+      revalidatePath("/sitemap.xml");
     } catch (err) {
       console.error("Falha ao guardar comunicado:", err instanceof Error ? err.message : err);
       avisos.push("O comunicado não ficou guardado no site. As redes podem ter recebido.");
