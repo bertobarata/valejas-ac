@@ -71,6 +71,8 @@ export function organizacao() {
  * Um jogo do calendário. Só os que ainda não aconteceram: um evento
  * passado no Google não ajuda ninguém a encontrar o próximo jogo.
  */
+const DURACAO_JOGO_MS = 90 * 60 * 1000;
+
 function evento(j: Jogo) {
   const emCasa = ehValejas(j.casa);
   const adversario = emCasa ? j.fora : j.casa;
@@ -80,6 +82,11 @@ function evento(j: Jogo) {
     name: `${j.casa} — ${j.fora}`,
     description: `Jornada ${j.jornada} do campeonato distrital de futsal da AF Lisboa.`,
     startDate: j.data,
+    /* Futsal: 2×20 minutos de tempo útil, com paragens e intervalo dá
+     * perto de hora e meia. É estimativa, mas o Google pede um fim e
+     * uma hora e meia está mais perto da verdade do que nenhuma. */
+    endDate: new Date(new Date(j.data).getTime() + DURACAO_JOGO_MS).toISOString(),
+    image: `${base()}/imagem-partilha`,
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     /* Só se sabe o pavilhão quando o jogo é em casa. Fora, sabe-se o
@@ -94,7 +101,26 @@ function evento(j: Jogo) {
       : { "@type": "Place", name: `Pavilhão do ${adversario}` },
     homeTeam: { "@type": "SportsTeam", name: j.casa },
     awayTeam: { "@type": "SportsTeam", name: j.fora },
-    organizer: { "@type": "Organization", name: "AF Lisboa" },
+    performer: [
+      { "@type": "SportsTeam", name: j.casa },
+      { "@type": "SportsTeam", name: j.fora },
+    ],
+    /* Entrada livre nos jogos em casa, confirmado pela Direção a
+     * 29/09/2026. Fora, a entrada é regra do clube visitado — não
+     * declaramos o que não sabemos. */
+    ...(emCasa
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: 0,
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+            url: `${base()}/jogos`,
+          },
+          isAccessibleForFree: true,
+        }
+      : {}),
+    organizer: { "@type": "Organization", name: "AF Lisboa", url: "https://www.aflisboa.pt" },
     url: `${base()}/jogos`,
   };
 }
