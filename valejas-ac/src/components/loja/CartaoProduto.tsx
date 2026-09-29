@@ -85,7 +85,7 @@ export default function CartaoProduto({
         <div
           className={clsx(
             "relative overflow-hidden bg-surface-mid",
-            produto.kit ? "aspect-[32/5]" : destaque ? "aspect-[5/2]" : "aspect-square sm:aspect-[2/1]"
+            produto.kit ? "aspect-[1920/223]" : destaque ? "aspect-[5/2]" : "aspect-square sm:aspect-[2/1]"
           )}
         >
           <Image

@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import {
   PRODUTOS, KIT_ATLETA, getProduto, sinalDe, stockDe, temPrecoFechado,
-  SINAL_PERCENTAGEM, PECAS_DO_KIT, PRECO_KIT
+  SINAL_PERCENTAGEM, KIT_GUARDA_REDES, PECAS_KIT_ATLETA, PECAS_KIT_GUARDA_REDES
 } from "@/lib/data/loja";
 import { gerarNumero } from "@/lib/data/encomendas";
 import {
@@ -33,14 +33,21 @@ describe("loja — os preços nunca vêm do browser", () => {
     expect(getProduto("camisola-do-benfica")).toBeUndefined();
   });
 
-  it("o kit custa o preço de pacote da Direção, não a soma das peças", () => {
-    expect(KIT_ATLETA.preco).toBe(PRECO_KIT);
+  it("cada kit custa a soma das quatro peças", () => {
+    // 27,68 + 27,68 + 13,53 + 39,98
+    expect(KIT_ATLETA.preco).toBe(108.87);
+    expect(KIT_GUARDA_REDES.preco).toBe(108.87);
   });
 
-  it("as peças que o kit junta existem todas no catálogo", () => {
-    for (const slug of PECAS_DO_KIT) {
+  it("as peças que os kits juntam existem todas no catálogo", () => {
+    for (const slug of [...PECAS_KIT_ATLETA, ...PECAS_KIT_GUARDA_REDES]) {
       expect(getProduto(slug), `peça em falta: ${slug}`).toBeDefined();
     }
+  });
+
+  it("os dois kits encomendam-se pelo slug, com o preço do servidor", () => {
+    expect(getProduto("kit-atleta")?.preco).toBe(108.87);
+    expect(getProduto("kit-guarda-redes")?.preco).toBe(108.87);
   });
 
   it("os artigos sob consulta não têm preço para cobrar", () => {

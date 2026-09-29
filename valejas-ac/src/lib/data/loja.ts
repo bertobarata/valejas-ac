@@ -400,83 +400,106 @@ const CATALOGO: Produto[] = [
 /**
  * KIT OBRIGATÓRIO DE ATLETA
  * ─────────────────────────────────────────────────────────────────
- * Quem se inscreve para jogar leva isto: o equipamento das cores do
- * clube, o alternativo para quando as cores chocam com as do
- * adversário, e um conjunto para treinar durante a semana.
+ * Quem se inscreve para jogar leva quatro peças: os dois equipamentos
+ * de jogo, um conjunto para treinar durante a semana e o fato de
+ * treino. O guarda-redes tem o seu, com o verde para se distinguir
+ * dentro do campo e o azul-marinho como alternativo.
  *
- * O preço vem do comunicado da Direção de 01/09/2026 e é um preço de
- * pacote: 110€ fechados, abaixo da soma das peças ao balcão. Era
- * calculado a partir do catálogo e dava 68,89€ — número que o clube
- * nunca cobrou, porque o kit da Direção leva mais peças do que as três
- * que a soma contava.
+ * Decisão do Berto a 29/09/2026: o kit custa a soma das quatro peças
+ * ao preço do catálogo — 108,87€. As meias vêm dentro dos equipamentos
+ * de jogo, sem custo à parte. Substitui os 110€ do comunicado de 01/09,
+ * que contavam peças (polo, bermuda, meias de treino) que já não entram.
+ *
+ * O preço calcula-se aqui, a partir do catálogo: se a ZEMIG mudar um
+ * preço, o kit acompanha sem ninguém ter de se lembrar dele.
  * ─────────────────────────────────────────────────────────────────
  */
 
-/** Preço de pacote fechado pela Direção para a época 2026/2027. */
-export const PRECO_KIT = 110;
+interface DefinicaoKit {
+  slug:      string;
+  nome:      string;
+  descricao: string;
+  imagem:    string;
+  /** Slugs das peças do catálogo, pela ordem da imagem. */
+  pecas:     readonly string[];
+}
 
-/**
- * O que o comunicado diz que o kit leva. É esta a lista que a família
- * lê no papel, por isso é esta que o site mostra — não a dos slugs.
- */
-const CONTEUDO_DO_KIT = [
-  "2 equipamentos de jogo",
-  "1 camisola de treino",
-  "1 calção de treino",
-  "1 par de meias de treino",
-  "1 fato de treino com capuz",
-  "1 polo",
-  "1 bermuda",
-];
-
-/**
- * As peças do catálogo que se mostram por baixo do kit. Cobrem o
- * essencial do conteúdo acima; o polo ainda não existe no catálogo da
- * ZEMIG que recebemos a 14/09.
- */
-export const PECAS_DO_KIT = [
+export const PECAS_KIT_ATLETA = [
   "equipamento-principal",
   "equipamento-branco",
   "conjunto-azul",
   "fato-treino",
-  "bermuda",
 ] as const;
 
-function montarKit(catalogo: Produto[]): Produto {
-  const pecas = PECAS_DO_KIT
+export const PECAS_KIT_GUARDA_REDES = [
+  "equipamento-verde",
+  "equipamento-azul",
+  "conjunto-verde",
+  "fato-treino",
+] as const;
+
+const KITS: DefinicaoKit[] = [
+  {
+    slug: "kit-atleta",
+    nome: "Kit de jogador",
+    descricao:
+      "Para quem joga de campo: o equipamento principal, o alternativo " +
+      "branco, o conjunto de treino azul e o fato de treino. Os dois " +
+      "equipamentos levam meias.",
+    imagem: "/loja/kit-atleta.webp",
+    pecas: PECAS_KIT_ATLETA,
+  },
+  {
+    slug: "kit-guarda-redes",
+    nome: "Kit de guarda-redes",
+    descricao:
+      "Para quem vai à baliza: o equipamento verde, o alternativo " +
+      "azul-marinho, o conjunto de treino verde e o fato de treino. Os dois " +
+      "equipamentos levam meias.",
+    imagem: "/loja/kit-guarda-redes.webp",
+    pecas: PECAS_KIT_GUARDA_REDES,
+  },
+];
+
+function pecasDe(slugs: readonly string[], catalogo: Produto[]): Produto[] {
+  return slugs
     .map((slug) => catalogo.find((p) => p.slug === slug))
     .filter((p): p is Produto => Boolean(p));
+}
+
+/** Aos cêntimos: somar decimais em vírgula flutuante deixa restos. */
+function aosCentimos(v: number): number {
+  return Math.round(v * 100) / 100;
+}
+
+/** Soma das peças ao preço do catálogo. */
+export function precoDoKit(slugs: readonly string[], catalogo: Produto[] = CATALOGO): number {
+  return aosCentimos(pecasDe(slugs, catalogo).reduce((t, p) => t + p.preco, 0));
+}
+
+function montarKit(def: DefinicaoKit, catalogo: Produto[]): Produto {
+  const pecas = pecasDe(def.pecas, catalogo);
 
   return {
-    slug: "kit-atleta",
-    nome: "Kit obrigatório de atleta",
+    slug: def.slug,
+    nome: def.nome,
     referencia: pecas.map((p) => p.referencia).join(" + "),
     categoria: "jogo",
-    descricao:
-      "O que todo o atleta do clube tem de ter, num pedido só: dois " +
-      "equipamentos de jogo, o que é preciso para treinar durante a " +
-      "semana, e o agasalho para a beira do campo.",
-    preco: PRECO_KIT,
-    inclui: CONTEUDO_DO_KIT,
+    descricao: def.descricao,
+    preco: precoDoKit(def.pecas, catalogo),
+    inclui: pecas.map((p) => p.nome),
     personalizavel: true,
     // Todas as peças partilham a mesma escala de tamanhos.
     variantes: pecas[0]?.variantes ?? [],
-    imagem: "/loja/kit-atleta.webp",
+    imagem: def.imagem,
     kit: true,
   };
 }
 
-export const KIT_ATLETA: Produto = montarKit(CATALOGO);
+export const [KIT_ATLETA, KIT_GUARDA_REDES] = KITS.map((k) => montarKit(k, CATALOGO));
 
-/** O kit primeiro: é o que a maioria vem cá buscar. */
-export const PRODUTOS: Produto[] = [KIT_ATLETA, ...CATALOGO];
-
-/** As peças soltas que o kit junta, para as mostrar por baixo dele. */
-export function pecasDoKit(): Produto[] {
-  return PECAS_DO_KIT
-    .map((slug) => CATALOGO.find((p) => p.slug === slug))
-    .filter((p): p is Produto => Boolean(p));
-}
+/** Os kits primeiro: é o que a maioria vem cá buscar. */
+export const PRODUTOS: Produto[] = [KIT_ATLETA, KIT_GUARDA_REDES, ...CATALOGO];
 
 export function produtosPorCategoria(c: CategoriaLoja): Produto[] {
   return PRODUTOS.filter((p) => p.categoria === c);
