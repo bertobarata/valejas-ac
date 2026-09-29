@@ -552,11 +552,11 @@ encomenda existe na caixa de correio do clube.
 
 - [x] **Catálogo real.** Os 26 artigos da ZEMIG (referências, preços,
       tamanhos e fotografias) foram importados a 14/09/2026 da loja CTT
-- [x] **Preço do kit.** Passou a 110€ a 23/09/2026 — o preço de pacote do
-      comunicado da Direção de 01/09. Era a soma de três peças do
-      catálogo e dava 68,89€, número que o clube nunca cobrou
-- [ ] **A referência do polo.** Faz parte do kit no comunicado da
-      Direção, mas não existe no catálogo da ZEMIG que importámos
+- [x] **Preço do kit.** A 29/09/2026 passou a dois kits, jogador e
+      guarda-redes, com quatro peças cada: dois equipamentos de jogo, um
+      conjunto de treino e o fato de treino. Custa a soma do catálogo,
+      108,87€; as meias vêm nos equipamentos de jogo. Substitui os 110€
+      do comunicado de 01/09 (que levava polo, bermuda e meias de treino)
 - [ ] **Stock da sede.** Está tudo a zero, ou seja, tudo «por encomenda».
       Alguém tem de contar o que há na sede e pôr os números em
       `src/lib/data/loja.ts`
@@ -575,7 +575,7 @@ encomenda existe na caixa de correio do clube.
       prazo de troca (14 dias), se aceita trocas de peças não
       personalizadas, e quem responde às reclamações
 - [ ] **Percentagem do sinal.** Está em 30% (`SINAL_PERCENTAGEM`), número
-      inventado por falta de decisão. No kit de 110 € dá 33 €
+      inventado por falta de decisão. No kit de 108,87 € dá 32,66 €
 - [ ] **Pagamento ligado.** O site regista a encomenda e diz o valor; os
       dados de pagamento seguem no email. Falta decidir se o MB WAY e a
       referência das quotas passam também a servir a loja

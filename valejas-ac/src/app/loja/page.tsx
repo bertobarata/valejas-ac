@@ -3,7 +3,7 @@ import { paraPagina } from "@/lib/seo/metadados";
 import Link from "next/link";
 import { MapPin, Clock } from "lucide-react";
 import {
-  FORNECEDOR, KIT_ATLETA, PRAZO_ENCOMENDA_SEMANAS,
+  FORNECEDOR, KIT_ATLETA, KIT_GUARDA_REDES, PRAZO_ENCOMENDA_SEMANAS,
 } from "@/lib/data/loja";
 import CartaoProduto from "@/components/loja/CartaoProduto";
 import CatalogoLoja from "@/components/loja/CatalogoLoja";
@@ -47,8 +47,8 @@ export default function LojaPage() {
 
       {/* Kit obrigatório — o que traz cá a maioria de quem entra na loja */}
       <section className="section-container py-14 md:py-20">
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] gap-10 lg:gap-14 items-center">
-          <div>
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] gap-10 lg:gap-14 items-start">
+          <div className="lg:sticky lg:top-28">
             <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow mb-3">
               Obrigatório para quem joga
             </p>
@@ -56,18 +56,23 @@ export default function LojaPage() {
               Kit de <span className="text-yellow">atleta</span>
             </h2>
             <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-5 max-w-md">
-              Quem se inscreve para jogar leva isto: as cores do clube para os
-              jogos em casa, o equipamento alternativo para quando as cores
-              chocam com as do adversário, e um conjunto para treinar durante
-              a semana.
+              Quem se inscreve para jogar leva quatro peças: o equipamento
+              principal, o alternativo para quando as cores chocam com as do
+              adversário, um conjunto para treinar durante a semana e o fato
+              de treino.
             </p>
             <p className="font-body text-on-surface-muted leading-relaxed mt-4 max-w-md">
-              Escolhe o tamanho uma vez e leva as três peças de uma assentada.
-              Depois, cada uma pode ser comprada à parte aqui em baixo.
+              O guarda-redes tem o seu kit, em verde. Os equipamentos de jogo
+              já levam as meias. Escolhe o
+              tamanho uma vez e leva tudo de uma assentada; cada peça também
+              se compra à parte aqui em baixo.
             </p>
           </div>
 
-          <CartaoProduto produto={KIT_ATLETA} destaque />
+          <div className="flex flex-col gap-px bg-on-surface/10">
+            <CartaoProduto produto={KIT_ATLETA} destaque />
+            <CartaoProduto produto={KIT_GUARDA_REDES} destaque />
+          </div>
         </div>
       </section>
 

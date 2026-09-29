@@ -85,8 +85,8 @@ Vinte e oito páginas, todas escritas e funcionais:
 ### A loja
 
 - Vinte e seis artigos do catálogo da ZEMIG, por categoria
-- Kit obrigatório de atleta em destaque, a 110€ — o preço do vosso
-  comunicado de 1 de setembro
+- Dois kits obrigatórios em destaque, jogador e guarda-redes, a 108,87€
+  cada — as quatro peças ao preço do catálogo
 - Carrinho, escolha de tamanho e pedido de encomenda
 - Pagamento por MB WAY e por referência multibanco, com transferência
   bancária em alternativa
