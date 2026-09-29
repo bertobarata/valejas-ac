@@ -1,11 +1,11 @@
 # TODO — Website Valejas AC
 
-Estado a 23/09/2026.
-Revisto depois de o plantel e os valores da época entrarem no site.
+Estado a 29/09/2026.
+Revisto no dia em que o site foi para o ar em **valejasac.pt**.
 
-O código está feito e testado. **O que falta é quase tudo fora do código:**
-contas por criar, dados que só o clube tem, e três decisões que custam
-dinheiro ou tempo.
+**O site está no ar desde 29/09/2026.** O que falta é quase tudo fora do
+código: dados que só o clube tem, e três decisões que custam dinheiro ou
+tempo.
 
 ## O que bloqueia ir para o ar
 
@@ -16,8 +16,8 @@ Por ordem de quem desbloqueia mais coisas de uma vez:
 | 1 | ~~Vercel~~ | ✅ feito a 14/09/2026 — projeto `valejasac`, 18 variáveis, preview aberto sem palavra-passe |
 | 2 | ~~Email~~ | ✅ feito a 14/09/2026 — cinco caixas, Resend verificada, três envios reais a chegar à entrada |
 | 3 | ~~Contas da Direção~~ | ✅ feito a 14/09/2026 — `presidente` e `comunicacao`, `DIRECAO_PASSWORD` apagada |
-| 4 | **Trocar as palavras-passe da Direção e a chave da Resend** (§2) | Existem fora do cofre desde 15/09. Apontar o DNS sem isto abre `/direcao` a quem souber o endereço |
-| 5 | **DNS do domínio** — `A` → `76.76.21.21` na Amen, e acrescentar `valejasac.pt` ao projeto na Vercel. **Depois do ponto 4** | O site vive num endereço `.vercel.app` que muda a cada deploy |
+| 4 | ~~Trocar as palavras-passe da Direção e a chave da Resend~~ | ✅ feito a 29/09/2026 — antes do DNS, como tinha de ser (§2) |
+| 5 | ~~DNS do domínio~~ | ✅ feito a 29/09/2026 — `valejasac.pt` em produção, `www` com 308, HTTPS até 28/12/2026 (renova sozinho) |
 | 6 | ~~`SANITY_API_TOKEN` na Vercel~~ | ✅ feito a 14/09/2026 |
 | 7 | ~~Confirmação antes de publicar nas redes~~ | ✅ feito a 14/09/2026 |
 
@@ -57,16 +57,15 @@ degradado — cada uma tem um comportamento de recurso que não rebenta.
 ### Domínio (Amen)
 - [x] Comprar domínio do clube — **valejasac.pt**, comprado a
       14/09/2026, à espera da confirmação do registo
-- [ ] Apontar DNS para a Vercel: `A` → `76.76.21.21` no domínio raiz,
-      `CNAME` → `cname.vercel-dns.com` no `www`. O endereço oficial é
-      **valejasac.pt**, sem `www`; o `www` fica a redirecionar para lá
-- [ ] Acrescentar o domínio ao projeto na Vercel e esperar pelo
-      certificado, que é automático
-- [ ] `NEXT_PUBLIC_SITE_URL="https://valejasac.pt"` na Vercel
-- [ ] Na Vercel, marcar `valejasac.pt` como domínio principal e o `www`
-      como redirecionamento — não o contrário
-- **Sem isto:** site vive no `.vercel.app`. A Meta precisa de um endereço
-  público para ir buscar a imagem dos comunicados.
+- [x] Apontar DNS para a Vercel — feito a 29/09/2026: `A` → `76.76.21.21`,
+      `www` → `cname.vercel-dns.com`. Os registos de email da Amen (MX,
+      SPF, autodiscover) ficaram intocados
+- [x] Domínio no projeto da Vercel, certificado emitido
+- [x] `NEXT_PUBLIC_SITE_URL="https://valejasac.pt"` em Production
+- [x] `valejasac.pt` principal, `www` a redirecionar com 308
+- [ ] **Opcional:** a Vercel recomenda os registos novos — `A` →
+      `216.198.79.1` e `www` → `f13d8b71655e98a7.vercel-dns-017.com`. Os
+      atuais continuam a funcionar; é só para não ter de voltar lá
 
 ### Email institucional — cinco caixas em domínio próprio
 Decisão da Direção: emails no domínio do clube, não Gmail.
@@ -289,18 +288,17 @@ de leitura, não de trabalho — vai para pessoas que não abrem um repo.
 - [x] `DIRECAO_PASSWORD` apagada — era `valejas1966`, valor de
       desenvolvimento. Já não abre nada
 - [x] `DIRECAO_SECRET` — feito, `openssl rand -hex 32`
-- [ ] **Trocar as duas palavras-passe da Direção — passou a urgente.**
-      Foram escritas em conversa com a IA, portanto existem fora do
-      cofre. Enquanto o site vivia num endereço `.vercel.app` que
-      ninguém sabia de cor, o risco era teórico; apontar o DNS torna
-      `/direcao` alcançável por quem souber o endereço, e lá dentro
-      estão os dados pessoais dos sócios e as encomendas. **Isto tem de
-      vir antes do ponto 4 da tabela de bloqueios**
-- [ ] **Trocar a chave da Resend** — pelo mesmo motivo e na mesma volta
-- [ ] `MAKE_WEBHOOK_SEGREDO` — `openssl rand -hex 24`
-- [ ] `IFTHENPAY_CALLBACK_CHAVE` — `openssl rand -hex 24`
-- [ ] Todas as variáveis repetidas na Vercel → Settings → Environment Variables,
-      seguidas de **redeploy** (só entram no deploy seguinte)
+- [x] **Palavras-passe da Direção trocadas** a 29/09/2026, antes do DNS.
+      Escolhidas pelo Berto no `.env.local`, nunca escritas em conversa.
+      São provisórias: a Direção pode escolher as suas — ver `SETUP.md`,
+      «Trocar palavras-passe e chaves»
+- [x] **Chave da Resend rodada** — `site-valejas-2`, só envio, só
+      `valejasac.pt`. A antiga apagada
+- [x] `DIRECAO_SECRET` rodado — fecha as sessões antigas
+- [x] `MAKE_WEBHOOK_SEGREDO` e `IFTHENPAY_CALLBACK_CHAVE` gerados
+- [x] Tudo em Production e Preview, com `scripts/enviar-segredos.sh`, que
+      não mostra os valores e valida o formato das contas
+- [ ] **Entregar as palavras-passe em mão** ao presidente e à comunicação
 
 ---
 
@@ -392,15 +390,24 @@ O que o site já tem, feito a 23/09/2026:
       com morada, coordenadas, telefone, email, redes e data de fundação;
       `/jogos` publica os próximos dez como `SportsEvent`
 
-Falta, e **tudo isto depende do DNS estar apontado** (§1):
+Feito a 29/09/2026, com o site no ar:
 
-- [ ] **Google Search Console** — `search.google.com/search-console`,
-      propriedade do tipo **Domínio**, que se verifica com um registo
-      `TXT` na Amen. É a mesma ida ao painel onde se põe o `A`, por isso
-      faz-se de uma vez. A alternativa, propriedade por «Prefixo de URL»,
-      verifica-se por meta tag: o sítio já está feito, basta pôr o código
-      em `GOOGLE_SITE_VERIFICATION` na Vercel
-- [ ] **Submeter o sitemap** no Search Console depois de verificado
+- [x] **Google Search Console** — propriedade Domínio, verificada pelo
+      `TXT` na Amen. Não é preciso `GOOGLE_SITE_VERIFICATION`
+- [x] **Canónico por página.** Estava `canonical: "/"` no layout e todas
+      as páginas o herdavam: o Google lia-as como cópias da inicial.
+      `paraPagina()` em `src/lib/seo/metadados.ts` resolve, e dá também o
+      `og:title` e o `og:url` de cada uma
+- [x] Sitemap sem as âncoras `#modalidade` (duplicados) e com os
+      comunicados individuais; `/studio` com `noindex`
+- [x] **Jogos validados pelo Google** — dez eventos sem erros, com fim
+      estimado, imagem, equipas, AF Lisboa e entrada livre nos de casa
+- [x] Indexação pedida para `/`, `/inscricoes` e `/jogos`
+- [ ] **Sitemap enviado mas «Não foi possível obter»** — da leitura de
+      09:13, antes do DNS. Ver a 30/09 ou 01/10; se continuar, remover e
+      reenviar
+- [ ] Morada dos pavilhões adversários fica em falta nos eventos, de
+      propósito: uma errada manda as famílias ao sítio errado
 - [ ] **Google Business Profile** — a ficha do clube no Maps e no painel
       lateral das pesquisas. É outra inscrição, separada do Search
       Console, e para um clube local é o que mais se nota
@@ -425,6 +432,25 @@ Não confundir: o **Search Console** é gratuito e é o que interessa.
 ---
 
 ## 5. Dívida técnica conhecida
+
+### Auditoria mobile — 29/09/2026 (PR #6)
+
+Duas auditorias (`/impeccable audit` e `/ui-ux-pro-max audit`), medidas num
+browser a 375, 390 e 768px, nos dois temas. Contraste de 55 falhas a 0,
+alvos de toque e campos que faziam o iPhone ampliar a 0, texto corrido a
+16px no telemóvel, fontes de 439 para 165 KB. Ficou:
+
+- [ ] **A loja continua longa no telemóvel** — ~12 600px. Os cartões
+      desceram de 989 para 685px, mas 23 peças são 23 peças. Encurtar mais
+      pede mudança de estrutura (carrossel por família, por exemplo)
+- [ ] **Quatro parágrafos a 76-78 letras por linha** a 768px, dois deles
+      com `max-w-2xl` próprio (inicial e Academia Sénior). A regra global
+      é 62ch; se se quiser o intervalo 65-75 à risca, trocar esses dois
+      para `max-w-prose`
+- [ ] **O mapa do Google** traz ~440 KB de JavaScript dele quando chega à
+      vista em `/clube` e `/contactos`. Já é `loading="lazy"`; voltar a pôr
+      o botão «Ver mapa» é a única forma de o evitar, e foi tirado de
+      propósito
 
 - [x] ~~**Conteúdo de notícias inventado**~~ — apagado, e `/noticias` passou
       a redirecionar para `/comunicados`: eram dois sítios para escrever a
