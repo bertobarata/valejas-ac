@@ -93,9 +93,10 @@ export async function POST(req: Request) {
   const urlSite = `${base}/comunicados/${slug}`;
 
   // Cartão com o emblema — leva só o título. O texto do comunicado
-  // vai na legenda da publicação, não dentro da imagem.
+  // vai na legenda da publicação, não dentro da imagem. Em JPEG,
+  // porque o Instagram recusa PNG.
   const imagemUrl =
-    `${base}/api/comunicado-imagem` +
+    `${base}/api/comunicado-imagem/jpg` +
     `?titulo=${encodeURIComponent(titulo)}` +
     `&data=${encodeURIComponent(data)}`;
 

@@ -213,9 +213,9 @@ describe("plantel — o que vem do CMS", () => {
 });
 
 describe("emblemas dos adversários", () => {
-  const adversarios = [
-    ...new Set(CALENDARIO.flatMap((j) => [j.casa, j.fora])),
-  ].filter((n) => !ehValejas(n));
+  const adversarios = Array.from(
+    new Set(CALENDARIO.flatMap((j) => [j.casa, j.fora]))
+  ).filter((n) => !ehValejas(n));
 
   it("todos os adversários da época têm emblema", () => {
     // Os quatro que não batem certo pelo nome — Académico Desportos,
