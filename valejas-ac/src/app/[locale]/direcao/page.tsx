@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { sessaoValida, authConfigurada, COOKIE_SESSAO } from "@/lib/auth-direcao";
 import EntrarDirecao from "@/components/direcao/EntrarDirecao";
 import EditorComunicado from "@/components/direcao/EditorComunicado";
+import GestorComunicados from "@/components/direcao/GestorComunicados";
 
 export const metadata: Metadata = {
   title: "Área da Direção",
@@ -50,6 +51,9 @@ export default function DirecaoPage() {
               </Link>
             </nav>
             <EditorComunicado />
+            <div className="mt-12">
+              <GestorComunicados />
+            </div>
           </>
         ) : (
           <EntrarDirecao />
