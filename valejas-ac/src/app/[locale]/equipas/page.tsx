@@ -4,7 +4,7 @@ import EquipasHero from "@/components/equipas/EquipasHero";
 import PlantelFilter from "@/components/equipas/PlantelFilter";
 import CorpoTecnico from "@/components/equipas/CorpoTecnico";
 import AcademiaCTA from "@/components/equipas/AcademiaCTA";
-import { fetchJogadores } from "@/sanity/queries";
+import { fetchJogadores, fetchEquipaTecnica, fetchFotoEquipa } from "@/sanity/queries";
 import { doSanity } from "@/lib/data/plantel";
 
 /*
@@ -22,14 +22,18 @@ export const metadata: Metadata = paraPagina("/equipas", {
 export default async function EquipasPage() {
   // O plantel vem do CMS, escrito em /direcao/plantel. Sem CMS, o
   // componente mostra o plantel de exemplo.
-  const doCms = await fetchJogadores();
+  const [doCms, equipaTecnica, fotoEquipa] = await Promise.all([
+    fetchJogadores(),
+    fetchEquipaTecnica(),
+    fetchFotoEquipa(),
+  ]);
   const jogadores = doCms?.map(doSanity) ?? undefined;
 
   return (
     <>
-      <EquipasHero />
+      <EquipasHero foto={fotoEquipa} />
       <PlantelFilter jogadores={jogadores} />
-      <CorpoTecnico />
+      <CorpoTecnico membros={equipaTecnica ?? []} />
       <AcademiaCTA /></>
   );
 }

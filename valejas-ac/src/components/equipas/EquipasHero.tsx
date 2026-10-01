@@ -1,13 +1,19 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function EquipasHero() {
+interface Props {
+  /** Fotografia da equipa, editada em /direcao/plantel. Sem ela, o emblema. */
+  foto?: { url?: string; lqip?: string } | null;
+}
+
+export default function EquipasHero({ foto }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -71,12 +77,29 @@ export default function EquipasHero() {
           {/* Right — player image */}
           <div className="lg:col-span-5 equipa-hero-img relative">
             <div className="aspect-[4/5] bg-surface-high relative overflow-hidden">
-              {/* Placeholder — replace with real player image */}
-              <div className="w-full h-full bg-gradient-to-b from-surface-high to-surface flex items-end justify-center p-8">
-                <div className="text-center opacity-20">
-                  <p className="font-headline font-black text-8xl text-on-surface">#10</p>
+              {foto?.url ? (
+                <Image
+                  src={foto.url}
+                  alt="A equipa de futsal do Valejas AC"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  placeholder={foto.lqip ? "blur" : "empty"}
+                  blurDataURL={foto.lqip}
+                  className="object-cover"
+                />
+              ) : (
+                // Sem fotografia: o emblema, em vez de um número inventado.
+                <div className="w-full h-full bg-gradient-to-b from-surface-high to-surface flex items-center justify-center p-12">
+                  <Image
+                    src="/brand/crest.png"
+                    alt=""
+                    width={320}
+                    height={320}
+                    className="w-2/3 h-auto opacity-30"
+                  />
                 </div>
-              </div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
             </div>
             {/* Badge do clube */}

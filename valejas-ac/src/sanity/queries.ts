@@ -184,6 +184,60 @@ export async function fetchResultadosRecentes(limit = 5): Promise<SanityJogo[] |
 }
 
 // ────────────────────────────────────────────────────────────────────────────
+// EQUIPA TÉCNICA E FOTOGRAFIA DA EQUIPA
+// ────────────────────────────────────────────────────────────────────────────
+
+export interface MembroTecnicoSite {
+  _id:       string;
+  nome:      string;
+  cargo:     string;
+  fotoUrl?:  string;
+  fotoLqip?: string;
+}
+
+/** Quem está na equipa técnica. Null se o CMS estiver ausente; [] se estiver vazio. */
+export async function fetchEquipaTecnica(): Promise<MembroTecnicoSite[] | null> {
+  if (!isSanityConfigured()) return null;
+  try {
+    const crus = await sanityClient.fetch<
+      { _id: string; nome: string; cargo: string; fotografia?: ImagemSanity; lqip?: string }[]
+    >(
+      `*[_type == "membroTecnico" && ativo != false] | order(ordem asc, nome asc) {
+        _id, nome, cargo, fotografia,
+        "lqip": fotografia.asset->metadata.lqip
+      }`
+    );
+    return crus.map(({ fotografia, lqip, ...m }) => ({
+      ...m,
+      fotoUrl: urlDaImagem(fotografia, { largura: 600, altura: 800 }),
+      fotoLqip: lqip,
+    }));
+  } catch {
+    return null;
+  }
+}
+
+/** A fotografia de topo de /equipas. Undefined se não houver. */
+export async function fetchFotoEquipa(): Promise<{ url?: string; lqip?: string } | null> {
+  if (!isSanityConfigured()) return null;
+  try {
+    const doc = await sanityClient.fetch<{ fotografia?: ImagemSanity; lqip?: string } | null>(
+      `*[_id == "fotoEquipa"][0]{
+        fotografia,
+        "lqip": fotografia.asset->metadata.lqip
+      }`
+    );
+    if (!doc?.fotografia) return null;
+    return {
+      url: urlDaImagem(doc.fotografia, { largura: 1200, altura: 1500 }),
+      lqip: doc.lqip,
+    };
+  } catch {
+    return null;
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
 // COMUNICADOS OFICIAIS
 // ────────────────────────────────────────────────────────────────────────────
 

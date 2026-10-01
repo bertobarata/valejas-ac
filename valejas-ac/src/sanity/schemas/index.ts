@@ -4,5 +4,10 @@ import { jogador }      from "./jogador";
 import { jogo }         from "./jogo";
 import { classificacao } from "./classificacao";
 import { configuracao } from "./configuracao";
+import { membroTecnico } from "./membroTecnico";
+import { fotoEquipa }    from "./fotoEquipa";
 
-export const schemaTypes = [comunicado, artigo, jogador, jogo, classificacao, configuracao];
+export const schemaTypes = [
+  comunicado, artigo, jogador, jogo, classificacao, configuracao,
+  membroTecnico, fotoEquipa,
+];
