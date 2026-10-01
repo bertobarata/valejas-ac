@@ -95,6 +95,7 @@ const NAV_ITEMS: ItemNav[] = [
   { label: "comunicados", href: "/comunicados" },
   { label: "contactos",   href: "/contactos" },
   { label: "inscricoes",  href: "/inscricoes" },
+  { label: "patrocinios", href: "/patrocinar" },
 ];
 
 /**
