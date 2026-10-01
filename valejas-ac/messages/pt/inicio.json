@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "titulo": "Valejas Atlético Clube | O clube da nossa terra desde 1966",
+    "descricao": "Clube desportivo de Valejas, Oeiras. Futsal e atletismo federados, forte na formação, mais judo, karate, dança, teatro e Academia Sénior. A casa do clube desde 1966.",
+    "descricaoPartilha": "Futsal, atletismo, karate, cicloturismo, judo, dança e teatro. Mais a Academia Sénior. A casa do clube desde 1966."
+  },
+  "hero": {
+    "fundado": "Fundado em 1966 · Valejas, Oeiras",
+    "titulo": "A união faz a <destaque>força</destaque>",
+    "texto": "Somos todos Valejas. Desde 1966, o clube da nossa terra — do futsal ao atletismo, dos mais novos aos veteranos.",
+    "conhecerClube": "Conhecer o clube",
+    "ultimosJogos": "Últimos Jogos",
+    "emblemaAlt": "Emblema do Valejas Atlético Clube",
+    "explorar": "Explorar"
+  },
+  "comunicado": {
+    "etiqueta": "A Direção comunica",
+    "ler": "Ler comunicado"
+  },
+  "proximoJogo": {
+    "etiqueta": "Próximo jogo",
+    "contra": "vs",
+    "jogosClassificacao": "Jogos e classificação"
+  },
+  "modalidades": {
+    "etiqueta": "As nossas modalidades",
+    "titulo": "Um clube, <destaque>muitas formas de pertencer</destaque>",
+    "grupo": {
+      "desporto": "Desporto",
+      "cultura": "Cultura"
+    },
+    "equipa": "Equipa {letra}",
+    "escaloes": "{n} escalões",
+    "verPlantel": "Ver plantel e escalões",
+    "soFormacao": "Só formação",
+    "soFormacaoCom": "Só formação · {parceria}",
+    "competicao": "Competição federada",
+    "semCompeticao": "Sem competição"
+  },
+  "mote": {
+    "etiqueta": "O que o mote quer dizer",
+    "frase": "A união faz a <destaque>força</destaque>",
+    "contexto": "Não é uma frase bonita: é como o clube funciona há 60 anos. Quem joga, quem treina, quem abre a sede e quem paga a quota — tudo o que o Valejas é sai daí."
+  },
+  "conhecer": {
+    "etiqueta": "Ficar a conhecer",
+    "titulo": "Um clube não se explica <destaque>numa frase</destaque>",
+    "texto": "{anos} anos dão para muita coisa: {origens} atividades no princípio, {modalidades} modalidades hoje, e gente que entra em criança e fica para a vida. Escolhe por onde começar.",
+    "cartoes": {
+      "historia": {
+        "etiqueta": "Desde {ano}",
+        "titulo": "A história",
+        "texto": "{anos} anos, começados no atletismo, no cicloturismo e na malha — muito antes do futsal. O que se sabe, e o que ainda falta descobrir."
+      },
+      "emblema": {
+        "etiqueta": "A águia e as cores",
+        "titulo": "O emblema",
+        "texto": "O que cada parte quer dizer, e porque é que o clube joga de amarelo e azul."
+      },
+      "modalidades": {
+        "etiqueta": "{n} modalidades",
+        "titulo": "O que se pratica",
+        "texto": "Do pavilhão à pista e à estrada, mais a dança e o teatro. Umas competem federadas, outras existem só para formar."
+      },
+      "jogos": {
+        "etiqueta": "Época {epoca}",
+        "titulo": "Os jogos",
+        "texto": "{jornadas} jornadas no distrital da AF Lisboa, {emCasa} delas em casa. Calendário, resultados e classificação."
+      },
+      "instalacoes": {
+        "etiqueta": "{n} espaços",
+        "titulo": "Onde acontece",
+        "texto": "A sede, onde a Direção trabalha e a Academia se reúne. E o pavilhão, onde se joga."
+      },
+      "orgaos": {
+        "etiqueta": "{n} pessoas",
+        "titulo": "Quem dirige",
+        "texto": "Direção, Conselho Fiscal e Mesa da Assembleia. Todos sócios, a maior parte há décadas."
+      },
+      "academia": {
+        "etiqueta": "Maiores de 50 anos",
+        "titulo": "Academia Sénior",
+        "texto": "{n} atividades, do coro ao chi kung. O clube não acaba quando se deixa de competir."
+      },
+      "patrocinadores": {
+        "etiqueta": "Quem apoia",
+        "titulo": "Patrocinadores",
+        "texto": "As empresas e as pessoas da terra que seguram o clube de pé."
+      }
+    }
+  }
+}

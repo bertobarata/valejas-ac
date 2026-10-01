@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "titulo": "Contact",
+    "descricao": "Get in touch with Valejas Atlético Clube — email, phone, address and location. We're in Valejas, Oeiras."
+  },
+  "hero": {
+    "etiqueta": "We're here for you",
+    "titulo": "Contact",
+    "texto": "Questions, partnerships, press or signing up — talk to us by email or phone, or drop by the clubhouse."
+  },
+  "seccao": {
+    "etiqueta": "Talk to us",
+    "titulo": "Contact & <destaque>Location</destaque>"
+  },
+  "email": {
+    "titulo": "Email",
+    "geral": "For everything. If in doubt, use this one",
+    "coordenacao": "Sports, sign-ups and training",
+    "comunicacao": "Press and partnership proposals"
+  },
+  "telefone": "Phone",
+  "morada": "Address",
+  "horario": {
+    "titulo": "Opening hours",
+    "dias": {
+      "segundaASexta": "Monday to Friday",
+      "sabado": "Saturday",
+      "domingo": "Sunday"
+    },
+    "horas": {
+      "diasDeJogo": "Match days",
+      "fechado": "Closed"
+    }
+  },
+  "redes": {
+    "titulo": "Follow us",
+    "enviarEmail": "Email the club"
+  },
+  "formulario": {
+    "titulo": "Send us a message",
+    "enviada": "Message sent!",
+    "obrigado": "We'll reply soon. Thanks for getting in touch.",
+    "nome": "Name",
+    "nomePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "email@example.com",
+    "assunto": "Subject",
+    "assuntos": {
+      "escolher": "Choose a subject",
+      "geral": "Membership, shop or general enquiry",
+      "modalidades": "Sign-ups, training and sports",
+      "parceria": "Partnership or sponsorship proposal",
+      "imprensa": "Press and media"
+    },
+    "assuntoNota": "The subject decides who gets it: sports go to the coordinators, partnerships to the communications team, everything else to the general inbox.",
+    "mensagem": "Message",
+    "mensagemPlaceholder": "Your message…",
+    "aEnviar": "Sending…",
+    "enviar": "Send message",
+    "erroEnvio": "We couldn't send it.",
+    "erroLigacao": "Connection failed. Try again."
+  },
+  "mapa": {
+    "titulo": "Valejas AC location"
+  }
+}

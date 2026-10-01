@@ -1,18 +1,32 @@
 import type { Metadata } from "next";
+import { useLocale, useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { paraPagina } from "@/lib/seo/metadados";
 import { Link } from "@/i18n/navigation";
+import type { Lingua } from "@/i18n/routing";
 import { ArrowLeft } from "lucide-react";
 import PropostaSocioForm from "@/components/socios/PropostaSocioForm";
 import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
 
-export const metadata: Metadata = paraPagina("/socios/inscricao", {
-  title: "Inscrição de Sócio",
-  description:
-    `Torna-te sócio do Valejas Atlético Clube. Quota de ${formatEuros(QUOTA_MENSAL)} por mês. ` +
-    "Aberto a toda a gente, e obrigatório para quem quer praticar uma modalidade.",
-});
+export async function generateMetadata(
+  { params: { locale } }: { params: { locale: Lingua } }
+): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "socios.meta.inscricao" });
+  return paraPagina(
+    "/socios/inscricao",
+    {
+      title: t("titulo"),
+      description: t("descricao", { quota: formatEuros(QUOTA_MENSAL, locale) }),
+    },
+    locale,
+  );
+}
 
-export default function InscricaoPage() {
+export default function InscricaoPage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("socios.inscricao");
+  const lingua = useLocale();
+
   return (
     <div className="bg-surface min-h-screen">
       {/* Cabeçalho */}
@@ -22,19 +36,17 @@ export default function InscricaoPage() {
             href="/socios-contacto"
             className="inline-flex items-center gap-2 min-h-11 font-body text-xs uppercase tracking-widest text-on-surface-muted hover:text-yellow transition-colors mb-6"
           >
-            <ArrowLeft size={14} /> Sócios
+            <ArrowLeft size={14} /> {t("voltar")}
           </Link>
 
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow">
             Valejas Atlético Clube
           </p>
           <h1 className="font-headline font-black text-5xl md:text-7xl uppercase leading-none tracking-tighter text-on-surface mt-3">
-            Faz-te <span className="text-yellow">Sócio</span>
+            {t.rich("titulo", { destaque: (c) => <span className="text-yellow">{c}</span> })}
           </h1>
           <p className="font-body text-base md:text-lg text-on-surface-muted mt-5 max-w-xl leading-relaxed">
-            A quota é de {formatEuros(QUOTA_MENSAL)} por mês, igual para toda a gente.
-            Qualquer pessoa se pode inscrever — e quem quer praticar uma modalidade
-            no clube tem de ser sócio primeiro. Leva cinco minutos.
+            {t("texto", { quota: formatEuros(QUOTA_MENSAL, lingua) })}
           </p>
         </div>
       </header>

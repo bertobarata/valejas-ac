@@ -1,38 +1,45 @@
 import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import { paraPagina } from "@/lib/seo/metadados";
 import { Link } from "@/i18n/navigation";
-import { GRUPOS, VAGAS, getModalidadesPorGrupo } from "@/lib/data/modalidades";
+import type { Lingua } from "@/i18n/routing";
+import { GRUPOS, getModalidadesPorGrupo } from "@/lib/data/modalidades";
 import ModalidadesAccordion from "@/components/modalidades/ModalidadesAccordion";
 
-export const metadata: Metadata = paraPagina("/modalidades", {
-  title: "Modalidades",
-  description:
-    "Futsal e atletismo federados, judo, karate, dança, teatro e cicloturismo — " +
-    "um clube, muitas formas de pertencer.",
-});
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Lingua };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "modalidades.meta" });
+  return paraPagina("/modalidades", { title: t("titulo"), description: t("descricao") }, locale);
+}
 
-export default function ModalidadesPage() {
+export default function ModalidadesPage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("modalidades");
+
   return (
     <div className="bg-surface">
       {/* Cabeçalho */}
       <section className="section-container pt-14 md:pt-16 pb-6">
         <p className="font-body text-xs font-bold uppercase tracking-widest text-blue mb-3">
-          Um clube, muitas idades
+          {t("pagina.etiqueta")}
         </p>
         <h1 className="font-headline font-black uppercase wdth-condensed tracking-tighter leading-none text-4xl md:text-6xl text-on-surface max-w-3xl">
-          Há um lugar para ti no Valejas
+          {t("pagina.titulo")}
         </h1>
         <p className="font-body text-lg text-on-surface-muted mt-4 max-w-2xl">
-          Do pavilhão à pista, do tatami ao palco. Competição federada, formação
-          para os mais novos e atividades abertas à comunidade.
+          {t("pagina.intro")}
         </p>
 
         <div className="mt-8 max-w-2xl bg-surface-high p-6">
           <p className="font-headline font-black uppercase text-sm text-on-surface">
-            {VAGAS.titulo}
+            {t("vagas.titulo")}
           </p>
           <p className="font-body text-on-surface-muted leading-relaxed mt-1">
-            {VAGAS.texto}
+            {t("vagas.texto")}
           </p>
         </div>
       </section>
@@ -47,10 +54,10 @@ export default function ModalidadesPage() {
           >
             <div className="border-t border-on-surface/15 pt-8 mb-10">
               <h2 className="font-headline font-black uppercase tracking-tighter leading-none text-3xl md:text-4xl text-on-surface">
-                {grupo.titulo}
+                {t(`grupos.${grupo.id}.titulo`)}
               </h2>
               <p className="font-body text-on-surface-muted mt-2 max-w-2xl">
-                {grupo.intro}
+                {t(`grupos.${grupo.id}.intro`)}
               </p>
             </div>
 
@@ -66,18 +73,17 @@ export default function ModalidadesPage() {
           <div className="bg-surface-high p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 justify-between">
             <div className="max-w-xl">
               <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow mb-2">
-                Maiores de 50
+                {t("pagina.academia.etiqueta")}
               </p>
               <h2 className="font-headline font-black uppercase tracking-tight leading-none text-2xl md:text-3xl text-on-surface">
-                Academia Sénior
+                {t("pagina.academia.titulo")}
               </h2>
               <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-                Coro, chi kung, pintura, informática, danças tradicionais, sueca e
-                bilhar. O clube não acaba quando se deixa de competir.
+                {t("pagina.academia.texto")}
               </p>
             </div>
             <Link href="/academia-senior" className="btn-primary shrink-0 text-sm">
-              Conhecer a Academia
+              {t("pagina.academia.botao")}
             </Link>
           </div>
         </div>
@@ -88,17 +94,17 @@ export default function ModalidadesPage() {
         <div className="bg-blue text-white p-8 md:p-10 flex flex-col sm:flex-row sm:items-center gap-5 justify-between">
           <div className="max-w-lg">
             <p className="font-headline font-black uppercase tracking-tight leading-tight text-xl md:text-2xl">
-              Queres experimentar? Fala connosco e trazemos-te para dentro.
+              {t("pagina.cta.titulo")}
             </p>
             <p className="font-body text-sm text-white/85 mt-2">
-              {VAGAS.curto}.
+              {t("vagas.curto")}.
             </p>
           </div>
           <Link
             href="/inscricoes"
             className="btn-primary shrink-0 bg-yellow text-blue-deep hover:bg-yellow-dim"
           >
-            Inscrever ou saber mais
+            {t("pagina.cta.botao")}
           </Link>
         </div>
       </section>

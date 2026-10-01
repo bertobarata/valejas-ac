@@ -28,6 +28,20 @@ export const ESTADOS_CIVIS = [
 
 export type EstadoCivil = (typeof ESTADOS_CIVIS)[number];
 
+/**
+ * O valor que segue para a API é sempre o português de cima (é o que
+ * vai para a ficha). O que se mostra no formulário vem de
+ * messages/<lingua>/socios.json, por esta chave.
+ */
+export const CHAVE_ESTADO_CIVIL: Record<EstadoCivil, string> = {
+  "Solteiro(a)":    "solteiro",
+  "Casado(a)":      "casado",
+  "União de facto": "uniaoDeFacto",
+  "Divorciado(a)":  "divorciado",
+  "Separado(a)":    "separado",
+  "Viúvo(a)":       "viuvo",
+};
+
 /** Ficha de papel usa M / F. "I" acrescentado por pedido da Direção. */
 export const SEXOS = [
   { valor: "M", label: "Masculino"   },
@@ -129,3 +143,13 @@ export const CAMPOS_OBRIGATORIOS_MENOR: (keyof PropostaSocio)[] = [
 export const PARENTESCOS = [
   "Mãe", "Pai", "Avó", "Avô", "Tutor(a) legal", "Outro",
 ] as const;
+
+/** Como em CHAVE_ESTADO_CIVIL: valor em PT, texto mostrado por chave. */
+export const CHAVE_PARENTESCO: Record<(typeof PARENTESCOS)[number], string> = {
+  "Mãe":            "mae",
+  "Pai":            "pai",
+  "Avó":            "avoFeminino",
+  "Avô":            "avoMasculino",
+  "Tutor(a) legal": "tutor",
+  "Outro":          "outro",
+};

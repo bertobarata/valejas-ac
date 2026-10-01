@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Lingua } from "@/i18n/routing";
+import { paraPagina } from "@/lib/seo/metadados";
 import HeroSection from "@/components/home/HeroSection";
 import ComunicadoDestaque from "@/components/home/ComunicadoDestaque";
 import ProximoJogoHome from "@/components/home/ProximoJogoHome";
@@ -13,11 +16,26 @@ import ConhecerClube from "@/components/home/ConhecerClube";
  */
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+/*
+ * A inicial não leva o «| Valejas AC» do modelo do layout: o título já
+ * começa pelo nome do clube. Por isso o título é absoluto, e a
+ * pré-visualização usa a descrição curta, como sempre usou.
+ */
+export async function generateMetadata(
+  { params: { locale } }: { params: { locale: Lingua } }
+): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "inicio.meta" });
+  const base = paraPagina("/", { title: t("titulo"), description: t("descricao") }, locale);
+  return {
+    ...base,
+    title: { absolute: t("titulo") },
+    openGraph: { ...base.openGraph, title: t("titulo"), description: t("descricaoPartilha") },
+  };
+}
 
-export default function HomePage() {
+export default function HomePage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+
   return (
     <>
       {/* Hero */}

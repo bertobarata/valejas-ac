@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 
 export default function SociosHero() {
   const ref = useRef<HTMLElement>(null);
+  const t = useTranslations("socios.hero");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -41,15 +43,14 @@ export default function SociosHero() {
 
       <div className="section-container relative z-10 socios-hero-content space-y-5">
         <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow">
-          Faz parte da família
+          {t("etiqueta")}
         </p>
         <h1 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
-          Junta-te ao<br />
-          <span className="text-yellow">clube</span>
+          {t("titulo")}<br />
+          <span className="text-yellow">{t("tituloDestaque")}</span>
         </h1>
         <p className="font-body text-lg text-white/85 max-w-xl leading-relaxed">
-          Faz parte da casa do Valejas. Um euro por mês, uma proposta preenchida,
-          e passas a viver o clube por dentro.
+          {t("texto")}
         </p>
       </div>
     </section>

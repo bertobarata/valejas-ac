@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { paraPagina } from "@/lib/seo/metadados";
+import type { Lingua } from "@/i18n/routing";
 import ContactoSection from "@/components/socios/ContactoSection";
 
-export const metadata: Metadata = paraPagina("/contactos", {
-  title: "Contactos",
-  description:
-    "Fala com o Valejas Atlético Clube — email, telefone, morada e localização. Estamos em Valejas, Oeiras.",
-});
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Lingua };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "contactos.meta" });
+  return paraPagina("/contactos", { title: t("titulo"), description: t("descricao") }, locale);
+}
 
-export default function ContactosPage() {
+export default function ContactosPage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("contactos.hero");
+
   return (
     <>
       {/* Hero band — clears fixed navbar */}
@@ -24,14 +33,13 @@ export default function ContactosPage() {
         />
         <div className="section-container relative z-10">
           <p className="font-body font-semibold text-xs uppercase tracking-[0.35em] text-yellow mb-4">
-            Estamos aqui para ti
+            {t("etiqueta")}
           </p>
           <h1 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
-            Contactos
+            {t("titulo")}
           </h1>
           <p className="font-body text-lg text-white/80 max-w-xl leading-relaxed mt-6">
-            Dúvidas, parcerias, imprensa ou inscrições — fala connosco por email,
-            telefone ou passa pela sede do clube.
+            {t("texto")}
           </p>
         </div>
       </section>

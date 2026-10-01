@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "titulo": "Tienda",
+    "descricao": "Equipación oficial del Valejas Atlético Clube. Kit obligatorio de jugador, equipación de partido, entrenamiento y accesorios. Recogida siempre en la sede."
+  },
+  "metaCarrinho": {
+    "titulo": "Carrito",
+    "descricao": "Revisa y envía tu pedido de equipación del Valejas Atlético Clube. Recogida en la sede."
+  },
+  "cabecalho": {
+    "etiqueta": "Equipación oficial",
+    "titulo": "Tienda del <destaque>club</destaque>",
+    "levantamento": "Recogida siempre en la sede del club. No enviamos a domicilio.",
+    "prazo": "Lo que no haya en stock se encarga, en un plazo máximo de {semanas} semanas."
+  },
+  "kit": {
+    "etiqueta": "Obligatorio para quien juega",
+    "titulo": "Kit de <destaque>jugador</destaque>",
+    "texto": "Quien se inscribe para jugar lleva cuatro prendas: la equipación principal, la alternativa para cuando los colores chocan con los del rival, un conjunto para entrenar durante la semana y el chándal.",
+    "guardaRedes": "El portero tiene su propio kit, en verde. Las equipaciones de partido ya incluyen las medias. Elige la talla una vez y llévatelo todo de golpe; cada prenda también se compra por separado aquí abajo."
+  },
+  "duvidas": {
+    "texto": "¿Dudas con las tallas? Pásate por la sede y pruébatelo antes de encargarlo, o <link>habla con nosotros</link>.",
+    "fornecedor": "Equipación fabricada por {fornecedor}. Catálogo y precios actualizados el {data}."
+  },
+  "rodape": {
+    "condicoes": "Condiciones de la tienda",
+    "trocas": "Cambios y devoluciones",
+    "privacidade": "Privacidad",
+    "termos": "Términos y condiciones",
+    "livroReclamacoes": "Libro de Reclamaciones (Livro de Reclamações)",
+    "contactos": "Contacto",
+    "nota": "Recogida siempre en la sede del club: no enviamos a domicilio, no hay gastos de envío. Equipación fabricada por {fornecedor}."
+  },
+  "barra": {
+    "pecas": "{n, plural, =1 {prenda} other {prendas}}",
+    "verCarrinho": "Ver carrito"
+  },
+  "categorias": {
+    "jogo": {
+      "nome": "Equipación de partido",
+      "intro": "Lo que se viste el día de partido. Los conjuntos llevan camiseta y pantalón corto; las medias se compran aparte."
+    },
+    "treino": {
+      "nome": "Entrenamiento y abrigo",
+      "intro": "Para el trabajo de cada semana y para el frío a pie de pista."
+    },
+    "adepto": {
+      "nome": "Para aficionados",
+      "intro": "Para quien va a ver. Pueden llevar nombre y número, o la foto de quien juega en casa."
+    },
+    "acessorios": {
+      "nome": "Accesorios",
+      "intro": "Bufandas, mochilas y todo lo demás que se lleva al pabellón."
+    }
+  },
+  "catalogo": {
+    "filtrar": "Filtrar",
+    "fecharFiltros": "Cerrar los filtros",
+    "familia": "Familia",
+    "preco": "Precio",
+    "tudo": "Todo",
+    "feitios": {
+      "todos": "Todo",
+      "preco": "Con precio",
+      "consulta": "Precio a consultar",
+      "personalizavel": "Personalizables"
+    },
+    "todoEquipamento": "Toda la equipación",
+    "introTodas": "Equipación de partido, entrenamiento, prendas para aficionados y accesorios.",
+    "artigos": "{n} {n, plural, =1 {artículo} other {artículos}}",
+    "verArtigos": "Ver {n} {n, plural, =1 {artículo} other {artículos}}",
+    "limpar": "Quitar filtros",
+    "nada": "No hay nada con estos filtros. Quita uno para volver a ver el catálogo."
+  },
+  "cartao": {
+    "tamanhoUnico": "Talla única",
+    "escala": "De {de} a {ate}",
+    "sobConsulta": "Precio a consultar",
+    "referencia": "Referencia {referencia}",
+    "semPreco": "Este artículo no tiene precio cerrado: depende de la personalización y de la cantidad. Habla con el club y te decimos cuánto es.",
+    "pedirOrcamento": "Pedir presupuesto",
+    "tamanho": "Talla",
+    "escolher": "Elegir",
+    "nomeCostas": "Nombre en la espalda",
+    "opcional": "(opcional)",
+    "numero": "Número",
+    "personalizado": "Personalizado",
+    "personalizar": "Personalizar",
+    "personalizarSr": " con nombre y número (opcional)",
+    "juntou": "Añadido al carrito",
+    "juntar": "Añadir al carrito",
+    "erroTamanho": "Elige la talla.",
+    "erroNumero": "Falta el número."
+  },
+  "tamanhos": {
+    "anos": "{n} años",
+    "adulto": "Adulto",
+    "unico": "Talla única"
+  },
+  "pecas": {
+    "camisola": "Camiseta",
+    "calcao": "Pantalón corto",
+    "meias": "Medias",
+    "casacoCapuz": "Chaqueta con capucha",
+    "calcas": "Pantalón largo"
+  },
+  "produtos": {
+    "kit-atleta": {
+      "nome": "Kit de jugador",
+      "descricao": "Para jugadores de campo: la equipación principal, la alternativa blanca, el conjunto de entrenamiento azul y el chándal. Las dos equipaciones llevan medias."
+    },
+    "kit-guarda-redes": {
+      "nome": "Kit de portero",
+      "descricao": "Para quien va a la portería: la equipación verde, la alternativa azul marino, el conjunto de entrenamiento verde y el chándal. Las dos equipaciones llevan medias."
+    },
+    "equipamento-principal": {
+      "nome": "Equipación principal",
+      "descricao": "Los colores del club: camiseta a rayas amarillas y azules, pantalón corto azul y medias a juego. Sublimación total, con los patrocinadores de la temporada."
+    },
+    "equipamento-branco": {
+      "nome": "Equipación alternativa blanca",
+      "descricao": "La equipación alternativa, para cuando los colores del rival chocan con los nuestros."
+    },
+    "equipamento-azul": {
+      "nome": "Equipación azul marino",
+      "descricao": "Tercera equipación, en azul marino."
+    },
+    "equipamento-verde": {
+      "nome": "Equipación de portero",
+      "descricao": "Verde, para que el portero se distinga de todos los demás en el campo."
+    },
+    "conjunto-azul": {
+      "nome": "Conjunto de entrenamiento azul",
+      "descricao": "Camiseta azul y pantalón corto amarillo, del modelo estándar del proveedor. El conjunto más barato del catálogo."
+    },
+    "conjunto-verde": {
+      "nome": "Conjunto de entrenamiento verde",
+      "descricao": "Camiseta verde y pantalón corto negro, modelo estándar."
+    },
+    "conjunto-branco": {
+      "nome": "Conjunto blanco",
+      "descricao": "Camiseta blanca con el escudo y el nombre del club en la espalda, con pantalón corto azul marino."
+    },
+    "meias-azuis": {
+      "nome": "Medias altas azules",
+      "descricao": "Medias altas de partido, azules."
+    },
+    "meias-brancas": {
+      "nome": "Medias altas blancas",
+      "descricao": "Medias altas de partido, blancas."
+    },
+    "meias-marinho": {
+      "nome": "Medias altas azul marino",
+      "descricao": "Medias altas de partido, azul marino."
+    },
+    "meias-verdes": {
+      "nome": "Medias altas verdes",
+      "descricao": "Medias altas de partido, verdes, a juego con la equipación de portero."
+    },
+    "fato-treino": {
+      "nome": "Chándal completo",
+      "descricao": "Chaqueta con capucha y pantalón, en azul marino con las rayas del club. El chándal oficial."
+    },
+    "sweat-capuz": {
+      "nome": "Sudadera con capucha",
+      "descricao": "Sudadera con capucha, azul marino, con VALEJAS AC en el pecho. Solo la parte de arriba, sin el pantalón."
+    },
+    "calcas-treino": {
+      "nome": "Pantalón de chándal",
+      "descricao": "El pantalón del chándal, vendido por separado."
+    },
+    "bermuda": {
+      "nome": "Bermuda",
+      "descricao": "Pantalón corto largo azul marino, para entrenar o para el día a día."
+    },
+    "camisola-adepto-mote": {
+      "nome": "Camiseta de aficionado «A união faz a força»",
+      "descricao": "Azul marino, con el lema del club («La unión hace la fuerza») delante y VAC en la espalda. Para la grada, no para el campo."
+    },
+    "camisola-adepto-foto": {
+      "nome": "Camiseta de aficionado personalizada",
+      "descricao": "Sublimada con la foto de quien juega en casa, su nombre y su número. Se acuerda con el club qué fotos usar."
+    },
+    "sweat-personalizada": {
+      "nome": "Sudadera personalizada de familia",
+      "descricao": "Sudadera con «MÃE DO» («Madre de») o «PAI DO» («Padre de») y el nombre del jugador. Se lleva en la grada y se reconoce de lejos."
+    },
+    "casaco-california": {
+      "nome": "Chaqueta California",
+      "descricao": "Chaqueta de estilo universitario, negra con mangas blancas y el escudo en el pecho."
+    },
+    "cachecol-lema": {
+      "nome": "Bufanda del club",
+      "descricao": "Azul y amarilla, con VALEJAS AC por un lado y «o nosso lema é ganhar, ganhar, ganhar» («nuestro lema es ganar, ganar, ganar») por el otro."
+    },
+    "cachecol-personalizado": {
+      "nome": "Bufanda personalizada",
+      "descricao": "Con el nombre y el número de quien la lleva, sublimado por las dos caras."
+    },
+    "cachecol-rosa": {
+      "nome": "Bufanda rosa",
+      "descricao": "Versión en rosa, con VALEJAS AC por las dos caras."
+    },
+    "mochila": {
+      "nome": "Mochila del club",
+      "descricao": "Mochila sublimada con las rayas y el escudo, con bolsillo para las botas."
+    }
+  },
+  "carrinho": {
+    "voltar": "Volver a la tienda",
+    "titulo": "Tu <destaque>pedido</destaque>",
+    "registada": {
+      "titulo": "Pedido registrado",
+      "guarda": "Guarda este número. Es con él como el club te identifica.",
+      "confirmar": "El club comprobará lo que tiene en la sede y encargará lo que falte. Te avisaremos por email cuando esté listo para recoger.",
+      "aPagar": "A pagar: {valor}",
+      "dadosPagamento": "— los datos de pago van en el email.",
+      "voltar": "Volver a la tienda",
+      "contactos": "Contacto"
+    },
+    "vazio": {
+      "titulo": "El carrito está vacío",
+      "texto": "Todavía no has elegido nada. El kit de formación y el resto de la equipación están en la tienda.",
+      "verLoja": "Ver la tienda"
+    },
+    "oQueLevas": "Lo que te llevas",
+    "tamanho": "Talla {tamanho}",
+    "menosUm": "Uno menos: {nome}",
+    "maisUm": "Uno más: {nome}",
+    "remover": "Quitar {nome}",
+    "prazo": "Lo que haya en la sede se aparta enseguida. Lo que falte se pide al proveedor y el pedido estará listo cuando llegue, en un máximo de {semanas} semanas. Te avisamos por email.",
+    "quemEncomenda": "Quién hace el pedido",
+    "campos": {
+      "nome": "Nombre completo",
+      "email": "Email",
+      "telemovel": "Móvil",
+      "socio": "Número de socio",
+      "atleta": "Para qué jugador",
+      "atletaDica": "Si el pedido es para un hijo u otro jugador",
+      "notas": "Notas",
+      "opcional": "(opcional)"
+    },
+    "quandoPagas": "Cuándo pagas",
+    "momentos": {
+      "sinal": {
+        "nome": "Pagar una señal ahora",
+        "descricao": "Aseguras el pedido con una parte del importe. El resto se paga al recogerlo en la sede."
+      },
+      "total": {
+        "nome": "Pagarlo todo ahora",
+        "descricao": "Queda resuelto. Solo tienes que pasar por la sede a recogerlo."
+      }
+    },
+    "percentagemSinal": " Es el {percentagem} % del total.",
+    "resumo": "Resumen",
+    "totalEncomenda": "Total del pedido",
+    "faltaLevantamento": "Pendiente al recoger",
+    "aPagarAgora": "A pagar ahora",
+    "aRegistar": "Registrando…",
+    "encomendar": "Hacer el pedido",
+    "levantamento": "Recogida siempre en la sede del club. No enviamos a domicilio.",
+    "erros": {
+      "nome": "Escribe el nombre completo.",
+      "email": "Email no válido.",
+      "telemovel": "Móvil portugués no válido.",
+      "vazio": "El carrito está vacío.",
+      "registar": "No se ha podido registrar el pedido.",
+      "ligacao": "Error de conexión. Inténtalo de nuevo."
+    }
+  }
+}

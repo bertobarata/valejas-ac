@@ -5,27 +5,22 @@
  * na sede. O site não os recebe preenchidos — nem devia: o exame
  * médico é assinado por um médico e leva dados de saúde.
  *
- * Ficheiros em /public/documentos/.
+ * Ficheiros em /public/documentos/. O texto (nome, descrição, como
+ * usar) está em messages/<lingua>/inscricoes.json → documentos.<chave>.
  * ─────────────────────────────────────────────────────────────────
  */
 
 export interface Documento {
-  nome:      string;
+  /** Chave das traduções: documentos.<chave>.{nome,descricao,comoUsar}. */
+  chave:     string;
   ficheiro:  string;
-  descricao: string;
-  /** O que a pessoa tem de fazer com ele antes de o entregar. */
-  comoUsar:  string;
-  /** Quem o emitiu, quando não é o clube. */
+  /** Quem o emitiu, quando não é o clube. Nome próprio — não se traduz. */
   origem?:   string;
 }
 
 export const EXAME_MEDICO: Documento = {
-  nome: "Exame médico desportivo",
+  chave: "exameMedico",
   ficheiro: "/documentos/exame-medico-desportivo.pdf",
-  descricao:
-    "O formulário oficial que atesta que estás apto para a prática desportiva. É obrigatório para competir e para treinar no clube.",
-  comoUsar:
-    "Imprime, leva ao teu médico ou a um centro de medicina desportiva, e entrega o original na sede. O clube não o recebe pelo site.",
   origem: "Instituto Português do Desporto e Juventude",
 };
 

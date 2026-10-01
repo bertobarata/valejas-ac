@@ -29,6 +29,8 @@ export const CATALOGO_DE_EXEMPLO = false;
 export const FORNECEDOR = {
   nome: "ZEMIG Sportswear",
   atualizado: "14 de setembro de 2026",
+  /** A mesma data, para a loja a escrever em cada língua. */
+  atualizadoEm: "2026-09-14",
 };
 
 /** Prazo máximo para o que não está em stock. */
@@ -70,6 +72,8 @@ export interface Produto {
   imagem?:     string;
   /** Conjunto montado a partir de outras peças do catálogo. */
   kit?:        boolean;
+  /** Slugs das peças do kit, pela mesma ordem de `inclui`. */
+  pecas?:      readonly string[];
 }
 
 export const CATEGORIAS: {
@@ -493,6 +497,7 @@ function montarKit(def: DefinicaoKit, catalogo: Produto[]): Produto {
     variantes: pecas[0]?.variantes ?? [],
     imagem: def.imagem,
     kit: true,
+    pecas: pecas.map((p) => p.slug),
   };
 }
 
@@ -527,8 +532,50 @@ export function sinalDe(total: number): number {
   return Math.round(total * (SINAL_PERCENTAGEM / 100) * 100) / 100;
 }
 
-export function formatEuros(v: number): string {
-  return new Intl.NumberFormat("pt-PT", {
+/**
+ * TRADUÇÕES DA LOJA
+ * ─────────────────────────────────────────────────────────────────
+ * Os nomes, descrições e tamanhos ficam aqui em português: é assim
+ * que vão para a API, para os emails e para a Direção. O site noutras
+ * línguas vai buscar o texto a messages/<lingua>/loja.json, pelo slug
+ * do produto, pelo id da categoria ou pelas chaves abaixo.
+ * ─────────────────────────────────────────────────────────────────
+ */
+
+/** O que vem em `inclui` (fora dos kits) → chave em `loja.pecas`. */
+export const CHAVE_PECA: Record<string, string> = {
+  "Camisola":         "camisola",
+  "Calção":           "calcao",
+  "Meias":            "meias",
+  "Casaco com capuz": "casacoCapuz",
+  "Calças":           "calcas",
+};
+
+type Tradutor = (chave: string, valores?: Record<string, string | number>) => string;
+
+/**
+ * O tamanho como se lê na língua da página. O valor que segue para o
+ * carrinho e para a API continua a ser o português da etiqueta.
+ */
+export function nomeTamanho(tamanho: string, t: Tradutor): string {
+  const idade = /^(\d+) anos$/.exec(tamanho);
+  if (idade) return t("tamanhos.anos", { n: Number(idade[1]) });
+  if (tamanho === "Adulto")        return t("tamanhos.adulto");
+  if (tamanho === "Tamanho único") return t("tamanhos.unico");
+  return tamanho;
+}
+
+/**
+ * Língua do site → língua do Intl para os preços. O crioulo usa a
+ * formatação portuguesa: nem todos os browsers têm dados para `kea`, e
+ * o preço do servidor e o do browser têm de sair iguais.
+ */
+const LOCALE_PRECOS: Record<string, string> = {
+  pt: "pt-PT", en: "en-GB", es: "es-ES", fr: "fr-FR", kea: "pt-PT",
+};
+
+export function formatEuros(v: number, lingua: string = "pt"): string {
+  return new Intl.NumberFormat(LOCALE_PRECOS[lingua] ?? "pt-PT", {
     style: "currency",
     currency: "EUR",
     minimumFractionDigits: Number.isInteger(v) ? 0 : 2,

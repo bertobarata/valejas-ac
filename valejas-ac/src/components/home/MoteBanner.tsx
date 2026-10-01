@@ -10,14 +10,17 @@
  */
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MOTE } from "@/lib/data/clube";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MoteBanner() {
   const ref = useRef<HTMLElement>(null);
+  // O mote e o contexto vivem em MOTE (@/lib/data/clube), em português;
+  // aqui vêm das traduções, com o mesmo texto em PT.
+  const t = useTranslations("inicio.mote");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -37,16 +40,17 @@ export default function MoteBanner() {
     <section ref={ref} className="section-dark bg-blue text-white bg-texture">
       <div className="section-container py-20 md:py-28 text-center">
         <p className="mote-linha font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow mb-6">
-          O que o mote quer dizer
+          {t("etiqueta")}
         </p>
 
         <p className="mote-linha font-headline font-black uppercase leading-[0.9] tracking-tighter wdth-condensed text-3xl md:text-5xl">
-          A união faz a{" "}
-          <span className="text-yellow">força</span>
+          {t.rich("frase", {
+            destaque: (c) => <span className="text-yellow">{c}</span>,
+          })}
         </p>
 
         <p className="mote-linha font-body text-base md:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto mt-8">
-          {MOTE.contexto}
+          {t("contexto")}
         </p>
       </div>
     </section>

@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "contacto": {
+      "titulo": "Membres",
+      "descricao": "Devenez membre du Valejas AC. Cotisation de 1 € par mois. Faites partie de la maison du club."
+    },
+    "inscricao": {
+      "titulo": "Adhésion",
+      "descricao": "Devenez membre du Valejas Atlético Clube. Cotisation de {quota} par mois. Ouvert à tous, et obligatoire pour pratiquer une discipline."
+    }
+  },
+  "hero": {
+    "etiqueta": "Faites partie de la famille",
+    "titulo": "Rejoignez le",
+    "tituloDestaque": "club",
+    "texto": "Faites partie de la maison du Valejas. Un euro par mois, une demande remplie, et vous vivez le club de l’intérieur."
+  },
+  "quota": {
+    "etiqueta": "Cotisation",
+    "titulo": "{quota} par <destaque>mois</destaque>",
+    "texto": "Une seule cotisation, la même pour tout le monde. Pas de catégories, pas de droit d’entrée. Vous choisissez seulement à quelle fréquence vous voulez payer.",
+    "inscrever": "Devenir membre",
+    "aberto": "Ouvert à tous. Pour pratiquer le futsal, l’athlétisme ou toute autre discipline, il faut d’abord être membre — l’inscription sportive se fait ensuite au siège.",
+    "taxa": "Les paiements en ligne entraînent des frais de traitement, affichés avant le paiement.",
+    "podesPagarCom": "Vous pouvez payer avec"
+  },
+  "periodicidades": {
+    "mensal": {
+      "nome": "Mensuel",
+      "nota": "Tous les mois"
+    },
+    "trimestral": {
+      "nome": "Trimestriel",
+      "nota": "Tous les trois mois"
+    },
+    "semestral": {
+      "nome": "Semestriel",
+      "nota": "Deux fois par an"
+    },
+    "anual": {
+      "nome": "Annuel",
+      "nota": "Une fois par an"
+    }
+  },
+  "metodos": {
+    "mbway": {
+      "nome": "MB WAY",
+      "descricao": "Vous envoyez le montant au numéro du club avec l’application MB WAY."
+    },
+    "referencia": {
+      "nome": "Entité et Référence",
+      "descricao": "Vous recevez une entité et une référence pour payer à un distributeur Multibanco ou par votre banque en ligne. Valable 24 heures."
+    },
+    "debitoDireto": {
+      "nome": "Prélèvement Automatique",
+      "descricao": "La cotisation est prélevée automatiquement sur votre compte. Plus d’oubli possible."
+    },
+    "transferencia": {
+      "nome": "Virement Bancaire",
+      "descricao": "Vous faites un virement sur l’IBAN du club avec votre nom en référence."
+    }
+  },
+  "inscricao": {
+    "voltar": "Membres",
+    "titulo": "Devenez <destaque>Membre</destaque>",
+    "texto": "La cotisation est de {quota} par mois, la même pour tout le monde. Tout le monde peut s’inscrire — et pour pratiquer une discipline au club, il faut d’abord être membre. Cela prend cinq minutes."
+  },
+  "cta": {
+    "etiqueta": "Faites-en partie",
+    "titulo": "Le Valejas est à nous tous",
+    "tituloDestaque": "et maintenant il est aussi à moi",
+    "texto": "Devenez membre pour {quota} par mois, portez les couleurs, venez au gymnase. Le club appartient à ceux qui sont là.",
+    "fazerSocio": "Devenir membre",
+    "loja": "Boutique du club",
+    "contactos": "Contact",
+    "escreverAoClube": "Écrire au club"
+  },
+  "formulario": {
+    "passos": {
+      "identificacao": "Identité",
+      "contactos": "Coordonnées",
+      "documentos": "Documents",
+      "quota": "Cotisation",
+      "pagamento": "Paiement"
+    },
+    "progresso": "Progression",
+    "passoDe": "Étape {n} sur {total}",
+    "blocos": {
+      "quemEs": "Qui êtes-vous",
+      "ondeTeEncontramos": "Où vous joindre",
+      "documentos": "Documents",
+      "encarregado": "Parent ou Tuteur",
+      "encarregadoNota": "Le candidat a {idade, plural, one {# an} other {# ans}}. Selon la loi, c’est le représentant légal qui autorise le traitement des données.",
+      "quota": "Cotisation",
+      "quotaNota": "La cotisation du club est de {quota} par mois, la même pour tous les membres.",
+      "comoPagar": "Comment souhaitez-vous payer"
+    },
+    "campos": {
+      "nomeCompleto": "Nom complet",
+      "dataNascimento": "Date de naissance",
+      "sexo": "Sexe",
+      "estadoCivil": "Situation familiale",
+      "naturalidade": "Lieu de naissance",
+      "naturalidadeDica": "Commune où vous êtes né(e)",
+      "nacionalidade": "Nationalité",
+      "nomePai": "Nom du père",
+      "nomeMae": "Nom de la mère",
+      "morada": "Adresse",
+      "codigoPostal": "Code postal",
+      "localidade": "Localité",
+      "email": "E-mail",
+      "emailDica": "C’est par là que le club confirme la demande",
+      "telemovel": "Portable",
+      "telefoneFixo": "Téléphone fixe",
+      "cc": "N° de Cartão de Cidadão",
+      "ccValidade": "Date de validité du Cartão de Cidadão",
+      "nif": "N° fiscal (NIF)",
+      "profissao": "Profession",
+      "parentesco": "Lien de parenté",
+      "iban": "IBAN",
+      "ibanTitular": "Titulaire du compte",
+      "proponente": "Proposé par",
+      "proponenteDica": "Nom d’un membre qui vous présente au club, le cas échéant",
+      "opcional": "(facultatif)",
+      "seleciona": "Sélectionnez…"
+    },
+    "sexos": {
+      "M": "Masculin",
+      "F": "Féminin",
+      "I": "Non précisé"
+    },
+    "estadosCivis": {
+      "solteiro": "Célibataire",
+      "casado": "Marié(e)",
+      "uniaoDeFacto": "Union libre",
+      "divorciado": "Divorcé(e)",
+      "separado": "Séparé(e)",
+      "viuvo": "Veuf/Veuve"
+    },
+    "parentescos": {
+      "mae": "Mère",
+      "pai": "Père",
+      "avoFeminino": "Grand-mère",
+      "avoMasculino": "Grand-père",
+      "tutor": "Tuteur/Tutrice légal(e)",
+      "outro": "Autre"
+    },
+    "erros": {
+      "obrigatorio": "Champ obligatoire.",
+      "nomeCompleto": "Indiquez le nom complet.",
+      "data": "Date non valide.",
+      "codigoPostal": "Format 0000-000.",
+      "email": "E-mail non valide.",
+      "telemovelPortugues": "Numéro de portable portugais non valide.",
+      "telemovel": "Numéro de portable non valide.",
+      "telefoneFixo": "Numéro de téléphone fixe non valide.",
+      "ccFormato": "Numéro de CC non valide (8 chiffres + chiffre + 2 lettres + chiffre).",
+      "cc": "Numéro de CC non valide.",
+      "ccValidade": "Carte expirée.",
+      "nif": "NIF non valide.",
+      "metodo": "Choisissez un mode de paiement.",
+      "iban": "IBAN portugais non valide.",
+      "rgpd": "Vous devez autoriser le traitement des données pour continuer.",
+      "envio": "Impossible d’envoyer. Veuillez réessayer.",
+      "ligacao": "Échec de connexion. Vérifiez votre connexion Internet et réessayez.",
+      "referenciaInativa": "La référence automatique n’est pas encore active. Le club vous l’enverra par e-mail.",
+      "referenciaFalhou": "Impossible de générer la référence.",
+      "referenciaLigacao": "Échec de connexion lors de la génération de la référence.",
+      "pagamentoIniciar": "Impossible de lancer le paiement.",
+      "pagamentoLigacao": "Échec de connexion au service de paiement.",
+      "fotoTipo": "Le fichier doit être au format JPG, PNG ou WEBP.",
+      "fotoTamanho": "4 Mo maximum."
+    },
+    "quota": {
+      "pergunta": "À quelle fréquence souhaitez-vous payer ?",
+      "taxa": "Plus {valor} de frais de paiement en ligne."
+    },
+    "consentimento": {
+      "maior": "J’autorise le traitement de mes données aux fins de mon adhésion en tant que membre du Valejas Atlético Clube.",
+      "menor": "En tant que parent ou tuteur, j’autorise le traitement des données ci-dessus aux fins de l’adhésion en tant que membre du Valejas Atlético Clube.",
+      "uso": "Les données sont envoyées par e-mail au club et servent à remplir la fiche de membre et à émettre la carte.",
+      "politica": "Politique de confidentialité",
+      "proposta": "Ceci est une <forte>demande</forte>, pas une admission. La Direction l’examine en réunion et vous contacte. Ce n’est qu’ensuite qu’il y a un paiement à effectuer."
+    },
+    "navegacao": {
+      "voltar": "Retour",
+      "continuar": "Continuer",
+      "irParaPagamento": "Passer au paiement"
+    },
+    "foto": {
+      "rotulo": "Photo",
+      "remover": "Supprimer la photo",
+      "escolher": "Choisir un fichier — JPG, PNG ou WEBP, jusqu’à 4 Mo",
+      "ajuda": "Elle sert pour la carte de membre. Photo d’identité, de face, fond clair."
+    },
+    "valor": {
+      "quota": "Cotisation",
+      "taxa": "Frais de paiement en ligne",
+      "aPagar": "À payer",
+      "aPagarAgora": "À payer maintenant"
+    },
+    "dados": {
+      "iban": "IBAN",
+      "titular": "Titulaire",
+      "descricao": "Libellé",
+      "mbway": "MB WAY",
+      "nomeAIndicar": "Nom à indiquer",
+      "entidade": "Entité",
+      "referencia": "Référence",
+      "valor": "Montant",
+      "validaAte": "Valable jusqu’au",
+      "direcaoEnvia": "(la Direction vous l’enverra par e-mail)"
+    },
+    "pagamento": {
+      "titulo": "Paiement",
+      "soDepois": "{metodo} — votre fiche n’est envoyée au club qu’après cette étape.",
+      "mbwayPedido": "Vous allez recevoir une demande de paiement dans l’application MB WAY. Confirmez-la et cette page se mettra à jour toute seule — vous n’avez à prévenir personne.",
+      "pagarMbway": "Payer {valor} avec MB WAY",
+      "aguarda": "En attente de votre confirmation",
+      "aguardaTexto": "Ouvrez l’application MB WAY et acceptez la demande. Vous avez 4 minutes. Ne fermez pas cette page.",
+      "expirado": "La demande a expiré sans confirmation.",
+      "recusado": "Le paiement a été refusé dans l’application.",
+      "erro": "Un problème est survenu avec le service de paiement.",
+      "tentarOutraVez": "Réessayer",
+      "mbwayManual": "Le paiement automatique n’est pas disponible pour le moment. Envoyez le montant via l’application MB WAY au numéro du club, avec votre nom dans le message.",
+      "transferencia": "Faites un virement sur l’IBAN du club en indiquant votre nom dans le libellé.",
+      "referencia": "Payez à un distributeur Multibanco ou par votre banque en ligne avec ces données. La référence est valable 24 heures.",
+      "referenciaGuarda": "Conservez ces données. Une fois le paiement effectué, le club reçoit la confirmation automatiquement — inutile de prévenir qui que ce soit.",
+      "aGerar": "Génération de la référence…",
+      "debitoDireto": "Le club vous envoie le mandat de prélèvement à signer. Ensuite, la cotisation est prélevée automatiquement sur votre compte.",
+      "aEnviar": "Envoi…",
+      "concluir": "Finaliser l’adhésion"
+    },
+    "concluida": {
+      "titulo": "Bienvenue au club",
+      "pago": "Paiement confirmé, {nome}. Vous êtes inscrit et votre fiche a été transmise à la Direction.",
+      "pendente": "Votre fiche est arrivée à la Direction, {nome}. Il reste à confirmer le paiement de la cotisation pour que la carte soit émise.",
+      "transferencia": "Faites un virement sur l’IBAN du club en utilisant votre nom comme libellé, pour que la Direction sache de qui il vient.",
+      "debitoDireto": "Nous avons enregistré votre IBAN. Le club vous envoie le mandat de prélèvement à signer — ensuite la cotisation est prélevée automatiquement et vous n’avez plus à vous en soucier.",
+      "mbway": "Ouvrez l’application MB WAY, envoyez le montant au numéro du club et indiquez votre nom dans le message.",
+      "referencia": "Vous avez choisi {metodo}. Le club vous enverra l’entité et la référence par e-mail.",
+      "depois": "Une fois le paiement confirmé, le Président émet votre numéro de membre et votre carte, à retirer au siège du club. Si vous souhaitez vous inscrire à une discipline, profitez-en — l’inscription sportive se fait là-bas.",
+      "voltarInicio": "Retour à l’accueil"
+    }
+  }
+}

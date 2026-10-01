@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "titulo": "Inscrições",
+    "descricao": "Como começar a praticar no Valejas Atlético Clube: fazer-se sócio, pedir vaga na modalidade e fechar a inscrição na sede."
+  },
+  "cabecalho": {
+    "etiqueta": "Começar a praticar",
+    "titulo": "Inscrições",
+    "texto": "{n} modalidades, dos petizes aos seniores. Começa-se sempre da mesma maneira — e são três passos."
+  },
+  "passos": {
+    "socio": {
+      "titulo": "Primeiro, ser sócio",
+      "texto": "Não se pratica no clube sem ser sócio — vale para todas as modalidades e para todas as idades. A quota é de {quota} por mês, igual para toda a gente.",
+      "accao": "Fazer-me sócio"
+    },
+    "inscricao": {
+      "titulo": "Depois, a inscrição",
+      "texto": "Preenche o formulário aqui em baixo, com a autorização de direitos de imagem que o clube pede a todos os atletas. Cada modalidade tem poucos lugares — confirmamos a vaga e respondemos."
+    },
+    "sede": {
+      "titulo": "Por fim, na sede",
+      "texto": "Havendo vaga, a inscrição fecha-se na sede: assina-se a ficha da federação e entrega-se o exame médico, que se descarrega aqui em baixo. É também aí que se escolhe o horário e se trata do equipamento."
+    }
+  },
+  "envio": {
+    "titulo": "Enviar inscrição",
+    "sede": "A inscrição fecha-se na sede, com a ficha da federação e o exame médico — isto é o que se adianta daqui. Nada fica guardado neste site: segue por email para o clube e desaparece.",
+    "direitos": "Inclui a autorização de <link>direitos de imagem</link>, obrigatória para todos os atletas."
+  },
+  "levar": {
+    "titulo": "O que levar à sede",
+    "texto": "A inscrição só fica fechada com estes papéis entregues. Descarrega, trata deles, e traz-nos.",
+    "oficialDe": "Formulário oficial do {origem}.",
+    "descarregar": "Descarregar PDF",
+    "maisIsto": "E mais isto",
+    "itens": {
+      "ccAtleta": "Cartão de Cidadão do atleta",
+      "ccEncarregado": "Cartão de Cidadão do encarregado de educação, se o atleta for menor",
+      "fotografia": "Uma fotografia tipo passe",
+      "fichaFederacao": "A ficha da federação, que se assina lá"
+    },
+    "horario": "A sede está aberta de segunda a sexta, das 09h30 às 17h00, e nos dias de jogo."
+  },
+  "documentos": {
+    "exameMedico": {
+      "nome": "Exame médico desportivo",
+      "descricao": "O formulário oficial que atesta que estás apto para a prática desportiva. É obrigatório para competir e para treinar no clube.",
+      "comoUsar": "Imprime, leva ao teu médico ou a um centro de medicina desportiva, e entrega o original na sede. O clube não o recebe pelo site."
+    }
+  },
+  "valores": {
+    "titulo": "Quanto custa",
+    "texto": "Os valores da época {epoca}, tal como saíram no comunicado da Direção. O equipamento compra-se à parte, na loja.",
+    "mensalidadesFutsal": "Mensalidades de futsal",
+    "descontoIrmaos": "Menos {valor} por cada irmão",
+    "aviso": "Os valores acima são os do comunicado de setembro. Confirma na secretaria antes de pagar — é lá que se fecha a inscrição.",
+    "periodo": {
+      "porEpoca": "por época",
+      "porMes": "por mês",
+      "umaVez": "uma vez"
+    },
+    "inclui": {
+      "inscricaoClube": "Inscrição no clube",
+      "inscricaoAfLisboa": "Inscrição na AF Lisboa",
+      "seguroDesportivo": "Seguro desportivo",
+      "cartaoSocio": "Cartão de sócio"
+    },
+    "itens": {
+      "inscricao": {
+        "nome": "Inscrição"
+      },
+      "reinscricao": {
+        "nome": "Reinscrição",
+        "nota": "Para quem já jogou no clube na época anterior."
+      },
+      "exameMedico": {
+        "nome": "Exame médico",
+        "nota": "Obrigatório para treinar e competir. Pode ser feito no médico de família, e nesse caso não se paga ao clube."
+      },
+      "quota": {
+        "nome": "Quota de sócio",
+        "nota": "Obrigatória, e já incluída na inscrição e na reinscrição."
+      },
+      "mensalidadeFormacao": {
+        "nome": "Petizes a juvenis"
+      },
+      "mensalidadeJuniores": {
+        "nome": "Juniores"
+      }
+    }
+  },
+  "pedido": {
+    "modalidade": "Que modalidade *",
+    "escolherModalidade": "Escolher modalidade",
+    "parceria": "O {modalidade} é dado em parceria com a {parceiro}, nas instalações do clube.",
+    "apenasFormacao": "Só há {modalidade} para os mais novos — não há vertente sénior.",
+    "nome": "Nome do atleta *",
+    "dataNascimento": "Data de nascimento *",
+    "idade": "{idade} anos",
+    "menorDeIdade": " — menor de idade",
+    "telemovel": "Telemóvel *",
+    "email": "Email *",
+    "encarregado": "Encarregado de educação *",
+    "encarregadoAjuda": "O atleta é menor — o telemóvel e o email acima são os de quem responde por ele.",
+    "jaSocio": "Já sou sócio do clube",
+    "numeroSocio": "Número de sócio *",
+    "numeroSocioAjuda": "Está no cartão. Se não o tiveres à mão, a sede confirma-o.",
+    "naoSocio": "Ainda não és? Podes enviar a inscrição à mesma — mas só se fecha depois de te fazeres sócio, e isso são {quota} por mês.",
+    "notas": "Alguma coisa que devamos saber",
+    "opcional": "(opcional)",
+    "direitosTitulo": "Direitos de imagem",
+    "direitosTexto": "O clube fotografa e filma treinos, jogos e convívios, e publica-os no site e nas redes. Para isso precisa da tua autorização — é obrigatória para todos os atletas e pode ser retirada a qualquer momento, por escrito.",
+    "lerTermo": "Ler o termo completo",
+    "aEnviar": "A enviar…",
+    "enviar": "Enviar inscrição",
+    "erroEnvio": "Não foi possível enviar o pedido.",
+    "erroLigacao": "Falha de ligação. Tenta outra vez.",
+    "feito": {
+      "titulo": "Inscrição enviada",
+      "texto": "A inscrição em {modalidade} chegou ao clube. Vamos confirmar que há vaga e responder ao contacto que deixaste. Depois é passar pela sede para fechar a ficha da federação e entregar o exame médico.",
+      "faltaFazer": "Falta fazer",
+      "exame": "<forte>O exame médico.</forte> É obrigatório para treinar e competir. Imprime, leva ao médico, e entrega o original na sede.",
+      "descarregarExame": "Descarregar o exame médico",
+      "socio": "O primeiro passo: <forte>ser sócio</forte>. Sem isso não se pratica no clube — e são {quota} por mês.",
+      "fazerSocio": "Fazer-me sócio"
+    }
+  },
+  "direitosImagem": {
+    "meta": {
+      "titulo": "Direitos de imagem",
+      "descricao": "Termo de consentimento para captação e utilização de imagens do Valejas Atlético Clube, nos termos do RGPD."
+    },
+    "avisoVersao": "",
+    "voltarInscricoes": "Voltar às inscrições",
+    "titulo": "Direitos de <destaque>imagem</destaque>",
+    "documentoTitulo": "Termo de Consentimento para Captação e Utilização de Imagens — RGPD",
+    "paragrafos": {
+      "p1": "Nos termos do Regulamento (UE) 2016/679 do Parlamento Europeu e do Conselho, conhecido como Regulamento Geral sobre a Proteção de Dados (RGPD), o Valejas Atlético Clube informa que, no âmbito da sua atividade desportiva e institucional, poderá proceder à captação, gravação e divulgação de imagens e vídeos dos seus atletas.",
+      "p2": "A recolha e tratamento destes dados tem como finalidade a promoção das atividades do clube através de diversos canais de comunicação, incluindo, mas não se limitando a, redes sociais (Facebook, Instagram, YouTube), website oficial do clube, materiais promocionais e institucionais (como cartazes, brochuras e vídeos), comunicação interna e externa, bem como divulgação em órgãos de comunicação social.",
+      "p3": "O tratamento dos dados pessoais inclui a captação de imagem (fotografias e vídeos) e som (voz), nomeadamente em entrevistas, vídeos institucionais, treinos ou eventos desportivos. Poderá ainda, mediante autorização, incluir o nome próprio do atleta e informação desportiva relevante, como o escalão ou a participação em competições. Os dados recolhidos poderão ser partilhados com plataformas digitais, órgãos de comunicação social e entidades oficiais do desporto (como associações e federações), sempre no estrito cumprimento da legislação aplicável e com o devido respeito pela privacidade dos atletas.",
+      "p4": "Os dados recolhidos serão conservados por um período máximo de 10 anos, salvo pedido de eliminação antecipada por parte do titular dos dados ou do seu representante legal. O consentimento agora prestado pode ser revogado a qualquer momento, mediante comunicação escrita dirigida ao clube, sem prejuízo da legalidade do tratamento efetuado até essa data.",
+      "p5": "Os titulares dos dados, ou os seus encarregados de educação, têm, nos termos do RGPD, o direito de solicitar o acesso aos dados pessoais, a sua retificação, apagamento, limitação ou oposição ao tratamento, bem como o direito à portabilidade dos dados. Poderão também apresentar reclamação junto da Comissão Nacional de Proteção de Dados (CNPD), enquanto autoridade nacional de controlo.",
+      "p6": "Para qualquer questão relacionada com a proteção de dados, o clube poderá ser contactado através do email {email} ou telefone {telefone}."
+    },
+    "declaracao": {
+      "maior": "Declaro que li, compreendi e autorizo a captação e utilização da minha imagem e do meu som, nos termos acima descritos.",
+      "menor": "Declaro que li, compreendi e autorizo a captação e utilização da imagem e do som do(a) menor acima identificado(a), nos termos acima descritos."
+    },
+    "oQueSeAceita": "O que se aceita",
+    "quandoMenor": "Quando o atleta é menor de idade, quem aceita é o encarregado de educação, e a declaração passa a ser esta:",
+    "clube": {
+      "fundado": "fundado em {data}",
+      "dataFundacao": "1 de novembro de 1966",
+      "estatuto": "Instituição de Utilidade Pública nos termos do DEC. — Lei 460/77",
+      "contribuinte": "contribuinte n.º {numero}",
+      "telefone": "telefone {numero}",
+      "protecaoDados": "Para questões de proteção de dados:"
+    },
+    "voltarInscricao": "Voltar à inscrição"
+  }
+}

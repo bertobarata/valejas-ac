@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { paraPagina } from "@/lib/seo/metadados";
+import type { Lingua } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { MapPin, Clock } from "lucide-react";
 import {
@@ -10,23 +13,36 @@ import CatalogoLoja from "@/components/loja/CatalogoLoja";
 import BarraCarrinho from "@/components/loja/BarraCarrinho";
 import RodapeLoja from "@/components/loja/RodapeLoja";
 
-export const metadata: Metadata = paraPagina("/loja", {
-  title: "Loja",
-  description:
-    "Equipamento oficial do Valejas Atlético Clube. Kit obrigatório de atleta, material de jogo, treino e acessórios. Levantamento sempre na sede.",
-});
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Lingua };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "loja.meta" });
+  return paraPagina("/loja", { title: t("titulo"), description: t("descricao") }, locale);
+}
 
-export default function LojaPage() {
+export default function LojaPage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("loja");
+
+  // Inglês britânico («14 September 2026»), não o americano. Isto só
+  // corre no servidor, por isso o crioulo pode usar os dados de `kea`.
+  const localeData = locale === "en" ? "en-GB" : locale === "pt" ? "pt-PT" : locale;
+  const dataCatalogo = new Intl.DateTimeFormat(localeData, {
+    day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Lisbon",
+  }).format(new Date(`${FORNECEDOR.atualizadoEm}T12:00:00Z`));
+
   return (
     <div className="bg-surface pb-28">
       {/* Cabeçalho */}
       <section className="bg-surface-low bg-texture border-b border-on-surface/10">
         <div className="section-container py-16 md:py-20">
           <p className="font-body text-xs font-bold uppercase tracking-[0.35em] text-yellow mb-3">
-            Equipamento oficial
+            {t("cabecalho.etiqueta")}
           </p>
           <h1 className="section-title text-4xl md:text-6xl">
-            Loja do <span>clube</span>
+            {t.rich("cabecalho.titulo", { destaque: (c) => <span>{c}</span> })}
           </h1>
 
           {/* As duas regras que governam tudo o resto — ditas aqui uma vez,
@@ -34,12 +50,11 @@ export default function LojaPage() {
           <div className="grid sm:grid-cols-2 gap-6 mt-8 max-w-2xl">
             <p className="flex items-start gap-3 font-body text-on-surface-muted leading-relaxed">
               <MapPin size={18} className="text-yellow shrink-0 mt-1" aria-hidden />
-              Levantamento sempre na sede do clube. Não enviamos para casa.
+              {t("cabecalho.levantamento")}
             </p>
             <p className="flex items-start gap-3 font-body text-on-surface-muted leading-relaxed">
               <Clock size={18} className="text-yellow shrink-0 mt-1" aria-hidden />
-              O que não houver em stock é encomendado, num prazo máximo de{" "}
-              {PRAZO_ENCOMENDA_SEMANAS} semanas.
+              {t("cabecalho.prazo", { semanas: PRAZO_ENCOMENDA_SEMANAS })}
             </p>
           </div>
         </div>
@@ -50,22 +65,16 @@ export default function LojaPage() {
         <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] gap-10 lg:gap-14 items-start">
           <div className="lg:sticky lg:top-28">
             <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow mb-3">
-              Obrigatório para quem joga
+              {t("kit.etiqueta")}
             </p>
             <h2 className="font-headline font-black uppercase text-4xl md:text-5xl tracking-tighter text-on-surface leading-none">
-              Kit de <span className="text-yellow">atleta</span>
+              {t.rich("kit.titulo", { destaque: (c) => <span className="text-yellow">{c}</span> })}
             </h2>
             <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-5 max-w-md">
-              Quem se inscreve para jogar leva quatro peças: o equipamento
-              principal, o alternativo para quando as cores chocam com as do
-              adversário, um conjunto para treinar durante a semana e o fato
-              de treino.
+              {t("kit.texto")}
             </p>
             <p className="font-body text-on-surface-muted leading-relaxed mt-4 max-w-md">
-              O guarda-redes tem o seu kit, em verde. Os equipamentos de jogo
-              já levam as meias. Escolhe o
-              tamanho uma vez e leva tudo de uma assentada; cada peça também
-              se compra à parte aqui em baixo.
+              {t("kit.guardaRedes")}
             </p>
           </div>
 
@@ -84,12 +93,12 @@ export default function LojaPage() {
       {/* Dúvidas */}
       <section className="section-container">
         <p className="font-body text-on-surface-muted">
-          Dúvidas de tamanhos? Passa pela sede e experimenta antes de encomendar,
-          ou <Link href="/contactos" className="text-yellow underline">fala connosco</Link>.
+          {t.rich("duvidas.texto", {
+            link: (c) => <Link href="/contactos" className="text-yellow underline">{c}</Link>,
+          })}
         </p>
         <p className="font-body text-sm text-on-surface-muted mt-3">
-          Equipamento produzido pela {FORNECEDOR.nome}. Catálogo e preços
-          atualizados a {FORNECEDOR.atualizado}.
+          {t("duvidas.fornecedor", { fornecedor: FORNECEDOR.nome, data: dataCatalogo })}
         </p>
       </section>
 

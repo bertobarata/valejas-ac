@@ -1,18 +1,25 @@
 import type { Metadata } from "next";
+import { useLocale, useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { paraPagina } from "@/lib/seo/metadados";
 import { Link } from "@/i18n/navigation";
+import type { Lingua } from "@/i18n/routing";
 import { ArrowRight, ClipboardCheck, Download, FileText, MessageSquare, UserPlus } from "lucide-react";
-import { MODALIDADES, VAGAS } from "@/lib/data/modalidades";
+import { MODALIDADES } from "@/lib/data/modalidades";
 import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
 import { DOCUMENTOS } from "@/lib/data/documentos";
 import PedidoInscricao from "@/components/inscricoes/PedidoInscricao";
 import ValoresEpoca from "@/components/inscricoes/ValoresEpoca";
 
-export const metadata: Metadata = paraPagina("/inscricoes", {
-  title: "Inscrições",
-  description:
-    "Como começar a praticar no Valejas Atlético Clube: fazer-se sócio, pedir vaga na modalidade e fechar a inscrição na sede.",
-});
+export async function generateMetadata(
+  { params: { locale } }: { params: { locale: Lingua } }
+): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "inscricoes.meta" });
+  return paraPagina("/inscricoes", { title: t("titulo"), description: t("descricao") }, locale);
+}
+
+/** O que se leva à sede além dos PDFs — chaves em levar.itens. */
+const LEVAR = ["ccAtleta", "ccEncarregado", "fotografia", "fichaFederacao"] as const;
 
 /**
  * INSCRIÇÕES
@@ -22,32 +29,28 @@ export const metadata: Metadata = paraPagina("/inscricoes", {
  * isso por ordem, em vez de a pessoa descobrir pelo caminho.
  * ─────────────────────────────────────────────────────────────────
  */
-export default function InscricoesPage() {
+export default function InscricoesPage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("inscricoes");
+  const tm = useTranslations("modalidades");
+  const lingua = useLocale();
+
   const passos = [
     {
       Icon: UserPlus,
-      titulo: "Primeiro, ser sócio",
-      texto:
-        `Não se pratica no clube sem ser sócio — vale para todas as ` +
-        `modalidades e para todas as idades. A quota é de ${formatEuros(QUOTA_MENSAL)} por mês, ` +
-        `igual para toda a gente.`,
-      accao: { label: "Fazer-me sócio", href: "/socios/inscricao" },
+      titulo: t("passos.socio.titulo"),
+      texto: t("passos.socio.texto", { quota: formatEuros(QUOTA_MENSAL, lingua) }),
+      accao: { label: t("passos.socio.accao"), href: "/socios/inscricao" },
     },
     {
       Icon: MessageSquare,
-      titulo: "Depois, a inscrição",
-      texto:
-        "Preenche o formulário aqui em baixo, com a autorização de direitos " +
-        "de imagem que o clube pede a todos os atletas. Cada modalidade tem " +
-        "poucos lugares — confirmamos a vaga e respondemos.",
+      titulo: t("passos.inscricao.titulo"),
+      texto: t("passos.inscricao.texto"),
     },
     {
       Icon: ClipboardCheck,
-      titulo: "Por fim, na sede",
-      texto:
-        "Havendo vaga, a inscrição fecha-se na sede: assina-se a ficha da " +
-        "federação e entrega-se o exame médico, que se descarrega aqui em " +
-        "baixo. É também aí que se escolhe o horário e se trata do equipamento.",
+      titulo: t("passos.sede.titulo"),
+      texto: t("passos.sede.texto"),
     },
   ];
 
@@ -57,14 +60,13 @@ export default function InscricoesPage() {
       <section className="bg-surface-low bg-texture border-b border-on-surface/10">
         <div className="section-container py-16 md:py-20">
           <p className="font-body text-xs font-bold uppercase tracking-[0.35em] text-yellow mb-3">
-            Começar a praticar
+            {t("cabecalho.etiqueta")}
           </p>
           <h1 className="section-title text-4xl md:text-6xl">
-            <span>Inscrições</span>
+            <span>{t("cabecalho.titulo")}</span>
           </h1>
           <p className="font-body text-lg md:text-xl text-on-surface-muted mt-5 max-w-2xl leading-relaxed">
-            {MODALIDADES.length} modalidades, dos petizes aos seniores. Começa-se
-            sempre da mesma maneira — e são três passos.
+            {t("cabecalho.texto", { n: MODALIDADES.length })}
           </p>
         </div>
       </section>
@@ -108,22 +110,22 @@ export default function InscricoesPage() {
               caracteres. O limite de leitura não pode depender da grelha. */}
           <div className="max-w-prose">
             <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-              Enviar inscrição
+              {t("envio.titulo")}
             </h2>
             <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-4">
-              {VAGAS.texto}
+              {tm("vagas.texto")}
             </p>
             <p className="font-body text-on-surface-muted leading-relaxed mt-4">
-              A inscrição fecha-se na sede, com a ficha da federação e o
-              exame médico — isto é o que se adianta daqui. Nada fica
-              guardado neste site: segue por email para o clube e desaparece.
+              {t("envio.sede")}
             </p>
             <p className="font-body text-on-surface-muted leading-relaxed mt-4">
-              Inclui a autorização de{" "}
-              <Link href="/inscricoes/direitos-de-imagem" className="text-yellow underline">
-                direitos de imagem
-              </Link>
-              , obrigatória para todos os atletas.
+              {t.rich("envio.direitos", {
+                link: (c) => (
+                  <Link href="/inscricoes/direitos-de-imagem" className="text-yellow underline">
+                    {c}
+                  </Link>
+                ),
+              })}
             </p>
           </div>
 
@@ -137,11 +139,10 @@ export default function InscricoesPage() {
       <section className="section-container py-14 md:py-20 border-t border-on-surface/10">
         <div className="max-w-2xl mb-8">
           <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-            O que levar à sede
+            {t("levar.titulo")}
           </h2>
           <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-3">
-            A inscrição só fica fechada com estes papéis entregues. Descarrega,
-            trata deles, e traz-nos.
+            {t("levar.texto")}
           </p>
         </div>
 
@@ -150,17 +151,17 @@ export default function InscricoesPage() {
             <article key={doc.ficheiro} className="bg-surface-high p-7 md:p-8 flex flex-col">
               <FileText size={22} className="text-yellow" aria-hidden />
               <h3 className="font-headline font-black uppercase text-xl text-on-surface mt-4">
-                {doc.nome}
+                {t(`documentos.${doc.chave}.nome`)}
               </h3>
               <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-                {doc.descricao}
+                {t(`documentos.${doc.chave}.descricao`)}
               </p>
               <p className="font-body text-sm text-on-surface-muted leading-relaxed mt-3">
-                {doc.comoUsar}
+                {t(`documentos.${doc.chave}.comoUsar`)}
               </p>
               {doc.origem && (
                 <p className="font-body text-xs text-on-surface-muted mt-3">
-                  Formulário oficial do {doc.origem}.
+                  {t("levar.oficialDe", { origem: doc.origem })}
                 </p>
               )}
               <a
@@ -168,7 +169,7 @@ export default function InscricoesPage() {
                 download
                 className="btn-primary text-sm mt-6 self-start"
               >
-                <Download size={16} /> Descarregar PDF
+                <Download size={16} /> {t("levar.descarregar")}
               </a>
             </article>
           ))}
@@ -177,24 +178,20 @@ export default function InscricoesPage() {
           <article className="bg-surface-high p-7 md:p-8 flex flex-col">
             <ClipboardCheck size={22} className="text-yellow" aria-hidden />
             <h3 className="font-headline font-black uppercase text-xl text-on-surface mt-4">
-              E mais isto
+              {t("levar.maisIsto")}
             </h3>
             <ul className="mt-3 space-y-2">
-              {[
-                "Cartão de Cidadão do atleta",
-                "Cartão de Cidadão do encarregado de educação, se o atleta for menor",
-                "Uma fotografia tipo passe",
-                "A ficha da federação, que se assina lá",
-              ].map((item) => (
+              {LEVAR.map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-yellow shrink-0 mt-2.5" />
-                  <span className="font-body text-on-surface-muted leading-relaxed">{item}</span>
+                  <span className="font-body text-on-surface-muted leading-relaxed">
+                    {t(`levar.itens.${item}`)}
+                  </span>
                 </li>
               ))}
             </ul>
             <p className="font-body text-sm text-on-surface-muted leading-relaxed mt-5">
-              A sede está aberta de segunda a sexta, das 09h30 às 17h00, e nos
-              dias de jogo.
+              {t("levar.horario")}
             </p>
           </article>
         </div>

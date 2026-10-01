@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "contacto": {
+      "titulo": "Socios",
+      "descricao": "Hazte socio del Valejas AC. Cuota de 1 € al mes. Forma parte de la casa del club."
+    },
+    "inscricao": {
+      "titulo": "Inscripción de Socio",
+      "descricao": "Hazte socio del Valejas Atlético Clube. Cuota de {quota} al mes. Abierto a todo el mundo, y obligatorio para quien quiera practicar una modalidad."
+    }
+  },
+  "hero": {
+    "etiqueta": "Forma parte de la familia",
+    "titulo": "Únete al",
+    "tituloDestaque": "club",
+    "texto": "Forma parte de la casa del Valejas. Un euro al mes, una solicitud rellenada, y pasas a vivir el club desde dentro."
+  },
+  "quota": {
+    "etiqueta": "Cuota",
+    "titulo": "{quota} al <destaque>mes</destaque>",
+    "texto": "Una única cuota, igual para todo el mundo. Sin categorías, sin cuota de entrada. Solo eliges cada cuánto quieres pagar.",
+    "inscrever": "Inscribirme como Socio",
+    "aberto": "Abierto a todo el mundo. Quien quiera practicar fútbol sala, atletismo o cualquier otra modalidad tiene que ser socio primero — la inscripción deportiva se gestiona después en la sede.",
+    "taxa": "A los pagos online se suma una tasa de procesamiento, que se muestra antes de pagar.",
+    "podesPagarCom": "Puedes pagar con"
+  },
+  "periodicidades": {
+    "mensal": {
+      "nome": "Mensual",
+      "nota": "Todos los meses"
+    },
+    "trimestral": {
+      "nome": "Trimestral",
+      "nota": "Cada tres meses"
+    },
+    "semestral": {
+      "nome": "Semestral",
+      "nota": "Dos veces al año"
+    },
+    "anual": {
+      "nome": "Anual",
+      "nota": "Una vez al año"
+    }
+  },
+  "metodos": {
+    "mbway": {
+      "nome": "MB WAY",
+      "descricao": "Envías el importe al número del club con la app MB WAY."
+    },
+    "referencia": {
+      "nome": "Entidad y Referencia",
+      "descricao": "Recibes una entidad y una referencia para pagar en un cajero Multibanco o en la banca online. Válida 24 horas."
+    },
+    "debitoDireto": {
+      "nome": "Domiciliación Bancaria",
+      "descricao": "La cuota se carga automáticamente en tu cuenta. Nunca se te olvida."
+    },
+    "transferencia": {
+      "nome": "Transferencia Bancaria",
+      "descricao": "Haces una transferencia al IBAN del club con tu nombre como referencia."
+    }
+  },
+  "inscricao": {
+    "voltar": "Socios",
+    "titulo": "Hazte <destaque>Socio</destaque>",
+    "texto": "La cuota es de {quota} al mes, igual para todo el mundo. Cualquier persona puede inscribirse — y quien quiera practicar una modalidad en el club tiene que ser socio primero. Son cinco minutos."
+  },
+  "cta": {
+    "etiqueta": "Forma parte",
+    "titulo": "El Valejas es de todos nosotros",
+    "tituloDestaque": "y ahora también es mío",
+    "texto": "Hazte socio por {quota} al mes, ponte los colores, ven al pabellón. El club es de quien está aquí.",
+    "fazerSocio": "Hacerme socio",
+    "loja": "Tienda del club",
+    "contactos": "Contacto",
+    "escreverAoClube": "Escribir al club"
+  },
+  "formulario": {
+    "passos": {
+      "identificacao": "Identificación",
+      "contactos": "Contacto",
+      "documentos": "Documentos",
+      "quota": "Cuota",
+      "pagamento": "Pago"
+    },
+    "progresso": "Progreso",
+    "passoDe": "Paso {n} de {total}",
+    "blocos": {
+      "quemEs": "Quién eres",
+      "ondeTeEncontramos": "Dónde te encontramos",
+      "documentos": "Documentos",
+      "encarregado": "Padre, Madre o Tutor",
+      "encarregadoNota": "El candidato tiene {idade, plural, one {# año} other {# años}}. Por ley, quien autoriza el tratamiento de los datos es el responsable legal.",
+      "quota": "Cuota",
+      "quotaNota": "La cuota del club es de {quota} al mes, igual para todos los socios.",
+      "comoPagar": "Cómo quieres pagar"
+    },
+    "campos": {
+      "nomeCompleto": "Nombre completo",
+      "dataNascimento": "Fecha de nacimiento",
+      "sexo": "Sexo",
+      "estadoCivil": "Estado civil",
+      "naturalidade": "Lugar de nacimiento",
+      "naturalidadeDica": "Municipio donde naciste",
+      "nacionalidade": "Nacionalidad",
+      "nomePai": "Nombre del padre",
+      "nomeMae": "Nombre de la madre",
+      "morada": "Dirección",
+      "codigoPostal": "Código postal",
+      "localidade": "Localidad",
+      "email": "Email",
+      "emailDica": "Es por aquí por donde el club confirma la solicitud",
+      "telemovel": "Móvil",
+      "telefoneFixo": "Teléfono fijo",
+      "cc": "N.º de Cartão de Cidadão",
+      "ccValidade": "Caducidad del Cartão de Cidadão",
+      "nif": "N.º de contribuyente (NIF)",
+      "profissao": "Profesión",
+      "parentesco": "Parentesco",
+      "iban": "IBAN",
+      "ibanTitular": "Titular de la cuenta",
+      "proponente": "Propuesto por",
+      "proponenteDica": "Nombre de un socio que te presenta al club, si lo hay",
+      "opcional": "(opcional)",
+      "seleciona": "Selecciona…"
+    },
+    "sexos": {
+      "M": "Masculino",
+      "F": "Femenino",
+      "I": "Indefinido"
+    },
+    "estadosCivis": {
+      "solteiro": "Soltero/a",
+      "casado": "Casado/a",
+      "uniaoDeFacto": "Pareja de hecho",
+      "divorciado": "Divorciado/a",
+      "separado": "Separado/a",
+      "viuvo": "Viudo/a"
+    },
+    "parentescos": {
+      "mae": "Madre",
+      "pai": "Padre",
+      "avoFeminino": "Abuela",
+      "avoMasculino": "Abuelo",
+      "tutor": "Tutor/a legal",
+      "outro": "Otro"
+    },
+    "erros": {
+      "obrigatorio": "Campo obligatorio.",
+      "nomeCompleto": "Escribe el nombre completo.",
+      "data": "Fecha no válida.",
+      "codigoPostal": "Formato 0000-000.",
+      "email": "Email no válido.",
+      "telemovelPortugues": "Móvil portugués no válido.",
+      "telemovel": "Móvil no válido.",
+      "telefoneFixo": "Teléfono fijo no válido.",
+      "ccFormato": "Número de CC no válido (8 dígitos + dígito + 2 letras + dígito).",
+      "cc": "Número de CC no válido.",
+      "ccValidade": "Tarjeta caducada.",
+      "nif": "NIF no válido.",
+      "metodo": "Elige un método.",
+      "iban": "IBAN portugués no válido.",
+      "rgpd": "Hay que autorizar el tratamiento de los datos para continuar.",
+      "envio": "No se ha podido enviar. Inténtalo de nuevo.",
+      "ligacao": "Fallo de conexión. Comprueba internet e inténtalo de nuevo.",
+      "referenciaInativa": "La referencia automática aún no está activa. El club te la envía por email.",
+      "referenciaFalhou": "No se ha podido generar la referencia.",
+      "referenciaLigacao": "Fallo de conexión al generar la referencia.",
+      "pagamentoIniciar": "No se ha podido iniciar el pago.",
+      "pagamentoLigacao": "Fallo de conexión con el servicio de pago.",
+      "fotoTipo": "Tiene que ser JPG, PNG o WEBP.",
+      "fotoTamanho": "Máximo 4 MB."
+    },
+    "quota": {
+      "pergunta": "¿Cada cuánto quieres pagar?",
+      "taxa": "Se suman {valor} de tasa de pago online."
+    },
+    "consentimento": {
+      "maior": "Autorizo el tratamiento de mis datos a efectos de inscripción como socio del Valejas Atlético Clube.",
+      "menor": "Como padre, madre o tutor, autorizo el tratamiento de los datos de arriba a efectos de inscripción como socio del Valejas Atlético Clube.",
+      "uso": "Los datos se envían por email al club y se usan para rellenar la ficha de socio y emitir el carné.",
+      "politica": "Política de Privacidad",
+      "proposta": "Esto es una <forte>solicitud</forte>, no una admisión. La Junta Directiva la analiza en reunión y se pone en contacto contigo. Solo después hay que hacer el pago."
+    },
+    "navegacao": {
+      "voltar": "Volver",
+      "continuar": "Continuar",
+      "irParaPagamento": "Ir al pago"
+    },
+    "foto": {
+      "rotulo": "Fotografía",
+      "remover": "Quitar fotografía",
+      "escolher": "Elegir archivo — JPG, PNG o WEBP, hasta 4 MB",
+      "ajuda": "Es para el carné de socio. Foto tamaño carné, de frente, fondo claro."
+    },
+    "valor": {
+      "quota": "Cuota",
+      "taxa": "Tasa de pago online",
+      "aPagar": "A pagar",
+      "aPagarAgora": "A pagar ahora"
+    },
+    "dados": {
+      "iban": "IBAN",
+      "titular": "Titular",
+      "descricao": "Concepto",
+      "mbway": "MB WAY",
+      "nomeAIndicar": "Nombre a indicar",
+      "entidade": "Entidad",
+      "referencia": "Referencia",
+      "valor": "Importe",
+      "validaAte": "Válida hasta",
+      "direcaoEnvia": "(la Junta Directiva lo envía por email)"
+    },
+    "pagamento": {
+      "titulo": "Pago",
+      "soDepois": "{metodo} — tu ficha solo llega al club después de este paso.",
+      "mbwayPedido": "Vas a recibir una solicitud de pago en la app MB WAY. Confírmala allí y esta página se actualiza sola — no tienes que avisar a nadie.",
+      "pagarMbway": "Pagar {valor} con MB WAY",
+      "aguarda": "Esperando tu confirmación",
+      "aguardaTexto": "Abre la app MB WAY y acepta la solicitud. Tienes 4 minutos. No cierres esta página.",
+      "expirado": "La solicitud ha caducado sin confirmación.",
+      "recusado": "El pago se ha rechazado en la app.",
+      "erro": "Ha habido un problema al comunicar con el servicio de pago.",
+      "tentarOutraVez": "Intentarlo de nuevo",
+      "mbwayManual": "El pago automático no está disponible en este momento. Envía el importe por la app MB WAY al número del club, con tu nombre en el mensaje.",
+      "transferencia": "Haz una transferencia al IBAN del club y escribe tu nombre en el concepto.",
+      "referencia": "Paga en un cajero Multibanco o en la banca online con estos datos. La referencia es válida durante 24 horas.",
+      "referenciaGuarda": "Guarda estos datos. Cuando pagues, el club recibe la confirmación automáticamente — no hace falta avisar a nadie.",
+      "aGerar": "Generando la referencia…",
+      "debitoDireto": "El club te envía la orden de domiciliación para que la firmes. A partir de ahí, la cuota se carga automáticamente en tu cuenta.",
+      "aEnviar": "Enviando…",
+      "concluir": "Finalizar inscripción"
+    },
+    "concluida": {
+      "titulo": "Bienvenido al club",
+      "pago": "Pago confirmado, {nome}. Ya estás inscrito y tu ficha ha llegado a la Junta Directiva.",
+      "pendente": "Tu ficha ha llegado a la Junta Directiva, {nome}. Falta confirmar el pago de la cuota para emitir el carné.",
+      "transferencia": "Haz una transferencia al IBAN del club y usa tu nombre como concepto, para que la Junta Directiva sepa de quién viene.",
+      "debitoDireto": "Hemos registrado tu IBAN. El club te envía la orden de domiciliación para que la firmes — a partir de ahí la cuota se carga automáticamente y no tienes que preocuparte más.",
+      "mbway": "Abre la app MB WAY, envía el importe al número del club y escribe tu nombre en el mensaje.",
+      "referencia": "Has elegido {metodo}. El club te envía la entidad y la referencia por email.",
+      "depois": "Una vez confirmado el pago, el Presidente emite tu número de socio y el carné, que recoges en la sede del club. Si quieres inscribirte en una modalidad, aprovecha la visita — la inscripción deportiva se gestiona allí.",
+      "voltarInicio": "Volver al inicio"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "titulo": "Contacto",
+    "descricao": "Habla con el Valejas Atlético Clube: email, teléfono, dirección y ubicación. Estamos en Valejas, Oeiras."
+  },
+  "hero": {
+    "etiqueta": "Estamos aquí para ti",
+    "titulo": "Contacto",
+    "texto": "Dudas, colaboraciones, prensa o inscripciones: habla con nosotros por email o teléfono, o pásate por la sede del club."
+  },
+  "seccao": {
+    "etiqueta": "Habla con nosotros",
+    "titulo": "Contacto y <destaque>ubicación</destaque>"
+  },
+  "email": {
+    "titulo": "Email",
+    "geral": "Para todo. Si tienes dudas, es este",
+    "coordenacao": "Deportes, inscripciones y entrenamientos",
+    "comunicacao": "Prensa y propuestas de colaboración"
+  },
+  "telefone": "Teléfono",
+  "morada": "Dirección",
+  "horario": {
+    "titulo": "Horario",
+    "dias": {
+      "segundaASexta": "De lunes a viernes",
+      "sabado": "Sábado",
+      "domingo": "Domingo"
+    },
+    "horas": {
+      "diasDeJogo": "Días de partido",
+      "fechado": "Cerrado"
+    }
+  },
+  "redes": {
+    "titulo": "Síguenos",
+    "enviarEmail": "Enviar un email al club"
+  },
+  "formulario": {
+    "titulo": "Envíanos un mensaje",
+    "enviada": "¡Mensaje enviado!",
+    "obrigado": "Te responderemos pronto. Gracias por escribirnos.",
+    "nome": "Nombre",
+    "nomePlaceholder": "Tu nombre",
+    "email": "Email",
+    "emailPlaceholder": "email@ejemplo.es",
+    "assunto": "Asunto",
+    "assuntos": {
+      "escolher": "Elige el asunto",
+      "geral": "Socios, tienda o asunto general",
+      "modalidades": "Inscripciones, entrenamientos y deportes",
+      "parceria": "Propuesta de colaboración o patrocinio",
+      "imprensa": "Prensa y comunicación"
+    },
+    "assuntoNota": "El asunto decide quién lo recibe: los deportes van a la coordinación, las colaboraciones a comunicación y el resto al buzón general.",
+    "mensagem": "Mensaje",
+    "mensagemPlaceholder": "Tu mensaje…",
+    "aEnviar": "Enviando…",
+    "enviar": "Enviar mensaje",
+    "erroEnvio": "No se ha podido enviar.",
+    "erroLigacao": "Error de conexión. Inténtalo de nuevo."
+  },
+  "mapa": {
+    "titulo": "Ubicación del Valejas AC"
+  }
+}

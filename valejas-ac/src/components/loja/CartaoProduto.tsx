@@ -18,18 +18,22 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { Check, ChevronDown, Mail, Plus } from "lucide-react";
-import { formatEuros, type Produto } from "@/lib/data/loja";
+import { useLocale, useTranslations } from "next-intl";
+import { CHAVE_PECA, formatEuros, nomeTamanho, type Produto } from "@/lib/data/loja";
 import { useCarrinho } from "@/lib/loja/carrinho";
 
 /**
  * "Do 4 anos ao 3XL". Diz a escala numa linha, em vez de despejar treze
  * botões antes de a pessoa saber sequer se o produto lhe interessa.
  */
-function escalaDeTamanhos(produto: Produto): string {
-  const tamanhos = produto.variantes.map((v) => v.tamanho);
-  if (tamanhos.length === 0) return "Tamanho único";
+function escalaDeTamanhos(
+  produto: Produto,
+  t: ReturnType<typeof useTranslations<"loja">>,
+): string {
+  const tamanhos = produto.variantes.map((v) => nomeTamanho(v.tamanho, t));
+  if (tamanhos.length === 0) return t("cartao.tamanhoUnico");
   if (tamanhos.length === 1) return tamanhos[0];
-  return `Do ${tamanhos[0]} ao ${tamanhos[tamanhos.length - 1]}`;
+  return t("cartao.escala", { de: tamanhos[0], ate: tamanhos[tamanhos.length - 1] });
 }
 
 export default function CartaoProduto({
@@ -38,6 +42,8 @@ export default function CartaoProduto({
   produto: Produto;
   destaque?: boolean;
 }) {
+  const t = useTranslations("loja");
+  const lingua = useLocale();
   const { juntar } = useCarrinho();
   const [tamanho, setTamanho] = useState("");
   const [nome, setNome] = useState("");
@@ -47,13 +53,20 @@ export default function CartaoProduto({
 
   const idTamanho = `tamanho-${produto.slug}`;
 
+  // O texto vem das traduções, pelo slug; os dados ficam em português
+  // porque é assim que seguem para a encomenda.
+  const nomeProduto = t(`produtos.${produto.slug}.nome`);
+  const inclui = produto.pecas
+    ? produto.pecas.map((slug) => t(`produtos.${slug}.nome`))
+    : produto.inclui?.map((peca) => (CHAVE_PECA[peca] ? t(`pecas.${CHAVE_PECA[peca]}`) : peca));
+
   function adicionar() {
     if (!tamanho) {
-      setErro("Escolhe o tamanho.");
+      setErro(t("cartao.erroTamanho"));
       return;
     }
     if (produto.personalizavel && nome.trim() && !numero.trim()) {
-      setErro("Falta o número.");
+      setErro(t("cartao.erroNumero"));
       return;
     }
     setErro(null);
@@ -92,7 +105,7 @@ export default function CartaoProduto({
         >
           <Image
             src={produto.imagem}
-            alt={produto.nome}
+            alt={nomeProduto}
             fill
             sizes={destaque ? "(max-width: 1024px) 100vw, 60vw" : "(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 25vw"}
             className="object-cover"
@@ -109,7 +122,7 @@ export default function CartaoProduto({
               destaque ? "text-3xl md:text-4xl tracking-tighter" : "text-base sm:text-xl"
             )}
           >
-            {produto.nome}
+            {nomeProduto}
           </h3>
           <p
             className={clsx(
@@ -119,7 +132,7 @@ export default function CartaoProduto({
                 : destaque ? "text-4xl" : "text-xl sm:text-2xl"
             )}
           >
-            {produto.sobConsulta ? "Sob consulta" : formatEuros(produto.preco)}
+            {produto.sobConsulta ? t("cartao.sobConsulta") : formatEuros(produto.preco, lingua)}
           </p>
         </div>
 
@@ -132,24 +145,24 @@ export default function CartaoProduto({
             !destaque && "line-clamp-3 sm:line-clamp-none"
           )}
         >
-          {produto.descricao}
+          {t(`produtos.${produto.slug}.descricao`)}
         </p>
 
         {/* A referência é para quem liga ao clube a perguntar por uma peça.
             Num cartão de 180px rouba a linha a quem só quer ver o preço. */}
         <p className="hidden sm:block font-body text-xs text-on-surface-muted mt-2">
-          Referência {produto.referencia}
+          {t("cartao.referencia", { referencia: produto.referencia })}
         </p>
 
-        {produto.inclui && !destaque && (
+        {inclui && !destaque && (
           <p className="sm:hidden font-body text-sm text-on-surface-muted mt-3">
-            {produto.inclui.join(" · ")}
+            {inclui.join(" · ")}
           </p>
         )}
 
-        {produto.inclui && (
+        {inclui && (
           <ul className={clsx("mt-5 space-y-2", !destaque && "hidden sm:block")}>
-            {produto.inclui.map((item) => (
+            {inclui.map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <Check size={16} className="text-yellow shrink-0 mt-1" aria-hidden />
                 <span className="font-body text-on-surface-muted leading-relaxed">
@@ -168,11 +181,10 @@ export default function CartaoProduto({
       {produto.sobConsulta ? (
         <div className="mt-6">
           <p className="font-body text-sm text-on-surface-muted leading-relaxed">
-            Este artigo não tem preço fechado — depende do que se
-            personalizar e da quantidade. Fala com o clube e dizemos quanto é.
+            {t("cartao.semPreco")}
           </p>
           <Link href="/contactos" className="btn-ghost text-sm mt-4 w-full justify-center px-3 sm:px-6">
-            <Mail size={16} /> Pedir orçamento
+            <Mail size={16} /> {t("cartao.pedirOrcamento")}
           </Link>
         </div>
       ) : (
@@ -183,10 +195,10 @@ export default function CartaoProduto({
           htmlFor={idTamanho}
           className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block"
         >
-          Tamanho
+          {t("cartao.tamanho")}
         </label>
         <p className="font-body text-sm text-on-surface-muted mt-1 mb-3">
-          {escalaDeTamanhos(produto)}
+          {escalaDeTamanhos(produto, t)}
         </p>
 
         <div className="relative">
@@ -206,10 +218,10 @@ export default function CartaoProduto({
           >
             {/* «Escolher tamanho» cortava-se a meio num cartão de meia largura,
                 e o rótulo «Tamanho» já está por cima. */}
-            <option value="">Escolher</option>
+            <option value="">{t("cartao.escolher")}</option>
             {produto.variantes.map((v) => (
               <option key={v.tamanho} value={v.tamanho}>
-                {v.tamanho}
+                {nomeTamanho(v.tamanho, t)}
               </option>
             ))}
           </select>
@@ -229,7 +241,7 @@ export default function CartaoProduto({
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_6rem] gap-3 mt-5">
           <label className="block">
             <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
-              Nome nas costas <span className="normal-case tracking-normal opacity-60">(opcional)</span>
+              {t("cartao.nomeCostas")} <span className="normal-case tracking-normal opacity-60">{t("cartao.opcional")}</span>
             </span>
             <input
               value={nome}
@@ -241,7 +253,7 @@ export default function CartaoProduto({
           </label>
           <label className="block">
             <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
-              Número
+              {t("cartao.numero")}
             </span>
             <input
               value={numero}
@@ -255,13 +267,13 @@ export default function CartaoProduto({
         ) : (
           <details className="mt-4 group">
             <summary className="alvo-toque cursor-pointer list-none font-body text-sm text-on-surface-muted underline underline-offset-4 hover:text-on-surface [&::-webkit-details-marker]:hidden">
-              {nome || numero ? "Personalizado" : "Personalizar"}
-              <span className="sr-only"> com nome e número (opcional)</span>
+              {nome || numero ? t("cartao.personalizado") : t("cartao.personalizar")}
+              <span className="sr-only">{t("cartao.personalizarSr")}</span>
             </summary>
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_6rem] gap-3 mt-2">
           <label className="block">
             <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
-              Nome nas costas <span className="normal-case tracking-normal opacity-60">(opcional)</span>
+              {t("cartao.nomeCostas")} <span className="normal-case tracking-normal opacity-60">{t("cartao.opcional")}</span>
             </span>
             <input
               value={nome}
@@ -273,7 +285,7 @@ export default function CartaoProduto({
           </label>
           <label className="block">
             <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
-              Número
+              {t("cartao.numero")}
             </span>
             <input
               value={numero}
@@ -303,9 +315,9 @@ export default function CartaoProduto({
         )}
       >
         {juntou ? (
-          <><Check size={16} /> Juntou ao carrinho</>
+          <><Check size={16} /> {t("cartao.juntou")}</>
         ) : (
-          <><Plus size={16} /> Juntar ao carrinho</>
+          <><Plus size={16} /> {t("cartao.juntar")}</>
         )}
       </button>
       </>

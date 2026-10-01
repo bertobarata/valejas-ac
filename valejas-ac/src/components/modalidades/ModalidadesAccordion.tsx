@@ -16,13 +16,16 @@
  */
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { ChevronDown, Trophy, Users } from "lucide-react";
-import type { Modalidade } from "@/lib/data/modalidades";
+import { chave, type Modalidade } from "@/lib/data/modalidades";
 
 export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] }) {
   const [aberta, setAberta] = useState<string | null>(null);
+  // O texto vem das traduções, por slug; os dados só dizem o que existe.
+  const t = useTranslations("modalidades");
 
   // Abrir a modalidade que vem no endereço (#futsal, #judo, …).
   useEffect(() => {
@@ -46,6 +49,7 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
       {itens.map((m) => {
         const estaAberta = aberta === m.slug;
         const painelId = `painel-${m.slug}`;
+        const item = `itens.${m.slug}`;
 
         return (
           <div key={m.slug} id={m.slug} className="scroll-mt-24 py-1 md:py-0">
@@ -63,27 +67,27 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                     <span className="font-headline font-black uppercase tracking-tight leading-none text-2xl md:text-3xl text-on-surface group-hover:text-yellow transition-colors duration-200">
-                      {m.nome}
+                      {t(`${item}.nome`)}
                     </span>
 
                     {m.compete && (
                       <span className="inline-flex items-center gap-1.5 font-body text-xs font-semibold uppercase tracking-widest text-blue-deep bg-yellow px-2.5 py-1">
-                        <Trophy size={12} /> Compete
+                        <Trophy size={12} /> {t("etiquetas.compete")}
                       </span>
                     )}
                     {m.apenasFormacao && (
                       <span className="inline-flex items-center gap-1.5 font-body text-xs font-semibold uppercase tracking-widest text-on-surface border border-on-surface/25 px-2.5 py-1">
-                        <Users size={12} /> Só formação
+                        <Users size={12} /> {t("etiquetas.soFormacao")}
                       </span>
                     )}
                     {m.parceria && (
                       <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted border border-on-surface/25 px-2.5 py-1">
-                        Parceria
+                        {t("etiquetas.parceria")}
                       </span>
                     )}
                   </div>
 
-                  <p className="font-body text-base text-blue mt-1">{m.tagline}</p>
+                  <p className="font-body text-base text-blue mt-1">{t(`${item}.tagline`)}</p>
                 </div>
 
                 <ChevronDown
@@ -108,21 +112,21 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
             >
               <div className="max-w-prose">
               <p className="font-body text-on-surface-muted leading-relaxed">
-                {m.descricao}
+                {t(`${item}.descricao`)}
               </p>
 
               {m.equipas && (
                 <div className="mt-6">
                   <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-3">
-                    Equipas
+                    {t("etiquetas.equipas")}
                   </p>
                   <ul className="space-y-2">
                     {m.equipas.map((e) => (
                       <li key={e.nome} className="font-body text-sm text-on-surface-muted">
                         <span className="font-headline font-black uppercase text-on-surface">
-                          {e.nome}
+                          {t(`${item}.equipas.${chave(e.nome)}.nome`)}
                         </span>{" "}
-                        — {e.descricao}
+                        — {t(`${item}.equipas.${chave(e.nome)}.descricao`)}
                       </li>
                     ))}
                   </ul>
@@ -132,17 +136,19 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
               {m.parceria && (
                 <div className="mt-6 pt-5 border-t border-on-surface/15">
                   <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-1">
-                    Em parceria com
+                    {t("etiquetas.emParceriaCom")}
                   </p>
                   <p className="font-headline font-black uppercase text-base text-on-surface">
-                    {m.parceria.nome}
+                    {t(`${item}.parceria.nome`)}
                   </p>
                   <p className="font-body text-sm text-on-surface-muted leading-relaxed mt-1">
-                    {m.parceria.descricao}
+                    {t(`${item}.parceria.descricao`)}
                   </p>
                   {m.parceria.valores && (
                     <p className="font-body text-sm text-on-surface-muted mt-2">
-                      {m.parceria.valores.join(" · ")}
+                      {m.parceria.valores
+                        .map((v) => t(`${item}.parceria.valores.${chave(v)}`))
+                        .join(" · ")}
                     </p>
                   )}
                 </div>
@@ -150,11 +156,11 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
 
               <div className="flex flex-wrap items-center gap-4 mt-7">
                 <p className="font-body text-xs uppercase tracking-widest text-on-surface-muted">
-                  {m.publico}
+                  {t(`${item}.publico`)}
                 </p>
                 {m.ancora && (
                   <Link href="/equipas" className="btn-ghost text-sm">
-                    Ver planteis
+                    {t("etiquetas.verPlanteis")}
                   </Link>
                 )}
               </div>
@@ -165,7 +171,7 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
               {m.escaloes && (
                 <aside className="md:w-60 md:border-l md:border-on-surface/10 md:pl-8">
                   <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-4">
-                    Percurso de formação
+                    {t("etiquetas.percursoFormacao")}
                   </p>
                   <ol className="relative">
                     {m.escaloes.map((e, i) => {
@@ -192,7 +198,7 @@ export default function ModalidadesAccordion({ itens }: { itens: Modalidade[] })
                               ultimo ? "text-on-surface font-semibold" : "text-on-surface-muted"
                             )}
                           >
-                            {e}
+                            {t(`${item}.escaloes.${chave(e)}`)}
                           </span>
                         </li>
                       );

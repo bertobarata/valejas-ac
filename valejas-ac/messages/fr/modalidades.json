@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "titulo": "Sports",
+    "descricao": "Futsal et athlétisme en compétition fédérale, judo, karaté, danse, théâtre et cyclotourisme — un club, mille façons d’en faire partie."
+  },
+  "pagina": {
+    "etiqueta": "Un club, tous les âges",
+    "titulo": "Il y a une place pour vous au Valejas",
+    "intro": "Du gymnase à la piste, du tatami à la scène. Compétition fédérale, formation pour les plus jeunes et activités ouvertes à la communauté.",
+    "academia": {
+      "etiqueta": "Plus de 50 ans",
+      "titulo": "Académie Senior",
+      "texto": "Chorale, chi kung, peinture, informatique, danses traditionnelles, sueca et billard. Le club ne s’arrête pas quand on cesse de concourir.",
+      "botao": "Découvrir l’Académie"
+    },
+    "cta": {
+      "titulo": "Envie d’essayer ? Parlez-nous-en et on vous fait une place.",
+      "botao": "S’inscrire ou en savoir plus"
+    }
+  },
+  "vagas": {
+    "titulo": "Parlez-nous d’abord",
+    "texto": "Chaque activité n’a que peu de places. Dites-nous ce qui vous intéresse et nous vous répondons tout de suite s’il reste une place — avant que vous ne comptiez dessus.",
+    "curto": "Places limitées — parlez au club avant de vous inscrire"
+  },
+  "grupos": {
+    "desporto": {
+      "titulo": "Sports",
+      "intro": "Du gymnase à la piste et à la route. Certains sont en compétition fédérale, d’autres n’existent que pour la formation"
+    },
+    "cultura": {
+      "titulo": "Culture et Communauté",
+      "intro": "Des activités pour créer, se produire et se retrouver, sans aucune compétition."
+    }
+  },
+  "etiquetas": {
+    "compete": "Compétition",
+    "soFormacao": "Formation uniquement",
+    "parceria": "Partenariat",
+    "equipas": "Équipes",
+    "emParceriaCom": "En partenariat avec",
+    "verPlanteis": "Voir les effectifs",
+    "percursoFormacao": "Parcours de formation"
+  },
+  "itens": {
+    "futsal": {
+      "nome": "Futsal",
+      "tagline": "Le sport du club",
+      "descricao": "Le plus grand projet du Valejas. Une équipe professionnelle dans le championnat de district de l’AF Lisboa, une équipe B juste derrière, et un parcours de formation complet des U7 aux U19 — un enfant peut entrer au club tout petit et arriver en senior sans jamais changer de maillot.",
+      "publico": "Seniors masculins et formation masculine",
+      "equipas": {
+        "equipaA": {
+          "nome": "Équipe A",
+          "descricao": "Équipe professionnelle, en compétition dans le championnat de district de l’AF Lisboa."
+        },
+        "equipaB": {
+          "nome": "Équipe B",
+          "descricao": "La marche entre la formation et l’équipe première."
+        }
+      },
+      "escaloes": {
+        "petizes": "U7",
+        "traquinas": "U9",
+        "benjamins": "U11",
+        "infantis": "U13",
+        "iniciados": "U15",
+        "juvenis": "U17",
+        "juniores": "U19"
+      }
+    },
+    "atletismo": {
+      "nome": "Athlétisme",
+      "tagline": "Courir, c’est pour tout le monde",
+      "descricao": "Compétitions et entraînement régulier, hommes et femmes, dans toutes les catégories — des plus jeunes aux seniors.",
+      "publico": "Hommes et femmes, toutes catégories"
+    },
+    "karate": {
+      "nome": "Karaté",
+      "tagline": "Technique et sang-froid",
+      "descricao": "Art martial avec entraînement régulier et compétition. Concentration, posture et condition physique — pour les grands débutants comme pour ceux qui concourent déjà.",
+      "publico": "Jeunes et adultes"
+    },
+    "cicloturismo": {
+      "nome": "Cyclotourisme",
+      "tagline": "La route et le groupe",
+      "descricao": "Sorties dans la région et épreuves en groupe. Il y a de la place pour ceux qui veulent concourir et pour ceux qui veulent simplement pédaler en bonne compagnie.",
+      "publico": "Tous âges"
+    },
+    "judo": {
+      "nome": "Judo",
+      "tagline": "Tomber et se relever",
+      "descricao": "Formation uniquement, pour les plus jeunes, dans les installations du club. Un partenariat qui amène à Valejas une école de judo pour enfants forte de nombreuses années d’expérience.",
+      "publico": "Enfants et jeunes",
+      "parceria": {
+        "nome": "Judokinhas Kobayashi",
+        "descricao": "L’une des plus grandes écoles de judo pour enfants du pays, dirigée par Renato Kobayashi et dont le nom est lié au maître Kiyoshi Kobayashi. Les cours ont lieu dans les installations du Valejas.",
+        "valores": {
+          "disciplinaERespeito": "Discipline et respect",
+          "autoconfianca": "Confiance en soi",
+          "cooperacaoEAmizade": "Coopération et amitié",
+          "autocontrolo": "Maîtrise de soi",
+          "espiritoDesportivo": "Esprit sportif"
+        }
+      }
+    },
+    "danca": {
+      "nome": "Danse",
+      "tagline": "Mouvement et expression",
+      "descricao": "Du rythme à la chorégraphie, pour se libérer, partager et prendre confiance.",
+      "publico": "Enfants, jeunes et adultes"
+    },
+    "teatro": {
+      "nome": "Théâtre",
+      "tagline": "Monter sur scène",
+      "descricao": "Jouer, répéter et montrer. Travail de groupe, voix et présence — et un public pour voir le résultat.",
+      "publico": "Tous âges"
+    }
+  }
+}

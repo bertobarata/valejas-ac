@@ -10,6 +10,7 @@
  */
 
 import { useEffect, useRef } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -24,6 +25,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function QuotaSocio() {
   const ref = useRef<HTMLElement>(null);
+  const t = useTranslations("socios");
+  const lingua = useLocale();
   const haTaxa = METODOS_PAGAMENTO.some((m) => temTaxa(m.id));
   // Só os meios com marca própria — e só os que o clube tem ligados.
   const marcas = metodosAtivos().filter((m) => m.logo);
@@ -47,14 +50,16 @@ export default function QuotaSocio() {
       <div className="section-container">
         <div className="text-center mb-14 max-w-2xl mx-auto">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow mb-3">
-            Quota
+            {t("quota.etiqueta")}
           </p>
           <h2 className="font-headline font-black text-5xl md:text-6xl uppercase leading-none tracking-tighter text-on-surface">
-            {formatEuros(QUOTA_MENSAL)} por <span className="text-yellow">mês</span>
+            {t.rich("quota.titulo", {
+              quota: formatEuros(QUOTA_MENSAL, lingua),
+              destaque: (c) => <span className="text-yellow">{c}</span>,
+            })}
           </h2>
           <p className="font-body text-base text-on-surface-muted mt-5 leading-relaxed">
-            Uma quota só, igual para toda a gente. Sem escalões, sem jóia de entrada.
-            Escolhes apenas de quanto em quanto tempo queres pagar.
+            {t("quota.texto")}
           </p>
         </div>
 
@@ -71,17 +76,17 @@ export default function QuotaSocio() {
                   p.destaque ? "text-white/85" : "text-on-surface-muted"
                 }`}
               >
-                {p.nome}
+                {t(`periodicidades.${p.id}.nome`)}
               </span>
               <span className="font-headline font-black text-4xl md:text-5xl leading-none text-yellow mt-3">
-                {formatEuros(valorPorCobranca(p.id))}
+                {formatEuros(valorPorCobranca(p.id), lingua)}
               </span>
               <span
                 className={`font-body text-xs mt-3 ${
                   p.destaque ? "text-white/85" : "text-on-surface-muted"
                 }`}
               >
-                {p.nota}
+                {t(`periodicidades.${p.id}.nota`)}
               </span>
             </div>
           ))}
@@ -89,17 +94,14 @@ export default function QuotaSocio() {
 
         <div className="text-center mt-12">
           <Link href="/socios/inscricao" className="btn-primary text-base px-10 py-5">
-            Inscrever-me como Sócio <ArrowRight size={16} />
+            {t("quota.inscrever")} <ArrowRight size={16} />
           </Link>
           <p className="font-body text-sm text-on-surface-muted mt-5 max-w-md mx-auto leading-relaxed">
-            Aberto a toda a gente. Quem quer praticar futsal, atletismo ou qualquer
-            outra modalidade tem de ser sócio primeiro — a inscrição desportiva
-            é depois tratada na sede.
+            {t("quota.aberto")}
           </p>
           {haTaxa && (
             <p className="font-body text-xs text-on-surface-muted mt-3 max-w-md mx-auto leading-relaxed">
-              Aos pagamentos online acresce uma taxa de processamento, mostrada
-              antes de pagares.
+              {t("quota.taxa")}
             </p>
           )}
 
@@ -107,7 +109,7 @@ export default function QuotaSocio() {
           {marcas.length > 0 && (
             <div className="mt-8">
               <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-3">
-                Podes pagar com
+                {t("quota.podesPagarCom")}
               </p>
               <div className="flex flex-wrap items-center justify-center gap-3">
                 {marcas.map((m) => (

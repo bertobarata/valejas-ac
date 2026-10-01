@@ -10,18 +10,23 @@
  */
 
 import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { Check, Loader2, Minus, Plus, Send, ShoppingBag, Trash2 } from "lucide-react";
 import { useCarrinho } from "@/lib/loja/carrinho";
 import {
-  PRAZO_ENCOMENDA_SEMANAS, SINAL_PERCENTAGEM, formatEuros, getProduto,
+  PRAZO_ENCOMENDA_SEMANAS, SINAL_PERCENTAGEM, formatEuros as formatarEuros, getProduto, nomeTamanho,
 } from "@/lib/data/loja";
 import { MOMENTOS_PAGAMENTO, type MomentoPagamento } from "@/lib/data/encomendas";
 import { validarEmail, validarTelemovel } from "@/lib/validacao";
 import { irParaOTopo } from "@/lib/scroll";
 
 export default function Carrinho() {
+  const t = useTranslations("loja.carrinho");
+  const tLoja = useTranslations("loja");
+  const lingua = useLocale();
+  const formatEuros = (v: number) => formatarEuros(v, lingua);
   const { linhas, total, sinal, alterar, remover, esvaziar, pronto } = useCarrinho();
 
   const [nome, setNome]           = useState("");
@@ -40,10 +45,10 @@ export default function Carrinho() {
   async function submeter(e: React.FormEvent) {
     e.preventDefault();
     const falhas: string[] = [];
-    if (nome.trim().split(/\s+/).length < 2) falhas.push("Escreve o nome completo.");
-    if (!validarEmail(email))       falhas.push("Email inválido.");
-    if (!validarTelemovel(telemovel)) falhas.push("Telemóvel português inválido.");
-    if (linhas.length === 0)        falhas.push("O carrinho está vazio.");
+    if (nome.trim().split(/\s+/).length < 2) falhas.push(t("erros.nome"));
+    if (!validarEmail(email))       falhas.push(t("erros.email"));
+    if (!validarTelemovel(telemovel)) falhas.push(t("erros.telemovel"));
+    if (linhas.length === 0)        falhas.push(t("erros.vazio"));
     if (falhas.length) { setErros(falhas); return; }
 
     setErros([]);
@@ -62,14 +67,14 @@ export default function Carrinho() {
       });
       const json = await res.json();
       if (!res.ok || !json.ok) {
-        setErros(json.erros ?? ["Não foi possível registar a encomenda."]);
+        setErros(json.erros ?? [t("erros.registar")]);
         return;
       }
       setFeito({ numero: json.numero, aPagarAgora: json.aPagarAgora });
       esvaziar();
       irParaOTopo();
     } catch {
-      setErros(["Falha de ligação. Tenta outra vez."]);
+      setErros([t("erros.ligacao")]);
     } finally {
       setAEnviar(false);
     }
@@ -84,10 +89,10 @@ export default function Carrinho() {
             <Check size={32} className="text-yellow" />
           </div>
           <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-            Encomenda registada
+            {t("registada.titulo")}
           </h2>
           <p className="font-body text-lg text-on-surface-muted leading-relaxed">
-            Guarda este número. É por ele que o clube te identifica.
+            {t("registada.guarda")}
           </p>
           <p className="font-headline font-black text-3xl text-yellow tracking-tight">
             {feito.numero}
@@ -96,20 +101,19 @@ export default function Carrinho() {
 
         <div className="bg-surface-high p-7 space-y-3">
           <p className="font-body text-on-surface-muted leading-relaxed">
-            O clube vai confirmar o que tem na sede e encomendar o que faltar.
-            Avisamos-te por email quando estiver pronta para levantar.
+            {t("registada.confirmar")}
           </p>
           <p className="font-body text-on-surface-muted leading-relaxed">
             <strong className="text-on-surface">
-              A pagar: {formatEuros(feito.aPagarAgora)}
+              {t("registada.aPagar", { valor: formatEuros(feito.aPagarAgora) })}
             </strong>{" "}
-            — os dados de pagamento seguem no email.
+            {t("registada.dadosPagamento")}
           </p>
         </div>
 
         <div className="flex flex-wrap gap-4">
-          <Link href="/loja" className="btn-primary text-sm">Voltar à loja</Link>
-          <Link href="/contactos" className="btn-ghost text-sm">Contactos</Link>
+          <Link href="/loja" className="btn-primary text-sm">{t("registada.voltar")}</Link>
+          <Link href="/contactos" className="btn-ghost text-sm">{t("registada.contactos")}</Link>
         </div>
       </div>
     );
@@ -123,13 +127,12 @@ export default function Carrinho() {
       <div className="max-w-xl py-12 space-y-5">
         <ShoppingBag size={32} className="text-on-surface-muted" aria-hidden />
         <h2 className="font-headline font-black uppercase text-2xl text-on-surface">
-          O carrinho está vazio
+          {t("vazio.titulo")}
         </h2>
         <p className="font-body text-on-surface-muted leading-relaxed">
-          Ainda não escolheste nada. O kit de formação e o restante equipamento
-          estão na loja.
+          {t("vazio.texto")}
         </p>
-        <Link href="/loja" className="btn-primary text-sm">Ver a loja</Link>
+        <Link href="/loja" className="btn-primary text-sm">{t("vazio.verLoja")}</Link>
       </div>
     );
   }
@@ -140,23 +143,24 @@ export default function Carrinho() {
         {/* Linhas */}
         <section>
           <h2 className="font-headline font-black uppercase text-2xl tracking-tight text-on-surface mb-5">
-            O que levas
+            {t("oQueLevas")}
           </h2>
 
           <ul className="border-t border-on-surface/15">
             {linhas.map((l, i) => {
               const p = getProduto(l.slug);
               if (!p) return null;
+              const nomeProduto = tLoja(`produtos.${p.slug}.nome`);
 
               return (
                 <li key={`${l.slug}-${l.tamanho}-${i}`} className="py-5 border-b border-on-surface/10">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="min-w-0">
                       <p className="font-headline font-black uppercase text-lg text-on-surface">
-                        {p.nome}
+                        {nomeProduto}
                       </p>
                       <p className="font-body text-sm text-on-surface-muted mt-1">
-                        Tamanho {l.tamanho}
+                        {t("tamanho", { tamanho: nomeTamanho(l.tamanho, tLoja) })}
                         {l.personalizacao && (
                           <> · {l.personalizacao.nome} {l.personalizacao.numero}</>
                         )}
@@ -169,7 +173,7 @@ export default function Carrinho() {
                         <button
                           type="button"
                           onClick={() => alterar(i, l.quantidade - 1)}
-                          aria-label={`Menos um ${p.nome}`}
+                          aria-label={t("menosUm", { nome: nomeProduto })}
                           className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-on-surface"
                         >
                           <Minus size={16} />
@@ -180,7 +184,7 @@ export default function Carrinho() {
                         <button
                           type="button"
                           onClick={() => alterar(i, l.quantidade + 1)}
-                          aria-label={`Mais um ${p.nome}`}
+                          aria-label={t("maisUm", { nome: nomeProduto })}
                           className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-on-surface"
                         >
                           <Plus size={16} />
@@ -194,7 +198,7 @@ export default function Carrinho() {
                       <button
                         type="button"
                         onClick={() => remover(i)}
-                        aria-label={`Remover ${p.nome}`}
+                        aria-label={t("remover", { nome: nomeProduto })}
                         className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-red-500 transition-colors"
                       >
                         <Trash2 size={16} />
@@ -208,35 +212,34 @@ export default function Carrinho() {
 
           {/* A regra do prazo é dita uma vez, aqui — não peça a peça. */}
           <p className="font-body text-sm text-on-surface-muted mt-4 bg-surface-high p-4">
-            O que estiver na sede separa-se de imediato. O que faltar é pedido ao
-            fornecedor e a encomenda fica pronta quando chegar, até{" "}
-            {PRAZO_ENCOMENDA_SEMANAS} semanas. Avisamos-te por email.
+            {t("prazo", { semanas: PRAZO_ENCOMENDA_SEMANAS })}
           </p>
         </section>
 
         {/* Quem encomenda */}
         <section>
           <h2 className="font-headline font-black uppercase text-2xl tracking-tight text-on-surface mb-5">
-            Quem encomenda
+            {t("quemEncomenda")}
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <Campo label="Nome completo" valor={nome} set={setNome} larga autoComplete="name" />
-            <Campo label="Email" valor={email} set={setEmail} tipo="email" autoComplete="email" />
-            <Campo label="Telemóvel" valor={telemovel} set={setTelemovel} tipo="tel" autoComplete="tel" />
-            <Campo label="Número de sócio" valor={socio} set={setSocio} opcional />
+            <Campo id="nome-completo" label={t("campos.nome")} valor={nome} set={setNome} larga autoComplete="name" />
+            <Campo id="email" label={t("campos.email")} valor={email} set={setEmail} tipo="email" autoComplete="email" />
+            <Campo id="telem-vel" label={t("campos.telemovel")} valor={telemovel} set={setTelemovel} tipo="tel" autoComplete="tel" />
+            <Campo id="n-mero-de-s-cio" label={t("campos.socio")} valor={socio} set={setSocio} opcional={t("campos.opcional")} />
             <Campo
-              label="Para que atleta"
+              id="para-que-atleta"
+              label={t("campos.atleta")}
               valor={atleta}
               set={setAtleta}
-              opcional
-              dica="Se a encomenda for para um filho ou outro atleta"
+              opcional={t("campos.opcional")}
+              dica={t("campos.atletaDica")}
             />
           </div>
 
           <label className="block mt-5">
             <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
-              Notas <span className="normal-case tracking-normal opacity-60">(opcional)</span>
+              {t("campos.notas")} <span className="normal-case tracking-normal opacity-60">{t("campos.opcional")}</span>
             </span>
             <textarea
               value={notas}
@@ -250,7 +253,7 @@ export default function Carrinho() {
         {/* Quando paga */}
         <section>
           <h2 className="font-headline font-black uppercase text-2xl tracking-tight text-on-surface mb-5">
-            Quando pagas
+            {t("quandoPagas")}
           </h2>
 
           <div className="space-y-3">
@@ -275,15 +278,15 @@ export default function Carrinho() {
                   <span className="flex-1">
                     <span className="flex flex-wrap items-baseline justify-between gap-x-4">
                       <span className="font-headline font-black uppercase text-base text-on-surface">
-                        {m.nome}
+                        {t(`momentos.${m.id}.nome`)}
                       </span>
                       <span className="font-headline font-black text-xl text-yellow">
                         {formatEuros(valor)}
                       </span>
                     </span>
                     <span className="block font-body text-sm text-on-surface-muted mt-1 leading-relaxed">
-                      {m.descricao}
-                      {m.id === "sinal" && ` São ${SINAL_PERCENTAGEM}% do total.`}
+                      {t(`momentos.${m.id}.descricao`)}
+                      {m.id === "sinal" && t("percentagemSinal", { percentagem: SINAL_PERCENTAGEM })}
                     </span>
                   </span>
                 </label>
@@ -297,19 +300,19 @@ export default function Carrinho() {
       <aside className="lg:sticky lg:top-28 h-fit">
         <div className="bg-surface-high p-7 space-y-4">
           <h2 className="font-headline font-black uppercase text-lg tracking-tight text-on-surface">
-            Resumo
+            {t("resumo")}
           </h2>
 
           <div className="space-y-2 pb-4 border-b border-on-surface/15">
-            <Linha rotulo="Total da encomenda" valor={formatEuros(total)} />
+            <Linha rotulo={t("totalEncomenda")} valor={formatEuros(total)} />
             {momento === "sinal" && (
-              <Linha rotulo="Falta no levantamento" valor={formatEuros(total - sinal)} />
+              <Linha rotulo={t("faltaLevantamento")} valor={formatEuros(total - sinal)} />
             )}
           </div>
 
           <div className="flex items-baseline justify-between gap-4">
             <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted">
-              A pagar agora
+              {t("aPagarAgora")}
             </span>
             <span className="font-headline font-black text-3xl text-yellow leading-none">
               {formatEuros(aPagarAgora)}
@@ -326,14 +329,14 @@ export default function Carrinho() {
 
           <button type="submit" disabled={aEnviar} className="btn-primary w-full justify-center text-sm py-4 disabled:opacity-60">
             {aEnviar ? (
-              <><Loader2 size={16} className="animate-spin" /> A registar…</>
+              <><Loader2 size={16} className="animate-spin" /> {t("aRegistar")}</>
             ) : (
-              <><Send size={16} /> Encomendar</>
+              <><Send size={16} /> {t("encomendar")}</>
             )}
           </button>
 
           <p className="font-body text-xs text-on-surface-muted leading-relaxed">
-            Levantamento sempre na sede do clube. Não enviamos para casa.
+            {t("levantamento")}
           </p>
         </div>
       </aside>
@@ -351,22 +354,25 @@ function Linha({ rotulo, valor }: { rotulo: string; valor: string }) {
 }
 
 function Campo({
-  label, valor, set, tipo = "text", opcional, larga, dica, autoComplete,
+  id: chave, label, valor, set, tipo = "text", opcional, larga, dica, autoComplete,
 }: {
+  /** Fixo, para o `id` do campo não mudar com a língua. */
+  id: string;
   label: string;
   valor: string;
   set: (v: string) => void;
   tipo?: string;
-  opcional?: boolean;
+  /** O texto «(opcional)» na língua da página; sem ele o campo é obrigatório. */
+  opcional?: string;
   larga?: boolean;
   dica?: string;
   autoComplete?: string;
 }) {
-  const id = `enc-${label.toLowerCase().replace(/[^a-z]+/g, "-")}`;
+  const id = `enc-${chave}`;
   return (
     <div className={larga ? "sm:col-span-2" : undefined}>
       <label htmlFor={id} className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
-        {label} {opcional ? <span className="normal-case tracking-normal opacity-60">(opcional)</span> : "*"}
+        {label} {opcional ? <span className="normal-case tracking-normal opacity-60">{opcional}</span> : "*"}
       </label>
       <input
         id={id}

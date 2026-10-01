@@ -8,6 +8,10 @@
  *
  * O sócio escolhe de quanto em quanto tempo paga — o valor é sempre
  * o mesmo por mês, só muda o número de meses cobrados de cada vez.
+ *
+ * Os nomes e notas daqui ficam em português para a API e para os
+ * termos. As páginas de sócio leem as traduções por id em
+ * messages/<lingua>/socios.json (periodicidades.<id>, metodos.<id>).
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -105,8 +109,26 @@ export function totalAPagar(periodicidade: Periodicidade, metodo: string): numbe
   return Math.round((base + taxaDoMetodo(metodo, base)) * 100) / 100;
 }
 
-export function formatEuros(v: number): string {
-  return new Intl.NumberFormat("pt-PT", {
+/**
+ * Locale do `Intl` para cada língua do site. O crioulo vai pelo
+ * português: nem todos os navegadores têm dados de `kea`, e um
+ * servidor e um telemóvel a formatar de maneira diferente dá erro
+ * de hidratação.
+ */
+const LOCALE_INTL: Record<string, string> = {
+  pt: "pt-PT", en: "en-GB", es: "es-ES", fr: "fr-FR", kea: "pt-PT",
+};
+
+export function localeIntl(lingua: string = "pt"): string {
+  return LOCALE_INTL[lingua] ?? "pt-PT";
+}
+
+/**
+ * Sem língua, sai em português — é assim que a API escreve os emails
+ * para o clube. As páginas passam a língua de quem está a ver.
+ */
+export function formatEuros(v: number, lingua: string = "pt"): string {
+  return new Intl.NumberFormat(localeIntl(lingua), {
     style: "currency",
     currency: "EUR",
     minimumFractionDigits: v % 1 === 0 ? 0 : 2,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import gsap from "gsap";
@@ -138,6 +139,7 @@ function initParticulas(canvas: HTMLCanvasElement) {
    Hero Section Component
    ────────────────────────────────────────────────────────────────── */
 export default function HeroSection() {
+  const t = useTranslations("inicio.hero");
   const sectionRef  = useRef<HTMLElement>(null);
   const canvasRef   = useRef<HTMLCanvasElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -258,7 +260,7 @@ export default function HeroSection() {
 
           {/* Eyebrow */}
           <p className="font-body font-semibold text-xs uppercase tracking-[0.35em] text-yellow mb-6">
-            Fundado em 1966 · Valejas, Oeiras
+            {t("fundado")}
           </p>
 
           {/* Título — o mote do clube. A Direção pediu ênfase no mote, e
@@ -267,8 +269,9 @@ export default function HeroSection() {
             ref={headlineRef}
             className="font-headline font-black wdth-condensed text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] uppercase leading-[0.85] tracking-tighter text-white mb-6"
           >
-            A união faz a{" "}
-            <span className="text-yellow block on-dark">força</span>
+            {t.rich("titulo", {
+              destaque: (c) => <span className="text-yellow block on-dark">{c}</span>,
+            })}
           </h1>
 
           {/* Sub */}
@@ -276,8 +279,7 @@ export default function HeroSection() {
             ref={subRef}
             className="font-body text-lg text-white/80 max-w-md leading-relaxed mb-10"
           >
-            Somos todos Valejas. Desde 1966, o clube da nossa terra — do futsal
-            ao atletismo, dos mais novos aos veteranos.
+            {t("texto")}
           </p>
 
           {/* CTAs */}
@@ -286,10 +288,10 @@ export default function HeroSection() {
               todo centrado. */}
           <div ref={ctaRef} className="flex flex-col sm:flex-row sm:flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none mx-auto lg:mx-0">
             <Link href="/clube" className="btn-primary text-sm justify-center w-full sm:w-auto">
-              Conhecer o clube
+              {t("conhecerClube")}
             </Link>
             <Link href="/jogos" className="btn-ghost text-sm justify-center w-full sm:w-auto text-white border-white/30 hover:border-yellow hover:text-yellow">
-              Últimos Jogos
+              {t("ultimosJogos")}
             </Link>
           </div>
         </div>
@@ -301,7 +303,7 @@ export default function HeroSection() {
           >
             <Image
               src="/brand/crest.png"
-              alt="Emblema do Valejas Atlético Clube"
+              alt={t("emblemaAlt")}
               width={520}
               height={620}
               priority
@@ -317,7 +319,7 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/85"
         aria-hidden
       >
-        <span className="font-body text-xs uppercase tracking-widest">Explorar</span>
+        <span className="font-body text-xs uppercase tracking-widest">{t("explorar")}</span>
         <ChevronDown size={18} className="motion-safe:animate-[nudge_2s_ease-in-out_infinite] motion-reduce:animate-none" />
       </div>
     </section>

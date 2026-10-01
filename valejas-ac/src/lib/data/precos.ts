@@ -30,75 +30,77 @@ export const EPOCA = "2026/2027";
 /** Desconto por cada irmão, aplicado à inscrição e à mensalidade. */
 export const DESCONTO_IRMAOS = 5;
 
+/** Depois do número: "por época", "por mês", "uma vez". */
+export type PeriodoValor = "porEpoca" | "porMes" | "umaVez";
+
+/** O que a inscrição cobre, quando o comunicado o diz. */
+export type InclusaoValor =
+  | "inscricaoClube" | "inscricaoAfLisboa" | "seguroDesportivo" | "cartaoSocio";
+
+/**
+ * O texto de cada valor (nome, período, o que inclui, nota) está em
+ * messages/<lingua>/inscricoes.json → valores.*, pela `chave`.
+ */
 export interface ValorEpoca {
   id:         string;
-  nome:       string;
+  /** Chave em valores.itens.<chave>. */
+  chave:      string;
   valor:      number;
-  /** "por época", "por mês" — o que aparece a seguir ao número. */
-  periodo:    string;
-  /** O que está incluído, quando o comunicado o diz. */
-  inclui?:    string[];
+  periodo:    PeriodoValor;
+  inclui?:    InclusaoValor[];
   /** Tem o desconto de irmãos. */
   desconto?:  boolean;
-  nota?:      string;
+  /** Tem nota por baixo (valores.itens.<chave>.nota). */
+  nota?:      boolean;
 }
 
 export const INSCRICOES: ValorEpoca[] = [
   {
     id: "inscricao",
-    nome: "Inscrição",
+    chave: "inscricao",
     valor: 60,
-    periodo: "por época",
-    inclui: [
-      "Inscrição no clube",
-      "Inscrição na AF Lisboa",
-      "Seguro desportivo",
-      "Cartão de sócio",
-    ],
+    periodo: "porEpoca",
+    inclui: ["inscricaoClube", "inscricaoAfLisboa", "seguroDesportivo", "cartaoSocio"],
     desconto: true,
   },
   {
     id: "reinscricao",
-    nome: "Reinscrição",
+    chave: "reinscricao",
     valor: 55,
-    periodo: "por época",
-    inclui: [
-      "Inscrição no clube",
-      "Inscrição na AF Lisboa",
-      "Seguro desportivo",
-    ],
+    periodo: "porEpoca",
+    inclui: ["inscricaoClube", "inscricaoAfLisboa", "seguroDesportivo"],
     desconto: true,
-    nota: "Para quem já jogou no clube na época anterior.",
+    nota: true,   // para quem já jogou no clube na época anterior
   },
   {
     id: "exame-medico",
-    nome: "Exame médico",
+    chave: "exameMedico",
     valor: 15,
-    periodo: "uma vez",
-    nota: "Obrigatório para treinar e competir. Pode ser feito no médico de família, e nesse caso não se paga ao clube.",
+    periodo: "umaVez",
+    nota: true,   // pode ser feito no médico de família
   },
   {
     id: "quota",
-    nome: "Quota de sócio",
+    chave: "quota",
     valor: QUOTA_MENSAL,
-    periodo: "por mês",
-    nota: "Obrigatória, e já incluída na inscrição e na reinscrição.",
+    periodo: "porMes",
+    nota: true,   // obrigatória, já incluída na inscrição
   },
 ];
 
 export const MENSALIDADES: ValorEpoca[] = [
   {
     id: "mensalidade-formacao",
-    nome: "Petizes a juvenis",
+    chave: "mensalidadeFormacao",   // petizes a juvenis
     valor: 30,
-    periodo: "por mês",
+    periodo: "porMes",
     desconto: true,
   },
   {
     id: "mensalidade-juniores",
-    nome: "Juniores",
+    chave: "mensalidadeJuniores",
     valor: 20,
-    periodo: "por mês",
+    periodo: "porMes",
     desconto: true,
   },
 ];
