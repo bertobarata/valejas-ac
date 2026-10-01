@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "titulo": "Senior Academy",
+    "descricao": "A community programme by Valejas A.C. Social for people aged 50 and over. Choir, chi kung, painting, computer skills, traditional dancing, sueca (a card game) and billiards."
+  },
+  "cabecalho": {
+    "titulo": "Senior <destaque>Academy</destaque>",
+    "tagline": "Growing older with the club, not away from it",
+    "intro": "A place to learn new things, stay active and make friends. It isn't a school or a care home — it's the part of the club where life carries on after 50.",
+    "onde": "Where",
+    "quando": "When",
+    "local": "Valejas Atlético Clube clubhouse",
+    "horario": {
+      "segundaASexta": "Monday to Friday",
+      "sabado": "Saturday"
+    }
+  },
+  "fotos": {
+    "arcos": {
+      "alt": "A Senior Academy participant plays the coloured hoops game on the ground, while children and other seniors wait their turn.",
+      "legenda": "The hoops game, shared with the youngsters."
+    },
+    "roda": {
+      "alt": "Seniors and children playing a ring game outdoors, arms outstretched, in the playground.",
+      "legenda": "A ring game in the playground."
+    },
+    "labirintos": {
+      "alt": "A senior helps a child balance a ball in a maze made from a box and cardboard tubes.",
+      "legenda": "Cardboard mazes, made by hand."
+    }
+  },
+  "oQueSeFaz": {
+    "titulo": "What we do",
+    "texto": "You don't need to know anything beforehand. No activity requires experience.",
+    "familias": {
+      "corpo": "Get moving",
+      "criar": "Create",
+      "aprender": "Learn",
+      "conviver": "Socialise"
+    },
+    "itens": {
+      "chiKung": {
+        "nome": "Chi Kung",
+        "descricao": "Slow movement and breathing, for balance and joints."
+      },
+      "fitSenior": {
+        "nome": "Fit Sénior",
+        "descricao": "Adapted exercise, designed to keep up strength and independence."
+      },
+      "dancasTradicionais": {
+        "nome": "Traditional dancing",
+        "descricao": "The dances people have always loved, with music and company."
+      },
+      "coro": {
+        "nome": "Choir",
+        "descricao": "Singing together, and nobody asks for your CV."
+      },
+      "pintura": {
+        "nome": "Painting and drawing",
+        "descricao": "Classes for those who've never held a brush and for those who have."
+      },
+      "informatica": {
+        "nome": "Computers and digital skills",
+        "descricao": "Phones, computers and online services, at your own pace."
+      },
+      "saude": {
+        "nome": "Health talks",
+        "descricao": "Sessions about the body, ageing and what to do with both."
+      },
+      "sueca": {
+        "nome": "Sueca",
+        "descricao": "A traditional card game (Portuguese), with competitions organised by the club at the clubhouse tables."
+      },
+      "bilhar": {
+        "nome": "Billiards",
+        "descricao": "Its own competitions too, with an audience too."
+      },
+      "teatro": {
+        "nome": "Theatre trips",
+        "descricao": "Group outings to see shows."
+      },
+      "cultura": {
+        "nome": "Cultural activities",
+        "descricao": "Visits, get-togethers and whatever the season calls for."
+      }
+    }
+  },
+  "maisNovos": {
+    "titulo": "With the youngsters",
+    "texto": "Every now and then, the Academy joins the children for playground games: ring games, hoops and cardboard mazes, shared between generations."
+  },
+  "porque": {
+    "titulo": "Why this exists",
+    "paragrafo1": "A club isn't just the people who play. The Senior Academy exists to fight isolation and keep active a part of the community that still belongs to Valejas long after it stops competing.",
+    "paragrafo2": "There are sueca and billiards competitions organised by the club, group trips to the theatre, and people who come along just for the company. That counts too."
+  },
+  "cta": {
+    "titulo": "Want to take part?",
+    "texto": "Drop by the clubhouse during Academy hours, or get in touch. All you need is to be a member — membership is {quota} a month.",
+    "fazerSocio": "Become a member",
+    "contactos": "Contact"
+  }
+}

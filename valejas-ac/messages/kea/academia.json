@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "titulo": "Akadémia Séniôr",
+    "descricao": "Prujetu kumunitáriu di Valejas A.C. Social pa kenha ki ten más di 50 anu. Koru, chi kung, pintura, informátika, dansa tradisional, sueca i biliár."
+  },
+  "cabecalho": {
+    "titulo": "Akadémia <destaque>Séniôr</destaque>",
+    "tagline": "Fika bédju ku klubi, ka lonji del",
+    "intro": "Un spasu pa prende kuza nobu, fika ativu i faze amizadi. Ka é skola, nen é lar — é párti di klubi undi vida ta kontinua dipôs di 50 anu.",
+    "onde": "Undi",
+    "quando": "Ki ora",
+    "local": "Sedi di Valejas Atlético Clube",
+    "horario": {
+      "segundaASexta": "Sugunda pa Sesta",
+      "sabado": "Sábadu"
+    }
+  },
+  "fotos": {
+    "arcos": {
+      "alt": "Un partisipanti di Akadémia Séniôr ta faze jogu di arku di kor na txon, enkuantu mininus i otus séniôr ta spera se bês.",
+      "legenda": "Jogu di arku, djuntu ku mininus."
+    },
+    "roda": {
+      "alt": "Séniôr i mininus na un jogu di roda na rua, ku brasu abertu, na rekreiu.",
+      "legenda": "Jogu di roda na rekreiu."
+    },
+    "labirintos": {
+      "alt": "Un séniôr ta djuda un mininu ikilibra un bola na un labirintu fetu ku un kaxa i rolu di kartãu.",
+      "legenda": "Labirintu di kartãu, fetu na mon."
+    }
+  },
+  "oQueSeFaz": {
+    "titulo": "Kuze ki ta fazedu",
+    "texto": "Ka meste sabe nada antis. Nenhun atividadi ka ta pidi spiriénsia.",
+    "familias": {
+      "corpo": "Mexe korpu",
+      "criar": "Kria",
+      "aprender": "Prende",
+      "conviver": "Konvive"
+    },
+    "itens": {
+      "chiKung": {
+        "nome": "Chi Kung",
+        "descricao": "Muvimentu divagar i rispirason, pa ikilíbriu i pa juntas."
+      },
+      "fitSenior": {
+        "nome": "Fit Sénior",
+        "descricao": "Izersísiu adaptadu, pa manti forsa i autonomia."
+      },
+      "dancasTradicionais": {
+        "nome": "Dansa tradisional",
+        "descricao": "Kes bali di sénpri, ku múzika i konpanhia."
+      },
+      "coro": {
+        "nome": "Koru",
+        "descricao": "Kanta na grupu, sen ninguén pidi kurríkulu."
+      },
+      "pintura": {
+        "nome": "Pintura i dizenhu",
+        "descricao": "Aula pa kenha ki nunka pega na pinsel i pa kenha ki dja pega."
+      },
+      "informatica": {
+        "nome": "Informátika i inkluzon dijital",
+        "descricao": "Telemóvel, kompudór i sirvisu online, na ritmu di kada un."
+      },
+      "saude": {
+        "nome": "Téma di saúdi",
+        "descricao": "Sesãu sobri korpu, idadi i kuze ki nu pode faze ku es dós."
+      },
+      "sueca": {
+        "nome": "Sueca",
+        "descricao": "Kompetison organizadu pa klubi, na méza di sedi."
+      },
+      "bilhar": {
+        "nome": "Biliár",
+        "descricao": "Tanbé ku se kompetison, tanbé ku djenti ta odja."
+      },
+      "teatro": {
+        "nome": "Bai tiatru",
+        "descricao": "Saída di grupu pa bai odja spetákulu."
+      },
+      "cultura": {
+        "nome": "Atividadi kultural",
+        "descricao": "Vizita, konvíviu i kuze ki tenpu pidi."
+      }
+    }
+  },
+  "maisNovos": {
+    "titulo": "Ku mininus",
+    "texto": "Di bês in kantu, Akadémia ta djunta ku mininus pa jogu di rekreiu: roda, arku i labirintu di kartãu, djuntu entri jerason."
+  },
+  "porque": {
+    "titulo": "Pamodi ki es li ta izisti",
+    "paragrafo1": "Un klubi ka é sô kenha ki ta joga. Akadémia Séniôr ta izisti pa kumbati izolamentu i pa manti ativu un párti di kumunidadi ki inda é di Valejas txeu tenpu dipôs di dexa di kompeti.",
+    "paragrafo2": "Li ten kompetison di sueca i di biliár organizadu pa klubi, ta bai tiatru na grupu, i ten djenti ki ta ben sô pa konvive. Kel-li tanbé ta konta."
+  },
+  "cta": {
+    "titulo": "Bu kre partisipa?",
+    "texto": "Pasa na sedi na oráriu di Akadémia, o fala ku nos. Pa partisipa, basta bu ser sóssiu — kóta é {quota} pa mês.",
+    "fazerSocio": "N kre fika sóssiu",
+    "contactos": "Kontaktu"
+  }
+}

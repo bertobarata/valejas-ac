@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import type { Lingua } from "@/i18n/routing";
 import { paraPagina } from "@/lib/seo/metadados";
+import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Clock, MapPin } from "lucide-react";
@@ -12,14 +16,22 @@ import fotoArcos from "../../../public/academia-senior/jogo-dos-arcos.webp";
 import fotoRoda from "../../../public/academia-senior/roda-no-recreio.webp";
 import fotoLabirintos from "../../../public/academia-senior/labirintos-de-cartao.webp";
 
-export const metadata: Metadata = paraPagina("/academia-senior", {
-  title: "Academia Sénior",
-  description:
-    "Programa comunitário do Valejas A.C. Social para maiores de 50 anos. " +
-    "Coro, chi kung, pintura, informática, danças tradicionais, sueca e bilhar.",
-});
+export async function generateMetadata(
+  { params: { locale } }: { params: { locale: Lingua } },
+): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "academia.meta" });
+  return paraPagina("/academia-senior", {
+    title: t("titulo"),
+    description: t("descricao"),
+  }, locale);
+}
 
-export default function AcademiaSeniorPage() {
+export default function AcademiaSeniorPage(
+  { params: { locale } }: { params: { locale: Lingua } },
+) {
+  setRequestLocale(locale);
+  const t = useTranslations("academia");
+
   return (
     <div className="bg-surface">
       {/* Cabeçalho */}
@@ -30,13 +42,15 @@ export default function AcademiaSeniorPage() {
               {ACADEMIA.projeto}
             </p>
             <h1 className="font-headline font-black text-5xl md:text-7xl uppercase leading-none tracking-tighter text-on-surface">
-              Academia <span className="text-yellow">Sénior</span>
+              {t.rich("cabecalho.titulo", {
+                destaque: (c) => <span className="text-yellow">{c}</span>,
+              })}
             </h1>
             <p className="font-body text-xl md:text-2xl text-blue mt-5 leading-relaxed">
-              {ACADEMIA.tagline}
+              {t("cabecalho.tagline")}
             </p>
             <p className="font-body text-lg text-on-surface-muted mt-4 max-w-2xl leading-relaxed">
-              {ACADEMIA.intro}
+              {t("cabecalho.intro")}
             </p>
 
             {/* Prática — onde e quando */}
@@ -45,20 +59,20 @@ export default function AcademiaSeniorPage() {
                 <MapPin size={20} className="text-yellow flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted">
-                    Onde
+                    {t("cabecalho.onde")}
                   </p>
-                  <p className="font-body text-base text-on-surface mt-1">{ACADEMIA.local}</p>
+                  <p className="font-body text-base text-on-surface mt-1">{t("cabecalho.local")}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Clock size={20} className="text-yellow flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted">
-                    Quando
+                    {t("cabecalho.quando")}
                   </p>
                   {ACADEMIA.horario.map((h) => (
-                    <p key={h.dias} className="font-body text-base text-on-surface mt-1">
-                      {h.dias} — {h.horas}
+                    <p key={h.id} className="font-body text-base text-on-surface mt-1">
+                      {t(`cabecalho.horario.${h.id}`)} — {h.horas}
                     </p>
                   ))}
                 </div>
@@ -70,7 +84,7 @@ export default function AcademiaSeniorPage() {
             <div className="relative aspect-[4/3] lg:aspect-[4/5] overflow-hidden bg-surface-high">
               <Image
                 src={fotoArcos}
-                alt="Uma participante da Academia Sénior faz o jogo dos arcos coloridos no chão, enquanto crianças e outras seniores esperam a vez."
+                alt={t("fotos.arcos.alt")}
                 fill
                 priority
                 placeholder="blur"
@@ -79,7 +93,7 @@ export default function AcademiaSeniorPage() {
               />
             </div>
             <figcaption className="font-body text-sm text-on-surface-muted mt-3">
-              Jogo dos arcos, a meias com os mais novos.
+              {t("fotos.arcos.legenda")}
             </figcaption>
           </figure>
         </div>
@@ -88,10 +102,10 @@ export default function AcademiaSeniorPage() {
       {/* Atividades, por família */}
       <section className="section-container py-16 md:py-24">
         <h2 className="font-headline font-black uppercase tracking-tighter leading-none text-3xl md:text-4xl text-on-surface">
-          O que se faz
+          {t("oQueSeFaz.titulo")}
         </h2>
         <p className="font-body text-on-surface-muted mt-2 max-w-2xl">
-          Não é preciso saber nada de antemão. Nenhuma atividade exige experiência.
+          {t("oQueSeFaz.texto")}
         </p>
 
         <div className="mt-12 space-y-14">
@@ -101,19 +115,19 @@ export default function AcademiaSeniorPage() {
             return (
               <div key={f.id}>
                 <h3 className="font-headline font-black text-2xl uppercase tracking-tighter text-yellow border-b border-on-surface/10 pb-3">
-                  {f.titulo}
+                  {t(`oQueSeFaz.familias.${f.id}`)}
                 </h3>
                 <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-14">
                   {itens.map((a) => (
                     <li
-                      key={a.nome}
+                      key={a.id}
                       className="py-4 border-b border-on-surface/10 flex flex-col sm:flex-row sm:items-baseline gap-x-5 gap-y-1"
                     >
                       <span className="font-headline font-black uppercase text-lg text-on-surface sm:w-44 shrink-0">
-                        {a.nome}
+                        {t(`oQueSeFaz.itens.${a.id}.nome`)}
                       </span>
                       <span className="font-body text-on-surface-muted leading-relaxed">
-                        {a.descricao}
+                        {t(`oQueSeFaz.itens.${a.id}.descricao`)}
                       </span>
                     </li>
                   ))}
@@ -128,11 +142,10 @@ export default function AcademiaSeniorPage() {
       <section className="bg-surface-low border-t border-on-surface/10">
         <div className="section-container py-16 md:py-24">
           <h2 className="font-headline font-black uppercase tracking-tighter leading-none text-3xl md:text-4xl text-on-surface">
-            Com os mais novos
+            {t("maisNovos.titulo")}
           </h2>
           <p className="font-body text-on-surface-muted mt-2 max-w-2xl leading-relaxed">
-            De vez em quando, a Academia junta-se às crianças para jogos de
-            recreio: roda, arcos e labirintos de cartão, a meias entre gerações.
+            {t("maisNovos.texto")}
           </p>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-5 gap-px bg-on-surface/10">
@@ -140,7 +153,7 @@ export default function AcademiaSeniorPage() {
               <div className="relative aspect-[4/3] md:aspect-[3/2] overflow-hidden bg-surface-high">
                 <Image
                   src={fotoRoda}
-                  alt="Seniores e crianças num jogo de roda ao ar livre, de braços abertos, no recreio."
+                  alt={t("fotos.roda.alt")}
                   fill
                   placeholder="blur"
                   sizes="(max-width: 768px) 100vw, 60vw"
@@ -148,14 +161,14 @@ export default function AcademiaSeniorPage() {
                 />
               </div>
               <figcaption className="font-body text-sm text-on-surface-muted p-4">
-                Jogo de roda no recreio.
+                {t("fotos.roda.legenda")}
               </figcaption>
             </figure>
             <figure className="md:col-span-2 bg-surface-low flex flex-col">
               <div className="relative aspect-[4/3] md:aspect-auto md:flex-1 overflow-hidden bg-surface-high">
                 <Image
                   src={fotoLabirintos}
-                  alt="Uma sénior ajuda uma criança a equilibrar uma bola num labirinto feito com uma caixa e rolos de cartão."
+                  alt={t("fotos.labirintos.alt")}
                   fill
                   placeholder="blur"
                   sizes="(max-width: 768px) 100vw, 40vw"
@@ -163,7 +176,7 @@ export default function AcademiaSeniorPage() {
                 />
               </div>
               <figcaption className="font-body text-sm text-on-surface-muted p-4">
-                Labirintos de cartão, feitos à mão.
+                {t("fotos.labirintos.legenda")}
               </figcaption>
             </figure>
           </div>
@@ -175,17 +188,13 @@ export default function AcademiaSeniorPage() {
         <div className="section-container py-16 md:py-20">
           <div className="max-w-2xl">
             <h2 className="font-headline font-black uppercase tracking-tighter leading-none text-3xl md:text-4xl">
-              Porque é que isto existe
+              {t("porque.titulo")}
             </h2>
             <p className="font-body text-lg text-white/80 leading-relaxed mt-4">
-              Um clube não é só quem joga. A Academia Sénior existe para combater o
-              isolamento e manter ativa uma parte da comunidade que continua a ser
-              do Valejas muito depois de deixar de competir.
+              {t("porque.paragrafo1")}
             </p>
             <p className="font-body text-lg text-white/80 leading-relaxed mt-4">
-              Aqui há competições de sueca e de bilhar organizadas pelo clube, idas
-              ao teatro em grupo, e gente que aparece só para conviver. Também isso
-              conta.
+              {t("porque.paragrafo2")}
             </p>
           </div>
         </div>
@@ -196,19 +205,18 @@ export default function AcademiaSeniorPage() {
         <div className="bg-surface-high p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-6 justify-between">
           <div className="max-w-xl">
             <h2 className="font-headline font-black uppercase tracking-tight leading-none text-2xl md:text-3xl text-on-surface">
-              Queres participar?
+              {t("cta.titulo")}
             </h2>
             <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-              Passa pela sede no horário da Academia, ou fala connosco. Para
-              participar basta ser sócio — a quota é de 1 € por mês.
+              {t("cta.texto", { quota: formatEuros(QUOTA_MENSAL, locale) })}
             </p>
           </div>
           <div className="flex flex-wrap gap-4 shrink-0">
             <Link href="/socios/inscricao" className="btn-primary text-sm">
-              Fazer-me sócio
+              {t("cta.fazerSocio")}
             </Link>
             <Link href="/contactos" className="btn-ghost text-sm">
-              Contactos
+              {t("cta.contactos")}
             </Link>
           </div>
         </div>

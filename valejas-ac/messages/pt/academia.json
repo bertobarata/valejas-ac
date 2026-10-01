@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "titulo": "Academia Sénior",
+    "descricao": "Programa comunitário do Valejas A.C. Social para maiores de 50 anos. Coro, chi kung, pintura, informática, danças tradicionais, sueca e bilhar."
+  },
+  "cabecalho": {
+    "titulo": "Academia <destaque>Sénior</destaque>",
+    "tagline": "Envelhecer com o clube, não longe dele",
+    "intro": "Um espaço para aprender coisas novas, manter-se ativo e criar relações. Não é uma escola nem um lar — é a parte do clube onde a vida continua depois dos 50.",
+    "onde": "Onde",
+    "quando": "Quando",
+    "local": "Sede do Valejas Atlético Clube",
+    "horario": {
+      "segundaASexta": "Segunda a sexta",
+      "sabado": "Sábado"
+    }
+  },
+  "fotos": {
+    "arcos": {
+      "alt": "Uma participante da Academia Sénior faz o jogo dos arcos coloridos no chão, enquanto crianças e outras seniores esperam a vez.",
+      "legenda": "Jogo dos arcos, a meias com os mais novos."
+    },
+    "roda": {
+      "alt": "Seniores e crianças num jogo de roda ao ar livre, de braços abertos, no recreio.",
+      "legenda": "Jogo de roda no recreio."
+    },
+    "labirintos": {
+      "alt": "Uma sénior ajuda uma criança a equilibrar uma bola num labirinto feito com uma caixa e rolos de cartão.",
+      "legenda": "Labirintos de cartão, feitos à mão."
+    }
+  },
+  "oQueSeFaz": {
+    "titulo": "O que se faz",
+    "texto": "Não é preciso saber nada de antemão. Nenhuma atividade exige experiência.",
+    "familias": {
+      "corpo": "Mexer o corpo",
+      "criar": "Criar",
+      "aprender": "Aprender",
+      "conviver": "Conviver"
+    },
+    "itens": {
+      "chiKung": {
+        "nome": "Chi Kung",
+        "descricao": "Movimento lento e respiração, para equilíbrio e articulações."
+      },
+      "fitSenior": {
+        "nome": "Fit Sénior",
+        "descricao": "Exercício adaptado, feito para manter força e autonomia."
+      },
+      "dancasTradicionais": {
+        "nome": "Danças tradicionais",
+        "descricao": "Os bailes de sempre, com música e companhia."
+      },
+      "coro": {
+        "nome": "Coro",
+        "descricao": "Cantar em grupo, sem ninguém pedir currículo."
+      },
+      "pintura": {
+        "nome": "Pintura e desenho",
+        "descricao": "Aulas para quem nunca pegou num pincel e para quem já pegou."
+      },
+      "informatica": {
+        "nome": "Informática e inclusão digital",
+        "descricao": "Telemóvel, computador e serviços online, ao ritmo de cada um."
+      },
+      "saude": {
+        "nome": "Temas de saúde",
+        "descricao": "Sessões sobre o corpo, a idade e o que fazer com ambos."
+      },
+      "sueca": {
+        "nome": "Sueca",
+        "descricao": "Competições organizadas pelo clube, à mesa da sede."
+      },
+      "bilhar": {
+        "nome": "Bilhar",
+        "descricao": "Também com competições próprias, também com plateia."
+      },
+      "teatro": {
+        "nome": "Idas ao teatro",
+        "descricao": "Saídas de grupo para assistir a espetáculos."
+      },
+      "cultura": {
+        "nome": "Atividades culturais",
+        "descricao": "Visitas, convívios e o que a época pedir."
+      }
+    }
+  },
+  "maisNovos": {
+    "titulo": "Com os mais novos",
+    "texto": "De vez em quando, a Academia junta-se às crianças para jogos de recreio: roda, arcos e labirintos de cartão, a meias entre gerações."
+  },
+  "porque": {
+    "titulo": "Porque é que isto existe",
+    "paragrafo1": "Um clube não é só quem joga. A Academia Sénior existe para combater o isolamento e manter ativa uma parte da comunidade que continua a ser do Valejas muito depois de deixar de competir.",
+    "paragrafo2": "Aqui há competições de sueca e de bilhar organizadas pelo clube, idas ao teatro em grupo, e gente que aparece só para conviver. Também isso conta."
+  },
+  "cta": {
+    "titulo": "Queres participar?",
+    "texto": "Passa pela sede no horário da Academia, ou fala connosco. Para participar basta ser sócio — a quota é de {quota} por mês.",
+    "fazerSocio": "Fazer-me sócio",
+    "contactos": "Contactos"
+  }
+}
