@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "titulo": "Valejas Atlético Clube | Our town's club since 1966",
+    "descricao": "Sports club in Valejas, Oeiras. Federated futsal and athletics, strong youth development, plus judo, karate, dance, theatre and the Senior Academy. The club's home since 1966.",
+    "descricaoPartilha": "Futsal, athletics, karate, cycling, judo, dance and theatre. Plus the Senior Academy. The club's home since 1966."
+  },
+  "saltarParaConteudo": "Skip to content",
+  "soEmPortugues": "This page is only available in Portuguese.",
+  "aCarregar": "Loading the Valejas Atlético Clube website",
+  "lingua": {
+    "escolher": "Choose language"
+  },
+  "nav": {
+    "inicio": "Home",
+    "comunicados": "News",
+    "modalidades": "Sports",
+    "academiaSenior": "Senior Academy",
+    "clube": "Club",
+    "historia": "History",
+    "emblema": "The Crest",
+    "instalacoes": "Facilities",
+    "orgaosSociais": "Club Officials",
+    "patrocinadores": "Sponsors",
+    "inscricoes": "Join a Sport",
+    "contactos": "Contact",
+    "loja": "Shop",
+    "fazerSocio": "Become a Member",
+    "verPaginasDe": "Show {item} pages",
+    "fecharPaginasDe": "Close {item} pages",
+    "faixa": "Valejas Atlético Clube • Our town's club since 1966",
+    "modoClaro": "Switch to light mode",
+    "modoEscuro": "Switch to dark mode",
+    "abrirMenu": "Open menu",
+    "fecharMenu": "Close menu",
+    "escreverAoClube": "Email the club",
+    "modalidade": {
+      "futsal": "Futsal",
+      "atletismo": "Athletics",
+      "karate": "Karate",
+      "cicloturismo": "Cycling",
+      "judo": "Judo",
+      "danca": "Dance",
+      "teatro": "Theatre"
+    }
+  },
+  "rodape": {
+    "oClube": "The Club",
+    "emblema": "The Crest",
+    "instalacoes": "Facilities",
+    "orgaosSociais": "Club Officials",
+    "patrocinadores": "Sponsors",
+    "academiaSenior": "Senior Academy",
+    "comunicados": "News",
+    "jogos": "Matches",
+    "inscricoes": "Join a Sport",
+    "socios": "Members",
+    "fazerSocio": "Become a Member",
+    "lojaOficial": "Official Shop",
+    "privacidade": "Privacy",
+    "termos": "Terms and Conditions",
+    "cookies": "Cookies",
+    "contactos": "Contact",
+    "emblemaAlt": "Valejas Atlético Clube crest",
+    "descricao": "Our town's club since 1966. Futsal, athletics and community, in the heart of Valejas.",
+    "seccao": {
+      "clube": "Club",
+      "participar": "Get involved",
+      "modalidades": "Sports",
+      "legal": "Legal"
+    },
+    "direitos": "Our town's club.",
+    "fundado": "Founded in 1966 · AF Lisboa · Barcarena, Oeiras"
+  },
+  "tv": {
+    "verDireto": "Valejas TV — watch live now",
+    "semDireto": "We're not live",
+    "explicacao": "When there's a match or event streaming live, this button takes you there.",
+    "verCanal": "Visit the Valejas channel"
+  },
+  "erro404": {
+    "titulo": "Page not found",
+    "etiqueta": "Error 404",
+    "cabecalho": "This page doesn't <destaque>exist</destaque>",
+    "texto": "It either never existed or has moved. It happens. From here you can reach the rest of the club.",
+    "jogos": "Matches"
+  },
+  "erro": {
+    "etiqueta": "Something went wrong",
+    "cabecalho": "We couldn't <destaque>show this</destaque>",
+    "texto": "The problem is on our side, not yours. Try again; if it keeps happening, let us know.",
+    "tentarOutraVez": "Try again",
+    "avisarClube": "Tell the club",
+    "referencia": "Error reference: {digest}"
+  }
+}

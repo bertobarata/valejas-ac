@@ -1,43 +1,46 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { STORE_URL } from "@/components/Navbar";
+import { STORE_URL } from "@/lib/paginas";
 import { CONTACTO } from "@/lib/data/socios";
 import { MOTE } from "@/lib/data/clube";
 import { MODALIDADES } from "@/lib/data/modalidades";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { Mail as MailIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 /*
  * Treze links numa coluna faziam do rodapé a parte mais alta da página.
  * Partidos pelo que a pessoa vem fazer: conhecer o clube, ou participar.
  * «Início» sai — o emblema lá em cima já leva à inicial.
+ *
+ * Os `label` são chaves em comum.rodape (as das modalidades em comum.nav).
  */
 const LINKS = {
   clube: [
-    { label: "O Clube",         href: "/clube" },
-    { label: "O Emblema",       href: "/clube/emblema" },
-    { label: "Instalações",     href: "/instalacoes" },
-    { label: "Órgãos Sociais",  href: "/orgaos-sociais" },
-    { label: "Patrocinadores",  href: "/patrocinadores" },
-    { label: "Academia Sénior", href: "/academia-senior" },
+    { label: "oClube",         href: "/clube" },
+    { label: "emblema",       href: "/clube/emblema" },
+    { label: "instalacoes",     href: "/instalacoes" },
+    { label: "orgaosSociais",  href: "/orgaos-sociais" },
+    { label: "patrocinadores",  href: "/patrocinadores" },
+    { label: "academiaSenior", href: "/academia-senior" },
   ],
   participar: [
-    { label: "Comunicados",  href: "/comunicados" },
-    { label: "Jogos",        href: "/jogos" },
-    { label: "Inscrições",   href: "/inscricoes" },
-    { label: "Sócios",       href: "/socios-contacto" },
-    { label: "Fazer Sócio",  href: "/socios/inscricao" },
-    { label: "Loja Oficial", href: STORE_URL },
+    { label: "comunicados",  href: "/comunicados" },
+    { label: "jogos",        href: "/jogos" },
+    { label: "inscricoes",   href: "/inscricoes" },
+    { label: "socios",       href: "/socios-contacto" },
+    { label: "fazerSocio",  href: "/socios/inscricao" },
+    { label: "lojaOficial", href: STORE_URL },
   ],
   modalidades: MODALIDADES.map((m) => ({
-    label: m.nome,
+    label: `modalidade.${m.slug}`,
     href:  `/modalidades#${m.slug}`,
   })),
   legal: [
-    { label: "Privacidade",        href: "/privacidade" },
-    { label: "Termos e Condições", href: "/termos" },
-    { label: "Cookies",            href: "/cookies" },
-    { label: "Contactos",          href: "/contactos" },
+    { label: "privacidade",        href: "/privacidade" },
+    { label: "termos", href: "/termos" },
+    { label: "cookies",            href: "/cookies" },
+    { label: "contactos",          href: "/contactos" },
   ],
 };
 
@@ -49,6 +52,11 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const t = useTranslations("comum.rodape");
+  const tNav = useTranslations("comum.nav");
+  /** As modalidades partilham os nomes com o menu do topo. */
+  const nome = (chave: string) => (chave.startsWith("modalidade.") ? tNav(chave) : t(chave));
+
   return (
     <footer className="bg-surface-low border-t border-on-surface/10">
       {/* Top section */}
@@ -66,7 +74,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <Image
                 src="/brand/crest.png"
-                alt="Emblema do Valejas Atlético Clube"
+                alt={t("emblemaAlt")}
                 width={44}
                 height={44}
                 className="w-11 h-11 object-contain"
@@ -80,8 +88,7 @@ export default function Footer() {
               {MOTE.texto}
             </p>
             <p className="font-body text-sm text-on-surface-muted leading-relaxed max-w-xs mt-3">
-              O clube da nossa terra desde 1966. Futsal, atletismo e comunidade,
-              no coração de Valejas.
+              {t("descricao")}
             </p>
 
             {/* Social links */}
@@ -105,7 +112,7 @@ export default function Footer() {
           {Object.entries(LINKS).map(([section, items]) => (
             <div key={section}>
               <h2 className="font-body font-semibold text-xs uppercase tracking-widest text-yellow mb-3">
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {t(`seccao.${section}`)}
               </h2>
               <ul className="-my-1">
                 {items.map((item) => (
@@ -117,14 +124,14 @@ export default function Footer() {
                         rel="noopener noreferrer"
                         className="alvo-toque lg:min-h-8 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
                       >
-                        {item.label}
+                        {nome(item.label)}
                       </a>
                     ) : (
                       <Link
                         href={item.href}
                         className="alvo-toque lg:min-h-8 font-body text-sm text-on-surface-muted hover:text-on-surface transition-colors duration-200"
                       >
-                        {item.label}
+                        {nome(item.label)}
                       </Link>
                     )}
                   </li>
@@ -139,10 +146,10 @@ export default function Footer() {
       <div className="border-t border-on-surface/10">
         <div className="section-container py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="font-body text-xs text-on-surface-muted">
-            © {new Date().getFullYear()} Valejas Atlético Clube. O clube da nossa terra.
+            © {new Date().getFullYear()} Valejas Atlético Clube. {t("direitos")}
           </p>
           <p className="font-body text-xs text-on-surface-muted">
-            Fundado em 1966 · AF Lisboa · Barcarena, Oeiras
+            {t("fundado")}
           </p>
         </div>
       </div>

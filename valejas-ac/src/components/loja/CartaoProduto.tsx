@@ -15,7 +15,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { Check, ChevronDown, Mail, Plus } from "lucide-react";
 import { formatEuros, type Produto } from "@/lib/data/loja";

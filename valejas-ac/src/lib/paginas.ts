@@ -7,3 +7,10 @@
  * acrescentar uma página a uma delas para o efeito partir.
  */
 export const PAGINAS_COM_HERO = ["/", "/clube/emblema"];
+
+/**
+ * A loja passou a ser do clube: vive em /loja, com levantamento na sede.
+ * Mora aqui e não no Navbar: o Navbar é de cliente, e um servidor que
+ * importe uma constante de lá recebe uma referência e não o texto.
+ */
+export const STORE_URL = "/loja";

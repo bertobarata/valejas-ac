@@ -16,7 +16,7 @@
  */
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { ChevronDown, Trophy, Users } from "lucide-react";
 import type { Modalidade } from "@/lib/data/modalidades";

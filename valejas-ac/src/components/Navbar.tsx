@@ -2,28 +2,25 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Logo from "@/components/Logo";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon, UserPlus, ShoppingBag, ChevronDown, Mail } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { CONTACTO } from "@/lib/data/socios";
 import { MODALIDADES } from "@/lib/data/modalidades";
 import BotaoTV from "@/components/BotaoTV";
+import SeletorLingua from "@/components/SeletorLingua";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clsx from "clsx";
-import { PAGINAS_COM_HERO } from "@/lib/paginas";
+import { PAGINAS_COM_HERO, STORE_URL } from "@/lib/paginas";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * A loja passou a ser do clube: vive em /loja, com levantamento na sede.
- * O link externo para a plataforma CTT (Zemig Sportswear) deixou de ser o
- * destino — a Zemig continua a ser o fornecedor e está nos patrocinadores.
- */
-export const STORE_URL = "/loja";
+
 
 /**
  * Cinco destinos na barra, e duas ações à direita. Eram nove links a
@@ -35,6 +32,7 @@ export const STORE_URL = "/loja";
  * na página inicial e no rodapé.
  */
 interface ItemNav {
+  /** Chave em comum.nav — o texto vem das traduções. */
   label:     string;
   href:      string;
   external?: boolean;
@@ -72,39 +70,40 @@ function submenuId(href: string): string {
 }
 
 const NAV_ITEMS: ItemNav[] = [
-  { label: "Início",      href: "/" },
-  { label: "Comunicados", href: "/comunicados" },
+  { label: "inicio",      href: "/" },
+  { label: "comunicados", href: "/comunicados" },
   {
-    label: "Modalidades",
+    label: "modalidades",
     href:  "/modalidades",
     // Cada uma abre já expandida na página, pelo #slug.
-    submenu: MODALIDADES.map((m) => ({ label: m.nome, href: `/modalidades#${m.slug}` })),
+    submenu: MODALIDADES.map((m) => ({ label: `modalidade.${m.slug}`, href: `/modalidades#${m.slug}` })),
   },
-  { label: "Academia Sénior", href: "/academia-senior" },
+  { label: "academiaSenior", href: "/academia-senior" },
   {
-    label: "Clube",
+    label: "clube",
     href:  "/clube",
     // Cinco páginas sobre o clube que não cabem na barra uma a uma.
     submenu: [
-      { label: "História",        href: "/clube" },
-      { label: "O Emblema",       href: "/clube/emblema" },
-      { label: "Instalações",     href: "/instalacoes" },
-      { label: "Órgãos Sociais",  href: "/orgaos-sociais" },
-      { label: "Patrocinadores",  href: "/patrocinadores" },
+      { label: "historia",        href: "/clube" },
+      { label: "emblema",         href: "/clube/emblema" },
+      { label: "instalacoes",     href: "/instalacoes" },
+      { label: "orgaosSociais",   href: "/orgaos-sociais" },
+      { label: "patrocinadores",  href: "/patrocinadores" },
     ],
   },
-  { label: "Inscrições",  href: "/inscricoes" },
-  { label: "Contactos",   href: "/contactos" },
+  { label: "inscricoes",  href: "/inscricoes" },
+  { label: "contactos",   href: "/contactos" },
 ];
 
 /** As duas ações da barra. No telemóvel aparecem no fim do menu. */
 const ACOES = [
-  { label: "Loja",        href: STORE_URL, Icon: ShoppingBag },
-  { label: "Fazer Sócio", href: "/socios/inscricao", Icon: UserPlus },
+  { label: "loja",       href: STORE_URL, Icon: ShoppingBag },
+  { label: "fazerSocio", href: "/socios/inscricao", Icon: UserPlus },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const t = useTranslations("comum.nav");
 
   /** Páginas que abrem com o emblema em grande; só nelas o logo da barra espera. */
   const temEmblemaNoTopo = PAGINAS_COM_HERO.includes(pathname);
@@ -199,12 +198,17 @@ export default function Navbar() {
       )}
     >
       {/* Live match ticker — vermelho = urgência */}
-      <div className="bg-red text-white text-xs font-body font-semibold uppercase tracking-widest py-1.5 text-center hidden md:block">
+      <div className="relative bg-red text-white text-xs font-body font-semibold uppercase tracking-widest py-1.5 text-center hidden md:block">
         <span className="inline-flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse-live inline-block" />
-          Valejas Atlético Clube • O clube da nossa terra desde 1966
+          {t("faixa")}
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse-live inline-block" />
         </span>
+
+        {/* Língua no canto superior direito. */}
+        <div className="absolute inset-y-0 right-4 sm:right-6 lg:right-8 flex items-center normal-case">
+          <SeletorLingua />
+        </div>
       </div>
 
       <nav className="section-container">
@@ -277,7 +281,7 @@ export default function Navbar() {
                           pathname.startsWith(item.href) && "active"
                         )}
                       >
-                        {item.label}
+                        {t(item.label)}
                       </Link>
 
                       <button
@@ -287,8 +291,8 @@ export default function Navbar() {
                         aria-controls={submenuId(item.href)}
                         aria-label={
                           submenuAberto === item.href
-                            ? `Fechar as páginas de ${item.label}`
-                            : `Ver as páginas de ${item.label}`
+                            ? t("fecharPaginasDe", { item: t(item.label) })
+                            : t("verPaginasDe", { item: t(item.label) })
                         }
                         onClick={() =>
                           setSubmenuAberto((atual) =>
@@ -333,7 +337,7 @@ export default function Navbar() {
                                   : "text-on-surface hover:text-yellow"
                               )}
                             >
-                              {sub.label}
+                              {t(sub.label)}
                             </Link>
                           </li>
                         ))}
@@ -347,7 +351,7 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                     className="nav-link"
                   >
-                    {item.label}
+                    {t(item.label)}
                   </a>
                 ) : (
                   <Link
@@ -357,7 +361,7 @@ export default function Navbar() {
                       pathname === item.href && "active"
                     )}
                   >
-                    {item.label}
+                    {t(item.label)}
                   </Link>
                 )}
               </li>
@@ -370,7 +374,7 @@ export default function Navbar() {
             {mounted && (
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
-                aria-label="Toggle theme"
+                aria-label={t(isDark ? "modoClaro" : "modoEscuro")}
                 className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-yellow transition-colors duration-200"
               >
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
@@ -385,21 +389,27 @@ export default function Navbar() {
               <ShoppingBag size={14} aria-hidden />
               {/* A barra não tem largura para o nome: fica o saco, que se
                   reconhece sozinho. No menu do telemóvel diz "Loja". */}
-              <span className="sr-only">Loja</span>
+              <span className="sr-only">{t("loja")}</span>
             </Link>
             <Link
               href="/socios/inscricao"
               className="btn-primary hidden sm:inline-flex text-xs min-h-11 py-2.5 px-4 whitespace-nowrap"
             >
               <UserPlus size={14} />
-              Fazer Sócio
+              {t("fazerSocio")}
             </Link>
             <BotaoTV className="hidden sm:inline-flex" />
+
+            {/* Sem a faixa vermelha (só existe a partir de 768px), a
+                língua vem para a barra. */}
+            <div className="md:hidden">
+              <SeletorLingua variante="barra" />
+            </div>
 
             {/* Mobile hamburger */}
             <button
               onClick={() => (menuOpen ? closeMenu() : openMenu())}
-              aria-label="Toggle menu"
+              aria-label={t(menuOpen ? "fecharMenu" : "abrirMenu")}
               className="xl:hidden w-11 h-11 flex items-center justify-center text-on-surface"
             >
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -463,11 +473,11 @@ export default function Navbar() {
                         onClick={closeMenu}
                         className={linha}
                       >
-                        {item.label}
+                        {t(item.label)}
                       </a>
                     ) : (
                       <Link href={item.href} onClick={closeMenu} className={linha}>
-                        {item.label}
+                        {t(item.label)}
                       </Link>
                     )}
 
@@ -490,7 +500,7 @@ export default function Navbar() {
                                 pathname === sub.href ? "text-yellow" : "text-on-surface-muted"
                               )}
                             >
-                              {sub.label}
+                              {t(sub.label)}
                             </Link>
                           </li>
                         ))}
@@ -516,7 +526,7 @@ export default function Navbar() {
                   )}
                 >
                   <Icon size={18} />
-                  {label}
+                  {t(label)}
                 </Link>
               ))}
               <BotaoTV grande />
@@ -532,7 +542,7 @@ export default function Navbar() {
               <a href={CONTACTO.redesSociais.youtube} target="_blank" rel="noopener noreferrer" className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-[#FF0000] transition-colors" aria-label="YouTube">
                 <YouTubeIcon size={20} />
               </a>
-              <a href={`mailto:${CONTACTO.email}`} className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-yellow transition-colors" aria-label="Escrever ao clube">
+              <a href={`mailto:${CONTACTO.email}`} className="w-11 h-11 flex items-center justify-center text-on-surface-muted hover:text-yellow transition-colors" aria-label={t("escreverAoClube")}>
                 <Mail size={20} />
               </a>
             </div>

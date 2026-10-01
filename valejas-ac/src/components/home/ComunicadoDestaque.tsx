@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
 import { fetchComunicados } from "@/sanity/queries";
 

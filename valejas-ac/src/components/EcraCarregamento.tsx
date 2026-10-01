@@ -19,6 +19,7 @@
  */
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const CHAVE_SESSAO = "vac_splash_visto";
 /** Tempo mínimo em que o emblema fica à vista, mesmo que o site já esteja
@@ -28,6 +29,7 @@ const MINIMO_MS    = 1500;
 const LIMITE_MS    = 3500;
 
 export default function EcraCarregamento() {
+  const t = useTranslations("comum");
   const [aSair, setASair]   = useState(false);
   const [fora, setFora]     = useState(false);
 
@@ -102,7 +104,7 @@ export default function EcraCarregamento() {
         className="splash-emblema w-36 h-36 md:w-52 md:h-52 object-contain"
       />
 
-      <span className="sr-only">A carregar o site do Valejas Atlético Clube</span>
+      <span className="sr-only">{t("aCarregar")}</span>
     </div>
   );
 }

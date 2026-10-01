@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { CalendarDays, MapPin } from "lucide-react";
 import { fetchJogos } from "@/sanity/queries";
 import {

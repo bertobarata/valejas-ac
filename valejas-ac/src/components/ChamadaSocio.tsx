@@ -14,7 +14,7 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import SociosCTA from "@/components/SociosCTA";
 
 const SEM_CHAMADA = [

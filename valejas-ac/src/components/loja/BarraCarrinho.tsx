@@ -9,7 +9,7 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ShoppingBag } from "lucide-react";
 import { useCarrinho } from "@/lib/loja/carrinho";
 import { formatEuros } from "@/lib/data/loja";

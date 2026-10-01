@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "titulo": "Valejas Atlético Clube | O clube da nossa terra desde 1966",
+    "descricao": "Clube desportivo de Valejas, Oeiras. Futsal e atletismo federados, forte na formação, mais judo, karate, dança, teatro e Academia Sénior. A casa do clube desde 1966.",
+    "descricaoPartilha": "Futsal, atletismo, karate, cicloturismo, judo, dança e teatro. Mais a Academia Sénior. A casa do clube desde 1966."
+  },
+  "saltarParaConteudo": "Saltar para o conteúdo",
+  "soEmPortugues": "Esta página só está disponível em português.",
+  "aCarregar": "A carregar o site do Valejas Atlético Clube",
+  "lingua": {
+    "escolher": "Escolher a língua"
+  },
+  "nav": {
+    "inicio": "Início",
+    "comunicados": "Comunicados",
+    "modalidades": "Modalidades",
+    "academiaSenior": "Academia Sénior",
+    "clube": "Clube",
+    "historia": "História",
+    "emblema": "O Emblema",
+    "instalacoes": "Instalações",
+    "orgaosSociais": "Órgãos Sociais",
+    "patrocinadores": "Patrocinadores",
+    "inscricoes": "Inscrições",
+    "contactos": "Contactos",
+    "loja": "Loja",
+    "fazerSocio": "Fazer Sócio",
+    "verPaginasDe": "Ver as páginas de {item}",
+    "fecharPaginasDe": "Fechar as páginas de {item}",
+    "faixa": "Valejas Atlético Clube • O clube da nossa terra desde 1966",
+    "modoClaro": "Mudar para modo claro",
+    "modoEscuro": "Mudar para modo escuro",
+    "abrirMenu": "Abrir o menu",
+    "fecharMenu": "Fechar o menu",
+    "escreverAoClube": "Escrever ao clube",
+    "modalidade": {
+      "futsal": "Futsal",
+      "atletismo": "Atletismo",
+      "karate": "Karate",
+      "cicloturismo": "Cicloturismo",
+      "judo": "Judo",
+      "danca": "Dança",
+      "teatro": "Teatro"
+    }
+  },
+  "rodape": {
+    "oClube": "O Clube",
+    "emblema": "O Emblema",
+    "instalacoes": "Instalações",
+    "orgaosSociais": "Órgãos Sociais",
+    "patrocinadores": "Patrocinadores",
+    "academiaSenior": "Academia Sénior",
+    "comunicados": "Comunicados",
+    "jogos": "Jogos",
+    "inscricoes": "Inscrições",
+    "socios": "Sócios",
+    "fazerSocio": "Fazer Sócio",
+    "lojaOficial": "Loja Oficial",
+    "privacidade": "Privacidade",
+    "termos": "Termos e Condições",
+    "cookies": "Cookies",
+    "contactos": "Contactos",
+    "emblemaAlt": "Emblema do Valejas Atlético Clube",
+    "descricao": "O clube da nossa terra desde 1966. Futsal, atletismo e comunidade, no coração de Valejas.",
+    "seccao": {
+      "clube": "Clube",
+      "participar": "Participar",
+      "modalidades": "Modalidades",
+      "legal": "Legal"
+    },
+    "direitos": "O clube da nossa terra.",
+    "fundado": "Fundado em 1966 · AF Lisboa · Barcarena, Oeiras"
+  },
+  "tv": {
+    "verDireto": "Valejas TV — ver o direto agora",
+    "semDireto": "Não estamos em live",
+    "explicacao": "Quando houver jogo ou evento em direto, este botão leva-te lá.",
+    "verCanal": "Ver o canal do Valejas"
+  },
+  "erro404": {
+    "titulo": "Página não encontrada",
+    "etiqueta": "Erro 404",
+    "cabecalho": "Esta página não <destaque>existe</destaque>",
+    "texto": "Ou nunca existiu, ou mudou de sítio. Acontece. Daqui consegues chegar ao resto do clube.",
+    "jogos": "Jogos"
+  },
+  "erro": {
+    "etiqueta": "Alguma coisa correu mal",
+    "cabecalho": "Não conseguimos <destaque>mostrar isto</destaque>",
+    "texto": "O problema é nosso, não teu. Tenta outra vez; se continuar, avisa-nos.",
+    "tentarOutraVez": "Tentar outra vez",
+    "avisarClube": "Avisar o clube",
+    "referencia": "Referência do erro: {digest}"
+  }
+}

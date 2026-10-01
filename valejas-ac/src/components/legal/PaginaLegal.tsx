@@ -7,7 +7,7 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 export const ATUALIZADO_EM = "13 de setembro de 2026";
 

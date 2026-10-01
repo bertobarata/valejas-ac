@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { FUNDACAO, ORIGENS, anosDeVida } from "@/lib/data/historia";
 import { MODALIDADES } from "@/lib/data/modalidades";

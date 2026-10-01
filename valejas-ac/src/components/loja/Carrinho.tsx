@@ -10,7 +10,7 @@
  */
 
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { Check, Loader2, Minus, Plus, Send, ShoppingBag, Trash2 } from "lucide-react";
 import { useCarrinho } from "@/lib/loja/carrinho";

@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "titulo": "Valejas Atlético Clube | Klubi di nos téra desdi 1966",
+    "descricao": "Klubi di disportu di Valejas, Oeiras. Futsal i atletismu federadu, forti na formason, i inda judo, karaté, dansa, tiatru i Akadémia Séniôr. Kaza di klubi desdi 1966.",
+    "descricaoPartilha": "Futsal, atletismu, karaté, sikloturismu, judo, dansa i tiatru. I inda Akadémia Séniôr. Kaza di klubi desdi 1966."
+  },
+  "saltarParaConteudo": "Salta pa kontiúdu",
+  "soEmPortugues": "Es pájina li sô sta na purtugés.",
+  "aCarregar": "Ta karega saiti di Valejas Atlético Clube",
+  "lingua": {
+    "escolher": "Skodji língua"
+  },
+  "nav": {
+    "inicio": "Kumésu",
+    "comunicados": "Komunikadu",
+    "modalidades": "Modalidadi",
+    "academiaSenior": "Akadémia Séniôr",
+    "clube": "Klubi",
+    "historia": "Stória",
+    "emblema": "Simbulu",
+    "instalacoes": "Instalason",
+    "orgaosSociais": "Órgãu Sosial",
+    "patrocinadores": "Patrusinadór",
+    "inscricoes": "Inskrison",
+    "contactos": "Kontaktu",
+    "loja": "Lója",
+    "fazerSocio": "Fika sóssiu",
+    "verPaginasDe": "Odja pájina di {item}",
+    "fecharPaginasDe": "Fitxa pájina di {item}",
+    "faixa": "Valejas Atlético Clube • Klubi di nos téra desdi 1966",
+    "modoClaro": "Muda pa modu klaru",
+    "modoEscuro": "Muda pa modu sukuru",
+    "abrirMenu": "Abri menu",
+    "fecharMenu": "Fitxa menu",
+    "escreverAoClube": "Skrebe pa klubi",
+    "modalidade": {
+      "futsal": "Futsal",
+      "atletismo": "Atletismu",
+      "karate": "Karaté",
+      "cicloturismo": "Sikloturismu",
+      "judo": "Judo",
+      "danca": "Dansa",
+      "teatro": "Tiatru"
+    }
+  },
+  "rodape": {
+    "oClube": "Klubi",
+    "emblema": "Simbulu",
+    "instalacoes": "Instalason",
+    "orgaosSociais": "Órgãu Sosial",
+    "patrocinadores": "Patrusinadór",
+    "academiaSenior": "Akadémia Séniôr",
+    "comunicados": "Komunikadu",
+    "jogos": "Jogu",
+    "inscricoes": "Inskrison",
+    "socios": "Sóssiu",
+    "fazerSocio": "Fika sóssiu",
+    "lojaOficial": "Lója Ofisial",
+    "privacidade": "Privasidadi",
+    "termos": "Térmu i Kondison",
+    "cookies": "Cookies",
+    "contactos": "Kontaktu",
+    "emblemaAlt": "Simbulu di Valejas Atlético Clube",
+    "descricao": "Klubi di nos téra desdi 1966. Futsal, atletismu i kumunidadi, na korason di Valejas.",
+    "seccao": {
+      "clube": "Klubi",
+      "participar": "Partisipa",
+      "modalidades": "Modalidadi",
+      "legal": "Legal"
+    },
+    "direitos": "Klubi di nos téra.",
+    "fundado": "Fundadu na 1966 · AF Lisboa · Barcarena, Oeiras"
+  },
+  "tv": {
+    "verDireto": "Valejas TV — odja diretu gosi",
+    "semDireto": "Nu ka sta na diretu",
+    "explicacao": "Ora ki tem jogu o eventu na diretu, es butãu ta leba-bu la.",
+    "verCanal": "Odja kanal di Valejas"
+  },
+  "erro404": {
+    "titulo": "Pájina ka atxadu",
+    "etiqueta": "Éru 404",
+    "cabecalho": "Es pájina <destaque>ka ten</destaque>",
+    "texto": "O el nunka ka izisti, o el muda di sítiu. Ta kontise. Di li bu pode txiga na resto di klubi.",
+    "jogos": "Jogu"
+  },
+  "erro": {
+    "etiqueta": "Algun kuza ka da sértu",
+    "cabecalho": "Nu ka konsigi <destaque>mostra kel-li</destaque>",
+    "texto": "Prubléma é di nos, ka di bo. Tenta otu bes; si kontinua, avisa-nu.",
+    "tentarOutraVez": "Tenta otu bes",
+    "avisarClube": "Avisa klubi",
+    "referencia": "Referénsia di éru: {digest}"
+  }
+}

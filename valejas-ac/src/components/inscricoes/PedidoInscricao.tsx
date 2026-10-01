@@ -15,7 +15,7 @@
  */
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { Check, Download, ExternalLink, Loader2, Send } from "lucide-react";
 import { MODALIDADES } from "@/lib/data/modalidades";
