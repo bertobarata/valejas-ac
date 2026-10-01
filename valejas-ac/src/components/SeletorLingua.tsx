@@ -9,12 +9,18 @@
  *
  * Mudar de língua fica na mesma página: /modalidades em inglês é
  * /en/modalidades, não a página inicial em inglês.
+ *
+ * Cada língua leva a bandeira ao lado do nome (pedido do Berto,
+ * 01/10/2026): o crioulo com a de Cabo Verde, o inglês com a do Reino
+ * Unido. A bandeira ajuda a encontrar, o nome é que diz a língua — por
+ * isso nunca aparece sozinha e é decorativa para os leitores de ecrã.
  * ─────────────────────────────────────────────────────────────────
  */
 
 import { useEffect, useRef, useState, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Globe, Check } from "lucide-react";
+import { Check } from "lucide-react";
+import Image from "next/image";
 import clsx from "clsx";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { LINGUAS, NOME_LINGUA, type Lingua } from "@/i18n/routing";
@@ -68,7 +74,7 @@ export default function SeletorLingua({ variante = "faixa" }: { variante?: "faix
           aMudar && "opacity-60"
         )}
       >
-        <Globe size={variante === "faixa" ? 13 : 18} aria-hidden />
+        <Bandeira lingua={lingua} tamanho={variante === "faixa" ? 16 : 22} />
         <span className={variante === "barra" ? "sr-only" : undefined}>{lingua}</span>
       </button>
 
@@ -92,12 +98,27 @@ export default function SeletorLingua({ variante = "faixa" }: { variante?: "faix
                 l === lingua ? "text-yellow" : "text-on-surface hover:text-yellow"
               )}
             >
-              {NOME_LINGUA[l]}
+              <span className="inline-flex items-center gap-2.5">
+                <Bandeira lingua={l} tamanho={20} />
+                {NOME_LINGUA[l]}
+              </span>
               {l === lingua && <Check size={14} aria-hidden />}
             </button>
           </li>
         ))}
       </ul>
     </div>
+  );
+}
+
+function Bandeira({ lingua, tamanho }: { lingua: Lingua; tamanho: number }) {
+  return (
+    <Image
+      src={`/linguas/${lingua}.webp`}
+      alt=""
+      width={tamanho}
+      height={tamanho}
+      className="rounded-full shrink-0 ring-1 ring-black/10"
+    />
   );
 }
