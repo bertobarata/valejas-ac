@@ -73,9 +73,29 @@ export function organizacao() {
  */
 const DURACAO_JOGO_MS = 90 * 60 * 1000;
 
+/** Desde quando o site diz que a entrada é livre (confirmação da Direção). */
+const ENTRADA_LIVRE_DESDE = "2026-09-29";
+
+/**
+ * O pavilhão de um jogo fora, a partir do `local` do calendário:
+ * "Pavilhão X, Localidade" ou "Pavilhão X, Localidade, Concelho".
+ */
+function localFora(local: string) {
+  const [nome, localidade, concelho] = local.split(",").map((p) => p.trim());
+  return {
+    "@type": "Place",
+    name: nome,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: localidade ?? nome,
+      ...(concelho ? { addressRegion: concelho } : {}),
+      addressCountry: "PT",
+    },
+  };
+}
+
 function evento(j: Jogo) {
   const emCasa = ehValejas(j.casa);
-  const adversario = emCasa ? j.fora : j.casa;
 
   return {
     "@type": "SportsEvent",
@@ -89,37 +109,35 @@ function evento(j: Jogo) {
     image: `${base()}/imagem-partilha`,
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    /* Só se sabe o pavilhão quando o jogo é em casa. Fora, sabe-se o
-     * adversário mas não a morada dele — e inventar um local é pior
-     * do que dizer só a localidade. */
+    /* Em casa, a morada completa do pavilhão. Fora, o calendário traz o
+     * pavilhão e a localidade ("Pavilhão X, Localidade[, Concelho]"):
+     * é o que se sabe, e é o que se declara — sem rua inventada. */
     location: emCasa
       ? {
           "@type": "Place",
           name: "Pavilhão do Valejas Atlético Clube",
           address: MORADA,
         }
-      : { "@type": "Place", name: `Pavilhão do ${adversario}` },
+      : localFora(j.local),
     homeTeam: { "@type": "SportsTeam", name: j.casa },
     awayTeam: { "@type": "SportsTeam", name: j.fora },
     performer: [
       { "@type": "SportsTeam", name: j.casa },
       { "@type": "SportsTeam", name: j.fora },
     ],
-    /* Entrada livre nos jogos em casa, confirmado pela Direção a
-     * 29/09/2026. Fora, a entrada é regra do clube visitado — não
-     * declaramos o que não sabemos. */
-    ...(emCasa
-      ? {
-          offers: {
-            "@type": "Offer",
-            price: 0,
-            priceCurrency: "EUR",
-            availability: "https://schema.org/InStock",
-            url: `${base()}/jogos`,
-          },
-          isAccessibleForFree: true,
-        }
-      : {}),
+    /* Entrada livre. Em casa, confirmado pela Direção a 29/09/2026. Fora,
+     * é o pressuposto da liga (Berto, 01/10/2026): nestes campeonatos a
+     * entrada é livre até haver informação em contrário. Se um clube
+     * visitado cobrar, este é o sítio a rever. */
+    offers: {
+      "@type": "Offer",
+      price: 0,
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      validFrom: ENTRADA_LIVRE_DESDE,
+      url: `${base()}/jogos`,
+    },
+    isAccessibleForFree: true,
     organizer: { "@type": "Organization", name: "AF Lisboa", url: "https://www.aflisboa.pt" },
     url: `${base()}/jogos`,
   };
