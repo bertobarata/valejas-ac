@@ -17,18 +17,18 @@
 
 import sharp from "sharp";
 import { GET as gerarPng } from "../route";
+import { LARGURA, ALTURA } from "@/lib/social/cartao";
 
 // O sharp é nativo (Node) — não corre em edge.
 export const runtime = "nodejs";
 
-const LADO = 1080;
 
 export async function GET(req: Request) {
   const png = await gerarPng(req);
   if (!png.ok) return png;
 
   const jpeg = await sharp(Buffer.from(await png.arrayBuffer()))
-    .resize(LADO, LADO)
+    .resize(LARGURA, ALTURA)
     .jpeg({ quality: 90 })
     .toBuffer();
 

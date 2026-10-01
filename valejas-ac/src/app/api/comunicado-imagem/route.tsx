@@ -17,12 +17,18 @@
  */
 
 import { ImageResponse } from "next/og";
+import { LARGURA, ALTURA } from "@/lib/social/cartao";
 
 export const runtime = "edge";
 
 const AMARELO = "#FADB09";
-const AZUL    = "#1554BB";
-const ESCURO  = "#0B1220";
+/**
+ * O azul do fundo do emblema na Página de Facebook do clube (pedido do
+ * Berto, 01/10/2026): o cartão lê-se como do Valejas antes de se ler.
+ */
+const FUNDO   = "#0158B3";
+
+
 
 /** Corta sem partir palavras a meio. */
 function limitar(texto: string, max: number): string {
@@ -76,23 +82,20 @@ export async function GET(req: Request) {
     (
       <div
         style={{
-          width: "1080px",
-          height: "1080px",
+          width: `${LARGURA}px`,
+          height: `${ALTURA}px`,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
           gap: "60px",
-          background: ESCURO,
-          padding: "80px",
+          background: FUNDO,
+          padding: "96px 88px 88px",
           fontFamily: fonts.length ? "Archivo" : "sans-serif",
           position: "relative",
         }}
       >
-        {/* Barra de cor do clube */}
-        <div style={{ display: "flex", position: "absolute", top: 0, left: 0, right: 0, height: "14px" }}>
-          <div style={{ flex: 1, background: AMARELO }} />
-          <div style={{ flex: 1, background: AZUL }} />
-        </div>
+        {/* Faixa amarela do clube — sobre o azul, o amarelo chega sozinho */}
+        <div style={{ display: "flex", position: "absolute", top: 0, left: 0, right: 0, height: "16px", background: AMARELO }} />
 
         {/* Topo — o emblema manda, o nome do clube acompanha ao lado */}
         <div style={{ display: "flex", alignItems: "center", gap: "40px" }}>
@@ -129,8 +132,8 @@ export async function GET(req: Request) {
           <span
             style={{
               fontSize:
-                titulo.length > 90 ? "66px" :
-                titulo.length > 55 ? "82px" : "104px",
+                titulo.length > 90 ? "72px" :
+                titulo.length > 55 ? "90px" : "112px",
               fontWeight: 900,
               color: "#FFFFFF",
               lineHeight: 0.98,
@@ -152,7 +155,7 @@ export async function GET(req: Request) {
             paddingTop: "28px",
           }}
         >
-          <span style={{ fontSize: "28px", fontWeight: 600, color: "#8FA0BC" }}>
+          <span style={{ fontSize: "28px", fontWeight: 600, color: "rgba(255,255,255,0.82)" }}>
             {dataLegivel}
           </span>
           <span style={{ fontSize: "28px", fontWeight: 900, color: AMARELO, letterSpacing: "1px" }}>
@@ -162,8 +165,8 @@ export async function GET(req: Request) {
       </div>
     ),
     {
-      width: 1080,
-      height: 1080,
+      width: LARGURA,
+      height: ALTURA,
       fonts: fonts.length ? fonts : undefined,
       headers: {
         // A Meta vai buscar esta imagem; vale a pena ficar em cache.

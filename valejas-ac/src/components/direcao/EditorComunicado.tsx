@@ -263,7 +263,7 @@ export default function EditorComunicado() {
             tituloEstavel !== titulo && "opacity-50"
           )}
           width={1080}
-          height={1080}
+          height={1350}
         />
         <p className="font-body text-sm text-on-surface-muted text-center">
           A imagem leva só o título. O texto do comunicado sai na legenda,
