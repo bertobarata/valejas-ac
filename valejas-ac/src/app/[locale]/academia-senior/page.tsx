@@ -12,9 +12,9 @@ import {
 } from "@/lib/data/academiaSenior";
 // Importação estática: o Next tira daqui as dimensões e o placeholder
 // desfocado. Ficheiros já sem EXIF/GPS (ver public/academia-senior/).
-import fotoArcos from "../../../public/academia-senior/jogo-dos-arcos.webp";
-import fotoRoda from "../../../public/academia-senior/roda-no-recreio.webp";
-import fotoLabirintos from "../../../public/academia-senior/labirintos-de-cartao.webp";
+import fotoArcos from "../../../../public/academia-senior/jogo-dos-arcos.webp";
+import fotoRoda from "../../../../public/academia-senior/roda-no-recreio.webp";
+import fotoLabirintos from "../../../../public/academia-senior/labirintos-de-cartao.webp";
 
 export async function generateMetadata(
   { params: { locale } }: { params: { locale: Lingua } },
