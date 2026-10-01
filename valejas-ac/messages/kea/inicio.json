@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "titulo": "Valejas Atlético Clube | Klubi di nos téra desdi 1966",
+    "descricao": "Klubi di disportu di Valejas, Oeiras. Futsal i atletismu federadu, forti na formason, i inda judo, karaté, dansa, tiatru i Akadémia Séniôr. Kaza di klubi desdi 1966.",
+    "descricaoPartilha": "Futsal, atletismu, karaté, sikloturismu, judo, dansa i tiatru. I inda Akadémia Séniôr. Kaza di klubi desdi 1966."
+  },
+  "hero": {
+    "fundado": "Fundadu na 1966 · Valejas, Oeiras",
+    "titulo": "Unidadi ta faze <destaque>forsa</destaque>",
+    "texto": "Nos tudu é Valejas. Desdi 1966, klubi di nos téra — di futsal ti atletismu, di mas nobu ti mas bedju.",
+    "conhecerClube": "Konxe klubi",
+    "ultimosJogos": "Últimus Jogu",
+    "emblemaAlt": "Simbulu di Valejas Atlético Clube",
+    "explorar": "Splora"
+  },
+  "comunicado": {
+    "etiqueta": "Diresãu ta komunika",
+    "ler": "Lé komunikadu"
+  },
+  "proximoJogo": {
+    "etiqueta": "Prósimu jogu",
+    "contra": "vs",
+    "jogosClassificacao": "Jogu i klasifikason"
+  },
+  "modalidades": {
+    "etiqueta": "Nos modalidadi",
+    "titulo": "Un klubi, <destaque>txeu manera di fika parti</destaque>",
+    "grupo": {
+      "desporto": "Disportu",
+      "cultura": "Kultura"
+    },
+    "equipa": "Ekipa {letra}",
+    "escaloes": "{n} eskalãu",
+    "verPlantel": "Odja plantel i eskalãu",
+    "soFormacao": "Sô formason",
+    "soFormacaoCom": "Sô formason · {parceria}",
+    "competicao": "Kompetison federadu",
+    "semCompeticao": "Sen kompetison"
+  },
+  "mote": {
+    "etiqueta": "Kuze ki mote kre fla",
+    "frase": "Unidadi ta faze <destaque>forsa</destaque>",
+    "contexto": "Ka é un frazi bunitu: é manera ki klubi ta funsiona dja ten 60 anu. Kenha ki ta joga, kenha ki ta trena, kenha ki ta abri sedi i kenha ki ta paga kota — tudu kuza ki Valejas é ta sai di la."
+  },
+  "conhecer": {
+    "etiqueta": "Konxe-nu",
+    "titulo": "Un klubi ka ta splikadu <destaque>na un frazi</destaque>",
+    "texto": "{anos} anu ta da pa txeu kuza: {origens} atividadi na kumésu, {modalidades} modalidadi oji, i djenti ki ta entra mininu i ta fika pa vida. Skodji pa undi ki bu kre kumesa.",
+    "cartoes": {
+      "historia": {
+        "etiqueta": "Desdi {ano}",
+        "titulo": "Stória",
+        "texto": "{anos} anu, ki kumesa ku atletismu, sikloturismu i malha — txeu antis di futsal. Kuze ki nu sabe, i kuze ki inda falta diskubri."
+      },
+      "emblema": {
+        "etiqueta": "Águia i kóris",
+        "titulo": "Simbulu",
+        "texto": "Kuze ki kada parti kre fla, i pamodi ki klubi ta joga di marelu i azul."
+      },
+      "modalidades": {
+        "etiqueta": "{n} modalidadi",
+        "titulo": "Kuze ki ta pratikadu",
+        "texto": "Di pavilhãu pa pista i pa strada, i inda dansa i tiatru. Alguns ta kompeti federadu, otus ta izisti sô pa forma."
+      },
+      "jogos": {
+        "etiqueta": "Époka {epoca}",
+        "titulo": "Jogu",
+        "texto": "{jornadas} jornada na distrital di AF Lisboa, {emCasa} di es na kaza. Kalendáriu, rezultadu i klasifikason."
+      },
+      "instalacoes": {
+        "etiqueta": "{n} spasu",
+        "titulo": "Undi ki ta kontise",
+        "texto": "Sedi, undi Diresãu ta trabadja i Akadémia ta djunta. I pavilhãu, undi ki ta jogadu."
+      },
+      "orgaos": {
+        "etiqueta": "{n} pesoa",
+        "titulo": "Kenha ki ta dirigi",
+        "texto": "Diresãu, Konsedju Fiskal i Meza di Asembleia. Tudu é sóssiu, mas txeu dja ten dékada."
+      },
+      "academia": {
+        "etiqueta": "Más di 50 anu",
+        "titulo": "Akadémia Séniôr",
+        "texto": "{n} atividadi, di koru ti chi kung. Klubi ka ta kaba ora ki bu dexa di kompeti."
+      },
+      "patrocinadores": {
+        "etiqueta": "Kenha ki ta poia",
+        "titulo": "Patrusinadór",
+        "texto": "Empreza i djenti di téra ki ta sigura klubi di pé."
+      }
+    }
+  }
+}

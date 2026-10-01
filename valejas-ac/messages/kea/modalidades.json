@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "titulo": "Modalidadi",
+    "descricao": "Futsal i atletismu federadu, judo, karaté, dansa, tiatru i sikloturismu — un klubi, txeu manera di fazi parti."
+  },
+  "pagina": {
+    "etiqueta": "Un klubi, tudu idadi",
+    "titulo": "Ten un lugar pa bo na Valejas",
+    "intro": "Di pavilhon pa pista, di tatami pa palku. Konpetison federadu, formason pa mininus i atividadi abertu pa komunidadi.",
+    "academia": {
+      "etiqueta": "Más di 50 anu",
+      "titulo": "Akadémia Séniôr",
+      "texto": "Koru, chi kung, pintura, informátika, dansa tradisional, sueca i biliar. Klubi ka ta kaba ora ki bu dexa di konpiti.",
+      "botao": "Konxe Akadémia"
+    },
+    "cta": {
+      "titulo": "Bu kre eksperimenta? Papia ku nos i nu ta traze-bu pa dentu.",
+      "botao": "Inskrevi o sabe más"
+    }
+  },
+  "vagas": {
+    "titulo": "Papia ku nos purmeru",
+    "texto": "Kada modalidadi ten poku lugar. Fla-nu kusé ki ta interesa-bu i nu ta responde-bu lógu si ten vaga — antis di bu konta ku el.",
+    "curto": "Vaga limitadu — papia ku klubi antis di bu inskrevi"
+  },
+  "grupos": {
+    "desporto": {
+      "titulo": "Disportu",
+      "intro": "Di pavilhon pa pista i pa strada. Algun ta konpiti federadu, otus ta izisti só pa forma"
+    },
+    "cultura": {
+      "titulo": "Kultura i Komunidadi",
+      "intro": "Atividadi pa kria, mostra i konvive, sen konpetison."
+    }
+  },
+  "etiquetas": {
+    "compete": "Ta konpiti",
+    "soFormacao": "Só formason",
+    "parceria": "Parseria",
+    "equipas": "Ekipa",
+    "emParceriaCom": "Na parseria ku",
+    "verPlanteis": "Odja planteis",
+    "percursoFormacao": "Kaminhu di formason"
+  },
+  "itens": {
+    "futsal": {
+      "nome": "Futsal",
+      "tagline": "Modalidadi di klubi",
+      "descricao": "Mas grandi projetu di Valejas. Ekipa profisional na distrital di AF Lisboa, ekipa B lógu tras, i un kaminhu di formason konpletu di sub-7 ti sub-19 — un mininu pode entra na klubi inda pikinoti i txiga séniôr sen nunka muda di kamizola.",
+      "publico": "Séniôr maskulinu i formason maskulinu",
+      "equipas": {
+        "equipaA": {
+          "nome": "Ekipa A",
+          "descricao": "Ekipa profisional, ta konpiti na distrital di AF Lisboa."
+        },
+        "equipaB": {
+          "nome": "Ekipa B",
+          "descricao": "Diskada entri formason i ekipa prinsipal."
+        }
+      },
+      "escaloes": {
+        "petizes": "Sub-7",
+        "traquinas": "Sub-9",
+        "benjamins": "Sub-11",
+        "infantis": "Sub-13",
+        "iniciados": "Sub-15",
+        "juvenis": "Sub-17",
+        "juniores": "Sub-19"
+      }
+    },
+    "atletismo": {
+      "nome": "Atletismu",
+      "tagline": "Kóre é pa tudu algen",
+      "descricao": "Prova i trenu regular, maskulinu i fimininu, na tudu skalon — di mas novu ti séniôr.",
+      "publico": "Maskulinu i fimininu, tudu skalon"
+    },
+    "karate": {
+      "nome": "Karaté",
+      "tagline": "Téknika i kabesa fresku",
+      "descricao": "Arti marsial ku trenu regular i konpetison. Fokus, postura i kondison fízika — pa kenha ki ta kumesa di zeru i pa kenha ki dja ta konpiti.",
+      "publico": "Jóven i adultu"
+    },
+    "cicloturismo": {
+      "nome": "Sikloturismu",
+      "tagline": "Strada i grupu",
+      "descricao": "Pasiu pa rejion i prova na grupu. Ten lugar pa kenha ki kre konpiti i pa kenha ki só kre pedala ku kunpanhia.",
+      "publico": "Tudu idadi"
+    },
+    "judo": {
+      "nome": "Judo",
+      "tagline": "Kai i labanta",
+      "descricao": "Só formason, pa mininus, na instalason di klubi. Un parseria ki ta traze pa Valejas un skola di judo pa kriansa ku txeu anu di spiriénsia.",
+      "publico": "Kriansa i jóven",
+      "parceria": {
+        "nome": "Judokinhas Kobayashi",
+        "descricao": "Un di mas grandi skola di judo pa kriansa di país, dirijidu pa Renato Kobayashi i ku nómi ligadu a mestri Kiyoshi Kobayashi. Aula ta kontise na instalason di Valejas.",
+        "valores": {
+          "disciplinaERespeito": "Disiplina i rispetu",
+          "autoconfianca": "Konfiansa na si mésmu",
+          "cooperacaoEAmizade": "Kooperason i amizadi",
+          "autocontrolo": "Kontrolu di si mésmu",
+          "espiritoDesportivo": "Spíritu disportivu"
+        }
+      }
+    },
+    "danca": {
+      "nome": "Dansa",
+      "tagline": "Muvimentu i ispreson",
+      "descricao": "Di ritmu pa koreografia, pa libera, konvive i ganha konfiansa.",
+      "publico": "Kriansa, jóven i adultu"
+    },
+    "teatro": {
+      "nome": "Tiatru",
+      "tagline": "Subi palku",
+      "descricao": "Reprizenta, nsaia i mostra. Trabadju di grupu, voz i prizensa — i públiku pa odja rezultadu.",
+      "publico": "Tudu idadi"
+    }
+  }
+}

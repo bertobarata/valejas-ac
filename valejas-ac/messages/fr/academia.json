@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "titulo": "Académie Senior",
+    "descricao": "Programme communautaire du Valejas A.C. Social pour les plus de 50 ans. Chorale, chi kung, peinture, informatique, danses traditionnelles, sueca (jeu de cartes) et billard."
+  },
+  "cabecalho": {
+    "titulo": "Académie <destaque>Senior</destaque>",
+    "tagline": "Vieillir avec le club, pas loin de lui",
+    "intro": "Un lieu pour apprendre de nouvelles choses, rester actif et tisser des liens. Ce n’est ni une école ni une maison de retraite : c’est la partie du club où la vie continue après 50 ans.",
+    "onde": "Où",
+    "quando": "Quand",
+    "local": "Siège du Valejas Atlético Clube",
+    "horario": {
+      "segundaASexta": "Du lundi au vendredi",
+      "sabado": "Samedi"
+    }
+  },
+  "fotos": {
+    "arcos": {
+      "alt": "Une participante de l’Académie Senior joue au jeu des cerceaux colorés posés au sol, pendant que des enfants et d’autres seniors attendent leur tour.",
+      "legenda": "Le jeu des cerceaux, partagé avec les plus jeunes."
+    },
+    "roda": {
+      "alt": "Des seniors et des enfants font une ronde en plein air, bras ouverts, dans la cour de récréation.",
+      "legenda": "Une ronde dans la cour de récréation."
+    },
+    "labirintos": {
+      "alt": "Une senior aide un enfant à faire tenir une balle en équilibre dans un labyrinthe fait d’une boîte et de rouleaux en carton.",
+      "legenda": "Des labyrinthes en carton, faits main."
+    }
+  },
+  "oQueSeFaz": {
+    "titulo": "Ce qu’on y fait",
+    "texto": "Inutile de savoir quoi que ce soit à l’avance. Aucune activité ne demande d’expérience.",
+    "familias": {
+      "corpo": "Bouger",
+      "criar": "Créer",
+      "aprender": "Apprendre",
+      "conviver": "Se retrouver"
+    },
+    "itens": {
+      "chiKung": {
+        "nome": "Chi Kung",
+        "descricao": "Mouvements lents et respiration, pour l’équilibre et les articulations."
+      },
+      "fitSenior": {
+        "nome": "Fit Sénior",
+        "descricao": "Exercice adapté, pensé pour garder force et autonomie."
+      },
+      "dancasTradicionais": {
+        "nome": "Danses traditionnelles",
+        "descricao": "Les bals de toujours, en musique et en compagnie."
+      },
+      "coro": {
+        "nome": "Chorale",
+        "descricao": "Chanter en groupe, sans que personne ne vous demande de CV."
+      },
+      "pintura": {
+        "nome": "Peinture et dessin",
+        "descricao": "Des cours pour ceux qui n’ont jamais tenu un pinceau, et pour ceux qui l’ont déjà fait."
+      },
+      "informatica": {
+        "nome": "Informatique et inclusion numérique",
+        "descricao": "Téléphone, ordinateur et services en ligne, au rythme de chacun."
+      },
+      "saude": {
+        "nome": "Thèmes de santé",
+        "descricao": "Des séances sur le corps, l’âge et ce qu’on peut faire des deux."
+      },
+      "sueca": {
+        "nome": "Sueca",
+        "descricao": "Jeu de cartes traditionnel portugais, avec des compétitions organisées par le club aux tables du siège."
+      },
+      "bilhar": {
+        "nome": "Billard",
+        "descricao": "Lui aussi avec ses propres compétitions, lui aussi avec du public."
+      },
+      "teatro": {
+        "nome": "Sorties au théâtre",
+        "descricao": "Des sorties en groupe pour assister à des spectacles."
+      },
+      "cultura": {
+        "nome": "Activités culturelles",
+        "descricao": "Visites, rencontres et ce que la saison demande."
+      }
+    }
+  },
+  "maisNovos": {
+    "titulo": "Avec les plus jeunes",
+    "texto": "De temps en temps, l’Académie rejoint les enfants pour des jeux de récréation : rondes, cerceaux et labyrinthes en carton, à parts égales entre générations."
+  },
+  "porque": {
+    "titulo": "Pourquoi cela existe",
+    "paragrafo1": "Un club, ce n’est pas seulement ceux qui jouent. L’Académie Senior existe pour lutter contre l’isolement et garder active une partie de la communauté qui reste du Valejas bien après avoir cessé la compétition.",
+    "paragrafo2": "On y trouve des compétitions de sueca et de billard organisées par le club, des sorties au théâtre en groupe, et des gens qui viennent simplement pour passer un moment ensemble. Cela compte aussi."
+  },
+  "cta": {
+    "titulo": "Vous voulez participer ?",
+    "texto": "Passez au siège pendant les horaires de l’Académie, ou contactez-nous. Pour participer, il suffit d’être membre : la cotisation est de {quota} par mois.",
+    "fazerSocio": "Devenir membre",
+    "contactos": "Contact"
+  }
+}

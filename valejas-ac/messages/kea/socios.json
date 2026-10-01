@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "contacto": {
+      "titulo": "Sóssiu",
+      "descricao": "Fika sóssiu di Valejas AC. Kóta di 1€ pa mês. Fika parti di kaza di klubi."
+    },
+    "inscricao": {
+      "titulo": "Inskrison di Sóssiu",
+      "descricao": "Fika sóssiu di Valejas Atlético Clube. Kóta di {quota} pa mês. Abertu pa tudu algen, i obrigatóriu pa kenha ki kre pratika un modalidadi."
+    }
+  },
+  "hero": {
+    "etiqueta": "Fika parti di família",
+    "titulo": "Djunta ku",
+    "tituloDestaque": "klubi",
+    "texto": "Fika parti di kaza di Valejas. Un euru pa mês, un propósta prenxidu, i bu ta pasa ta vivi klubi di dentu."
+  },
+  "quota": {
+    "etiqueta": "Kóta",
+    "titulo": "{quota} pa <destaque>mês</destaque>",
+    "texto": "Un kóta sô, igual pa tudu algen. Sen eskalãu, sen jóia di entrada. Bu ta skodji sô di kantu en kantu tenpu bu kre paga.",
+    "inscrever": "N kre inskrevi sima Sóssiu",
+    "aberto": "Abertu pa tudu algen. Kenha ki kre pratika futsal, atletismu o kualker otu modalidadi ten ki ser sóssiu purmeru — inskrison disportivu ta tratadu dipos na sédi.",
+    "taxa": "Pagamentu online ten un taxa di prosesamentu, ki ta mostradu antis di bu paga.",
+    "podesPagarCom": "Bu pode paga ku"
+  },
+  "periodicidades": {
+    "mensal": {
+      "nome": "Mensal",
+      "nota": "Tudu mês"
+    },
+    "trimestral": {
+      "nome": "Trimestral",
+      "nota": "Di trés en trés mês"
+    },
+    "semestral": {
+      "nome": "Semestral",
+      "nota": "Dôs bes pa anu"
+    },
+    "anual": {
+      "nome": "Anual",
+      "nota": "Un bes pa anu"
+    }
+  },
+  "metodos": {
+    "mbway": {
+      "nome": "MB WAY",
+      "descricao": "Bu ta manda valor pa númeru di klubi ku app MB WAY."
+    },
+    "referencia": {
+      "nome": "Entidadi i Referénsia",
+      "descricao": "Bu ta resebe entidadi i referénsia pa paga na Multibanco o na homebanking. Ta vali 24 ora."
+    },
+    "debitoDireto": {
+      "nome": "Débitu Diretu",
+      "descricao": "Kóta ta sai otomatikamenti di bu konta. Bu ka ta skese nunka."
+    },
+    "transferencia": {
+      "nome": "Transferénsia Bankáriu",
+      "descricao": "Bu ta transferi pa IBAN di klubi ku bu nómi sima referénsia."
+    }
+  },
+  "inscricao": {
+    "voltar": "Sóssiu",
+    "titulo": "Fika <destaque>Sóssiu</destaque>",
+    "texto": "Kóta é {quota} pa mês, igual pa tudu algen. Kualker algen pode inskrevi — i kenha ki kre pratika un modalidadi na klubi ten ki ser sóssiu purmeru. Ta leba sinku minutu."
+  },
+  "cta": {
+    "etiqueta": "Fika parti",
+    "titulo": "Valejas é di nos tudu",
+    "tituloDestaque": "i gosi el é di meu tanbê",
+    "texto": "Fika sóssiu pa {quota} pa mês, bisti kor, ben pa pavilhon. Klubi é di kenha ki sta li.",
+    "fazerSocio": "N kre fika sóssiu",
+    "loja": "Lója di klubi",
+    "contactos": "Kontaktu",
+    "escreverAoClube": "Skrebe pa klubi"
+  },
+  "formulario": {
+    "passos": {
+      "identificacao": "Identifikason",
+      "contactos": "Kontaktu",
+      "documentos": "Dukumentu",
+      "quota": "Kóta",
+      "pagamento": "Pagamentu"
+    },
+    "progresso": "Progresu",
+    "passoDe": "Pasu {n} di {total}",
+    "blocos": {
+      "quemEs": "Kenha ki bu é",
+      "ondeTeEncontramos": "Undi ki nu ta atxa-bu",
+      "documentos": "Dukumentu",
+      "encarregado": "Enkaregadu di Edukason",
+      "encarregadoNota": "Kandidatu ten {idade} anu. Pa lei, kenha ki ta autoriza tratamentu di dadu é responsavel legal.",
+      "quota": "Kóta",
+      "quotaNota": "Kóta di klubi é {quota} pa mês, igual pa tudu sóssiu.",
+      "comoPagar": "Modi ki bu kre paga"
+    },
+    "campos": {
+      "nomeCompleto": "Nómi kompletu",
+      "dataNascimento": "Data di nasimentu",
+      "sexo": "Séksu",
+      "estadoCivil": "Stadu sivil",
+      "naturalidade": "Naturalidadi",
+      "naturalidadeDica": "Konsedju undi ki bu nase",
+      "nacionalidade": "Nasionalidadi",
+      "nomePai": "Nómi di pai",
+      "nomeMae": "Nómi di mai",
+      "morada": "Moradia",
+      "codigoPostal": "Kódigu postal",
+      "localidade": "Lokalidadi",
+      "email": "Email",
+      "emailDica": "É pa li ki klubi ta konfirma propósta",
+      "telemovel": "Telemóvel",
+      "telefoneFixo": "Telefoni fixu",
+      "cc": "Nº Kartãu di Sidadon",
+      "ccValidade": "Validadi di Kartãu di Sidadon",
+      "nif": "Nº di kontribuinti (NIF)",
+      "profissao": "Profison",
+      "parentesco": "Parentesku",
+      "iban": "IBAN",
+      "ibanTitular": "Titular di konta",
+      "proponente": "Propostu pa",
+      "proponenteDica": "Nómi di un sóssiu ki ta aprezenta-bu na klubi, si ten",
+      "opcional": "(opsional)",
+      "seleciona": "Skodji…"
+    },
+    "sexos": {
+      "M": "Maskulinu",
+      "F": "Femininu",
+      "I": "Indefinidu"
+    },
+    "estadosCivis": {
+      "solteiro": "Solteru/a",
+      "casado": "Kazadu/a",
+      "uniaoDeFacto": "Uniãu di fatu",
+      "divorciado": "Divorsiadu/a",
+      "separado": "Separadu/a",
+      "viuvo": "Viúvu/a"
+    },
+    "parentescos": {
+      "mae": "Mai",
+      "pai": "Pai",
+      "avoFeminino": "Dona",
+      "avoMasculino": "Donu",
+      "tutor": "Tutor legal",
+      "outro": "Otu"
+    },
+    "erros": {
+      "obrigatorio": "Kanpu obrigatóriu.",
+      "nomeCompleto": "Skrebe nómi kompletu.",
+      "data": "Data ka sta sértu.",
+      "codigoPostal": "Formatu 0000-000.",
+      "email": "Email ka sta sértu.",
+      "telemovelPortugues": "Telemóvel purtugés ka sta sértu.",
+      "telemovel": "Telemóvel ka sta sértu.",
+      "telefoneFixo": "Telefoni fixu ka sta sértu.",
+      "ccFormato": "Númeru di CC ka sta sértu (8 dijitu + dijitu + 2 létra + dijitu).",
+      "cc": "Númeru di CC ka sta sértu.",
+      "ccValidade": "Kartãu fora di validadi.",
+      "nif": "NIF ka sta sértu.",
+      "metodo": "Skodji un métudu.",
+      "iban": "IBAN purtugés ka sta sértu.",
+      "rgpd": "Bu ten ki autoriza tratamentu di dadu pa kontinua.",
+      "envio": "Ka foi posível manda. Tenta otu bes.",
+      "ligacao": "Ligason faja. Djobe internet i tenta otu bes.",
+      "referenciaInativa": "Referénsia otomátiku inda ka sta ativu. Klubi ta manda-bu-l pa email.",
+      "referenciaFalhou": "Ka foi posível jera referénsia.",
+      "referenciaLigacao": "Ligason faja ora ki sta ta jera referénsia.",
+      "pagamentoIniciar": "Ka foi posível kumesa pagamentu.",
+      "pagamentoLigacao": "Ligason ku sirvisu di pagamentu faja.",
+      "fotoTipo": "Ten ki ser JPG, PNG o WEBP.",
+      "fotoTamanho": "Másimu 4 MB."
+    },
+    "quota": {
+      "pergunta": "Di kantu en kantu tenpu bu kre paga?",
+      "taxa": "Ta skresenta {valor} di taxa di pagamentu online."
+    },
+    "consentimento": {
+      "maior": "N ta autoriza tratamentu di nha dadu pa N inskrevi sima sóssiu di Valejas Atlético Clube.",
+      "menor": "Sima Enkaregadu di Edukason, N ta autoriza tratamentu di dadu li riba pa inskrison sima sóssiu di Valejas Atlético Clube.",
+      "uso": "Dadu ta bai pa klubi pa email i ta uzadu pa prenxi fixa di sóssiu i pa tira kartãu.",
+      "politica": "Polítika di Privasidadi",
+      "proposta": "Kel-li é un <forte>propósta</forte>, ka é un admison. Diresãu ta analiza-l na runion i ta kontakta-bu. Sô dipos di kel-la é ki ten pagamentu pa fazi."
+    },
+    "navegacao": {
+      "voltar": "Volta",
+      "continuar": "Kontinua",
+      "irParaPagamento": "Bai pa pagamentu"
+    },
+    "foto": {
+      "rotulo": "Fotu",
+      "remover": "Tira fotu",
+      "escolher": "Skodji fixeru — JPG, PNG o WEBP, ti 4 MB",
+      "ajuda": "Ta sirbi pa kartãu di sóssiu. Fotu tipu pasi, di frenti, ku fundu klaru."
+    },
+    "valor": {
+      "quota": "Kóta",
+      "taxa": "Taxa di pagamentu online",
+      "aPagar": "Pa paga",
+      "aPagarAgora": "Pa paga gosi"
+    },
+    "dados": {
+      "iban": "IBAN",
+      "titular": "Titular",
+      "descricao": "Diskrison",
+      "mbway": "MB WAY",
+      "nomeAIndicar": "Nómi pa poi",
+      "entidade": "Entidadi",
+      "referencia": "Referénsia",
+      "valor": "Valor",
+      "validaAte": "Ta vali ti",
+      "direcaoEnvia": "(Diresãu ta manda pa email)"
+    },
+    "pagamento": {
+      "titulo": "Pagamentu",
+      "soDepois": "{metodo} — bu fixa sô ta bai pa klubi dipos di es pasu-li.",
+      "mbwayPedido": "Bu ta resebe un pididu di pagamentu na app MB WAY. Konfirma la i es pájina ta atualiza sozinhu — bu ka mesti avisa ningen.",
+      "pagarMbway": "Paga {valor} ku MB WAY",
+      "aguarda": "Ta spera bu konfirmason",
+      "aguardaTexto": "Abri app MB WAY i aseita pididu. Bu ten 4 minutu. Ka bu fitxa es pájina.",
+      "expirado": "Pididu kaba tenpu sen konfirmason.",
+      "recusado": "Pagamentu foi rekuzadu na app.",
+      "erro": "Ten un prubléma ku sirvisu di pagamentu.",
+      "tentarOutraVez": "Tenta otu bes",
+      "mbwayManual": "Pagamentu otomátiku ka sta disponível gosi. Manda valor pa app MB WAY pa númeru di klubi, ku bu nómi na mensajen.",
+      "transferencia": "Transferi pa IBAN di klubi i skrebe bu nómi na diskrison.",
+      "referencia": "Paga na Multibanco o na homebanking ku es dadu-li. Referénsia ta vali 24 ora.",
+      "referenciaGuarda": "Guarda es dadu-li. Dipos ki bu paga, klubi ta resebe konfirmason otomatikamenti — bu ka mesti avisa ningen.",
+      "aGerar": "Ta jera referénsia…",
+      "debitoDireto": "Klubi ta manda-bu mandatu di débitu diretu pa bu sina. Di la pa dianti, kóta ta sai otomatikamenti di bu konta.",
+      "aEnviar": "Ta manda…",
+      "concluir": "Kaba inskrison"
+    },
+    "concluida": {
+      "titulo": "Ben-vindu na klubi",
+      "pago": "Pagamentu konfirmadu, {nome}. Bu sta inskritu i bu fixa dja bai pa Diresãu.",
+      "pendente": "Bu fixa txiga na Diresãu, {nome}. Falta konfirma pagamentu di kóta pa kartãu ser tiradu.",
+      "transferencia": "Transferi pa IBAN di klubi i uza bu nómi sima diskrison, pa Diresãu sabe di kenha ki ta ben.",
+      "debitoDireto": "Nu rejista bu IBAN. Klubi ta manda-bu mandatu di débitu diretu pa bu sina — di la pa dianti kóta ta sai otomatikamenti i bu ka ten ki preokupa más ku kel-la.",
+      "mbway": "Abri app MB WAY, manda valor pa númeru di klubi i skrebe bu nómi na mensajen.",
+      "referencia": "Bu skodji {metodo}. Klubi ta manda-bu entidadi i referénsia pa email.",
+      "depois": "Dipos ki pagamentu konfirmadu, Prezidenti ta tira bu númeru di sóssiu i kartãu, ki bu ta bai buska na sédi di klubi. Si bu kre inskrevi na un modalidadi, aproveita kel ida — inskrison disportivu ta tratadu la.",
+      "voltarInicio": "Volta pa kumésu"
+    }
+  }
+}

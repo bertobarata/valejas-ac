@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
 import { fetchComunicados } from "@/sanity/queries";
+import { LINGUAS } from "@/i18n/routing";
+import { alternativas, estaTraduzida, rotaNaLingua } from "@/i18n/paginas";
 
 /**
  * MAPA DO SITE
@@ -48,12 +50,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   return [
-    ...paginas.map(({ rota, prioridade, frequencia }) => ({
-      url: `${base}${rota}`,
-      lastModified: agora,
-      changeFrequency: frequencia,
-      priority: prioridade,
-    })),
+    // As páginas traduzidas entram uma vez por língua, cada uma a
+    // apontar para as irmãs — é assim que o Google serve a certa.
+    ...paginas.flatMap(({ rota, prioridade, frequencia }) => {
+      const linguas = estaTraduzida(rota) ? LINGUAS : (["pt"] as const);
+      const irmas = estaTraduzida(rota)
+        ? Object.fromEntries(
+            Object.entries(alternativas(rota)).map(([l, r]) => [l, `${base}${r === "/" ? "" : r}`])
+          )
+        : undefined;
+      return linguas.map((l) => {
+        const r = rotaNaLingua(rota, l);
+        return {
+          url: `${base}${r === "/" ? "" : r}`,
+          lastModified: agora,
+          changeFrequency: frequencia,
+          priority: prioridade,
+          ...(irmas ? { alternates: { languages: irmas } } : {}),
+        };
+      });
+    }),
     // Cada comunicado tem página própria, e é o que mais muda. As
     // modalidades não entram: são âncoras de /modalidades, e o Google
     // ignora o que vem depois do # — seriam sete cópias da mesma página.

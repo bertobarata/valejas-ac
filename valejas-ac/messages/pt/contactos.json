@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "titulo": "Contactos",
+    "descricao": "Fala com o Valejas Atlético Clube — email, telefone, morada e localização. Estamos em Valejas, Oeiras."
+  },
+  "hero": {
+    "etiqueta": "Estamos aqui para ti",
+    "titulo": "Contactos",
+    "texto": "Dúvidas, parcerias, imprensa ou inscrições — fala connosco por email, telefone ou passa pela sede do clube."
+  },
+  "seccao": {
+    "etiqueta": "Fala Connosco",
+    "titulo": "Contacto & <destaque>Localização</destaque>"
+  },
+  "email": {
+    "titulo": "Email",
+    "geral": "Para tudo. Se tiveres dúvidas, é este",
+    "coordenacao": "Modalidades, inscrições e treinos",
+    "comunicacao": "Imprensa e propostas de parceria"
+  },
+  "telefone": "Telefone",
+  "morada": "Morada",
+  "horario": {
+    "titulo": "Horário",
+    "dias": {
+      "segundaASexta": "Segunda a Sexta",
+      "sabado": "Sábado",
+      "domingo": "Domingo"
+    },
+    "horas": {
+      "diasDeJogo": "Dias de jogo",
+      "fechado": "Fechado"
+    }
+  },
+  "redes": {
+    "titulo": "Segue-nos",
+    "enviarEmail": "Enviar email ao clube"
+  },
+  "formulario": {
+    "titulo": "Envia-nos uma Mensagem",
+    "enviada": "Mensagem enviada!",
+    "obrigado": "Responderemos em breve. Obrigado pelo contacto.",
+    "nome": "Nome",
+    "nomePlaceholder": "O teu nome",
+    "email": "Email",
+    "emailPlaceholder": "email@exemplo.pt",
+    "assunto": "Assunto",
+    "assuntos": {
+      "escolher": "Seleciona o assunto",
+      "geral": "Sócios, loja ou assunto geral",
+      "modalidades": "Inscrições, treinos e modalidades",
+      "parceria": "Proposta de parceria ou patrocínio",
+      "imprensa": "Imprensa e comunicação"
+    },
+    "assuntoNota": "O assunto decide quem recebe: as modalidades vão para a coordenação, as parcerias para a comunicação, o resto para a caixa geral.",
+    "mensagem": "Mensagem",
+    "mensagemPlaceholder": "A tua mensagem…",
+    "aEnviar": "A enviar…",
+    "enviar": "Enviar Mensagem",
+    "erroEnvio": "Não foi possível enviar.",
+    "erroLigacao": "Falha de ligação. Tenta outra vez."
+  },
+  "mapa": {
+    "titulo": "Localização Valejas AC"
+  },
+  "restaurante": {
+    "etiqueta": "O restaurante do clube",
+    "texto": "Comida caseira portuguesa nas instalações do clube, com prato do dia ao almoço e doses generosas. Para reservar mesa, liga diretamente para o restaurante.",
+    "reservar": "Reservar mesa · {telefone}",
+    "comoChegar": "Como chegar",
+    "horario": "Horário",
+    "fechado": "Fechado",
+    "servicos": "Refeições no local e para levar. Aceita reservas.",
+    "dias": {
+      "0": "Domingo",
+      "1": "Segunda",
+      "2": "Terça",
+      "3": "Quarta",
+      "4": "Quinta",
+      "5": "Sexta",
+      "6": "Sábado"
+    },
+    "atalho": "Reservar mesa no restaurante do clube"
+  }
+}

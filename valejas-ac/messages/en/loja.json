@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "titulo": "Shop",
+    "descricao": "Official kit of Valejas Atlético Clube. Compulsory player kit, match kit, training wear and accessories. Always collected at the clubhouse."
+  },
+  "metaCarrinho": {
+    "titulo": "Basket",
+    "descricao": "Review and send your Valejas Atlético Clube kit order. Collection at the clubhouse."
+  },
+  "cabecalho": {
+    "etiqueta": "Official kit",
+    "titulo": "Club <destaque>shop</destaque>",
+    "levantamento": "Always collected at the clubhouse. We don't deliver to your home.",
+    "prazo": "Anything not in stock is ordered in, within {semanas} weeks at most."
+  },
+  "kit": {
+    "etiqueta": "Compulsory for players",
+    "titulo": "Player <destaque>kit</destaque>",
+    "texto": "Everyone who signs up to play gets four items: the home kit, the away kit for when our colours clash with the opponent's, a set for training during the week and the tracksuit.",
+    "guardaRedes": "Goalkeepers have their own kit, in green. The match kits already include socks. Pick your size once and take the lot in one go; each item can also be bought separately further down."
+  },
+  "duvidas": {
+    "texto": "Not sure about sizes? Drop by the clubhouse and try before you order, or <link>get in touch</link>.",
+    "fornecedor": "Kit made by {fornecedor}. Catalogue and prices updated on {data}."
+  },
+  "rodape": {
+    "condicoes": "Shop terms",
+    "trocas": "Exchanges and returns",
+    "privacidade": "Privacy",
+    "termos": "Terms and conditions",
+    "livroReclamacoes": "Complaints Book (Livro de Reclamações)",
+    "contactos": "Contact",
+    "nota": "Always collected at the clubhouse — we don't deliver to your home, so there's no postage. Kit made by {fornecedor}."
+  },
+  "barra": {
+    "pecas": "{n, plural, =1 {item} other {items}}",
+    "verCarrinho": "View basket"
+  },
+  "categorias": {
+    "jogo": {
+      "nome": "Match kit",
+      "intro": "What you wear on match day. The sets come with shirt and shorts; socks are sold separately."
+    },
+    "treino": {
+      "nome": "Training and warm wear",
+      "intro": "For the weekly graft and for the cold on the touchline."
+    },
+    "adepto": {
+      "nome": "For supporters",
+      "intro": "For those who come to watch. They can carry a name and number — or a photo of whoever plays in the family."
+    },
+    "acessorios": {
+      "nome": "Accessories",
+      "intro": "Scarves, backpacks and everything else you take to the sports hall."
+    }
+  },
+  "catalogo": {
+    "filtrar": "Filter",
+    "fecharFiltros": "Close filters",
+    "familia": "Category",
+    "preco": "Price",
+    "tudo": "All",
+    "feitios": {
+      "todos": "All",
+      "preco": "With a price",
+      "consulta": "Price on request",
+      "personalizavel": "Customisable"
+    },
+    "todoEquipamento": "All kit",
+    "introTodas": "Match kit, training wear, supporters' items and accessories.",
+    "artigos": "{n} {n, plural, =1 {item} other {items}}",
+    "verArtigos": "Show {n} {n, plural, =1 {item} other {items}}",
+    "limpar": "Clear filters",
+    "nada": "Nothing matches these filters. Remove one to see the catalogue again."
+  },
+  "cartao": {
+    "tamanhoUnico": "One size",
+    "escala": "From {de} to {ate}",
+    "sobConsulta": "Price on request",
+    "referencia": "Reference {referencia}",
+    "semPreco": "This item has no fixed price — it depends on the customisation and the quantity. Talk to the club and we'll tell you how much it is.",
+    "pedirOrcamento": "Ask for a quote",
+    "tamanho": "Size",
+    "escolher": "Choose",
+    "nomeCostas": "Name on the back",
+    "opcional": "(optional)",
+    "numero": "Number",
+    "personalizado": "Customised",
+    "personalizar": "Customise",
+    "personalizarSr": " with name and number (optional)",
+    "juntou": "Added to basket",
+    "juntar": "Add to basket",
+    "erroTamanho": "Choose a size.",
+    "erroNumero": "The number is missing."
+  },
+  "tamanhos": {
+    "anos": "Age {n}",
+    "adulto": "Adult",
+    "unico": "One size"
+  },
+  "pecas": {
+    "camisola": "Shirt",
+    "calcao": "Shorts",
+    "meias": "Socks",
+    "casacoCapuz": "Hooded jacket",
+    "calcas": "Trousers"
+  },
+  "produtos": {
+    "kit-atleta": {
+      "nome": "Outfield player kit",
+      "descricao": "For outfield players: the home kit, the white away kit, the blue training set and the tracksuit. Both match kits come with socks."
+    },
+    "kit-guarda-redes": {
+      "nome": "Goalkeeper kit",
+      "descricao": "For whoever goes in goal: the green kit, the navy away kit, the green training set and the tracksuit. Both match kits come with socks."
+    },
+    "equipamento-principal": {
+      "nome": "Home kit",
+      "descricao": "The club colours: yellow and blue striped shirt, blue shorts and matching socks. Fully sublimated, with this season's sponsors."
+    },
+    "equipamento-branco": {
+      "nome": "White away kit",
+      "descricao": "The away kit, for when the opponent's colours clash with ours."
+    },
+    "equipamento-azul": {
+      "nome": "Navy kit",
+      "descricao": "Third kit, in navy blue."
+    },
+    "equipamento-verde": {
+      "nome": "Goalkeeper kit",
+      "descricao": "Green, so the goalkeeper stands out from everyone else on the pitch."
+    },
+    "conjunto-azul": {
+      "nome": "Blue training set",
+      "descricao": "Blue shirt and yellow shorts, the supplier's standard design. The cheapest set in the catalogue."
+    },
+    "conjunto-verde": {
+      "nome": "Green training set",
+      "descricao": "Green shirt and black shorts, standard design."
+    },
+    "conjunto-branco": {
+      "nome": "White set",
+      "descricao": "White shirt with the crest and the club name on the back, with navy shorts."
+    },
+    "meias-azuis": {
+      "nome": "Blue long socks",
+      "descricao": "Long match socks, blue."
+    },
+    "meias-brancas": {
+      "nome": "White long socks",
+      "descricao": "Long match socks, white."
+    },
+    "meias-marinho": {
+      "nome": "Navy long socks",
+      "descricao": "Long match socks, navy blue."
+    },
+    "meias-verdes": {
+      "nome": "Green long socks",
+      "descricao": "Long match socks, green — to match the goalkeeper kit."
+    },
+    "fato-treino": {
+      "nome": "Full tracksuit",
+      "descricao": "Hooded jacket and trousers, in navy with the club stripes. The official tracksuit."
+    },
+    "sweat-capuz": {
+      "nome": "Hoodie",
+      "descricao": "Navy hoodie with VALEJAS AC on the chest. Just the top, without the trousers."
+    },
+    "calcas-treino": {
+      "nome": "Tracksuit bottoms",
+      "descricao": "The tracksuit trousers, sold separately."
+    },
+    "bermuda": {
+      "nome": "Long shorts",
+      "descricao": "Navy long shorts, for training or everyday wear."
+    },
+    "camisola-adepto-mote": {
+      "nome": "Supporter's shirt «A união faz a força»",
+      "descricao": "Navy, with the club motto (\"Unity is strength\") on the front and VAC on the back. For the stands, not the pitch."
+    },
+    "camisola-adepto-foto": {
+      "nome": "Personalised supporter's shirt",
+      "descricao": "Sublimated with a photo of whoever plays in the family, plus their name and number. Arrange with the club which photos to use."
+    },
+    "sweat-personalizada": {
+      "nome": "Personalised family top",
+      "descricao": "Top with «MÃE DO» (\"Mum of\") or «PAI DO» (\"Dad of\") and the player's name. Worn in the stands and recognised from afar."
+    },
+    "casaco-california": {
+      "nome": "California jacket",
+      "descricao": "College-style jacket, black with white sleeves and the crest on the chest."
+    },
+    "cachecol-lema": {
+      "nome": "Club scarf",
+      "descricao": "Blue and yellow, with VALEJAS AC on one side and «o nosso lema é ganhar, ganhar, ganhar» (\"our motto is win, win, win\") on the other."
+    },
+    "cachecol-personalizado": {
+      "nome": "Personalised scarf",
+      "descricao": "With the name and number of whoever wears it, sublimated on both sides."
+    },
+    "cachecol-rosa": {
+      "nome": "Pink scarf",
+      "descricao": "Pink version, with VALEJAS AC on both sides."
+    },
+    "mochila": {
+      "nome": "Club backpack",
+      "descricao": "Sublimated backpack with the stripes and the crest, with a pocket for boots."
+    }
+  },
+  "carrinho": {
+    "voltar": "Back to the shop",
+    "titulo": "Your <destaque>order</destaque>",
+    "registada": {
+      "titulo": "Order placed",
+      "guarda": "Keep this number. It's how the club identifies you.",
+      "confirmar": "The club will check what it has at the clubhouse and order whatever's missing. We'll email you when it's ready to collect.",
+      "aPagar": "To pay: {valor}",
+      "dadosPagamento": "— the payment details are in the email.",
+      "voltar": "Back to the shop",
+      "contactos": "Contact"
+    },
+    "vazio": {
+      "titulo": "Your basket is empty",
+      "texto": "You haven't picked anything yet. The youth kit and the rest of the kit are in the shop.",
+      "verLoja": "Go to the shop"
+    },
+    "oQueLevas": "What you're getting",
+    "tamanho": "Size {tamanho}",
+    "menosUm": "One less {nome}",
+    "maisUm": "One more {nome}",
+    "remover": "Remove {nome}",
+    "prazo": "Anything at the clubhouse is set aside straight away. Anything missing is ordered from the supplier and your order is ready when it arrives, within {semanas} weeks. We'll let you know by email.",
+    "quemEncomenda": "Who's ordering",
+    "campos": {
+      "nome": "Full name",
+      "email": "Email",
+      "telemovel": "Mobile",
+      "socio": "Membership number",
+      "atleta": "For which player",
+      "atletaDica": "If the order is for a child or another player",
+      "notas": "Notes",
+      "opcional": "(optional)"
+    },
+    "quandoPagas": "When you pay",
+    "momentos": {
+      "sinal": {
+        "nome": "Pay a deposit now",
+        "descricao": "You secure the order with part of the amount. The rest is paid when you collect at the clubhouse."
+      },
+      "total": {
+        "nome": "Pay it all now",
+        "descricao": "All sorted. You just need to drop by the clubhouse to collect."
+      }
+    },
+    "percentagemSinal": " That's {percentagem}% of the total.",
+    "resumo": "Summary",
+    "totalEncomenda": "Order total",
+    "faltaLevantamento": "Due on collection",
+    "aPagarAgora": "To pay now",
+    "aRegistar": "Placing order…",
+    "encomendar": "Place order",
+    "levantamento": "Always collected at the clubhouse. We don't deliver to your home.",
+    "erros": {
+      "nome": "Write your full name.",
+      "email": "Invalid email.",
+      "telemovel": "Invalid Portuguese mobile number.",
+      "vazio": "Your basket is empty.",
+      "registar": "We couldn't place the order.",
+      "ligacao": "Connection failed. Try again."
+    }
+  }
+}

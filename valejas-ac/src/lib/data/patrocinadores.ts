@@ -19,6 +19,8 @@
 export type TipoApoio = "principal" | "institucional" | "local" | "parceria";
 
 export interface Apoio {
+  /** Chave das traduções: clube.patrocinadores.apoios.<id>. */
+  id:        string;
   nome:      string;
   tipo:      TipoApoio;
   /** O que é ou o que faz pelo clube. Curto. */
@@ -38,6 +40,7 @@ export interface Apoio {
 
 export const APOIOS: Apoio[] = [
   {
+    id: "zemig",
     nome: "ZEMIG",
     tipo: "principal",
     descricao:
@@ -45,12 +48,14 @@ export const APOIOS: Apoio[] = [
     url: "https://zemigsportswear.lojasonlinectt.pt/category/2-comprar-on-line-230-valejas-ac",
   },
   {
+    id: "juntaBarcarena",
     nome: "Junta de Freguesia de Barcarena",
     tipo: "institucional",
     descricao:
       "A freguesia onde o clube nasceu e onde continua a trabalhar.",
   },
   {
+    id: "oeirasValley",
     nome: "Oeiras Valley",
     tipo: "institucional",
     descricao:
@@ -58,18 +63,21 @@ export const APOIOS: Apoio[] = [
     logo: "/patrocinadores/oeiras-valley.webp",
   },
   {
+    id: "restauranteQb",
     nome: "Restaurante QB",
     tipo: "local",
     descricao: "Restaurante em Queluz de Baixo.",
     logo: "/patrocinadores/qb-restaurante.webp",
   },
   {
+    id: "ninhoDaRola",
     nome: "Ninho da Rola",
     tipo: "local",
     descricao: "Restaurante e café.",
     logo: "/patrocinadores/ninho-da-rola.webp",
   },
   {
+    id: "muchacho",
     nome: "Muchacho",
     tipo: "local",
     descricao: "Restaurante.",
@@ -78,6 +86,7 @@ export const APOIOS: Apoio[] = [
   {
     // Confirmado pelo presidente a 23/09/2026, com o ramo descrito por
     // ele: veio na pasta de logótipos mas não na lista de 13/09.
+    id: "ciaoCuore",
     nome: "Ciao Cuore",
     tipo: "local",
     descricao: "Restaurante italiano e sushi.",
@@ -89,11 +98,13 @@ export const APOIOS: Apoio[] = [
    * nome enquanto não houver ficheiro.
    */
   {
+    id: "drive360",
     nome: "Drive 360",
     tipo: "local",
     descricao: "Peças para automóveis.",
   },
   {
+    id: "antonioRosa",
     nome: "António Rosa",
     tipo: "local",
     descricao: "Engenharia civil e certificação energética.",
@@ -104,6 +115,7 @@ export const APOIOS: Apoio[] = [
    * tratado e o sítio está feito: tirar o `porConfirmar` publica-o.
    */
   {
+    id: "remaxGrupoSunset",
     nome: "RE/MAX Grupo Sunset",
     tipo: "local",
     descricao: "Mediação imobiliária.",
@@ -118,6 +130,7 @@ export const APOIOS: Apoio[] = [
    * do estúdio, posta no mesmo ladrilho branco de 440×440 dos outros.
    */
   {
+    id: "barataStudio",
     nome: "Barata Studio",
     tipo: "parceria",
     descricao: "Website do clube — desenho e desenvolvimento.",

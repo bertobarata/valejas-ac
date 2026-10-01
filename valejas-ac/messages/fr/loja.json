@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "titulo": "Boutique",
+    "descricao": "Équipement officiel du Valejas Atlético Clube. Kit obligatoire du joueur, tenues de match, d’entraînement et accessoires. Retrait toujours au siège."
+  },
+  "metaCarrinho": {
+    "titulo": "Panier",
+    "descricao": "Vérifier et envoyer votre commande d’équipement du Valejas Atlético Clube. Retrait au siège."
+  },
+  "cabecalho": {
+    "etiqueta": "Équipement officiel",
+    "titulo": "Boutique du <destaque>club</destaque>",
+    "levantamento": "Retrait toujours au siège du club. Nous ne livrons pas à domicile.",
+    "prazo": "Ce qui n’est pas en stock est commandé, dans un délai maximum de {semanas} semaines."
+  },
+  "kit": {
+    "etiqueta": "Obligatoire pour les joueurs",
+    "titulo": "Kit du <destaque>joueur</destaque>",
+    "texto": "Chaque joueur inscrit reçoit quatre pièces : la tenue principale, la tenue alternative pour quand nos couleurs se confondent avec celles de l’adversaire, un ensemble pour s’entraîner pendant la semaine et le survêtement.",
+    "guardaRedes": "Le gardien a son propre kit, en vert. Les tenues de match comprennent déjà les chaussettes. Choisissez la taille une fois et prenez tout d’un coup ; chaque pièce peut aussi s’acheter séparément plus bas."
+  },
+  "duvidas": {
+    "texto": "Un doute sur la taille ? Passez au siège pour essayer avant de commander, ou <link>contactez-nous</link>.",
+    "fornecedor": "Équipement fabriqué par {fornecedor}. Catalogue et prix mis à jour le {data}."
+  },
+  "rodape": {
+    "condicoes": "Conditions de la boutique",
+    "trocas": "Échanges et retours",
+    "privacidade": "Confidentialité",
+    "termos": "Conditions générales",
+    "livroReclamacoes": "Livre de réclamations (Livro de Reclamações)",
+    "contactos": "Contact",
+    "nota": "Retrait toujours au siège du club — nous ne livrons pas à domicile, il n’y a pas de frais de port. Équipement fabriqué par {fornecedor}."
+  },
+  "barra": {
+    "pecas": "{n, plural, =1 {article} other {articles}}",
+    "verCarrinho": "Voir le panier"
+  },
+  "categorias": {
+    "jogo": {
+      "nome": "Tenues de match",
+      "intro": "Ce qu’on porte le jour du match. Les ensembles comprennent maillot et short ; les chaussettes s’achètent à part."
+    },
+    "treino": {
+      "nome": "Entraînement et vêtements chauds",
+      "intro": "Pour le travail de chaque semaine et pour le froid au bord du terrain."
+    },
+    "adepto": {
+      "nome": "Pour les supporters",
+      "intro": "Pour ceux qui viennent voir. Ils peuvent porter un nom et un numéro — ou la photo de celui ou celle qui joue dans la famille."
+    },
+    "acessorios": {
+      "nome": "Accessoires",
+      "intro": "Écharpes, sacs à dos et tout ce qu’on emporte au gymnase."
+    }
+  },
+  "catalogo": {
+    "filtrar": "Filtrer",
+    "fecharFiltros": "Fermer les filtres",
+    "familia": "Famille",
+    "preco": "Prix",
+    "tudo": "Tout",
+    "feitios": {
+      "todos": "Tout",
+      "preco": "Avec prix",
+      "consulta": "Prix sur demande",
+      "personalizavel": "Personnalisables"
+    },
+    "todoEquipamento": "Tout l’équipement",
+    "introTodas": "Tenues de match, entraînement, articles de supporter et accessoires.",
+    "artigos": "{n} {n, plural, =1 {article} other {articles}}",
+    "verArtigos": "Voir {n} {n, plural, =1 {article} other {articles}}",
+    "limpar": "Effacer les filtres",
+    "nada": "Aucun résultat avec ces filtres. Retirez-en un pour revoir le catalogue."
+  },
+  "cartao": {
+    "tamanhoUnico": "Taille unique",
+    "escala": "Du {de} au {ate}",
+    "sobConsulta": "Prix sur demande",
+    "referencia": "Référence {referencia}",
+    "semPreco": "Cet article n’a pas de prix fixe — il dépend de la personnalisation et de la quantité. Contactez le club et nous vous dirons combien il coûte.",
+    "pedirOrcamento": "Demander un devis",
+    "tamanho": "Taille",
+    "escolher": "Choisir",
+    "nomeCostas": "Nom dans le dos",
+    "opcional": "(facultatif)",
+    "numero": "Numéro",
+    "personalizado": "Personnalisé",
+    "personalizar": "Personnaliser",
+    "personalizarSr": " avec nom et numéro (facultatif)",
+    "juntou": "Ajouté au panier",
+    "juntar": "Ajouter au panier",
+    "erroTamanho": "Choisissez la taille.",
+    "erroNumero": "Il manque le numéro."
+  },
+  "tamanhos": {
+    "anos": "{n} ans",
+    "adulto": "Adulte",
+    "unico": "Taille unique"
+  },
+  "pecas": {
+    "camisola": "Maillot",
+    "calcao": "Short",
+    "meias": "Chaussettes",
+    "casacoCapuz": "Veste à capuche",
+    "calcas": "Pantalon"
+  },
+  "produtos": {
+    "kit-atleta": {
+      "nome": "Kit du joueur",
+      "descricao": "Pour les joueurs de champ : la tenue principale, la tenue alternative blanche, l’ensemble d’entraînement bleu et le survêtement. Les deux tenues de match comprennent les chaussettes."
+    },
+    "kit-guarda-redes": {
+      "nome": "Kit du gardien",
+      "descricao": "Pour celui qui va dans les buts : la tenue verte, la tenue alternative bleu marine, l’ensemble d’entraînement vert et le survêtement. Les deux tenues de match comprennent les chaussettes."
+    },
+    "equipamento-principal": {
+      "nome": "Tenue principale",
+      "descricao": "Les couleurs du club : maillot à rayures jaunes et bleues, short bleu et chaussettes assorties. Entièrement sublimé, avec les sponsors de la saison."
+    },
+    "equipamento-branco": {
+      "nome": "Tenue alternative blanche",
+      "descricao": "La tenue alternative, pour quand les couleurs de l’adversaire se confondent avec les nôtres."
+    },
+    "equipamento-azul": {
+      "nome": "Tenue bleu marine",
+      "descricao": "Troisième tenue, en bleu marine."
+    },
+    "equipamento-verde": {
+      "nome": "Tenue de gardien",
+      "descricao": "Verte, pour que le gardien se distingue de tout le monde sur le terrain."
+    },
+    "conjunto-azul": {
+      "nome": "Ensemble d’entraînement bleu",
+      "descricao": "Maillot bleu et short jaune, modèle standard du fournisseur. L’ensemble le moins cher du catalogue."
+    },
+    "conjunto-verde": {
+      "nome": "Ensemble d’entraînement vert",
+      "descricao": "Maillot vert et short noir, modèle standard."
+    },
+    "conjunto-branco": {
+      "nome": "Ensemble blanc",
+      "descricao": "Maillot blanc avec l’écusson et le nom du club dans le dos, avec un short bleu marine."
+    },
+    "meias-azuis": {
+      "nome": "Chaussettes hautes bleues",
+      "descricao": "Chaussettes hautes de match, bleues."
+    },
+    "meias-brancas": {
+      "nome": "Chaussettes hautes blanches",
+      "descricao": "Chaussettes hautes de match, blanches."
+    },
+    "meias-marinho": {
+      "nome": "Chaussettes hautes bleu marine",
+      "descricao": "Chaussettes hautes de match, bleu marine."
+    },
+    "meias-verdes": {
+      "nome": "Chaussettes hautes vertes",
+      "descricao": "Chaussettes hautes de match, vertes — assorties à la tenue de gardien."
+    },
+    "fato-treino": {
+      "nome": "Survêtement complet",
+      "descricao": "Veste à capuche et pantalon, en bleu marine avec les rayures du club. Le survêtement officiel."
+    },
+    "sweat-capuz": {
+      "nome": "Sweat à capuche",
+      "descricao": "Sweat à capuche bleu marine, avec VALEJAS AC sur la poitrine. Le haut seul, sans le pantalon."
+    },
+    "calcas-treino": {
+      "nome": "Pantalon de survêtement",
+      "descricao": "Le pantalon du survêtement, vendu séparément."
+    },
+    "bermuda": {
+      "nome": "Bermuda",
+      "descricao": "Short long bleu marine, pour s’entraîner ou pour tous les jours."
+    },
+    "camisola-adepto-mote": {
+      "nome": "Maillot de supporter « A união faz a força »",
+      "descricao": "Bleu marine, avec la devise du club (« L’union fait la force ») devant et VAC dans le dos. Pour les tribunes, pas pour le terrain."
+    },
+    "camisola-adepto-foto": {
+      "nome": "Maillot de supporter personnalisé",
+      "descricao": "Sublimé avec la photo de celui ou celle qui joue dans la famille, son nom et son numéro. Les photos à utiliser se choisissent avec le club."
+    },
+    "sweat-personalizada": {
+      "nome": "Sweat personnalisé famille",
+      "descricao": "Sweat avec « MÃE DO » (« Maman de ») ou « PAI DO » (« Papa de ») et le nom du joueur. Se porte en tribune et se reconnaît de loin."
+    },
+    "casaco-california": {
+      "nome": "Veste California",
+      "descricao": "Veste de style universitaire, noire à manches blanches, avec l’écusson sur la poitrine."
+    },
+    "cachecol-lema": {
+      "nome": "Écharpe du club",
+      "descricao": "Bleue et jaune, avec VALEJAS AC d’un côté et « o nosso lema é ganhar, ganhar, ganhar » (« notre devise, c’est gagner, gagner, gagner ») de l’autre."
+    },
+    "cachecol-personalizado": {
+      "nome": "Écharpe personnalisée",
+      "descricao": "Avec le nom et le numéro de celui qui la porte, sublimés sur les deux faces."
+    },
+    "cachecol-rosa": {
+      "nome": "Écharpe rose",
+      "descricao": "Version rose, avec VALEJAS AC sur les deux faces."
+    },
+    "mochila": {
+      "nome": "Sac à dos du club",
+      "descricao": "Sac à dos sublimé avec les rayures et l’écusson, avec une poche pour les crampons."
+    }
+  },
+  "carrinho": {
+    "voltar": "Retour à la boutique",
+    "titulo": "Votre <destaque>commande</destaque>",
+    "registada": {
+      "titulo": "Commande enregistrée",
+      "guarda": "Conservez ce numéro. C’est grâce à lui que le club vous identifie.",
+      "confirmar": "Le club va vérifier ce qu’il a au siège et commander ce qui manque. Nous vous préviendrons par e-mail quand elle sera prête à retirer.",
+      "aPagar": "À payer : {valor}",
+      "dadosPagamento": "— les informations de paiement se trouvent dans l’e-mail.",
+      "voltar": "Retour à la boutique",
+      "contactos": "Contact"
+    },
+    "vazio": {
+      "titulo": "Le panier est vide",
+      "texto": "Vous n’avez encore rien choisi. Le kit de formation et le reste de l’équipement sont dans la boutique.",
+      "verLoja": "Voir la boutique"
+    },
+    "oQueLevas": "Votre sélection",
+    "tamanho": "Taille {tamanho}",
+    "menosUm": "Un de moins : {nome}",
+    "maisUm": "Un de plus : {nome}",
+    "remover": "Retirer {nome}",
+    "prazo": "Ce qui se trouve au siège est mis de côté tout de suite. Ce qui manque est commandé au fournisseur et la commande est prête à son arrivée, sous {semanas} semaines maximum. Nous vous prévenons par e-mail.",
+    "quemEncomenda": "Qui commande",
+    "campos": {
+      "nome": "Nom complet",
+      "email": "E-mail",
+      "telemovel": "Portable",
+      "socio": "Numéro d’adhérent",
+      "atleta": "Pour quel joueur",
+      "atletaDica": "Si la commande est pour un enfant ou un autre joueur",
+      "notas": "Remarques",
+      "opcional": "(facultatif)"
+    },
+    "quandoPagas": "Quand vous payez",
+    "momentos": {
+      "sinal": {
+        "nome": "Payer un acompte maintenant",
+        "descricao": "Vous réservez la commande avec une partie du montant. Le reste se paie au retrait, au siège."
+      },
+      "total": {
+        "nome": "Tout payer maintenant",
+        "descricao": "C’est réglé. Il ne vous reste qu’à passer au siège pour retirer la commande."
+      }
+    },
+    "percentagemSinal": " Cela représente {percentagem} % du total.",
+    "resumo": "Récapitulatif",
+    "totalEncomenda": "Total de la commande",
+    "faltaLevantamento": "Reste à payer au retrait",
+    "aPagarAgora": "À payer maintenant",
+    "aRegistar": "Enregistrement…",
+    "encomendar": "Commander",
+    "levantamento": "Retrait toujours au siège du club. Nous ne livrons pas à domicile.",
+    "erros": {
+      "nome": "Indiquez votre nom complet.",
+      "email": "E-mail invalide.",
+      "telemovel": "Numéro de portable portugais invalide.",
+      "vazio": "Le panier est vide.",
+      "registar": "Impossible d’enregistrer la commande.",
+      "ligacao": "Échec de connexion. Veuillez réessayer."
+    }
+  }
+}

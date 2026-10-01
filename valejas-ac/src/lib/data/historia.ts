@@ -25,6 +25,8 @@ export function anosDeVida(): number {
 }
 
 export interface Origem {
+  /** Chave das traduções: clube.historia.comecou.origens.<id>. */
+  id:        string;
   nome:      string;
   descricao: string;
 }
@@ -32,16 +34,19 @@ export interface Origem {
 /** Por onde o clube começou, antes do futsal. */
 export const ORIGENS: Origem[] = [
   {
+    id: "atletismo",
     nome: "Atletismo",
     descricao:
       "Organização e participação em provas locais, incluindo o Grande Prémio de Atletismo do Valejas Atlético Clube.",
   },
   {
+    id: "cicloturismo",
     nome: "Cicloturismo",
     descricao:
       "Passeios de bicicleta pela região e participação em iniciativas de cicloturismo.",
   },
   {
+    id: "malha",
     nome: "Malha e convívio",
     descricao:
       "Jogo da malha e outras atividades recreativas tradicionais, ligadas às festas e à vida da localidade.",

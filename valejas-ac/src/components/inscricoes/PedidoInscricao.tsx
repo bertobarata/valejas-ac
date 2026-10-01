@@ -15,15 +15,22 @@
  */
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import clsx from "clsx";
 import { Check, Download, ExternalLink, Loader2, Send } from "lucide-react";
 import { MODALIDADES } from "@/lib/data/modalidades";
-import { declaracao } from "@/lib/data/direitosImagem";
 import { EXAME_MEDICO } from "@/lib/data/documentos";
+import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
 import { calcularIdade, eMenor } from "@/lib/validacao";
 
 export default function PedidoInscricao() {
+  const t      = useTranslations("inscricoes.pedido");
+  const td     = useTranslations("inscricoes.direitosImagem");
+  const tm     = useTranslations("modalidades.itens");
+  const lingua = useLocale();
+  const quota  = formatEuros(QUOTA_MENSAL, lingua);
+
   const [modalidade, setModalidade]         = useState("");
   const [nome, setNome]                     = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
@@ -49,6 +56,8 @@ export default function PedidoInscricao() {
   );
 
   const escolhida = MODALIDADES.find((m) => m.slug === modalidade);
+  /** Nome da modalidade na língua da página (o valor enviado é o slug). */
+  const nomeDe = (slug: string) => tm(`${slug}.nome`);
 
   async function submeter(e: React.FormEvent) {
     e.preventDefault();
@@ -65,12 +74,14 @@ export default function PedidoInscricao() {
       });
       const json = await res.json();
       if (!res.ok || !json.ok) {
-        setErros(json.erros ?? ["Não foi possível enviar o pedido."]);
+        // As mensagens do servidor vêm em português (ver relatório i18n).
+        setErros(json.erros ?? [t("erroEnvio")]);
         return;
       }
-      setFeito({ modalidade: json.modalidade, jaSocio: json.jaSocio });
+      // Guarda-se o slug, não o nome que a API devolve (que vem em PT).
+      setFeito({ modalidade, jaSocio: json.jaSocio });
     } catch {
-      setErros(["Falha de ligação. Tenta outra vez."]);
+      setErros([t("erroLigacao")]);
     } finally {
       setAEnviar(false);
     }
@@ -83,13 +94,10 @@ export default function PedidoInscricao() {
           <Check size={28} className="text-yellow" />
         </div>
         <h2 className="font-headline font-black uppercase text-2xl md:text-3xl tracking-tighter text-on-surface">
-          Inscrição enviada
+          {t("feito.titulo")}
         </h2>
         <p className="font-body text-on-surface-muted leading-relaxed max-w-xl">
-          A inscrição em {feito.modalidade} chegou ao clube. Vamos confirmar
-          que há vaga e responder ao contacto que deixaste. Depois é passar
-          pela sede para fechar a ficha da federação e entregar o exame
-          médico.
+          {t("feito.texto", { modalidade: nomeDe(feito.modalidade) })}
         </p>
         {/*
           O momento em que a pessoa está mais disponível para tratar do
@@ -100,28 +108,26 @@ export default function PedidoInscricao() {
             seis dessas do site e estas duas tinham voltado a entrar. */}
         <div className="bg-surface-high border border-on-surface/10 p-5">
           <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-2">
-            Falta fazer
+            {t("feito.faltaFazer")}
           </p>
           <p className="font-body text-on-surface leading-relaxed">
-            <strong>O exame médico.</strong> É obrigatório para treinar e
-            competir. Imprime, leva ao médico, e entrega o original na sede.
+            {t.rich("feito.exame", { forte: (c) => <strong>{c}</strong> })}
           </p>
           <a href={EXAME_MEDICO.ficheiro} download className="btn-ghost text-sm mt-4">
-            <Download size={16} /> Descarregar o exame médico
+            <Download size={16} /> {t("feito.descarregarExame")}
           </a>
         </div>
 
         {!feito.jaSocio && (
           <div className="bg-surface-high border border-on-surface/10 p-5">
             <p className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted mb-2">
-              Falta fazer
+              {t("feito.faltaFazer")}
             </p>
             <p className="font-body text-on-surface leading-relaxed">
-              O primeiro passo: <strong>ser sócio</strong>. Sem isso não
-              se pratica no clube — e são 1 € por mês.
+              {t.rich("feito.socio", { forte: (c) => <strong>{c}</strong>, quota })}
             </p>
             <Link href="/socios/inscricao" className="btn-primary text-sm mt-4">
-              Fazer-me sócio
+              {t("feito.fazerSocio")}
             </Link>
           </div>
         )}
@@ -134,7 +140,7 @@ export default function PedidoInscricao() {
       {/* Modalidade */}
       <div>
         <label htmlFor="modalidade" className="rotulo">
-          Que modalidade *
+          {t("modalidade")}
         </label>
         <select
           id="modalidade"
@@ -143,28 +149,29 @@ export default function PedidoInscricao() {
           required
           className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full cursor-pointer"
         >
-          <option value="">Escolher modalidade</option>
+          <option value="">{t("escolherModalidade")}</option>
           {MODALIDADES.map((m) => (
-            <option key={m.slug} value={m.slug}>{m.nome}</option>
+            <option key={m.slug} value={m.slug}>{nomeDe(m.slug)}</option>
           ))}
         </select>
         {escolhida?.parceria && (
           <p className="font-body text-sm text-on-surface-muted mt-2">
-            O {escolhida.nome.toLowerCase()} é dado em parceria com a{" "}
-            {escolhida.parceria.nome}, nas instalações do clube.
+            {t("parceria", {
+              modalidade: nomeDe(escolhida.slug).toLowerCase(),
+              parceiro: escolhida.parceria.nome,
+            })}
           </p>
         )}
         {escolhida?.apenasFormacao && (
           <p className="font-body text-sm text-on-surface-muted mt-1">
-            Só há {escolhida.nome.toLowerCase()} para os mais novos — não há
-            vertente sénior.
+            {t("apenasFormacao", { modalidade: nomeDe(escolhida.slug).toLowerCase() })}
           </p>
         )}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="sm:col-span-2">
-          <label htmlFor="nome" className="rotulo">Nome do atleta *</label>
+          <label htmlFor="nome" className="rotulo">{t("nome")}</label>
           <input
             id="nome" value={nome} onChange={(e) => setNome(e.target.value)}
             autoComplete="name" required
@@ -173,7 +180,7 @@ export default function PedidoInscricao() {
         </div>
 
         <div>
-          <label htmlFor="nascimento" className="rotulo">Data de nascimento *</label>
+          <label htmlFor="nascimento" className="rotulo">{t("dataNascimento")}</label>
           <input
             id="nascimento" type="date" value={dataNascimento}
             onChange={(e) => setDataNascimento(e.target.value)} required
@@ -181,13 +188,13 @@ export default function PedidoInscricao() {
           />
           {idade !== null && (
             <p className="font-body text-sm text-on-surface-muted mt-1.5">
-              {idade} anos{menor ? " — menor de idade" : ""}
+              {t("idade", { idade })}{menor ? t("menorDeIdade") : ""}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="telemovel" className="rotulo">Telemóvel *</label>
+          <label htmlFor="telemovel" className="rotulo">{t("telemovel")}</label>
           <input
             id="telemovel" type="tel" value={telemovel}
             onChange={(e) => setTelemovel(e.target.value)}
@@ -197,7 +204,7 @@ export default function PedidoInscricao() {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="email" className="rotulo">Email *</label>
+          <label htmlFor="email" className="rotulo">{t("email")}</label>
           <input
             id="email" type="email" value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -210,7 +217,7 @@ export default function PedidoInscricao() {
         {menor && (
           <div className="sm:col-span-2">
             <label htmlFor="ee" className="rotulo">
-              Encarregado de educação *
+              {t("encarregado")}
             </label>
             <input
               id="ee" value={eeNome} onChange={(e) => setEeNome(e.target.value)}
@@ -218,8 +225,7 @@ export default function PedidoInscricao() {
               className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
             />
             <p className="font-body text-sm text-on-surface-muted mt-1.5">
-              O atleta é menor — o telemóvel e o email acima são os de quem
-              responde por ele.
+              {t("encarregadoAjuda")}
             </p>
           </div>
         )}
@@ -234,14 +240,14 @@ export default function PedidoInscricao() {
             className="w-6 h-6 accent-yellow shrink-0"
           />
           <span className="font-body text-on-surface leading-relaxed">
-            Já sou sócio do clube
+            {t("jaSocio")}
           </span>
         </label>
 
         {jaSocio ? (
           <div className="max-w-xs">
             <label htmlFor="num-socio" className="rotulo">
-              Número de sócio *
+              {t("numeroSocio")}
             </label>
             <input
               id="num-socio" value={numeroSocio}
@@ -250,21 +256,20 @@ export default function PedidoInscricao() {
               className="input-field px-4 border border-on-surface/15 focus:border-yellow w-full"
             />
             <p className="font-body text-sm text-on-surface-muted mt-1.5">
-              Está no cartão. Se não o tiveres à mão, a sede confirma-o.
+              {t("numeroSocioAjuda")}
             </p>
           </div>
         ) : (
           <p className="font-body text-sm text-on-surface-muted leading-relaxed">
-            Ainda não és? Podes enviar a inscrição à mesma — mas só se fecha
-            depois de te fazeres sócio, e isso são 1 € por mês.
+            {t("naoSocio", { quota })}
           </p>
         )}
       </div>
 
       <div>
         <label htmlFor="notas" className="rotulo">
-          Alguma coisa que devamos saber{" "}
-          <span className="normal-case tracking-normal opacity-60">(opcional)</span>
+          {t("notas")}{" "}
+          <span className="normal-case tracking-normal opacity-60">{t("opcional")}</span>
         </label>
         <textarea
           id="notas" value={notas} onChange={(e) => setNotas(e.target.value)}
@@ -296,13 +301,10 @@ export default function PedidoInscricao() {
       */}
       <div className="border border-on-surface/15 p-5 md:p-6 space-y-4">
         <h3 className="font-headline font-black uppercase text-base text-on-surface">
-          Direitos de imagem
+          {t("direitosTitulo")}
         </h3>
         <p className="font-body text-sm text-on-surface-muted leading-relaxed max-w-[65ch]">
-          O clube fotografa e filma treinos, jogos e convívios, e publica-os
-          no site e nas redes. Para isso precisa da tua autorização — é
-          obrigatória para todos os atletas e pode ser retirada a qualquer
-          momento, por escrito.
+          {t("direitosTexto")}
         </p>
 
         <label className="flex items-start gap-3 cursor-pointer py-2.5">
@@ -314,7 +316,7 @@ export default function PedidoInscricao() {
             className="w-6 h-6 accent-yellow shrink-0"
           />
           <span className="font-body text-on-surface leading-relaxed">
-            {declaracao(menor)}
+            {td(menor ? "declaracao.menor" : "declaracao.maior")}
           </span>
         </label>
 
@@ -323,7 +325,7 @@ export default function PedidoInscricao() {
           target="_blank"
           className="inline-flex items-center gap-2 min-h-11 font-body text-sm text-yellow underline underline-offset-4"
         >
-          Ler o termo completo <ExternalLink size={13} aria-hidden />
+          {t("lerTermo")} <ExternalLink size={13} aria-hidden />
         </Link>
       </div>
 
@@ -333,9 +335,9 @@ export default function PedidoInscricao() {
           className={clsx("btn-primary text-sm", aEnviar && "opacity-60")}
         >
           {aEnviar ? (
-            <><Loader2 size={16} className="animate-spin" /> A enviar…</>
+            <><Loader2 size={16} className="animate-spin" /> {t("aEnviar")}</>
           ) : (
-            <><Send size={16} /> Enviar inscrição</>
+            <><Send size={16} /> {t("enviar")}</>
           )}
         </button>
       </div>

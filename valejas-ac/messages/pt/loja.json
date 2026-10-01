@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "titulo": "Loja",
+    "descricao": "Equipamento oficial do Valejas Atlético Clube. Kit obrigatório de atleta, material de jogo, treino e acessórios. Levantamento sempre na sede."
+  },
+  "metaCarrinho": {
+    "titulo": "Carrinho",
+    "descricao": "Rever e enviar a encomenda de equipamento do Valejas Atlético Clube. Levantamento na sede."
+  },
+  "cabecalho": {
+    "etiqueta": "Equipamento oficial",
+    "titulo": "Loja do <destaque>clube</destaque>",
+    "levantamento": "Levantamento sempre na sede do clube. Não enviamos para casa.",
+    "prazo": "O que não houver em stock é encomendado, num prazo máximo de {semanas} semanas."
+  },
+  "kit": {
+    "etiqueta": "Obrigatório para quem joga",
+    "titulo": "Kit de <destaque>atleta</destaque>",
+    "texto": "Quem se inscreve para jogar leva quatro peças: o equipamento principal, o alternativo para quando as cores chocam com as do adversário, um conjunto para treinar durante a semana e o fato de treino.",
+    "guardaRedes": "O guarda-redes tem o seu kit, em verde. Os equipamentos de jogo já levam as meias. Escolhe o tamanho uma vez e leva tudo de uma assentada; cada peça também se compra à parte aqui em baixo."
+  },
+  "duvidas": {
+    "texto": "Dúvidas de tamanhos? Passa pela sede e experimenta antes de encomendar, ou <link>fala connosco</link>.",
+    "fornecedor": "Equipamento produzido pela {fornecedor}. Catálogo e preços atualizados a {data}."
+  },
+  "rodape": {
+    "condicoes": "Condições da loja",
+    "trocas": "Trocas e devoluções",
+    "privacidade": "Privacidade",
+    "termos": "Termos e condições",
+    "livroReclamacoes": "Livro de Reclamações",
+    "contactos": "Contactos",
+    "nota": "Levantamento sempre na sede do clube — não enviamos para casa, não há portes. Equipamento produzido pela {fornecedor}."
+  },
+  "barra": {
+    "pecas": "{n, plural, =1 {peça} other {peças}}",
+    "verCarrinho": "Ver carrinho"
+  },
+  "categorias": {
+    "jogo": {
+      "nome": "Equipamento de jogo",
+      "intro": "O que se veste em dia de jogo. Os conjuntos vão com camisola e calção; as meias compram-se à parte."
+    },
+    "treino": {
+      "nome": "Treino e agasalho",
+      "intro": "Para o trabalho de todas as semanas e para o frio à beira do campo."
+    },
+    "adepto": {
+      "nome": "Para adeptos",
+      "intro": "Para quem vai ver. Podem levar nome e número — ou a fotografia de quem joga cá em casa."
+    },
+    "acessorios": {
+      "nome": "Acessórios",
+      "intro": "Cachecóis, mochilas e o resto do que se leva para o pavilhão."
+    }
+  },
+  "catalogo": {
+    "filtrar": "Filtrar",
+    "fecharFiltros": "Fechar os filtros",
+    "familia": "Família",
+    "preco": "Preço",
+    "tudo": "Tudo",
+    "feitios": {
+      "todos": "Tudo",
+      "preco": "Com preço",
+      "consulta": "Sob consulta",
+      "personalizavel": "Personalizáveis"
+    },
+    "todoEquipamento": "Todo o equipamento",
+    "introTodas": "Equipamento de jogo, treino, peças de adepto e acessórios.",
+    "artigos": "{n} {n, plural, =1 {artigo} other {artigos}}",
+    "verArtigos": "Ver {n} {n, plural, =1 {artigo} other {artigos}}",
+    "limpar": "Limpar filtros",
+    "nada": "Nada com estes filtros. Tira um deles para voltar a ver o catálogo."
+  },
+  "cartao": {
+    "tamanhoUnico": "Tamanho único",
+    "escala": "Do {de} ao {ate}",
+    "sobConsulta": "Sob consulta",
+    "referencia": "Referência {referencia}",
+    "semPreco": "Este artigo não tem preço fechado — depende do que se personalizar e da quantidade. Fala com o clube e dizemos quanto é.",
+    "pedirOrcamento": "Pedir orçamento",
+    "tamanho": "Tamanho",
+    "escolher": "Escolher",
+    "nomeCostas": "Nome nas costas",
+    "opcional": "(opcional)",
+    "numero": "Número",
+    "personalizado": "Personalizado",
+    "personalizar": "Personalizar",
+    "personalizarSr": " com nome e número (opcional)",
+    "juntou": "Juntou ao carrinho",
+    "juntar": "Juntar ao carrinho",
+    "erroTamanho": "Escolhe o tamanho.",
+    "erroNumero": "Falta o número."
+  },
+  "tamanhos": {
+    "anos": "{n} anos",
+    "adulto": "Adulto",
+    "unico": "Tamanho único"
+  },
+  "pecas": {
+    "camisola": "Camisola",
+    "calcao": "Calção",
+    "meias": "Meias",
+    "casacoCapuz": "Casaco com capuz",
+    "calcas": "Calças"
+  },
+  "produtos": {
+    "kit-atleta": {
+      "nome": "Kit de jogador",
+      "descricao": "Para quem joga de campo: o equipamento principal, o alternativo branco, o conjunto de treino azul e o fato de treino. Os dois equipamentos levam meias."
+    },
+    "kit-guarda-redes": {
+      "nome": "Kit de guarda-redes",
+      "descricao": "Para quem vai à baliza: o equipamento verde, o alternativo azul-marinho, o conjunto de treino verde e o fato de treino. Os dois equipamentos levam meias."
+    },
+    "equipamento-principal": {
+      "nome": "Equipamento principal",
+      "descricao": "As cores do clube: camisola às riscas amarelas e azuis, calção azul e meias a condizer. Sublimação total, com os patrocinadores da época."
+    },
+    "equipamento-branco": {
+      "nome": "Equipamento alternativo branco",
+      "descricao": "O equipamento alternativo, para quando as cores do adversário chocam com as nossas."
+    },
+    "equipamento-azul": {
+      "nome": "Equipamento azul-marinho",
+      "descricao": "Terceiro equipamento, em azul-marinho."
+    },
+    "equipamento-verde": {
+      "nome": "Equipamento de guarda-redes",
+      "descricao": "Verde, para o guarda-redes se distinguir de toda a gente dentro do campo."
+    },
+    "conjunto-azul": {
+      "nome": "Conjunto de treino azul",
+      "descricao": "Camisola azul e calção amarelo, do modelo standard do fornecedor. O conjunto mais barato do catálogo."
+    },
+    "conjunto-verde": {
+      "nome": "Conjunto de treino verde",
+      "descricao": "Camisola verde e calção preto, modelo standard."
+    },
+    "conjunto-branco": {
+      "nome": "Conjunto branco",
+      "descricao": "Camisola branca com o emblema e o nome do clube nas costas, com calção azul-marinho."
+    },
+    "meias-azuis": {
+      "nome": "Meias altas azuis",
+      "descricao": "Meias altas de jogo, azuis."
+    },
+    "meias-brancas": {
+      "nome": "Meias altas brancas",
+      "descricao": "Meias altas de jogo, brancas."
+    },
+    "meias-marinho": {
+      "nome": "Meias altas azul-marinho",
+      "descricao": "Meias altas de jogo, azul-marinho."
+    },
+    "meias-verdes": {
+      "nome": "Meias altas verdes",
+      "descricao": "Meias altas de jogo, verdes — a condizer com o equipamento de guarda-redes."
+    },
+    "fato-treino": {
+      "nome": "Fato de treino completo",
+      "descricao": "Casaco com capuz e calças, em azul-marinho com as riscas do clube. O agasalho oficial."
+    },
+    "sweat-capuz": {
+      "nome": "Camisola com capuz",
+      "descricao": "Camisola com capuz, azul-marinho, com VALEJAS AC ao peito. Só o casaco, sem as calças."
+    },
+    "calcas-treino": {
+      "nome": "Calças de fato de treino",
+      "descricao": "As calças do fato de treino, vendidas à parte."
+    },
+    "bermuda": {
+      "nome": "Bermuda",
+      "descricao": "Calção comprido azul-marinho, para treinar ou para o dia a dia."
+    },
+    "camisola-adepto-mote": {
+      "nome": "Camisola de adepto «A união faz a força»",
+      "descricao": "Azul-marinho, com o mote do clube à frente e VAC nas costas. Para a bancada, não para o campo."
+    },
+    "camisola-adepto-foto": {
+      "nome": "Camisola de adepto personalizada",
+      "descricao": "Sublimada com a fotografia de quem joga cá em casa, o nome e o número. Combina-se com o clube que fotografias usar."
+    },
+    "sweat-personalizada": {
+      "nome": "Camisola personalizada de família",
+      "descricao": "Camisola com «MÃE DO» ou «PAI DO» e o nome do atleta. Vista-se nas bancadas e reconhece-se de longe."
+    },
+    "casaco-california": {
+      "nome": "Casaco California",
+      "descricao": "Casaco de corte universitário, preto com mangas brancas e o emblema ao peito."
+    },
+    "cachecol-lema": {
+      "nome": "Cachecol do clube",
+      "descricao": "Azul e amarelo, com VALEJAS AC de um lado e «o nosso lema é ganhar, ganhar, ganhar» do outro."
+    },
+    "cachecol-personalizado": {
+      "nome": "Cachecol personalizado",
+      "descricao": "Com o nome e o número de quem o veste, sublimado nas duas faces."
+    },
+    "cachecol-rosa": {
+      "nome": "Cachecol rosa",
+      "descricao": "Versão em rosa, com VALEJAS AC nas duas faces."
+    },
+    "mochila": {
+      "nome": "Mochila do clube",
+      "descricao": "Mochila sublimada com as riscas e o emblema, com bolso para as chuteiras."
+    }
+  },
+  "carrinho": {
+    "voltar": "Voltar à loja",
+    "titulo": "A tua <destaque>encomenda</destaque>",
+    "registada": {
+      "titulo": "Encomenda registada",
+      "guarda": "Guarda este número. É por ele que o clube te identifica.",
+      "confirmar": "O clube vai confirmar o que tem na sede e encomendar o que faltar. Avisamos-te por email quando estiver pronta para levantar.",
+      "aPagar": "A pagar: {valor}",
+      "dadosPagamento": "— os dados de pagamento seguem no email.",
+      "voltar": "Voltar à loja",
+      "contactos": "Contactos"
+    },
+    "vazio": {
+      "titulo": "O carrinho está vazio",
+      "texto": "Ainda não escolheste nada. O kit de formação e o restante equipamento estão na loja.",
+      "verLoja": "Ver a loja"
+    },
+    "oQueLevas": "O que levas",
+    "tamanho": "Tamanho {tamanho}",
+    "menosUm": "Menos um {nome}",
+    "maisUm": "Mais um {nome}",
+    "remover": "Remover {nome}",
+    "prazo": "O que estiver na sede separa-se de imediato. O que faltar é pedido ao fornecedor e a encomenda fica pronta quando chegar, até {semanas} semanas. Avisamos-te por email.",
+    "quemEncomenda": "Quem encomenda",
+    "campos": {
+      "nome": "Nome completo",
+      "email": "Email",
+      "telemovel": "Telemóvel",
+      "socio": "Número de sócio",
+      "atleta": "Para que atleta",
+      "atletaDica": "Se a encomenda for para um filho ou outro atleta",
+      "notas": "Notas",
+      "opcional": "(opcional)"
+    },
+    "quandoPagas": "Quando pagas",
+    "momentos": {
+      "sinal": {
+        "nome": "Pagar um sinal agora",
+        "descricao": "Garantes a encomenda com uma parte do valor. O resto paga-se ao levantar na sede."
+      },
+      "total": {
+        "nome": "Pagar tudo agora",
+        "descricao": "Fica tratado. Só tens de passar pela sede para levantar."
+      }
+    },
+    "percentagemSinal": " São {percentagem}% do total.",
+    "resumo": "Resumo",
+    "totalEncomenda": "Total da encomenda",
+    "faltaLevantamento": "Falta no levantamento",
+    "aPagarAgora": "A pagar agora",
+    "aRegistar": "A registar…",
+    "encomendar": "Encomendar",
+    "levantamento": "Levantamento sempre na sede do clube. Não enviamos para casa.",
+    "erros": {
+      "nome": "Escreve o nome completo.",
+      "email": "Email inválido.",
+      "telemovel": "Telemóvel português inválido.",
+      "vazio": "O carrinho está vazio.",
+      "registar": "Não foi possível registar a encomenda.",
+      "ligacao": "Falha de ligação. Tenta outra vez."
+    }
+  }
+}

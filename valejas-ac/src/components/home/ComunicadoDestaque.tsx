@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { getComunicados, type Comunicado } from "@/lib/data/comunicados";
 import { fetchComunicados } from "@/sanity/queries";
 
@@ -11,7 +12,12 @@ export default async function ComunicadoDestaque() {
   const ultimo = (sanity ?? getComunicados())[0];
   if (!ultimo) return null;
 
-  const data = new Date(ultimo.data).toLocaleDateString("pt-PT", {
+  const t = await getTranslations("inicio.comunicado");
+  // O conteúdo do comunicado fica em português; a data segue a língua.
+  // Se o Intl não conhecer a língua (o crioulo, nalguns sítios), vai em português.
+  const locale = await getLocale();
+  const intl = Intl.DateTimeFormat.supportedLocalesOf(locale).length ? locale : "pt-PT";
+  const data = new Date(ultimo.data).toLocaleDateString(intl, {
     day: "2-digit", month: "long", year: "numeric",
   });
 
@@ -21,7 +27,7 @@ export default async function ComunicadoDestaque() {
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
           <div className="md:w-48 shrink-0">
             <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow">
-              A Direção comunica
+              {t("etiqueta")}
             </p>
             <time className="font-body text-sm text-on-surface-muted">{data}</time>
           </div>
@@ -41,7 +47,7 @@ export default async function ComunicadoDestaque() {
             href={`/comunicados/${ultimo.slug}`}
             className="btn-ghost shrink-0 self-start md:self-center whitespace-nowrap"
           >
-            Ler comunicado
+            {t("ler")}
           </Link>
         </div>
       </div>

@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "titulo": "Quero ser patrocinador",
+    "descricao": "Patrocinar o Valejas Atlético Clube: equipamentos, lonas no pavilhão, conteúdo digital, apoio a um escalão ou mecenato desportivo. Peça a apresentação de parcerias e receba-a no email."
+  },
+  "cabecalho": {
+    "etiqueta": "Patrocínios e parcerias",
+    "titulo": "Quero ser <destaque>patrocinador</destaque>",
+    "texto": "{anos} anos de clube, {modalidades} modalidades e um pavilhão com gente todos os dias da semana. Diga-nos quem é e receba já, no seu email, a apresentação de parcerias do Valejas — com tudo o que o clube tem para oferecer.",
+    "pedir": "Pedir a apresentação",
+    "verApoios": "Ver quem já apoia o clube"
+  },
+  "marca": {
+    "titulo": "Onde pode estar a sua marca",
+    "texto": "Do equipamento que os atletas vestem às paredes do pavilhão, que tem treinos e jogos das 17h às 23h nos dias úteis e o dia inteiro ao fim de semana — o clube estima mais de 3000 pessoas por semana. Os formatos e os valores estão todos na apresentação."
+  },
+  "formasDeApoio": {
+    "equipamentos": {
+      "nome": "Equipamentos e vestuário",
+      "descricao": "A marca no equipamento de jogo, no kit e no fato de treino, no conjunto de saída ou nos coletes."
+    },
+    "pavilhao": {
+      "nome": "Lonas e vinil no pavilhão",
+      "descricao": "Publicidade fixa nas paredes e no piso, à vista de quem treina, de quem joga e de quem assiste."
+    },
+    "digital": {
+      "nome": "Cartazes e conteúdo digital",
+      "descricao": "O logótipo nos cartazes dos jogos e nas publicações do clube nas redes sociais."
+    },
+    "caderneta": {
+      "nome": "Caderneta de cromos",
+      "descricao": "Um lugar na caderneta do clube, que corre de mão em mão pela terra."
+    },
+    "escalao": {
+      "nome": "Apoio a um escalão ou modalidade",
+      "descricao": "Dar a mão a uma equipa em concreto — os petizes do futsal, o atletismo, o karate."
+    },
+    "material": {
+      "nome": "Material ou serviços",
+      "descricao": "Em vez de dinheiro, o que a sua casa faz: transporte, refeições, obras, impressão."
+    },
+    "donativo": {
+      "nome": "Donativo (mecenato desportivo)",
+      "descricao": "Um donativo ao clube, que pode ter benefícios fiscais ao abrigo do mecenato desportivo."
+    },
+    "outro": {
+      "nome": "Outra ideia",
+      "descricao": "Tem uma proposta que não cabe aqui? Conte-nos na mensagem."
+    }
+  },
+  "passos": {
+    "titulo": "Receber a apresentação",
+    "quem": {
+      "titulo": "Diga-nos quem é",
+      "texto": "Uma empresa, uma loja da terra ou a título pessoal — todos contam."
+    },
+    "apresentacao": {
+      "titulo": "A apresentação chega na hora",
+      "texto": "Um PDF com o clube, as modalidades e todas as formas de apoio, com os valores."
+    },
+    "contacto": {
+      "titulo": "Falamos consigo",
+      "texto": "A comunicação do clube recebe o seu pedido e entra em contacto para acertar o resto."
+    }
+  },
+  "fecho": {
+    "texto": "Prefere falar primeiro com alguém do clube? Escreva-nos pelo formulário de contacto, com o assunto «Proposta de parceria ou patrocínio».",
+    "botao": "Contactos"
+  },
+  "formulario": {
+    "opcional": "(opcional)",
+    "entidade": "Empresa ou entidade",
+    "entidadeDica": "Se apoia a título pessoal, deixe em branco.",
+    "nome": "O seu nome",
+    "email": "Email",
+    "emailDica": "É para aqui que enviamos a apresentação.",
+    "telefone": "Telefone",
+    "tiposLegenda": "Como gostaria de apoiar *",
+    "tiposDica": "Pode escolher mais do que uma. Os valores de cada uma estão na apresentação.",
+    "mensagem": "Uma nota para o clube",
+    "mensagemPlaceholder": "O que tem em mente, que equipa gostava de apoiar, a melhor altura para falarmos…",
+    "rgpd": "Autorizo o Valejas Atlético Clube a usar estes dados para me enviar a apresentação de parcerias e entrar em contacto sobre o apoio ao clube. Os dados seguem por email e não ficam guardados no site. <link>Política de Privacidade</link>. *",
+    "aEnviar": "A enviar…",
+    "enviar": "Receber a apresentação",
+    "pdfNaHora": "PDF enviado para o seu email, na hora."
+  },
+  "feito": {
+    "titulo": "Obrigado — pedido recebido",
+    "enviada": "A apresentação de parcerias segue para <forte>{email}</forte>. Deve chegar dentro de minutos — se não a vir, espreite a pasta de spam ou de promoções.",
+    "naoEnviada": "O pedido chegou ao clube, mas a apresentação não conseguiu seguir para <forte>{email}</forte>. A comunicação do clube manda-a à mão.",
+    "contacto": "A comunicação do clube já sabe do seu interesse e vai entrar em contacto. Até lá, qualquer dúvida: <link>{email}</link>."
+  },
+  "erros": {
+    "nome": "Escreva o nome e o apelido de quem fala connosco.",
+    "email": "Email inválido — é para lá que segue a apresentação.",
+    "telefone": "Telefone português inválido (9 dígitos, começado por 9 ou 2).",
+    "tipos": "Escolha pelo menos uma forma de apoio — ou «Outra ideia».",
+    "rgpd": "É preciso autorizar o tratamento dos dados para o clube responder.",
+    "invalido": "Pedido inválido.",
+    "muitos": "Já recebemos pedidos seus há pouco. Se a apresentação não chegou, veja a pasta de spam ou escreva para {email}.",
+    "falhou": "Não conseguimos enviar o pedido agora. Tente outra vez, ou escreva para {email}.",
+    "envio": "Não foi possível enviar o pedido.",
+    "ligacao": "Falha de ligação. Tente outra vez."
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "titulo": "Contact",
+    "descricao": "Contactez le Valejas Atlético Clube : e-mail, téléphone, adresse et plan d’accès. Nous sommes à Valejas, Oeiras."
+  },
+  "hero": {
+    "etiqueta": "Nous sommes là pour vous",
+    "titulo": "Contact",
+    "texto": "Questions, partenariats, presse ou inscriptions : écrivez-nous, appelez-nous ou passez au siège du club."
+  },
+  "seccao": {
+    "etiqueta": "Parlons-en",
+    "titulo": "Contact et <destaque>accès</destaque>"
+  },
+  "email": {
+    "titulo": "E-mail",
+    "geral": "Pour tout. En cas de doute, c’est celle-ci",
+    "coordenacao": "Sports, inscriptions et entraînements",
+    "comunicacao": "Presse et propositions de partenariat"
+  },
+  "telefone": "Téléphone",
+  "morada": "Adresse",
+  "horario": {
+    "titulo": "Horaires",
+    "dias": {
+      "segundaASexta": "Du lundi au vendredi",
+      "sabado": "Samedi",
+      "domingo": "Dimanche"
+    },
+    "horas": {
+      "diasDeJogo": "Jours de match",
+      "fechado": "Fermé"
+    }
+  },
+  "redes": {
+    "titulo": "Suivez-nous",
+    "enviarEmail": "Envoyer un e-mail au club"
+  },
+  "formulario": {
+    "titulo": "Envoyez-nous un message",
+    "enviada": "Message envoyé !",
+    "obrigado": "Nous vous répondrons bientôt. Merci de nous avoir contactés.",
+    "nome": "Nom",
+    "nomePlaceholder": "Votre nom",
+    "email": "E-mail",
+    "emailPlaceholder": "email@exemple.fr",
+    "assunto": "Objet",
+    "assuntos": {
+      "escolher": "Choisissez l’objet",
+      "geral": "Adhésion, boutique ou question générale",
+      "modalidades": "Inscriptions, entraînements et sports",
+      "parceria": "Proposition de partenariat ou de sponsoring",
+      "imprensa": "Presse et communication"
+    },
+    "assuntoNota": "L’objet détermine le destinataire : les sports vont à la coordination, les partenariats à la communication, le reste à la boîte générale.",
+    "mensagem": "Message",
+    "mensagemPlaceholder": "Votre message…",
+    "aEnviar": "Envoi en cours…",
+    "enviar": "Envoyer le message",
+    "erroEnvio": "Impossible d’envoyer le message.",
+    "erroLigacao": "Échec de connexion. Veuillez réessayer."
+  },
+  "mapa": {
+    "titulo": "Plan d’accès Valejas AC"
+  },
+  "restaurante": {
+    "etiqueta": "Le restaurant du club",
+    "texto": "Cuisine portugaise maison dans les locaux du club, avec plat du jour le midi et portions généreuses. Pour réserver une table, appelez directement le restaurant.",
+    "reservar": "Réserver une table · {telefone}",
+    "comoChegar": "Itinéraire",
+    "horario": "Horaires",
+    "fechado": "Fermé",
+    "servicos": "Sur place ou à emporter. Réservations acceptées.",
+    "dias": {
+      "0": "Dimanche",
+      "1": "Lundi",
+      "2": "Mardi",
+      "3": "Mercredi",
+      "4": "Jeudi",
+      "5": "Vendredi",
+      "6": "Samedi"
+    },
+    "atalho": "Réserver une table au restaurant du club"
+  }
+}

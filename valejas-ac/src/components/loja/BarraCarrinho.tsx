@@ -9,12 +9,15 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { ShoppingBag } from "lucide-react";
 import { useCarrinho } from "@/lib/loja/carrinho";
 import { formatEuros } from "@/lib/data/loja";
 
 export default function BarraCarrinho() {
+  const t = useTranslations("loja.barra");
+  const lingua = useLocale();
   const { totalItens, total, pronto } = useCarrinho();
 
   if (!pronto || totalItens === 0) return null;
@@ -30,8 +33,8 @@ export default function BarraCarrinho() {
           <ShoppingBag size={20} className="text-yellow shrink-0" aria-hidden />
           <span>
             <strong className="font-headline font-black">{totalItens}</strong>{" "}
-            {totalItens === 1 ? "peça" : "peças"}
-            <span className="text-white/85"> · {formatEuros(total)}</span>
+            {t("pecas", { n: totalItens })}
+            <span className="text-white/85"> · {formatEuros(total, lingua)}</span>
           </span>
         </p>
 
@@ -39,7 +42,7 @@ export default function BarraCarrinho() {
           href="/loja/carrinho"
           className="btn-primary bg-yellow text-blue-deep hover:bg-yellow-dim text-sm shrink-0"
         >
-          Ver carrinho
+          {t("verCarrinho")}
         </Link>
       </div>
     </div>

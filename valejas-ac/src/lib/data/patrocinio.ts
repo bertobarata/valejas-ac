@@ -12,6 +12,11 @@
  *
  * Uma lista só, lida pela página, pelo formulário e pela API: o
  * servidor só aceita os ids que estão aqui.
+ *
+ * Línguas: o `nome` e a `descricao` daqui são os de português, que é a
+ * língua do email ao clube. O site lê-os traduzidos por id, de
+ * `patrocinio.formasDeApoio.<id>` (messages/<lingua>/patrocinio.json) —
+ * mudar um texto aqui é mudá-lo também em messages/pt.
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -124,7 +129,8 @@ export type ErrosPedido = Partial<Record<keyof PedidoPatrocinio, string>>;
 /**
  * Lê o que veio do browser e devolve o pedido limpo mais os erros, em
  * português e por campo — o formulário mostra cada um junto do sítio
- * onde está o problema. Corre no servidor (que é quem manda) e no
+ * onde está o problema (traduzido por campo, `patrocinio.erros.<campo>`;
+ * o texto PT de cada um está igual em messages/pt). Corre no servidor (que é quem manda) e no
  * browser (para avisar antes de enviar).
  *
  * Tipos que não estão na lista são descartados em silêncio: só os

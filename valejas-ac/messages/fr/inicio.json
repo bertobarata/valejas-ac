@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "titulo": "Valejas Atlético Clube | Le club de notre village depuis 1966",
+    "descricao": "Club sportif de Valejas, Oeiras. Futsal et athlétisme en compétition fédérale, une vraie école de formation, plus judo, karaté, danse, théâtre et l’Académie Senior. La maison du club depuis 1966.",
+    "descricaoPartilha": "Futsal, athlétisme, karaté, cyclotourisme, judo, danse et théâtre. Plus l’Académie Senior. La maison du club depuis 1966."
+  },
+  "hero": {
+    "fundado": "Fondé en 1966 · Valejas, Oeiras",
+    "titulo": "L’union fait la <destaque>force</destaque>",
+    "texto": "Nous sommes tous Valejas. Depuis 1966, le club de notre village — du futsal à l’athlétisme, des plus jeunes aux vétérans.",
+    "conhecerClube": "Découvrir le club",
+    "ultimosJogos": "Derniers Matchs",
+    "emblemaAlt": "Écusson du Valejas Atlético Clube",
+    "explorar": "Explorer"
+  },
+  "comunicado": {
+    "etiqueta": "Le mot de la Direction",
+    "ler": "Lire le communiqué"
+  },
+  "proximoJogo": {
+    "etiqueta": "Prochain match",
+    "contra": "vs",
+    "jogosClassificacao": "Matchs et classement"
+  },
+  "modalidades": {
+    "etiqueta": "Nos sports",
+    "titulo": "Un club, <destaque>mille façons d’en faire partie</destaque>",
+    "grupo": {
+      "desporto": "Sport",
+      "cultura": "Culture"
+    },
+    "equipa": "Équipe {letra}",
+    "escaloes": "{n} catégories",
+    "verPlantel": "Voir l’effectif et les catégories",
+    "soFormacao": "Formation uniquement",
+    "soFormacaoCom": "Formation uniquement · {parceria}",
+    "competicao": "Compétition fédérale",
+    "semCompeticao": "Sans compétition"
+  },
+  "mote": {
+    "etiqueta": "Ce que veut dire la devise",
+    "frase": "L’union fait la <destaque>force</destaque>",
+    "contexto": "Ce n’est pas une jolie formule : c’est ainsi que le club fonctionne depuis 60 ans. Ceux qui jouent, ceux qui entraînent, ceux qui ouvrent le siège et ceux qui paient leur cotisation — tout ce qu’est le Valejas vient de là."
+  },
+  "conhecer": {
+    "etiqueta": "Faire connaissance",
+    "titulo": "Un club ne s’explique pas <destaque>en une phrase</destaque>",
+    "texto": "{anos} ans, ça laisse le temps : {origens} activités au départ, {modalidades} sports aujourd’hui, et des gens qui arrivent enfants et restent pour la vie. Choisissez par où commencer.",
+    "cartoes": {
+      "historia": {
+        "etiqueta": "Depuis {ano}",
+        "titulo": "L’histoire",
+        "texto": "{anos} ans, commencés avec l’athlétisme, le cyclotourisme et la malha — bien avant le futsal. Ce que l’on sait, et ce qu’il reste à découvrir."
+      },
+      "emblema": {
+        "etiqueta": "L’aigle et les couleurs",
+        "titulo": "L’écusson",
+        "texto": "Ce que veut dire chaque élément, et pourquoi le club joue en jaune et bleu."
+      },
+      "modalidades": {
+        "etiqueta": "{n} sports",
+        "titulo": "Ce qu’on pratique",
+        "texto": "De la salle à la piste et à la route, plus la danse et le théâtre. Certains sont en compétition fédérale, d’autres existent seulement pour former."
+      },
+      "jogos": {
+        "etiqueta": "Saison {epoca}",
+        "titulo": "Les matchs",
+        "texto": "{jornadas} journées dans le championnat de district de l’AF Lisboa, dont {emCasa} à domicile. Calendrier, résultats et classement."
+      },
+      "instalacoes": {
+        "etiqueta": "{n} lieux",
+        "titulo": "Où ça se passe",
+        "texto": "Le siège, où travaille la Direction et où se réunit l’Académie. Et la salle, où l’on joue."
+      },
+      "orgaos": {
+        "etiqueta": "{n} personnes",
+        "titulo": "Qui dirige",
+        "texto": "Direction, Conseil fiscal et Bureau de l’Assemblée. Tous membres, la plupart depuis des décennies."
+      },
+      "academia": {
+        "etiqueta": "Plus de 50 ans",
+        "titulo": "Académie Senior",
+        "texto": "{n} activités, de la chorale au chi kung. Le club ne s’arrête pas quand on cesse la compétition."
+      },
+      "patrocinadores": {
+        "etiqueta": "Qui nous soutient",
+        "titulo": "Partenaires",
+        "texto": "Les entreprises et les gens du village qui font tenir le club debout."
+      }
+    }
+  }
+}

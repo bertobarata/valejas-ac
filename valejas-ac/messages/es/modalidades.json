@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "titulo": "Deportes",
+    "descricao": "Fútbol sala y atletismo federados, judo, kárate, danza, teatro y cicloturismo — un club, muchas formas de pertenecer."
+  },
+  "pagina": {
+    "etiqueta": "Un club, todas las edades",
+    "titulo": "Hay un sitio para ti en el Valejas",
+    "intro": "Del pabellón a la pista, del tatami al escenario. Competición federada, cantera para los más pequeños y actividades abiertas a la comunidad.",
+    "academia": {
+      "etiqueta": "Mayores de 50",
+      "titulo": "Academia Sénior",
+      "texto": "Coro, chi kung, pintura, informática, bailes tradicionales, sueca y billar. El club no se acaba cuando dejas de competir.",
+      "botao": "Conocer la Academia"
+    },
+    "cta": {
+      "titulo": "¿Quieres probar? Habla con nosotros y te hacemos un hueco.",
+      "botao": "Inscribirse o saber más"
+    }
+  },
+  "vagas": {
+    "titulo": "Habla con nosotros primero",
+    "texto": "Cada deporte tiene pocas plazas. Dinos qué te interesa y te respondemos enseguida si hay plaza — antes de que cuentes con ella.",
+    "curto": "Plazas limitadas — habla con el club antes de inscribirte"
+  },
+  "grupos": {
+    "desporto": {
+      "titulo": "Deportes",
+      "intro": "Del pabellón a la pista y a la carretera. Unos compiten federados, otros existen solo para formar"
+    },
+    "cultura": {
+      "titulo": "Cultura y Comunidad",
+      "intro": "Actividades para crear, mostrar y convivir, sin competición de por medio."
+    }
+  },
+  "etiquetas": {
+    "compete": "Compite",
+    "soFormacao": "Solo cantera",
+    "parceria": "Colaboración",
+    "equipas": "Equipos",
+    "emParceriaCom": "En colaboración con",
+    "verPlanteis": "Ver plantillas",
+    "percursoFormacao": "Itinerario de cantera"
+  },
+  "itens": {
+    "futsal": {
+      "nome": "Fútbol sala",
+      "tagline": "El deporte del club",
+      "descricao": "El mayor proyecto del Valejas. Un equipo profesional en la liga distrital de la AF Lisboa, un equipo B justo detrás y una cantera completa de sub-7 a sub-19 — un chaval puede entrar en el club de niño y llegar a sénior sin cambiar nunca de camiseta.",
+      "publico": "Sénior masculino y cantera masculina",
+      "equipas": {
+        "equipaA": {
+          "nome": "Equipo A",
+          "descricao": "Equipo profesional, compitiendo en la liga distrital de la AF Lisboa."
+        },
+        "equipaB": {
+          "nome": "Equipo B",
+          "descricao": "El escalón entre la cantera y el primer equipo."
+        }
+      },
+      "escaloes": {
+        "petizes": "Sub-7",
+        "traquinas": "Sub-9",
+        "benjamins": "Sub-11",
+        "infantis": "Sub-13",
+        "iniciados": "Sub-15",
+        "juvenis": "Sub-17",
+        "juniores": "Sub-19"
+      }
+    },
+    "atletismo": {
+      "nome": "Atletismo",
+      "tagline": "Correr es cosa de todos",
+      "descricao": "Pruebas y entrenamiento regular, masculino y femenino, en todas las categorías — de los más pequeños a los sénior.",
+      "publico": "Masculino y femenino, todas las categorías"
+    },
+    "karate": {
+      "nome": "Kárate",
+      "tagline": "Técnica y cabeza fría",
+      "descricao": "Arte marcial con entrenamiento regular y competición. Concentración, postura y forma física — para quien empieza de cero y para quien ya compite.",
+      "publico": "Jóvenes y adultos"
+    },
+    "cicloturismo": {
+      "nome": "Cicloturismo",
+      "tagline": "Carretera y grupo",
+      "descricao": "Salidas por la región y pruebas en grupo. Hay sitio para quien quiere competir y para quien solo quiere pedalear acompañado.",
+      "publico": "Todas las edades"
+    },
+    "judo": {
+      "nome": "Judo",
+      "tagline": "Caer y levantarse",
+      "descricao": "Solo cantera, para los más pequeños, en las instalaciones del club. Una colaboración que trae a Valejas una escuela de judo infantil con muchos años de experiencia.",
+      "publico": "Niños y jóvenes",
+      "parceria": {
+        "nome": "Judokinhas Kobayashi",
+        "descricao": "Una de las mayores escuelas de judo infantil del país, dirigida por Renato Kobayashi y con el nombre ligado al maestro Kiyoshi Kobayashi. Las clases se dan en las instalaciones del Valejas.",
+        "valores": {
+          "disciplinaERespeito": "Disciplina y respeto",
+          "autoconfianca": "Confianza en uno mismo",
+          "cooperacaoEAmizade": "Cooperación y amistad",
+          "autocontrolo": "Autocontrol",
+          "espiritoDesportivo": "Deportividad"
+        }
+      }
+    },
+    "danca": {
+      "nome": "Danza",
+      "tagline": "Movimiento y expresión",
+      "descricao": "Del ritmo a la coreografía, para soltarse, convivir y ganar confianza.",
+      "publico": "Niños, jóvenes y adultos"
+    },
+    "teatro": {
+      "nome": "Teatro",
+      "tagline": "Subir al escenario",
+      "descricao": "Actuar, ensayar y mostrar. Trabajo en grupo, voz y presencia — y público para ver el resultado.",
+      "publico": "Todas las edades"
+    }
+  }
+}

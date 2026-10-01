@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "titulo": "Valejas Atlético Clube | Our town's club since 1966",
+    "descricao": "Sports club in Valejas, Oeiras. Federated futsal and athletics, strong youth development, plus judo, karate, dance, theatre and the Senior Academy. The club's home since 1966.",
+    "descricaoPartilha": "Futsal, athletics, karate, cycling, judo, dance and theatre. Plus the Senior Academy. The club's home since 1966."
+  },
+  "hero": {
+    "fundado": "Founded in 1966 · Valejas, Oeiras",
+    "titulo": "Unity is <destaque>strength</destaque>",
+    "texto": "We are all Valejas. Since 1966, our town's club — from futsal to athletics, from the youngest to the veterans.",
+    "conhecerClube": "Discover the club",
+    "ultimosJogos": "Latest Matches",
+    "emblemaAlt": "Valejas Atlético Clube crest",
+    "explorar": "Explore"
+  },
+  "comunicado": {
+    "etiqueta": "From the Board",
+    "ler": "Read the notice"
+  },
+  "proximoJogo": {
+    "etiqueta": "Next match",
+    "contra": "vs",
+    "jogosClassificacao": "Matches and standings"
+  },
+  "modalidades": {
+    "etiqueta": "Our sports",
+    "titulo": "One club, <destaque>many ways to belong</destaque>",
+    "grupo": {
+      "desporto": "Sport",
+      "cultura": "Culture"
+    },
+    "equipa": "Team {letra}",
+    "escaloes": "{n} age groups",
+    "verPlantel": "See squad and age groups",
+    "soFormacao": "Youth only",
+    "soFormacaoCom": "Youth only · {parceria}",
+    "competicao": "Federated competition",
+    "semCompeticao": "No competition"
+  },
+  "mote": {
+    "etiqueta": "What the motto means",
+    "frase": "Unity is <destaque>strength</destaque>",
+    "contexto": "It isn't just a nice phrase: it's how the club has worked for 60 years. Those who play, those who coach, those who open the clubhouse and those who pay their membership — everything Valejas is comes from that."
+  },
+  "conhecer": {
+    "etiqueta": "Get to know us",
+    "titulo": "A club can't be explained <destaque>in one sentence</destaque>",
+    "texto": "{anos} years is room for a lot: {origens} activities at the start, {modalidades} sports today, and people who join as children and stay for life. Choose where to begin.",
+    "cartoes": {
+      "historia": {
+        "etiqueta": "Since {ano}",
+        "titulo": "The history",
+        "texto": "{anos} years, starting with athletics, cycling and malha — long before futsal. What we know, and what is still to be discovered."
+      },
+      "emblema": {
+        "etiqueta": "The eagle and the colours",
+        "titulo": "The crest",
+        "texto": "What each part means, and why the club plays in yellow and blue."
+      },
+      "modalidades": {
+        "etiqueta": "{n} sports",
+        "titulo": "What we do",
+        "texto": "From the sports hall to the track and the road, plus dance and theatre. Some compete in federated leagues, others exist purely to teach."
+      },
+      "jogos": {
+        "etiqueta": "{epoca} season",
+        "titulo": "Matches",
+        "texto": "{jornadas} rounds in the AF Lisboa district league, {emCasa} of them at home. Fixtures, results and standings."
+      },
+      "instalacoes": {
+        "etiqueta": "{n} venues",
+        "titulo": "Where it happens",
+        "texto": "The clubhouse, where the Board works and the Academy meets. And the sports hall, where the games are played."
+      },
+      "orgaos": {
+        "etiqueta": "{n} people",
+        "titulo": "Who runs the club",
+        "texto": "The Board, the Audit Committee and the General Assembly Board. All members, most of them for decades."
+      },
+      "academia": {
+        "etiqueta": "Aged 50 and over",
+        "titulo": "Senior Academy",
+        "texto": "{n} activities, from choir to chi kung. The club doesn't end when you stop competing."
+      },
+      "patrocinadores": {
+        "etiqueta": "Who supports us",
+        "titulo": "Sponsors",
+        "texto": "The local businesses and people who keep the club on its feet."
+      }
+    }
+  }
+}

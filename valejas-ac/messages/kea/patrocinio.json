@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "titulo": "N kre ser patrusinadór",
+    "descricao": "Patrusina Valejas Atlético Clube: ekipamentu, lona na pavilhãu, konteúdu dijital, poiu pa un eskalãu o mesenatu dizportivu. Pidi aprezentason di parseria i resebe-l na email."
+  },
+  "cabecalho": {
+    "etiqueta": "Patrosíniu i parseria",
+    "titulo": "N kre ser <destaque>patrusinadór</destaque>",
+    "texto": "{anos} anu di klubi, {modalidades} modalidadi i un pavilhãu ku djenti tudu dia di semana. Fla-nu kenha ki bo e i resebe gosi, na bu email, aprezentason di parseria di Valejas — ku tudu kuza ki klubi ten pa oferese.",
+    "pedir": "Pidi aprezentason",
+    "verApoios": "Odja kenha ki dja ta poia klubi"
+  },
+  "marca": {
+    "titulo": "Undi bu marka pode sta",
+    "texto": "Di ekipamentu ki atleta ta bisti ti paredi di pavilhãu, ki ten trenu i jogu di 17h ti 23h na dia di trabalhu i dia interu na fin di semana — klubi ta kalkula más di 3000 algen pa semana. Tudu formatu i valor sta na aprezentason."
+  },
+  "formasDeApoio": {
+    "equipamentos": {
+      "nome": "Ekipamentu i ropa",
+      "descricao": "Marka na ekipamentu di jogu, na kit i na fatu di trenu, na konjuntu di saída o na koleti."
+    },
+    "pavilhao": {
+      "nome": "Lona i vinil na pavilhãu",
+      "descricao": "Publisidadi fiksu na paredi i na txon, na vista di kenha ki ta trena, ki ta djuga i ki ta odja."
+    },
+    "digital": {
+      "nome": "Kartaz i konteúdu dijital",
+      "descricao": "Logótipu na kartaz di jogu i na publikason di klubi na redi sosial."
+    },
+    "caderneta": {
+      "nome": "Kadernéta di kromu",
+      "descricao": "Un lugar na kadernéta di klubi, ki ta kóre di mon na mon pa téra."
+    },
+    "escalao": {
+      "nome": "Poiu pa un eskalãu o modalidadi",
+      "descricao": "Da mon a un ekipa konkretu — mininus di futsal, atletismu, karate."
+    },
+    "material": {
+      "nome": "Material o sirvisu",
+      "descricao": "Na lugar di dinheru, kuza ki bu kasa ta faze: transporti, kumida, obra, inpreson."
+    },
+    "donativo": {
+      "nome": "Donativu (mesenatu dizportivu)",
+      "descricao": "Un donativu pa klubi, ki pode ten benefísiu fiskal na kuadru di mesenatu dizportivu."
+    },
+    "outro": {
+      "nome": "Otu ideia",
+      "descricao": "Bo ten un propósta ki ka kabe li? Konta-nu na mensaji."
+    }
+  },
+  "passos": {
+    "titulo": "Resebe aprezentason",
+    "quem": {
+      "titulo": "Fla-nu kenha ki bo e",
+      "texto": "Un empreza, un loja di téra o a títulu pesoal — tudu algen ta konta."
+    },
+    "apresentacao": {
+      "titulo": "Aprezentason ta txiga na óra",
+      "texto": "Un PDF ku klubi, modalidadi i tudu manera di poia, ku valor."
+    },
+    "contacto": {
+      "titulo": "Nu ta papia ku bo",
+      "texto": "Komunikason di klubi ta resebe bu pididu i ta entra en kontaktu pa kombina resto."
+    }
+  },
+  "fecho": {
+    "texto": "Bo ta prefere papia primeru ku algen di klubi? Skrebe-nu pa formuláriu di kontaktu, ku asuntu «Propósta di parseria o patrosíniu».",
+    "botao": "Kontaktu"
+  },
+  "formulario": {
+    "opcional": "(opsional)",
+    "entidade": "Empreza o entidadi",
+    "entidadeDica": "Si bo ta poia a títulu pesoal, dexa-l na branku.",
+    "nome": "Bu nómi",
+    "email": "Email",
+    "emailDica": "É pa li ki nu ta manda aprezentason.",
+    "telefone": "Telefoni",
+    "tiposLegenda": "Modi ki bo gosta di poia *",
+    "tiposDica": "Bo pode skodje más di un. Valor di kada un sta na aprezentason.",
+    "mensagem": "Un nóta pa klubi",
+    "mensagemPlaceholder": "Kuza ki bo ten na kabésa, ki ekipa ki bo gosta di poia, mió óra pa nu papia…",
+    "rgpd": "N ta autoriza Valejas Atlético Clube uza es dadu pa manda-m aprezentason di parseria i entra en kontaktu ku mi sobri poiu pa klubi. Dadu ta bai pa email i ka ta fika guardadu na saiti. <link>Polítika di Privasidadi</link> (na purtuges). *",
+    "aEnviar": "Ta manda…",
+    "enviar": "Resebe aprezentason",
+    "pdfNaHora": "PDF mandadu pa bu email, na óra."
+  },
+  "feito": {
+    "titulo": "Obrigadu — pididu resebedu",
+    "enviada": "Aprezentason di parseria sta ta bai pa <forte>{email}</forte>. E debe txiga dentu di uns minutu — si bo ka odja-l, djobe na pasta di spam o di promoson.",
+    "naoEnviada": "Pididu txiga na klubi, ma aprezentason ka konsigi bai pa <forte>{email}</forte>. Komunikason di klubi ta manda-l a mon.",
+    "contacto": "Komunikason di klubi dja sabe di bu interesi i ta entra en kontaktu. Ti la, kualker duvida: <link>{email}</link>."
+  },
+  "erros": {
+    "nome": "Skrebe nómi i apelidu di kenha ki sta papia ku nos.",
+    "email": "Email inválidu — é pa la ki aprezentason ta bai.",
+    "telefone": "Telefoni purtuges inválidu (9 dijitu, ta kumesa ku 9 o 2).",
+    "tipos": "Skodje pelu menus un manera di poia — o «Otu ideia».",
+    "rgpd": "É prisizu autoriza tratamentu di dadu pa klubi pode responde.",
+    "invalido": "Pididu inválidu.",
+    "muitos": "Nu dja resebe pididu di bo á puku tenpu. Si aprezentason ka txiga, djobe na pasta di spam o skrebe pa {email}.",
+    "falhou": "Nu ka konsigi manda pididu gosi. Tenta otu bes, o skrebe pa {email}.",
+    "envio": "Ka foi posível manda pididu.",
+    "ligacao": "Falha di ligason. Tenta otu bes."
+  }
+}

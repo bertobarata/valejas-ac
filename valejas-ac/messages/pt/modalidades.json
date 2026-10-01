@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "titulo": "Modalidades",
+    "descricao": "Futsal e atletismo federados, judo, karate, dança, teatro e cicloturismo — um clube, muitas formas de pertencer."
+  },
+  "pagina": {
+    "etiqueta": "Um clube, muitas idades",
+    "titulo": "Há um lugar para ti no Valejas",
+    "intro": "Do pavilhão à pista, do tatami ao palco. Competição federada, formação para os mais novos e atividades abertas à comunidade.",
+    "academia": {
+      "etiqueta": "Maiores de 50",
+      "titulo": "Academia Sénior",
+      "texto": "Coro, chi kung, pintura, informática, danças tradicionais, sueca e bilhar. O clube não acaba quando se deixa de competir.",
+      "botao": "Conhecer a Academia"
+    },
+    "cta": {
+      "titulo": "Queres experimentar? Fala connosco e trazemos-te para dentro.",
+      "botao": "Inscrever ou saber mais"
+    }
+  },
+  "vagas": {
+    "titulo": "Fala connosco primeiro",
+    "texto": "Cada modalidade tem poucos lugares. Diz-nos o que te interessa e respondemos logo se há vaga — antes de contares com ela.",
+    "curto": "Vagas limitadas — fala com o clube antes de te inscreveres"
+  },
+  "grupos": {
+    "desporto": {
+      "titulo": "Desportos",
+      "intro": "Do pavilhão à pista e à estrada. Umas competem federadas, outras existem só para formar"
+    },
+    "cultura": {
+      "titulo": "Cultura e Comunidade",
+      "intro": "Atividades para criar, mostrar e conviver, sem competição à mistura."
+    }
+  },
+  "etiquetas": {
+    "compete": "Compete",
+    "soFormacao": "Só formação",
+    "parceria": "Parceria",
+    "equipas": "Equipas",
+    "emParceriaCom": "Em parceria com",
+    "verPlanteis": "Ver planteis",
+    "percursoFormacao": "Percurso de formação"
+  },
+  "itens": {
+    "futsal": {
+      "nome": "Futsal",
+      "tagline": "A modalidade do clube",
+      "descricao": "O maior projeto do Valejas. Equipa profissional no distrital da AF Lisboa, equipa B logo atrás, e um percurso de formação completo dos petizes aos juniores — um miúdo pode entrar no clube em criança e chegar a sénior sem nunca mudar de camisola.",
+      "publico": "Seniores masculinos e formação masculina",
+      "equipas": {
+        "equipaA": {
+          "nome": "Equipa A",
+          "descricao": "Equipa profissional, a competir no distrital da AF Lisboa."
+        },
+        "equipaB": {
+          "nome": "Equipa B",
+          "descricao": "Degrau entre a formação e a equipa principal."
+        }
+      },
+      "escaloes": {
+        "petizes": "Petizes",
+        "traquinas": "Traquinas",
+        "benjamins": "Benjamins",
+        "infantis": "Infantis",
+        "iniciados": "Iniciados",
+        "juvenis": "Juvenis",
+        "juniores": "Juniores"
+      }
+    },
+    "atletismo": {
+      "nome": "Atletismo",
+      "tagline": "Correr é de toda a gente",
+      "descricao": "Provas e treino regular, masculino e feminino, em todos os escalões — dos mais novos aos seniores.",
+      "publico": "Masculino e feminino, todos os escalões"
+    },
+    "karate": {
+      "nome": "Karate",
+      "tagline": "Técnica e cabeça fria",
+      "descricao": "Arte marcial com treino regular e competição. Foco, postura e condição física — para quem começa do zero e para quem já compete.",
+      "publico": "Jovens e adultos"
+    },
+    "cicloturismo": {
+      "nome": "Cicloturismo",
+      "tagline": "Estrada e grupo",
+      "descricao": "Passeios pela região e provas em grupo. Há lugar para quem quer competir e para quem só quer pedalar acompanhado.",
+      "publico": "Todas as idades"
+    },
+    "judo": {
+      "nome": "Judo",
+      "tagline": "Cair e levantar",
+      "descricao": "Só formação, para os mais novos, nas instalações do clube. Uma parceria que traz a Valejas uma escola de judo infantil com anos de casa.",
+      "publico": "Crianças e jovens",
+      "parceria": {
+        "nome": "Judokinhas Kobayashi",
+        "descricao": "Uma das maiores escolas de judo infantil do país, dirigida por Renato Kobayashi e com o nome ligado ao mestre Kiyoshi Kobayashi. As aulas acontecem nas instalações do Valejas.",
+        "valores": {
+          "disciplinaERespeito": "Disciplina e respeito",
+          "autoconfianca": "Autoconfiança",
+          "cooperacaoEAmizade": "Cooperação e amizade",
+          "autocontrolo": "Autocontrolo",
+          "espiritoDesportivo": "Espírito desportivo"
+        }
+      }
+    },
+    "danca": {
+      "nome": "Dança",
+      "tagline": "Movimento e expressão",
+      "descricao": "Do ritmo à coreografia, para libertar, conviver e ganhar confiança.",
+      "publico": "Crianças, jovens e adultos"
+    },
+    "teatro": {
+      "nome": "Teatro",
+      "tagline": "Subir ao palco",
+      "descricao": "Representar, ensaiar e mostrar. Trabalho de grupo, voz e presença — e público para ver o resultado.",
+      "publico": "Todas as idades"
+    }
+  }
+}

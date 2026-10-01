@@ -11,7 +11,11 @@
  * versões e a página escolhe a que serve.
  *
  * ⚠️ Alterar isto é alterar um documento com valor legal. Se o clube
- * mudar o papel, muda-se aqui — e ao contrário também.
+ * mudar o papel, muda-se aqui — e ao contrário também. E nas
+ * traduções: a página e o formulário mostram o texto de
+ * messages/<lingua>/inscricoes.json → direitosImagem.*, cujo PT é
+ * cópia exata deste. A API continua a registar a declaração daqui, em
+ * português — é a versão que vale.
  * ─────────────────────────────────────────────────────────────────
  */
 

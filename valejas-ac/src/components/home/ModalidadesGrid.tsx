@@ -17,7 +17,8 @@
  */
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
@@ -25,10 +26,7 @@ import { MODALIDADES, type Grupo, type Modalidade } from "@/lib/data/modalidades
 
 gsap.registerPlugin(ScrollTrigger);
 
-const GRUPO_LABEL: Record<Grupo, string> = {
-  desporto: "Desporto",
-  cultura:  "Cultura",
-};
+// O nome de cada grupo vem das traduções (inicio.modalidades.grupo.<id>).
 // Barra de acento por grupo. Tipado a Grupo de propósito: se algum dia
 // nascer outro grupo, isto deixa de compilar em vez de sair sem cor.
 const GRUPO_ACCENT: Record<Grupo, string> = {
@@ -41,16 +39,25 @@ const GRUPO_ACCENT: Record<Grupo, string> = {
  * nem outra — dito por extenso, que é o que a página de modalidades
  * promete: «está dito em cada uma».
  */
-function pePagina(m: Modalidade): string {
+function pePagina(m: Modalidade, t: ReturnType<typeof useTranslations<"inicio.modalidades">>): string {
   if (m.apenasFormacao) {
-    return m.parceria ? `Só formação · ${m.parceria.nome}` : "Só formação";
+    return m.parceria ? t("soFormacaoCom", { parceria: m.parceria.nome }) : t("soFormacao");
   }
-  if (m.compete) return "Competição federada";
-  return "Sem competição";
+  if (m.compete) return t("competicao");
+  return t("semCompeticao");
+}
+
+/** «Equipa A» → «Team A». Um nome que não siga o padrão sai tal como está. */
+function nomeEquipa(nome: string, t: ReturnType<typeof useTranslations<"inicio.modalidades">>): string {
+  const letra = /^Equipa (\S+)$/.exec(nome)?.[1];
+  return letra ? t("equipa", { letra }) : nome;
 }
 
 export default function ModalidadesGrid() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations("inicio.modalidades");
+  // Nome, tagline e descrição de cada modalidade: messages/<l>/modalidades.json.
+  const tm = useTranslations("modalidades.itens");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -76,10 +83,10 @@ export default function ModalidadesGrid() {
         {/* Header */}
         <div className="mb-10">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-yellow mb-3">
-            As nossas modalidades
+            {t("etiqueta")}
           </p>
           <h2 className="section-title">
-            Um clube, <span>muitas formas de pertencer</span>
+            {t.rich("titulo", { destaque: (c) => <span>{c}</span> })}
           </h2>
         </div>
 
@@ -99,13 +106,13 @@ export default function ModalidadesGrid() {
             <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-14 items-stretch">
               <div>
                 <span className="font-body text-xs font-bold uppercase tracking-widest text-yellow">
-                  {GRUPO_LABEL[featured.grupo]}
+                  {t(`grupo.${featured.grupo}`)}
                 </span>
                 <h3 className="font-headline font-black wdth-condensed text-4xl md:text-6xl text-on-surface mt-2 leading-none uppercase group-hover:text-yellow transition-colors duration-300">
-                  {featured.nome}
+                  {tm(`${featured.slug}.nome`)}
                 </h3>
                 <p className="font-body text-base text-on-surface-muted mt-4 leading-relaxed max-w-xl">
-                  {featured.descricao}
+                  {tm(`${featured.slug}.descricao`)}
                 </p>
               </div>
 
@@ -118,19 +125,19 @@ export default function ModalidadesGrid() {
                         key={e.nome}
                         className="font-body text-xs uppercase tracking-widest text-on-surface border border-on-surface/20 px-3 py-1.5"
                       >
-                        {e.nome}
+                        {nomeEquipa(e.nome, t)}
                       </span>
                     ))}
                     {featured.escaloes && (
                       <span className="font-body text-xs uppercase tracking-widest text-blue-deep bg-yellow px-3 py-1.5">
-                        {featured.escaloes.length} escalões
+                        {t("escaloes", { n: featured.escaloes.length })}
                       </span>
                     )}
                   </div>
                 )}
 
                 <span className="inline-flex items-center gap-3 font-body text-xs uppercase tracking-widest text-on-surface">
-                  Ver plantel e escalões
+                  {t("verPlantel")}
                   <span className="w-10 h-10 bg-yellow flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shrink-0">
                     <ArrowUpRight size={18} className="text-blue-deep" />
                   </span>
@@ -151,19 +158,19 @@ export default function ModalidadesGrid() {
 
                 <div>
                   <span className="font-body text-xs font-bold uppercase tracking-widest text-on-surface-muted">
-                    {GRUPO_LABEL[m.grupo]}
+                    {t(`grupo.${m.grupo}`)}
                   </span>
                   <h3 className="font-headline font-black text-2xl text-on-surface mt-1.5 leading-none uppercase group-hover:text-yellow transition-colors duration-300">
-                    {m.nome}
+                    {tm(`${m.slug}.nome`)}
                   </h3>
                   <p className="font-body text-sm text-on-surface-muted mt-2 leading-relaxed">
-                    {m.tagline}
+                    {tm(`${m.slug}.tagline`)}
                   </p>
                 </div>
 
                 <div className="flex items-end justify-between gap-3 pt-5 mt-5 border-t border-on-surface/10">
                   <span className="font-body text-xs uppercase tracking-widest text-on-surface-muted">
-                    {pePagina(m)}
+                    {pePagina(m, t)}
                   </span>
                   <ArrowUpRight
                     size={16}

@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "titulo": "Inscripciones",
+    "descricao": "Cómo empezar a practicar en el Valejas Atlético Clube: hacerse socio, pedir plaza en la modalidad y cerrar la inscripción en la sede."
+  },
+  "cabecalho": {
+    "etiqueta": "Empezar a practicar",
+    "titulo": "Inscripciones",
+    "texto": "{n} modalidades, de los más pequeños a los veteranos. Siempre se empieza de la misma manera — y son tres pasos."
+  },
+  "passos": {
+    "socio": {
+      "titulo": "Primero, ser socio",
+      "texto": "No se practica en el club sin ser socio — vale para todas las modalidades y todas las edades. La cuota es de {quota} al mes, igual para todo el mundo.",
+      "accao": "Hacerme socio"
+    },
+    "inscricao": {
+      "titulo": "Después, la inscripción",
+      "texto": "Rellena el formulario de aquí abajo, con la autorización de derechos de imagen que el club pide a todos los deportistas. Cada modalidad tiene pocas plazas — confirmamos si hay plaza y te respondemos."
+    },
+    "sede": {
+      "titulo": "Por último, en la sede",
+      "texto": "Si hay plaza, la inscripción se cierra en la sede: se firma la ficha de la federación y se entrega el reconocimiento médico, que puedes descargar aquí abajo. También es allí donde se elige el horario y se resuelve lo de la equipación."
+    }
+  },
+  "envio": {
+    "titulo": "Enviar inscripción",
+    "sede": "La inscripción se cierra en la sede, con la ficha de la federación y el reconocimiento médico — esto es lo que se adelanta desde aquí. Nada queda guardado en esta web: se envía por email al club y desaparece.",
+    "direitos": "Incluye la autorización de <link>derechos de imagen</link>, obligatoria para todos los deportistas."
+  },
+  "levar": {
+    "titulo": "Qué llevar a la sede",
+    "texto": "La inscripción solo queda cerrada con estos papeles entregados. Descárgalos, prepáralos y tráenoslos.",
+    "oficialDe": "Formulario oficial del {origem}.",
+    "descarregar": "Descargar PDF",
+    "maisIsto": "Y además",
+    "itens": {
+      "ccAtleta": "Documento de identidad del deportista",
+      "ccEncarregado": "Documento de identidad del padre, madre o tutor, si el deportista es menor",
+      "fotografia": "Una foto tamaño carné",
+      "fichaFederacao": "La ficha de la federación, que se firma allí"
+    },
+    "horario": "La sede abre de lunes a viernes, de 09:30 a 17:00, y los días de partido."
+  },
+  "documentos": {
+    "exameMedico": {
+      "nome": "Reconocimiento médico deportivo",
+      "descricao": "El formulario oficial que certifica que estás apto para la práctica deportiva. Es obligatorio para competir y para entrenar en el club.",
+      "comoUsar": "Imprímelo, llévalo a tu médico o a un centro de medicina deportiva y entrega el original en la sede. El club no lo recibe a través de la web."
+    }
+  },
+  "valores": {
+    "titulo": "Cuánto cuesta",
+    "texto": "Los precios de la temporada {epoca}, tal como salieron en el comunicado de la Junta Directiva. La equipación se compra aparte, en la tienda.",
+    "mensalidadesFutsal": "Cuotas mensuales de fútbol sala",
+    "descontoIrmaos": "{valor} menos por cada hermano",
+    "aviso": "Los precios de arriba son los del comunicado de septiembre. Confírmalos en la secretaría antes de pagar — es allí donde se cierra la inscripción.",
+    "periodo": {
+      "porEpoca": "por temporada",
+      "porMes": "al mes",
+      "umaVez": "una vez"
+    },
+    "inclui": {
+      "inscricaoClube": "Inscripción en el club",
+      "inscricaoAfLisboa": "Inscripción en la AF Lisboa",
+      "seguroDesportivo": "Seguro deportivo",
+      "cartaoSocio": "Carné de socio"
+    },
+    "itens": {
+      "inscricao": {
+        "nome": "Inscripción"
+      },
+      "reinscricao": {
+        "nome": "Reinscripción",
+        "nota": "Para quien ya jugó en el club la temporada anterior."
+      },
+      "exameMedico": {
+        "nome": "Reconocimiento médico",
+        "nota": "Obligatorio para entrenar y competir. Puede hacerlo tu médico de cabecera, y en ese caso no se paga al club."
+      },
+      "quota": {
+        "nome": "Cuota de socio",
+        "nota": "Obligatoria, y ya incluida en la inscripción y en la reinscripción."
+      },
+      "mensalidadeFormacao": {
+        "nome": "Sub-7 a Sub-17"
+      },
+      "mensalidadeJuniores": {
+        "nome": "Sub-19"
+      }
+    }
+  },
+  "pedido": {
+    "modalidade": "Qué modalidad *",
+    "escolherModalidade": "Elegir modalidad",
+    "parceria": "El {modalidade} se imparte en colaboración con {parceiro}, en las instalaciones del club.",
+    "apenasFormacao": "Solo hay {modalidade} para los más pequeños — no hay categoría sénior.",
+    "nome": "Nombre del deportista *",
+    "dataNascimento": "Fecha de nacimiento *",
+    "idade": "{idade, plural, one {# año} other {# años}}",
+    "menorDeIdade": " — menor de edad",
+    "telemovel": "Móvil *",
+    "email": "Email *",
+    "encarregado": "Padre, madre o tutor *",
+    "encarregadoAjuda": "El deportista es menor — el móvil y el email de arriba son los de quien responde por él.",
+    "jaSocio": "Ya soy socio del club",
+    "numeroSocio": "Número de socio *",
+    "numeroSocioAjuda": "Está en el carné. Si no lo tienes a mano, en la sede te lo confirman.",
+    "naoSocio": "¿Aún no lo eres? Puedes enviar la inscripción igualmente — pero solo se cierra cuando te hagas socio, y eso son {quota} al mes.",
+    "notas": "Algo que debamos saber",
+    "opcional": "(opcional)",
+    "direitosTitulo": "Derechos de imagen",
+    "direitosTexto": "El club fotografía y graba entrenamientos, partidos y encuentros, y los publica en la web y en las redes. Para ello necesita tu autorización — es obligatoria para todos los deportistas y puede retirarse en cualquier momento, por escrito.",
+    "lerTermo": "Leer el documento completo",
+    "aEnviar": "Enviando…",
+    "enviar": "Enviar inscripción",
+    "erroEnvio": "No se ha podido enviar la solicitud.",
+    "erroLigacao": "Fallo de conexión. Inténtalo de nuevo.",
+    "feito": {
+      "titulo": "Inscripción enviada",
+      "texto": "La inscripción en {modalidade} ha llegado al club. Vamos a confirmar que hay plaza y a responder al contacto que nos has dejado. Después solo queda pasar por la sede para cerrar la ficha de la federación y entregar el reconocimiento médico.",
+      "faltaFazer": "Queda pendiente",
+      "exame": "<forte>El reconocimiento médico.</forte> Es obligatorio para entrenar y competir. Imprímelo, llévalo al médico y entrega el original en la sede.",
+      "descarregarExame": "Descargar el reconocimiento médico",
+      "socio": "El primer paso: <forte>hacerte socio</forte>. Sin eso no se practica en el club — y son {quota} al mes.",
+      "fazerSocio": "Hacerme socio"
+    }
+  },
+  "direitosImagem": {
+    "meta": {
+      "titulo": "Derechos de imagen",
+      "descricao": "Documento de consentimiento para la captación y el uso de imágenes del Valejas Atlético Clube, conforme al RGPD."
+    },
+    "avisoVersao": "Esta es una traducción para ayudarte a entender el documento. La versión con validez legal es la portuguesa.",
+    "voltarInscricoes": "Volver a inscripciones",
+    "titulo": "Derechos de <destaque>imagen</destaque>",
+    "documentoTitulo": "Documento de Consentimiento para la Captación y Uso de Imágenes — RGPD",
+    "paragrafos": {
+      "p1": "De conformidad con el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, conocido como Reglamento General de Protección de Datos (RGPD), el Valejas Atlético Clube informa de que, en el ámbito de su actividad deportiva e institucional, podrá proceder a la captación, grabación y difusión de imágenes y vídeos de sus deportistas.",
+      "p2": "La recogida y el tratamiento de estos datos tienen como finalidad la promoción de las actividades del club a través de diversos canales de comunicación, incluidos, entre otros, redes sociales (Facebook, Instagram, YouTube), la web oficial del club, materiales promocionales e institucionales (como carteles, folletos y vídeos), comunicación interna y externa, así como la difusión en medios de comunicación.",
+      "p3": "El tratamiento de los datos personales incluye la captación de imagen (fotografías y vídeos) y sonido (voz), en particular en entrevistas, vídeos institucionales, entrenamientos o eventos deportivos. Podrá además, previa autorización, incluir el nombre de pila del deportista e información deportiva relevante, como la categoría o la participación en competiciones. Los datos recogidos podrán compartirse con plataformas digitales, medios de comunicación y entidades oficiales del deporte (como asociaciones y federaciones), siempre en estricto cumplimiento de la legislación aplicable y con el debido respeto a la privacidad de los deportistas.",
+      "p4": "Los datos recogidos se conservarán durante un período máximo de 10 años, salvo solicitud de supresión anticipada por parte del titular de los datos o de su representante legal. El consentimiento ahora prestado puede revocarse en cualquier momento, mediante comunicación escrita dirigida al club, sin perjuicio de la licitud del tratamiento efectuado hasta esa fecha.",
+      "p5": "Los titulares de los datos, o sus padres o tutores, tienen, conforme al RGPD, derecho a solicitar el acceso a los datos personales, su rectificación, supresión, limitación u oposición al tratamiento, así como el derecho a la portabilidad de los datos. También podrán presentar una reclamación ante la Comissão Nacional de Proteção de Dados (CNPD), como autoridad nacional de control.",
+      "p6": "Para cualquier cuestión relacionada con la protección de datos, se puede contactar con el club a través del email {email} o del teléfono {telefone}."
+    },
+    "declaracao": {
+      "maior": "Declaro que he leído, comprendido y autorizo la captación y el uso de mi imagen y de mi voz, en los términos descritos arriba.",
+      "menor": "Declaro que he leído, comprendido y autorizo la captación y el uso de la imagen y la voz del menor identificado arriba, en los términos descritos arriba."
+    },
+    "oQueSeAceita": "Lo que se acepta",
+    "quandoMenor": "Cuando el deportista es menor de edad, quien acepta es el padre, la madre o el tutor, y la declaración pasa a ser esta:",
+    "clube": {
+      "fundado": "fundado el {data}",
+      "dataFundacao": "1 de noviembre de 1966",
+      "estatuto": "Institución de Utilidad Pública conforme al Decreto-Ley 460/77",
+      "contribuinte": "NIF {numero}",
+      "telefone": "teléfono {numero}",
+      "protecaoDados": "Para cuestiones de protección de datos:"
+    },
+    "voltarInscricao": "Volver a la inscripción"
+  }
+}

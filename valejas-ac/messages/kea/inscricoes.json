@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "titulo": "Inskrison",
+    "descricao": "Modi ki bu ta kumesa pratika na Valejas Atlético Clube: fika sóssiu, pidi vaga na modalidadi i fitxa inskrison na sédi."
+  },
+  "cabecalho": {
+    "etiqueta": "Kumesa pratika",
+    "titulo": "Inskrison",
+    "texto": "{n} modalidadi, di mininu pikinoti ti séniôr. Sénpri ta kumesa di mésmu manera — i é trés pasu."
+  },
+  "passos": {
+    "socio": {
+      "titulo": "Purmeru, fika sóssiu",
+      "texto": "Ka ta pratikadu na klubi sen bu ser sóssiu — é pa tudu modalidadi i pa tudu idadi. Kóta é {quota} pa mês, igual pa tudu algen.",
+      "accao": "N kre fika sóssiu"
+    },
+    "inscricao": {
+      "titulo": "Dipos, inskrison",
+      "texto": "Prenxi formuláriu li baxu, ku autorizason di diretu di imajen ki klubi ta pidi tudu atleta. Kada modalidadi ten poku lugar — nu ta konfirma vaga i nu ta responde-bu."
+    },
+    "sede": {
+      "titulo": "Na fin, na sédi",
+      "texto": "Si ten vaga, inskrison ta fitxadu na sédi: ta sinadu fixa di federason i ta entregadu izami médiku, ki bu pode baxa li baxu. É la tanbê ki ta skodjedu oráriu i ta tratadu di ekipamentu."
+    }
+  },
+  "envio": {
+    "titulo": "Manda inskrison",
+    "sede": "Inskrison ta fitxadu na sédi, ku fixa di federason i izami médiku — kel-li é kuza ki bu pode adianta di li. Nada ka ta fika guardadu na es saiti: ta bai pa klubi pa email i ta disparse.",
+    "direitos": "Ta inklui autorizason di <link>diretu di imajen</link>, ki é obrigatóriu pa tudu atleta."
+  },
+  "levar": {
+    "titulo": "Kuza ki bu ta leba pa sédi",
+    "texto": "Inskrison sô ta fika fitxadu ku es papel-li entregadu. Baxa-s, trata di es, i traze-nu-s.",
+    "oficialDe": "Formuláriu ofisial di {origem}.",
+    "descarregar": "Baxa PDF",
+    "maisIsto": "I inda kel-li",
+    "itens": {
+      "ccAtleta": "Kartãu di Sidadon di atleta",
+      "ccEncarregado": "Kartãu di Sidadon di enkaregadu di edukason, si atleta é menor di idadi",
+      "fotografia": "Un fotu tipu pasi",
+      "fichaFederacao": "Fixa di federason, ki ta sinadu la"
+    },
+    "horario": "Sédi sta abertu di sigunda ti sesta, di 09h30 ti 17h00, i na dia di jogu."
+  },
+  "documentos": {
+    "exameMedico": {
+      "nome": "Izami médiku disportivu",
+      "descricao": "Formuláriu ofisial ki ta mostra ma bu sta apa pa pratika disportu. É obrigatóriu pa konpiti i pa trenu na klubi.",
+      "comoUsar": "Inprimi-l, leba-l pa bu médiku o pa un sentru di medisina disportiva, i entrega orijinal na sédi. Klubi ka ta resebe-l pa saiti."
+    }
+  },
+  "valores": {
+    "titulo": "Kantu ki ta kusta",
+    "texto": "Valor di époka {epoca}, sima ki sai na komunikadu di Diresãu. Ekipamentu ta konpradu a parti, na lója.",
+    "mensalidadesFutsal": "Mensalidadi di futsal",
+    "descontoIrmaos": "Menus {valor} pa kada irmãu",
+    "aviso": "Valor li riba é di komunikadu di setenbru. Konfirma na sekretaria antis di paga — é la ki inskrison ta fitxadu.",
+    "periodo": {
+      "porEpoca": "pa époka",
+      "porMes": "pa mês",
+      "umaVez": "un bes"
+    },
+    "inclui": {
+      "inscricaoClube": "Inskrison na klubi",
+      "inscricaoAfLisboa": "Inskrison na AF Lisboa",
+      "seguroDesportivo": "Siguru disportivu",
+      "cartaoSocio": "Kartãu di sóssiu"
+    },
+    "itens": {
+      "inscricao": {
+        "nome": "Inskrison"
+      },
+      "reinscricao": {
+        "nome": "Re-inskrison",
+        "nota": "Pa kenha ki dja djoga na klubi na époka pasadu."
+      },
+      "exameMedico": {
+        "nome": "Izami médiku",
+        "nota": "Obrigatóriu pa trenu i pa konpiti. Pode fazedu na médiku di família, i nes kazu ka ta pagadu klubi."
+      },
+      "quota": {
+        "nome": "Kóta di sóssiu",
+        "nota": "Obrigatóriu, i dja sta inkluidu na inskrison i na re-inskrison."
+      },
+      "mensalidadeFormacao": {
+        "nome": "Sub-7 ti Sub-17"
+      },
+      "mensalidadeJuniores": {
+        "nome": "Sub-19"
+      }
+    }
+  },
+  "pedido": {
+    "modalidade": "Ki modalidadi *",
+    "escolherModalidade": "Skodji modalidadi",
+    "parceria": "Aula di {modalidade} é dadu na parseria ku {parceiro}, na instalason di klubi.",
+    "apenasFormacao": "Sô ten {modalidade} pa mininu — ka ten parti séniôr.",
+    "nome": "Nómi di atleta *",
+    "dataNascimento": "Data di nasimentu *",
+    "idade": "{idade} anu",
+    "menorDeIdade": " — menor di idadi",
+    "telemovel": "Telemóvel *",
+    "email": "Email *",
+    "encarregado": "Enkaregadu di edukason *",
+    "encarregadoAjuda": "Atleta é menor — telemóvel i email li riba é di kenha ki ta responde pa el.",
+    "jaSocio": "N dja é sóssiu di klubi",
+    "numeroSocio": "Númeru di sóssiu *",
+    "numeroSocioAjuda": "El sta na kartãu. Si bu ka ten-l na mon, sédi ta konfirma-l.",
+    "naoSocio": "Bu inda ka é sóssiu? Bu pode manda inskrison mésmu — ma el sô ta fitxa dipos ki bu fika sóssiu, i kel-la é {quota} pa mês.",
+    "notas": "Algun kuza ki nu debe sabe",
+    "opcional": "(opsional)",
+    "direitosTitulo": "Diretu di imajen",
+    "direitosTexto": "Klubi ta tira fotu i ta filma trenu, jogu i konvivi, i ta publika-s na saiti i na redi sosial. Pa kel-la el mesti bu autorizason — é obrigatóriu pa tudu atleta i bu pode tira-l na kualker ora, pa skritu.",
+    "lerTermo": "Lé térmu kompletu",
+    "aEnviar": "Ta manda…",
+    "enviar": "Manda inskrison",
+    "erroEnvio": "Ka foi posível manda pididu.",
+    "erroLigacao": "Ligason faja. Tenta otu bes.",
+    "feito": {
+      "titulo": "Inskrison mandadu",
+      "texto": "Inskrison na {modalidade} txiga na klubi. Nu ta konfirma si ten vaga i nu ta responde pa kontaktu ki bu dexa. Dipos é pasa na sédi pa fitxa fixa di federason i entrega izami médiku.",
+      "faltaFazer": "Inda falta",
+      "exame": "<forte>Izami médiku.</forte> É obrigatóriu pa trenu i pa konpiti. Inprimi-l, leba-l pa médiku, i entrega orijinal na sédi.",
+      "descarregarExame": "Baxa izami médiku",
+      "socio": "Purmeru pasu: <forte>fika sóssiu</forte>. Sen kel-la ka ta pratikadu na klubi — i é {quota} pa mês.",
+      "fazerSocio": "N kre fika sóssiu"
+    }
+  },
+  "direitosImagem": {
+    "meta": {
+      "titulo": "Diretu di imajen",
+      "descricao": "Térmu di konsintimentu pa kapta i uza imajen di Valejas Atlético Clube, sima RGPD ta manda."
+    },
+    "avisoVersao": "Kel-li é un tradusãu pa djuda-bu ntende dukumentu. Kel ki ten valor legal é versãu na purtugés.",
+    "voltarInscricoes": "Volta pa inskrison",
+    "titulo": "Diretu di <destaque>imajen</destaque>",
+    "documentoTitulo": "Térmu di Konsintimentu pa Kaptason i Utilizason di Imajen — RGPD",
+    "paragrafos": {
+      "p1": "Sima Regulamentu (UE) 2016/679 di Parlamentu Europeu i di Konsedju ta fla — konxedu sima Regulamentu Jeral di Proteson di Dadu (RGPD) — Valejas Atlético Clube ta informa ma, na se atividadi disportivu i institusional, el pode kapta, grava i divulga imajen i vídiu di se atleta.",
+      "p2": "Rekodja i tratamentu di es dadu ten pa fin promove atividadi di klubi pa várius kanal di komunikason, sima, ma ka sô, redi sosial (Facebook, Instagram, YouTube), saiti ofisial di klubi, material di promoson i institusional (sima kartaz, foxetu i vídiu), komunikason internu i esternu, i tanbê divulgason na órgãu di komunikason sosial.",
+      "p3": "Tratamentu di dadu pesoal ta inklui kaptason di imajen (fotu i vídiu) i di son (vos), sobretudu na entrevista, vídiu institusional, trenu o eventu disportivu. Inda, ku autorizason, el pode inklui purmeru nómi di atleta i informason disportivu inportanti, sima eskalãu o partisipason na konpetison. Dadu rekodjidu pode ser partilhadu ku plataforma dijital, órgãu di komunikason sosial i entidadi ofisial di disportu (sima asosiason i federason), sénpri ku kunprimentu stritu di lei aplikavel i ku rispetu pa privasidadi di atleta.",
+      "p4": "Dadu rekodjidu ta fika guardadu pa un tenpu másimu di 10 anu, son si titular di dadu o se reprezentanti legal pidi pa apaga-s antis. Konsintimentu dadu gosi pode ser rivogadu na kualker ora, ku un komunikason pa skritu pa klubi, sen ki kel-la ta poi en kauza legalidadi di tratamentu fetu ti es data.",
+      "p5": "Titular di dadu, o se enkaregadu di edukason, ten, sima RGPD ta manda, diretu di pidi asesu a se dadu pesoal, di koriji-s, apaga-s, limita o opoi a tratamentu, i tanbê diretu a portabilidadi di dadu. Es pode tanbê poi reklamason na Comissão Nacional de Proteção de Dados (CNPD), ki é otoridadi nasional di kontrolu.",
+      "p6": "Pa kualker kuestãu sobri proteson di dadu, bu pode kontakta klubi pa email {email} o pa telefoni {telefone}."
+    },
+    "declaracao": {
+      "maior": "N ta dikrara ma N lé, N ntende i N ta autoriza kaptason i utilizason di nha imajen i di nha son, sima diskrebedu li riba.",
+      "menor": "N ta dikrara ma N lé, N ntende i N ta autoriza kaptason i utilizason di imajen i di son di menor identifikadu li riba, sima diskrebedu li riba."
+    },
+    "oQueSeAceita": "Kuza ki bu ta aseita",
+    "quandoMenor": "Ora ki atleta é menor di idadi, kenha ki ta aseita é enkaregadu di edukason, i dikrarason ta fika es-li:",
+    "clube": {
+      "fundado": "fundadu na {data}",
+      "dataFundacao": "1 di nuvenbru di 1966",
+      "estatuto": "Instituison di Utilidadi Públiku sima DEC. — Lei 460/77",
+      "contribuinte": "kontribuinti n.º {numero}",
+      "telefone": "telefoni {numero}",
+      "protecaoDados": "Pa kuestãu di proteson di dadu:"
+    },
+    "voltarInscricao": "Volta pa inskrison"
+  }
+}

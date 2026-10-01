@@ -1,10 +1,11 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { FUNDACAO, ORIGENS, anosDeVida } from "@/lib/data/historia";
 import { MODALIDADES } from "@/lib/data/modalidades";
 import { ORGAOS } from "@/lib/data/orgaosSociais";
 import { INSTALACOES } from "@/lib/data/instalacoes";
-import { ATIVIDADES, ACADEMIA } from "@/lib/data/academiaSenior";
+import { ATIVIDADES } from "@/lib/data/academiaSenior";
 import { CALENDARIO, EPOCA } from "@/lib/data/jogos";
 
 /**
@@ -19,61 +20,64 @@ import { CALENDARIO, EPOCA } from "@/lib/data/jogos";
  * ─────────────────────────────────────────────────────────────────
  */
 export default function ConhecerClube() {
+  const t = useTranslations("inicio.conhecer");
   const anos = anosDeVida();
   const membros = ORGAOS.reduce((total, o) => total + o.membros.length, 0);
   const jogosEmCasa = CALENDARIO.filter((j) => j.local?.includes("Valejas")).length;
 
+  // Os números saem dos dados; as palavras, das traduções
+  // (inicio.conhecer.cartoes.<id>).
   const materia = [
     {
       href: "/clube",
-      etiqueta: `Desde ${FUNDACAO.ano}`,
-      titulo: "A história",
-      texto:
-        `${anos} anos, começados no atletismo, no cicloturismo e na malha — ` +
-        `muito antes do futsal. O que se sabe, e o que ainda falta descobrir.`,
+      // Em texto, para o ano não sair «1,966» em inglês.
+      etiqueta: t("cartoes.historia.etiqueta", { ano: String(FUNDACAO.ano) }),
+      titulo: t("cartoes.historia.titulo"),
+      texto: t("cartoes.historia.texto", { anos }),
       destaque: true,
     },
     {
       href: "/clube/emblema",
-      etiqueta: "A águia e as cores",
-      titulo: "O emblema",
-      texto: "O que cada parte quer dizer, e porque é que o clube joga de amarelo e azul.",
+      etiqueta: t("cartoes.emblema.etiqueta"),
+      titulo: t("cartoes.emblema.titulo"),
+      texto: t("cartoes.emblema.texto"),
     },
     {
       href: "/modalidades",
-      etiqueta: `${MODALIDADES.length} modalidades`,
-      titulo: "O que se pratica",
-      texto: "Do pavilhão à pista e à estrada, mais a dança e o teatro. Umas competem federadas, outras existem só para formar.",
+      etiqueta: t("cartoes.modalidades.etiqueta", { n: MODALIDADES.length }),
+      titulo: t("cartoes.modalidades.titulo"),
+      texto: t("cartoes.modalidades.texto"),
     },
     {
       href: "/jogos",
-      etiqueta: `Época ${EPOCA}`,
-      titulo: "Os jogos",
-      texto: `${CALENDARIO.length} jornadas no distrital da AF Lisboa, ${jogosEmCasa} delas em casa. Calendário, resultados e classificação.`,
+      etiqueta: t("cartoes.jogos.etiqueta", { epoca: EPOCA }),
+      titulo: t("cartoes.jogos.titulo"),
+      texto: t("cartoes.jogos.texto", { jornadas: CALENDARIO.length, emCasa: jogosEmCasa }),
     },
     {
       href: "/instalacoes",
-      etiqueta: `${INSTALACOES.length} espaços`,
-      titulo: "Onde acontece",
-      texto: "A sede, onde a Direção trabalha e a Academia se reúne. E o pavilhão, onde se joga.",
+      etiqueta: t("cartoes.instalacoes.etiqueta", { n: INSTALACOES.length }),
+      titulo: t("cartoes.instalacoes.titulo"),
+      texto: t("cartoes.instalacoes.texto"),
     },
     {
       href: "/orgaos-sociais",
-      etiqueta: `${membros} pessoas`,
-      titulo: "Quem dirige",
-      texto: "Direção, Conselho Fiscal e Mesa da Assembleia. Todos sócios, a maior parte há décadas.",
+      etiqueta: t("cartoes.orgaos.etiqueta", { n: membros }),
+      titulo: t("cartoes.orgaos.titulo"),
+      texto: t("cartoes.orgaos.texto"),
     },
     {
       href: "/academia-senior",
-      etiqueta: ACADEMIA.idade,
-      titulo: "Academia Sénior",
-      texto: `${ATIVIDADES.length} atividades, do coro ao chi kung. O clube não acaba quando se deixa de competir.`,
+      // Era ACADEMIA.idade; o texto passou para as traduções.
+      etiqueta: t("cartoes.academia.etiqueta"),
+      titulo: t("cartoes.academia.titulo"),
+      texto: t("cartoes.academia.texto", { n: ATIVIDADES.length }),
     },
     {
       href: "/patrocinadores",
-      etiqueta: "Quem apoia",
-      titulo: "Patrocinadores",
-      texto: "As empresas e as pessoas da terra que seguram o clube de pé.",
+      etiqueta: t("cartoes.patrocinadores.etiqueta"),
+      titulo: t("cartoes.patrocinadores.titulo"),
+      texto: t("cartoes.patrocinadores.texto"),
     },
   ];
 
@@ -82,15 +86,13 @@ export default function ConhecerClube() {
       <div className="section-container">
         <div className="max-w-2xl mb-10">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-yellow mb-3">
-            Ficar a conhecer
+            {t("etiqueta")}
           </p>
           <h2 className="section-title">
-            Um clube não se explica <span>numa frase</span>
+            {t.rich("titulo", { destaque: (c) => <span>{c}</span> })}
           </h2>
           <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-5">
-            {anos} anos dão para muita coisa: {ORIGENS.length} atividades no princípio,
-            {" "}{MODALIDADES.length} modalidades hoje, e gente que entra em criança e
-            fica para a vida. Escolhe por onde começar.
+            {t("texto", { anos, origens: ORIGENS.length, modalidades: MODALIDADES.length })}
           </p>
         </div>
 

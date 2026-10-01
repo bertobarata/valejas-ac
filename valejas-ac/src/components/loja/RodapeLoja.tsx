@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { ExternalLink } from "lucide-react";
 import { FORNECEDOR } from "@/lib/data/loja";
 
@@ -11,20 +12,22 @@ import { FORNECEDOR } from "@/lib/data/loja";
  * ─────────────────────────────────────────────────────────────────
  */
 export default function RodapeLoja() {
+  const t = useTranslations("loja.rodape");
+
   return (
     <section className="section-container pt-10 pb-16 border-t border-on-surface/10 mt-14">
       <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
         <Link href="/loja/condicoes" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
-          Condições da loja
+          {t("condicoes")}
         </Link>
         <Link href="/loja/condicoes#trocas-e-devolucoes" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
-          Trocas e devoluções
+          {t("trocas")}
         </Link>
         <Link href="/privacidade" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
-          Privacidade
+          {t("privacidade")}
         </Link>
         <Link href="/termos" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
-          Termos e condições
+          {t("termos")}
         </Link>
         <a
           href="https://www.livroreclamacoes.pt/inicio"
@@ -32,16 +35,15 @@ export default function RodapeLoja() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 min-h-11 font-body text-sm text-on-surface hover:text-yellow transition-colors"
         >
-          Livro de Reclamações <ExternalLink size={13} aria-hidden />
+          {t("livroReclamacoes")} <ExternalLink size={13} aria-hidden />
         </a>
         <Link href="/contactos" className="alvo-toque font-body text-sm text-on-surface hover:text-yellow transition-colors">
-          Contactos
+          {t("contactos")}
         </Link>
       </div>
 
       <p className="font-body text-xs text-on-surface-muted mt-5 max-w-2xl leading-relaxed">
-        Levantamento sempre na sede do clube — não enviamos para casa, não há
-        portes. Equipamento produzido pela {FORNECEDOR.nome}.
+        {t("nota", { fornecedor: FORNECEDOR.nome })}
       </p>
     </section>
   );

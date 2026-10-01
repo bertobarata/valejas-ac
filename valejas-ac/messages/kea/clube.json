@@ -1,0 +1,272 @@
+{
+  "historia": {
+    "meta": {
+      "titulo": "Klubi",
+      "descricao": "Fundadu na {data}, na Valejas, Barcarena. Valejas Atlético Clube kumesa ku atletismu, sikloturismu i malha, i oji é kaza di seti modalidadi."
+    },
+    "dataFundacao": "1 di novembru di 1966",
+    "cabecalho": {
+      "etiqueta": "Klubi · desdi {ano}",
+      "titulo": "{anos} anu di <destaque>Valejas</destaque>",
+      "texto": "Valejas Atlético Clube fundadu na <forte>{data}</forte>, na lokalidadi di {localidade}, fregezia di {freguesia}, konselhu di {concelho}."
+    },
+    "fundacao": {
+      "titulo": "Modi ki el fundadu",
+      "p1": "Klubi nase suma un asosiason di disportu i rekreason ligadu a komunidadi di Valejas. Ku anu ta pasa, el ganha un papel na promoson di disportu na tudu fregezia di Barcarena.",
+      "p2": "Orijen sta más na pratika di disportu lokal, na konvivénsia entri moradór i na kriason di atividadi pa populason — i é kel-li ki klubi inda é.",
+      "naoSabemos": {
+        "titulo": "Kuze ki nu inda ka sabe",
+        "texto": "Ka ten rejistu públiku ku nomi di fundadór, nen ata ki ta konta mumentu izatu di fundason. Si bu ten dokumentu, fotografia o lembransa di família sobri kumésu di klubi, papia ku nos — stória di Valejas inda sta pa skrebedu modi ki debe.",
+        "botao": "Konta kuze ki N sabe"
+      }
+    },
+    "comecou": {
+      "titulo": "Modi ki kumesa",
+      "texto": "Txeu antis di futsal. Purmeru atividadi di klubi éra es tres-li — dós di pé i roda, un di konvivénsia na porta di sedi.",
+      "origens": {
+        "atletismo": {
+          "nome": "Atletismu",
+          "descricao": "Organizason i partisipason na prova lokal, ku Grandi Prémiu di Atletismu di Valejas Atlético Clube tanbe."
+        },
+        "cicloturismo": {
+          "nome": "Sikloturismu",
+          "descricao": "Pasiu di bisikleta pa rejion i partisipason na inisiativa di sikloturismu."
+        },
+        "malha": {
+          "nome": "Malha i konvivénsia",
+          "descricao": "Jogu di malha i otus atividadi rekreativu tradisional, ligadu a festa i a vida di lokalidadi."
+        }
+      },
+      "depoisTitulo": "I dipos",
+      "depois": [
+        "Futsal, oji modalidadi prinsipal, ku ekipa profisional i formason kompletu",
+        "Kaminhada, dansa, jinástika i otus atividadi di konvivénsia",
+        "Akadémia Séniôr, pa kenha ki ten más di 50 anu"
+      ],
+      "nota": "Sen data izatu — ka ten rejistu ki ta fixa-s. Pur isu ka é un kronolojia: é orden ki kuzas bai ta kontise."
+    },
+    "ondeEstamos": {
+      "titulo": "Undi ki nu sta",
+      "texto": "Sedi sta na vali di Jamor, entri Barcarena i Queluz de Baixo. É mésmu morada desdi sénpri.",
+      "tambem": "El ta parse tanbe suma {morada}."
+    },
+    "mapa": {
+      "titulo": "Mapa ku lokalizason di Valejas Atlético Clube",
+      "abrir": "Abri na Google Maps"
+    },
+    "resto": {
+      "titulo": "Konxe restu",
+      "texto": "Stória é kumésu. Klubi di oji sta na es pájina-li.",
+      "paginas": {
+        "emblema": {
+          "nome": "Simbulu",
+          "descricao": "Águia, kóris i kuze ki kada parti di simbulu kre fla."
+        },
+        "instalacoes": {
+          "nome": "Instalason",
+          "descricao": "Sedi, pavilhãu i kuze ki ta fazedu la tudu dia."
+        },
+        "orgaos": {
+          "nome": "Órgãu Sosial",
+          "descricao": "Kenha ki ta dirigi klubi: Diresãu, Konsedju Fiskal i Meza di Asembleia."
+        },
+        "patrocinadores": {
+          "nome": "Patrusinadór",
+          "descricao": "Empreza i djenti ki ta sigura klubi di pé."
+        }
+      }
+    },
+    "cta": {
+      "titulo": "{anos} anu i ta kontinua",
+      "texto": "Klubi é di kenha ki sta li. Kota é 1€ pa mes.",
+      "fazerSocio": "N kre fika sóssiu",
+      "falar": "Papia ku nos"
+    }
+  },
+  "emblema": {
+    "meta": {
+      "titulo": "Nos Simbulu",
+      "descricao": "Simbulu di Valejas AC — águia, kóris marelu i azul i stória di un identidadi úniku desdi 1966."
+    },
+    "hero": {
+      "titulo": "Nos <destaque>Simbulu</destaque>",
+      "texto": "Más ki un sinal, un diklarason di gera. Simbulu di Valejas Atlético Clube é rezumu vizual di nos rezisténsia, di nos eransa i di enerjia elétriku ki ta kore na nos bankada.",
+      "explorar": "Splora simbulu",
+      "emblemaAlt": "Simbulu di Valejas Atlético Clube",
+      "scroll": "Desi pa diskubri"
+    },
+    "aguia": {
+      "capitulo": "Kapítulu I",
+      "titulo": "Águia<quebra></quebra>di <destaque>Valejas</destaque>",
+      "texto": "Nos kasadór di topu. Águia ka ta sô odja — el ta manda na séu di Valejas. El ta simboliza vizon stratéjiku di klubi i forsa ki nu ta ataka kada jogu ku el. É nos ligason ku séu i nos ambison sen limiti.",
+      "citacao": "\"Barudju di aza é avizu. Valejas ka ta ripia.\"",
+      "imagemAlt": "Águia di simbulu di Valejas Atlético Clube"
+    },
+    "cores": {
+      "amarelo": {
+        "etiqueta": "01. Kór prinsipal",
+        "nome": "Marelu",
+        "texto": "Kór di klubi. Marelu di kamizola ki jerason di djenti di Valejas ta bisti desdi 1966 — kenti, bibu i ka ta konfundidu na kampu."
+      },
+      "azul": {
+        "nome": "Azul",
+        "texto": "Lialdadi i kalma di kenha ki ta reprizenta Valejas dentu i fora di kuatu linha. Fundura di nos kompromisu ku komunidadi."
+      },
+      "nossas": {
+        "titulo": "Nos kóris",
+        "texto": "Marelu i azul — kóris di Valejas Atlético Clube desdi 1966, bistidu ku orgulhu pa sóssiu, atleta i adeptu. Simplis i onestu, suma téra ki es ta reprizenta."
+      }
+    }
+  },
+  "instalacoes": {
+    "meta": {
+      "titulo": "Nos Instalason",
+      "descricao": "Sedi di Valejas Atlético Clube i pavilhãu — undi klubi ta trabadja, ta trena, ta joga i ta konvive."
+    },
+    "cabecalho": {
+      "etiqueta": "Barcarena, Oeiras",
+      "titulo": "Nos <destaque>instalason</destaque>",
+      "texto": "Dós spasu, dós papel. Na sedi ta trata di klubi i ta konvivedu; na pavilhãu ta jogadu."
+    },
+    "oQueAcontece": "Kuze ki ta kontise la",
+    "semFotos": "Fotografia di es spasu inda ka publikadu.",
+    "espacos": {
+      "sede": {
+        "nome": "Sedi di Klubi",
+        "tipo": "Edifício V.A.C.",
+        "descricao": "Pontu di enkontru di Valejas. É li ki Diresãu ta trabadja, ki ta tratadu inskrison i kartãu di sóssiu, i ki Akadémia Séniôr ta funsiona tudu tardi.",
+        "usos": [
+          "Diresãu i sekretaria",
+          "Inskrison i entrega di kartãu di sóssiu",
+          "Akadémia Séniôr",
+          "Sueca, biliár i konvivénsia",
+          "Eventu i festa di klubi"
+        ]
+      },
+      "pavilhao": {
+        "nome": "Pavilhãu di Valejas Atlético Clube",
+        "tipo": "Txon flutuanti, 40 × 20 m",
+        "descricao": "Spasu undi futsal ta joga i ta trena, di mininu pikinoti ti ekipa prinsipal. É li ki ta disputadu kinzi jogu na kaza di kampionatu distrital.",
+        "usos": [
+          "Jogu di futsal, tudu eskalon",
+          "Trenu di Ekipa A, Ekipa B i formason",
+          "Karaté, judo i dansa",
+          "Prova i konvíviu di klubi"
+        ]
+      }
+    },
+    "cta": {
+      "titulo": "Pasa li",
+      "texto": "Porta sta abertu. Pa inskrison, duvida o sô pa konxe klubi pa dentu.",
+      "horarios": "Oráriu i kontaktu",
+      "ondeFica": "Undi ki el sta"
+    }
+  },
+  "orgaos": {
+    "meta": {
+      "titulo": "Órgãu Sosial",
+      "descricao": "Diresãu, Konsedju Fiskal i Meza di Asembleia Jeral di Valejas Atlético Clube — kenha ki é djenti ki ta jeri klubi."
+    },
+    "mandato": "Lista A",
+    "cabecalho": {
+      "titulo": "Órgãu <destaque>Sosial</destaque>",
+      "texto": "Kenha ki ta jeri klubi. Tudu é sóssiu di Valejas, i más txeu dja ten txeu anu — ten kenha ki sta li desdi 1981."
+    },
+    "orgaos": {
+      "direcao": {
+        "nome": "Diresãu",
+        "sigla": "",
+        "descricao": "Ta jeri dia-a-dia di klubi — modalidadi, instalason, sóssiu i kónta. É el ki ta sina komunikadu ofisial."
+      },
+      "conselhoFiscal": {
+        "nome": "Konsedju Fiskal",
+        "sigla": "",
+        "descricao": "Ta fiskaliza kónta di klubi i ta da parser sobri es pa Asembleia Jeral."
+      },
+      "mesaAssembleiaGeral": {
+        "nome": "Meza di Asembleia Jeral",
+        "sigla": "",
+        "descricao": "Ta konvoka i ta konduzi Asembleia Jeral, undi sóssiu ta disidi rumu di klubi."
+      }
+    },
+    "cargos": {
+      "presidente": "Prezidenti",
+      "vicePresidente": "Vise-Prezidenti",
+      "tesoureiro": "Tezoreru",
+      "secretario": "Sekretáriu",
+      "secretario1": "1.º Sekretáriu",
+      "secretario2": "2.º Sekretáriu",
+      "relator": "Relatór",
+      "vogal1": "1.º Vogal",
+      "vogal2": "2.º Vogal",
+      "vogal3": "3.º Vogal",
+      "vogal4": "4.º Vogal",
+      "suplente1": "1.º Suplenti",
+      "suplente2": "2.º Suplenti",
+      "suplente3": "3.º Suplenti"
+    },
+    "suplentes": "Suplenti",
+    "socioDesde": "Sóssiu desdi {ano}",
+    "anos": "{anos} anu",
+    "numero": "N.º {numero}",
+    "cta": {
+      "titulo": "Papia ku Diresãu",
+      "texto": "Komunikadu ofisial ta publikadu na site i na rede sosial di klubi. Pa tudu otu kuza, papia ku nos.",
+      "comunicados": "Odja komunikadu",
+      "contactos": "Kontaktu"
+    }
+  },
+  "patrocinadores": {
+    "meta": {
+      "titulo": "Patrusinadór i Parseria",
+      "descricao": "Kenha ki ta poia Valejas Atlético Clube — patrusinadór prinsipal, apoiu institusional, kumérsiu lokal di fregezia di Barcarena i parseria."
+    },
+    "cabecalho": {
+      "titulo": "Kenha ki ta poia <destaque>klubi</destaque>",
+      "texto": "Un klubi di bairu ka ta sustenta sô. Es é kaza i instituison ki ta poi ónbru — alguns ta bisti ekipa, otus ta abri porta, otus sinplismenti ka ta dexa kai."
+    },
+    "tipos": {
+      "principal": {
+        "titulo": "Patrusinadór prinsipal",
+        "intro": "Kenha ki ta bisti klubi."
+      },
+      "institucional": {
+        "titulo": "Apoiu institusional",
+        "intro": "Instituison di téra undi Valejas ta vive."
+      },
+      "local": {
+        "titulo": "Kumérsiu lokal",
+        "intro": "Kaza di téra ki ta da klubi un mon."
+      },
+      "parceria": {
+        "titulo": "Parseria",
+        "intro": "Kenha ki ta poi se ofísiu na sirvisu di klubi."
+      }
+    },
+    "vesteOClube": "Ta bisti klubi",
+    "visitarLoja": "Bizita lója ofisial",
+    "apoios": {
+      "zemig": "Ekipamentu i merchandising di klubi. É na ZEMIG ki ta fazedu lója ofisial di Valejas.",
+      "juntaBarcarena": "Fregezia undi klubi nase i undi el inda ta trabadja.",
+      "oeirasValley": "Marka di konselhu di Oeiras, undi Valejas ta kompeti i ta forma.",
+      "restauranteQb": "Restoranti na Queluz de Baixo.",
+      "ninhoDaRola": "Restoranti i kafé.",
+      "muchacho": "Restoranti.",
+      "ciaoCuore": "Restoranti italianu i sushi.",
+      "drive360": "Pesa pa karu.",
+      "antonioRosa": "Enjenharia sivil i sertifikason enerjétiku.",
+      "remaxGrupoSunset": "Mediason imobiliáriu.",
+      "barataStudio": "Website di klubi — dizenhu i dizenvolvimentu."
+    },
+    "cta": {
+      "titulo": "Bu kre poia Valejas?",
+      "texto": "Ten txeu manera di da mon a un klubi ku {anos} anu — di ekipamentu di un eskalãu ti lantxi di un konvivi. Pidi aprezentason di parseria: e ta txiga na bu email lógu ki bu pidi.",
+      "botao": "Papia ku Diresãu",
+      "quero": "N kre ser patrusinadór"
+    },
+    "convite": {
+      "titulo": "Bu marka pode sta li",
+      "texto": "Na ekipamentu, na paredi di pavilhãu, na redi di klubi. Pidi aprezentason di parseria i resebe-l na email, na óra."
+    }
+  }
+}

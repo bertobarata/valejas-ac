@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "titulo": "Join a Sport",
+    "descricao": "How to start playing at Valejas Atlético Clube: become a member, ask for a place in your sport and complete registration at the clubhouse."
+  },
+  "cabecalho": {
+    "etiqueta": "Start playing",
+    "titulo": "Join a Sport",
+    "texto": "{n} sports, from the little ones to the seniors. It always starts the same way — in three steps."
+  },
+  "passos": {
+    "socio": {
+      "titulo": "First, become a member",
+      "texto": "You can't play at the club without being a member — that goes for every sport and every age. Membership is {quota} a month, the same for everyone.",
+      "accao": "Become a member"
+    },
+    "inscricao": {
+      "titulo": "Then, sign up",
+      "texto": "Fill in the form below, including the image rights consent the club asks of every athlete. Each sport has few places — we'll confirm whether there's room and get back to you."
+    },
+    "sede": {
+      "titulo": "Finally, at the clubhouse",
+      "texto": "If there's a place, registration is completed at the clubhouse: you sign the federation form and hand in the medical certificate, which you can download below. That's also where you choose your training times and sort out your kit."
+    }
+  },
+  "envio": {
+    "titulo": "Send your registration",
+    "sede": "Registration is completed at the clubhouse, with the federation form and the medical certificate — this is what you can get done from here. Nothing is stored on this website: it goes to the club by email and disappears.",
+    "direitos": "It includes the <link>image rights</link> consent, which is required for all athletes."
+  },
+  "levar": {
+    "titulo": "What to bring to the clubhouse",
+    "texto": "Registration is only complete once these papers are handed in. Download them, sort them out, and bring them to us.",
+    "oficialDe": "Official form from the {origem}.",
+    "descarregar": "Download PDF",
+    "maisIsto": "And also",
+    "itens": {
+      "ccAtleta": "The athlete's Citizen Card (ID card)",
+      "ccEncarregado": "The parent or guardian's Citizen Card (ID card), if the athlete is under 18",
+      "fotografia": "A passport-style photo",
+      "fichaFederacao": "The federation form, which you sign there"
+    },
+    "horario": "The clubhouse is open Monday to Friday, 9:30 to 17:00, and on match days."
+  },
+  "documentos": {
+    "exameMedico": {
+      "nome": "Sports medical certificate",
+      "descricao": "The official form certifying that you're fit to do sport. It's required to compete and to train at the club.",
+      "comoUsar": "Print it, take it to your doctor or a sports medicine centre, and hand in the original at the clubhouse. The club doesn't accept it through the website."
+    }
+  },
+  "valores": {
+    "titulo": "How much it costs",
+    "texto": "The fees for the {epoca} season, as published in the Board's notice. Kit is bought separately, in the shop.",
+    "mensalidadesFutsal": "Futsal monthly fees",
+    "descontoIrmaos": "{valor} off for each sibling",
+    "aviso": "The amounts above are those from the September notice. Please confirm at the club office before paying — that's where registration is completed.",
+    "periodo": {
+      "porEpoca": "per season",
+      "porMes": "per month",
+      "umaVez": "one-off"
+    },
+    "inclui": {
+      "inscricaoClube": "Club registration",
+      "inscricaoAfLisboa": "AF Lisboa registration",
+      "seguroDesportivo": "Sports insurance",
+      "cartaoSocio": "Membership card"
+    },
+    "itens": {
+      "inscricao": {
+        "nome": "Registration"
+      },
+      "reinscricao": {
+        "nome": "Re-registration",
+        "nota": "For those who played at the club last season."
+      },
+      "exameMedico": {
+        "nome": "Medical check",
+        "nota": "Required to train and compete. It can be done by your family doctor, in which case you don't pay the club."
+      },
+      "quota": {
+        "nome": "Membership fee",
+        "nota": "Required, and already included in registration and re-registration."
+      },
+      "mensalidadeFormacao": {
+        "nome": "Under-7s to under-17s"
+      },
+      "mensalidadeJuniores": {
+        "nome": "Under-19s"
+      }
+    }
+  },
+  "pedido": {
+    "modalidade": "Which sport *",
+    "escolherModalidade": "Choose a sport",
+    "parceria": "Classes in {modalidade} are run in partnership with {parceiro}, at the club's facilities.",
+    "apenasFormacao": "There's only {modalidade} for young children — no senior section.",
+    "nome": "Athlete's name *",
+    "dataNascimento": "Date of birth *",
+    "idade": "{idade, plural, one {# year old} other {# years old}}",
+    "menorDeIdade": " — under 18",
+    "telemovel": "Mobile *",
+    "email": "Email *",
+    "encarregado": "Parent or guardian *",
+    "encarregadoAjuda": "The athlete is under 18 — the mobile and email above should be those of the person responsible for them.",
+    "jaSocio": "I'm already a club member",
+    "numeroSocio": "Membership number *",
+    "numeroSocioAjuda": "It's on your card. If you don't have it to hand, the clubhouse can confirm it.",
+    "naoSocio": "Not a member yet? You can still send your registration — but it's only completed once you become a member, and that's {quota} a month.",
+    "notas": "Anything we should know",
+    "opcional": "(optional)",
+    "direitosTitulo": "Image rights",
+    "direitosTexto": "The club photographs and films training sessions, matches and get-togethers, and publishes them on the website and social media. For that it needs your consent — it's required for all athletes and can be withdrawn at any time, in writing.",
+    "lerTermo": "Read the full consent form",
+    "aEnviar": "Sending…",
+    "enviar": "Send registration",
+    "erroEnvio": "We couldn't send your request.",
+    "erroLigacao": "Connection failed. Please try again.",
+    "feito": {
+      "titulo": "Registration sent",
+      "texto": "Your {modalidade} registration has reached the club. We'll check there's a place and reply to the contact details you left. Then just drop by the clubhouse to complete the federation form and hand in the medical certificate.",
+      "faltaFazer": "Still to do",
+      "exame": "<forte>The medical certificate.</forte> It's required to train and compete. Print it, take it to the doctor, and hand in the original at the clubhouse.",
+      "descarregarExame": "Download the medical certificate",
+      "socio": "The first step: <forte>become a member</forte>. You can't play at the club without it — and it's {quota} a month.",
+      "fazerSocio": "Become a member"
+    }
+  },
+  "direitosImagem": {
+    "meta": {
+      "titulo": "Image rights",
+      "descricao": "Consent form for taking and using images at Valejas Atlético Clube, under the GDPR."
+    },
+    "avisoVersao": "This is a translation to help you understand the document. The legally valid version is the Portuguese one.",
+    "voltarInscricoes": "Back to registration",
+    "titulo": "Image <destaque>rights</destaque>",
+    "documentoTitulo": "Consent Form for the Capture and Use of Images — GDPR",
+    "paragrafos": {
+      "p1": "Under Regulation (EU) 2016/679 of the European Parliament and of the Council, known as the General Data Protection Regulation (GDPR), Valejas Atlético Clube informs you that, in the course of its sporting and institutional activity, it may capture, record and publish images and videos of its athletes.",
+      "p2": "The purpose of collecting and processing this data is to promote the club's activities through various communication channels, including, but not limited to, social media (Facebook, Instagram, YouTube), the club's official website, promotional and institutional materials (such as posters, brochures and videos), internal and external communication, and publication in the media.",
+      "p3": "The processing of personal data includes capturing images (photographs and videos) and sound (voice), namely in interviews, institutional videos, training sessions or sporting events. Subject to authorisation, it may also include the athlete's first name and relevant sporting information, such as their age group or participation in competitions. The data collected may be shared with digital platforms, the media and official sporting bodies (such as associations and federations), always in strict compliance with the applicable legislation and with due respect for the athletes' privacy.",
+      "p4": "The data collected will be kept for a maximum period of 10 years, unless the data subject or their legal representative requests earlier deletion. The consent now given may be withdrawn at any time by written notice to the club, without affecting the lawfulness of processing carried out up to that date.",
+      "p5": "Data subjects, or their parents or guardians, have the right under the GDPR to request access to their personal data, its rectification, erasure, restriction of or objection to processing, as well as the right to data portability. They may also lodge a complaint with the Comissão Nacional de Proteção de Dados (CNPD), the national supervisory authority.",
+      "p6": "For any question relating to data protection, the club can be contacted by email at {email} or by phone on {telefone}."
+    },
+    "declaracao": {
+      "maior": "I declare that I have read, understood and authorise the capture and use of my image and my voice, under the terms described above.",
+      "menor": "I declare that I have read, understood and authorise the capture and use of the image and voice of the minor identified above, under the terms described above."
+    },
+    "oQueSeAceita": "What you're agreeing to",
+    "quandoMenor": "When the athlete is under 18, the parent or guardian is the one who agrees, and the declaration becomes:",
+    "clube": {
+      "fundado": "founded on {data}",
+      "dataFundacao": "1 November 1966",
+      "estatuto": "Public Interest Institution under Decree-Law 460/77",
+      "contribuinte": "tax no. {numero}",
+      "telefone": "phone {numero}",
+      "protecaoDados": "For data protection questions:"
+    },
+    "voltarInscricao": "Back to the registration form"
+  }
+}

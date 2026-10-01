@@ -18,8 +18,10 @@ import { useEffect, useRef, useState } from "react";
 import { Tv } from "lucide-react";
 import clsx from "clsx";
 import type { EstadoTV } from "@/lib/tv";
+import { useTranslations } from "next-intl";
 
 export default function BotaoTV({ className, grande = false }: { className?: string; grande?: boolean }) {
+  const t = useTranslations("comum.tv");
   const [estado, setEstado] = useState<EstadoTV | null>(null);
   const [avisoAberto, setAvisoAberto] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -50,8 +52,8 @@ export default function BotaoTV({ className, grande = false }: { className?: str
 
   const tamanho = grande ? 18 : 14;
   const classes = clsx(
-    "btn-ghost inline-flex items-center gap-2 whitespace-nowrap",
-    grande ? "w-full justify-center text-base py-4" : "text-xs min-h-11 py-2.5 px-4"
+    "btn-barra",
+    grande ? "w-full justify-center !text-base !py-3" : undefined
   );
 
   if (estado?.live) {
@@ -61,7 +63,7 @@ export default function BotaoTV({ className, grande = false }: { className?: str
         target="_blank"
         rel="noopener noreferrer"
         className={clsx(classes, className)}
-        aria-label="Valejas TV — ver o direto agora"
+        aria-label={t("verDireto")}
       >
         <span className="w-2 h-2 rounded-full bg-red animate-pulse-live" aria-hidden />
         <Tv size={tamanho} aria-hidden />
@@ -96,10 +98,10 @@ export default function BotaoTV({ className, grande = false }: { className?: str
         )}
       >
         <p className="font-headline font-black uppercase tracking-tight text-on-surface">
-          Não estamos em live
+          {t("semDireto")}
         </p>
         <p className="font-body text-sm text-on-surface-muted mt-1">
-          Quando houver jogo ou evento em direto, este botão leva-te lá.
+          {t("explicacao")}
         </p>
         <a
           href={estado?.url ?? "https://youtube.com/@valejastv"}
@@ -107,7 +109,7 @@ export default function BotaoTV({ className, grande = false }: { className?: str
           rel="noopener noreferrer"
           className="inline-block font-body text-sm font-semibold text-yellow mt-3 hover:underline"
         >
-          Ver o canal do Valejas →
+          {t("verCanal")} →
         </a>
       </div>
     </div>

@@ -1,9 +1,9 @@
-import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { CalendarDays, MapPin } from "lucide-react";
 import { fetchJogos } from "@/sanity/queries";
 import {
   PROXIMO_JOGO, doSanity, proximoDe, ehValejas,
-  formatarData, formatarHora,
 } from "@/lib/data/jogos";
 
 /**
@@ -22,12 +22,25 @@ export default async function ProximoJogoHome() {
   const jogo = doCms?.length ? proximoDe(doCms.map(doSanity)) : PROXIMO_JOGO;
   if (!jogo) return null;
 
+  const t = await getTranslations("inicio.proximoJogo");
+  // As mesmas opções que formatarData/formatarHora, mas na língua da
+  // página. Se o Intl não conhecer a língua, vai em português.
+  const locale = await getLocale();
+  const intl = Intl.DateTimeFormat.supportedLocalesOf(locale).length ? locale : "pt-PT";
+  const quando = new Date(jogo.data);
+  const dia = new Intl.DateTimeFormat(intl, {
+    weekday: "long", day: "2-digit", month: "long", timeZone: "Europe/Lisbon",
+  }).format(quando);
+  const hora = new Intl.DateTimeFormat(intl, {
+    hour: "2-digit", minute: "2-digit", timeZone: "Europe/Lisbon",
+  }).format(quando);
+
   return (
     <section className="section-dark bg-blue text-white">
       <div className="section-container py-10 md:py-12">
         <div className="flex flex-col lg:flex-row lg:items-center gap-7 lg:gap-12">
           <p className="font-body text-xs font-bold uppercase tracking-widest text-yellow lg:w-40 shrink-0">
-            Próximo jogo
+            {t("etiqueta")}
           </p>
 
           <div className="flex-1 min-w-0">
@@ -35,7 +48,7 @@ export default async function ProximoJogoHome() {
               <span className={ehValejas(jogo.casa) ? "text-yellow" : ""}>
                 {jogo.casa}
               </span>
-              <span className="text-white/60 mx-3">vs</span>
+              <span className="text-white/60 mx-3">{t("contra")}</span>
               <span className={ehValejas(jogo.fora) ? "text-yellow" : ""}>
                 {jogo.fora}
               </span>
@@ -44,8 +57,8 @@ export default async function ProximoJogoHome() {
             <div className="flex flex-wrap gap-x-6 gap-y-1 mt-3">
               <span className="flex items-center gap-2 font-body text-sm text-white/85">
                 <CalendarDays size={15} className="text-yellow shrink-0" />
-                <span className="first-letter:uppercase">{formatarData(jogo.data)}</span>
-                <span>· {formatarHora(jogo.data)}</span>
+                <span className="first-letter:uppercase">{dia}</span>
+                <span>· {hora}</span>
               </span>
               <span className="flex items-center gap-2 font-body text-sm text-white/85">
                 <MapPin size={15} className="text-yellow shrink-0" />
@@ -58,7 +71,7 @@ export default async function ProximoJogoHome() {
             href="/jogos"
             className="btn-primary shrink-0 self-center md:self-start lg:self-center bg-yellow text-blue-deep hover:bg-yellow-dim text-sm"
           >
-            Jogos e classificação
+            {t("jogosClassificacao")}
           </Link>
         </div>
       </div>

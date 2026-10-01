@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "titulo": "Sports",
+    "descricao": "Federated futsal and athletics, judo, karate, dance, theatre and cycling — one club, many ways to belong."
+  },
+  "pagina": {
+    "etiqueta": "One club, all ages",
+    "titulo": "There's a place for you at Valejas",
+    "intro": "From the sports hall to the track, from the tatami to the stage. Federated competition, training for the youngest and activities open to the community.",
+    "academia": {
+      "etiqueta": "Over 50s",
+      "titulo": "Senior Academy",
+      "texto": "Choir, chi kung, painting, computing, traditional dances, sueca and billiards. The club doesn't end when you stop competing.",
+      "botao": "Discover the Academy"
+    },
+    "cta": {
+      "titulo": "Fancy giving it a go? Talk to us and we'll bring you in.",
+      "botao": "Sign up or find out more"
+    }
+  },
+  "vagas": {
+    "titulo": "Talk to us first",
+    "texto": "Every sport has only a few places. Tell us what you're interested in and we'll let you know straight away if there's a spot — before you count on it.",
+    "curto": "Limited places — talk to the club before you sign up"
+  },
+  "grupos": {
+    "desporto": {
+      "titulo": "Sports",
+      "intro": "From the sports hall to the track and the road. Some compete at federation level, others exist purely for youth development"
+    },
+    "cultura": {
+      "titulo": "Culture and Community",
+      "intro": "Activities to create, perform and get together, with no competition involved."
+    }
+  },
+  "etiquetas": {
+    "compete": "Competes",
+    "soFormacao": "Youth only",
+    "parceria": "Partnership",
+    "equipas": "Teams",
+    "emParceriaCom": "In partnership with",
+    "verPlanteis": "See the squads",
+    "percursoFormacao": "Youth pathway"
+  },
+  "itens": {
+    "futsal": {
+      "nome": "Futsal",
+      "tagline": "The club's sport",
+      "descricao": "Valejas's biggest project. A professional team in the AF Lisboa district league, a B team right behind it, and a complete youth pathway from under-7s to under-19s — a kid can join the club as a child and reach the senior side without ever changing shirts.",
+      "publico": "Men's senior teams and boys' youth teams",
+      "equipas": {
+        "equipaA": {
+          "nome": "A Team",
+          "descricao": "Professional team, competing in the AF Lisboa district league."
+        },
+        "equipaB": {
+          "nome": "B Team",
+          "descricao": "The step between the youth teams and the first team."
+        }
+      },
+      "escaloes": {
+        "petizes": "Under-7s",
+        "traquinas": "Under-9s",
+        "benjamins": "Under-11s",
+        "infantis": "Under-13s",
+        "iniciados": "Under-15s",
+        "juvenis": "Under-17s",
+        "juniores": "Under-19s"
+      }
+    },
+    "atletismo": {
+      "nome": "Athletics",
+      "tagline": "Running is for everyone",
+      "descricao": "Races and regular training, men and women, in every age group — from the youngest to seniors.",
+      "publico": "Men and women, all age groups"
+    },
+    "karate": {
+      "nome": "Karate",
+      "tagline": "Technique and a cool head",
+      "descricao": "A martial art with regular training and competition. Focus, posture and fitness — for complete beginners and for those who already compete.",
+      "publico": "Young people and adults"
+    },
+    "cicloturismo": {
+      "nome": "Cycling",
+      "tagline": "The road and the group",
+      "descricao": "Rides around the region and group events. There's room for those who want to compete and for those who just want to ride in good company.",
+      "publico": "All ages"
+    },
+    "judo": {
+      "nome": "Judo",
+      "tagline": "Fall down, get up",
+      "descricao": "Youth only, for the youngest, at the club's facilities. A partnership that brings to Valejas a children's judo school with years of experience.",
+      "publico": "Children and young people",
+      "parceria": {
+        "nome": "Judokinhas Kobayashi",
+        "descricao": "One of the largest children's judo schools in the country, run by Renato Kobayashi and named after master Kiyoshi Kobayashi. Classes take place at the Valejas facilities.",
+        "valores": {
+          "disciplinaERespeito": "Discipline and respect",
+          "autoconfianca": "Self-confidence",
+          "cooperacaoEAmizade": "Cooperation and friendship",
+          "autocontrolo": "Self-control",
+          "espiritoDesportivo": "Sportsmanship"
+        }
+      }
+    },
+    "danca": {
+      "nome": "Dance",
+      "tagline": "Movement and expression",
+      "descricao": "From rhythm to choreography, to let go, socialise and gain confidence.",
+      "publico": "Children, young people and adults"
+    },
+    "teatro": {
+      "nome": "Theatre",
+      "tagline": "Take the stage",
+      "descricao": "Acting, rehearsing and performing. Group work, voice and presence — and an audience to see the result.",
+      "publico": "All ages"
+    }
+  }
+}

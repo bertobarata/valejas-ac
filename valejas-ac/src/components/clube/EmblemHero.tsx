@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +10,7 @@ import { ChevronDown } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EmblemHero() {
+  const t = useTranslations("clube.emblema.hero");
   const sectionRef = useRef<HTMLElement>(null);
   const crestRef   = useRef<HTMLDivElement>(null);
 
@@ -80,25 +82,26 @@ export default function EmblemHero() {
             <h1
               className="font-headline font-black text-[13vw] lg:text-[8rem] uppercase leading-[0.8] tracking-tighter text-on-surface"
             >
-              O Nosso{" "}
-              <span
-                className="text-yellow block"
-                style={{ filter: "drop-shadow(0 0 15px rgba(250,219,9,0.30))" }}
-              >
-                Emblema
-              </span>
+              {t.rich("titulo", {
+                destaque: (c) => (
+                  <span
+                    className="text-yellow block"
+                    style={{ filter: "drop-shadow(0 0 15px rgba(250,219,9,0.30))" }}
+                  >
+                    {c}
+                  </span>
+                ),
+              })}
             </h1>
 
             <p className="font-body text-lg md:text-xl text-on-surface-muted leading-relaxed max-w-xl">
-              Mais do que um símbolo, uma declaração de guerra. O emblema do Valejas
-              Atlético Clube é a síntese visual da nossa resistência, herança e a
-              energia elétrica que corre nas nossas bancadas.
+              {t("texto")}
             </p>
 
             <div className="flex items-center gap-3 pt-2">
               <div className="h-px w-10 bg-yellow" />
               <span className="font-headline font-black uppercase tracking-widest text-yellow text-sm">
-                Explora o emblema
+                {t("explorar")}
               </span>
             </div>
           </div>
@@ -115,7 +118,7 @@ export default function EmblemHero() {
             <div className="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 flex items-center justify-center transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-3">
               <Image
                 src="/brand/crest.png"
-                alt="Emblema do Valejas Atlético Clube"
+                alt={t("emblemaAlt")}
                 width={384}
                 height={384}
                 priority
@@ -130,7 +133,7 @@ export default function EmblemHero() {
 
       {/* Scroll indicator */}
       <div className="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-on-surface-muted">
-        <span className="font-body text-xs uppercase tracking-[0.4em]">Scroll para Desconstruir</span>
+        <span className="font-body text-xs uppercase tracking-[0.4em]">{t("scroll")}</span>
         <div className="w-px h-16 bg-gradient-to-b from-yellow to-transparent" />
       </div>
     </section>

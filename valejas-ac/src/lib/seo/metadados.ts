@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { LOCALE_OG, type Lingua } from "@/i18n/routing";
+import { alternativas, estaTraduzida, rotaNaLingua } from "@/i18n/paginas";
 
 /**
  * METADADOS POR PÁGINA
@@ -12,6 +14,11 @@ import type { Metadata } from "next";
  * cópias da inicial, e um link da loja partilhado no WhatsApp aparecia
  * como a página inicial. Esta função dá a cada página o seu canónico e
  * a sua própria pré-visualização.
+ *
+ * Com as línguas: uma página traduzida diz ao Google onde estão as
+ * outras versões (hreflang) e é canónica na sua língua. Uma que só
+ * existe em português aponta sempre o canónico para a portuguesa —
+ * /en/jogos é a mesma página que /jogos, com um aviso por cima.
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -27,13 +34,20 @@ export const OPEN_GRAPH_BASE: NonNullable<Metadata["openGraph"]> = {
 export function paraPagina(
   rota: string,
   meta: Metadata & { title: string; description: string },
+  lingua: Lingua = "pt",
 ): Metadata {
+  const traduzida = estaTraduzida(rota);
+  const canonico = rotaNaLingua(rota, traduzida ? lingua : "pt");
+
   return {
     ...meta,
-    alternates: { canonical: rota },
+    alternates: traduzida
+      ? { canonical: canonico, languages: alternativas(rota) }
+      : { canonical: canonico },
     openGraph: {
       ...OPEN_GRAPH_BASE,
-      url: rota,
+      locale: LOCALE_OG[traduzida ? lingua : "pt"],
+      url: canonico,
       title: `${meta.title} | Valejas AC`,
       description: meta.description,
     },

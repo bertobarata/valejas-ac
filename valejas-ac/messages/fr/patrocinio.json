@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "titulo": "Devenir partenaire",
+    "descricao": "Soutenir le Valejas Atlético Clube : équipements, bâches dans le gymnase, contenu numérique, soutien à une catégorie ou mécénat sportif. Demandez la présentation des partenariats et recevez-la par email."
+  },
+  "cabecalho": {
+    "etiqueta": "Sponsoring et partenariats",
+    "titulo": "Devenir <destaque>partenaire</destaque>",
+    "texto": "{anos} ans de club, {modalidades} disciplines et un gymnase animé tous les jours de la semaine. Dites-nous qui vous êtes et recevez tout de suite, par email, la présentation des partenariats du Valejas — avec tout ce que le club a à offrir.",
+    "pedir": "Demander la présentation",
+    "verApoios": "Voir qui soutient déjà le club"
+  },
+  "marca": {
+    "titulo": "Où peut figurer votre marque",
+    "texto": "Des tenues que portent les athlètes aux murs du gymnase, qui accueille entraînements et matchs de 17 h à 23 h en semaine et toute la journée le week-end — le club estime plus de 3 000 personnes par semaine. Tous les formats et les tarifs figurent dans la présentation."
+  },
+  "formasDeApoio": {
+    "equipamentos": {
+      "nome": "Équipements et textile",
+      "descricao": "La marque sur la tenue de match, le kit et le survêtement d’entraînement, la tenue de sortie ou les chasubles."
+    },
+    "pavilhao": {
+      "nome": "Bâches et vinyle dans le gymnase",
+      "descricao": "Une publicité fixe sur les murs et au sol, à la vue de ceux qui s’entraînent, qui jouent et qui regardent."
+    },
+    "digital": {
+      "nome": "Affiches et contenu numérique",
+      "descricao": "Le logo sur les affiches des matchs et dans les publications du club sur les réseaux sociaux."
+    },
+    "caderneta": {
+      "nome": "Album de vignettes",
+      "descricao": "Une place dans l’album de vignettes du club, qui passe de main en main dans le quartier."
+    },
+    "escalao": {
+      "nome": "Soutien à une catégorie ou une discipline",
+      "descricao": "Donner un coup de main à une équipe précise — les tout-petits du futsal, l’athlétisme, le karaté."
+    },
+    "material": {
+      "nome": "Matériel ou services",
+      "descricao": "Plutôt que de l’argent, ce que fait votre entreprise : transport, repas, travaux, impression."
+    },
+    "donativo": {
+      "nome": "Don (mécénat sportif)",
+      "descricao": "Un don au club, qui peut ouvrir droit à des avantages fiscaux au titre du mécénat sportif."
+    },
+    "outro": {
+      "nome": "Autre idée",
+      "descricao": "Vous avez une proposition qui n’entre pas ici ? Racontez-la-nous dans le message."
+    }
+  },
+  "passos": {
+    "titulo": "Recevoir la présentation",
+    "quem": {
+      "titulo": "Dites-nous qui vous êtes",
+      "texto": "Une entreprise, un commerce du coin ou à titre personnel — tout le monde compte."
+    },
+    "apresentacao": {
+      "titulo": "La présentation arrive aussitôt",
+      "texto": "Un PDF avec le club, les disciplines et toutes les formes de soutien, avec les tarifs."
+    },
+    "contacto": {
+      "titulo": "Nous vous contactons",
+      "texto": "L’équipe communication du club reçoit votre demande et vous contacte pour régler le reste."
+    }
+  },
+  "fecho": {
+    "texto": "Vous préférez d’abord parler à quelqu’un du club ? Écrivez-nous via le formulaire de contact, avec l’objet « Proposition de partenariat ou de sponsoring ».",
+    "botao": "Contact"
+  },
+  "formulario": {
+    "opcional": "(facultatif)",
+    "entidade": "Entreprise ou organisme",
+    "entidadeDica": "Si vous soutenez le club à titre personnel, laissez ce champ vide.",
+    "nome": "Votre nom",
+    "email": "Email",
+    "emailDica": "C’est à cette adresse que nous envoyons la présentation.",
+    "telefone": "Téléphone",
+    "tiposLegenda": "Comment souhaitez-vous soutenir le club *",
+    "tiposDica": "Vous pouvez en choisir plusieurs. Les tarifs de chacune figurent dans la présentation.",
+    "mensagem": "Un mot pour le club",
+    "mensagemPlaceholder": "Ce que vous avez en tête, l’équipe que vous aimeriez soutenir, le meilleur moment pour échanger…",
+    "rgpd": "J’autorise le Valejas Atlético Clube à utiliser ces données pour m’envoyer la présentation des partenariats et me contacter au sujet du soutien au club. Les données sont transmises par email et ne sont pas conservées sur le site. <link>Politique de confidentialité</link> (en portugais). *",
+    "aEnviar": "Envoi en cours…",
+    "enviar": "Recevoir la présentation",
+    "pdfNaHora": "PDF envoyé sur votre email, aussitôt."
+  },
+  "feito": {
+    "titulo": "Merci — demande reçue",
+    "enviada": "La présentation des partenariats part vers <forte>{email}</forte>. Elle devrait arriver d’ici quelques minutes — si vous ne la voyez pas, jetez un œil à vos spams ou à l’onglet Promotions.",
+    "naoEnviada": "Votre demande est bien arrivée au club, mais la présentation n’a pas pu être envoyée à <forte>{email}</forte>. L’équipe communication du club vous l’enverra elle-même.",
+    "contacto": "L’équipe communication du club est déjà informée de votre intérêt et va vous contacter. D’ici là, pour toute question : <link>{email}</link>."
+  },
+  "erros": {
+    "nome": "Indiquez le prénom et le nom de la personne qui nous contacte.",
+    "email": "Email invalide — c’est là que la présentation sera envoyée.",
+    "telefone": "Numéro de téléphone portugais invalide (9 chiffres, commençant par 9 ou 2).",
+    "tipos": "Choisissez au moins une forme de soutien — ou « Autre idée ».",
+    "rgpd": "Vous devez autoriser le traitement des données pour que le club puisse vous répondre.",
+    "invalido": "Demande invalide.",
+    "muitos": "Nous avons reçu des demandes de votre part il y a peu. Si la présentation n’est pas arrivée, vérifiez vos spams ou écrivez à {email}.",
+    "falhou": "Impossible d’envoyer votre demande pour le moment. Réessayez, ou écrivez à {email}.",
+    "envio": "Impossible d’envoyer la demande.",
+    "ligacao": "Échec de connexion. Réessayez."
+  }
+}

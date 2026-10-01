@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "titulo": "Inscriptions",
+    "descricao": "Comment commencer une activité au Valejas Atlético Clube : devenir membre, demander une place dans la discipline et finaliser l’inscription au siège."
+  },
+  "cabecalho": {
+    "etiqueta": "Commencer une activité",
+    "titulo": "Inscriptions",
+    "texto": "{n} disciplines, des tout-petits aux seniors. On commence toujours de la même façon — en trois étapes."
+  },
+  "passos": {
+    "socio": {
+      "titulo": "D’abord, devenir membre",
+      "texto": "On ne pratique pas au club sans être membre — c’est valable pour toutes les disciplines et à tout âge. La cotisation est de {quota} par mois, la même pour tout le monde.",
+      "accao": "Devenir membre"
+    },
+    "inscricao": {
+      "titulo": "Ensuite, l’inscription",
+      "texto": "Remplissez le formulaire ci-dessous, avec l’autorisation de droit à l’image que le club demande à tous les athlètes. Chaque discipline a peu de places — nous confirmons la place et vous répondons."
+    },
+    "sede": {
+      "titulo": "Enfin, au siège",
+      "texto": "S’il y a une place, l’inscription se finalise au siège : on signe la fiche de la fédération et on remet le certificat médical, à télécharger ci-dessous. C’est aussi là que l’on choisit l’horaire et que l’on s’occupe de l’équipement."
+    }
+  },
+  "envio": {
+    "titulo": "Envoyer l’inscription",
+    "sede": "L’inscription se finalise au siège, avec la fiche de la fédération et le certificat médical — ceci permet d’avancer depuis ici. Rien n’est conservé sur ce site : tout part par e-mail au club et disparaît.",
+    "direitos": "Comprend l’autorisation de <link>droit à l’image</link>, obligatoire pour tous les athlètes."
+  },
+  "levar": {
+    "titulo": "Ce qu’il faut apporter au siège",
+    "texto": "L’inscription n’est finalisée qu’une fois ces documents remis. Téléchargez-les, complétez-les et apportez-les-nous.",
+    "oficialDe": "Formulaire officiel de l’{origem}.",
+    "descarregar": "Télécharger le PDF",
+    "maisIsto": "Et aussi",
+    "itens": {
+      "ccAtleta": "La carte d’identité de l’athlète",
+      "ccEncarregado": "La carte d’identité du parent ou du tuteur, si l’athlète est mineur",
+      "fotografia": "Une photo d’identité",
+      "fichaFederacao": "La fiche de la fédération, à signer sur place"
+    },
+    "horario": "Le siège est ouvert du lundi au vendredi, de 9 h 30 à 17 h, et les jours de match."
+  },
+  "documentos": {
+    "exameMedico": {
+      "nome": "Certificat médical sportif",
+      "descricao": "Le formulaire officiel qui atteste que vous êtes apte à la pratique sportive. Il est obligatoire pour participer aux compétitions et pour s’entraîner au club.",
+      "comoUsar": "Imprimez-le, apportez-le à votre médecin ou à un centre de médecine du sport, et remettez l’original au siège. Le club ne le reçoit pas par le site."
+    }
+  },
+  "valores": {
+    "titulo": "Combien ça coûte",
+    "texto": "Les tarifs de la saison {epoca}, tels que publiés dans le communiqué de la Direction. L’équipement s’achète à part, à la boutique.",
+    "mensalidadesFutsal": "Mensualités de futsal",
+    "descontoIrmaos": "{valor} de moins par frère ou sœur",
+    "aviso": "Les montants ci-dessus sont ceux du communiqué de septembre. Vérifiez-les au secrétariat avant de payer — c’est là que l’inscription se finalise.",
+    "periodo": {
+      "porEpoca": "par saison",
+      "porMes": "par mois",
+      "umaVez": "une fois"
+    },
+    "inclui": {
+      "inscricaoClube": "Inscription au club",
+      "inscricaoAfLisboa": "Inscription à l’AF Lisboa",
+      "seguroDesportivo": "Assurance sportive",
+      "cartaoSocio": "Carte de membre"
+    },
+    "itens": {
+      "inscricao": {
+        "nome": "Inscription"
+      },
+      "reinscricao": {
+        "nome": "Réinscription",
+        "nota": "Pour ceux qui ont déjà joué au club la saison précédente."
+      },
+      "exameMedico": {
+        "nome": "Visite médicale",
+        "nota": "Obligatoire pour s’entraîner et participer aux compétitions. Elle peut être faite chez le médecin traitant, et dans ce cas on ne paie rien au club."
+      },
+      "quota": {
+        "nome": "Cotisation de membre",
+        "nota": "Obligatoire, et déjà comprise dans l’inscription et la réinscription."
+      },
+      "mensalidadeFormacao": {
+        "nome": "U7 à U17"
+      },
+      "mensalidadeJuniores": {
+        "nome": "U19"
+      }
+    }
+  },
+  "pedido": {
+    "modalidade": "Quelle discipline *",
+    "escolherModalidade": "Choisir une discipline",
+    "parceria": "Le {modalidade} est proposé en partenariat avec {parceiro}, dans les installations du club.",
+    "apenasFormacao": "Le {modalidade} n’est proposé qu’aux plus jeunes — il n’y a pas de section senior.",
+    "nome": "Nom de l’athlète *",
+    "dataNascimento": "Date de naissance *",
+    "idade": "{idade, plural, one {# an} other {# ans}}",
+    "menorDeIdade": " — mineur",
+    "telemovel": "Portable *",
+    "email": "E-mail *",
+    "encarregado": "Parent ou tuteur *",
+    "encarregadoAjuda": "L’athlète est mineur — le portable et l’e-mail ci-dessus sont ceux de la personne qui en est responsable.",
+    "jaSocio": "Je suis déjà membre du club",
+    "numeroSocio": "Numéro de membre *",
+    "numeroSocioAjuda": "Il figure sur votre carte. Si vous ne l’avez pas sous la main, le siège pourra le confirmer.",
+    "naoSocio": "Pas encore membre ? Vous pouvez quand même envoyer l’inscription — mais elle ne sera finalisée qu’une fois membre, soit {quota} par mois.",
+    "notas": "Quelque chose que nous devrions savoir",
+    "opcional": "(facultatif)",
+    "direitosTitulo": "Droit à l’image",
+    "direitosTexto": "Le club photographie et filme les entraînements, les matchs et les moments conviviaux, et les publie sur le site et les réseaux sociaux. Pour cela, il a besoin de votre autorisation — elle est obligatoire pour tous les athlètes et peut être retirée à tout moment, par écrit.",
+    "lerTermo": "Lire le document complet",
+    "aEnviar": "Envoi…",
+    "enviar": "Envoyer l’inscription",
+    "erroEnvio": "Impossible d’envoyer la demande.",
+    "erroLigacao": "Échec de connexion. Veuillez réessayer.",
+    "feito": {
+      "titulo": "Inscription envoyée",
+      "texto": "L’inscription en {modalidade} est bien arrivée au club. Nous allons vérifier qu’il y a une place et répondre aux coordonnées que vous avez laissées. Il vous restera ensuite à passer au siège pour finaliser la fiche de la fédération et remettre le certificat médical.",
+      "faltaFazer": "Reste à faire",
+      "exame": "<forte>Le certificat médical.</forte> Il est obligatoire pour s’entraîner et participer aux compétitions. Imprimez-le, apportez-le au médecin et remettez l’original au siège.",
+      "descarregarExame": "Télécharger le certificat médical",
+      "socio": "La première étape : <forte>devenir membre</forte>. Sans cela, on ne pratique pas au club — et c’est {quota} par mois.",
+      "fazerSocio": "Devenir membre"
+    }
+  },
+  "direitosImagem": {
+    "meta": {
+      "titulo": "Droit à l’image",
+      "descricao": "Formulaire de consentement pour la captation et l’utilisation d’images du Valejas Atlético Clube, conformément au RGPD."
+    },
+    "avisoVersao": "Ceci est une traduction pour vous aider à comprendre le document. Seule la version portugaise fait foi.",
+    "voltarInscricoes": "Retour aux inscriptions",
+    "titulo": "Droit à <destaque>l’image</destaque>",
+    "documentoTitulo": "Formulaire de Consentement pour la Captation et l’Utilisation d’Images — RGPD",
+    "paragrafos": {
+      "p1": "Conformément au Règlement (UE) 2016/679 du Parlement européen et du Conseil, dit Règlement général sur la protection des données (RGPD), le Valejas Atlético Clube informe que, dans le cadre de son activité sportive et institutionnelle, il pourra procéder à la captation, à l’enregistrement et à la diffusion d’images et de vidéos de ses athlètes.",
+      "p2": "La collecte et le traitement de ces données ont pour finalité la promotion des activités du club à travers divers canaux de communication, notamment, mais sans s’y limiter, les réseaux sociaux (Facebook, Instagram, YouTube), le site officiel du club, les supports promotionnels et institutionnels (tels qu’affiches, brochures et vidéos), la communication interne et externe, ainsi que la diffusion dans les médias.",
+      "p3": "Le traitement des données personnelles comprend la captation de l’image (photographies et vidéos) et du son (voix), notamment lors d’interviews, de vidéos institutionnelles, d’entraînements ou d’événements sportifs. Il pourra en outre, sous réserve d’autorisation, inclure le prénom de l’athlète et des informations sportives pertinentes, telles que la catégorie d’âge ou la participation à des compétitions. Les données collectées pourront être partagées avec des plateformes numériques, des médias et des organismes sportifs officiels (tels qu’associations et fédérations), toujours dans le strict respect de la législation applicable et de la vie privée des athlètes.",
+      "p4": "Les données collectées seront conservées pendant une durée maximale de 10 ans, sauf demande d’effacement anticipé de la part de la personne concernée ou de son représentant légal. Le consentement donné peut être retiré à tout moment, par communication écrite adressée au club, sans préjudice de la licéité du traitement effectué jusqu’à cette date.",
+      "p5": "Les personnes concernées, ou leurs représentants légaux, disposent, conformément au RGPD, du droit de demander l’accès à leurs données personnelles, leur rectification, leur effacement, la limitation du traitement ou de s’y opposer, ainsi que du droit à la portabilité des données. Elles peuvent également introduire une réclamation auprès de la Comissão Nacional de Proteção de Dados (CNPD), en tant qu’autorité nationale de contrôle.",
+      "p6": "Pour toute question relative à la protection des données, le club peut être contacté par e-mail à l’adresse {email} ou par téléphone au {telefone}."
+    },
+    "declaracao": {
+      "maior": "Je déclare avoir lu, compris et autorise la captation et l’utilisation de mon image et de ma voix, dans les conditions décrites ci-dessus.",
+      "menor": "Je déclare avoir lu, compris et autorise la captation et l’utilisation de l’image et de la voix du mineur identifié ci-dessus, dans les conditions décrites ci-dessus."
+    },
+    "oQueSeAceita": "Ce que vous acceptez",
+    "quandoMenor": "Lorsque l’athlète est mineur, c’est le parent ou le tuteur qui accepte, et la déclaration devient la suivante :",
+    "clube": {
+      "fundado": "fondé le {data}",
+      "dataFundacao": "1er novembre 1966",
+      "estatuto": "Institution d’utilité publique au titre du décret-loi 460/77",
+      "contribuinte": "n° fiscal {numero}",
+      "telefone": "téléphone {numero}",
+      "protecaoDados": "Pour toute question de protection des données :"
+    },
+    "voltarInscricao": "Retour à l’inscription"
+  }
+}

@@ -1,3 +1,8 @@
+import createNextIntlPlugin from "next-intl/plugin";
+
+// As línguas do site: ver src/i18n/.
+const comLinguas = createNextIntlPlugin("./src/i18n/request.ts");
+
 /** @type {import('next').NextConfig} */
 
 // Deploy em Vercel: Next.js completo (SSR/ISR) + Sanity Studio em /studio.
@@ -38,4 +43,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default comLinguas(nextConfig);

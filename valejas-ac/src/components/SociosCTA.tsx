@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, ShoppingBag, UserPlus } from "lucide-react";
@@ -9,13 +10,14 @@ import { CONTACTO, EMAILS } from "@/lib/data/socios";
 import { QUOTA_MENSAL, formatEuros } from "@/lib/data/quota";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 
+// `nome` das marcas não se traduz; o do email vem de socios.cta.
 const REDES = [
   { nome: "Instagram", href: CONTACTO.redesSociais.instagram, Icon: InstagramIcon },
   { nome: "Facebook",  href: CONTACTO.redesSociais.facebook,  Icon: FacebookIcon },
   { nome: "YouTube",   href: CONTACTO.redesSociais.youtube,   Icon: YouTubeIcon },
   // Nem toda a gente quer falar com o clube numa rede social. O email
   // fica ao lado, e vai para a caixa geral.
-  { nome: "Escrever ao clube", href: `mailto:${EMAILS.geral}`, Icon: Mail },
+  { nome: "escreverAoClube", traduzir: true, href: `mailto:${EMAILS.geral}`, Icon: Mail },
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -35,6 +37,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SociosCTA() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef    = useRef<HTMLDivElement>(null);
+  const t          = useTranslations("socios.cta");
+  const lingua     = useLocale();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -78,45 +82,44 @@ export default function SociosCTA() {
       <div className="section-container relative z-10">
         <div ref={textRef} className="text-center max-w-3xl mx-auto">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.35em] text-yellow mb-4">
-            Faz parte
+            {t("etiqueta")}
           </p>
           <h2 className="font-headline font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] uppercase leading-[0.95] tracking-tighter text-white mb-5 text-balance">
-            O Valejas é de nós todos
-            <span className="block text-yellow">e agora também é meu</span>
+            {t("titulo")}
+            <span className="block text-yellow">{t("tituloDestaque")}</span>
           </h2>
           <p className="font-body text-base md:text-lg text-white/85 leading-relaxed mb-10">
-            Faz-te sócio por {formatEuros(QUOTA_MENSAL)} por mês, veste as cores,
-            vem ao pavilhão. O clube é de quem cá está.
+            {t("texto", { quota: formatEuros(QUOTA_MENSAL, lingua) })}
           </p>
 
           {/* Os quatro sítios para onde se sai daqui */}
           <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             <Link href="/socios/inscricao" className="btn-primary text-sm">
-              <UserPlus size={16} /> Fazer-me sócio
+              <UserPlus size={16} /> {t("fazerSocio")}
             </Link>
             <Link
               href="/loja"
               className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow"
             >
-              <ShoppingBag size={16} /> Loja do clube
+              <ShoppingBag size={16} /> {t("loja")}
             </Link>
             <Link
               href="/contactos"
               className="btn-ghost text-white border-white/30 text-sm hover:border-yellow hover:text-yellow"
             >
-              <Mail size={16} /> Contactos
+              <Mail size={16} /> {t("contactos")}
             </Link>
           </div>
 
           {/* Redes sociais: ícone só, que os nomes já se reconhecem */}
           <div className="flex items-center justify-center gap-3 mt-8">
-            {REDES.map(({ nome, href, Icon }) => (
+            {REDES.map(({ nome, traduzir, href, Icon }) => (
               <a
                 key={nome}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={nome}
+                aria-label={traduzir ? t(nome) : nome}
                 className="w-11 h-11 flex items-center justify-center border border-white/25 text-white/85 hover:border-yellow hover:text-yellow transition-colors duration-200"
               >
                 <Icon size={18} />

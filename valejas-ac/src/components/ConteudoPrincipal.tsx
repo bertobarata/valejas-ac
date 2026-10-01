@@ -12,7 +12,8 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
+import AvisoSoPortugues from "@/components/AvisoSoPortugues";
 import clsx from "clsx";
 import { PAGINAS_COM_HERO } from "@/lib/paginas";
 
@@ -22,6 +23,7 @@ export default function ConteudoPrincipal({ children }: { children: React.ReactN
 
   return (
     <main id="conteudo" className={clsx(!temHero && "abaixo-da-barra")}>
+      <AvisoSoPortugues />
       {children}
     </main>
   );

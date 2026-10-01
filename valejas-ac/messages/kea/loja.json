@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "titulo": "Loja",
+    "descricao": "Ekipamentu ofisial di Valejas Atlético Clube. Kit obrigatóriu di atleta, ekipamentu di jogu, trenu i asesóriu. Ta buska sénpri na sedi."
+  },
+  "metaCarrinho": {
+    "titulo": "Karinhu",
+    "descricao": "Odja i manda bu inkomenda di ekipamentu di Valejas Atlético Clube. Ta buska na sedi."
+  },
+  "cabecalho": {
+    "etiqueta": "Ekipamentu ofisial",
+    "titulo": "Loja di <destaque>klubi</destaque>",
+    "levantamento": "Ta buska sénpri na sedi di klubi. Nu ka ta manda pa kaza.",
+    "prazo": "Kuza ki ka ten na stock ta inkomendadu, ti {semanas} simana máximu."
+  },
+  "kit": {
+    "etiqueta": "Obrigatóriu pa kenha ki ta joga",
+    "titulo": "Kit di <destaque>atleta</destaque>",
+    "texto": "Kenha ki ta inskrebe pa joga ta leba kuatu pesa: ekipamentu prinsipal, kel alternativu pa óra ki kor ta txoka ku kor di adversáriu, un konjuntu pa trena duranti simana i fatu di trenu.",
+    "guardaRedes": "Guarda-redi ten se kit, na kor verdi. Ekipamentu di jogu dja ta ben ku meia. Skodji tamanhu un bes i leba tudu di un bes; kada pesa tanbe ta kunpradu sozinhu li baxu."
+  },
+  "duvidas": {
+    "texto": "Bu ten duvida di tamanhu? Pasa na sedi i prova antis di inkomenda, o <link>fla ku nos</link>.",
+    "fornecedor": "Ekipamentu fetu pa {fornecedor}. Katálogu i présu atualizadu na {data}."
+  },
+  "rodape": {
+    "condicoes": "Kondison di loja",
+    "trocas": "Troka i devoluson",
+    "privacidade": "Privasidadi",
+    "termos": "Térmu i kondison",
+    "livroReclamacoes": "Livro de Reclamações",
+    "contactos": "Kontatu",
+    "nota": "Ta buska sénpri na sedi di klubi — nu ka ta manda pa kaza, ka ten kustu di envio. Ekipamentu fetu pa {fornecedor}."
+  },
+  "barra": {
+    "pecas": "{n, plural, =1 {pesa} other {pesa}}",
+    "verCarrinho": "Odja karinhu"
+  },
+  "categorias": {
+    "jogo": {
+      "nome": "Ekipamentu di jogu",
+      "intro": "Kuza ki ta bisti na dia di jogu. Konjuntu ta ben ku kamizola i kalson; meia ta kunpradu sozinhu."
+    },
+    "treino": {
+      "nome": "Trenu i agazalhu",
+      "intro": "Pa trabadju di tudu simana i pa friu na bera di kanpu."
+    },
+    "adepto": {
+      "nome": "Pa adeptu",
+      "intro": "Pa kenha ki ta bai odja. Es ta pode leba nómi i númeru — o fotu di kenha ki ta joga na kaza."
+    },
+    "acessorios": {
+      "nome": "Asesóriu",
+      "intro": "Kaxekol, mutxila i resto di kuza ki ta lebadu pa pavilhon."
+    }
+  },
+  "catalogo": {
+    "filtrar": "Filtra",
+    "fecharFiltros": "Fitxa filtru",
+    "familia": "Família",
+    "preco": "Présu",
+    "tudo": "Tudu",
+    "feitios": {
+      "todos": "Tudu",
+      "preco": "Ku présu",
+      "consulta": "Présu pa konsulta",
+      "personalizavel": "Personalizável"
+    },
+    "todoEquipamento": "Tudu ekipamentu",
+    "introTodas": "Ekipamentu di jogu, trenu, pesa di adeptu i asesóriu.",
+    "artigos": "{n} {n, plural, =1 {artigu} other {artigu}}",
+    "verArtigos": "Odja {n} {n, plural, =1 {artigu} other {artigu}}",
+    "limpar": "Tira filtru",
+    "nada": "Ka ten nada ku es filtru li. Tira un pa bu torna odja katálogu."
+  },
+  "cartao": {
+    "tamanhoUnico": "Tamanhu úniku",
+    "escala": "Di {de} ti {ate}",
+    "sobConsulta": "Présu pa konsulta",
+    "referencia": "Referénsia {referencia}",
+    "semPreco": "Es artigu ka ten présu fixu — e ta dipendi di personalizason i di kuantidadi. Fla ku klubi i nu ta fla-bu kantu ki é.",
+    "pedirOrcamento": "Pidi orsamentu",
+    "tamanho": "Tamanhu",
+    "escolher": "Skodji",
+    "nomeCostas": "Nómi na kosta",
+    "opcional": "(opsional)",
+    "numero": "Númeru",
+    "personalizado": "Personalizadu",
+    "personalizar": "Personaliza",
+    "personalizarSr": " ku nómi i númeru (opsional)",
+    "juntou": "Djuntadu na karinhu",
+    "juntar": "Djunta na karinhu",
+    "erroTamanho": "Skodji tamanhu.",
+    "erroNumero": "Falta númeru."
+  },
+  "tamanhos": {
+    "anos": "{n} anu",
+    "adulto": "Adultu",
+    "unico": "Tamanhu úniku"
+  },
+  "pecas": {
+    "camisola": "Kamizola",
+    "calcao": "Kalson",
+    "meias": "Meia",
+    "casacoCapuz": "Kazaku ku kapus",
+    "calcas": "Kalsa"
+  },
+  "produtos": {
+    "kit-atleta": {
+      "nome": "Kit di jogador",
+      "descricao": "Pa kenha ki ta joga na kanpu: ekipamentu prinsipal, alternativu branku, konjuntu di trenu azul i fatu di trenu. Es dos ekipamentu ta ben ku meia."
+    },
+    "kit-guarda-redes": {
+      "nome": "Kit di guarda-redi",
+      "descricao": "Pa kenha ki ta bai baliza: ekipamentu verdi, alternativu azul-marinhu, konjuntu di trenu verdi i fatu di trenu. Es dos ekipamentu ta ben ku meia."
+    },
+    "equipamento-principal": {
+      "nome": "Ekipamentu prinsipal",
+      "descricao": "Kor di klubi: kamizola ku risku maré i azul, kalson azul i meia ki ta kumbina. Sublimason total, ku patrosinador di époka."
+    },
+    "equipamento-branco": {
+      "nome": "Ekipamentu alternativu branku",
+      "descricao": "Ekipamentu alternativu, pa óra ki kor di adversáriu ta txoka ku di nos."
+    },
+    "equipamento-azul": {
+      "nome": "Ekipamentu azul-marinhu",
+      "descricao": "Terseru ekipamentu, azul-marinhu."
+    },
+    "equipamento-verde": {
+      "nome": "Ekipamentu di guarda-redi",
+      "descricao": "Verdi, pa guarda-redi distingi di tudu algen dentu kanpu."
+    },
+    "conjunto-azul": {
+      "nome": "Konjuntu di trenu azul",
+      "descricao": "Kamizola azul i kalson maré, modelu standard di fornesedor. Konjuntu más baratu di katálogu."
+    },
+    "conjunto-verde": {
+      "nome": "Konjuntu di trenu verdi",
+      "descricao": "Kamizola verdi i kalson pretu, modelu standard."
+    },
+    "conjunto-branco": {
+      "nome": "Konjuntu branku",
+      "descricao": "Kamizola branku ku emblema i nómi di klubi na kosta, ku kalson azul-marinhu."
+    },
+    "meias-azuis": {
+      "nome": "Meia altu azul",
+      "descricao": "Meia altu di jogu, azul."
+    },
+    "meias-brancas": {
+      "nome": "Meia altu branku",
+      "descricao": "Meia altu di jogu, branku."
+    },
+    "meias-marinho": {
+      "nome": "Meia altu azul-marinhu",
+      "descricao": "Meia altu di jogu, azul-marinhu."
+    },
+    "meias-verdes": {
+      "nome": "Meia altu verdi",
+      "descricao": "Meia altu di jogu, verdi — pa kumbina ku ekipamentu di guarda-redi."
+    },
+    "fato-treino": {
+      "nome": "Fatu di trenu konpletu",
+      "descricao": "Kazaku ku kapus i kalsa, azul-marinhu ku risku di klubi. Agazalhu ofisial."
+    },
+    "sweat-capuz": {
+      "nome": "Kamizola ku kapus",
+      "descricao": "Kamizola ku kapus, azul-marinhu, ku VALEJAS AC na pétu. Só kazaku, sen kalsa."
+    },
+    "calcas-treino": {
+      "nome": "Kalsa di fatu di trenu",
+      "descricao": "Kalsa di fatu di trenu, ta vendedu sozinhu."
+    },
+    "bermuda": {
+      "nome": "Bermuda",
+      "descricao": "Kalson kunpridu azul-marinhu, pa trena o pa dia-a-dia."
+    },
+    "camisola-adepto-mote": {
+      "nome": "Kamizola di adeptu «A união faz a força»",
+      "descricao": "Azul-marinhu, ku lema di klubi na frenti i VAC na kosta. Pa bankada, ka pa kanpu."
+    },
+    "camisola-adepto-foto": {
+      "nome": "Kamizola di adeptu personalizadu",
+      "descricao": "Sublimadu ku fotu di kenha ki ta joga na kaza, nómi i númeru. Ta kumbina ku klubi kal fotu ki ta uza."
+    },
+    "sweat-personalizada": {
+      "nome": "Kamizola personalizadu di família",
+      "descricao": "Kamizola ku «MÃE DO» o «PAI DO» i nómi di atleta. Ta bistidu na bankada i ta konxedu di lonji."
+    },
+    "casaco-california": {
+      "nome": "Kazaku California",
+      "descricao": "Kazaku stilu universitáriu, pretu ku manga branku i emblema na pétu."
+    },
+    "cachecol-lema": {
+      "nome": "Kaxekol di klubi",
+      "descricao": "Azul i maré, ku VALEJAS AC na un ladu i «o nosso lema é ganhar, ganhar, ganhar» na otu ladu."
+    },
+    "cachecol-personalizado": {
+      "nome": "Kaxekol personalizadu",
+      "descricao": "Ku nómi i númeru di kenha ki ta bisti-l, sublimadu na es dos fasi."
+    },
+    "cachecol-rosa": {
+      "nome": "Kaxekol rosa",
+      "descricao": "Verson rosa, ku VALEJAS AC na es dos fasi."
+    },
+    "mochila": {
+      "nome": "Mutxila di klubi",
+      "descricao": "Mutxila sublimadu ku risku i emblema, ku bolsu pa xuteira."
+    }
+  },
+  "carrinho": {
+    "voltar": "Volta pa loja",
+    "titulo": "Bu <destaque>inkomenda</destaque>",
+    "registada": {
+      "titulo": "Inkomenda rejistadu",
+      "guarda": "Guarda es númeru li. É ku el ki klubi ta konxe-bu.",
+      "confirmar": "Klubi ta konfirma kuza ki ten na sedi i ta inkomenda kuza ki falta. Nu ta aviza-bu pa email óra ki sta prontu pa buska.",
+      "aPagar": "Pa paga: {valor}",
+      "dadosPagamento": "— dadu di pagamentu ta ba na email.",
+      "voltar": "Volta pa loja",
+      "contactos": "Kontatu"
+    },
+    "vazio": {
+      "titulo": "Karinhu sta bazíu",
+      "texto": "Bu ka skodji nada inda. Kit di formason i resto di ekipamentu sta na loja.",
+      "verLoja": "Odja loja"
+    },
+    "oQueLevas": "Kuza ki bu ta leba",
+    "tamanho": "Tamanhu {tamanho}",
+    "menosUm": "Menus un: {nome}",
+    "maisUm": "Más un: {nome}",
+    "remover": "Tira {nome}",
+    "prazo": "Kuza ki sta na sedi ta separadu na óra. Kuza ki falta ta pididu a fornesedor i inkomenda ta fika prontu óra ki txiga, ti {semanas} simana. Nu ta aviza-bu pa email.",
+    "quemEncomenda": "Kenha ki ta inkomenda",
+    "campos": {
+      "nome": "Nómi konpletu",
+      "email": "Email",
+      "telemovel": "Telemóvel",
+      "socio": "Númeru di sóciu",
+      "atleta": "Pa kal atleta",
+      "atletaDica": "Si inkomenda é pa un fidju o pa otu atleta",
+      "notas": "Nota",
+      "opcional": "(opsional)"
+    },
+    "quandoPagas": "Kantu ki bu ta paga",
+    "momentos": {
+      "sinal": {
+        "nome": "Paga un sinal gosi",
+        "descricao": "Bu ta garanti inkomenda ku un parti di valor. Kel resto ta pagadu óra ki bu bai buska na sedi."
+      },
+      "total": {
+        "nome": "Paga tudu gosi",
+        "descricao": "Fika tratadu. Bu ten ki pasa só na sedi pa buska."
+      }
+    },
+    "percentagemSinal": " É {percentagem}% di total.",
+    "resumo": "Rezumu",
+    "totalEncomenda": "Total di inkomenda",
+    "faltaLevantamento": "Falta paga óra di buska",
+    "aPagarAgora": "Pa paga gosi",
+    "aRegistar": "Ta rejista…",
+    "encomendar": "Inkomenda",
+    "levantamento": "Ta buska sénpri na sedi di klubi. Nu ka ta manda pa kaza.",
+    "erros": {
+      "nome": "Skrebe nómi konpletu.",
+      "email": "Email ka sta drétu.",
+      "telemovel": "Telemóvel purtugés ka sta drétu.",
+      "vazio": "Karinhu sta bazíu.",
+      "registar": "Ka foi posível rejista inkomenda.",
+      "ligacao": "Ligason faia. Tenta otu bes."
+    }
+  }
+}

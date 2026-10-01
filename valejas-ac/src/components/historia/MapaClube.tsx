@@ -14,16 +14,19 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
+import { useTranslations } from "next-intl";
 import { ExternalLink } from "lucide-react";
 import { LOCALIZACAO, urlMapa, urlMapaEmbed } from "@/lib/data/historia";
 
 export default function MapaClube() {
+  const t = useTranslations("clube.historia.mapa");
+
   return (
     <div className="border border-on-surface/15">
       <div className="relative aspect-[16/10] bg-surface-high">
         <iframe
           src={urlMapaEmbed()}
-          title="Mapa com a localização do Valejas Atlético Clube"
+          title={t("titulo")}
           loading="lazy"
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full border-0"
@@ -40,7 +43,7 @@ export default function MapaClube() {
           rel="noopener noreferrer"
           className="btn-ghost text-sm"
         >
-          Abrir no Google Maps <ExternalLink size={14} />
+          {t("abrir")} <ExternalLink size={14} />
         </a>
       </div>
     </div>

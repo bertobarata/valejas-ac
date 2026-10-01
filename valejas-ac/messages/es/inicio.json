@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "titulo": "Valejas Atlético Clube | El club de nuestra tierra desde 1966",
+    "descricao": "Club deportivo de Valejas, Oeiras. Fútbol sala y atletismo federados, fuerte en cantera, además de judo, kárate, danza, teatro y la Academia Sénior. La casa del club desde 1966.",
+    "descricaoPartilha": "Fútbol sala, atletismo, kárate, cicloturismo, judo, danza y teatro. Además, la Academia Sénior. La casa del club desde 1966."
+  },
+  "hero": {
+    "fundado": "Fundado en 1966 · Valejas, Oeiras",
+    "titulo": "La unión hace la <destaque>fuerza</destaque>",
+    "texto": "Todos somos Valejas. Desde 1966, el club de nuestra tierra: del fútbol sala al atletismo, de los más pequeños a los veteranos.",
+    "conhecerClube": "Conoce el club",
+    "ultimosJogos": "Últimos Partidos",
+    "emblemaAlt": "Escudo del Valejas Atlético Clube",
+    "explorar": "Explorar"
+  },
+  "comunicado": {
+    "etiqueta": "La Junta Directiva informa",
+    "ler": "Leer el comunicado"
+  },
+  "proximoJogo": {
+    "etiqueta": "Próximo partido",
+    "contra": "vs",
+    "jogosClassificacao": "Partidos y clasificación"
+  },
+  "modalidades": {
+    "etiqueta": "Nuestros deportes",
+    "titulo": "Un club, <destaque>muchas formas de pertenecer</destaque>",
+    "grupo": {
+      "desporto": "Deporte",
+      "cultura": "Cultura"
+    },
+    "equipa": "Equipo {letra}",
+    "escaloes": "{n} categorías",
+    "verPlantel": "Ver plantilla y categorías",
+    "soFormacao": "Solo cantera",
+    "soFormacaoCom": "Solo cantera · {parceria}",
+    "competicao": "Competición federada",
+    "semCompeticao": "Sin competición"
+  },
+  "mote": {
+    "etiqueta": "Lo que significa el lema",
+    "frase": "La unión hace la <destaque>fuerza</destaque>",
+    "contexto": "No es una frase bonita: es como funciona el club desde hace 60 años. Quien juega, quien entrena, quien abre la sede y quien paga la cuota — todo lo que es el Valejas sale de ahí."
+  },
+  "conhecer": {
+    "etiqueta": "Conócenos",
+    "titulo": "Un club no se explica <destaque>en una frase</destaque>",
+    "texto": "{anos} años dan para mucho: {origens} actividades al principio, {modalidades} deportes hoy, y gente que entra de niño y se queda para toda la vida. Elige por dónde empezar.",
+    "cartoes": {
+      "historia": {
+        "etiqueta": "Desde {ano}",
+        "titulo": "La historia",
+        "texto": "{anos} años, que empezaron con el atletismo, el cicloturismo y la malha — mucho antes del fútbol sala. Lo que se sabe, y lo que aún queda por descubrir."
+      },
+      "emblema": {
+        "etiqueta": "El águila y los colores",
+        "titulo": "El escudo",
+        "texto": "Lo que significa cada parte, y por qué el club juega de amarillo y azul."
+      },
+      "modalidades": {
+        "etiqueta": "{n} deportes",
+        "titulo": "Lo que se practica",
+        "texto": "Del pabellón a la pista y a la carretera, además de la danza y el teatro. Unos compiten federados, otros existen solo para formar."
+      },
+      "jogos": {
+        "etiqueta": "Temporada {epoca}",
+        "titulo": "Los partidos",
+        "texto": "{jornadas} jornadas en el campeonato distrital de la AF Lisboa, {emCasa} de ellas en casa. Calendario, resultados y clasificación."
+      },
+      "instalacoes": {
+        "etiqueta": "{n} espacios",
+        "titulo": "Dónde ocurre",
+        "texto": "La sede, donde trabaja la Junta Directiva y se reúne la Academia. Y el pabellón, donde se juega."
+      },
+      "orgaos": {
+        "etiqueta": "{n} personas",
+        "titulo": "Quién dirige",
+        "texto": "Junta Directiva, Consejo Fiscal y Mesa de la Asamblea. Todos socios, la mayoría desde hace décadas."
+      },
+      "academia": {
+        "etiqueta": "Mayores de 50 años",
+        "titulo": "Academia Sénior",
+        "texto": "{n} actividades, del coro al chi kung. El club no se acaba cuando se deja de competir."
+      },
+      "patrocinadores": {
+        "etiqueta": "Quién nos apoya",
+        "titulo": "Patrocinadores",
+        "texto": "Las empresas y la gente de la tierra que mantienen el club en pie."
+      }
+    }
+  }
+}

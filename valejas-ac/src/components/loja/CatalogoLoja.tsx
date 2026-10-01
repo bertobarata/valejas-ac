@@ -20,6 +20,7 @@
 
 import { useMemo, useState } from "react";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import { SlidersHorizontal, X } from "lucide-react";
 import {
   CATEGORIAS, PRODUTOS, type CategoriaLoja, type Produto,
@@ -33,14 +34,16 @@ const PECAS: Produto[] = PRODUTOS.filter((p) => !p.kit);
 type Familia = CategoriaLoja | "todas";
 type Feitio  = "todos" | "preco" | "consulta" | "personalizavel";
 
-const FEITIOS: { id: Feitio; nome: string; teste: (p: Produto) => boolean }[] = [
-  { id: "todos",          nome: "Tudo",                teste: () => true },
-  { id: "preco",          nome: "Com preço",           teste: (p) => !p.sobConsulta },
-  { id: "consulta",       nome: "Sob consulta",        teste: (p) => Boolean(p.sobConsulta) },
-  { id: "personalizavel", nome: "Personalizáveis",     teste: (p) => Boolean(p.personalizavel) },
+/* O nome de cada filtro está em loja.catalogo.feitios.<id>. */
+const FEITIOS: { id: Feitio; teste: (p: Produto) => boolean }[] = [
+  { id: "todos",          teste: () => true },
+  { id: "preco",          teste: (p) => !p.sobConsulta },
+  { id: "consulta",       teste: (p) => Boolean(p.sobConsulta) },
+  { id: "personalizavel", teste: (p) => Boolean(p.personalizavel) },
 ];
 
 export default function CatalogoLoja() {
+  const t = useTranslations("loja");
   const [familia, setFamilia] = useState<Familia>("todas");
   const [feitio, setFeitio]   = useState<Feitio>("todos");
   /* No telemóvel os filtros ocupavam meio ecrã antes de se ver um produto.
@@ -65,22 +68,22 @@ export default function CatalogoLoja() {
 
   const titulo =
     familia === "todas"
-      ? "Todo o equipamento"
-      : CATEGORIAS.find((c) => c.id === familia)!.nome;
+      ? t("catalogo.todoEquipamento")
+      : t(`categorias.${familia}.nome`);
 
   const intro =
     familia === "todas"
-      ? "Equipamento de jogo, treino, peças de adepto e acessórios."
-      : CATEGORIAS.find((c) => c.id === familia)!.intro;
+      ? t("catalogo.introTodas")
+      : t(`categorias.${familia}.intro`);
 
   /** Quantos filtros estão postos. Zero quer dizer que se vê tudo. */
   const postos = (familia !== "todas" ? 1 : 0) + (feitio !== "todos" ? 1 : 0);
 
   const filtros = (
     <>
-        <Grupo titulo="Família">
+        <Grupo titulo={t("catalogo.familia")}>
           <Opcao
-            nome="Tudo"
+            nome={t("catalogo.tudo")}
             conta={contaFamilia("todas")}
             ativo={familia === "todas"}
             aoEscolher={() => setFamilia("todas")}
@@ -88,7 +91,7 @@ export default function CatalogoLoja() {
           {CATEGORIAS.map((c) => (
             <Opcao
               key={c.id}
-              nome={c.nome}
+              nome={t(`categorias.${c.id}.nome`)}
               conta={contaFamilia(c.id)}
               ativo={familia === c.id}
               aoEscolher={() => setFamilia(c.id)}
@@ -96,11 +99,11 @@ export default function CatalogoLoja() {
           ))}
         </Grupo>
 
-        <Grupo titulo="Preço">
+        <Grupo titulo={t("catalogo.preco")}>
           {FEITIOS.map((f) => (
             <Opcao
               key={f.id}
-              nome={f.nome}
+              nome={t(`catalogo.feitios.${f.id}`)}
               conta={contaFeitio(f.teste)}
               ativo={feitio === f.id}
               aoEscolher={() => setFeitio(f.id)}
@@ -117,7 +120,7 @@ export default function CatalogoLoja() {
       <aside className="hidden lg:block lg:sticky lg:top-32 h-fit">
         <h2 className="flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted mb-4">
           <SlidersHorizontal size={14} aria-hidden />
-          Filtrar
+          {t("catalogo.filtrar")}
         </h2>
         {filtros}
       </aside>
@@ -130,7 +133,7 @@ export default function CatalogoLoja() {
         className="lg:hidden btn-ghost w-full justify-center"
       >
         <SlidersHorizontal size={16} aria-hidden />
-        Filtrar
+        {t("catalogo.filtrar")}
         {postos > 0 && (
           <span className="ml-1 inline-flex items-center justify-center min-w-6 h-6 px-1.5 bg-yellow text-black font-body text-xs font-bold tabular-nums">
             {postos}
@@ -142,12 +145,12 @@ export default function CatalogoLoja() {
         <div className="lg:hidden fixed inset-0 z-50 bg-surface flex flex-col">
           <div className="flex items-center justify-between border-b border-on-surface/10 px-5 h-16 shrink-0">
             <span className="font-headline font-black uppercase text-lg text-on-surface">
-              Filtrar
+              {t("catalogo.filtrar")}
             </span>
             <button
               type="button"
               onClick={() => setGaveta(false)}
-              aria-label="Fechar os filtros"
+              aria-label={t("catalogo.fecharFiltros")}
               className="w-11 h-11 flex items-center justify-center text-on-surface"
             >
               <X size={22} />
@@ -162,7 +165,7 @@ export default function CatalogoLoja() {
               onClick={() => setGaveta(false)}
               className="btn-primary w-full justify-center"
             >
-              Ver {visiveis.length} {visiveis.length === 1 ? "artigo" : "artigos"}
+              {t("catalogo.verArtigos", { n: visiveis.length })}
             </button>
             {postos > 0 && (
               <button
@@ -170,7 +173,7 @@ export default function CatalogoLoja() {
                 onClick={() => { setFamilia("todas"); setFeitio("todos"); }}
                 className="font-body text-sm text-on-surface-muted underline underline-offset-4 min-h-11"
               >
-                Limpar filtros
+                {t("catalogo.limpar")}
               </button>
             )}
           </div>
@@ -185,13 +188,13 @@ export default function CatalogoLoja() {
           </h2>
           <p className="font-body text-on-surface-muted mt-2 leading-relaxed">{intro}</p>
           <p className="font-body text-sm text-on-surface-muted mt-2" role="status" aria-live="polite">
-            {visiveis.length} {visiveis.length === 1 ? "artigo" : "artigos"}
+            {t("catalogo.artigos", { n: visiveis.length })}
           </p>
         </div>
 
         {visiveis.length === 0 ? (
           <p className="font-body text-on-surface-muted">
-            Nada com estes filtros. Tira um deles para voltar a ver o catálogo.
+            {t("catalogo.nada")}
           </p>
         ) : (
           <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:grid-cols-3 gap-px bg-on-surface/10">

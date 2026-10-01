@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "titulo": "Academia Sénior",
+    "descricao": "Programa comunitario del Valejas A.C. Social para mayores de 50 años. Coro, chi kung, pintura, informática, bailes tradicionales, sueca (juego de cartas) y billar."
+  },
+  "cabecalho": {
+    "titulo": "Academia <destaque>Sénior</destaque>",
+    "tagline": "Envejecer con el club, no lejos de él",
+    "intro": "Un espacio para aprender cosas nuevas, mantenerse activo y crear lazos. No es una escuela ni una residencia: es la parte del club donde la vida sigue después de los 50.",
+    "onde": "Dónde",
+    "quando": "Cuándo",
+    "local": "Sede del Valejas Atlético Clube",
+    "horario": {
+      "segundaASexta": "Lunes a viernes",
+      "sabado": "Sábado"
+    }
+  },
+  "fotos": {
+    "arcos": {
+      "alt": "Una participante de la Academia Sénior hace el juego de los aros de colores en el suelo, mientras niños y otras mayores esperan su turno.",
+      "legenda": "Juego de los aros, a medias con los más pequeños."
+    },
+    "roda": {
+      "alt": "Mayores y niños jugando al corro al aire libre, con los brazos abiertos, en el patio.",
+      "legenda": "Juego del corro en el patio."
+    },
+    "labirintos": {
+      "alt": "Una mayor ayuda a un niño a equilibrar una bola en un laberinto hecho con una caja y tubos de cartón.",
+      "legenda": "Laberintos de cartón, hechos a mano."
+    }
+  },
+  "oQueSeFaz": {
+    "titulo": "Qué se hace",
+    "texto": "No hace falta saber nada de antemano. Ninguna actividad exige experiencia.",
+    "familias": {
+      "corpo": "Mover el cuerpo",
+      "criar": "Crear",
+      "aprender": "Aprender",
+      "conviver": "Convivir"
+    },
+    "itens": {
+      "chiKung": {
+        "nome": "Chi Kung",
+        "descricao": "Movimiento lento y respiración, para el equilibrio y las articulaciones."
+      },
+      "fitSenior": {
+        "nome": "Fit Sénior",
+        "descricao": "Ejercicio adaptado, pensado para mantener la fuerza y la autonomía."
+      },
+      "dancasTradicionais": {
+        "nome": "Bailes tradicionales",
+        "descricao": "Los bailes de siempre, con música y compañía."
+      },
+      "coro": {
+        "nome": "Coro",
+        "descricao": "Cantar en grupo, sin que nadie te pida el currículum."
+      },
+      "pintura": {
+        "nome": "Pintura y dibujo",
+        "descricao": "Clases para quien nunca ha cogido un pincel y para quien ya lo ha hecho."
+      },
+      "informatica": {
+        "nome": "Informática e inclusión digital",
+        "descricao": "Móvil, ordenador y servicios en línea, al ritmo de cada uno."
+      },
+      "saude": {
+        "nome": "Temas de salud",
+        "descricao": "Sesiones sobre el cuerpo, la edad y qué hacer con ambos."
+      },
+      "sueca": {
+        "nome": "Sueca",
+        "descricao": "Juego de cartas tradicional portugués, con competiciones organizadas por el club en las mesas de la sede."
+      },
+      "bilhar": {
+        "nome": "Billar",
+        "descricao": "También con competiciones propias, también con público."
+      },
+      "teatro": {
+        "nome": "Salidas al teatro",
+        "descricao": "Salidas en grupo para ver espectáculos."
+      },
+      "cultura": {
+        "nome": "Actividades culturales",
+        "descricao": "Visitas, encuentros y lo que pida la temporada."
+      }
+    }
+  },
+  "maisNovos": {
+    "titulo": "Con los más pequeños",
+    "texto": "De vez en cuando, la Academia se une a los niños para juegos de recreo: corro, aros y laberintos de cartón, a medias entre generaciones."
+  },
+  "porque": {
+    "titulo": "Por qué existe esto",
+    "paragrafo1": "Un club no es solo quien juega. La Academia Sénior existe para combatir el aislamiento y mantener activa una parte de la comunidad que sigue siendo del Valejas mucho después de dejar de competir.",
+    "paragrafo2": "Aquí hay competiciones de sueca y de billar organizadas por el club, salidas al teatro en grupo, y gente que viene solo para convivir. Eso también cuenta."
+  },
+  "cta": {
+    "titulo": "¿Quieres participar?",
+    "texto": "Pásate por la sede en el horario de la Academia, o habla con nosotros. Para participar basta con ser socio: la cuota es de {quota} al mes.",
+    "fazerSocio": "Hacerme socio",
+    "contactos": "Contacto"
+  }
+}

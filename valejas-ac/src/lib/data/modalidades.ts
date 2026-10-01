@@ -9,6 +9,11 @@
  *
  * A Academia Sénior não é uma modalidade — é um programa
  * comunitário e vive em @/lib/data/academiaSenior.ts.
+ *
+ * O texto daqui (nome, tagline, descrição, …) fica em português para a
+ * API e para as páginas ainda só em PT. A página /modalidades lê as
+ * traduções por slug em messages/<lingua>/modalidades.json
+ * (itens.<slug>.*), onde o PT é cópia exata destes campos.
  * ─────────────────────────────────────────────────────────────────
  */
 
@@ -212,4 +217,21 @@ export function getModalidadesPorGrupo(grupo: Grupo): Modalidade[] {
 
 export function getModalidade(slug: string): Modalidade | undefined {
   return MODALIDADES.find((m) => m.slug === slug);
+}
+
+/**
+ * Chave de tradução estável a partir do texto PT de uma lista
+ * (escalões, equipas, valores): "Equipa A" → "equipaA",
+ * "Disciplina e respeito" → "disciplinaERespeito".
+ * O texto em si está em messages/<lingua>/modalidades.json.
+ */
+export function chave(texto: string): string {
+  const palavras = texto
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .split(/[^A-Za-z0-9]+/)
+    .filter(Boolean);
+  return palavras
+    .map((p, i) => (i === 0 ? p.toLowerCase() : p[0].toUpperCase() + p.slice(1).toLowerCase()))
+    .join("");
 }

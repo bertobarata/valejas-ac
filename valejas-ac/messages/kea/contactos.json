@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "titulo": "Kontatu",
+    "descricao": "Fla ku Valejas Atlético Clube — email, telefoni, morada i undi ki nu sta. Nu sta na Valejas, Oeiras."
+  },
+  "hero": {
+    "etiqueta": "Nu sta li pa bo",
+    "titulo": "Kontatu",
+    "texto": "Duvida, parseria, imprensa o inskrison — fla ku nos pa email, pa telefoni o pasa na sedi di klubi."
+  },
+  "seccao": {
+    "etiqueta": "Fla ku nos",
+    "titulo": "Kontatu i <destaque>Lokalizason</destaque>"
+  },
+  "email": {
+    "titulo": "Email",
+    "geral": "Pa tudu kusa. Si bu tene duvida, é es li",
+    "coordenacao": "Modalidadi, inskrison i trenu",
+    "comunicacao": "Imprensa i propósta di parseria"
+  },
+  "telefone": "Telefoni",
+  "morada": "Morada",
+  "horario": {
+    "titulo": "Oráriu",
+    "dias": {
+      "segundaASexta": "Sugunda pa Sesta",
+      "sabado": "Sábadu",
+      "domingo": "Dumingu"
+    },
+    "horas": {
+      "diasDeJogo": "Dia di jogu",
+      "fechado": "Fitxadu"
+    }
+  },
+  "redes": {
+    "titulo": "Sigi-nu",
+    "enviarEmail": "Manda email pa klubi"
+  },
+  "formulario": {
+    "titulo": "Manda-nu un mensajen",
+    "enviada": "Mensajen mandadu!",
+    "obrigado": "Nu ta rasponde-bu sedu. Obrigadu pa kontatu.",
+    "nome": "Nómi",
+    "nomePlaceholder": "Bu nómi",
+    "email": "Email",
+    "emailPlaceholder": "email@izénplu.pt",
+    "assunto": "Asuntu",
+    "assuntos": {
+      "escolher": "Skodji asuntu",
+      "geral": "Sóciu, loja o asuntu jeral",
+      "modalidades": "Inskrison, trenu i modalidadi",
+      "parceria": "Propósta di parseria o patrosíniu",
+      "imprensa": "Imprensa i komunikason"
+    },
+    "assuntoNota": "Asuntu ta disidi kenha ki ta resebe: modalidadi ta bai pa kordenason, parseria pa komunikason, kel otu pa kaxa jeral.",
+    "mensagem": "Mensajen",
+    "mensagemPlaceholder": "Bu mensajen…",
+    "aEnviar": "Ta manda…",
+    "enviar": "Manda Mensajen",
+    "erroEnvio": "Ka foi posível manda.",
+    "erroLigacao": "Ligason faia. Tenta otu bes."
+  },
+  "mapa": {
+    "titulo": "Lokalizason di Valejas AC"
+  },
+  "restaurante": {
+    "etiqueta": "Restoranti di klubi",
+    "texto": "Kumida kaseru purtugés na instalason di klubi, ku pratu di dia na almósu i dósi grándi. Pa rizerva méza, liga diretu pa restoranti.",
+    "reservar": "Rizerva méza · {telefone}",
+    "comoChegar": "Modi ki ta txiga",
+    "horario": "Oráriu",
+    "fechado": "Fitxadu",
+    "servicos": "Kume la o leba pa kaza. Ta aseita rizerva.",
+    "dias": {
+      "0": "Dumingu",
+      "1": "Sugunda",
+      "2": "Tersa",
+      "3": "Kuarta",
+      "4": "Kinta",
+      "5": "Sesta",
+      "6": "Sábadu"
+    },
+    "atalho": "Rizerva méza na restoranti di klubi"
+  }
+}
