@@ -85,7 +85,9 @@ export default function CartaoProduto({
         <div
           className={clsx(
             "relative overflow-hidden bg-surface-mid",
-            produto.kit ? "aspect-[1920/223]" : destaque ? "aspect-[5/2]" : "aspect-square sm:aspect-[2/1]"
+            // O kit é uma grelha 2×2 das quatro peças (2000×930). Em fila, as
+            // quatro lado a lado ficavam com 36px de altura no telemóvel.
+            produto.kit ? "aspect-[2000/930]" : destaque ? "aspect-[5/2]" : "aspect-square sm:aspect-[2/1]"
           )}
         >
           <Image
