@@ -62,7 +62,7 @@ export async function GET() {
           jogado, golosNossos, golosAdversario
         }`
       ),
-      sanityClientLive.fetch(`*[_id == $id][0]{ competicao, atualizadoEm, linhas }`, {
+      sanityClientLive.fetch(`*[_id == $id][0]{ competicao, atualizadoEm, ateJornada, linhas }`, {
         id: ID_CLASSIFICACAO,
       }),
     ]);
@@ -149,6 +149,9 @@ export async function PUT(req: Request) {
       _id: ID_CLASSIFICACAO,
       _type: "classificacao",
       competicao: String(b.competicao ?? "Distrital AF Lisboa"),
+      // Até que jornada esta tabela já conta: os resultados lançados
+      // depois dela somam-se, os anteriores não se contam outra vez.
+      ateJornada: Math.max(0, Math.min(30, Math.floor(Number(b.ateJornada ?? 0)) || 0)),
       atualizadoEm: new Date().toISOString(),
       linhas,
     });

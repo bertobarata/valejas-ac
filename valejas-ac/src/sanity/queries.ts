@@ -2,6 +2,7 @@ import { sanityClient, isSanityConfigured } from "./client";
 import { urlDaImagem, type ImagemSanity } from "./image";
 import type { Artigo, Categoria } from "@/lib/data/noticias";
 import type { JogadorSanity } from "@/lib/data/plantel";
+import type { ResultadoJornada } from "@/lib/classificacao";
 
 // ────────────────────────────────────────────────────────────────────────────
 // Tipos Sanity → tipos do site
@@ -243,15 +244,33 @@ export async function fetchJogos(): Promise<JogoSanity[] | null> {
   }
 }
 
-/** Classificação guardada. Documento único. */
-export async function fetchClassificacao(): Promise<LinhaClassificacao[] | null> {
+/** A base da classificação guardada e até que jornada já conta. Documento único. */
+export async function fetchClassificacao(): Promise<
+  { linhas: LinhaClassificacao[]; ateJornada: number } | null
+> {
   if (!isSanityConfigured()) return null;
   try {
     const doc = await sanityClient.fetch(
-      `*[_id == "classificacao"][0]{ linhas }`
+      `*[_id == "classificacao"][0]{ linhas, ateJornada }`
     );
     const linhas = doc?.linhas;
-    return Array.isArray(linhas) && linhas.length > 0 ? linhas : null;
+    return Array.isArray(linhas) && linhas.length > 0
+      ? { linhas, ateJornada: Number(doc.ateJornada ?? 0) }
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Todos os resultados lançados por jornada, de todas as equipas. */
+export async function fetchResultadosJornada(): Promise<ResultadoJornada[] | null> {
+  if (!isSanityConfigured()) return null;
+  try {
+    return await sanityClient.fetch<ResultadoJornada[]>(
+      `*[_type == "resultadoJornada"] | order(jornada asc){
+        jornada, casa, fora, golosCasa, golosFora
+      }`
+    );
   } catch {
     return null;
   }

@@ -101,6 +101,7 @@ export default function GestorJogos() {
   const [linhas, setLinhas]     = useState<Linha[]>([]);
   const [edicao, setEdicao]     = useState<Jogo | null>(null);
   const [colagem, setColagem]   = useState("");
+  const [ateJornada, setAteJornada] = useState(0);
   const [aCarregar, setACarregar] = useState(true);
   const [aGuardar, setAGuardar] = useState(false);
   const [erro, setErro]         = useState<string | null>(null);
@@ -118,6 +119,7 @@ export default function GestorJogos() {
       }
       setJogos(json.jogos ?? []);
       setLinhas(json.classificacao?.linhas ?? []);
+      setAteJornada(Number(json.classificacao?.ateJornada ?? 0));
     } catch {
       setErro("Falha de ligação.");
     } finally {
@@ -190,7 +192,7 @@ export default function GestorJogos() {
       const res = await fetch("/api/direcao/jogos", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ linhas }),
+        body: JSON.stringify({ linhas, ateJornada }),
       });
       const json = await res.json();
       if (!res.ok || !json.ok) {
@@ -307,6 +309,23 @@ export default function GestorJogos() {
           Copia a tabela do site da AF Lisboa e cola aqui. Cada equipa numa linha,
           com a posição à frente e os números a seguir ao nome. O site lê o resto.
         </p>
+
+        <label className="block mb-6 max-w-xs">
+          <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface-muted block mb-2">
+            Esta tabela já conta até à jornada
+          </span>
+          <input
+            value={ateJornada}
+            onChange={(e) => setAteJornada(Math.min(30, Number(e.target.value.replace(/\D/g, "").slice(0, 2)) || 0))}
+            inputMode="numeric"
+            aria-describedby="ajuda-ate-jornada"
+            className="input-field px-4 border border-on-surface/15 focus:border-yellow w-24"
+          />
+          <span id="ajuda-ate-jornada" className="font-body text-xs text-on-surface-muted block mt-2 leading-relaxed">
+            Os resultados lançados nas jornadas seguintes somam-se a esta tabela.
+            Os das jornadas até aqui não, porque já estão contados.
+          </span>
+        </label>
 
         <label htmlFor="colagem-classificacao" className="sr-only">
           Tabela de classificação copiada do site da AF Lisboa

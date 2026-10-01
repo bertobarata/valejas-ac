@@ -2,7 +2,7 @@ import Image from "next/image";
 import clsx from "clsx";
 import { MapPin } from "lucide-react";
 import {
-  CALENDARIO, CLUBE, EPOCA, ehValejas, formatarHora,
+  CALENDARIO, CLUBE, EPOCA, ehValejas, formatarHora, type Jogo,
 } from "@/lib/data/jogos";
 import { emblemaDe } from "@/lib/data/emblemas";
 
@@ -15,9 +15,9 @@ import { emblemaDe } from "@/lib/data/emblemas";
  * é a primeira coisa depois da data.
  * ─────────────────────────────────────────────────────────────────
  */
-export default function Calendario() {
+export default function Calendario({ jogos = CALENDARIO }: { jogos?: Jogo[] }) {
   const agora = new Date();
-  const proximoIndice = CALENDARIO.findIndex((j) => new Date(j.data) >= agora);
+  const proximoIndice = jogos.findIndex((j) => new Date(j.data) >= agora);
 
   return (
     <section>
@@ -26,15 +26,17 @@ export default function Calendario() {
           Calendário
         </h2>
         <p className="font-body text-sm text-on-surface-muted">
-          {CALENDARIO.length} jornadas · época {EPOCA}
+          {jogos.length} jornadas · época {EPOCA}
         </p>
       </div>
 
       <ol className="border-t border-on-surface/15">
-        {CALENDARIO.map((jogo, i) => {
+        {jogos.map((jogo, i) => {
           const emCasa   = ehValejas(jogo.casa);
           const adversario = emCasa ? jogo.fora : jogo.casa;
-          const passado  = new Date(jogo.data) < agora;
+          const jogado   = jogo.golosCasa !== undefined && jogo.golosFora !== undefined;
+          // Jogo com resultado lê-se; só os que passaram sem resultado esmorecem.
+          const passado  = !jogado && new Date(jogo.data) < agora;
           const seguinte = i === proximoIndice;
           const data = new Date(jogo.data);
           const emblema = emblemaDe(adversario);
@@ -93,9 +95,15 @@ export default function Calendario() {
                   </span>
                 </span>
 
-                <span className="font-body text-sm text-on-surface tabular-nums shrink-0">
-                  {formatarHora(jogo.data)}
-                </span>
+                {jogado ? (
+                  <span className="font-headline font-black text-base text-yellow tabular-nums shrink-0">
+                    {jogo.golosCasa}–{jogo.golosFora}
+                  </span>
+                ) : (
+                  <span className="font-body text-sm text-on-surface tabular-nums shrink-0">
+                    {formatarHora(jogo.data)}
+                  </span>
+                )}
               </div>
 
               {jogo.local && (

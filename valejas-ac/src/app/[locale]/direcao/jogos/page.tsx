@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { sessaoValida, authConfigurada, COOKIE_SESSAO } from "@/lib/auth-direcao";
 import EntrarDirecao from "@/components/direcao/EntrarDirecao";
 import GestorJogos from "@/components/direcao/GestorJogos";
+import GestorJornadas from "@/components/direcao/GestorJornadas";
 
 export const metadata: Metadata = {
   title: "Jogos — Área da Direção",
@@ -34,7 +35,7 @@ export default function DirecaoJogosPage() {
             Jogos e <span className="text-yellow">classificação</span>
           </h1>
           <p className="font-body text-base text-on-surface-muted mt-4 max-w-2xl leading-relaxed">
-            O que guardares aqui aparece na página de jogos do site.
+            Lança os resultados jornada a jornada: a classificação recalcula-se sozinha e tudo aparece na página de jogos do site.
           </p>
         </header>
 
@@ -43,7 +44,10 @@ export default function DirecaoJogosPage() {
             Esta área ainda não está configurada no servidor.
           </p>
         ) : autenticado ? (
-          <GestorJogos />
+          <div className="space-y-12">
+            <GestorJornadas />
+            <GestorJogos />
+          </div>
         ) : (
           <EntrarDirecao />
         )}

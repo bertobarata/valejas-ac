@@ -4,11 +4,7 @@ import ProximoJogo from "@/components/jogos/ProximoJogo";
 import ResultadosRecentes from "@/components/jogos/ResultadosRecentes";
 import TabelaClassificativa from "@/components/jogos/TabelaClassificativa";
 import Calendario from "@/components/jogos/Calendario";
-import { fetchJogos, fetchClassificacao } from "@/sanity/queries";
-import {
-  PROXIMO_JOGO, RESULTADOS, CLASSIFICACAO,
-  doSanity, proximoDe, resultadosDe,
-} from "@/lib/data/jogos";
+import { carregarJogos } from "@/lib/jogosDoSite";
 import DadosEstruturados from "@/components/seo/DadosEstruturados";
 import { proximosJogos } from "@/lib/seo/dadosEstruturados";
 
@@ -23,18 +19,9 @@ export const metadata: Metadata = paraPagina("/jogos", {
 export const revalidate = 300;
 
 export default async function JogosPage() {
-  // O que o departamento de comunicação guardou manda. Sem CMS ligado,
-  // o site mostra os dados de exemplo em vez de páginas vazias.
-  const [doCms, classificacaoCms] = await Promise.all([
-    fetchJogos(),
-    fetchClassificacao(),
-  ]);
-
-  const jogos = doCms?.length ? doCms.map(doSanity) : null;
-
-  const proximo    = jogos ? proximoDe(jogos)    : PROXIMO_JOGO;
-  const resultados = jogos ? resultadosDe(jogos) : RESULTADOS;
-  const classificacao = classificacaoCms ?? CLASSIFICACAO;
+  // O calendário oficial é a base; por cima, os resultados que o
+  // departamento de comunicação lançou, e a classificação recalculada.
+  const { calendario, proximo, resultados, classificacao } = await carregarJogos();
 
   return (
     <div className="bg-surface">
@@ -57,7 +44,7 @@ export default async function JogosPage() {
           <div className="lg:col-span-7 space-y-14">
             <ProximoJogo jogo={proximo} />
             <ResultadosRecentes jogos={resultados} />
-            <Calendario />
+            <Calendario jogos={calendario} />
           </div>
 
           <aside className="lg:col-span-5">

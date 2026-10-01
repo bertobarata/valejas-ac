@@ -1,10 +1,8 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CalendarDays, MapPin } from "lucide-react";
-import { fetchJogos } from "@/sanity/queries";
-import {
-  PROXIMO_JOGO, doSanity, proximoDe, ehValejas,
-} from "@/lib/data/jogos";
+import { carregarJogos } from "@/lib/jogosDoSite";
+import { ehValejas } from "@/lib/data/jogos";
 
 /**
  * Banda do próximo jogo, logo abaixo do comunicado.
@@ -18,8 +16,7 @@ import {
  * ─────────────────────────────────────────────────────────────────
  */
 export default async function ProximoJogoHome() {
-  const doCms = await fetchJogos();
-  const jogo = doCms?.length ? proximoDe(doCms.map(doSanity)) : PROXIMO_JOGO;
+  const { proximo: jogo } = await carregarJogos();
   if (!jogo) return null;
 
   const t = await getTranslations("inicio.proximoJogo");
