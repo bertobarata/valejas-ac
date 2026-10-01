@@ -9,6 +9,8 @@ import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon, UserPlus, ShoppingBag, ChevronDown, Mail } from "lucide-react";
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "@/components/BrandIcons";
 import { CONTACTO } from "@/lib/data/socios";
+import { MODALIDADES } from "@/lib/data/modalidades";
+import BotaoTV from "@/components/BotaoTV";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clsx from "clsx";
@@ -40,6 +42,30 @@ interface ItemNav {
   submenu?:  { label: string; href: string }[];
 }
 
+/**
+ * Os links das modalidades são /modalidades#slug, e a lista abre a
+ * modalidade do endereço ao ouvir `hashchange`. Mas o router do Next
+ * muda o endereço com pushState, que não dispara esse evento — quem já
+ * estava na página carregava no Judo e nada abria. Dispara-se à mão,
+ * depois de o router ter atualizado o endereço.
+ */
+function avisarMudancaDeHash(href: string) {
+  const alvo = href.slice(href.indexOf("#"));
+  if (!href.includes("#")) return;
+
+  // O router atualiza o endereço quando lhe apetece: espera-se por ele,
+  // até dois segundos, e só depois se avisa a página.
+  let tentativas = 0;
+  const esperar = () => {
+    if (window.location.hash === alvo) {
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    } else if (tentativas++ < 40) {
+      setTimeout(esperar, 50);
+    }
+  };
+  setTimeout(esperar, 50);
+}
+
 /** Liga o botão da seta à lista que ele abre, para os leitores de ecrã. */
 function submenuId(href: string): string {
   return "submenu-" + href.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "");
@@ -48,8 +74,13 @@ function submenuId(href: string): string {
 const NAV_ITEMS: ItemNav[] = [
   { label: "Início",      href: "/" },
   { label: "Comunicados", href: "/comunicados" },
-  { label: "Modalidades", href: "/modalidades" },
-  { label: "Sénior",      href: "/academia-senior" },
+  {
+    label: "Modalidades",
+    href:  "/modalidades",
+    // Cada uma abre já expandida na página, pelo #slug.
+    submenu: MODALIDADES.map((m) => ({ label: m.nome, href: `/modalidades#${m.slug}` })),
+  },
+  { label: "Academia Sénior", href: "/academia-senior" },
   {
     label: "Clube",
     href:  "/clube",
@@ -199,7 +230,7 @@ export default function Navbar() {
               do ecrã e cortavam a cabeça da águia. `self-start` encosta-o
               ao topo da barra, e a partir daí só transborda por baixo.
             */
-            "self-start transition-all duration-300 z-50",
+            "self-start shrink-0 transition-all duration-300 z-50",
             (scrolled || !temEmblemaNoTopo)
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-1 pointer-events-none"
@@ -216,8 +247,10 @@ export default function Navbar() {
           </div>
 
           {/* Desktop nav */}
-          <ul className="hidden lg:flex items-center gap-3 xl:gap-5 whitespace-nowrap">
-            {NAV_ITEMS.map((item) => (
+          <ul className="hidden xl:flex items-center gap-4 2xl:gap-5 whitespace-nowrap">
+            {/* O Início sai daqui: o emblema ao lado já leva à página
+                inicial, e a barra precisa do espaço para o TV. */}
+            {NAV_ITEMS.filter((item) => item.href !== "/").map((item) => (
               <li
                 key={item.href}
                 className={item.submenu ? "relative" : undefined}
@@ -289,7 +322,10 @@ export default function Navbar() {
                           <li key={sub.href + sub.label}>
                             <Link
                               href={sub.href}
-                              onClick={() => setSubmenuAberto(null)}
+                              onClick={() => {
+                                setSubmenuAberto(null);
+                                avisarMudancaDeHash(sub.href);
+                              }}
                               className={clsx(
                                 "block px-5 py-2.5 font-body text-sm transition-colors duration-200",
                                 pathname === sub.href
@@ -346,8 +382,10 @@ export default function Navbar() {
               href={STORE_URL}
               className="btn-ghost hidden sm:inline-flex text-xs min-h-11 py-2.5 px-4 whitespace-nowrap"
             >
-              <ShoppingBag size={14} />
-              Loja
+              <ShoppingBag size={14} aria-hidden />
+              {/* A barra não tem largura para o nome: fica o saco, que se
+                  reconhece sozinho. No menu do telemóvel diz "Loja". */}
+              <span className="sr-only">Loja</span>
             </Link>
             <Link
               href="/socios/inscricao"
@@ -356,12 +394,13 @@ export default function Navbar() {
               <UserPlus size={14} />
               Fazer Sócio
             </Link>
+            <BotaoTV className="hidden sm:inline-flex" />
 
             {/* Mobile hamburger */}
             <button
               onClick={() => (menuOpen ? closeMenu() : openMenu())}
               aria-label="Toggle menu"
-              className="lg:hidden w-11 h-11 flex items-center justify-center text-on-surface"
+              className="xl:hidden w-11 h-11 flex items-center justify-center text-on-surface"
             >
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -390,7 +429,7 @@ export default function Navbar() {
             Quem anima são os links, por dentro, e isso pode falhar sem
             consequências.
           */
-          className="fixed inset-0 z-menu bg-surface lg:hidden flex flex-col pt-24"
+          className="fixed inset-0 z-menu bg-surface xl:hidden flex flex-col pt-24"
         >
           {/*
             Um menu de telemóvel normal: uma lista que se percorre de cima
@@ -441,7 +480,10 @@ export default function Navbar() {
                           <li key={sub.href + sub.label}>
                             <Link
                               href={sub.href}
-                              onClick={closeMenu}
+                              onClick={() => {
+                                closeMenu();
+                                avisarMudancaDeHash(sub.href);
+                              }}
                               className={clsx(
                                 "flex items-center justify-center min-h-11 px-5 text-center",
                                 "font-body text-sm transition-colors duration-200",
@@ -477,6 +519,7 @@ export default function Navbar() {
                   {label}
                 </Link>
               ))}
+              <BotaoTV grande />
             </div>
 
             <div className="flex items-center justify-center gap-5">
