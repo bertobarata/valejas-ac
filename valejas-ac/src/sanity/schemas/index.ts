@@ -6,8 +6,9 @@ import { classificacao } from "./classificacao";
 import { configuracao } from "./configuracao";
 import { membroTecnico } from "./membroTecnico";
 import { fotoEquipa }    from "./fotoEquipa";
+import { resultadoJornada } from "./resultadoJornada";
 
 export const schemaTypes = [
   comunicado, artigo, jogador, jogo, classificacao, configuracao,
-  membroTecnico, fotoEquipa,
+  membroTecnico, fotoEquipa, resultadoJornada,
 ];

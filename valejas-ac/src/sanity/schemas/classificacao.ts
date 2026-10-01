@@ -19,6 +19,15 @@ export const classificacao = defineType({
       initialValue: "Distrital AF Lisboa",
     }),
     defineField({
+      name: "ateJornada",
+      title: "Tabela completa até à jornada",
+      description:
+        "Os resultados das jornadas seguintes somam-se a esta tabela. " +
+        "Resultados desta jornada ou anteriores não se somam outra vez.",
+      type: "number",
+      initialValue: 0,
+    }),
+    defineField({
       name: "atualizadoEm",
       title: "Atualizado em",
       type: "datetime",
