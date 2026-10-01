@@ -11,7 +11,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Phone, MapPin, UtensilsCrossed } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { RESTAURANTE, linkTelefone } from "@/lib/data/restaurante";
 import DadosEstruturados from "@/components/seo/DadosEstruturados";
 
@@ -76,16 +76,6 @@ export default function RestauranteClube() {
             {t("texto")}
           </p>
 
-          <ul className="mt-6 flex flex-col gap-3">
-            {(["chanfana", "cozido"] as const).map((prato) => (
-              <li key={prato} className="flex items-start gap-3 font-body text-on-surface">
-                <UtensilsCrossed size={18} className="text-yellow mt-0.5 shrink-0" aria-hidden />
-                <span>
-                  {t.rich(`pratos.${prato}`, { dia: (c) => <strong className="font-semibold">{c}</strong> })}
-                </span>
-              </li>
-            ))}
-          </ul>
 
           <div className="flex flex-wrap gap-3 mt-10">
             <a href={linkTelefone(RESTAURANTE.telefone)} className="btn-primary text-sm">

@@ -1,35 +1,48 @@
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { paraPagina } from "@/lib/seo/metadados";
+import type { Lingua } from "@/i18n/routing";
+import { localeIntl } from "@/lib/data/quota";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ExternalLink } from "lucide-react";
 import {
   TIPOS, apoiosPorTipo, type Apoio,
 } from "@/lib/data/patrocinadores";
-import { MOTE } from "@/lib/data/clube";
 
-export const metadata: Metadata = paraPagina("/patrocinadores", {
-  title: "Patrocinadores e Parcerias",
-  description:
-    "Quem apoia o Valejas Atlético Clube — patrocinador principal, apoios institucionais, o comércio local da freguesia de Barcarena e parcerias.",
-});
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Lingua };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "clube.patrocinadores.meta" });
+  return paraPagina("/patrocinadores", { title: t("titulo"), description: t("descricao") }, locale);
+}
 
-export default function PatrocinadoresPage() {
+export default function PatrocinadoresPage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("clube.patrocinadores");
+  // O mote já está traduzido no início (inicio.mote.frase); aqui sai
+  // sem a marcação e em caixa alta, como o MOTE.caixaAlta de clube.ts.
+  const tInicio = useTranslations("inicio");
+  const mote = tInicio
+    .markup("mote.frase", { destaque: (c) => c })
+    .toLocaleUpperCase(localeIntl(locale));
+
   return (
     <div className="bg-surface">
       {/* Cabeçalho */}
       <section className="bg-surface-low bg-texture border-b border-on-surface/10">
         <div className="section-container py-20 md:py-28">
           <p className="font-body text-xs font-bold uppercase tracking-[0.35em] text-yellow mb-3">
-            {MOTE.caixaAlta}
+            {mote}
           </p>
           <h1 className="section-title text-5xl md:text-7xl">
-            Quem apoia o <span>clube</span>
+            {t.rich("cabecalho.titulo", { destaque: (c) => <span>{c}</span> })}
           </h1>
           <p className="font-body text-lg text-on-surface-muted mt-5 max-w-2xl leading-relaxed">
-            Um clube de bairro não se sustenta sozinho. Estas são as casas e as
-            instituições que põem o ombro — umas vestem as equipas, outras abrem
-            portas, outras simplesmente não deixam cair.
+            {t("cabecalho.texto")}
           </p>
         </div>
       </section>
@@ -48,9 +61,9 @@ export default function PatrocinadoresPage() {
           >
             <div className="max-w-2xl mb-10">
               <h2 className="font-headline font-black uppercase text-2xl md:text-3xl tracking-tighter text-on-surface">
-                {tipo.titulo}
+                {t(`tipos.${tipo.id}.titulo`)}
               </h2>
-              <p className="font-body text-on-surface-muted mt-2">{tipo.intro}</p>
+              <p className="font-body text-on-surface-muted mt-2">{t(`tipos.${tipo.id}.intro`)}</p>
             </div>
 
             {tipo.id === "principal" ? (
@@ -75,18 +88,17 @@ export default function PatrocinadoresPage() {
         <div className="section-dark bg-blue text-white p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-6 justify-between">
           <div className="max-w-xl">
             <h2 className="font-headline font-black uppercase text-2xl md:text-3xl tracking-tight">
-              Quer apoiar o Valejas?
+              {t("cta.titulo")}
             </h2>
             <p className="font-body text-white/80 leading-relaxed mt-2">
-              Há muitas formas de dar a mão a um clube com {new Date().getFullYear() - 1966} anos
-              — do equipamento de um escalão ao lanche de um convívio. Fale com a Direção.
+              {t("cta.texto", { anos: new Date().getFullYear() - 1966 })}
             </p>
           </div>
           <Link
             href="/contactos"
             className="btn-primary shrink-0 bg-yellow text-blue-deep hover:bg-yellow-dim text-sm"
           >
-            Falar com a Direção
+            {t("cta.botao")}
           </Link>
         </div>
       </section></div>
@@ -95,20 +107,21 @@ export default function PatrocinadoresPage() {
 
 /** O patrocinador principal é o único que ganha tratamento próprio. */
 function ApoioPrincipal({ apoio }: { apoio: Apoio }) {
+  const t = useTranslations("clube.patrocinadores");
   const conteudo = (
     <>
       <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-yellow">
-        Veste o clube
+        {t("vesteOClube")}
       </p>
       <h3 className="font-headline font-black uppercase text-4xl md:text-6xl tracking-tighter wdth-condensed text-on-surface mt-2 leading-none">
         {apoio.nome}
       </h3>
       <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-4 max-w-xl">
-        {apoio.descricao}
+        {t(`apoios.${apoio.id}`)}
       </p>
       {apoio.url && (
         <span className="inline-flex items-center gap-1.5 font-body text-sm text-yellow mt-5">
-          Visitar a loja oficial <ExternalLink size={14} />
+          {t("visitarLoja")} <ExternalLink size={14} />
         </span>
       )}
     </>
@@ -137,6 +150,7 @@ function ApoioPrincipal({ apoio }: { apoio: Apoio }) {
  * ─────────────────────────────────────────────────────────────────
  */
 function ApoioLinha({ apoio }: { apoio: Apoio }) {
+  const t = useTranslations("clube.patrocinadores");
   const conteudo = (
     <div className="flex items-center gap-5 py-5">
       {apoio.logo && (
@@ -158,7 +172,7 @@ function ApoioLinha({ apoio }: { apoio: Apoio }) {
           {apoio.nome}
         </span>
         <span className="font-body text-on-surface-muted leading-relaxed">
-          {apoio.descricao}
+          {t(`apoios.${apoio.id}`)}
         </span>
       </div>
     </div>

@@ -5,7 +5,8 @@
  * em destaque nos contactos para quem quer reservar mesa: o clube
  * recebia essas chamadas e tinha de as passar.
  *
- * Telefone confirmado pelo Berto a 01/10/2026. O horário vem da ficha
+ * Telefone confirmado pelo Berto a 01/10/2026 (sem pratos da semana,
+ * a pedido dele). O horário vem da ficha
  * pública do restaurante (Google) — se mudar, é aqui que se acerta.
  *
  * A morada fica de fora de propósito: a ficha pública diz «Rua Irene

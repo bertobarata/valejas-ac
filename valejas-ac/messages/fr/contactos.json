@@ -66,10 +66,6 @@
   "restaurante": {
     "etiqueta": "Le restaurant du club",
     "texto": "Cuisine portugaise maison dans les locaux du club, avec plat du jour le midi et portions généreuses. Pour réserver une table, appelez directement le restaurant.",
-    "pratos": {
-      "chanfana": "<dia>Le mardi :</dia> chanfana (chèvre mijotée au vin rouge)",
-      "cozido": "<dia>Le jeudi :</dia> cozido à portuguesa (pot-au-feu portugais)"
-    },
     "reservar": "Réserver une table · {telefone}",
     "comoChegar": "Itinéraire",
     "horario": "Horaires",

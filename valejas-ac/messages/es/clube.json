@@ -1,0 +1,267 @@
+{
+  "historia": {
+    "meta": {
+      "titulo": "El Club",
+      "descricao": "Fundado el {data} en Valejas, Barcarena. El Valejas Atlético Clube empezó con el atletismo, el cicloturismo y la malha, y hoy es la casa de siete deportes."
+    },
+    "dataFundacao": "1 de noviembre de 1966",
+    "cabecalho": {
+      "etiqueta": "El club · desde {ano}",
+      "titulo": "{anos} años de <destaque>Valejas</destaque>",
+      "texto": "El Valejas Atlético Clube se fundó el <forte>{data}</forte>, en la localidad de {localidade}, parroquia de {freguesia}, municipio de {concelho}."
+    },
+    "fundacao": {
+      "titulo": "Cómo se fundó",
+      "p1": "El club nació como una asociación deportiva y recreativa ligada a la comunidad de Valejas. Con los años fue ganando un papel en la promoción del deporte en toda la parroquia de Barcarena.",
+      "p2": "Su origen está sobre todo en la práctica deportiva local, en la convivencia entre vecinos y en la creación de actividades para la gente del lugar — y eso es lo que el club sigue siendo.",
+      "naoSabemos": {
+        "titulo": "Lo que aún no sabemos",
+        "texto": "No hay registro público con los nombres de los fundadores ni acta que cuente el momento exacto de la fundación. Si tienes documentos, fotografías o recuerdos de familia sobre los inicios del club, habla con nosotros — la historia del Valejas todavía está por escribir como se merece.",
+        "botao": "Contar lo que sé"
+      }
+    },
+    "comecou": {
+      "titulo": "Cómo empezó",
+      "texto": "Mucho antes del fútbol sala. Las primeras actividades del club fueron estas tres — dos de piernas y ruedas, una de convivencia a la puerta de la sede.",
+      "origens": {
+        "atletismo": {
+          "nome": "Atletismo",
+          "descricao": "Organización y participación en pruebas locales, incluido el Gran Premio de Atletismo del Valejas Atlético Clube."
+        },
+        "cicloturismo": {
+          "nome": "Cicloturismo",
+          "descricao": "Paseos en bicicleta por la región y participación en iniciativas de cicloturismo."
+        },
+        "malha": {
+          "nome": "Malha y convivencia",
+          "descricao": "El juego de la malha y otras actividades recreativas tradicionales, ligadas a las fiestas y a la vida de la localidad."
+        }
+      },
+      "depoisTitulo": "Y después",
+      "depois": [
+        "Fútbol sala, hoy el deporte principal del club, con equipo profesional y cantera completa",
+        "Caminatas, bailes, gimnasia y otras actividades de convivencia",
+        "Academia Sénior, para mayores de 50 años"
+      ],
+      "nota": "Sin fechas precisas — no hay registro que las fije. Por eso no es una cronología: es el orden en que fueron pasando las cosas."
+    },
+    "ondeEstamos": {
+      "titulo": "Dónde estamos",
+      "texto": "La sede está en el valle del Jamor, entre Barcarena y Queluz de Baixo. Es la misma dirección desde siempre.",
+      "tambem": "También aparece como {morada}."
+    },
+    "mapa": {
+      "titulo": "Mapa con la ubicación del Valejas Atlético Clube",
+      "abrir": "Abrir en Google Maps"
+    },
+    "resto": {
+      "titulo": "Conocer el resto",
+      "texto": "La historia es el principio. El club de hoy está en estas páginas.",
+      "paginas": {
+        "emblema": {
+          "nome": "El Escudo",
+          "descricao": "El águila, los colores y lo que quiere decir cada parte del escudo."
+        },
+        "instalacoes": {
+          "nome": "Instalaciones",
+          "descricao": "La sede, el pabellón y lo que se hace allí cada día."
+        },
+        "orgaos": {
+          "nome": "Órganos Sociales",
+          "descricao": "Quién dirige el club: Junta Directiva, Consejo Fiscal y Mesa de la Asamblea."
+        },
+        "patrocinadores": {
+          "nome": "Patrocinadores",
+          "descricao": "Las empresas y las personas que mantienen el club en pie."
+        }
+      }
+    },
+    "cta": {
+      "titulo": "{anos} años y contando",
+      "texto": "El club es de quien está en él. La cuota es de 1 € al mes.",
+      "fazerSocio": "Hacerme socio",
+      "falar": "Hablar con nosotros"
+    }
+  },
+  "emblema": {
+    "meta": {
+      "titulo": "Nuestro Escudo",
+      "descricao": "El escudo del Valejas AC — el águila, los colores amarillo y azul y la historia de una identidad única desde 1966."
+    },
+    "hero": {
+      "titulo": "Nuestro <destaque>Escudo</destaque>",
+      "texto": "Más que un símbolo, una declaración de guerra. El escudo del Valejas Atlético Clube es la síntesis visual de nuestra resistencia, nuestra herencia y la energía eléctrica que recorre nuestras gradas.",
+      "explorar": "Explora el escudo",
+      "emblemaAlt": "Escudo del Valejas Atlético Clube",
+      "scroll": "Desliza para descubrirlo"
+    },
+    "aguia": {
+      "capitulo": "Capítulo I",
+      "titulo": "El Águila<quebra></quebra>de <destaque>Valejas</destaque>",
+      "texto": "Nuestro gran depredador. El águila no solo observa — domina el cielo de Valejas. Simboliza la visión estratégica del club y la ferocidad con que atacamos cada partido. Es nuestro vínculo con el cielo y nuestra ambición sin límites.",
+      "citacao": "«El batir de alas es el aviso. El Valejas no retrocede.»",
+      "imagemAlt": "El águila del escudo del Valejas Atlético Clube"
+    },
+    "cores": {
+      "amarelo": {
+        "etiqueta": "01. Color principal",
+        "nome": "Amarillo",
+        "texto": "El color del club. El amarillo de la camiseta que visten generaciones de gente de Valejas desde 1966 — cálido, vibrante e inconfundible en la cancha."
+      },
+      "azul": {
+        "nome": "Azul",
+        "texto": "La lealtad y la serenidad de quien representa a Valejas dentro y fuera de la pista. La profundidad de nuestro compromiso con la comunidad."
+      },
+      "nossas": {
+        "titulo": "Nuestros colores",
+        "texto": "Amarillo y azul — los colores del Valejas Atlético Clube desde 1966, vestidos con orgullo por socios, deportistas y aficionados. Sencillos y honestos, como la tierra que representan."
+      }
+    }
+  },
+  "instalacoes": {
+    "meta": {
+      "titulo": "Nuestras Instalaciones",
+      "descricao": "La sede del Valejas Atlético Clube y el pabellón — donde el club trabaja, entrena, juega y convive."
+    },
+    "cabecalho": {
+      "etiqueta": "Barcarena, Oeiras",
+      "titulo": "Nuestras <destaque>instalaciones</destaque>",
+      "texto": "Dos espacios, dos papeles. En la sede se gestiona el club y se convive; en el pabellón se juega."
+    },
+    "oQueAcontece": "Qué pasa allí",
+    "semFotos": "Las fotografías de este espacio aún están por publicar.",
+    "espacos": {
+      "sede": {
+        "nome": "Sede del Club",
+        "tipo": "Edifício V.A.C.",
+        "descricao": "El punto de encuentro del Valejas. Aquí trabaja la Junta Directiva, se gestionan las inscripciones y los carnés de socio, y la Academia Sénior funciona todas las tardes.",
+        "usos": [
+          "Junta Directiva y secretaría",
+          "Inscripciones y entrega de carnés de socio",
+          "Academia Sénior",
+          "Sueca (juego de cartas), billar y convivencia",
+          "Eventos y fiestas del club"
+        ]
+      },
+      "pavilhao": {
+        "nome": "Pabellón del Valejas Atlético Clube",
+        "tipo": "Suelo flotante, 40 × 20 m",
+        "descricao": "El recinto donde el fútbol sala juega y entrena, de los más pequeños al primer equipo. Aquí se disputan los quince partidos en casa del campeonato distrital.",
+        "usos": [
+          "Partidos de fútbol sala, todas las categorías",
+          "Entrenamientos del Equipo A, Equipo B y cantera",
+          "Kárate, judo y danza",
+          "Pruebas y encuentros del club"
+        ]
+      }
+    },
+    "cta": {
+      "titulo": "Pásate por aquí",
+      "texto": "La puerta está abierta. Para inscripciones, dudas o solo para conocer el club por dentro.",
+      "horarios": "Horarios y contacto",
+      "ondeFica": "Dónde está"
+    }
+  },
+  "orgaos": {
+    "meta": {
+      "titulo": "Órganos Sociales",
+      "descricao": "Junta Directiva, Consejo Fiscal y Mesa de la Asamblea General del Valejas Atlético Clube — quiénes son las personas que dirigen el club."
+    },
+    "mandato": "Lista A",
+    "cabecalho": {
+      "titulo": "Órganos <destaque>Sociales</destaque>",
+      "texto": "Quién dirige el club. Todos son socios del Valejas, y la mayoría desde hace muchos años — hay quien está aquí desde 1981."
+    },
+    "orgaos": {
+      "direcao": {
+        "nome": "Junta Directiva",
+        "sigla": "",
+        "descricao": "Gestiona el día a día del club — deportes, instalaciones, socios y cuentas. Es quien firma los comunicados oficiales."
+      },
+      "conselhoFiscal": {
+        "nome": "Consejo Fiscal",
+        "sigla": "",
+        "descricao": "Supervisa las cuentas del club y emite su dictamen sobre ellas ante la Asamblea General."
+      },
+      "mesaAssembleiaGeral": {
+        "nome": "Mesa de la Asamblea General",
+        "sigla": "",
+        "descricao": "Convoca y dirige las Asambleas Generales, donde los socios deciden el rumbo del club."
+      }
+    },
+    "cargos": {
+      "presidente": "Presidente",
+      "vicePresidente": "Vicepresidente",
+      "tesoureiro": "Tesorero",
+      "secretario": "Secretario",
+      "secretario1": "1.er Secretario",
+      "secretario2": "2.º Secretario",
+      "relator": "Relator",
+      "vogal1": "1.er Vocal",
+      "vogal2": "2.º Vocal",
+      "vogal3": "3.er Vocal",
+      "vogal4": "4.º Vocal",
+      "suplente1": "1.er Suplente",
+      "suplente2": "2.º Suplente",
+      "suplente3": "3.er Suplente"
+    },
+    "suplentes": "Suplentes",
+    "socioDesde": "Socio desde {ano}",
+    "anos": "{anos, plural, =1 {# año} other {# años}}",
+    "numero": "N.º {numero}",
+    "cta": {
+      "titulo": "Hablar con la Junta Directiva",
+      "texto": "Los comunicados oficiales se publican en la web y en las redes del club. Para todo lo demás, habla con nosotros.",
+      "comunicados": "Ver comunicados",
+      "contactos": "Contacto"
+    }
+  },
+  "patrocinadores": {
+    "meta": {
+      "titulo": "Patrocinadores y Colaboraciones",
+      "descricao": "Quién apoya al Valejas Atlético Clube — patrocinador principal, apoyos institucionales, el comercio local de la parroquia de Barcarena y colaboraciones."
+    },
+    "cabecalho": {
+      "titulo": "Quién apoya al <destaque>club</destaque>",
+      "texto": "Un club de barrio no se sostiene solo. Estas son las casas y las instituciones que arriman el hombro — unas visten a los equipos, otras abren puertas, otras simplemente no lo dejan caer."
+    },
+    "tipos": {
+      "principal": {
+        "titulo": "Patrocinador principal",
+        "intro": "Quien viste al club."
+      },
+      "institucional": {
+        "titulo": "Apoyos institucionales",
+        "intro": "Las instituciones del territorio donde vive el Valejas."
+      },
+      "local": {
+        "titulo": "Comercio local",
+        "intro": "Casas de la tierra que le echan una mano al club."
+      },
+      "parceria": {
+        "titulo": "Colaboraciones",
+        "intro": "Quien pone su oficio al servicio del club."
+      }
+    },
+    "vesteOClube": "Viste al club",
+    "visitarLoja": "Visitar la tienda oficial",
+    "apoios": {
+      "zemig": "Equipaciones y merchandising del club. La tienda oficial del Valejas la hace ZEMIG.",
+      "juntaBarcarena": "La parroquia donde nació el club y donde sigue trabajando.",
+      "oeirasValley": "La marca del municipio de Oeiras, donde el Valejas compite y forma.",
+      "restauranteQb": "Restaurante en Queluz de Baixo.",
+      "ninhoDaRola": "Restaurante y cafetería.",
+      "muchacho": "Restaurante.",
+      "ciaoCuore": "Restaurante italiano y sushi.",
+      "drive360": "Recambios de automóvil.",
+      "antonioRosa": "Ingeniería civil y certificación energética.",
+      "remaxGrupoSunset": "Intermediación inmobiliaria.",
+      "barataStudio": "Web del club — diseño y desarrollo."
+    },
+    "cta": {
+      "titulo": "¿Quiere apoyar al Valejas?",
+      "texto": "Hay muchas formas de echarle una mano a un club con {anos} años — desde la equipación de una categoría hasta la merienda de un encuentro. Hable con la Junta Directiva.",
+      "botao": "Hablar con la Junta Directiva"
+    }
+  }
+}

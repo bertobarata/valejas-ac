@@ -1,31 +1,39 @@
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { paraPagina } from "@/lib/seo/metadados";
+import type { Lingua } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Camera, MapPin } from "lucide-react";
 import { INSTALACOES, type Instalacao } from "@/lib/data/instalacoes";
 
-export const metadata: Metadata = paraPagina("/instalacoes", {
-  title: "As Nossas Instalações",
-  description:
-    "A sede do Valejas Atlético Clube e o pavilhão — onde o clube trabalha, treina, joga e convive.",
-});
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Lingua };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "clube.instalacoes.meta" });
+  return paraPagina("/instalacoes", { title: t("titulo"), description: t("descricao") }, locale);
+}
 
-export default function InstalacoesPage() {
+export default function InstalacoesPage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("clube.instalacoes");
+
   return (
     <div className="bg-surface">
       {/* Cabeçalho */}
       <section className="bg-surface-low bg-texture border-b border-on-surface/10">
         <div className="section-container py-20 md:py-28">
           <p className="font-body text-xs font-bold uppercase tracking-[0.35em] text-yellow mb-3">
-            Barcarena, Oeiras
+            {t("cabecalho.etiqueta")}
           </p>
           <h1 className="section-title text-5xl md:text-7xl">
-            As nossas <span>instalações</span>
+            {t.rich("cabecalho.titulo", { destaque: (c) => <span>{c}</span> })}
           </h1>
           <p className="font-body text-lg text-on-surface-muted mt-5 max-w-2xl leading-relaxed">
-            Dois espaços, dois papéis. Na sede trata-se do clube e convive-se;
-            no pavilhão joga-se.
+            {t("cabecalho.texto")}
           </p>
         </div>
       </section>
@@ -39,19 +47,18 @@ export default function InstalacoesPage() {
         <div className="bg-surface-high p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 justify-between">
           <div className="max-w-xl">
             <h2 className="font-headline font-black uppercase text-2xl tracking-tight text-on-surface">
-              Passa por cá
+              {t("cta.titulo")}
             </h2>
             <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-              A porta está aberta. Para inscrições, dúvidas ou só para conhecer o
-              clube por dentro.
+              {t("cta.texto")}
             </p>
           </div>
           <div className="flex flex-wrap gap-4 shrink-0">
             <Link href="/contactos" className="btn-primary text-sm">
-              Horários e contactos
+              {t("cta.horarios")}
             </Link>
             <Link href="/clube" className="btn-ghost text-sm">
-              Onde fica
+              {t("cta.ondeFica")}
             </Link>
           </div>
         </div>
@@ -60,6 +67,10 @@ export default function InstalacoesPage() {
 }
 
 function Espaco({ instalacao, inverter }: { instalacao: Instalacao; inverter: boolean }) {
+  // Os textos de cada espaço estão em clube.instalacoes.espacos.<slug>;
+  // os dados ficam com o slug, a morada e as fotografias.
+  const t = useTranslations("clube.instalacoes");
+  const chave = `espacos.${instalacao.slug}`;
   const temFotos = instalacao.fotos.length > 0;
 
   return (
@@ -75,13 +86,13 @@ function Espaco({ instalacao, inverter }: { instalacao: Instalacao; inverter: bo
         {/* Texto */}
         <div>
           <p className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-yellow">
-            {instalacao.tipo}
+            {t(`${chave}.tipo`)}
           </p>
           <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface mt-2">
-            {instalacao.nome}
+            {t(`${chave}.nome`)}
           </h2>
           <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-4">
-            {instalacao.descricao}
+            {t(`${chave}.descricao`)}
           </p>
 
           {instalacao.morada && (
@@ -95,10 +106,10 @@ function Espaco({ instalacao, inverter }: { instalacao: Instalacao; inverter: bo
 
           <div className="mt-8">
             <h3 className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-on-surface-muted border-b border-on-surface/10 pb-3 mb-4">
-              O que lá acontece
+              {t("oQueAcontece")}
             </h3>
             <ul className="space-y-2.5">
-              {instalacao.usos.map((u) => (
+              {(t.raw(`${chave}.usos`) as string[]).map((u) => (
                 <li key={u} className="flex items-start gap-3">
                   <span
                     aria-hidden
@@ -138,7 +149,7 @@ function Espaco({ instalacao, inverter }: { instalacao: Instalacao; inverter: bo
             <div className="border border-dashed border-on-surface/25 aspect-[4/3] flex flex-col items-center justify-center gap-3 p-8 text-center">
               <Camera size={28} className="text-on-surface-muted" />
               <p className="font-body text-sm text-on-surface-muted max-w-xs leading-relaxed">
-                Fotografias deste espaço ainda por publicar.
+                {t("semFotos")}
               </p>
             </div>
           )}

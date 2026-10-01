@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EagleSection() {
+  const t = useTranslations("clube.emblema.aguia");
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -63,7 +65,7 @@ export default function EagleSection() {
               {/* Águia oficial do emblema */}
               <Image
                 src="/brand/eagle.png"
-                alt="A águia do emblema do Valejas Atlético Clube"
+                alt={t("imagemAlt")}
                 fill
                 sizes="(max-width: 1024px) 100vw, 400px"
                 className="object-cover"
@@ -77,22 +79,21 @@ export default function EagleSection() {
           {/* Text */}
           <div className="order-1 lg:order-2 eagle-content space-y-6">
             <span className="font-body font-bold uppercase tracking-[0.3em] text-yellow text-xs">
-              Capítulo I
+              {t("capitulo")}
             </span>
             <h2 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-on-surface">
-              A Águia<br />de{" "}
-              <span className="text-yellow">Valejas</span>
+              {t.rich("titulo", {
+                quebra: () => <br />,
+                destaque: (c) => <span className="text-yellow">{c}</span>,
+              })}
             </h2>
             <p className="font-body text-xl text-on-surface-muted leading-relaxed">
-              O nosso predador de topo. A águia não apenas observa — ela domina o
-              espaço aéreo de Valejas. Simboliza a visão estratégica do clube e a
-              ferocidade com que atacamos cada jogo. É a nossa ligação com o céu e
-              a nossa ambição sem limites.
+              {t("texto")}
             </p>
             {/* Pull quote */}
             <div className="border border-yellow/30 bg-surface-mid p-6">
               <p className="font-body italic text-on-surface">
-                "O som do bater de asas é o aviso. O Valejas não recua."
+                {t("citacao")}
               </p>
             </div>
           </div>

@@ -66,10 +66,6 @@
   "restaurante": {
     "etiqueta": "The club's restaurant",
     "texto": "Home-style Portuguese food at the club, with a dish of the day at lunchtime and generous portions. To book a table, call the restaurant directly.",
-    "pratos": {
-      "chanfana": "<dia>Tuesdays:</dia> chanfana (goat slow-cooked in red wine)",
-      "cozido": "<dia>Thursdays:</dia> cozido à portuguesa (Portuguese boiled meats and vegetables)"
-    },
     "reservar": "Book a table · {telefone}",
     "comoChegar": "Get directions",
     "horario": "Opening hours",

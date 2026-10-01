@@ -1,0 +1,267 @@
+{
+  "historia": {
+    "meta": {
+      "titulo": "The Club",
+      "descricao": "Founded on {data} in Valejas, Barcarena. Valejas Atlético Clube began with athletics, cycling and malha, and today is home to seven sports."
+    },
+    "dataFundacao": "1 November 1966",
+    "cabecalho": {
+      "etiqueta": "The club · since {ano}",
+      "titulo": "{anos} years of <destaque>Valejas</destaque>",
+      "texto": "Valejas Atlético Clube was founded on <forte>{data}</forte>, in the village of {localidade}, in the parish of {freguesia}, municipality of {concelho}."
+    },
+    "fundacao": {
+      "titulo": "How it was founded",
+      "p1": "The club was born as a sports and recreation association rooted in the Valejas community. Over the years it took on a growing role in promoting sport across the whole parish of Barcarena.",
+      "p2": "Its origins lie above all in local sport, in neighbours spending time together and in creating activities for the people who live here — and that is what the club still is.",
+      "naoSabemos": {
+        "titulo": "What we still don't know",
+        "texto": "There is no public record of the founders' names, nor any minutes describing the exact moment the club was founded. If you have documents, photographs or family memories of the club's early days, get in touch — the history of Valejas is still waiting to be written properly.",
+        "botao": "Share what I know"
+      }
+    },
+    "comecou": {
+      "titulo": "How it started",
+      "texto": "Long before futsal. The club's first activities were these three — two on legs and wheels, one for getting together outside the clubhouse.",
+      "origens": {
+        "atletismo": {
+          "nome": "Athletics",
+          "descricao": "Organising and taking part in local races, including the Valejas Atlético Clube Athletics Grand Prix."
+        },
+        "cicloturismo": {
+          "nome": "Cycling",
+          "descricao": "Bike rides around the region and taking part in cycle touring events."
+        },
+        "malha": {
+          "nome": "Malha and socialising",
+          "descricao": "Malha, a traditional Portuguese throwing game, and other traditional pastimes, tied to the village's festivities and everyday life."
+        }
+      },
+      "depoisTitulo": "And then",
+      "depois": [
+        "Futsal, now the club's flagship sport, with a professional team and a full youth set-up",
+        "Walking, dance, gymnastics and other social activities",
+        "The Senior Academy, for people aged 50 and over"
+      ],
+      "nota": "No exact dates — there's no record to pin them down. So this isn't a timeline: it's the order in which things happened."
+    },
+    "ondeEstamos": {
+      "titulo": "Where we are",
+      "texto": "The clubhouse sits in the Jamor valley, between Barcarena and Queluz de Baixo. It has always been at the same address.",
+      "tambem": "It also appears as {morada}."
+    },
+    "mapa": {
+      "titulo": "Map showing the location of Valejas Atlético Clube",
+      "abrir": "Open in Google Maps"
+    },
+    "resto": {
+      "titulo": "Discover the rest",
+      "texto": "The history is just the beginning. Today's club is in these pages.",
+      "paginas": {
+        "emblema": {
+          "nome": "The Crest",
+          "descricao": "The eagle, the colours and what each part of the crest means."
+        },
+        "instalacoes": {
+          "nome": "Facilities",
+          "descricao": "The clubhouse, the sports hall and what goes on there every day."
+        },
+        "orgaos": {
+          "nome": "Club Officials",
+          "descricao": "Who runs the club: the Board, the Audit Committee and the General Assembly Board."
+        },
+        "patrocinadores": {
+          "nome": "Sponsors",
+          "descricao": "The businesses and people who keep the club on its feet."
+        }
+      }
+    },
+    "cta": {
+      "titulo": "{anos} years and counting",
+      "texto": "The club belongs to the people in it. Membership is €1 a month.",
+      "fazerSocio": "Become a member",
+      "falar": "Get in touch"
+    }
+  },
+  "emblema": {
+    "meta": {
+      "titulo": "Our Crest",
+      "descricao": "The Valejas AC crest — the eagle, the yellow and blue colours and the story of a unique identity since 1966."
+    },
+    "hero": {
+      "titulo": "Our <destaque>Crest</destaque>",
+      "texto": "More than a symbol — a declaration of war. The Valejas Atlético Clube crest is the visual expression of our resilience, our heritage and the electric energy that runs through our stands.",
+      "explorar": "Explore the crest",
+      "emblemaAlt": "Valejas Atlético Clube crest",
+      "scroll": "Scroll to deconstruct"
+    },
+    "aguia": {
+      "capitulo": "Chapter I",
+      "titulo": "The Eagle<quebra></quebra>of <destaque>Valejas</destaque>",
+      "texto": "Our apex predator. The eagle doesn't just watch — it rules the skies over Valejas. It stands for the club's strategic vision and the ferocity with which we attack every match. It is our link to the sky and our boundless ambition.",
+      "citacao": "“The sound of beating wings is the warning. Valejas never backs down.”",
+      "imagemAlt": "The eagle from the Valejas Atlético Clube crest"
+    },
+    "cores": {
+      "amarelo": {
+        "etiqueta": "01. Main colour",
+        "nome": "Yellow",
+        "texto": "The club's colour. The yellow of the shirt worn by generations of people from Valejas since 1966 — warm, vibrant and unmistakable on the pitch."
+      },
+      "azul": {
+        "nome": "Blue",
+        "texto": "The loyalty and composure of those who represent Valejas, on and off the court. The depth of our commitment to the community."
+      },
+      "nossas": {
+        "titulo": "Our colours",
+        "texto": "Yellow and blue — the colours of Valejas Atlético Clube since 1966, worn with pride by members, athletes and supporters. Simple and honest, like the place they represent."
+      }
+    }
+  },
+  "instalacoes": {
+    "meta": {
+      "titulo": "Our Facilities",
+      "descricao": "The Valejas Atlético Clube clubhouse and sports hall — where the club works, trains, plays and gets together."
+    },
+    "cabecalho": {
+      "etiqueta": "Barcarena, Oeiras",
+      "titulo": "Our <destaque>facilities</destaque>",
+      "texto": "Two spaces, two roles. The clubhouse is where club business gets done and people meet; the sports hall is where we play."
+    },
+    "oQueAcontece": "What happens there",
+    "semFotos": "Photos of this space are still to be published.",
+    "espacos": {
+      "sede": {
+        "nome": "Clubhouse",
+        "tipo": "Edifício V.A.C.",
+        "descricao": "Valejas's meeting point. This is where the Board works, where registrations and membership cards are handled, and where the Senior Academy meets every afternoon.",
+        "usos": [
+          "Board and club office",
+          "Registrations and membership card collection",
+          "Senior Academy",
+          "Sueca (a card game), billiards and socialising",
+          "Club events and parties"
+        ]
+      },
+      "pavilhao": {
+        "nome": "Valejas Atlético Clube Sports Hall",
+        "tipo": "Sprung floor, 40 × 20 m",
+        "descricao": "Where futsal plays and trains, from the little ones to the first team. This is where the fifteen home matches of the district league are played.",
+        "usos": [
+          "Futsal matches, all age groups",
+          "Training for Team A, Team B and the youth sides",
+          "Karate, judo and dance",
+          "Club competitions and get-togethers"
+        ]
+      }
+    },
+    "cta": {
+      "titulo": "Come and see us",
+      "texto": "The door is open. For registrations, questions, or just to see the club from the inside.",
+      "horarios": "Opening hours and contact",
+      "ondeFica": "How to find us"
+    }
+  },
+  "orgaos": {
+    "meta": {
+      "titulo": "Club Officials",
+      "descricao": "The Board, the Audit Committee and the General Assembly Board of Valejas Atlético Clube — the people who run the club."
+    },
+    "mandato": "List A",
+    "cabecalho": {
+      "titulo": "Club <destaque>Officials</destaque>",
+      "texto": "The people who run the club. All of them are Valejas members, most of them for many years — some have been here since 1981."
+    },
+    "orgaos": {
+      "direcao": {
+        "nome": "Board",
+        "sigla": "",
+        "descricao": "Runs the club day to day — sports, facilities, members and finances. It signs the club's official notices."
+      },
+      "conselhoFiscal": {
+        "nome": "Audit Committee",
+        "sigla": "",
+        "descricao": "Audits the club's accounts and reports on them to the General Assembly."
+      },
+      "mesaAssembleiaGeral": {
+        "nome": "General Assembly Board",
+        "sigla": "",
+        "descricao": "Calls and chairs the General Assemblies, where members decide the club's direction."
+      }
+    },
+    "cargos": {
+      "presidente": "President",
+      "vicePresidente": "Vice-President",
+      "tesoureiro": "Treasurer",
+      "secretario": "Secretary",
+      "secretario1": "1st Secretary",
+      "secretario2": "2nd Secretary",
+      "relator": "Rapporteur",
+      "vogal1": "1st Member",
+      "vogal2": "2nd Member",
+      "vogal3": "3rd Member",
+      "vogal4": "4th Member",
+      "suplente1": "1st Substitute",
+      "suplente2": "2nd Substitute",
+      "suplente3": "3rd Substitute"
+    },
+    "suplentes": "Substitutes",
+    "socioDesde": "Member since {ano}",
+    "anos": "{anos, plural, =1 {# year} other {# years}}",
+    "numero": "No. {numero}",
+    "cta": {
+      "titulo": "Contact the Board",
+      "texto": "Official notices are published on the website and on the club's social media. For anything else, get in touch.",
+      "comunicados": "See notices",
+      "contactos": "Contact"
+    }
+  },
+  "patrocinadores": {
+    "meta": {
+      "titulo": "Sponsors and Partners",
+      "descricao": "Who supports Valejas Atlético Clube — main sponsor, institutional support, local businesses from the parish of Barcarena, and partners."
+    },
+    "cabecalho": {
+      "titulo": "Who supports the <destaque>club</destaque>",
+      "texto": "A neighbourhood club can't keep going on its own. These are the businesses and institutions that put their shoulder to it — some kit out the teams, some open doors, some simply won't let us fall."
+    },
+    "tipos": {
+      "principal": {
+        "titulo": "Main sponsor",
+        "intro": "The one who kits out the club."
+      },
+      "institucional": {
+        "titulo": "Institutional support",
+        "intro": "The institutions of the area Valejas calls home."
+      },
+      "local": {
+        "titulo": "Local businesses",
+        "intro": "Local businesses that lend the club a hand."
+      },
+      "parceria": {
+        "titulo": "Partners",
+        "intro": "Those who put their craft at the club's service."
+      }
+    },
+    "vesteOClube": "Kits out the club",
+    "visitarLoja": "Visit the official shop",
+    "apoios": {
+      "zemig": "The club's kit and merchandise. ZEMIG runs the official Valejas shop.",
+      "juntaBarcarena": "The parish where the club was born and where it still works.",
+      "oeirasValley": "The brand of the municipality of Oeiras, where Valejas competes and trains young players.",
+      "restauranteQb": "Restaurant in Queluz de Baixo.",
+      "ninhoDaRola": "Restaurant and café.",
+      "muchacho": "Restaurant.",
+      "ciaoCuore": "Italian and sushi restaurant.",
+      "drive360": "Car parts.",
+      "antonioRosa": "Civil engineering and energy certification.",
+      "remaxGrupoSunset": "Estate agency.",
+      "barataStudio": "The club's website — design and development."
+    },
+    "cta": {
+      "titulo": "Want to support Valejas?",
+      "texto": "There are many ways to lend a hand to a club that's {anos} years old — from kitting out an age group to the snacks at a get-together. Talk to the Board.",
+      "botao": "Contact the Board"
+    }
+  }
+}

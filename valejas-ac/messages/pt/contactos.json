@@ -66,10 +66,6 @@
   "restaurante": {
     "etiqueta": "O restaurante do clube",
     "texto": "Comida caseira portuguesa nas instalações do clube, com prato do dia ao almoço e doses generosas. Para reservar mesa, liga diretamente para o restaurante.",
-    "pratos": {
-      "chanfana": "<dia>Às terças:</dia> chanfana de cabra",
-      "cozido": "<dia>Às quintas:</dia> cozido à portuguesa"
-    },
     "reservar": "Reservar mesa · {telefone}",
     "comoChegar": "Como chegar",
     "horario": "Horário",

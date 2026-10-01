@@ -66,10 +66,6 @@
   "restaurante": {
     "etiqueta": "El restaurante del club",
     "texto": "Comida casera portuguesa en las instalaciones del club, con plato del día a mediodía y raciones generosas. Para reservar mesa, llama directamente al restaurante.",
-    "pratos": {
-      "chanfana": "<dia>Los martes:</dia> chanfana (cabra guisada en vino tinto)",
-      "cozido": "<dia>Los jueves:</dia> cozido à portuguesa (cocido portugués)"
-    },
     "reservar": "Reservar mesa · {telefone}",
     "comoChegar": "Cómo llegar",
     "horario": "Horario",

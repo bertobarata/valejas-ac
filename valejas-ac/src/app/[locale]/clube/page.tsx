@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { paraPagina } from "@/lib/seo/metadados";
+import type { Lingua } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import {
@@ -7,36 +10,29 @@ import {
 } from "@/lib/data/historia";
 import MapaClube from "@/components/historia/MapaClube";
 
-/** As outras portas do clube. Ordem pensada: identidade, casa, quem manda, quem apoia. */
+/**
+ * As outras portas do clube. Ordem pensada: identidade, casa, quem manda, quem apoia.
+ * Nome e descrição de cada uma estão em clube.historia.resto.paginas.<chave>.
+ */
 const PAGINAS_DO_CLUBE = [
-  {
-    nome: "O Emblema",
-    href: "/clube/emblema",
-    descricao: "A águia, as cores e o que cada parte do emblema quer dizer.",
-  },
-  {
-    nome: "Instalações",
-    href: "/instalacoes",
-    descricao: "A sede, o pavilhão e o que lá se faz todos os dias.",
-  },
-  {
-    nome: "Órgãos Sociais",
-    href: "/orgaos-sociais",
-    descricao: "Quem dirige o clube: Direção, Conselho Fiscal e Mesa da Assembleia.",
-  },
-  {
-    nome: "Patrocinadores",
-    href: "/patrocinadores",
-    descricao: "As empresas e as pessoas que seguram o clube de pé.",
-  },
-];
+  { chave: "emblema",        href: "/clube/emblema" },
+  { chave: "instalacoes",    href: "/instalacoes" },
+  { chave: "orgaos",         href: "/orgaos-sociais" },
+  { chave: "patrocinadores", href: "/patrocinadores" },
+] as const;
 
-export const metadata: Metadata = paraPagina("/clube", {
-  title: "O Clube",
-  description:
-    `Fundado a ${FUNDACAO.data}, em Valejas, Barcarena. O Valejas Atlético Clube ` +
-    "começou no atletismo, no cicloturismo e na malha, e é hoje a casa de sete modalidades.",
-});
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Lingua };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "clube.historia" });
+  return paraPagina(
+    "/clube",
+    { title: t("meta.titulo"), description: t("meta.descricao", { data: t("dataFundacao") }) },
+    locale,
+  );
+}
 
 /**
  * O CLUBE
@@ -49,7 +45,9 @@ export const metadata: Metadata = paraPagina("/clube", {
  * estava escrita e não se encontrava.
  * ─────────────────────────────────────────────────────────────────
  */
-export default function ClubePage() {
+export default function ClubePage({ params: { locale } }: { params: { locale: Lingua } }) {
+  setRequestLocale(locale);
+  const t = useTranslations("clube.historia");
   const anos = anosDeVida();
 
   return (
@@ -58,15 +56,20 @@ export default function ClubePage() {
       <section className="bg-surface-low bg-texture border-b border-on-surface/10">
         <div className="section-container py-20 md:py-28">
           <p className="font-body text-xs font-bold uppercase tracking-[0.35em] text-yellow mb-3">
-            O clube · desde {FUNDACAO.ano}
+            {/* Em texto, para o ano não sair «1,966» em inglês. */}
+            {t("cabecalho.etiqueta", { ano: String(FUNDACAO.ano) })}
           </p>
           <h1 className="section-title text-5xl md:text-7xl">
-            {anos} anos de <span>Valejas</span>
+            {t.rich("cabecalho.titulo", { anos, destaque: (c) => <span>{c}</span> })}
           </h1>
           <p className="font-body text-lg md:text-xl text-on-surface-muted mt-5 max-w-2xl leading-relaxed">
-            O Valejas Atlético Clube foi fundado a <strong className="text-on-surface">{FUNDACAO.data}</strong>,
-            na localidade de {FUNDACAO.localidade}, freguesia de {FUNDACAO.freguesia},
-            concelho de {FUNDACAO.concelho}.
+            {t.rich("cabecalho.texto", {
+              data: t("dataFundacao"),
+              localidade: FUNDACAO.localidade,
+              freguesia: FUNDACAO.freguesia,
+              concelho: FUNDACAO.concelho,
+              forte: (c) => <strong className="text-on-surface">{c}</strong>,
+            })}
           </p>
         </div>
       </section>
@@ -75,32 +78,25 @@ export default function ClubePage() {
       <section className="section-container py-16 md:py-20">
         <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-8 md:gap-16">
           <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-            Como foi fundado
+            {t("fundacao.titulo")}
           </h2>
           <div className="space-y-5 max-w-prose">
             <p className="font-body text-lg text-on-surface-muted leading-relaxed">
-              O clube nasceu como uma associação desportiva e recreativa ligada à
-              comunidade de Valejas. Ao longo dos anos foi ganhando um papel na
-              promoção do desporto em toda a freguesia de Barcarena.
+              {t("fundacao.p1")}
             </p>
             <p className="font-body text-lg text-on-surface-muted leading-relaxed">
-              A origem está sobretudo na prática desportiva local, no convívio
-              entre moradores e na criação de atividades para a população — e é
-              isso que o clube continua a ser.
+              {t("fundacao.p2")}
             </p>
 
             <div className="bg-surface-high p-6 md:p-7">
               <p className="font-headline font-black uppercase text-sm text-on-surface">
-                O que ainda não sabemos
+                {t("fundacao.naoSabemos.titulo")}
               </p>
               <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-                Não há registo público com os nomes dos fundadores nem ata que
-                conte o momento exato da fundação. Se tens documentos, fotografias
-                ou memórias de família sobre o início do clube, fala connosco — a
-                história do Valejas ainda está por escrever como deve ser.
+                {t("fundacao.naoSabemos.texto")}
               </p>
               <Link href="/contactos" className="btn-ghost text-sm mt-4">
-                Contar o que sei
+                {t("fundacao.naoSabemos.botao")}
               </Link>
             </div>
           </div>
@@ -111,17 +107,16 @@ export default function ClubePage() {
       <section className="section-container py-16 md:py-20 border-t border-on-surface/10">
         <div className="max-w-2xl mb-12">
           <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-            Como começou
+            {t("comecou.titulo")}
           </h2>
           <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-3">
-            Muito antes do futsal. As primeiras atividades do clube foram estas
-            três — duas de pernas e rodas, uma de convívio à porta da sede.
+            {t("comecou.texto")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-on-surface/10">
           {ORIGENS.map((o, i) => (
-            <article key={o.nome} className="bg-surface-high p-7 md:p-8">
+            <article key={o.id} className="bg-surface-high p-7 md:p-8">
               <span
                 aria-hidden
                 className="font-headline font-black text-5xl text-yellow/30 leading-none"
@@ -129,10 +124,10 @@ export default function ClubePage() {
                 0{i + 1}
               </span>
               <h3 className="font-headline font-black uppercase text-xl text-on-surface mt-4">
-                {o.nome}
+                {t(`comecou.origens.${o.id}.nome`)}
               </h3>
               <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-                {o.descricao}
+                {t(`comecou.origens.${o.id}.descricao`)}
               </p>
             </article>
           ))}
@@ -140,10 +135,10 @@ export default function ClubePage() {
 
         <div className="mt-12 max-w-2xl">
           <h3 className="font-body text-xs font-semibold uppercase tracking-[0.25em] text-on-surface-muted border-b border-on-surface/10 pb-3 mb-5">
-            E depois
+            {t("comecou.depoisTitulo")}
           </h3>
           <ul className="space-y-3">
-            {DEPOIS.map((d) => (
+            {(t.raw("comecou.depois") as typeof DEPOIS).map((d) => (
               <li key={d} className="flex items-start gap-3">
                 <span
                   aria-hidden
@@ -154,8 +149,7 @@ export default function ClubePage() {
             ))}
           </ul>
           <p className="font-body text-sm text-on-surface-muted mt-6 leading-relaxed">
-            Sem datas precisas — não há registo que as fixe. Por isso não é uma
-            cronologia: é a ordem por que as coisas foram acontecendo.
+            {t("comecou.nota")}
           </p>
         </div>
       </section>
@@ -165,11 +159,10 @@ export default function ClubePage() {
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-              Onde estamos
+              {t("ondeEstamos.titulo")}
             </h2>
             <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-3">
-              A sede fica no vale do Jamor, entre Barcarena e Queluz de Baixo.
-              É a mesma morada desde sempre.
+              {t("ondeEstamos.texto")}
             </p>
 
             <div className="flex items-start gap-3 mt-8">
@@ -184,7 +177,7 @@ export default function ClubePage() {
             </div>
 
             <p className="font-body text-sm text-on-surface-muted mt-4">
-              Também aparece como {LOCALIZACAO.moradaAlt}.
+              {t("ondeEstamos.tambem", { morada: LOCALIZACAO.moradaAlt })}
             </p>
           </div>
 
@@ -196,10 +189,10 @@ export default function ClubePage() {
       <section className="section-container py-16 md:py-20 border-t border-on-surface/10">
         <div className="max-w-2xl mb-8">
           <h2 className="font-headline font-black uppercase text-3xl md:text-4xl tracking-tighter text-on-surface">
-            Conhecer o resto
+            {t("resto.titulo")}
           </h2>
           <p className="font-body text-lg text-on-surface-muted leading-relaxed mt-3">
-            A história é o princípio. O clube de hoje está nestas páginas.
+            {t("resto.texto")}
           </p>
         </div>
 
@@ -212,10 +205,10 @@ export default function ClubePage() {
             >
               <div>
                 <h3 className="font-headline font-black uppercase text-xl text-on-surface leading-none group-hover:text-yellow transition-colors duration-300">
-                  {pagina.nome}
+                  {t(`resto.paginas.${pagina.chave}.nome`)}
                 </h3>
                 <p className="font-body text-sm text-on-surface-muted leading-relaxed mt-2">
-                  {pagina.descricao}
+                  {t(`resto.paginas.${pagina.chave}.descricao`)}
                 </p>
               </div>
               <ArrowUpRight
@@ -233,18 +226,18 @@ export default function ClubePage() {
         <div className="bg-surface-high p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 justify-between">
           <div className="max-w-xl">
             <h2 className="font-headline font-black uppercase text-2xl tracking-tight text-on-surface">
-              {anos} anos e a contar
+              {t("cta.titulo", { anos })}
             </h2>
             <p className="font-body text-on-surface-muted leading-relaxed mt-2">
-              O clube é de quem cá está. A quota é de 1€ por mês.
+              {t("cta.texto")}
             </p>
           </div>
           <div className="flex flex-wrap gap-4 shrink-0">
             <Link href="/socios/inscricao" className="btn-primary text-sm">
-              Fazer-me sócio
+              {t("cta.fazerSocio")}
             </Link>
             <Link href="/contactos" className="btn-ghost text-sm">
-              Falar connosco
+              {t("cta.falar")}
             </Link>
           </div>
         </div>
