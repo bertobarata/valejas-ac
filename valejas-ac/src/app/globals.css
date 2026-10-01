@@ -364,6 +364,17 @@ main p.text-center:not([class*="max-w-"]) {
     @apply border-yellow text-yellow bg-yellow/5;
   }
 
+  /* ── Botões da barra do topo (TV, Fazer Sócio, Loja) ──
+     Contorno em repouso, amarelo cheio por baixo do rato: os três têm
+     o mesmo peso, e o que se vai carregar acende. */
+  .btn-barra {
+    @apply inline-flex items-center gap-1.5 min-h-11 px-3 py-2.5 border border-on-surface/20 text-on-surface font-headline font-black text-xs uppercase tracking-wider whitespace-nowrap rounded-none transition-colors duration-200;
+  }
+  .btn-barra:hover,
+  .btn-barra:focus-visible {
+    @apply bg-yellow border-yellow text-black;
+  }
+
   /* ── Danger / Urgency (tickets, live, alerts) ── */
   .btn-danger {
     @apply inline-flex items-center gap-2 px-6 py-3 bg-red text-white font-headline font-black text-sm uppercase tracking-wider rounded-none transition-all duration-200;

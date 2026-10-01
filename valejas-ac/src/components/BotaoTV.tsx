@@ -52,8 +52,8 @@ export default function BotaoTV({ className, grande = false }: { className?: str
 
   const tamanho = grande ? 18 : 14;
   const classes = clsx(
-    "btn-ghost inline-flex items-center gap-2 whitespace-nowrap",
-    grande ? "w-full justify-center text-base py-4" : "text-xs min-h-11 py-2.5 px-4"
+    "btn-barra",
+    grande ? "w-full justify-center !text-base !py-3" : undefined
   );
 
   if (estado?.live) {

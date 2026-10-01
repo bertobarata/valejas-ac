@@ -71,14 +71,8 @@ function submenuId(href: string): string {
 
 const NAV_ITEMS: ItemNav[] = [
   { label: "inicio",      href: "/" },
-  { label: "comunicados", href: "/comunicados" },
-  {
-    label: "modalidades",
-    href:  "/modalidades",
-    // Cada uma abre já expandida na página, pelo #slug.
-    submenu: MODALIDADES.map((m) => ({ label: `modalidade.${m.slug}`, href: `/modalidades#${m.slug}` })),
-  },
-  { label: "academiaSenior", href: "/academia-senior" },
+  // Ordem pedida pelo Berto (01/10/2026): o clube primeiro, depois o que
+  // se pratica, o que se publica, e por fim como chegar e como entrar.
   {
     label: "clube",
     href:  "/clube",
@@ -91,14 +85,25 @@ const NAV_ITEMS: ItemNav[] = [
       { label: "patrocinadores",  href: "/patrocinadores" },
     ],
   },
-  { label: "inscricoes",  href: "/inscricoes" },
+  {
+    label: "modalidades",
+    href:  "/modalidades",
+    // Cada uma abre já expandida na página, pelo #slug.
+    submenu: MODALIDADES.map((m) => ({ label: `modalidade.${m.slug}`, href: `/modalidades#${m.slug}` })),
+  },
+  { label: "academiaSenior", href: "/academia-senior" },
+  { label: "comunicados", href: "/comunicados" },
   { label: "contactos",   href: "/contactos" },
+  { label: "inscricoes",  href: "/inscricoes" },
 ];
 
-/** As duas ações da barra. No telemóvel aparecem no fim do menu. */
+/**
+ * As ações da barra, por esta ordem: TV, Fazer Sócio, Loja (a TV vive no
+ * seu próprio componente). No telemóvel aparecem no fim do menu.
+ */
 const ACOES = [
-  { label: "loja",       href: STORE_URL, Icon: ShoppingBag },
   { label: "fazerSocio", href: "/socios/inscricao", Icon: UserPlus },
+  { label: "loja",       href: STORE_URL, Icon: ShoppingBag },
 ];
 
 export default function Navbar() {
@@ -251,7 +256,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop nav */}
-          <ul className="hidden xl:flex items-center gap-4 2xl:gap-5 whitespace-nowrap">
+          <ul className="hidden xl:flex items-center gap-3 whitespace-nowrap">
             {/* O Início sai daqui: o emblema ao lado já leva à página
                 inicial, e a barra precisa do espaço para o TV. */}
             {NAV_ITEMS.filter((item) => item.href !== "/").map((item) => (
@@ -299,7 +304,7 @@ export default function Navbar() {
                             atual === item.href ? null : item.href
                           )
                         }
-                        className="w-11 h-11 -ml-1 flex items-center justify-center text-on-surface-muted hover:text-on-surface transition-colors duration-200"
+                        className="w-8 h-11 -ml-0.5 flex items-center justify-center text-on-surface-muted hover:text-on-surface transition-colors duration-200"
                       >
                         <ChevronDown
                           size={14}
@@ -369,7 +374,7 @@ export default function Navbar() {
           </ul>
 
           {/* Actions */}
-          <div className="flex items-center gap-3 z-50">
+          <div className="flex items-center gap-2 z-50">
             {/* Theme toggle */}
             {mounted && (
               <button
@@ -381,24 +386,23 @@ export default function Navbar() {
               </button>
             )}
 
-            {/* Loja e cartão de sócio: as duas coisas que se fazem aqui */}
-            <Link
-              href={STORE_URL}
-              className="btn-ghost hidden sm:inline-flex text-xs min-h-11 py-2.5 px-4 whitespace-nowrap"
-            >
-              <ShoppingBag size={14} aria-hidden />
-              {/* A barra não tem largura para o nome: fica o saco, que se
-                  reconhece sozinho. No menu do telemóvel diz "Loja". */}
-              <span className="sr-only">{t("loja")}</span>
-            </Link>
+            {/* As três coisas que se fazem aqui — TV, sócio, loja — todas com
+                ícone e nome, e todas a acender a amarelo por baixo do rato. */}
+            <BotaoTV className="hidden sm:inline-flex" />
             <Link
               href="/socios/inscricao"
-              className="btn-primary hidden sm:inline-flex text-xs min-h-11 py-2.5 px-4 whitespace-nowrap"
+              className="btn-barra hidden sm:inline-flex"
             >
-              <UserPlus size={14} />
+              <UserPlus size={14} aria-hidden />
               {t("fazerSocio")}
             </Link>
-            <BotaoTV className="hidden sm:inline-flex" />
+            <Link
+              href={STORE_URL}
+              className="btn-barra hidden sm:inline-flex"
+            >
+              <ShoppingBag size={14} aria-hidden />
+              {t("loja")}
+            </Link>
 
             {/* Sem a faixa vermelha (só existe a partir de 768px), a
                 língua vem para a barra. */}
@@ -515,21 +519,20 @@ export default function Navbar() {
           {/* As duas ações e as redes, sempre à vista no fundo */}
           <div className="shrink-0 border-t border-on-surface/10 px-5 py-5 flex flex-col gap-4">
             <div className="flex flex-col gap-3">
-              {ACOES.map(({ label, href, Icon }, i) => (
+              <BotaoTV grande />
+              {ACOES.map(({ label, href, Icon }) => (
                 <Link
                   key={href}
                   href={href}
                   onClick={closeMenu}
                   className={clsx(
-                    "w-full justify-center text-base py-4",
-                    i === ACOES.length - 1 ? "btn-primary" : "btn-ghost"
+                    "btn-barra w-full justify-center !text-base !py-3"
                   )}
                 >
-                  <Icon size={18} />
+                  <Icon size={18} aria-hidden />
                   {t(label)}
                 </Link>
               ))}
-              <BotaoTV grande />
             </div>
 
             <div className="flex items-center justify-center gap-5">
