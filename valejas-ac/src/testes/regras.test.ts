@@ -14,6 +14,7 @@ import { MODALIDADES } from "@/lib/data/modalidades";
 import { CALENDARIO, CLUBE, ehValejas, proximoJogo } from "@/lib/data/jogos";
 import { EQUIPAS, ORDEM_POSICOES, doSanity } from "@/lib/data/plantel";
 import { APOIOS, apoiosPorTipo } from "@/lib/data/patrocinadores";
+import { APRESENTACAO, lerPedido } from "@/lib/data/patrocinio";
 import { emblemaDe } from "@/lib/data/emblemas";
 import { organizacao, proximosJogos } from "@/lib/seo/dadosEstruturados";
 
@@ -287,5 +288,40 @@ describe("dados estruturados — o que o Google lê", () => {
 
   it("depois da época acabar não se anuncia nada", () => {
     expect(proximosJogos(new Date("2030-01-01T00:00:00Z"))).toBeNull();
+  });
+});
+
+describe("patrocínio — o pedido e a apresentação", () => {
+  const base = {
+    nome: "Maria Silva", email: "maria@exemplo.pt", tipos: ["pavilhao"], rgpd: true,
+  };
+
+  it("um pedido completo passa, com ou sem empresa", () => {
+    expect(lerPedido(base).erros).toEqual({});
+    expect(lerPedido({ ...base, entidade: "Padaria Central" }).erros).toEqual({});
+  });
+
+  it("um tipo inventado é descartado — e sem nenhum válido não passa", () => {
+    const { pedido, erros } = lerPedido({ ...base, tipos: ["pavilhao", "camarote-vip"] });
+    expect(pedido.tipos).toEqual(["pavilhao"]);
+    expect(erros.tipos).toBeUndefined();
+    expect(lerPedido({ ...base, tipos: ["camarote-vip"] }).erros.tipos).toBeDefined();
+  });
+
+  it("sem consentimento não segue", () => {
+    expect(lerPedido({ ...base, rgpd: false }).erros.rgpd).toBeDefined();
+  });
+
+  it("o telefone é opcional, mas se vier tem de ser português", () => {
+    expect(lerPedido({ ...base, telefone: "912 345 678" }).erros.telefone).toBeUndefined();
+    expect(lerPedido({ ...base, telefone: "214365104" }).erros.telefone).toBeUndefined();
+    expect(lerPedido({ ...base, telefone: "12345" }).erros.telefone).toBeDefined();
+  });
+
+  it("a apresentação existe e não está em public/ — só sai por email", () => {
+    // Em public/ teria endereço, e quem a quisesse não precisava de
+    // deixar contacto: a comunicação do clube perdia a lista.
+    expect(existsSync(join(process.cwd(), APRESENTACAO.caminho))).toBe(true);
+    expect(APRESENTACAO.caminho.startsWith("public/")).toBe(false);
   });
 });

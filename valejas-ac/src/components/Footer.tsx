@@ -27,6 +27,7 @@ const LINKS = {
     { label: "Inscrições",   href: "/inscricoes" },
     { label: "Sócios",       href: "/socios-contacto" },
     { label: "Fazer Sócio",  href: "/socios/inscricao" },
+    { label: "Patrocinar",   href: "/patrocinar" },
     { label: "Loja Oficial", href: STORE_URL },
   ],
   modalidades: MODALIDADES.map((m) => ({
