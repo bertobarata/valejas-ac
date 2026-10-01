@@ -16,7 +16,7 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-export type TipoApoio = "principal" | "institucional" | "local";
+export type TipoApoio = "principal" | "institucional" | "local" | "parceria";
 
 export interface Apoio {
   nome:      string;
@@ -110,6 +110,20 @@ export const APOIOS: Apoio[] = [
     logo: "/patrocinadores/remax-grupo-sunset.webp",
     porConfirmar: true,
   },
+  /*
+   * Parceria de serviço, não patrocínio: o estúdio que desenhou e
+   * construiu este site. Fica numa secção própria, no fim, para não se
+   * confundir com quem apoia o clube com dinheiro ou com a casa.
+   * Pedido do Berto Barata (01/10/2026). O logótipo é a versão escura
+   * do estúdio, posta no mesmo ladrilho branco de 440×440 dos outros.
+   */
+  {
+    nome: "Barata Studio",
+    tipo: "parceria",
+    descricao: "Website do clube — desenho e desenvolvimento.",
+    url: "https://baratastudio.com",
+    logo: "/patrocinadores/barata-studio.webp",
+  },
 ];
 
 export const TIPOS: { id: TipoApoio; titulo: string; intro: string }[] = [
@@ -127,6 +141,11 @@ export const TIPOS: { id: TipoApoio; titulo: string; intro: string }[] = [
     id: "local",
     titulo: "Comércio local",
     intro: "Casas da terra que dão a mão ao clube.",
+  },
+  {
+    id: "parceria",
+    titulo: "Parcerias",
+    intro: "Quem põe o seu ofício ao serviço do clube.",
   },
 ];
 
