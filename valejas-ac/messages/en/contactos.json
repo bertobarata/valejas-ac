@@ -62,5 +62,28 @@
   },
   "mapa": {
     "titulo": "Valejas AC location"
+  },
+  "restaurante": {
+    "etiqueta": "The club's restaurant",
+    "texto": "Home-style Portuguese food at the club, with a dish of the day at lunchtime and generous portions. To book a table, call the restaurant directly.",
+    "pratos": {
+      "chanfana": "<dia>Tuesdays:</dia> chanfana (goat slow-cooked in red wine)",
+      "cozido": "<dia>Thursdays:</dia> cozido à portuguesa (Portuguese boiled meats and vegetables)"
+    },
+    "reservar": "Book a table · {telefone}",
+    "comoChegar": "Get directions",
+    "horario": "Opening hours",
+    "fechado": "Closed",
+    "servicos": "Eat in or take away. Reservations accepted.",
+    "dias": {
+      "0": "Sunday",
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday"
+    },
+    "atalho": "Book a table at the club's restaurant"
   }
 }

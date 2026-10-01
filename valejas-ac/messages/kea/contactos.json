@@ -62,5 +62,28 @@
   },
   "mapa": {
     "titulo": "Lokalizason di Valejas AC"
+  },
+  "restaurante": {
+    "etiqueta": "Restoranti di klubi",
+    "texto": "Kumida kaseru purtugés na instalason di klubi, ku pratu di dia na almósu i dósi grándi. Pa rizerva méza, liga diretu pa restoranti.",
+    "pratos": {
+      "chanfana": "<dia>Tersa-fera:</dia> chanfana di kabra",
+      "cozido": "<dia>Kinta-fera:</dia> kozidu purtugés"
+    },
+    "reservar": "Rizerva méza · {telefone}",
+    "comoChegar": "Modi ki ta txiga",
+    "horario": "Oráriu",
+    "fechado": "Fitxadu",
+    "servicos": "Kume la o leba pa kaza. Ta aseita rizerva.",
+    "dias": {
+      "0": "Dumingu",
+      "1": "Sugunda",
+      "2": "Tersa",
+      "3": "Kuarta",
+      "4": "Kinta",
+      "5": "Sesta",
+      "6": "Sábadu"
+    },
+    "atalho": "Rizerva méza na restoranti di klubi"
   }
 }

@@ -62,5 +62,28 @@
   },
   "mapa": {
     "titulo": "Localização Valejas AC"
+  },
+  "restaurante": {
+    "etiqueta": "O restaurante do clube",
+    "texto": "Comida caseira portuguesa nas instalações do clube, com prato do dia ao almoço e doses generosas. Para reservar mesa, liga diretamente para o restaurante.",
+    "pratos": {
+      "chanfana": "<dia>Às terças:</dia> chanfana de cabra",
+      "cozido": "<dia>Às quintas:</dia> cozido à portuguesa"
+    },
+    "reservar": "Reservar mesa · {telefone}",
+    "comoChegar": "Como chegar",
+    "horario": "Horário",
+    "fechado": "Fechado",
+    "servicos": "Refeições no local e para levar. Aceita reservas.",
+    "dias": {
+      "0": "Domingo",
+      "1": "Segunda",
+      "2": "Terça",
+      "3": "Quarta",
+      "4": "Quinta",
+      "5": "Sexta",
+      "6": "Sábado"
+    },
+    "atalho": "Reservar mesa no restaurante do clube"
   }
 }

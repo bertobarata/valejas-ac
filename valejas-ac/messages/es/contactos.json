@@ -62,5 +62,28 @@
   },
   "mapa": {
     "titulo": "Ubicación del Valejas AC"
+  },
+  "restaurante": {
+    "etiqueta": "El restaurante del club",
+    "texto": "Comida casera portuguesa en las instalaciones del club, con plato del día a mediodía y raciones generosas. Para reservar mesa, llama directamente al restaurante.",
+    "pratos": {
+      "chanfana": "<dia>Los martes:</dia> chanfana (cabra guisada en vino tinto)",
+      "cozido": "<dia>Los jueves:</dia> cozido à portuguesa (cocido portugués)"
+    },
+    "reservar": "Reservar mesa · {telefone}",
+    "comoChegar": "Cómo llegar",
+    "horario": "Horario",
+    "fechado": "Cerrado",
+    "servicos": "Para comer allí o para llevar. Se aceptan reservas.",
+    "dias": {
+      "0": "Domingo",
+      "1": "Lunes",
+      "2": "Martes",
+      "3": "Miércoles",
+      "4": "Jueves",
+      "5": "Viernes",
+      "6": "Sábado"
+    },
+    "atalho": "Reservar mesa en el restaurante del club"
   }
 }
