@@ -260,8 +260,13 @@
     },
     "cta": {
       "titulo": "Bu kre poia Valejas?",
-      "texto": "Ten txeu manera di da un mon a un klubi ku {anos} anu — di ekipamentu di un eskalon ti lanxi di un konvíviu. Papia ku Diresãu.",
-      "botao": "Papia ku Diresãu"
+      "texto": "Ten txeu manera di da mon a un klubi ku {anos} anu — di ekipamentu di un eskalãu ti lantxi di un konvivi. Pidi aprezentason di parseria: e ta txiga na bu email lógu ki bu pidi.",
+      "botao": "Papia ku Diresãu",
+      "quero": "N kre ser patrusinadór"
+    },
+    "convite": {
+      "titulo": "Bu marka pode sta li",
+      "texto": "Na ekipamentu, na paredi di pavilhãu, na redi di klubi. Pidi aprezentason di parseria i resebe-l na email, na óra."
     }
   }
 }

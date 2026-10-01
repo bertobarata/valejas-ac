@@ -260,8 +260,13 @@
     },
     "cta": {
       "titulo": "¿Quiere apoyar al Valejas?",
-      "texto": "Hay muchas formas de echarle una mano a un club con {anos} años — desde la equipación de una categoría hasta la merienda de un encuentro. Hable con la Junta Directiva.",
-      "botao": "Hablar con la Junta Directiva"
+      "texto": "Hay muchas formas de echar una mano a un club con {anos} años — desde la equipación de una categoría hasta la merienda de una convivencia. Pida la presentación de colaboraciones: le llega al email en cuanto la solicite.",
+      "botao": "Hablar con la Junta Directiva",
+      "quero": "Quiero ser patrocinador"
+    },
+    "convite": {
+      "titulo": "Su marca puede estar aquí",
+      "texto": "En la equipación, en las paredes del pabellón, en las redes del club. Pida la presentación de colaboraciones y recíbala en su email al momento."
     }
   }
 }

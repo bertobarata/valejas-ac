@@ -260,8 +260,13 @@
     },
     "cta": {
       "titulo": "Vous souhaitez soutenir le Valejas ?",
-      "texto": "Il y a bien des façons de donner un coup de main à un club de {anos} ans — de l’équipement d’une catégorie au goûter d’une rencontre. Parlez-en à la Direction.",
-      "botao": "Contacter la Direction"
+      "texto": "Il y a mille façons de donner un coup de main à un club de {anos} ans — de l’équipement d’une catégorie au goûter d’une rencontre. Demandez la présentation des partenariats : elle arrive dans votre boîte mail dès que vous la demandez.",
+      "botao": "Contacter la Direction",
+      "quero": "Devenir partenaire"
+    },
+    "convite": {
+      "titulo": "Votre marque pourrait être ici",
+      "texto": "Sur les maillots, sur les murs du gymnase, sur les réseaux du club. Demandez la présentation des partenariats et recevez-la aussitôt par email."
     }
   }
 }

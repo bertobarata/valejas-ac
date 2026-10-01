@@ -26,6 +26,7 @@ export const ROTAS_TRADUZIDAS = [
   "/contactos",
   "/loja",
   "/loja/carrinho",
+  "/patrocinar",
 ] as const;
 
 export function estaTraduzida(rota: string): boolean {

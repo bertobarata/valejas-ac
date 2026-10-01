@@ -41,6 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { rota: "/instalacoes",                  prioridade: 0.5,  frequencia: "yearly" },
     { rota: "/orgaos-sociais",               prioridade: 0.5,  frequencia: "yearly" },
     { rota: "/patrocinadores",               prioridade: 0.5,  frequencia: "yearly" },
+    { rota: "/patrocinar",                   prioridade: 0.5,  frequencia: "yearly" },
     { rota: "/inscricoes/direitos-de-imagem", prioridade: 0.4, frequencia: "yearly" },
     { rota: "/loja/condicoes",               prioridade: 0.4,  frequencia: "yearly" },
     { rota: "/privacidade",                  prioridade: 0.3,  frequencia: "yearly" },

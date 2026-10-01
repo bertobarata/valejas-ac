@@ -260,8 +260,13 @@
     },
     "cta": {
       "titulo": "Want to support Valejas?",
-      "texto": "There are many ways to lend a hand to a club that's {anos} years old — from kitting out an age group to the snacks at a get-together. Talk to the Board.",
-      "botao": "Contact the Board"
+      "texto": "There are many ways to lend a hand to a club that's {anos} years old — from kit for an age group to snacks for a get-together. Request the partnership pack: it lands in your inbox as soon as you ask.",
+      "botao": "Contact the Board",
+      "quero": "Become a sponsor"
+    },
+    "convite": {
+      "titulo": "Your brand could be here",
+      "texto": "On the kit, on the sports hall walls, on the club's social media. Request the partnership pack and get it by email straight away."
     }
   }
 }

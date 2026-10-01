@@ -13,4 +13,5 @@ export const NAMESPACES = [
   "socios",
   "contactos",
   "loja",
+  "patrocinio",
 ] as const;
