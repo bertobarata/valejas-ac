@@ -12,6 +12,14 @@ const nextConfig = {
   // Sanity usa módulos que não devem ser bundled pelo servidor Next.js
   experimental: {
     serverComponentsExternalPackages: ["sanity"],
+    // A apresentação de parcerias segue como anexo e não está em
+    // public/ — de propósito, para não ter endereço. A rota lê-a do
+    // disco com um caminho montado em tempo de execução, que o
+    // rastreio do Next não adivinha: sem esta linha o build passa e
+    // na Vercel o ficheiro não existe.
+    outputFileTracingIncludes: {
+      "/api/patrocinio": ["./privado/parcerias-valejas-ac.pdf"],
+    },
   },
   // A história passou a ser a abertura de /clube, e o emblema desceu
   // para /clube/emblema. Os endereços antigos continuam a funcionar —

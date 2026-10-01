@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { paraPagina } from "@/lib/seo/metadados";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import {
   TIPOS, apoiosPorTipo, type Apoio,
 } from "@/lib/data/patrocinadores";
@@ -31,6 +31,30 @@ export default function PatrocinadoresPage() {
             instituições que põem o ombro — umas vestem as equipas, outras abrem
             portas, outras simplesmente não deixam cair.
           </p>
+
+          {/*
+            O convite vem logo aqui, antes da lista, e não só no fim:
+            quem chega a esta página é muitas vezes alguém a pensar em
+            apoiar, e não tem de rolar por todos os apoios para descobrir
+            como. Pedido do Berto Barata (01/10/2026).
+          */}
+          <div className="mt-8 bg-blue section-dark text-white p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between max-w-4xl">
+            <div>
+              <p className="font-headline font-black uppercase text-xl md:text-2xl tracking-tight">
+                A sua marca pode estar aqui
+              </p>
+              <p className="font-body text-white/85 leading-relaxed mt-1.5 max-w-prose">
+                No equipamento, nas paredes do pavilhão, nas redes do clube.
+                Peça a apresentação de parcerias e receba-a no email, na hora.
+              </p>
+            </div>
+            <Link
+              href="/patrocinar"
+              className="btn-primary shrink-0 self-center md:self-auto bg-yellow text-blue-deep hover:bg-yellow-dim text-sm"
+            >
+              Quero ser patrocinador <ArrowRight size={16} aria-hidden />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -79,15 +103,26 @@ export default function PatrocinadoresPage() {
             </h2>
             <p className="font-body text-white/80 leading-relaxed mt-2">
               Há muitas formas de dar a mão a um clube com {new Date().getFullYear() - 1966} anos
-              — do equipamento de um escalão ao lanche de um convívio. Fale com a Direção.
+              — do equipamento de um escalão ao lanche de um convívio. Peça a
+              apresentação de parcerias: chega-lhe ao email assim que a pedir.
             </p>
           </div>
-          <Link
-            href="/contactos"
-            className="btn-primary shrink-0 bg-yellow text-blue-deep hover:bg-yellow-dim text-sm"
-          >
-            Falar com a Direção
-          </Link>
+          {/* A ação principal passou a ser o pedido da apresentação; falar
+              com o clube fica ao lado, para quem prefere conversar primeiro. */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <Link
+              href="/patrocinar"
+              className="btn-primary bg-yellow text-blue-deep hover:bg-yellow-dim text-sm"
+            >
+              Quero ser patrocinador <ArrowRight size={16} aria-hidden />
+            </Link>
+            <Link
+              href="/contactos"
+              className="alvo-toque inline-flex items-center px-3 font-body text-sm text-white/85 hover:text-white underline underline-offset-4"
+            >
+              Falar com a Direção
+            </Link>
+          </div>
         </div>
       </section></div>
   );
