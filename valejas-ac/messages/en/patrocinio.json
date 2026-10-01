@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "titulo": "Become a sponsor",
+    "descricao": "Sponsor Valejas Atlético Clube: kit, banners in the sports hall, digital content, support for an age group or sports patronage. Request the partnership pack and receive it by email."
+  },
+  "cabecalho": {
+    "etiqueta": "Sponsorship and partnerships",
+    "titulo": "Become a <destaque>sponsor</destaque>",
+    "texto": "{anos} years as a club, {modalidades} sports and a sports hall full of people every day of the week. Tell us who you are and get the Valejas partnership pack in your inbox straight away — with everything the club has to offer.",
+    "pedir": "Request the pack",
+    "verApoios": "See who already supports the club"
+  },
+  "marca": {
+    "titulo": "Where your brand can go",
+    "texto": "From the kit the athletes wear to the walls of the sports hall, which hosts training and matches from 5 pm to 11 pm on weekdays and all day at weekends — the club estimates more than 3,000 people a week. All the formats and prices are in the pack."
+  },
+  "formasDeApoio": {
+    "equipamentos": {
+      "nome": "Kit and clothing",
+      "descricao": "Your brand on the match kit, the training kit and tracksuit, the travel wear or the bibs."
+    },
+    "pavilhao": {
+      "nome": "Banners and vinyl in the sports hall",
+      "descricao": "Permanent advertising on the walls and floor, in full view of those who train, play and watch."
+    },
+    "digital": {
+      "nome": "Posters and digital content",
+      "descricao": "Your logo on match posters and on the club's social media posts."
+    },
+    "caderneta": {
+      "nome": "Sticker album",
+      "descricao": "A spot in the club's sticker album, which passes from hand to hand around the area."
+    },
+    "escalao": {
+      "nome": "Support an age group or sport",
+      "descricao": "Back a specific team — the youngest futsal players, athletics, karate."
+    },
+    "material": {
+      "nome": "Goods or services",
+      "descricao": "Instead of money, what your business does: transport, meals, building work, printing."
+    },
+    "donativo": {
+      "nome": "Donation (sports patronage)",
+      "descricao": "A donation to the club, which may qualify for tax benefits under the sports patronage scheme."
+    },
+    "outro": {
+      "nome": "Another idea",
+      "descricao": "Have a proposal that doesn't fit here? Tell us in your message."
+    }
+  },
+  "passos": {
+    "titulo": "Get the partnership pack",
+    "quem": {
+      "titulo": "Tell us who you are",
+      "texto": "A company, a local shop or a private individual — everyone counts."
+    },
+    "apresentacao": {
+      "titulo": "The pack arrives straight away",
+      "texto": "A PDF about the club, its sports and every way to support it, with prices."
+    },
+    "contacto": {
+      "titulo": "We get in touch",
+      "texto": "The club's communications team receives your request and gets in touch to sort out the rest."
+    }
+  },
+  "fecho": {
+    "texto": "Would you rather talk to someone at the club first? Write to us through the contact form, with the subject «Partnership or sponsorship proposal».",
+    "botao": "Contact"
+  },
+  "formulario": {
+    "opcional": "(optional)",
+    "entidade": "Company or organisation",
+    "entidadeDica": "If you are supporting as an individual, leave this blank.",
+    "nome": "Your name",
+    "email": "Email",
+    "emailDica": "This is where we send the pack.",
+    "telefone": "Phone",
+    "tiposLegenda": "How would you like to support us *",
+    "tiposDica": "You can choose more than one. The prices for each are in the pack.",
+    "mensagem": "A note for the club",
+    "mensagemPlaceholder": "What you have in mind, which team you'd like to support, the best time to talk…",
+    "rgpd": "I authorise Valejas Atlético Clube to use this data to send me the partnership pack and to contact me about supporting the club. The data is sent by email and is not stored on the website. <link>Privacy Policy</link> (in Portuguese). *",
+    "aEnviar": "Sending…",
+    "enviar": "Get the pack",
+    "pdfNaHora": "PDF sent to your email, straight away."
+  },
+  "feito": {
+    "titulo": "Thank you — request received",
+    "enviada": "The partnership pack is on its way to <forte>{email}</forte>. It should arrive within minutes — if you can't see it, check your spam or promotions folder.",
+    "naoEnviada": "Your request reached the club, but the pack could not be sent to <forte>{email}</forte>. The club's communications team will send it by hand.",
+    "contacto": "The club's communications team already knows you're interested and will be in touch. In the meantime, for any questions: <link>{email}</link>."
+  },
+  "erros": {
+    "nome": "Please enter the first name and surname of the person we'll be talking to.",
+    "email": "Invalid email — that's where the pack will be sent.",
+    "telefone": "Invalid Portuguese phone number (9 digits, starting with 9 or 2).",
+    "tipos": "Choose at least one way to support us — or «Another idea».",
+    "rgpd": "You need to authorise the use of your data so the club can reply.",
+    "invalido": "Invalid request.",
+    "muitos": "We received requests from you a short while ago. If the pack hasn't arrived, check your spam folder or write to {email}.",
+    "falhou": "We couldn't send your request right now. Please try again, or write to {email}.",
+    "envio": "Your request could not be sent.",
+    "ligacao": "Connection failed. Please try again."
+  }
+}

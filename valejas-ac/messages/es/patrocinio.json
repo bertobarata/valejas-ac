@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "titulo": "Quiero ser patrocinador",
+    "descricao": "Patrocine al Valejas Atlético Clube: equipaciones, lonas en el pabellón, contenido digital, apoyo a una categoría o mecenazgo deportivo. Pida la presentación de colaboraciones y recíbala en su email."
+  },
+  "cabecalho": {
+    "etiqueta": "Patrocinios y colaboraciones",
+    "titulo": "Quiero ser <destaque>patrocinador</destaque>",
+    "texto": "{anos} años de club, {modalidades} deportes y un pabellón con gente todos los días de la semana. Díganos quién es y reciba ya, en su email, la presentación de colaboraciones del Valejas — con todo lo que el club puede ofrecer.",
+    "pedir": "Pedir la presentación",
+    "verApoios": "Ver quién apoya ya al club"
+  },
+  "marca": {
+    "titulo": "Dónde puede estar su marca",
+    "texto": "Desde la equipación que visten los deportistas hasta las paredes del pabellón, que tiene entrenamientos y partidos de 17:00 a 23:00 los días laborables y todo el día los fines de semana — el club calcula más de 3000 personas por semana. Los formatos y los precios están todos en la presentación."
+  },
+  "formasDeApoio": {
+    "equipamentos": {
+      "nome": "Equipaciones y ropa",
+      "descricao": "La marca en la equipación de juego, en el kit y el chándal de entrenamiento, en el conjunto de paseo o en los petos."
+    },
+    "pavilhao": {
+      "nome": "Lonas y vinilo en el pabellón",
+      "descricao": "Publicidad fija en las paredes y en el suelo, a la vista de quien entrena, de quien juega y de quien mira."
+    },
+    "digital": {
+      "nome": "Carteles y contenido digital",
+      "descricao": "El logotipo en los carteles de los partidos y en las publicaciones del club en redes sociales."
+    },
+    "caderneta": {
+      "nome": "Álbum de cromos",
+      "descricao": "Un sitio en el álbum de cromos del club, que pasa de mano en mano por el barrio."
+    },
+    "escalao": {
+      "nome": "Apoyo a una categoría o deporte",
+      "descricao": "Echar una mano a un equipo concreto — los más pequeños del fútbol sala, el atletismo, el kárate."
+    },
+    "material": {
+      "nome": "Material o servicios",
+      "descricao": "En lugar de dinero, lo que hace su negocio: transporte, comidas, obras, impresión."
+    },
+    "donativo": {
+      "nome": "Donativo (mecenazgo deportivo)",
+      "descricao": "Un donativo al club, que puede tener beneficios fiscales al amparo del mecenazgo deportivo."
+    },
+    "outro": {
+      "nome": "Otra idea",
+      "descricao": "¿Tiene una propuesta que no encaja aquí? Cuéntenosla en el mensaje."
+    }
+  },
+  "passos": {
+    "titulo": "Recibir la presentación",
+    "quem": {
+      "titulo": "Díganos quién es",
+      "texto": "Una empresa, una tienda del barrio o a título personal — todos cuentan."
+    },
+    "apresentacao": {
+      "titulo": "La presentación llega al momento",
+      "texto": "Un PDF con el club, los deportes y todas las formas de apoyo, con los precios."
+    },
+    "contacto": {
+      "titulo": "Hablamos con usted",
+      "texto": "El equipo de comunicación del club recibe su solicitud y se pone en contacto para concretar el resto."
+    }
+  },
+  "fecho": {
+    "texto": "¿Prefiere hablar primero con alguien del club? Escríbanos por el formulario de contacto, con el asunto «Propuesta de colaboración o patrocinio».",
+    "botao": "Contacto"
+  },
+  "formulario": {
+    "opcional": "(opcional)",
+    "entidade": "Empresa o entidad",
+    "entidadeDica": "Si apoya a título personal, déjelo en blanco.",
+    "nome": "Su nombre",
+    "email": "Email",
+    "emailDica": "Es aquí donde le enviamos la presentación.",
+    "telefone": "Teléfono",
+    "tiposLegenda": "Cómo le gustaría apoyar *",
+    "tiposDica": "Puede elegir más de una. Los precios de cada una están en la presentación.",
+    "mensagem": "Una nota para el club",
+    "mensagemPlaceholder": "Lo que tiene en mente, qué equipo le gustaría apoyar, el mejor momento para hablar…",
+    "rgpd": "Autorizo al Valejas Atlético Clube a usar estos datos para enviarme la presentación de colaboraciones y ponerse en contacto conmigo sobre el apoyo al club. Los datos se envían por email y no se guardan en la web. <link>Política de Privacidad</link> (en portugués). *",
+    "aEnviar": "Enviando…",
+    "enviar": "Recibir la presentación",
+    "pdfNaHora": "PDF enviado a su email, al momento."
+  },
+  "feito": {
+    "titulo": "Gracias — solicitud recibida",
+    "enviada": "La presentación de colaboraciones va camino de <forte>{email}</forte>. Debería llegar en unos minutos — si no la ve, eche un vistazo a la carpeta de spam o de promociones.",
+    "naoEnviada": "La solicitud ha llegado al club, pero no se ha podido enviar la presentación a <forte>{email}</forte>. El equipo de comunicación del club se la enviará a mano.",
+    "contacto": "El equipo de comunicación del club ya conoce su interés y se pondrá en contacto. Mientras tanto, para cualquier duda: <link>{email}</link>."
+  },
+  "erros": {
+    "nome": "Escriba el nombre y el apellido de la persona que habla con nosotros.",
+    "email": "Email no válido — es ahí adonde se envía la presentación.",
+    "telefone": "Teléfono portugués no válido (9 dígitos, empezando por 9 o 2).",
+    "tipos": "Elija al menos una forma de apoyo — o «Otra idea».",
+    "rgpd": "Es necesario autorizar el tratamiento de los datos para que el club pueda responder.",
+    "invalido": "Solicitud no válida.",
+    "muitos": "Hemos recibido solicitudes suyas hace poco. Si la presentación no ha llegado, mire la carpeta de spam o escriba a {email}.",
+    "falhou": "No hemos podido enviar la solicitud ahora. Inténtelo de nuevo o escriba a {email}.",
+    "envio": "No se ha podido enviar la solicitud.",
+    "ligacao": "Error de conexión. Inténtelo de nuevo."
+  }
+}
