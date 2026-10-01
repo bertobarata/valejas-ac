@@ -5,6 +5,8 @@ import { ArrowLeft } from "lucide-react";
 import { sessaoValida, authConfigurada, COOKIE_SESSAO } from "@/lib/auth-direcao";
 import EntrarDirecao from "@/components/direcao/EntrarDirecao";
 import GestorPlantel from "@/components/direcao/GestorPlantel";
+import GestorFotoEquipa from "@/components/direcao/GestorFotoEquipa";
+import GestorEquipaTecnica from "@/components/direcao/GestorEquipaTecnica";
 
 export const metadata: Metadata = {
   title: "Plantel — Área da Direção",
@@ -44,7 +46,11 @@ export default function DirecaoPlantelPage() {
             Esta área ainda não está configurada no servidor.
           </p>
         ) : autenticado ? (
-          <GestorPlantel />
+          <div className="space-y-16">
+            <GestorFotoEquipa />
+            <GestorPlantel />
+            <GestorEquipaTecnica />
+          </div>
         ) : (
           <EntrarDirecao />
         )}
