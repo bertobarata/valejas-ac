@@ -7,19 +7,26 @@
  * Dortmund — com uma citação inventada e a época 2024/25, mais três
  * adjuntos que também não existem. Estava publicado.
  *
- * Agora a lista vem de `EQUIPA_TECNICA`, que está vazia até o clube
- * dizer quem são, e a secção assume isso em vez de encher o espaço.
+ * Agora a lista vem do CMS (`membroTecnico`), escrita pela Direção em
+ * /direcao/plantel. Enquanto estiver vazia, a secção assume isso em vez
+ * de encher o espaço.
  * ─────────────────────────────────────────────────────────────────
  */
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { EQUIPA_TECNICA } from "@/lib/data/plantel";
+import Image from "next/image";
+import type { MembroTecnicoSite } from "@/sanity/queries";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function CorpoTecnico() {
+function iniciais(nome: string): string {
+  const p = nome.trim().split(/\s+/);
+  return ((p[0]?.[0] ?? "") + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase();
+}
+
+export default function CorpoTecnico({ membros }: { membros: MembroTecnicoSite[] }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -54,22 +61,41 @@ export default function CorpoTecnico() {
             </p>
           </div>
 
-          {EQUIPA_TECNICA.length > 0 ? (
-            <div>
-              {EQUIPA_TECNICA.map((m) => (
-                <div
-                  key={m.nome}
-                  className="flex flex-wrap justify-between items-end gap-x-6 gap-y-1 border-b border-on-surface/10 py-4"
-                >
-                  <span className="font-body text-xs font-bold uppercase text-on-surface-muted tracking-widest">
-                    {m.funcao}
-                  </span>
-                  <span className="font-headline font-black text-lg uppercase text-on-surface">
-                    {m.nome}
-                  </span>
-                </div>
+          {membros.length > 0 ? (
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-8">
+              {membros.map((m) => (
+                <li key={m._id} className="space-y-3">
+                  <div className="relative aspect-[3/4] bg-surface-high overflow-hidden">
+                    {m.fotoUrl ? (
+                      <Image
+                        src={m.fotoUrl}
+                        alt={`${m.nome}, ${m.cargo}`}
+                        fill
+                        sizes="(min-width: 640px) 16vw, 45vw"
+                        placeholder={m.fotoLqip ? "blur" : "empty"}
+                        blurDataURL={m.fotoLqip}
+                        className="object-cover"
+                      />
+                    ) : (
+                      <span
+                        aria-hidden
+                        className="absolute inset-0 flex items-center justify-center font-headline font-black text-5xl text-on-surface/25"
+                      >
+                        {iniciais(m.nome)}
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <p className="font-headline font-black text-lg uppercase leading-tight text-on-surface">
+                      {m.nome}
+                    </p>
+                    <p className="font-body text-xs font-bold uppercase text-on-surface-muted tracking-widest mt-1">
+                      {m.cargo}
+                    </p>
+                  </div>
+                </li>
               ))}
-            </div>
+            </ul>
           ) : (
             <div className="bg-surface-high p-7 md:p-8">
               <p className="font-body text-on-surface leading-relaxed">
