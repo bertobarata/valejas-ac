@@ -38,7 +38,7 @@ export default function ContactosPage({ params: { locale } }: { params: { locale
           <p className="font-body font-semibold text-xs uppercase tracking-[0.35em] text-yellow mb-4">
             {t("etiqueta")}
           </p>
-          <h1 className="font-headline font-black text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
+          <h1 className="font-headline font-black text-5xl sm:text-6xl md:text-8xl uppercase leading-none tracking-tighter text-white">
             {t("titulo")}
           </h1>
           <p className="font-body text-lg text-white/80 max-w-xl leading-relaxed mt-6">
